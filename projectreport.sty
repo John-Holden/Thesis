@@ -1,0 +1,148 @@
+% ------------------------------------------------------------------------------
+% MAPS 
+% by Daniel Wise 2019
+% University of Leeds
+% ------------------------------------------------------------------------------
+
+\ProvidesPackage{projectreport}
+\NeedsTeXFormat{LaTeX2e}
+
+% ------------------------------------------------------------------------------
+% Packages
+% ------------------------------------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage{blindtext}
+\usepackage[nottoc,numbib]{tocbibind}
+\renewcommand{\bibname}{References}
+\usepackage{caption}
+\captionsetup[table]{position=bottom}   %% or below
+
+% ------------------------------------------------------------------------------
+% Page setup
+% ------------------------------------------------------------------------------
+\usepackage{geometry} 
+\geometry{a4paper, margin=1in, twoside}
+\usepackage{setspace}
+\doublespacing
+
+% ------------------------------------------------------------------------------
+% Referencing
+% ------------------------------------------------------------------------------
+% \usepackage{natbib}
+
+% ------------------------------------------------------------------------------
+% Code listings
+% ------------------------------------------------------------------------------
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstdefinestyle{pythoncode}{
+	backgroundcolor=\color{gray!10},   
+	commentstyle=\color{green!50!black},
+	keywordstyle=\color{blue},
+	stringstyle=\color{magenta},
+	basicstyle=\linespread{1}\footnotesize\ttfamily,
+	numberstyle=\tiny,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=t,   
+	frame=single,
+	keepspaces=true,         
+	language=python,        
+	numbers=none,             
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2,
+	aboveskip=1em,
+	belowskip=1em,
+	belowcaptionskip=12pt
+}
+
+% ------------------------------------------------------------------------------
+% Code listing example: insert in main body for python code
+% ------------------------------------------------------------------------------
+%\begin{lstlisting}[style=pythoncode,
+%    caption = A python function to compute the first $n$ numbers of the Fibonacci series,
+%    label = py:rand
+%    ]
+    
+%def function(x):
+%    print('hi')
+%    return
+% \end{lstlisting}
+
+% ------------------------------------------------------------------------------
+% Headers and footers
+% ------------------------------------------------------------------------------	
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+\let\Sectionmark\sectionmark
+\def\sectionmark#1{\def\Sectionname{#1}\Sectionmark{#1}}
+\renewcommand{\footrulewidth}{0.4pt}% default is 0pt
+% \fancyfoot[LE,RO]{Modelling Infectious Tree Diseases}
+\fancyhead[L]{\leftmark} % Chapter and title
+\fancyfoot[R]{\thepage}  % Page number 
+\fancyfoot[L]{\rightmark} % Section number and name
+
+
+
+% ------------------------------------------------------------------------------
+% Title page
+% ------------------------------------------------------------------------------
+\renewcommand{\maketitle}{
+    \thispagestyle{empty}
+    \begin{center}
+    	\vspace*{2cm}
+    	\includegraphics[width = 7cm]{preamble/leedslogo.png} \par
+    	\vspace{2cm}
+        \textbf{\LARGE \projecttitle} \par \vspace{1em}
+        \textbf{\large{\name}} \par
+        \vspace{2cm}
+    	\textbf{\large Submitted in accordance with the requirements for the degree of \course}\par
+    	\vspace{1cm} 
+    	
+    	\vfill
+    	\textbf{\Large The University of Leeds}\par
+    	\textbf{\large School of Food Science and Nutrition, \&}\par
+    	\textbf{\Large Newcastle University}\par
+    	\textbf{\large School of Mathematics and Statistics}\par
+    	\vspace{1cm}
+    	\textbf{\large \submissiondate} \par
+    \end{center}
+    
+    \pagenumbering{roman}
+    \setcounter{page}{0}
+}
+
+% ------------------------------------------------------------------------------
+% Format chapter headings
+% ------------------------------------------------------------------------------
+
+\usepackage{titlesec}
+ \titleformat{\chapter}[display]
+  {\bfseries\huge}
+  {\filleft\huge\chaptertitlename~\thechapter}
+  {3ex}
+  {\titlerule\vspace{1.5ex}\filright}
+  [\vspace{1ex}\titlerule]
+  
+ % ------------------------------------------------------------------------------
+% A table of abbreviations
+% ------------------------------------------------------------------------------
+\usepackage[nopostdot,toc,acronym,nomain,nonumberlist]{glossaries}
+\makeglossaries
+\setacronymstyle{long-short} 
+\loadglsentries[acronym]{myglossaries}

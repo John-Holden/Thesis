@@ -1,0 +1,35 @@
+Improvements to Chapter:
+- Lack of biological specificity. We choose Ash dieback
+- Informed dispersal kernel at the local-scale $\approx 1.6\mathrm{km}$
+- Re-defined $R_0$
+- $\beta$ between to limits
+- Course-grained $R_0$ map to $5-10\mathrm{km^2}$
+- Inclusion of power-law dispersal
+- Are results different ?
+- to our knowledge $R_0$ has not been estimated for Ash dieback but has been for wheat strip rust \cite{segarra2001epidemic}
+
+
+In this Chapter aspects of the sub-grid model are improved.//
+\section{The biology of Ash dieback}
+\begin{itemize}
+    \item review: \cite{ash-dieback-costs}
+    \item review: \cite{doi:10.1111/1365-2745.13383}
+    \item review: \cite{ash-tree1}
+\end{itemize}
+
+Notes/Frame/Narative:
+1. Use \cite{doi:10.1111/1365-2745.13383} to talk about local-coverage and denstiy being an important factor in the spread of disease
+2. With dispersal knowledge prior to infestation, we can ascertain which neighbouring areas need to be treated in response to an EID \cite{grosdidier2018tracking}
+3. \cite{grosdidier2018tracking} defines two kernels: local and regional
+4. We concentrate on how the pathogen spreads through a patch at the local scale, local-patches are then coupled together and offer a landscape perspective over the UK 
+5. At the local-scale, the main driver is considered to be wind-dispersal
+6. Although it is possible for the establishment of a new foci at long-distances, we do not consider such long-distance dispersal events.
+7. This results of this study show that in some cases, targeting the removal of susceptible hosts, through specific patches of land may lead to more efficient containment. In our model, ee found several scenarios whereby management of the pathogen could be improved by the reduction of hosts densities through specific dispersal-corridors.  
+8. Dispersal is considered isotropic, because we assume no bias in the direction of wind-direction at the small-scale.
+9. Long-distance dispersal is thought to occur through the trade and transport of ash, \cite{https://doi.org/10.1111/mpp.12073}
+
+What assumptions do we need to be aware of using the dispersal parameters in our model ?
+1. Trapping method incomplete
+2. Strong variance in environmental conditions, exposure to sunlight/heat/storms perturbing the trapping
+3. Low detection efficiency etc.
+Summary: although the study is on French topography, I don't think the local-scale study they conducted relied on any assumptions that are at odds with the UK landscape. The same cannot be said for regional-scale.

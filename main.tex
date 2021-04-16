@@ -1,0 +1,45 @@
+\documentclass[11pt]{report}
+\usepackage{projectreport}
+
+\newcommand{\name}{John W. Holden}
+\newcommand{\course}{Doctor of Philosophy}
+\newcommand{\projecttitle}{Mathematical and Computational Modelling of Infectious Tree Diseases}
+\newcommand{\submissiondate}{September 2020}
+\newcommand{\submissionyear}{2020}
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+\begin{document}
+
+\maketitle
+
+\include{preamble/preable}. % abstract + intellectual property + acknowledgements
+
+\tableofcontents  % --> customize this...
+\listoffigures
+\listoftables
+\gls{alb} \gls{acb} \gls{cca} \gls{com} \gls{slm}  \gls{adb} \gls{opm}
+\printglossary[title={Abbreviations},type=acronym,style=long]
+\newpage
+\setcounter{page}{0}
+\pagenumbering{arabic}
+
+% Uncomment to see chapter:
+% \include{chapter1/introduction_and_lit_rev}
+% \include{chapter2/literature_review}
+% \include{chapter3/slm_basis} % review me
+\include{chapter4/slm_applications} % review me 
+\include{chapter5/dispersal_model}. % 1st publication attempt
+% \include{chapter5/regional_containment_corrected}
+% \include{chapter7/pde_modelling}
+\include{appendix/appendix}
+
+% ------------------------------------------------------------------------------
+% Reference list
+% ------------------------------------------------------------------------------
+
+
+% \bibliographystyle{apalike}
+\bibliographystyle{acm}
+\bibliography{references}
+\end{document}

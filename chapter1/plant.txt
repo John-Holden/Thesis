@@ -1,0 +1,22 @@
+INTRODUCTION AND LIT REVIEW
+1 Introduction
+1.1 background
+1.2 History of plant-based disease
+    - the age of simulation
+    - advancement: stepping away from logistic growth
+1.3 Mathematical modelling as an antidote
+    - informing policy
+1.4 Mathematically modelling the spread of tree-based disease
+    - deterministic vs stochastic
+    - lattice-based modelling
+    - percolation modelling
+    - dispersal 
+    - network modelling 
+1.5 Concepts
+    - the role of scale
+    - invasion and persistence
+    - Basic reproduction number
+    - early warning signals
+1.5 Control
+1.6 Case study: Ash dieback
+1.8 Original contributions of this thesis
