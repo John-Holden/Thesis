@@ -9,21 +9,13 @@
 \label{chapter:SLM}
 In this chapter, the investigation will begin by recounting the model used by \cite{OROZCOFUENTES201912}. %
 From first principles, this involves a compartmentalised $SIR$ percolation-based model of only one parameter,  tree density $\rho$. %
-The appropriate mathematical definitions of percolation will be defined here, then criticality and self-similarity in the model will be discussed. %
-This will include a brief summary of critical phenomena and some universal behaviour within the model. %
-Following this, a more intricate two-parameter, `stochastic percolation', model will be developed. %
-Stochastic percolation will be defined with an extra parameter that captures the infectivity of a pathogen. %
-Inclusion of this extra parameter is justified given the variability of the virulence a given pathogen can demonstrate over a landscape. %
-% JS does virulence on a 2d domain  have units of a density?
-The behaviour of the two-parameter model will be investigated here using  ensemble-averaged parameter-sweeps. %
-The two parameter model will constitutes a simple lattice model (SLM) of disease dynamics. %
-Here, ensemble-averaging methods and metrics are introduced and used throughout this thesis. % %JS Chapter?
+Percolation will be defined, both mathematically and conceptually, then a discussion on criticality and self-similarity will follow. The discussion will include a summary of critical phenomena and some universal behaviour within the model.  Following this, we develop a more intricate two-parameter, `stochastic percolation', model. Stochastic percolation will include an extra parameter that captures a pathogens infectivity as we define it. Including infectivity is justified given the highly stochastic nature of tree-based epidemics and epidemics general. In particular to tree disease, the susceptibility and infectivity between trees are thought to vary widely over a landscape, not to mention the variability influenced by geographical, climatic/environmental and species-level genetic factors. The two-parameter model will constitute a simple lattice model (SLM) of disease dynamics.
+
+Here, an investigation into the behaviour of the two-parameter SPM, using ensemble-averaged parameter-sweeps, is conducted. The method of ensemble averaging, used throughout this thesis (chapters 3-6 inclusive), forms an essential component of our work and will therefore be outlined in in-depth.
 
 Lastly, the results of early-warning signals (EWS), investigated by \cite{OROZCOFUENTES201912}, will be extended. %
-Extensions will include the formation of an alternate lattice-configuration and a metric that permits clearer EWS to be detected. %
-Additionally, EWS are generalised to a two-dimensional parameter-space of $\rho$ and $\beta$. %
-Conducting a thorough sweep through the the extra infectivity parameter reveals that EWS are more easily detected for some parameter-combinations % JS so this should be explored Analytically
-and highlights interesting and distinct behaviour in the model.
+Extensions will include forming an alternate lattice configuration and a metric that permits clearer EWS detection. %
+Additionally, EWS are generalised to a two-dimensional parameter-space of $\rho$ and $\beta$ from which follows the observation that it is easier to observe EWS through specific parameter combinations.
 \newpage
 
 \section{Percolation theory\textemdash formalism}
@@ -605,7 +597,7 @@ the particular geometry of a square lattice we have chosen. %   JS_What is the p
 
 Having established a one-parameter model based only on tree density $\rho$, a second parameter %
 of infectivity $\beta$ was included. %
-This parameterintroduced a novel element of temporal stochasticity into the system %
+This parameter introduced a novel element of temporal stochasticity into the system %
 and had large impacts on the speed of propagation. % JS_Be precise here.. too vague
 
 Integrating infectivity into the model was justified given that pathogens display a range of %

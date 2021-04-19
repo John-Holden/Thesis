@@ -1,13 +1,17 @@
 \chapter{Regionally Containing Epidemics: Modelling Ash dieback}
 
+% paper title: Large-scale control based on regional containment
+% there is a surprising lack of, simplified, ash dieback models in the literature...\ciations... <-- double, triple and quadruple check!
+% without host demography 
 Previously in Chapter \ref{ch5:dispersal-model}, we considered a generic $SIR$ model that spread via wind-borne dispersal. Constructing the dispersal model resolved the major problem witnessed in Chapter \ref{fig:ch4_uk_spread}, namely, the failure of the SLM to spread on a realistic host density. However, the findings of Chapter \ref{ch5:dispersal-model} lacked biological specificity and thus, came short of adding tangible value to the betterment of plant health. As such, this chapter will adopt a simplified model of ash dieback–based on the dispersal model–and utilised to develop an epidemic control strategy.
 
 There has been a great deal of work carried out into the nature of control in plant and tree-based epidemics\footnote{See section \ref{chapter2:plant-ecologoy} for a review on the control in plant-based epidemics.}. In particular, the spatial structure of plant-hosts is an essential factor when considering how to manage an outbreak \cite{spatial-control-optimisation, control-heterogeneous-landscapes}. The accepted paradigm of control typically considers infected tree removals over a relatively small spatial scale, near infected hosts \cite{WEBIDEMICS}, or more broadly, ahead of the wavefront \cite{large-scale-control}. However, landscape-level epidemic control, based solely on the structure of large-scale spatial distribution of hosts incorporating topography, has yet to be explored in-depth.\\
 
-As such, in this chapter, we will examine how host-heterogeneity, under the influence of a pathogen, can give rise to natural pinch-points and fault lines in the spatial distribution of hosts. Population pinch points may give rise to a bottleneck in the epidemic spread, which in principle, may be exploited with targeted tree felling to fragment the host population with minimised effort. In essence, a strategy of 'regional containment', targeting the local wind-based pathogen dispersal mechanism, is formulated and scaled up over large spatial scales. Similar concepts for crop and livestock diseases have been outlined \cite{PAPAIX201435, GILIOLI20131, Gilligan-disease-management}, however, to our knowledge, this has not been generalised to tree population distributions over large spatial scales.\\
-
+As such, in this chapter, we will examine how host-heterogeneity, under the influence of a pathogen, can give rise to natural pinch-points and fault lines in the spatial distribution of hosts. Population pinch points may give rise to a bottleneck in the epidemic spread, which in principle, may be exploited with targeted tree felling to fragment the host population with minimised effort. In essence, a strategy of 'regional containment', targeting the local wind-based pathogen dispersal mechanism, is formulated and scaled up over large spatial scales. Similar concepts for crop and livestock diseases have been outlined \cite{PAPAIX201435, GILIOLI20131, Gilligan-disease-management}, however, to our knowledge, this has not been generalised to tree population distributions over large spatial scales.
 
 A simplified $SEIR$-type model of ash dieback is developed to demonstrate this control strategy, alongside an appropriate definition of the reproductive ratio\textemdash denoted by $R_0$.  The value of $R_0$ is projected onto the map of ash tree canopy cover in GB, as given by \cite{hill.data}. From the $R_0$ maps we construct, a simple notion of epidemiological connectivity can be defined and visualised through a susceptible '$R_0$-cluster' over the population of GB ash trees. This leads us to develop a heuristically-based fragmentation algorithm. As we define it, fragmentation considers which locations in the population, if artificially taken below $R_0 = 1$ through felling, would disrupt epidemiological connectivity\textemdash, thus leading to containment. Epidemic containment in the largest $R_0$-cluster is then analysed and shown to be most applicable over a specific range of infectivity parameters.
+
+% multi-scale approaches have been outlined \cite{hart2020theoretical} 
 
 \section{Methods}
 
@@ -16,12 +20,29 @@ A simplified $SEIR$-type model of ash dieback is developed to demonstrate this c
 % Q: what is the relationship between the mortality ratio (or final fraction of infected hosts) ? 
 % Ash dieback is known to sporulate in the summer months... therefore...
 % we contend the SnIEmR model, considered over one sporulation peak, is a simplistic implementation of the SEIR-based model needed to compute an invasion threshold that represent the infection dynamics ash dieback. 
-% By SnEmIR model has beneft of being readily extended or adapted to incorporate more biological realism, by virtue of splitting the E and I into multiple compartments.
+% By SnEmIR model is made more flexible, and can be readily extended or adapted to incorporate more biological realism, by virtue of splitting the E and I into multiple compartments\textemdash this is frequently done in human and animal-based models \citations..
 % If R0 was considered over a larger time-scale, host-regrowth would need to be integrated into the model
 % Furthermore, measuring R0 over a larger time-scale could over, or underestimate, the degree to which a response would need to be undertaken in the response time-window. 
 % Typically an infected ash tree may expect to survive for around x years before death, this time-scale is beyond what we consider here - why ?
 % sporulation has been fitted to an .... distribution \citations...
-% Fitting data to the early phases of an epidemic has been shown to give large differences in the final-size epidemic, or severity \cite{doi:10.1094/PHYTO-12-10-0338}. However, we .... xyz cover all basis of using a one-season approximation. <- this leads to a risk-based argument in which we could capture a 2nd-order R0 which does, xyz. We mainly interested in a pathogens ability to invade.
+% Fitting data to the early phases of an epidemic has been shown to give large differences in the final-size epidemic, or severity \cite{time-varying-infectivity}. However, we are only interested in a pathogens ability to invade and this can be closely approximated by measuring R0 over the fist observation (\see appendix)
+% Moreover, data over a relatively short time scale is typically all that is available when making decisions about control, not to mention the added complexity of incorporating host-regrowth–which becomes an important factor over longer time scales–and so, the constraint of computing R0 over longer time scales is relaxed. 
+% However, we .... xyz cover all basis of using a one-season approximation. <- this leads to a risk-based argument in which we could capture a 2nd-order R0 which does, xyz. We mainly interested in a pathogens ability to invade. 
+% subdividing compartments in this manor could also provide an easier implementation to hosts which become more infectious, through a greater production of spores, as the infectious cycle continues not to mention particular periods of environmental unsuitability.
+% Individuals in different compartments, (e.g. E_2 vs E_3 and so on) are not biologically different, they are merely in different states of infection. 
+% A cyclic SEIR model is intended to reflect the strong seasonality of ash dieback
+% In theory, a sporulation function could have been fitted to the results provided by \cite{france dispersal paper}, but analysis was aired towards simplicity as we developed a seemingly different strategy compared to literature.
+% beta is a per-capita rate of infection, that can be seen as a compound parameter...
+% polycyclic "Infection cycles"
+%  We develop the simplest implementation possible, namely, where R_0 is measured over one pathogen life-cycle, and the course of infection for each host follows the same process with perfect fidelity. This lies in stark contrast to a realistic scenario whereby different hosts show considerable differences.
+% The variability between the particular life-cycle history followed by hosts is thought to be an important factor to consider when  \cite{ferrandino2012time} 
+% Ash dieback has two life cycles: sexual and asexual; replication between hosts occurs in the summer when the fungus grows on the shed leaves, and plant-material in general, from the tree's previous years growth cycle. Thus, we assume an infected tree is the dispersal site. In contrast, a real-life scenario may first involve the dispersal of infected leaves following the dispersal of fungi spores. We discuss the consequences of this assumption later.
+
+
+exists inthat shed/dead plant material remain fixed at the hosts spatial location. 
+
+Infected hosts $I_n\rightarrow S; \beta_i$
+
 
 
 \blindtext
@@ -76,6 +97,20 @@ In this Chapter aspects of the sub-grid model are improved.//
     \item introduce the regime of pathogen spread we are interested in, we are not modelling continental long-range spread via upper atmosphere, nor are we interested in long-range human trade networks. We are interested in dispersal at the local level whereby passive means of wind, soil and or insects/animals. 
 \end{itemize}
 
+These results could help policy makers in making informed decisions, about \textit{where} to control, based on spatial arguments, when budgets are low, as noted by \cite{time-varying-infectivity}.
+
+The article published by \cite{time-varying-infectivity} indicates the possibility of \textit{preferentially} controlling an area based on the final-sized epidemic. It goes without saying that areas of land that have the largest final sized epidemic are likely the most density populated. However, we outline the possibility it might be more beneficial to preferentially control an area based on its spatial location and how it couples to to neighbouring areas.
+
+The scaling up of our model resembles a metapopulation model, now commonplace when modelling plant-based epidemics, but crucially our large-scale model is not dynamic. A dynamic large-scale model is indeed useful for the prediction of time-scales and the movement of disease-fronts movement; however, we suggest they might be at best less useful for optimised large-scale control, and at worse, nicely complemented by the approach we develop.
+
+If early data through a particular region, with known data, was collected, it would be a relatively short step to fit the dispersal model and scale up the model over large distances given the seemingly simple relation to host density $\rho$.
+
+The cyclic nature of the $SEIR$-type model constructed in this article can also find resemblance in the, well established body of literature, of crop-based epidemics. It is common-place for a field of crops to become infested, then at the end of the growing season be totally eradicated by virtue of harvesting % \cite{time-varying-infectivity} has references to this
+
+A quantity of interest that appears frequently in the literature is the initial growth rate $r$, that is the density-independent growth at the start of any epidemic.
+
+Although the main result of our work was conduced over one sporulation peak, or life-cycle of ash dieback, splitting the model into various compartments was a useful and neccesary step towards developing accurate large-tree species.% reference  \cite{https://doi.org/10.1111/ppa.12894} alludes to multiple exposed periods being useful
+
 There are many pathways a pathogen can use to spread through a landscape, including long-range dispersal, mediated through either human-trade networks %
 \cite{hulme2009trade, banks2015role, chapman2017global} or dispersal in the upper atmosphere \cite{westbrook1999atmospheric, isard2005principles}.
 
@@ -83,6 +118,11 @@ Here, we targeted interested in local-level dispersal via the landscape-level po
 
 To our knowledge, $R_0$ has not been estimated for Ash dieback, or indeed for any large deciduous tree species, unlike for some crop-based pathogens \cite{segarra2001epidemic}. The lack of $R_0$-estimates made it hard to scrutinize which $\beta$-valued $R_0$-map would be likely to reflect reality. This gap in the body of literature is hardly surprising given the complexity of measuring time-varying infectivity rates \cite{13-challenges}. Thus, as it stands, our results hint-towards the utility of landscape-level control but come short of definitive proof.
 
-aspects of our findings. 
+The most important message of our work was...
+See \cite{ferrandino2012time} for a review on the time-scales and sporulation of plant-based diseases.
+
+Our approach of spatially scaling small-scale epidemiological principles was conducted through computational, opposed to analytical, means. 
+Our results support the call for multi-scale dispersal kernels, in stark contrast to the promise a single kernel can support both large and small scale spread \cite{https://doi.org/10.1111/jbi.13642} % all see \cite{https://doi.org/10.1111/jbi.13642} for reference in support of multi-scale modelling
+aspects of our findings . 
 
 
