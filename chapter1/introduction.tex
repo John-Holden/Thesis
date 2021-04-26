@@ -11,198 +11,29 @@
 % -----------------------------------------------------------------------------
 \chapter{Introduction} % -->  customize header and footer + chapter styles
 
-\begin{itemize}
-    \item talk about varioud routes to understanding tree disease Fig 2 of \cite{pub.1012384986} \cite{francl2001disease}
-    \item reference the applications of a model, predict the epidemic, predict control mesaures, crop loss, ivasion and persistence, the risk of disease etc..
-    \item \cite{disease-biodiversity} disease key in biodiversity..., \cite{JOHNSON2002129} importance for landscape integrity
-    \item \cite{kelly2002monitoring} technology and capturing data via satellite. RS application \cite{doi:10.1094/PHYTO.2003.93.12.1524} \cite{doi:10.1080/0143116031000139926}
-    \item \cite{doi:10.1046/j.1523-1739.1994.08010256.x} fragmentation reference...
-    \item insects and pests intelligently seek out hosts, spores and fungicides occur passively, \textcolor{red}{double check}
-    \item talk about local infection and resolution of the problem, e.g. complicated biology of the pathogen vs dispersal distance
-    \item talk about the host-pathogen-environment dynamic \cite{pub.1012384986} Fig 3, how we are concentrating on the modelling perspective.
-    \item reference the scale problem \cite{van1999pandemics} only used small amounts of detail for large scale spread
-\end{itemize}
+% \begin{itemize}
+%     \item talk about various routes to understanding tree disease Fig 2 of \cite{pub.1012384986} \cite{francl2001disease}
+%     \item reference the applications of a model, predict the epidemic, predict control measures, crop loss, invasion and persistence, the risk of disease etc..
+%     \item \cite{disease-biodiversity} disease key in biodiversity..., \cite{JOHNSON2002129} importance for landscape integrity
+%     \item \cite{kelly2002monitoring} technology and capturing data via satellite. RS application \cite{doi:10.1094/PHYTO.2003.93.12.1524} \cite{doi:10.1080/0143116031000139926}
+%     \item \cite{doi:10.1046/j.1523-1739.1994.08010256.x} fragmentation reference...
+%     \item insects and pests intelligently seek out hosts, spores and fungicides occur passively, \textcolor{red}{double check}
+%     \item talk about local infection and resolution of the problem, e.g. complicated biology of the pathogen vs dispersal distance
+%     \item talk about the host-pathogen-environment dynamic \cite{pub.1012384986} Fig 3, how we are concentrating on the modelling perspective.
+%     \item reference the scale problem \cite{van1999pandemics} only used small amounts of detail for large scale spread
+% \end{itemize}
 
+Modernity and the common era (CE) of regular recorded history has witnessed drastic increases in the severity and frequency of epiphytotics. Factors such as genetic uniformity, international trade and climate change have increased the risk of large scale outbreaks in native plant and tree populations.
 
-\section{Historical developments - modelling crop diseases }
-\label{chapter:lit-rev}
-\begin{itemize}
-    \item host an pathogen co-evolved
-    \item table of pathogens and threats
-    \item `\textit{innoculum}'
-\end{itemize}
+This introductory chapter serves to inform the reader about the background, societal importance and modelling paradigms used in tree-based epidemiology. Firstly, the background and motivation for understanding tree disease will be reviewed. After which, a historical perspective will be outlined and I will conduct a through review into the various types of approaches that can be used to model the spread of disease through a population of trees. To this aim, several key concepts will be reviewed, including the basic reproduction number for plant-based diseases, the role of scale in transmission and dispersal. 
 
-Modern Epidemiology is extremely interdisciplinary utilising various tools from mathematics, physics and computer science. The project will explore infectious diseases specific to tree species. There have been various models used to model tree disease including: 1) Lattice-based percolation. 2) Continuum. 3) Meta-population. 4) Network models. A summary of these models will be given in this chapter along with their main usage, control. A review of epidemic control in plant populations will be given in support of chapter where we detail a novel method stop the spread of disease. 
-For thousands of years civil unrest and famine were dependent on the success of the harvest and plant pathologists now had the means to conduct rigorous theoretical investigations. For this reason, researchers in the early-mid $20^{th}$ century to primarily study the spread of disease through crops. 
-\textcolor{red}{talk about mathulus growth models as a prelude to logistic growth equation}
-\textcolor{red}{surprisingly, dutch elm disease, Devastating much of Europe had a major impact on the British landscape was not studied and interest in modelling tree disease dit not pick up till later..Prior work concentrated on crops}
+Infectious tree diseases are increasingly harder to manage. The nature of understanding such threats favours an interdisciplinary nature involving a diverse range of models from different fields and disciplines.
 
-\textemdash review and update in accordance with draft...
+In this study, I will focus on the mathematical and computational modelling tree-based epidemics in Great Britain. The problem of tree disease is vast and multifaceted, in reality, a country is likely to be effected by multiple threats involving diverse species of host and pathogen. Managing any a single outbreak is in itself an ambitious task, let alone managing simultaneous outbreaks on several fronts. However, we proceed.\\
 
-\section{Developments in plant epidemiology ~1960-1990}
-% Early models : van der plank
-Historically, plant pathology had no cross-fertilization with epidemiology. The two fields existed in two very different spheres with early plant pathologists tending to focus on microscopic details of pathogen growth through a single host unit (comprising of a plant) and localised outbreaks within a small field or greenhouse. Ties between plant pathology and epidemiology were clearly established by the seminal work of \cite{van2013plant}. Van der Plank equated the growth of `innoculum' within a host to the logistic growth of money:
-\begin{equation}
-    \label{van-plank}
-    \frac{dI}{dt} = rI(1-I)
-\end{equation}
-
-In this logistic growth model the amount of infected tissue $I$ grows rapidly at first, being proportional to how much innoculum is present. As time passes the rate of innoculum growth (infection rate) plateaus to zero as all tissue becomes infected, hence $(1-I)$. The evolution of an epidemic characterised by plotting how much disease is present against time, called a `disease progress curve'. The logistic growth model presented by Van der Plank can be seen as simple one-compartment variant of the original $SIR$ framework developed by \cite{kermack-model} and marked the transition into a more quantitative discipline.
-
-An attractive feature of Eq (\ref{van-plank})is the infection rate $r$; following the derivation given by \cite{van2013plant} (chapter 3) one may write the infection rate as:
-\begin{equation*}
-    r =\frac{1}{t_2 - t_1} \log \Big(\frac{I_2}{1 - I_2} - \frac{I_1}{1 - I_1}\Big)
-\end{equation*}
-where $I_1$ and $I_2$ are the proportions of infected tissue at times $t_1$ and $t_2$ respectively\textemdash this is easily measured in a laboratory. In this model, the parameter $r$ provides a course-grained summary of the complex interaction between host, pathogen and environment. 
-
-Hitherto, plant pathologists had been trained to research botanical disease mainly through laboratory experiments of infected tissue under the influence of various environmental conditions \cite{doi:10.1146/annurev.py.01.090163.000245}. This had utility and practicality for understanding microscopic biological interactions, however, experiments of this nature over scales ranging from individual plants, fields through to regions were untenable. With a new epidemiological insight, borrowing from different mathematical techniques, plant pathologists were now able to extend their research to account for the large-scale impact of diseases. 
-
-% Early models : extensions of van der plank
-The next few decades where characterised by theoretical investigation into mathematical models of `plant epidemiology' and the adoption of computer simulations. The original framework by \cite{van2013plant} was applied to different pathosystems, halo blight in beans for example \cite{doi:10.1111/j.1744-7348.1979.tb06527.x}. Modifications of Eq (\ref{van-plank}) were made by \cite{sall1980epidemiology} in order to account for variations in the infection rate in grape powdery mildew by taking the infection rate to be a function of time $r(t)$. In addition, other mathematical techniques were reviewed for the purpose of modelling plant epidemiology. One such framework was multiple regression analysis see \cite{butt1974multiple} for a detailed review. The work of \cite{zadoks1979epidemiology} provided a consolidation of these early mathematical models of plant disease and expanded upon Van der Plank\textemdash a review of predominant models from this era was given by \cite{jeger1984use}.
-
-\textcolor{red}{computational models incorporate more information regarding host-pathogen biological interactions} \textcolor{blue}{for a review on computational modelling see \cite{doi:10.1146/annurev.py.23.090185.002031}} Advances in plant epidemiology through this period were compounded by developments in computing. Improved accessibility and computer architectures permitted faster calculations and more intensive models. The first epidemic simulator written in FORTRAN IV came by \cite{waggoner1969epidem}. The simulator was named `EPIDEM' and modelled the spread of the fungal `Alternaria solani' effecting potatoes and tomatoes. The growth of infected tissue within leaves were considered under the influence of different environmental conditions. The ability to simulate more intricate models grew in proportion the amount of computer memory available \cite{zadoks1972methodology}.
-
-\subsection{Alternate analytic models:}
-\begin{itemize}
-    \item the objective of growth curve models is to be flexible enough to describe a wide range of curves observed. \textcolor{red}{cite Gilligan and decreasing functions...}
-    \item analogous to growth curve models 
-    \item Talk about fitting parameters. Linear models are fitted... 
-    \item proposed as an alternative to the logistic model for polycyclic disease. \cite{doi:10.1146/annurev.py.21.090183.000401}
-    \item Weibull model is the most flexible but requires maximum likelihood estimation, (<-check this out), 
-    \item analytic models can be used to model a wide range of pathogens, however sometimes complex fitting must be carried out.
-    \item analytic models also suffer from a lack of understanding in biological interactions
-\end{itemize}
-
-Alongside the logistic growth model put forward fromm Van der Plank, there were a handful of authors that prosed alternate models. the Gompertz model, given by 
-\textcolor{red}{plot the three models and talk about differences cite \cite{madden1980quantification}. Logistic grwoth and Gompertz models were examined in contrast by \cite{berger1981comparison}}
-
-\subsection{Introducing spatial variations}
-% Early models : developing spatial aspects
-Initially, dynamic models of plant diseases were studied as functions of time and spatial components tended to be overlooked\textemdash most probably related to the difficulty of solving analytic equations and numerically computing two spatial dimensions. \cite{doi:10.1146/annurev.py.06.090168.001201} was the first to consider the importance of spatial variations in the problem of tree disease in a quantitative manor. In particular, \cite{doi:10.1146/annurev.py.06.090168.001201} discussed how spatial `gradients' (i.e. dispersal) were dependent on both the environmental suitability of host and pathogen, (e.g. soil quality) and dispersal of pathogen spores. A model of the form $y=ax^{-b}$ was proposed, where $y$ comprises the total number of infections per unit area which result at distance $x$ from the initial focus of disease. This was modified by \cite{mundt1985modification} to $y=a(x-c)^{-b}$ in order to give a finite $y$ intercept at $x=0$.
-
-An interesting early simulator `EPIMUL76' developed by \cite{zadoks1977role} adapted Van der Plank's logistic growth model into a spatio-temporal framework in two spatial dimensions. Simulations were conducted on a computer with $128\mathrm{K}$ of memory. The two dimensional domain was subdivided into $20\times 20$ host units named `compartments' (as such, this can be considered an agent-based model). \cite{zadoks1977role} eluded to the problem of scale; that is, compartments could represent different spatial scales, conceptualised as microscale ($\leq 1\mathrm{m}$), mesoscale ($10^2\mathrm{m}$) and macroscales ($10^6\mathrm{m}$). In this picture, microscales ranged from plant leafs through to individual plants, the mesoscales could be taken as fields of crops and the macro scales as large regional expanses over country-wide scale. The probability of dispersal between infected host units was assumed to follow the functional form of a Gaussian distribution\textemdash in contrast to \cite{doi:10.1146/annurev.py.06.090168.001201}.
-
-\vspace{1em}
-\begin{table}[h]
-\centering
-\begin{tabular}{l l l}
-\hline
-\textbf{Model} & \textbf{Functional Form} \\
-\hline
-(a)  & $y = 1 - A\exp(bx - ct)$\\ 
-(b) & $y = 1/(1 + A\exp(bx - ct))$\\
-(c) & $y = 1 - Ax^{b}\exp(-ct)$ \\
-(d) & $y = 1/(1 + Ax^{b}\exp(-ct))$\\
-(e) & $y = 1 - At^{-c}\exp(bx)$\\
-(f) & $y = 1/(1 + At^{-c}\exp(bx))$\\
-(g) & $y = 1 - At^{-c}x^{b}$\\
-(h) & $y = 1/(1 + At^{-c}x^{b})$\\
-\hline
-\end{tabular}
-\caption{A selection of different analytic spatio-temporal models analysed by \cite{jeger1983analysing}.}
-\label{table:1}
-\end{table}
-
-Results by \cite{zadoks1977role} provided insight into the wave-front nature of plant epidemics\footnote{Graphical results showed remarkably similar results to the fisher-kolmogorov equation.} and held utility in answering questions hard to solve analytically. In particular, a question debated by Waggoner and Van der Plank; which configuration of crop fields, comprising the same total area, is most effective at reducing the spread of disease, a set of many small field or a few large fields? Remarkably, this question of patch `connectedness' preempted later developments of modern metapopulation models (discussed more below). Here, a computational approach prescribed an easier framework to explore an abstract question without considering precisely fitted parameters. However, a limitation in the work of  \cite{zadoks1977role} was insufficient spatio-temporal data to perform rigorous validation \cite{teng1981validation}, a limitation which is still relevant.\\
-
-\cite{jeger1983analysing} conducted a multivariate study combining both spatial and temporal dynamics in one spatial dimension. \cite{jeger1983analysing} combined different functional forms of temporal increase and spatial spread suggested be previous authors (e.g. \cite{van2013plant, doi:10.1146/annurev.py.06.090168.001201}), shown in table \ref{table:1}. The variable $y$ describes the amount of innoculum (or progress), where $t$ and $x$ representing time and space respectively. The parameters  $A, b$ and $c$ represent the amount of innoculum at $t=0$ and gradients of progress and spread respectively. Parameters were fitted against experimental data given by \cite{berger1979spatial}. The results suggested how the different functional forms shown in table \ref{table:1} relate to different pathogens with varying amounts of precision. All the models considered did not depend on the amount of innoculum\footnote{This again is similar to the wave-speed solution to the fisher-kolmogorov equation.}. The work of \cite{jeger1983analysing} entrenched the need to consider analytic spatial-temporal models of disease. These results were consolidated by \cite{campbell1990introduction}.
-
-\section{Soil-borne diseases}
-Developing epidemiological insight allowed plant pathologists to rigorously analyse additional complexities and interactions that had been overlooked. As noted by \cite{doi:10.1146/annurev.py.21.090183.000401}, the majority of work had so far concentrated on aerial-based pathogens where transmission between host-units, mediated by dispersal, resulted in new secondary infections. However, the case for soil-borne pathogens effecting root-systems can be very different. 
-
-% Early models : developing biological complexity 1990s
-% leads to invasion and persistence 
-% extra compartments
-Soil-borne pathogens, typically fungal, infect hosts with a `polycyclic' nature of transmission. In this, a root may come into contact with infested soil and become infected, named `primary' infection ,or alternatively mycelium\footnote{Mycelim are} growth emanating from a primary infected site makes contact with another root leading to secondary-infection, \cite{crowe1980vertical}. Here, there may be various mixed-modes (i.e. poly) of mixed primary and secondary transmission. 
-
-If a volume of soil is randomly infested by fungal propagules\textemdash named the `pathozone'. When planted, a seed will grow roots that may then come into contact with the randomly positioned fungal pathogen leading to a cycle of primary and secondary infections. \cite{pub.1034311339} formulated a model based on the probability of a root will escaping the pathozone. Considering only the primary mode of infection: 
-\begin{equation}
-    \label{eq:primary-infection-sb}
-    I=NZ(1-\exp(-\phi P))
-\end{equation}
-where $I$ is the expected number of infected roots per unit area after primary infection, $N$ is the number of roots exposed to the pathogen and $Z$ is probability a root will be susceptible. The exponential term $\phi$ is the probability an individual root will become infected by $P$ propagules randomly distributed per unit area \citep[Eq (\ref{eq:primary-infection-sb}) is result of a predecessor model \cite{gilligan1985probability}. 
-
-\cite{pub.1034311339} generalised Eq (\ref{eq:primary-infection-sb}) to include the secondary mode of infection leading to a stochastic difference equation and recurrence relation of the form:
-\begin{equation}
-    \label{eq:primary_and_secondary}
-    I_{i}= I_{i-1} + (N_{i-1}Z - I_{i-1})\big[1 - \exp(-\phi_i J_i)\big]
-\end{equation}
-where $i$ is the $i^{th}$ successive cycle, $\phi_{i}$ and $J_{i}$ are the probability of root-infection and number of effective propagules during the $i^{th}$ cycle. The probabilities $\phi_{i}$ and $J_{i}$ are themselves functions of the $i^{th}$ cycle not included here for brevity, see \cite{pub.1034311339}. Equation (\ref{eq:primary_and_secondary}) was successfully fitted to experimental data for a host of cress (\textit{Lepidium sativum}) seeds under the influence of fungus-like pathogen \textit{Pythimn ultimum}. 
-
-Van der Plank in his thesis had directed the modelling paradigm towards secondary infections. However, soil-borne diseases presented a different set of challenges. Incorporating a stronger dependence of primary-infection necessarily involved the randomness of contact between root and pathogen. Hence, the models describing soil-borne infections were formulated as both stochastic and host-dependent\textemdash host-growth had been overlooked by many author-descriptions of aerial-based pathogens.
-
-\section{Increased biological complexity}
-\begin{itemize}
-    \item \cite{doi:10.1098/rspb.1996.0116} introduction of susceptibility changes to soil-based pathogen and displayed chaotic behaviour\textemdash find more references on this!
-    \item might not need to reference \cite{doi:10.1098/rspb.1996.0116} given previous stochastic reference \cite{gilligan1985probability}..
-    \item could talk about host-growth in other paradigms, find ? based on soil-based predecessors
-    \item \cite{doi:10.1098/rstb.1997.0040} model for primary and secondary infections, might not need to consider this after previous discussion.
-    \item \cite{GUBBINS2000219} talks about thresholds, based on earlier models this might be useful for launching into invasion and persistence 
-    \item open up the wave-like nature of disease 
-\end{itemize}
-
-\textcolor{red}{talk about complexity...}
-variability within the host given by \cite{doi:10.1098/rspb.1996.0116}, chaotic non-linear behaviour. Variability increases the difficulty of statistical fitting.
-This was captured in a model proposed by \cite{doi:10.1098/rspb.1996.0116} in order to model the spread of \textit{Rhizoctonia solani}:
-\begin{equation}
-\label{eq:early-model}
-    \frac{dI}{dt} = s(t)(r_pX + r_sI)(N-I)
-\end{equation}
-Where $N$ and $I$ are the number of susceptible and infected trees respectively, $r_p$ and $r_s$ are the rates of primary and secondary infections and $s(t)$ is a measure of the host susceptibility. The function $s(t)$ captured seasonal dynamics related to human intervention and cultivation.
-
-For example, it was noted that human cultivation of crops significantly increase the variability of host-pathogen interactions. Variability can be influenced by factors such as crop rotations, seasonal-planting and differing biological control practices that promote a wide range of susceptibilities.
-
-The model presented by \cite{doi:10.1098/rspb.1996.0116} displayed chaotic non-linearity, small changes in parameters could demonstrate large differences in epidemic outcomes i.e a `threshold' much like the one observed by \cite{kermack-model}. The epidemic threshold for plant-based epidemics was however subject to chance; parameters above threshold could fail to produce and outbreak while parameters below threshold could succeed. This reflects greatly on stochastic environmental conditions and the great many parameters involved in shaping the outcomes.
-
-Stochastic generalisations of Eq (\ref{eq:early-model}) were given by \cite{doi:10.1098/rspb.1999.0841}. Although previous discrete probability-based models had been used previously, for example by \cite{pub.1034311339} to describe poly-cyclic soil-borne diseases. \textcolor{red}{make it fit...} and marked an important leap into the understanding of temporal variability of an epidemic.
-
--\cite{ferrandino1993dispersive} studied the wave-like nature of epidemics and dispersal...
-
-Additionally, dynamics of host re-growth and seasons were studied in detail \textbf{find citations}. Further details about the progress of early plant-based epidemiology was conducted by \cite{Gilligan-disease-management}.
-\textcolor{red}{see\cite{doi:10.1146/annurev.phyto.45.062806.094357} for a review on invasion and persistence in plant-based diseases.}  % review invasion and persistence 
-
-
-\section{Chapter summary}
-------------------------------------------------------To Fix Up--------------------------------------------------------\\
-
-\textcolor{blue}{Talk about the general methods and strategies favoured in this thesis. Discuss main findings and the layout of this thesis, discuss where the main results fit in i.e. control of diseases. (to understand this more in-depth i need a better understanding of the literature field.)}
-
-Infectious tree diseases are increasingly harder to manage. The nature of understanding such threats favours an interdisciplinary nature involving a diverse range of models from different fields and disciplines. The main aim of this thesis was to develop workable models of infectious tree diseases from the ground up, from which, robust and more refined models can be established. Developing a simple model of infectious tree diseases was found to have merits when applied to realistic data sets of hosts. The aim was to further understand the nature of epidemics through tree populations. The research questions of this project involved asking to what extent a simple lattice model need be extended and what assumptions were important for each conceptual leap in modelling. The modelling work was in conjunction with .... and aimed to establish a starting model.
-
-From a simple-localised lattice model of tree disease a sub-grid method was developed and found to be applicable to large-realistic data sets. The thesis contribute a novel, intuitive notion of control based based on host-spatial structure, a multi-scale approach to modelling tree disease (the sub-grid) and investigated a simple, tractable model on a realistic data-set which was found to give insight into the nature of disease spread on heterogeneous data. These results and ideas are generalisable to many instances of tree diseases.
-
-
-Modernity and the common era (CE) of regular recorded history has witnessed drastic increases in the severity and frequency of epiphytotics. Factors such as genetic uniformity, international trade and climate change have increased the risk of large scale outbreaks in native plant and tree populations. This project is concerned with tree health opposed to crop health, however, it is worth detailing how a low genetic diversity of susceptible crop species can give rise to widespread epiphytotic instances. Modern commercially bred crops are clones genetically optimised to produce maximal yield, hence crops are genetically homogeneous with low genetic diversity. If a genetically uniform crop happens to be susceptible to a given pathogen whole plantations are at risk\--in contrast to natural plant populations which display a Gaussian distribution of characteristics and large variability in pathogen susceptibility. The degree of damage a pathogen does to a crop can be measured by how much the crop yield is effected. A recent example includes an epidemic in 1970 deemed southern corn blight which reduced crop yield by 85\% \cite{Tatum1113} other historical high impact epidemics include the potato famine 1845-1849. Epiphytotics in crop populations can cause considerable damage to both economically and to human welfare. 
-
-\vspace{1em}
-\begin{table}[h]
-\centering
-\begin{tabular}{l l l}
-\hline
-\textbf{type of disease} & \textbf{name} \\
-\hline
-soil-borne  & \textit{Rhizoctonia solani} \\ 
-soil-borne & \textit{Trichoderma viride}
-\hline
-\end{tabular}
-\caption{Analytic spatio-temporal models analysed by \cite{jeger1983analysing}.}
-\label{table:1}
-\end{table}
-
-\textcolor{blue}{Re-draft and include details on what this project found out, host-structure, epidemiological spread, with toy-models, formulation of a novel method of large-scale realistic spread given abundance data. Formalise the notion of what questions were asked...}
-
-\section{Current research\textemdash gaps we filled}
-A simple easy to understand model of tree epidemics is seldom used in tandem with a realistic data sets. A realistic model involve many parameters and factors which reflect the underlying biology of the problem. In this we shall investigate the applicability of models at different scales and form a novel method of sub-grid spread...
-
-\textcolor{blue}{Summaries current landscape of models and how the work we have done fits into the paradigm in particular 1) do large-scale models incorporate small scale epidemiology, 2) have simple lattice models been developed on realistic heterogeneous data-sets of native species ? Have-spatially explicit sub-grid models been investigated in tree disease, talk about the scale problem in tree epidemiology. Large-scale and small scale and how we innovated a familiar yet different approach.}
-
-Tree health is effected by trade networks, a higher volume in international trade of goods in horticulture has increased the risk of introducing invasive non-indigenous pathogens into UK tree populations. A number of epiphytotics are currently affecting tree health in the UK such as Sweet Chestnut Blight, \cite{MITCHELL201495, CB}, Dutch Elm \cite{DUTCH_ELM1,DUTCH_ELM2} and Chalara Ash Die Back \cite{ADB}. Natural wide scale epiphytotics are rare as native tree populations develop defence mechanisms via evolutionary mechanisms over very long time periods. The problem of modern infectious tree disease results from the introduction of foreign pathogens into ecosystems which have no genetic resistance. An outbreak of infectious tree disease can reduce biodiversity, harm ecosystems and cause considerable economic expense. For example, confirmed in 2011 Sweet Chestnut Blight was found in southern England. Historically Sweet Chestnut Blight killed an estimated 3.5 billion chestnut trees during the first half of the $20^{th}$ century in North America. In the UK, chestnut trees are utilised for both timber and nut production and represent an iconic species part of UK country sides. A detailed understanding of tree disease dynamics is needed before effective control methods can be implemented by policy makers.
-
-Host-pathogen-environment interactions are extremely complicated, when all three of factors are favourable an epiphytotic takes hold. The project will begin with a stochastic lattice model. Although lattice models have been employed in human epidemiology as far as tree epidemics are concerned nothing has  been published as of yet. Therefore, the project modelling approach is novel in its construction as will now be discussed.
-
-\section{Invasive tree diseases\textemdash a pressing and dangerous phenomena}
+\section{Invasive tree diseases}
 % set the scene with a few examples and current main threats to the UK
-The modern world is characterised by global trade networks which rely heavily on imports and exports. Importing and exporting foreign plant material can introduce invasive pests and pathogens into non-native landscapes and threaten entire populations. This poses world-wide risks to crops, flowering plants and trees which may lack evolutionary defences to invasive species \cite{doi:10.1002/9781444329988.ch8}. Epidemics through plant populations can be devastating: classic examples include Irish potato blight, Dutch elm disease \cite{doi:10.1111/j.1365-3059.2010.02391.x} and North American chestnut blight \cite{doi:10.1002/9780470535486.ch7}. Two epidemics currently underway in the UK include ash dieback (Hymenoscyphus fraxineus) in ash trees (Fraxinus excelsior),  \cite{ash-dieback-costs} and phytophthora ramorum, a general disease which acts on many plant populations including larch and oak trees \cite{p.ramourum}.
+\textbf{A pressing and dangerous phenomena: } The modern world is characterised by global trade networks which rely heavily on imports and exports. Importing and exporting foreign plant material can introduce invasive pests and pathogens into non-native landscapes and threaten entire populations. This poses world-wide risks to crops, flowering plants and trees which may lack evolutionary defences to invasive species \cite{doi:10.1002/9781444329988.ch8}. Epidemics through plant populations can be devastating: classic examples include Irish potato blight, Dutch elm disease \cite{doi:10.1111/j.1365-3059.2010.02391.x} and North American chestnut blight \cite{doi:10.1002/9780470535486.ch7}. Two epidemics currently underway in the UK include ash dieback (Hymenoscyphus fraxineus) in ash trees (Fraxinus excelsior),  \cite{ash-dieback-costs} and phytophthora ramorum, a general disease which acts on many plant populations including larch and oak trees \cite{p.ramourum}.
 
 % potential responses and why it is hard
 Epidemics through plant populations are pressing issues for societies to manage \cite{pests-intro}. To meet this complicated challenge policy makers can execute a variety of strategies to impede the spread of disease \cite{Gilligan-disease-management}. Thinning host densities \cite{resiliency-density-reductions} or planting genetically diverse configurations \cite{burdon1982host, huang1980importance, doi:10.1094/PD-89-0969, genetic-heterogeneity} have been shown to increase pathogen resilience. This paper will focus on tree-based epidemics where reactionary methods of control are typically limited to eradicating trees through felling.
@@ -211,17 +42,116 @@ The benefit of controlling an epidemic should outweigh the costs of letting an o
 
 \textcolor{blue}{Expand this to include some numbers on cost and societal effects. Go into more examples of how tree diseases can cause harm to ecosystems and expand on wider environmental impacts e.g. Carbon sequestration, soil bindings and biodiversity. Expand  on current threats. !!! Talk about biology of pathogens and main divisions of diseases !!!}
 
-\section{Modelling as an antidote\textemdash understanding to inform policy}
+\section{Trees-health and ecosystem function}
+\begin{itemize}
+    \item \textcolor{red}{I could expand on the economics, along with climatic and ecological importance of trees}
+\end{itemize}
+Trees grow naturally, in both rural and urban settings, this includes commercially managed plantations and orchards. Protecting and ensuring tree-health is of essential importance for society \cite{Boyd1235773}. Trees play a central role in terrestrial ecosystems \cite{boyd2013consequence} and their importance of forestry health is widely recognised. The motivations to protect tree populations in rural and urban landscapes are numerous. The most widely known, and well researched, themes include economic, climatic and ecological function \cite{freer2017tree}. However, the benefits of maintaining tree-health also stretch into of realms of human well-being, mental health, recreation and the perception of natural beauty \cite{tyrvainen2005benefits}. See Table \ref{table:tree-health} for a brief overview of the different benefits tree-health can offer to ecosystem and ecosystem function.\\
+
+\begin{table}
+    \centering
+    \begin{tabular}{|p{3cm}||p{13cm}| }
+    \hline
+    \textbf{Benefit}&\multicolumn{1}{c|}{}\\
+    \hline
+    Social  & Recreational activities, mental and physical health, cultural and historic sentiment.\\
+    \hline
+     Aesthetic & Landscape variation, textures, colours. Seasonal dynamics which change landscape views. \\
+    \hline
+     Climatic &  Cooling, wind control, impacts on urban climate through temperature and humidity control. Air pollution reduction, sound control, glare and reflection on reduction, flood prevention and erosion control. \\
+    \hline
+     Ecological & Biodiversity and biotopes for flora and fauna.\\
+    \hline
+     Economic & Timber, wood pulp, fiber and food.\\
+    \hline
+    \end{tabular}
+    \caption{The benefits of tree health, based on \cite{tyrvainen2005benefits} and \cite{boyd2013consequence}}
+    \label{table:tree-health}
+\end{table}
+
+
+\subsection{The drivers of tree disease}
+
+%-Talk about the different types of interactions and drivers, based on the pathogen biology and type of disease. How might one conceptualise it mathematically and what are the main factors to consider with tree diseases. Give an intuitive justification of the parameters used in the modelling work. Density infectivity and dispersal
+
+The terms `pest' and `pathogen' are both broad referring to taxonomically diverse organisms. A pest is defined as any organism that harms humans or human interests such as crops or livestock \cite{oerke2006crop, de1964biological, buckle2015rodent}. The main pest-threats to tree species are typically insects \cite{metcalf1994introduction}. As an example, the Asian longhorn beetle (ALB) \cite{haack2010managing} and oak processionary moth OPM \cite{tomlinson2015managing} are two pests that currently threaten trees in Great Britain. On the other hand, an organism is a pathogen if it causes disease \cite{balloux2017q}. In the context of tree disease this includes fungi, bacteria, virus, oomycetes \cite{Boyd1235773}. In Great Britain, \textit{Phytophthora ramorum} \cite{brasier2005phytophthora} and Ash dieback \textit{Hymenoscyphus fraxineus} \cite{mitchell2014ash, ash-dieback-costs} are two pathogens that threaten tree-health. Some of the most pressing threats to Great British trees are provided in Table \ref{table:tree_threats}.\\
+
+\subsection{Human trade and transport}
+\begin{itemize}
+    \item \textcolor{red}{Expand on the plant-passport, how do I cite government reports ?}
+\end{itemize}
+% why globalised modern world is more at risk than ever
+It is widely accepted that trade and transport of foreign plant material, through imports and exports, has increased the risk of introducing pests and pathogens into non-native landscapes \cite{POTTER201761, lovett2016nonnative, roy2014increasing}. Epidemics caused by non-native pathogens can be catastrophic to tree populations which may lack immunity and genetic resistance to the invasive species \cite{doi:10.1002/9781444329988.ch8}. This can be understood from an evolutionary perspective. In an environment unaltered by human transportation, tree and plant species are thought to co-evolve alongside pests and pathogens in a gene-for-gene like arm-race \cite{flor1971current, dangl2001plant, Thrall1735}. However, the introduction of a foreign pathogen can overwhelm a population which has no such immunity \cite{desprez2016evolutionary}. Two classic examples that shook the world are: Dutch elm disease \cite{doi:10.1111/j.1365-3059.2010.02391.x} in the United Kingdom and chestnut blight \cite{doi:10.1002/9780470535486.ch7} in North America. Thus, given our dependence on globalised trade, the threat to trees, flowering plants and crops grows evermore alarming.\\ 
+
+\begin{table}
+    \begin{tabular}{ |p{3cm}||p{3cm}|p{3cm}|p{6cm}|  }
+     \hline
+     \multicolumn{4}{|c|}{Pest and Pathogens} \\
+     \hline
+     \textbf{Classification} & \textbf{Name} & \textbf{Host} & \textbf{Symptoms} \\
+     \hline
+     Ascomycete fungus & Ash dieback\newline \textit{Hymenoscyphus fraxineus} & Ash tree\newline \textemdash{Fraxinus} & Blacking wilt on leaves and leaf loss. Eventual cankers of branches and trunk \\
+     \hline
+    \end{tabular}
+    \caption{The main treats to tree-health in Great Britain}
+    \label{table:tree_threats}
+\end{table}
+
+% Control of tree disease
+In recent years the importance of effective trade regulations, for the purpose of preventative epidemic control, has become apparent \cite{rodoni2009role}. The role of shipping and human-transport is an important factor which risks the introduction of invasive pests and pathogens into vulnerable landscapes within a country. As a case in point, the shipping of elm timber infected with scolytid bark beetles, carrying the fungus \textit{Ophiostoma novo‐ulmi}, has been identified as and important epidemic driver in the Dutch elm outbreak in the United Kingdom \cite{doi:10.1111/j.1365-3059.2010.02391.x}. Effective boarder controls are an important step in a nations arsenal to stop the spread of disease. Ordinarily, these preventative measures take the form of custom checks on imported and exported plant material such as timber, crops or horticultural goods. The common use of plant passports\footnote{Enacted by European Commission in 2017, \textcolor{red}{Not sure how to cite government report.}} is a an example of a large-scale policy regulating checks on the trade and transport of plant goods. 
+
+\subsection{The natural spread of plant-based diseases}
+If checks and policy implementations fail, a pathogen might then be introduced into the landscape and start spreading through natural pathways via dispersal. At this point, the biological control may become a necessary. The biological control of plant-based disease can be achieved in numerous ways, commonly this can include chemical agents such as pesticide, predatory insects or planting genetically resistant cultivars \cite{pal2006biological, baker1974biological}. In this thesis, we are motivated investigate the eradication of tree-based pathogens. In this scenario control, we are typically limited to eradicating infected and diseased trees through sanitation felling. The questions to be answered in this case are: A) How do we effectively identify an infected tree? B) Which infected trees are the best choices to fell ? C) What is the risk that a large-scale epidemic will result ?\\
+
+\textcolor{blue}{Re-draft and include details on what this project found out, host-structure, epidemiological spread, with toy-models, formulation of a novel method of large-scale realistic spread given abundance data. Formalise the notion of what questions were asked...}
+
+\section{Policy-making and epidemic control}
+
+%Air this towards a government prospective ? Include some arrow diagrams for the decision chain and how it works in the UK.
+
+% control and the benefits
+The benefit of controlling an epidemic should outweigh the costs of letting an outbreak spread unchecked. A well designed control policy should maximally reduce epidemic impact and minimise the expenditure of resources\textemdash both natural and economic. Achieving the optimal control of an epidemic in practice is a challenge due to various unknowns \cite{13-challenges} and history gives examples of insufficient control policies that failed to halt pathogen spread. The management and policy implementations of citrus canker in Florida \cite{schubert2001meeting} and Dutch Elm disease in Great Britain \cite{dutch-elm-mismanage} serve as two stark reminders. In both of these these scenarios, policy makers were slow to act and did not sufficiently comprehend the scale of the problem before it was too late. So, efficient control relies on well informed strategies. Moreover, understanding gained through accurate modelling and informed policy go hand-in-hand \cite{jones2020modelling}.\\
+
+\section{Modelling as an antidote}
 % Mathematical modelling of diseases
 With mathematical models we may attempt to understand what dictates optimal control of tree diseases. Strategies have been explored on both smaller landscapes \cite{WEBIDEMICS, risk-potential-control} and larger landscapes \cite{large-scale-control, large-scale-control2}. Current consensus on all spatial scales agree that the scale of response must equal the scale of epidemic \cite{control-scale-matching}. Furthermore, any response must be carried out swiftly otherwise the likelihood of successful management rapidly decreases and the cost of inaction soars.
+
+\subsection{Epidemic control of plant-based diseases}
+\begin{itemize}
+    \item \textcolor{red}{Maybe more from a government prospective ? Include some arrow diagrams for the decision chain and how it works in the UK.}
+\end{itemize}
+
+% control and the benefits
+The benefit of controlling an epidemic should outweigh the costs of letting an outbreak spread unchecked. A well designed control policy should maximally reduce epidemic impact and minimise the expenditure of resources\textemdash both natural and economic. Achieving the optimal control of an epidemic in practice is a challenge due to various unknowns \cite{13-challenges} and history gives examples of insufficient control policies that failed to halt pathogen spread. The management and policy implementations of citrus canker in Florida \cite{schubert2001meeting} and Dutch Elm disease in Great Britain \cite{dutch-elm-mismanage} serve as two stark reminders. In both of these these scenarios, policy makers were slow to act and did not sufficiently comprehend the scale of the problem before it was too late. So, efficient control relies on well informed strategies. Moreover, understanding gained through accurate modelling and informed policy go hand-in-hand \cite{jones2020modelling}.\\
+
+% Mathematical modelling as an antidote
+With mathematical models, we can attempt to understand what dictates optimal control of tree diseases. Strategies have been explored on small-scale \cite{risk-potential-control, WEBIDEMICS} and large-scale landscapes \cite{large-scale-control, large-scale-control2}. Currently, consensus on all spatial scales agree that the proportionate response must equal the scale of epidemic \cite{control-scale-matching}. Furthermore, any response must be carried out swiftly, otherwise the likelihood of successful management decreases rapidly and the cost of inaction soars.\\
 
 %. Optimal responses in epidemic management
 Conventional eradication strategies involve detecting symptomatic trees and culling neighbours within a radius \cite{WEBIDEMICS}. This is made difficult by numerous factors including the cryptic nature of tree diseases and resource constraints which may vary over time \cite{control-theory, control-theory-application}. The naive strategy can be fine-tuned and optimised in many ways to increase efficiency. One scheme involves ranking targets according to the risk they pose in order to prioritise culling \cite{risk-potential-control}. Over large-scales, evidence suggests epidemics are most effectively controlled by targeting infected trees either at or ahead of the infectious wave-front, as has been shown for sudden oak death in California \cite{large-scale-control}. In this study, optimal tree eradication is developed by considering which locations ahead of the wave-front make for efficient targets when taking into account large-scale host structure.
 
 \textcolor{blue}{Re-frame and talk about more generalist modelling (opposed to strategies of control), specifically 1) what has been investigated mathematically and how this has helped government form policies i.e. successes for the field and failures}
 
-\section{Communicative tree disease interactions}
+\section{Approaches adopted in this thesis}
 
-\blindtext[1]
+A simple easy to understand model of tree epidemics is seldom used in tandem with a realistic data sets. A realistic model involve many parameters and factors which reflect the underlying biology of the problem. In this we shall investigate the applicability of models at different scales and form a novel method of sub-grid spread...
 
-\textcolor{blue}{Talk about the different types of interactions and drivers, based on the pathogen biology and type of disease. How might one conceptualise it mathematically and what are the main factors to consider with tree diseases. Give an intuitive justification of the parameters used in the modelling work. Density infectivity and dispersal.}
+This study will outline how to construct models of infectious tree disease for the purpose of epidemic control. Starting from a simple, parsimonious mathematical model of tree disease and limited information on parameter-values, I will show how to construct more elaborate models. As we move from simple model definitions, based on a uniform lattice, this thesis rigorously accesses limiting assumption in the model at each step as we move towards a more elaborate and sophisticated model. From a well constructed model, optimal large-scale epidemiological control will be investigated in an attempt to help inform policy makers about the best decision of resource expenditure and control efficiency. Throughout this study, I hope to provide useful techniques to capture and quantify the spread of disease through a population of trees.\\
+
+\textcolor{blue}{Summaries current landscape of models and how the work we have done fits into the paradigm in particular 1) do large-scale models incorporate small scale epidemiology, 2) have simple lattice models been developed on realistic heterogeneous data-sets of native species ? Have-spatially explicit sub-grid models been investigated in tree disease, talk about the scale problem in tree epidemiology. Large-scale and small scale and how we innovated a familiar yet different approach.}
+
+% Fix referencing 
+Tree health is effected by trade networks, a higher volume in international trade of goods in horticulture has increased the risk of introducing invasive non-indigenous pathogens into UK tree populations. A number of epiphytotics are currently affecting tree health in the UK such as Sweet Chestnut Blight, \cite{MITCHELL201495, CB}, Dutch Elm \cite{DUTCH_ELM1,DUTCH_ELM2} and Chalara Ash Die Back \cite{ADB}. Natural wide scale epiphytotics are rare as native tree populations develop defence mechanisms via evolutionary mechanisms over very long time periods. The problem of modern infectious tree disease results from the introduction of foreign pathogens into ecosystems which have no genetic resistance. An outbreak of infectious tree disease can reduce biodiversity, harm ecosystems and cause considerable economic expense. For example, confirmed in 2011 Sweet Chestnut Blight was found in southern England. Historically Sweet Chestnut Blight killed an estimated 3.5 billion chestnut trees during the first half of the $20^{th}$ century in North America. In the UK, chestnut trees are utilised for both timber and nut production and represent an iconic species part of UK country sides. A detailed understanding of tree disease dynamics is needed before effective control methods can be implemented by policy makers.
+
+Host-pathogen-environment interactions are extremely complicated, when all three of factors are favourable an epiphytotic takes hold. The project will begin with a stochastic lattice model. Although lattice models have been employed in human epidemiology as far as tree epidemics are concerned nothing has  been published as of yet. Therefore, the project modelling approach is novel in its construction as will now be discussed.
+
+
+\section{Chapter summary}
+
+\begin{itemize}
+    \item Talk about the general methods and strategies favoured in this thesis. Discuss main findings and the layout of this thesis, discuss where the main results fit in i.e. control of diseases.
+\end{itemize}
+
+The main aim of this thesis was to develop workable models of infectious tree diseases from the ground up, from which, robust and more refined models can be established. Developing a simple model of infectious tree diseases was found to have merits when applied to realistic data sets of hosts. The aim was to further understand the nature of epidemics through tree populations. The research questions of this project involved asking to what extent a simple lattice model need be extended and what assumptions were important for each conceptual leap in modelling. The modelling work was in conjunction with .... and aimed to establish a starting model.
+
+From a simple-localised lattice model of tree disease a sub-grid method was developed and found to be applicable to large-realistic data sets. The thesis contribute a novel, intuitive notion of control based based on host-spatial structure, a multi-scale approach to modelling tree disease (the sub-grid) and investigated a simple, tractable model on a realistic data-set which was found to give insight into the nature of disease spread on heterogeneous data. These results and ideas are generalisable to many instances of tree diseases.

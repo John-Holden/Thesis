@@ -1,0 +1,207 @@
+This file holds snippets that I may or may not need.
+
+
+0 - A historical perspective that could be integrated with the literature review
+    \section{A Historical Perspective: Modelling Tree Disease}
+    \begin{itemize}
+        \item \textcolor{red}{I could expand on the biology of pests and pathogens and their interactions with trees}
+    \end{itemize}
+    % pest, pathogens and how they effect tree-health
+    Standing in the way of tree-health and ecosystem-function is the spread of disease through pest and pathogen vectors. Tree populations are subject to infection, the spread of disease and death just like human populations \cite{hethcote2000mathematics}. The main drivers of tree-based epidemics consist of fungi, bacteria, virus, oomycetes and instects \cite{manion1981tree}. To model the spread of tree disease, we require a sound knowledge of the general biological interactions involved. Thus, it is necessary to understand some distinctions between pests and pathogens and introduce some important examples and nomenclature.\\
+    
+    \subsection{Plant-pathology meets epidemiology}
+    Historically, plant pathology had no cross-fertilization with epidemiology. The two fields existed in two very different spheres with early plant pathologists tending to focus on microscopic details of pathogen growth in a biological setting. Initially, the logistic-growth formulation found application most notably in the management of crops \cite{browning1969multiline}. The logistic growth model presented by Van der Plank can be seen as simple one-compartment variant of the original $SIR$ framework developed by \cite{kermack-model} and marked the transition into a more quantitative discipline.\\
+    
+    Over the ensuing few decades, several others key worker, such as \cite{zadoks1979epidemiology} and \cite{campbell1990introduction}, consolidated the now well-defined field of plant-based epidemiology. 
+    After the initial coalescence of plant pathology and mathematical epidemiology, epidemics in urban and rural tree populations were naturally ripe to be explored with the same tool sets \cite{manion1981tree}. \textcolor{red}{first epidemiological analysis of dutch elm...}.
+    
+    \subsection{The age of simulation}
+    
+    Advances in plant-based epidemiology around the initial period 1960-1980 was compounded by developments in computing. Improved commercial availability and computer architectures allowed for faster calculations and permitted the use of more intensive models. The first epidemic simulator, named `EPIDEM', written in FORTRAN IV came by \cite{waggoner1969epidem}. This early simulator modelled the spread of the fungal `Alternaria solani', that effects potatoes and tomatoes. The growth of infected tissue within leaves was considered under the influence of different abiotic conditions. A variety of computational models were put forward \cite{doi:10.1146/annurev.py.23.090185.002031} and the ability to simulate more intricate models grew in proportion the amount of computer memory available \cite{zadoks1972methodology}. With more computational power, more information about the host-pathogen interaction can be simulated in a reasonable time.\\
+    
+    Modelling the spread of disease in tree populations is subject to the same approach as modelling crop-based disease\footnote{Sometimes they are one and the same, \textit{Xyella Fastidiosa} for example is a pathogen that effects crops in the olive tree \cite{doi:10.1146/annurev-phyto-080417-045849} among others \cite{simpson2000genome}.}. However, there are some notable difference reflected in the models... %find examples, time-scales, sporulation rates, scale and outcome e.g. crops food-security
+    
+    The underpinning approaches to tree-based disease were first investigated in the context of crops. At the time computers became commercially viable, research questions could be asked in model simulations \cite{dixon1979spread}. An early simulation-based approach to modelling the spread of tree disease came by \cite{strand1976simulation}. The authors looked considered Western Dwarf Mistletoe \textit{Arceuthobium campylopodum}, an environmentally and economically important plant parasite effecting forest and cultivated stands of ponderosa pine \textit{Pinus pondersa}. A mathematical description was formulated to model the spread, and subsequent increase, of Western Dwarf Mistletoe increase in pine stands. The holistic model given by \cite{strand1976simulation} incorporated a number of \textit{`sub-models'}: crown structure, mistletoe seed production, seed dispersal, reinfection and contagion. The authors modelled the crown structure of pine (i.e. the domed shape of pine), from regression analysis on a sample of pine in the American north-west.\\
+    
+    % example of tree disease model
+    \textbf{Early model of tree disease} western Dwarf Mistletoe has an interesting method of `explosive-dispersal', whereby, a ripe fruit builds hydrostatic pressure until seeds are released abruptly to either neighboring branches or individual trees. As such, the authors only took into account explosive dispersal with the assumption that wind-borne and animal-based dispersal negligible. The model ascertained the probability of infection between one mistletoe plant and one branch, located on either the same or different tree. The probability of infection was studied as a function of stand-thinning, to three differently spaced arrangements, alongside the height of infected branches.\\
+     
+     As we shall see, the type questions asked in this early articles are not seen typical of recent literature. In particular, one does not need to take into account such a fine level of detail when modelling large spatial distances. Mechanistic questions about how the height of infected branches impacts the probability of successful transmission of the parasite.\\
+     
+     The simulator sub-model approach was also used to by \cite{mcdonald1981computer} to model stem-rust \textit{Cronartium ribicola} in white pines in North America. The authors conducted a detailed model incorporating the full-life cycle of \textit{Cronartium ribicola} and the interplay between two species, pine and ribes.\\
+     
+    \begin{itemize}
+        \item  review dutch elm disease as a case study of the different types of models used \cite{doi:10.1098/rstb.1996.0059}
+        \item Explain how planks model falls down with re-infected hosts as a limitation.
+    \end{itemize}
+
+
+
+
+1. Soil-borne diseases to contrast dispersal-based models
+    \section{Soil-borne diseases}
+    
+    - Developing epidemiological insight allowed plant pathologists to rigorously analyse additional complexities and interactions that had been overlooked. As noted by \cite{doi:10.1146/annurev.py.21.090183.000401}, the majority of work had so far concentrated on aerial-based pathogens where transmission between host-units, mediated by dispersal, resulted in new secondary infections. However, the case for soil-borne pathogens effecting root-systems can be very different. 
+    
+    % Early models : developing biological complexity 1990s
+    % leads to invasion and persistence 
+    % extra compartments
+    
+    Soil-borne pathogens, typically fungal, infect hosts with a `polycyclic' nature of transmission. In this, a root may come into contact with infested soil and become infected, named `primary' infection ,or alternatively mycelium\footnote{Mycelim are} growth emanating from a primary infected site makes contact with another root leading to secondary-infection, \cite{crowe1980vertical}. Here, there may be various mixed-modes (i.e. poly) of mixed primary and secondary transmission. 
+    
+    If a volume of soil is randomly infested by fungal propagules\textemdash named the `pathozone'. When planted, a seed will grow roots that may then come into contact with the randomly positioned fungal pathogen leading to a cycle of primary and secondary infections. \cite{pub.1034311339} formulated a model based on the probability of a root will escaping the pathozone. Considering only the primary mode of infection: 
+    
+    \begin{equation}
+        \label{eq:primary-infection-sb}
+        I=NZ(1-\exp(-\phi P))
+    \end{equation}
+    
+    where $I$ is the expected number of infected roots per unit area after primary infection, $N$ is the number of roots exposed to the pathogen and $Z$ is probability a root will be susceptible. The exponential term $\phi$ is the probability an individual root will become infected by $P$ propagules randomly distributed per unit area \ref{eq:primary-infection-sb}) is result of a predecessor model \cite{gilligan1985probability}. 
+    
+    \cite{pub.1034311339} generalised Eq (\ref{eq:primary-infection-sb}) to include the secondary mode of infection leading to a stochastic difference equation and recurrence relation of the form:
+    
+    \begin{equation}
+        \label{eq:primary_and_secondary}
+        I_{i}= I_{i-1} + (N_{i-1}Z - I_{i-1})\big[1 - \exp(-\phi_i J_i)\big]
+    \end{equation}
+    
+    Van der Plank in his thesis had directed the modelling paradigm towards secondary infections. However, soil-borne diseases presented a different set of challenges. Incorporating a stronger dependence of primary-infection necessarily involved the randomness of contact between root and pathogen. Hence, the models describing soil-borne infections were formulated as both stochastic and host-dependent\textemdash host-growth had been overlooked by many author-descriptions of aerial-based pathogens.
+    
+    \section{Increased biological complexity}
+    \cite{doi:10.1098/rspb.1996.0116} introduction of susceptibility changes to soil-based pathogen and displayed chaotic behaviour\textemdash find more references on this!
+    might not need to reference \cite{doi:10.1098/rspb.1996.0116} given previous stochastic reference \cite{gilligan1985probability}..
+    could talk about host-growth in other paradigms, find ? based on soil-based predecessors
+    -\cite{doi:10.1098/rstb.1997.0040} model for primary and secondary infections, might not need to consider this after previous discussion.
+    -\cite{GUBBINS2000219} talks about thresholds, based on earlier models this might be useful for launching into invasion and persistence 
+    -open up the wave-like nature of disease 
+    
+    \textbf{talk about complexity}
+    variability within the host given by \cite{doi:10.1098/rspb.1996.0116}, haotic non-linear behaviour. Variability increases the difficulty of tatistical fitting.
+    This was captured in a model proposed by \cite{doi:10.1098/rspb.1996.0116} in rder to model the spread of \textit{Rhizoctonia solani}:
+    \begin{equation}
+    \label{eq:early-model}
+        \frac{dI}{dt} = s(t)(r_pX + r_sI)(N-I)
+    \end{equation}
+    
+    - Where $N$ and $I$ are the number of susceptible and infected trees respectively, $r_p$ and $r_s$ are the rates of primary and secondary infections and $s(t)$ is a measure of the host susceptibility. The function $s(t)$ captured seasonal dynamics related to human intervention and cultivation.
+    
+    - For example, it was noted that human cultivation of crops significantly increase the variability of host-pathogen interactions. Variability can be influenced by factors such as crop rotations, seasonal-planting and differing biological control practices that promote a wide range of susceptibilities.
+    
+    - The model presented by \cite{doi:10.1098/rspb.1996.0116} displayed chaotic non-linearity, small changes in parameters could demonstrate large differences in epidemic outcomes i.e a `threshold' much like the one observed by \cite{kermack-model}. The epidemic threshold for plant-based epidemics was however subject to chance; parameters above threshold could fail to produce and outbreak while parameters below threshold could succeed. This reflects greatly on stochastic environmental conditions and the great many parameters involved in shaping the outcomes.
+    
+    - Stochastic generalisations of Eq (\ref{eq:early-model}) were given by \cite{doi:10.1098/rspb.1999.0841}. Although previous discrete probability-based models had been used previously, for example by \cite{pub.1034311339} to describe poly-cyclic soil-borne diseases. \textcolor{red}{make it fit...} and marked an important leap into the understanding of temporal variability of an epidemic.
+    
+    -\cite{ferrandino1993dispersive} studied the wave-like nature of epidemics and dispersal...
+    
+    - Additionally, dynamics of host re-growth and seasons were studied in detail \textbf{find citations}. Further details about the progress of early plant-based epidemiology was conducted by \cite{Gilligan-disease-management}.
+    - \textcolor{red}{see\cite{doi:10.1146/annurev.phyto.45.062806.094357} for a review on invasion and persistence in plant-based diseases.} 
+    - review invasion and persistence 
+    % A table of soil-borne treats
+    \vspace{1em}
+    \begin{table}[h]
+    \centering
+    \begin{tabular}{l l l}
+    \hline
+    \textbf{type of disease} & \textbf{name} \\
+    \hline
+    soil-borne  & \textit{Rhizoctonia solani} \\ 
+    soil-borne & \textit{Trichoderma viride}
+    \hline
+    \end{tabular}
+    \caption{Analytic spatio-temporal models analysed by \cite{jeger1983analysing}.}
+    \label{table:1}
+    \end{table}
+
+
+2. An in-depth historical literature review of developments through 1960-90's
+    
+
+    \section{Developments in plant epidemiology ~1960-1990}
+    % Early models : van der plank
+    Historically, plant pathology had no cross-fertilization with epidemiology. The two fields existed in two very different spheres with early plant pathologists tending to focus on microscopic details of pathogen growth through a single host unit (comprising of a plant) and localised outbreaks within a small field or greenhouse. Ties between plant pathology and epidemiology were clearly established by the seminal work of \cite{van2013plant}. Van der Plank equated the growth of `innoculum' within a host to the logistic growth of money:
+    \begin{equation}
+        \label{van-plank}
+    \end{equation}
+    
+    In this logistic growth model the amount of infected tissue $I$ grows rapidly at first, being proportional to how much innoculum is present. As time passes the rate of innoculum growth (infection rate) plateaus to zero as all tissue becomes infected, hence $(1-I)$. The evolution of an epidemic characterised by plotting how much disease is present against time, called a `disease progress curve'. The logistic growth model presented by Van der Plank can be seen as simple one-compartment variant of the original $SIR$ framework developed by \cite{kermack-model} and marked the transition into a more quantitative discipline.
+    
+    An attractive feature of Eq (\ref{van-plank})is the infection rate $r$; following the derivation given by \cite{van2013plant} (chapter 3) one may write the infection rate as:
+    \begin{equation*}
+        r =\frac{1}{t_2 - t_1} \log \Big(\frac{I_2}{1 - I_2} - \frac{I_1}{1 - I_1}\Big)
+    \end{equation*}
+    where $I_1$ and $I_2$ are the proportions of infected tissue at times $t_1$ and $t_2$ respectively\textemdash this is easily measured in a laboratory. In this model, the parameter $r$ provides a course-grained summary of the complex interaction between host, pathogen and environment. 
+    
+    Hitherto, plant pathologists had been trained to research botanical disease mainly through laboratory experiments of infected tissue under the influence of various environmental conditions \cite{doi:10.1146/annurev.py.01.090163.000245}. This had utility and practicality for understanding microscopic biological interactions, however, experiments of this nature over scales ranging from individual plants, fields through to regions were untenable. With a new epidemiological insight, borrowing from different mathematical techniques, plant pathologists were now able to extend their research to account for the large-scale impact of diseases. 
+    
+    % Early models : extensions of van der plank
+    The next few decades where characterised by theoretical investigation into mathematical models of `plant epidemiology' and the adoption of computer simulations. The original framework by \cite{van2013plant} was applied to different pathosystems, halo blight in beans for example \cite{doi:10.1111/j.1744-7348.1979.tb06527.x}. Modifications of Eq (\ref{van-plank}) were made by \cite{sall1980epidemiology} in order to account for variations in the infection rate in grape powdery mildew by taking the infection rate to be a function of time $r(t)$. In addition, other mathematical techniques were reviewed for the purpose of modelling plant epidemiology. One such framework was multiple regression analysis see \cite{butt1974multiple} for a detailed review. The work of \cite{zadoks1979epidemiology} provided a consolidation of these early mathematical models of plant disease and expanded upon Van der Plank\textemdash a review of predominant models from this era was given by \cite{jeger1984use}.
+    
+    \textcolor{red}{computational models incorporate more information regarding host-pathogen biological interactions} \textcolor{blue}{for a review on computational modelling see \cite{doi:10.1146/annurev.py.23.090185.002031}} Advances in plant epidemiology through this period were compounded by developments in computing. Improved accessibility and computer architectures permitted faster calculations and more intensive models. The first epidemic simulator written in FORTRAN IV came by \cite{waggoner1969epidem}. The simulator was named `EPIDEM' and modelled the spread of the fungal `Alternaria solani' effecting potatoes and tomatoes. The growth of infected tissue within leaves were considered under the influence of different environmental conditions. The ability to simulate more intricate models grew in proportion the amount of computer memory available \cite{zadoks1972methodology}.
+    
+    \subsection{Alternate analytic models:}
+    \begin{itemize}
+        \item the objective of growth curve models is to be flexible enough to describe a wide range of curves observed. \textcolor{red}{cite Gilligan and decreasing functions...}
+        \item analogous to growth curve models 
+        \item Talk about fitting parameters. Linear models are fitted... 
+        \item proposed as an alternative to the logistic model for polycyclic disease. \cite{doi:10.1146/annurev.py.21.090183.000401}
+        \item Weibull model is the most flexible but requires maximum likelihood estimation, (<-check this out), 
+        \item analytic models can be used to model a wide range of pathogens, however sometimes complex fitting must be carried out.
+        \item analytic models also suffer from a lack of understanding in biological interactions
+    \end{itemize}
+    
+    Alongside the logistic growth model put forward fromm Van der Plank, there were a handful of authors that prosed alternate models. the Gompertz model, given by 
+    \textcolor{red}{plot the three models and talk about differences cite \cite{madden1980quantification}. Logistic grwoth and Gompertz models were examined in contrast by \cite{berger1981comparison}}
+    
+    \subsection{Introducing spatial variations}
+    % Early models : developing spatial aspects
+    Initially, dynamic models of plant diseases were studied as functions of time and spatial components tended to be overlooked\textemdash most probably related to the difficulty of solving analytic equations and numerically computing two spatial dimensions. \cite{doi:10.1146/annurev.py.06.090168.001201} was the first to consider the importance of spatial variations in the problem of tree disease in a quantitative manor. In particular, \cite{doi:10.1146/annurev.py.06.090168.001201} discussed how spatial `gradients' (i.e. dispersal) were dependent on both the environmental suitability of host and pathogen, (e.g. soil quality) and dispersal of pathogen spores. A model of the form $y=ax^{-b}$ was proposed, where $y$ comprises the total number of infections per unit area which result at distance $x$ from the initial focus of disease. This was modified by \cite{mundt1985modification} to $y=a(x-c)^{-b}$ in order to give a finite $y$ intercept at $x=0$.
+    
+    An interesting early simulator `EPIMUL76' developed by \cite{zadoks1977role} adapted Van der Plank's logistic growth model into a spatio-temporal framework in two spatial dimensions. Simulations were conducted on a computer with $128\mathrm{K}$ of memory. The two dimensional domain was subdivided into $20\times 20$ host units named `compartments' (as such, this can be considered an agent-based model). \cite{zadoks1977role} eluded to the problem of scale; that is, compartments could represent different spatial scales, conceptualised as microscale ($\leq 1\mathrm{m}$), mesoscale ($10^2\mathrm{m}$) and macroscales ($10^6\mathrm{m}$). In this picture, microscales ranged from plant leafs through to individual plants, the mesoscales could be taken as fields of crops and the macro scales as large regional expanses over country-wide scale. The probability of dispersal between infected host units was assumed to follow the functional form of a Gaussian distribution\textemdash in contrast to \cite{doi:10.1146/annurev.py.06.090168.001201}.
+    
+    \vspace{1em}
+    \begin{table}[h]
+    \centering
+    \begin{tabular}{l l l}
+    \hline
+    \textbf{Model} & \textbf{Functional Form} \\
+    \hline
+    (a)  & $y = 1 - A\exp(bx - ct)$\\ 
+    (b) & $y = 1/(1 + A\exp(bx - ct))$\\
+    (c) & $y = 1 - Ax^{b}\exp(-ct)$ \\
+    (d) & $y = 1/(1 + Ax^{b}\exp(-ct))$\\
+    (e) & $y = 1 - At^{-c}\exp(bx)$\\
+    (f) & $y = 1/(1 + At^{-c}\exp(bx))$\\
+    (g) & $y = 1 - At^{-c}x^{b}$\\
+    (h) & $y = 1/(1 + At^{-c}x^{b})$\\
+    \hline
+    \end{tabular}
+    \caption{A selection of different analytic spatio-temporal models analysed by \cite{jeger1983analysing}.}
+    \label{table:1}
+    \end{table}
+    
+    Results by \cite{zadoks1977role} provided insight into the wave-front nature of plant epidemics\footnote{Graphical results showed remarkably similar results to the fisher-kolmogorov equation.} and held utility in answering questions hard to solve analytically. In particular, a question debated by Waggoner and Van der Plank; which configuration of crop fields, comprising the same total area, is most effective at reducing the spread of disease, a set of many small field or a few large fields? Remarkably, this question of patch `connectedness' preempted later developments of modern metapopulation models (discussed more below). Here, a computational approach prescribed an easier framework to explore an abstract question without considering precisely fitted parameters. However, a limitation in the work of  \cite{zadoks1977role} was insufficient spatio-temporal data to perform rigorous validation \cite{teng1981validation}, a limitation which is still relevant.\\
+    
+    \cite{jeger1983analysing} conducted a multivariate study combining both spatial and temporal dynamics in one spatial dimension. \cite{jeger1983analysing} combined different functional forms of temporal increase and spatial spread suggested be previous authors (e.g. \cite{van2013plant, doi:10.1146/annurev.py.06.090168.001201}), shown in table \ref{table:1}. The variable $y$ describes the amount of innoculum (or progress), where $t$ and $x$ representing time and space respectively. The parameters  $A, b$ and $c$ represent the amount of innoculum at $t=0$ and gradients of progress and spread respectively. Parameters were fitted against experimental data given by \cite{berger1979spatial}. The results suggested how the different functional forms shown in table \ref{table:1} relate to different pathogens with varying amounts of precision. All the models considered did not depend on the amount of innoculum\footnote{This again is similar to the wave-speed solution to the fisher-kolmogorov equation.}. The work of \cite{jeger1983analysing} entrenched the need to consider analytic spatial-temporal models of disease. These results were consolidated by \cite{campbell1990introduction}.
+    
+
+3. A primer on how crop-based diseases were studied before tree-based disease and how tree disease's inherited the modelling approaches.
+
+\section{Crop diseases: a primer to tree disease }
+    \label{chapter:lit-rev}
+    \begin{itemize}
+        \item host an pathogen co-evolved
+        \item table of pathogens and threats
+        \item `\textit{innoculum}'
+    \end{itemize}
+    
+     This project is concerned with tree health opposed to crop health, however, it is worth detailing how a low genetic diversity of susceptible crop species can give rise to widespread epiphytotic instances. Modern commercially bred crops are clones genetically optimised to produce maximal yield, hence crops are genetically homogeneous with low genetic diversity. If a genetically uniform crop happens to be susceptible to a given pathogen whole plantations are at risk\--in contrast to natural plant populations which display a Gaussian distribution of characteristics and large variability in pathogen susceptibility. The degree of damage a pathogen does to a crop can be measured by how much the crop yield is effected. A recent example includes an epidemic in 1970 deemed southern corn blight which reduced crop yield by 85\% \cite{Tatum1113} other historical high impact epidemics include the potato famine 1845-1849. Epiphytotics in crop populations can cause considerable damage to both economically and to human welfare. 
+    
+    For thousands of years civil unrest and famine were dependent on the success of the harvest and plant pathologists now had the means to conduct rigorous theoretical investigations. For this reason, researchers in the early-mid $20^{th}$ century to primarily study the spread of disease through crops.
+    
+    \textcolor{red}{talk about mathulus growth models as a prelude to logistic growth equation}
+    \textcolor{red}{surprisingly, dutch elm disease, Devastating much of Europe had a major impact on the British landscape was not studied and interest in modelling tree disease dit not pick up till later..Prior work concentrated on crops}
+    \textemdash review and update in accordance with draft...
+
+
+\textbf{An introduction that links to pre-history}
+    The theory of human epidemics has a rich history routed in superstition. History records the first objective attempt in by Hippocrates (460 \textemdash 370 BC) \cite{langholf2011medical}. The first quantitative mathematical model came from \cite{kermack-model}, the so called $SIR$ model. On the other hand, plant pathologists wishing to quantify the growth of plant and crop-based epidemics had no mathematical framework and had wait until Van der Plank published his seminal \cite{van2013plant}. Van der plank used a logistic growth model, predicated on the growth of money, to capture the essential population dynamics of healthy and infected plants.\\

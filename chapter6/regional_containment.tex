@@ -23,7 +23,7 @@ A simplified $SEIR$-type model of ash dieback is developed to demonstrate this c
 
 \section{Methods}
 
-\subsection{A simplified model of ash dieback}
+\subsection{Constructing a simplified model of ash dieback}
 % R0 is the measure used to capture the pathogens ability to invade
 % Q: what is the relationship between the mortality ratio (or final fraction of infected hosts) ? 
 % Ash dieback is known to sporulate in the summer months... therefore...
@@ -51,13 +51,52 @@ A simplified $SEIR$-type model of ash dieback is developed to demonstrate this c
 % figure showing connectivity element change...
 
 
-exists inthat shed/dead plant material remain fixed at the hosts spatial location. 
+% exists in that shed/dead plant material remain fixed at the hosts spatial location. 
 
-Infected hosts $I_n\rightarrow S; \beta_i$
+% Infected hosts $I_n\rightarrow S; \beta_i$
+
+\begin{table}[h]
+\centering
+\begin{tabular}{l l l}
+\hline
+\textbf{Model parameter} & \textbf{Description} & \textbf{Typical value(s)}\\
+\hline
+$\rho$  & Tree density & $0.00 - 0.10$ \\ 
+$\beta$ & Infectivity & $0.00010 - 0.00100\ \mathrm{day}^{-1}$ \\
+$\ell_{ga}$ & Pathogen dispersal distance & $196\mathrm{m}$ \\
+$T$ & Sporulation peak & $120$ days from June - September \\
+$t$ & Time-step & $[0, T]$ days\\
+$R_0$ & Mean reproduction number & $0-20$ \\
+$\mathcal{L}$ & Lattice dimension & $1000\times1000$ \\
+$\mathcal{A}$ & Domain area & $5\mathrm{km}\times5\mathrm{km}$ \\
+$\gamma$ & Lattice constant & $5\mathrm{m}$ \\
+\hline
+\end{tabular}
+\caption{Model parameters}
+\end{table}
 
 
+We begin with a homogeneous distribution of trees, informed by a density parameter $\rho$, inside a square domain of size $\mathcal{L}$. Each lattice-point represents a $5m\times5m$ patch of land that is occupied by a an ash tree, with probability $\rho$, or empty with probability $(1-\rho)$. The state of a tree can be in one of four compartments and trees transition between $S\rightarrow E \rightarrow I \rightarrow R$, without the possibility of recover. We consider two dispersal kernels, a thin-tailed Gaussian and a fat-tailed power-lower.
 
-\blindtext
+Given two trees, one susceptible ($S_x$) and one infected ($I_{x^\prime}$), separated by a distance $r$, an expected transition rate for $S_x \rightarrow E_x$ can be determined from the dispersal kernel multiplied by an infectivity rate $\beta$. For Gaussian and power-law this assumes the form:
+
+\begin{equation}
+    Pr(S_{x} \rightarrow E_{x} ;\ I_{x^{\prime}} ) = \beta  \phi(T) \exp\Big[\frac{-r^2}{2\ell^2}\Big] 
+\end{equation}
+\begin{equation}
+    Pr(S_{x} \rightarrow E_{x} ;\ I_{x^{\prime}} ) = \beta \phi(T) (1 - r/\ell)^{-r}
+\end{equation}
+
+A simple time-dependant function $\phi(T)$ takes the value of $1$ between the summer months of June - September, and $0$ otherwise thus reflecting the sporulation peak of \textit{Hymenoscyphus fraxineus}. During these summer months, wind-borne dispersal occurs when fruiting bodies produce large numbers of ascospores. 
+
+We make an assumption that trees transitioning from $E\rightarrow E; I_{n}$
+We make an assumption that trees transitioning from $S\rightarrow E$ on account of infected tree $I_{n}$, will only become infectious to neighbouring trees during the following sporulation peak, denoted by $S\rightarrow E; I_{n+1}$. This is justified given the strong seasonal component in the life cycle of \textit{Hymenoscyphus fraxineus}\textemdash that is, where infected trees shed plant-material which 
+becomes infectious during the following sporulation peak. 
+
+a basic reproduction number $R_0$ is defined for the first life-cycle of the pathogen.
+It takes approximately $2-4$ months for an infected ash tree to become symptomatic. However, given that dispersal via the wind-borne mechanism only occurs during the summer months we make the assumption that trees in the exposed category will only become infectious in the next sporulation peak
+
+
 
 \subsection{Defining $R_0$}
 
@@ -70,10 +109,6 @@ Infected hosts $I_n\rightarrow S; \beta_i$
     
 \end{itemize}
 
-\textcolor{red}{Improvements to Chapter \ref{chapter:regional-containment1}}
-\begin{enumerate}
-    \item
-\end{enumerate}
 
 In this Chapter aspects of the sub-grid model are improved.//
 \section{The biology of Ash dieback} % why not remain with Oak?
