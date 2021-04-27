@@ -1,0 +1,21 @@
+
+Aims:
+    1: Set up, and describe, the non-local dispersal model in chapter
+    2: Give insight into how R0 under changes with both temporal and spatial scale
+    3: Show that reducing tree density, ahead of a wave-front, can slow and even contain the spread.
+
+MVP:
+    1. Construct model from first principles
+        - show stochastic time-series
+        - show simulation frames
+    2. Ensemble-averaged parameter sweeps of Gaussian dispersal model
+        - mortality, distance reached/velocity/ probability of survival/percolation
+        - density variations
+        - \beta variations
+        - \ell and \beta variations
+    3. R0-idealistic derivation for Gaussian model
+        - mathematical derivation 
+        - show behaviour over
+    4. R0-contact-traced derivations for Gaussian model 
+    5. Power-law spread, a comparison to Gaussian
+    6. Density reduction for control

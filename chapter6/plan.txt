@@ -18,7 +18,7 @@ In this Chapter aspects of the sub-grid model are improved.//
 \end{itemize}
 
 Notes/Frame/Narative:
-1. Use \cite{doi:10.1111/1365-2745.13383} to talk about local-coverage and denstiy being an important factor in the spread of disease
+1. Use \cite{doi:10.1111/1365-2745.13383} to talk about local-coverage and density being an important factor in the spread of disease
 2. With dispersal knowledge prior to infestation, we can ascertain which neighbouring areas need to be treated in response to an EID \cite{grosdidier2018tracking}
 3. \cite{grosdidier2018tracking} defines two kernels: local and regional
 4. We concentrate on how the pathogen spreads through a patch at the local scale, local-patches are then coupled together and offer a landscape perspective over the UK 

@@ -1,0 +1,12 @@
+Aims:
+    - show how to construct a continuum-based large-scale model from the sub-grid
+    - show that local dispersal modelling is insufficient to describe 40-60km/yr spread
+    - set the scene for future work
+
+MVP:
+    - outline a continuum sub-grid-based model and give biological interpretations of wave-front
+    - FKPP simulations over UK
+    - Set the basis for future study 
+
+Beyond MVP:
+     - Show how density reductions ahead of the wave-front can slow/contain the spread of disease
