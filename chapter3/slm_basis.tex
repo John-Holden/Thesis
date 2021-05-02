@@ -7,11 +7,12 @@
 
 \chapter{Simple lattice model}
 \label{chapter:SLM}
-In this chapter, the investigation will begin by recounting the model used by \cite{OROZCOFUENTES201912}. %
-From first principles, this involves a compartmentalised $SIR$ percolation-based model of only one parameter,  tree density $\rho$. %
-Percolation will be defined, both mathematically and conceptually, then a discussion on criticality and self-similarity will follow. The discussion will include a summary of critical phenomena and some universal behaviour within the model.  Following this, we develop a more intricate two-parameter, `stochastic percolation', model. Stochastic percolation will include an extra parameter that captures a pathogens infectivity as we define it. Including infectivity is justified given the highly stochastic nature of tree-based epidemics and epidemics general. In particular to tree disease, the susceptibility and infectivity between trees are thought to vary widely over a landscape, not to mention the variability influenced by geographical, climatic/environmental and species-level genetic factors. The two-parameter model will constitute a simple lattice model (SLM) of disease dynamics.
+% 1. emphasis generality
+% 2. emphasis the simplicity 
+% 3. the vale in this chapter is ?
+Typically, models of tree disease are complicated and involve multiple parameters informed by experimental data. Furthermore, modelling a specific pathosystem requires in-depth, specialist knowledge to incorporate biological realism, such as pathogen lifecycles or environmental suitability. This chapter shall outline a model of tree disease, beginning from simplicity, that will lay the foundations for more detailed treatment in later chapters. Specifically, I will recount the compartmentalised $SIR$ percolation-based model used by \cite{OROZCOFUENTES201912}. From first principles, this involves an analysis of one parameter, tree density $\rho$, leading to a mathematical and conceptual definition of percolation. Lastly, the one-parameter model will give way to a discussion of criticality and self-similarity in the context of tree-based epidemics. The discussion will include a summary of critical phenomena and some universal behaviour within the model.  The results of this chapter are primarily generic but crucially demonstrate the importance of thresholds in the spread of tree-based diseases.
 
-Here, an investigation into the behaviour of the two-parameter SPM, using ensemble-averaged parameter-sweeps, is conducted. The method of ensemble averaging, used throughout this thesis (chapters 3-6 inclusive), forms an essential component of our work and will therefore be outlined in in-depth.
+Having established a simple one-parameter model, a more involved two-parameter, `stochastic percolation', model, will be developed and examined. Stochastic percolation will include an extra parameter representing the degree of pathogen infectivity. In general, measuring infectivity is challenging and subject to much spatial and temporal variation, such as changing climatic/environment conditions or species-level genetic variations in susceptibilities.  However, incorporating infectivity by a stochastic parameter is essential to construct representative models of tree-based epidemics. In particular to tree disease, the susceptibility and infectivity between trees are thought to vary widely over a landscape. The two-parameter model will constitute a simple lattice model (SLM) of disease dynamics. Importantly, this introductory chapter will introduce an ensemble-averaging method used throughout the thesis. In the present case, this takes the form of an investigation into the SLM behaviour, using ensemble-averaged parameter sweeps.
 
 Lastly, the results of early-warning signals (EWS), investigated by \cite{OROZCOFUENTES201912}, will be extended. %
 Extensions will include forming an alternate lattice configuration and a metric that permits clearer EWS detection. %
@@ -25,7 +26,7 @@ We begin with a square lattice $\mathbb{L}$ in two dimensions, each site in the 
 open with probability $\rho$ or closed with probability ($1-\rho$). %
 The probability $\rho$ therefore describes a density parameter and encapsulates the occupancy of a random % JS avoid using "random". Describe as a distribution (eg a gamma distribution?) 
 homogeneous distribution of open and closed lattice positions. %
-One open site ($c_p$) is connected to another ($c_q$) if laid within the Von Neumann neighbourhood \citep[see][p 50]{toffoli1987cellular}. %
+One open site ($c_p$) is connected to another ($c_q$) if laid within the Von Neumann neighbourhood \cite{toffoli1987cellular}. %
 % \citep[see][p 50]{toffoli1987cellular}.
 A connected set of open nearest neighbours define a cluster denoted by $C$, where $c_i \in C$.%
 Given the set $C$, it is possible to traverse between any member site $c_i \in C$ by moving through the lattice in either horizontal or vertical steps `Von Neumann motion'. %

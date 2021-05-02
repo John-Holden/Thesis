@@ -11,7 +11,7 @@
 
 
 \chapter{Modelling infectious tree diseases}
-\label{chapter2:plant-ecologoy} 
+\label{chapter2:litreview} 
 
 The mathematical and computational modelling of infectious tree diseases began to emerge after Plank had others put forward seminal works on the modelling of crops. Tree disease is import to consider for tree-health in both commercially cultured of stands and naturally occurring forestry and ecosystems. The modelling tree-based disease has many features in common with modelling crop diseases. However, differences in the spatial distribution of hosts and growth cycles remain large.\\
 
@@ -69,6 +69,7 @@ The role of scale is crucial to describing the spread of tree-based disease...
     \item The spatial aggregation of vegetation, how does clustering look on different spatial resolutions ?
     \item Spatial scale in dispersal ? What does this mean for disease gradients ?
     \item \cite{https://doi.org/10.1111/jbi.13642}
+    \item \cite{ pautasso2013european}, search for 'modelling' in this review paper. It contains references to LDD models.
 \end{itemize}}
 
 \section{Modelling landscape-level epidemics}
@@ -159,12 +160,12 @@ From the model put forward by \cite{park2001invasion}, the concept of \textit{pe
 %     \item \textbf{introducing space into the problem lead to percolation...}
 % \end{itemize}
 
-\textcolor{red}{talk about host data}
 
 Data regarding different tree species distributions will predominantly come in two forms, abundance and presence/absence data. Using abundance data is usually represented in $km^2$ tree cover per hectare (or percentage cover), whereas presence only data only gives binary information if a tree species is present or not.
 
 Abundance data is preferred as more information is captured about the tree species, however, good quality abundance data is in short supply. An interesting model put forward by Louise et at \cite{2STAGE} uses a two stage distribution model. First, presence only data is combined with a series of environmental covariates using a species distribution model in order to produce a map of predicted occurrence data. Random forest regression is then applied to a training sample of real life abundance data producing a high resolution map predicting abundance over the UK at a resolution of $1km^2$. The final result was compared with the remaining abundance data and found to perform much better than existing models. Moving to realistic tree distributions is preferable as the parameter space is reduced by the removal of $\rho$.
 
+% The accuracy of modeled canopy cover data depend on the quality, and quantity, of data sources. Key species that have greater ecological and economic importance, such as ash or oak, typically have better data availability.
 \section{Percolation\textemdash from forest fires to epidemics}
 \label{section:lit-rev-perc}
 \begin{figure}
@@ -198,3 +199,20 @@ The first ecological application came in \cite{pub.1031591030} where forest fire
     \item Set the scene for chapters 1 and 2, what are early warning signals and how did they develop ?
     \item Review Siro's paper and give examples of how early warning signals have been used to increase tree-health and resilience 
 \end{itemize}
+
+
+\section{Ash dieback}
+
+% WORK IN PROGRESS
+Ash dieback will be the subject of chapter \ref{ch:6} and presents an interesting case-study of an emerging epidemic. Ash dieback is lethal to ash and affects trees of all ages, although age is a significant component of the disease severity \cite{marccais2017estimation}. % this section should relate the biology of ADB to the model, a literature review in ch2 should explore a more complete picture
+
+Ash dieback, caused by the fungus \textit{H.pseudoalbidus} (HP), is a highly seasonal \cite{bengtsson2014seasonal} and follows a complicated, yearly, polycyclic infection cycle. The ADB pathosystem, has been the subject of much research over the years, the taxonomy, symptoms and life-cycle of the pathogen are well-known \cite{https://doi.org/10.1111/mpp.12073}. Although, compartmentalised models of ADB have a noticeable absence in the literature.
+
+The control of ash dieback in an established focus of infestation is virtually impossible, as noted by \cite{havrdova2017environmental}. Moreover, it is already well recognised that ADB will wipe out the vast majority of ash, in Europe and Great Britain alike.
+
+% draw analogy between exponential kernel of \cite{} <- tracking adb and \cite{} <- landscape spread of adb
+% commonly referred to as \textit{H.pseudoalbidus}-\textit{F. excelsior}
+
+
+The controlling ADB in both natural and artificial ash stands is incredibly challenging, verging on impossible if the pathogen is already established \cite{havrdova2017environmental}.
+
