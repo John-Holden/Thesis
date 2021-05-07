@@ -4,18 +4,42 @@ Aims:
     2: Give insight into how R0 under changes with both temporal and spatial scale
     3: Show that reducing tree density, ahead of a wave-front, can slow and even contain the spread.
 
-MVP:
-    1. Construct model from first principles
+MVP/steal thread:
+    1. Construct SIR model from first principles (small 25m \ell)
+        - outline probability of transition(s) 
         - show stochastic time-series
         - show simulation frames
-    2. Ensemble-averaged parameter sweeps of Gaussian dispersal model
+        - show that with a smaller value of \ell we essentially get back the percolation-based SLM
+    1.1. Ensemble-averaged parameter sweeps of Gaussian dispersal model
         - mortality, distance reached/velocity/ probability of survival/percolation
         - density variations
         - \beta variations
-        - \ell and \beta variations
-    3. R0-idealistic derivation for Gaussian model
-        - mathematical derivation 
-        - show behaviour over
-    4. R0-contact-traced derivations for Gaussian model 
-    5. Power-law spread, a comparison to Gaussian
-    6. Density reduction for control
+        
+        whys : 1) show that a small value ell will give back a model of the SLM 
+               2) highlights the importance of modelling a type of pathogen water course, wind borne, soil etc
+    
+    2. Increasing dispersal
+        - show that upping dispersal parameters in this model requires a smaller \beta
+        - fit to SIR model and demonstrate the spread is more diffuse
+        
+        whys : 1) this shows section highlights the difference in model behaviour when ell is large 
+               2) shows that beta must be changed to accommodate changes in ell 
+               3) motivates the need for R0 as a metric to compare different models
+    3. R0
+        - derive R0 with idealistic upper bound expression
+        - show that it overestimates the spread when compared to probability of survival 
+    3.1 Contact tracing R0
+        - show that contact tracing R0 now describes the spread more reliably 
+    3.2 R0 and scale 
+        - show that R0 is a function of time and space, that later generations will under estimate R0, first generations will over-estimate
+        - show that a small domain will under-estimate R0
+        - show that a large domain will saturate the estimate of R0
+    
+    4.2. Power-law spread 
+        - explore the scale parameter and the exponent 
+        - show that for the same value of R0 exponent and scale parameter combinations yield a faster spread
+        whys: 1) power law spread is used throughout the literature
+              2) demonstrates the difficulty in containing power-law spread 
+              3) sets up chapter 6    
+
+    
