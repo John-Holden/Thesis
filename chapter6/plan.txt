@@ -9,6 +9,10 @@ Improvements to Chapter:
 - to our knowledge $R_0$ has not been estimated for Ash dieback but has been for wheat strip rust \cite{segarra2001epidemic}
 
 
+MVP/Steel thread:
+1. outline SEIR model of ash dieback
+2. 
+
 In this Chapter aspects of the sub-grid model are improved.//
 \section{The biology of Ash dieback}
 \begin{itemize}

@@ -1,3 +1,4 @@
+\chapter{A non-local dispersal model}
 
 \section{Dispersal model: basic reproduction number}
 
@@ -34,7 +35,7 @@ Furthermore, a spatially-structured host population with dispersal-mediated inte
 can expect to violate the \textit{well-mixed} population assumption\footnote{A spatially-dependant dispersal mechanism will limit the contact network and prevent the host population from being well-mixed}. 
 Therefore care is needed in deciding how to define $R_0$.\\
 
-\chapter{A non-local dispersal model}
+
 \label{ch5:dispersal-model}
 
 \subsection{Contact-tracing $R_0$}
@@ -57,10 +58,17 @@ Throughout a simulation, a record is kept of all infection histories i.e. which 
 To achieve this, trees are treated as particles in the sense that individual interactions between them are computed. 
 This can be seen as equivalent to contact-tracing the resulting epidemic \cite{eames2003contact}. \\
 
+
 For the remainder of this thesis, the basic reproduction number will be defined as $R_0=R^2_0$ unless otherwise stated. 
 Defining $R_0$ in this way extends the previous definition to account for the realistic %
 saturation around the primary infected trees neighbourhood. This gives an improved measure %
-of the threshold for invasion.\\
+of the threshold for invasion. The average number of contact-traced secondary infections, $R_0$, can be defined as:
+\begin{defn}. % look into definitions of next-generation operator
+....
+\label{def:R0_contact_traced}
+\end{defn}
+
+\\
 
 \begin{figure}
     \centering
