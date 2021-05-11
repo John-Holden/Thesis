@@ -205,6 +205,7 @@ Successive steps through $\alpha$ continue until $\alpha=1$ and critical links a
 
 
 \chapter{Seasonal $SEIR$ model of Ash dieback}
+
 \label{section:ga-SEIR-variant}
 \begin{itemize}
     \item The Gaussian and inverse power-law models are distinct and could be considered to have different infecitivity parameters $\beta_{ga}$ and $\beta_{pl}$k.
@@ -222,10 +223,25 @@ Successive steps through $\alpha$ continue until $\alpha=1$ and critical links a
 \begin{figure}
     \centering
     \includegraphics[scale=0.25]{appendix/figures/A-ch6-R0-saturation-with-beta.pdf}
-    \caption{The average number of contact-traced secondary infections, $R_0$, saturating to the final value. (a) For a more invasive pathogen, it takes less time for $R_0$ to reach its final value (b) For a less invasive pathogen, it takes a longer time to saturate to the final value.}
+    \caption{The average number of contact-traced secondary infections, $R_0$, saturating to the final value with time. (a) For a more invasive pathogen, it takes less time for $R_0$ to reach its final value (b) For a less invasive pathogen, it takes a longer time to saturate to the final value.}
     \label{fig:a-R0-saturate}
 \end{figure}
 
+\subsection{Seasonal $R_0$ measures}
+For this $SEIR$ model of ADB, new secondary infections only occur during summertime sporulation which can be conveniently reflected by a seasonal average, $R_S$. The definition of $R_S$ for ADB can be stated as:
+\begin{defn}
+for years $(1,2.,,n)$ a series of ratios $(R_{1},R_2,...,R_{n})$ measure the mean number of secondary infections produced by an infectious ash over the sporulation season
+\end{defn}
+where 'mean' refers to the contact-traced number of infections produced by an individual as per Figure \ref{fig:contact-trace}.
+
+In this model, the seasonal average $R_S$ is likely to underestimates the true value of $R_0$. This follows from the fact an infected ash tree has on average a life time of five years. It is widely accepted that policy makers should act quickly to a control an epidemic, and this observation once again highlights the challenge for policy makers because measuring $R_0$ over five years is likely to be too a time frame. However.
 
 
-
+\subsection{Seasonal $SEIR$ with domain-size}
+\label{a:seir-with-L}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.275]{appendix/figures/A-ch6-R0-vs0-L.pdf}
+    \caption{The $10$ year mean $R_0$ value is shown against different domain sizes, $L$. The value of $R_0$ can be seen to start leveling off at around $5\mathrm{km} \times 5\mathrm{km}$. Beyond this point there is little difference in $R_0$, but considerable differences in the computational run-time.}
+    \label{fig:a-R0-saturate-with-L}
+\end{figure}

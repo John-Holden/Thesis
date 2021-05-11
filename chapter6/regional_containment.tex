@@ -169,6 +169,8 @@ Figure (g) highlights that even if the epidemic parameters are below the thresho
 \end{figure}
 \end{landscape}
 
+\subsection{Sporulation}
+\textcolor{red}{demonstrate a Gaussian-based sporualation function...}
 
 \section{Defining an $R_0$}
 
@@ -178,7 +180,6 @@ Figure (g) highlights that even if the epidemic parameters are below the thresho
     \caption{Contact-tracing $R_0$ in the seasonal $SEIR$ model. (a) The average number of secondary infections are shown for ash infected in the $n^{th}$ generation after outbreak (b) The average number of secondary infections is shown against the years after outbreak for different generations $0-10$.}
     \label{fig:SEIR-R0-definition}
 \end{figure}
-
 
 Before the $SEIR$ model can be investigated, a measure of the pathogens ability to invade must be defined. For epidemic systems, this usually comes in the form of a reproduction number $R_0$. There are, however, various challenges involved in defining $R_0$ when there are dispersal-mediated secondary infections and spatial structure, as explored in chapter \ref{ch5:dispersal-model}. Chapter \ref{ch5:dispersal-model} demonstrated that $R_0$ is a spatiotemporal function of various epidemiological parameters, and measuring $R_0$ over different spatiotemporal scales can lead to different, and sometimes misleading, results for $R_0$; for a seasonal-based pathogen such as ADB, additional factors only complicate the definition. 
 
@@ -192,20 +193,10 @@ It makes sense to define a measure for $R_0$ based on the first generation of in
 
 \textit{The results of this, and the proceeding chapter, therefore, are based on the average number of first generation infected ash.}
 
-% Find a suitable spatial scale, L = 500 ?
-
-\subsection{Seasonal $R_0$ measures}
-For this $SEIR$ model of ADB, new secondary infections only occur during summertime sporulation which can be conveniently reflected by a seasonal average, $R_S$. The definition of $R_S$ for ADB can be stated as:
-\begin{defn}
-for years $(1,2.,,n)$ a series of ratios $(R_{1},R_2,...,R_{n})$ measure the mean number of secondary infections produced by an infectious ash over the sporulation season
-\end{defn}
-where 'mean' refers to the contact-traced number of infections produced by an individual as per Figure \ref{fig:contact-trace}.
-
-In this model, the seasonal average $R_S$ is likely to underestimates the true value of $R_0$. This follows from the fact an infected ash tree has on average a life time of five years. It is widely accepted that policy makers should act quickly to a control an epidemic, and this observation once again highlights the challenge for policy makers because measuring $R_0$ over five years is likely to be too a time frame. 
+Lastly, a suitable domain size $5\mathrm{km} \times 5\mathrm{km}$ was chosen to measure the $R_0$ for first generation infected ash over a $10$ year period. Primarily, this choice was taken for two reasons: 1) larger domain sizes beyond $5\mathrm{km} \times 5\mathrm{km}$ incur increasingly larger computer run times 2) there is little dependence of $R_0$ at, or beyond, this domain size or most values of $\beta$. Although, as shown in Appendix \ref{a:seir-with-L}, it is possible to under-estimated $R_0$ for high values of $\beta$, albeit slightly.
 
 
 % - Show three different values of beta, above below and at threshold, for ga vs pl 
-
 
 %\subsection{Defining an R0 value}
 % Show that R0 A) over the season B) the problem policy makers experience by not having 5 years to wait before estimates of R0 C) How to form a crude estimate for R0 based on the first season 
@@ -217,34 +208,63 @@ In this model, the seasonal average $R_S$ is likely to underestimates the true v
 %  - use a 10 year simulation below seasonal threshold, to show that the pathogen can survive for long periods within an area
 
 
-\subsection{Sporulation}
-
 % discuss multiple sporulation functions
 
 % A simple time-dependant function $\phi(T)$ takes the value of $1$ between the summer months of June - September, and $0$ otherwise thus reflecting the sporulation peak of \textit{Hymenoscyphus fraxineus} (HF). During these summer months, wind-borne dispersal occurs when fruiting bodies produce large numbers of ascospores. 
 
-
 \section{Informed ash density maps}
 
-Ash densities are parameterised by modelled ash abundance data provided by \cite{hill.data}. The canopy cover datasets produced by \cite{hill.data} combine a number of different data sources that cover parts of Great Britain, regression methods are then used to extrapolate canopy cover over the whole of Great Britain\footnote{Previously in chapter chapter \ref{fig:ch4_uk_spread}, the oak canopy cover dataset given by \cite{hill.data} was used in conjunction with the SLM toy model; the insights from doing this then motivated the construction of a generic $SIR$-based dispersal model in chapter \ref{ch5:dispersal-model}.}. Conveniently for the present chapter, ash happened to be among the most accurate data sets given by \cite{hill.data}. For a more in-depth description of the methods used by \cite{hill.data} and a review of host data in general, see chapter \ref{chapter:lit-rev}.
+Up to this point, a thorough description of the host data set has been omitted. Ash densities are parameterised by modelled ash abundance data provided by \cite{hill.data}. The canopy cover datasets produced by \cite{hill.data} combine a number of different data sources that cover parts of Great Britain, regression methods are then used to extrapolate canopy cover over the whole of Great Britain\footnote{Previously in chapter chapter \ref{fig:ch4_uk_spread}, the oak canopy cover dataset given by \cite{hill.data} was used in conjunction with the SLM toy model; the insights from doing this then motivated the construction of a generic $SIR$-based dispersal model in chapter \ref{ch5:dispersal-model}.}. Conveniently for the present chapter, ash happened to be among the most accurate data sets given by \cite{hill.data}. For a more in-depth description of the methods used by \cite{hill.data} and a review of host data in general, see chapter \ref{chapter:lit-rev}.
 
- Two modifications had to be made to the modelled ash canopy cover data in order to complement the $SEIR$ model. Initially, the data set had a resolution of $\mathrm{1km}\times \mathrm{1km}$ and units of hectares of canopy cover per kilometre-squared of land $\mathrm{ha/km^2}$. Firstly, the raw abundance values were re-scaled into a dimensionless tree density $\rho$. The same process was outlined in chapter \ref{ch5:dispersal-model} i.e. by converting the units $\mathrm{ha/km^2}$ to kilometre-squared of ash cover per kilometre-squared of land. 
- 
 \begin{figure}
     \centering
     \includegraphics[scale=0.30]{chapter6/figures/fig3-ash-data.pdf}
-    \caption{Ash canopy cover data, as modelled by \cite{hill.data}. (a) the original resolution of $1\mathrm{km} \times 1\mathrm{km}$ was re-scaled to $5\mathrm{km} \times 5\mathrm{km}$ (b) the distribution of ash density over the re-scaled map of Great Britain, the inset shows a power-law behaviour.} % Thi Figis a place holder. (a) and (b) need to reflect the $5\mathrm{km} \times 5\mathrm{km}$
+    \caption{Ash canopy cover data, as modelled by \cite{hill.data} converted into a density. (a) a map of ash densities at a resolution of $1\mathrm{km} \times 1\mathrm{km}$ (b) the distribution of ash density over Great Britain, the inset shows a power-law behaviour.}
     \label{fig:ash-host-data}
 \end{figure}
 
-Secondly, the resolution was re-scaled to $\mathrm{5km}\times \mathrm{5km}$, as shown in Fig\ref{fig:ash-host-data}(a). The purpose of re-scaling the map is a direct consequence of local wind-borne dispersal. In the local scale field study conducted by \cite{grosdidier2018tracking}, fungal spores were detected at a maximum distance of $500\mathrm{m}$ away from a known source of infection. If the domain consisted of $\mathrm{1km}\times \mathrm{1km}$ patches, it would be tangible for spores to disperse straight over individual patches and infect non-nearest neighbours. However, increasing the spatial extent of each pixel to $\mathrm{5km}\times \mathrm{5km}$ provides some level of assurance that at the local scale, wind-dispersed spores cannot jump over individual patches. There is always the possibility that spores travel larger distances, from mainland Europe to Great Britain, for example, \cite{freer2017tree, wylder2018evidence}. Nevertheless, this chapter is predicated on targeting dispersal at local scales, and such detail can be omitted for now.
+Figure \ref{fig:ash-host-data}(a) shows a density map of ash, at a resolution of $\mathrm{1km}\times \mathrm{1km}$, produced from abundance data given by \cite{hill.data}. From Figure \ref{fig:ash-host-data}(a), the south of England contains the highest concentration of high-density ash patches and ash become progressively less abundant in Scotland and coastal locations, in western Whales for example. A higher density of ash can be expected to yield a higher number of secondary infections, in line with the results of chapters \ref{ch3:two-param-model}-\ref{ch5:dispersal-model}.
+ 
+ The frequency distribution is shown in Figure \ref{fig:ash-host-data}(b) and reveals that the average density of ash in Great Britain is $\rho=0.017$ and that few locations support densities of $\rho=0.10$ and over\footnote{In the original $2.2\times 10^4$ $1\mathrm{km^2}$ data points, there were a handful of outlier points with densities in the interval $\rho \in [0.10, 0.30]$ which were excluded from the analysis.}. Between the limits of $\rho \in [10^{-2}, 10^{-1}]$, the frequency distribution in Figure \ref{fig:ash-host-data}(b) follows a power law of the form $\sim \rho ^{-k}$, as evident from the linearity on the logarithmic inset axes. The distribution had a fitted exponent of $k=1.90$, shown by the dashed black line. Intriguingly, this observation is suggestive of self-similarity in the data.
 
-The frequency distribution is shown in Fig\ref{fig:ash-host-data}(b) and reveals that the average density of ash in Great Britain is $\rho=0.017$. Furthermore, few locations support densities of $\rho=0.10$ and over\footnote{In the original $2.2\times 10^4$ $1\mathrm{km^2}$ data points, there were a handful of outlier points with densities in the interval $\rho \in [0.10, 0.30]$ which were excluded from the analysis.}.  Between the limits of $\rho \in [10^{-2}, 10^{-1}]$, the frequency distribution follows a power law of the form $\sim \rho ^{-k}$, as evident from the linearity on the logarithmic inset axes. The distribution had a fitted exponent of $k=1.90$, shown by the dashed black line. Intriguingly, this observation is suggestive of self-similarity in the data. Figure \ref{fig:ash-host-data}(a) shows that the south of England contains the highest concentration of high-density ash patches. Ash becomes progressively less abundant in Scotland and coastal locations in western Whales.
+Two modifications had to be made to the modelled ash canopy cover data in order to complement the $SEIR$ model. Firstly, the raw abundance values were re-scaled into a dimensionless tree density $\rho$. The same process was outlined in chapter \ref{ch5:dispersal-model} i.e. by converting the units $\mathrm{ha/km^2}$ to kilometre-squared of ash cover per kilometre-squared of land. Secondly, the map resolution has to be re-scaled to reflect the intrinsic spatial scale of local wind-borne dispersal, this topic is resumed below in section \ref{ch6:re-scaling-host-data}, when ADB $R_0$-maps are constructed over Great Britain.
+
+\section{Constructing $R_0$-maps over Great Britain}
+
+The invasiveness of a pathogen is though to vary over a landscape \textcolor{red}{citations}. A map of $R_0$ values would therefore be useful to policy makers and plant modelers alike. In this section we will project a set of $R_0$ values over Great Britain for the $SEIR$ model of ADB. Doing so will permit the investigation of a control strategy. 
+
+\subsection{Tree density and $R_0$}
+\blindtext
+
+\subsection{Re-scaling the host distribution}
+\label{ch6:re-scaling-host-data}
+
+Suppose there are three patches of land, two that have tree densities above the threshold $R_0 = 1$ which are separated by an intermediary patch below the threshold. If we are not careful, it would be possible for pathogen dispersal to traverse the below-threshold patch of land within a single jump even at local spatial scales. As such, it is important we choose a domain resolution that gives some level of assurance that at the local scale, wind-dispersed spores cannot jump over whole patches with singular jumps. There is always the possibility that spores travel larger distances, from mainland Europe to Great Britain, for example, \cite{freer2017tree, wylder2018evidence}. Nevertheless, this chapter is predicated on targeting dispersal at local scales, and LDD can be omitted for now.
+
+In the local scale field study conducted by \cite{grosdidier2018tracking}, fungal spores were only detected at a maximum distance of $500\mathrm{m}$ away from a known source of infection. So on the surface, the original $1\mathrm{km} \times 1 \mathrm{km}$ resolution of the abundance data, as reported by \cite{hill.data}, appears reasonable. However, with moderate-high values of $\beta$ the power-law $SEIR$ model demonstrates that singular jumps can exceed $1\mathrm{km}$ and since we cannot know $\beta$ for sure, it is desirable to air on the side of caution and re-scale the domain.
+
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.40]{chapter6/figures/fig5-beta-vs-max_d.pdf}
+    \caption{Caption}
+    \label{fig:my_label}
+\end{figure}
+
+% \begin{figure}
+%     \centering
+%     \includegraphics[scale=0.25]{chapter6/figures/fig4.pdf}
+%       \caption{(a) Ensemble-averaged $R_0$ between two values of $\beta$, for Gaussian dispersal of $\ell=1.6\mathrm{km}$. (a-b) $R_0$-map for $\beta=3\mathrm{e}-05$, coarse-grained at $5$, $ 10\mathrm{km^2}$. (c-d) $R_0$-map for $\beta=6\mathrm{e}-05$.}
+%     \label{fig:uk-mapping}
+% \end{figure}
+
+
+% 1 ) Show R0 vs beta vs max d 2) take betas < 5km 3) explain that if beta is larger, we need a bigger re-scaling.
+
 
 % \footnote{A review on the landscape epidemiology of ADB \cite{doi:10.1111/1365-2745.13383} concluded that the effect of host abundance in the neighborhood of ADB decayed with distance, according to an exponential distribution with scale parameter $200\mathrm{m}$. That is, the severity of ADB symptoms depended on the surrounding abundance of ash.} 
 % 
 
-\section{Constructing $R_0$-maps over Great Britain}
 % discuss  projecting R0-maps
 % Assumption, there is considerable genetic variation in susceptibility that varies between spatial location \cite{stocks2017first}
 
