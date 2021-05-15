@@ -231,19 +231,12 @@ Two modifications had to be made to the modelled ash canopy cover data in order 
 
 \section{Constructing $R_0$-maps over Great Britain}
 
-In this section, we take a step toward projecting the $SEIR$ model of ADB over the ash distribution given by \cite{hill.data}. Unfortunately, this is not straight forward and relies on our knowledge of $R_0$, which itself is constrained over the scale of dispersal and the infectious lifetime. 
-
-The invasiveness of a pathogen is thought to vary over a landscape \textcolor{red}{citations}. A map of $R_0$ values would therefore be useful to policy makers and plant modelers alike. In this section we will project a set of $R_0$ values over Great Britain for the $SEIR$ model of ADB. Doing so will permit the investigation of a control strategy. 
-
-From this section onward, a threshold of $R_0 = 1$ is introduced for the seasonal $SEIR$ model. Above this threshold, the disease is assumed to freely spread and below this threshold, the pathogen is assumed to not spread. 
-
-\subsection{Tree density and $R_0$}
-\blindtext
+In this section, $R_0$ values of the $SEIR$ model of ADB will be projected onto the host distribution of ash, given by \cite{hill.data}, to create $R_0$-maps. Doing so will permit the investigation of a novel control strategy. But first, to accurately project $R_0$ values onto the host distribution, the spatial and temporal scale of pathogen transmission in the $SEIR$ model must be made to match the domain resolution and the infectious lifetime of the pathogen, respectively. This requires a re-scaling of the host distribution.
 
 \subsection{Re-scaling the host distribution}
 \label{ch6:re-scaling-host-data}
 
-A choice was made to re-scale pixels of the ash density distribution shown in Figure \ref{fig:ash-host-data}(a), from $1\mathrm{km} \times 1 \mathrm{km}$, to $5\mathrm{km} \times 5 \mathrm{km}$. In the local scale field study conducted by \cite{grosdidier2018tracking}, fungal spores were detected at a maximum distance of $500\mathrm{m}$ away from a known source of infection. So on the surface, the original $1\mathrm{km} \times 1 \mathrm{km}$ resolution of the abundance data, as reported by \cite{hill.data}, appears reasonable. However, with moderate-high values of $\beta$ the power-law $SEIR$ model demonstrates that singular jumps can exceed $1\mathrm{km}$ and since we cannot know $\beta$ for sure, it is desirable to air on the side of caution and re-scale the domain such that pixels represent larger spatial areas. In doing so, the resolution is lowered along with the level of spatial-structure. 
+A choice was made to re-scale the pixel size of ash density in Figure \ref{fig:ash-host-data}(a), from $1\mathrm{km} \times 1 \mathrm{km}$, to $5\mathrm{km} \times 5 \mathrm{km}$. In the local scale field study conducted by \cite{grosdidier2018tracking}, fungal spores were detected at a maximum distance of $500\mathrm{m}$ away from a known source of infection. So on the surface, the original $1\mathrm{km} \times 1 \mathrm{km}$ resolution of the abundance data, as reported by \cite{hill.data}, appears reasonable. However, with moderate-high values of $\beta$ the power-law $SEIR$ model demonstrates that singular jumps can exceed $1\mathrm{km}$ and since we cannot know $\beta$ for sure, it is desirable to air on the side of caution and re-scale the domain such that pixels represent larger spatial areas. In doing so, the resolution is lowered along with the level of spatial-structure. 
 
 \begin{figure}
     \centering
@@ -252,25 +245,42 @@ A choice was made to re-scale pixels of the ash density distribution shown in Fi
     \label{fig:max_dist_vs_R0}
 \end{figure}
 
-Suppose two patches of land, having tree densities above the threshold, $R_0 = 1$, are separated by an intermediary patch below the threshold. If we are not careful, dispersal could traverse the below-threshold patch within a single jump, even at local spatial scales. As such, we must choose a domain resolution that gives some assurance that, at the local scale, wind-dispersed spores cannot jump over whole patches with singular jumps. There is always the possibility that spores travel more considerable distances, from mainland Europe to Great Britain, for example, \cite{freer2017tree, wylder2018evidence}. Nevertheless, this chapter aims at targeting dispersal at local scales, and LDD can be omitted for now.
+Suppose two patches of land, having tree densities above the threshold, $R_0 = 1$, are separated by an intermediary patch below the threshold. If we are not careful, dispersal could traverse the below-threshold patch within a single jump, even at local spatial scales. As such, we must choose a domain resolution that gives some assurance that, at the local scale, wind-dispersed spores cannot jump over whole patches with singular jumps. As always, there is the possibility that spores disperse more considerable distances, from mainland Europe to Great Britain, for example, \cite{freer2017tree, wylder2018evidence}. Nevertheless, this chapter aims at targeting dispersal at local scales, and LDD can be omitted for now.
 
 Ensemble simulations can measure the maximum dispersal distance by averaging the maximum distance of secondary infections. Figure \ref{fig:max_dist_vs_R0} shows of the maximum distance traversed by the pathogen for different values of $\beta$ over a large domain, $20\mathrm{km^2}$, in a single year\textemdash or jump. The ensemble simulations shown in Figure \ref{fig:max_dist_vs_R0} start from a small number of infected trees at the centre of the domain and contrast the difference between inverse power-law and Gaussian models\footnote{This is indicated by the difference in subscript on $\beta$. Technically, both are models in their own right, so a comparison between both of them with the same value of $\beta$ does not make sense. Although both models cannot be compared directly, insight can be gained by comparing model behaviours over the same $R_0$ axis.}, (a) and (b) respectively. 
 
 Interestingly, dispersal in the Gaussian model can be seen to level off between $500-600\mathrm{m}$ in line with the results from \cite{grosdidier2018tracking}, whereas, for power-law dispersal, dispersal continues to rise. No doubt, this observation reflects the thin-tailed Gaussian and fat-tailed inverse power-law dispersal kernels. For the exact value of $R_0$, inverse power-law model can be seen to travel much further than Gaussian model and echos the difficulty of controlling fat-tailed dispersal \cite{WEBIDEMICS}, and more broadly, LDD.
 
-For the $5\mathrm{km} \times 5 \mathrm{km}$ re-scaled host distribution, we can therefore constrain an upper limit for $\beta$, indicated by the shaded region in Figure \ref{fig:max_dist_vs_R0} (a). An infectivity parameter that surpasses $\beta = 0.0016$ has the potential of simply jumping over a $5\mathrm{km} \times 5 \mathrm{km}$ below-threshold patch of land to infect non-nearest neighbours. Fortunately for us, the reproduction ratio $R_0=6$, as measured over a single year, corresponds to an infectivity parameter of $\beta = 0.0016$; this is likely too high. If $R_0=6$ over a single year, then we could expect to see very high $10$-year averaged $R_0$ values\footnote{\textcolor{red}{To put this into context, the highest known case of $R_0$ is measles that...}}.
+For a $5\mathrm{km} \times 5 \mathrm{km}$ host distribution, we can therefore place an upper limit on $\beta$, indicated by the shaded region in Figure \ref{fig:max_dist_vs_R0} (a). If an infectivity parameter surpasses $\beta = 0.0016$, the pathogen has potential to jump over $5\mathrm{km} \times 5 \mathrm{km}$ patches and infect non-nearest neighbours. In this scenario, patches either need to be re-scaled to larger values, or the neighbourhood of interaction made non-local, as in \textcolor{red}{cite non-local R0 maps, Gilligan.} Fortunately for us however, the reproduction ratio of $R_0=6$, shown in Figure \ref{fig:max_dist_vs_R0} (a) indicates that infectivity parameters of $\beta = 0.0016$ and above are likely too high\footnote{\textcolor{red}{The value of $R_0$ shown in Figure \ref{fig:max_dist_vs_R0} (a) was measured over one sporulation season. If $R_0$ for this value of $\beta$ was measured over the mean life-time of an infected tree, we could expect to see exceedingly high, and probably unrealistic, values of $R_0$. To put this into context, the highest known case of $R_0$ is measles that...}}.
 
+\textcolor{red}{The last insightful observation from Figure \ref{fig:max_dist_vs_R0} relates to the averaging spreading velocity of ADB...}
 
-% \begin{figure}
-%     \centering
-%     \includegraphics[scale=0.25]{chapter6/figures/fig4.pdf}
-%       \caption{(a) Ensemble-averaged $R_0$ between two values of $\beta$, for Gaussian dispersal of $\ell=1.6\mathrm{km}$. (a-b) $R_0$-map for $\beta=3\mathrm{e}-05$, coarse-grained at $5$, $ 10\mathrm{km^2}$. (c-d) $R_0$-map for $\beta=6\mathrm{e}-05$.}
-%     \label{fig:uk-mapping}
-% \end{figure}
+\subsection{Tree density and $R_0$}
 
+The relationship between $R_0$ and tree density $\rho$ is shown in Figure \ref{fig:R0-map-generation}(a) \textcolor{red}{for all four $SEIR$ variants, i.e. the different dispersal kernels and sporulation functions. Conveniently, all $SEIR$ implementations retain the same linearity as the generic $SIR$ model, as explored in chapter \ref{ch5:dispersal-model}}. The regime of pathogen extinction is shown in shaded grey along with vertical  lines that correspond to a critical `density threshold' denoted by $\rho_c$ (equivalent to the threshold $R_0 = 1$). When used in conjunction with the data-set from \cite{hill.data}, Figure \ref{fig:R0-map-generation}(a) represents an appropriate projection of $R_0$ over the map of Great Britain.
 
-% 1 ) Show R0 vs beta vs max d 2) take betas < 5km 3) explain that if beta is larger, we need a bigger re-scaling.
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.55]{chapter6/figures/fig6-R0-map-generation.pdf}
+    \caption{Generating $R_0$ maps for ADB over Great Britain. (a) Ensemble-averaged results of $R_0$ are plotted against the tree densities informed by \cite{hill.data}. (b-c) Projecting $SEIR$ inverse power-law $R_0$ values onto the re-scaled $5\mathrm{km} \times 5 \mathrm{km}$ ash host-distribution for two values of $\beta_{pl}$. Patches of land below $R_0 = 1$ are shown as white space. (d-e) The top $10$ largest connected, and susceptible, $R_0$-clusters that are present in maps (b-c).} % in fig (a), include Gaussian and phi(t)_2
+    \label{fig:R0-map-generation}
+\end{figure}
 
+Figures \ref{fig:R0-map-generation}(b-c) show the reproductive ratios for the inverse power-law model projected onto the host distribution of ash. For all variants of the $SEIR$ model, $R_0$-maps look similar, albeit with different $\beta$ values, see Appendix \ref{fig:a-R0-maps-SEIR-variants}. The values of $\beta$ shown in Figures \ref{fig:R0-map-generation}(b-c) correspond to the exact values of $\beta$ shown by blue and orange lines in Figure \ref{fig:R0-map-generation}(a) respectively. Under the influence of a more infectious pathogen, larger areas of the ash population become susceptible by supporting the growth and reproduction of the pathogen, illustrated by the higher density of patches in Figure \ref{fig:R0-map-generation}(c). All locations below the transmission threshold were presumed disease-free and given numerical values of zero, depicted by inland white-space. All values of $R_0$ over and above the threshold were taken as susceptible. 
+
+\subsection{Clustering in the $R_0$ map}
+
+From Figures \ref{fig:R0-map-generation}(b-c), we can begin to identify heterogeneity and high-risk clusters of ash. However, visualising which pixels connect to form large clusters is non-trivial. An image processing technique, `connected component analysis' (or CCA) \cite{CCA1, CCA2}, was used to identify and label susceptible clusters and simplify the $R_0$-map. This was performed using the function `label' from the Python-SciPy package `ndimage' \cite{scipy}. Doing so classified all susceptible neighbours according to a structuring element \cite{liang1989erosion} as connected members of the same cluster. That is, if two susceptible patches of land are located within the neighbourhood defined by the structuring element, they are connected members of the same cluster\footnote{More information on structuring elements in CCA and can be found on the Appendix \ref{a:R0-map-construction}. In general, structuring elements have their roots in shape and image analysis \cite{23111} and define how distinct binary shapes within an image connect \cite{liang1989erosion, nachtegael2001connections}}.
+
+To classify connected components two structuring elements, Moore and Von-Nuemann neighbourhoods (\textcolor{red}{references to chapter 3?}), were chosen. 
+For simplicity, the present section is only concerned with the Moore neighbourhood\textemdash a comparative look exploring the differences between Von-Nuemann and Moore structuring elements is resumed below in section \ref{R0-over-beta}. 
+
+% Interpretation of clusters
+Figures \ref{fig:R0-map-generation}(d-e) show the top 10 largest $R_0$-clusters, by area, that are present in the $R_0$-maps of Figures \ref{fig:R0-map-generation}(b-d) according to the Moore neighbourhood.
+In this simplified interpretation, clusters represent a connected medium of ash capable of supporting an epidemic, whereas regions below threshold act as barriers that inhibit the spread. The domain resolution of $5\mathrm{km} \times 5 \mathrm{km}$ ensures that at local scales, pathogen dispersal will not jump between clusters and thus remain localised. In this model, epidemic impact will correlate closely to cluster size as only large clusters have the potential to support large outbreaks. 
+
+% Linking R0 clusters to percolation theory
+The structure of connected $R_0$-clusters can be considered through the lens of a `\textit{percolation-like}' theory: if the domain were homogeneously distributed, a minimum number of susceptible (or `open' in percolation theory) positions would define a critical density. At the critical density, a `spanning' cluster would be realised and percolate through the domain. In Figures \ref{fig:uk-mapping}(d-e), this picture is complicated by heterogeneity. Subsequently, we found connectedness inside a given cluster could depend on just a small number of `connecting points' which if removed, thinned below $\rho_c$, would lead to significant fragmentation and divide the cluster\footnote{An analogy to this idea can be found in the study of `conductive-insulator' percolation networks, with so called `\textit{hot-bonds}'. If broken, a \textit{single} hot bond can prevent the whole system from conducting \cite{RevModPhys.45.574, Herrmann_1984, hot-bond}. Although, in our analysis, a generalisation of this analogy is presented to include a set of \textit{multiple} hot-bonds.}. This connectedness is the topic of chapter \ref{ch7:pde}, for now an in depth characterisation mapping $R_0$ will continue.
 
 % \footnote{A review on the landscape epidemiology of ADB \cite{doi:10.1111/1365-2745.13383} concluded that the effect of host abundance in the neighborhood of ADB decayed with distance, according to an exponential distribution with scale parameter $200\mathrm{m}$. That is, the severity of ADB symptoms depended on the surrounding abundance of ash.} 
 % 
@@ -294,6 +304,10 @@ For the $5\mathrm{km} \times 5 \mathrm{km}$ re-scaled host distribution, we can 
 % The structure of connected $R_0$-clusters can be considered through the lens of a `\textit{percolation-like}' theory: if the $R_0$-map were homogeneous, a minimum number of susceptible (or `open' in percolation theory) positions defines a critical density. At the critical density, a `spanning' cluster is realised and percolates through the domain. In Figure\ref{fig:uk-mapping}(b), this picture is complicated by heterogeneity. Subsequently, we found connectedness inside a given cluster could depend on just a small number of `connecting points' which if removed, thinned below $\rho_c$, would lead to significant fragmentation and divide the cluster\footnote{An analogy to this idea can be found in the study of `conductive-insulator' percolation networks, with so called `\textit{hot-bonds}'. If broken, a \textit{single} hot bond can prevent the whole system from conducting \cite{RevModPhys.45.574, Herrmann_1984, hot-bond}. Although, in our analysis, a generalisation of this analogy is presented to include a set of \textit{multiple} hot-bonds.}.\\
 
 % \textcolor{red}{Strictly speaking, the comparison with percolation theory breaks down on account of clustering in the $R_0$-map. That is, the susceptibility of a given pixel is likely dependent on its neighbours $R_0$-value. This contradicts classical percolation theory where lattice points are not correlated but exist independently of one another\textemdash much like the random-homogeneous distribution of trees presented in Section \ref{section:sgm-expo}. We precede by describing how these findings can be used to achieve efficient regional containment of an epidemic.\\}
+
+\section{$R_0$ clustering over $\beta$}
+\label{R0-over-beta}
+% analyse moore and vonneuman neighboorhoods
 
 \section{Optimal fragmentation of $R_0$-maps}
 
@@ -367,6 +381,8 @@ Dispersal over small spatial-scale is thought to predominately occur passively t
 To our knowledge, $R_0$ has not been estimated for Ash dieback, or indeed for any large deciduous tree species, unlike for some crop-based pathogens \cite{segarra2001epidemic}. The lack of $R_0$-estimates made it hard to scrutinize which $\beta$-valued $R_0$-map would be likely to reflect reality. This gap in the body of literature is hardly surprising given the complexity of measuring time-varying infectivity rates \cite{13-challenges}. Thus, as it stands, our results hint-towards the utility of landscape-level control but come short of definitive proof.
 
 % Looking at \cite{R0-perc-ref}, it makes me think our notion of $R_0$ is pretty simplistic. We only measure the local-level $R_0$. We do not consider $R_0$ from patch to patch. What scale we measure $R_0$ has a huge impact on what the result is. Could we rank land-patches not only on there local $R_0$ level, but also on the impact they have on there immediate neighbours ? This would, in theory be an improvement to the clustering algorithm.
+
+% A map of $R_0$ values is useful to policy makers and plant modelers alike.
 
 % Improvements to the model:
 % 1) The algorithm
