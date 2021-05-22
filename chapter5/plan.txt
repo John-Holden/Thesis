@@ -42,4 +42,6 @@ MVP/steal thread:
               2) demonstrates the difficulty in containing power-law spread 
               3) sets up chapter 6    
 
+Stretch: density reductions ?
+
     

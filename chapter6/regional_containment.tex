@@ -53,8 +53,8 @@ The seasonal infection cycle of ADB resembles that of crop-based disease \cite{t
 $\rho$  & Tree density & $0.00 - 0.10$ \\ 
 $\beta$ & Infectivity & $0.00010 - 0.00100$ \\
 $\ell_{ga}$ & Gaussian dispersal scale parameter& $196\mathrm{m}$ \\
-$\ell_{pl}$ & Power-law dispersal scale parameter& $203\mathrm{m}$ \\
-$a$ & Power-law dispersal exponent & $3.3$ \\
+$\ell_{pl}$ & inverse power dispersal law scale parameter& $203\mathrm{m}$ \\
+$a$ & Inverse power law exponent & $3.3$ \\
 $T$ & Sporulation peak & June - September \\
 $t$ & Time-step & $1\ \mathrm{day}$\\
 $R_0$ & Mean reproduction number & $0-20$ \\
@@ -74,31 +74,41 @@ As before, the hosts' distribution, in this case ash, is initialised by a Bernou
 
 However, this time, we include an extra latently infected (or exposed) compartment, denoted by $E$, into the model. Thus, a tree can be in one of four compartments and transition through $S\rightarrow E \rightarrow I \rightarrow R$, without the possibility of recovery. Figure \ref{fig:SEIR-transitions} shows a typical scenario; an infected ash tree in the $n^{th}$ cycle, or equivalently $n$ years after the initial outbreak, may infect ash in the $S$ compartment. Newly infected ash will transition into the $n^{th}$ $E$ compartment, denoted by $E_n$, and become infectious in the following year $I_{n+1}$. 
 
-In the $E$ compartment, trees are infected but not infectious. Additionally, the compartments $(E_1, E_n,..,E_n)$ do not represent different biological states. The index $n$ is included for convenience to highlight the fact that latently infected ash take, on average, one year before producing new secondary infections.
+In the $E$ compartment, trees are latently infected i.e. infected but not infectious. % REFERENCE
+The compartments $(E_1, E_n,..,E_n)$ do not represent different biological states. The index $n$ is included for convenience to highlight the fact that in this model, it takes latently infected ash takes approximately one year to start produce new secondary infections during the $(n+1)^{th}$ sporulation peak.
 
 \begin{figure}
     \centering
-    \includegraphics[scale=0.30]{chapter6/figures/fig1.pdf}
-    \caption{The $SEIR$ model of ash dieback. In year $n$ of an outbreak, an infectious tree may cause a transition $S\rightarrow E_n$, depicted by the bottom dashed grey arrow. A tree that becomes latently infected in year $n$ will lead to an infectious tree in year $n+1$. Eventually, all infected ash are removed without the possibility of recovery.}
+    \includegraphics[scale=0.30]{chapter6/figures/fig1-seir-transitions.pdf}
+    \caption{The seasonal $SEIR$ model of AD. In year $n$ of an outbreak, an infectious tree may cause a transition $S\rightarrow E_n$ during summer, depicted by the bottom dashed grey arrow. A tree that becomes latently infected in year $n$ will lead to an infectious tree in year $n+1$. Eventually, all infected ash are removed without the possibility of recovery.}
     \label{fig:SEIR-transitions}
 \end{figure}
 
-As defined here, an ash tree transitions into the infectious compartment when leaf shedding begins in Autumn. A Gaussian distribution centred in November with a two-week standard deviation represents this in the model. This particular choice of standard deviation, although best-estimated, is ultimately ill-informed. However, because infected ash do not produce any secondary infections until the following summer, we can afford some degree of flexibility modelling the exact timing of transitions between $E_{n}\rightarrow I_{n+1}$; this flexibility is demonstrated in-depth later on.
+As defined here, a latently infected ash tree in $E_n$ transitions into the infectious compartment $I_{n+1}$ during seasonal leaf shedding between Autumn and Winter. A Gaussian distribution centred in November with a two-week standard deviation represents this in the model. This particular choice of distribution and standard deviation, although intuitive, is ultimately ill-informed. However, because infected ash do not produce any secondary infections until the following summer, we can afford some degree of flexibility modelling the exact timing of transitions between $E_{n}\rightarrow I_{n+1}$ during Autumn and Winter; provided exposed ash transition into the infected compartment before sporulation, the epidemic spread will remain the same.
 
-Once in the infectious compartment, an infected ash tree will not give rise to any secondary infections until summer when fruiting bodies produce their spores on dead leaf litter. Thus, infectivity is now time-dependent and can be captured by a 'sporulation' function $\phi(t)$. Sporulation functions have been investigated in the context of a time-varying infectivity parameter \cite{time-varying-infectivity}. In the case of ADB, the function $\phi(t)$ is used to mirror the life cycle of ADB where new secondary infections only arise during the summertime sporulation \cite{https://doi.org/10.1111/mpp.12073}. That is, non-zero from June until September, and zero otherwise\footnote{Variations in ADB sporulation have been noted between European countries \cite{https://doi.org/10.1111/mpp.12073}, along with the potential for early-onset sporulation in the face of favourable environmental conditions. Although, the most generally agreed upon sporulation period is thought to be from June to September.}.
+Once in the infectious compartment, an infected ash tree will not give rise to any secondary infections until summer when fruiting bodies on dead ash leaf litter produce ascospores. Thus, infectivity in the model should be time-dependent, this is captured by a 'sporulation' function $\phi(t)$. Sporulation functions have been investigated in the context of time-varying infectivities \cite{time-varying-infectivity}. In the case of ADB, the function $\phi(t)$ is used to mirror the life cycle of ADB where new secondary infections only arise during the summertime sporulation \cite{https://doi.org/10.1111/mpp.12073}. That is, non-zero from June until September, and zero otherwise\footnote{Variations in ADB sporulation have been noted between European countries \cite{https://doi.org/10.1111/mpp.12073}, along with the potential for early-onset sporulation in the face of favourable environmental conditions. Although, the most generally agreed upon sporulation period is thought to be from June to September.}.
 
-To model dispersal, a thin-tailed Gaussian was considered alongside a fat-tailed inverse power-law distribution\textemdash see table \ref{tab:SEIR-model}. A probability of transition $S_x \rightarrow E_x$ for Gaussian and inverse power-law respectively, can be seen to follow:
+To model dispersal, a thin-tailed Gaussian was considered alongside a fat-tailed inverse power law distribution\textemdash see table \ref{tab:SEIR-model}. A probability of transition $S_x \rightarrow E_x$ for Gaussian and inverse power law respectively, can be seen to follow:
 \begin{equation}
     Pr(S_{x} \rightarrow E_{x} ;\ I_{x^{\prime}} ) = \beta  \phi(T) \exp\Big[\frac{-r^2}{2\ell^2_{ga}}\Big] 
 \end{equation}
 \begin{equation}
     Pr(S_{x} \rightarrow E_{x} ;\ I_{x^{\prime}} ) = \beta \phi(T) (1 - r/\ell_{pl})^{-a}
 \end{equation}
-where $\phi(t)$ is a time-dependant function reflecting the seasonal life-cycle of ADB (Two sporulation functions are considered, the precise functional form is discussed in-depth below.) and $r$ is the distance between $S_x$ and $I_{x^\prime}$. Thus, the inclusion of an exposed category, together with a sporulation function, constrain the dynamics of ADB whereby: A) infected ash may display symptoms but crucially not disperse any infectious material B) ash may shed infected leaves in Autumn/winter, and thereby disperse infected material, but not lead to any secondary infections until the following summer.
+where $\phi(t)$ is a time-dependant function reflecting the seasonal life-cycle of ADB and $r$ is the distance between $S_x$ and $I_{x^\prime}$. Two sporulation functions are considered, the precise functional forms are discussed below in section \ref{ch6:sporulation}. 
 
-Finally, the last transition to consider is from infected to removed $I_{n}\rightarrow R$. Given a $95\%$ mortality rate, ADB can be regarded as lethal. Therefore, once an ash tree becomes infected, an eventual transition to the $R$ compartment is assumed with a probability of one\footnote{Interestingly, edge-cases can contradict this assumption. For example, a sufficiently large quantity of inoculum deposited on ash leaves can result in leaf shed before the infection has the chance to spread throughout the tree \cite{https://doi.org/10.1111/mpp.12073}.}. As a first approximation, infected ash were chosen to have exponentially distributed life-times with a mean of five years, see table \ref{tab:SEIR-model}. 
+The inclusion of an exposed category, together with a sporulation function, constrain the dynamics of ADB whereby: A) infected ash may be latently infected and display symptoms but crucially not disperse any infectious material B) ash may shed infected leaves in Autumn/winter, and thereby disperse infected material, but not lead to any secondary infections until the following summer when ascospores are produced.
 
-The precise probability distribution describing $I_{n}\rightarrow R$ is, to my knowledge, non-existent in the literature. Although, observations of mortality ratios after years of infection provided some guidance towards an approximate time-scale. In particular, reports of $5\%$ mortality after two years of infection \cite{kessler2012dieback}, $75\%$ mortality within five years \cite{langer2015ash} and no observations of infected ash surviving beyond $15$ years \cite{wylder2018evidence}. However, as discussed in detail later, the main results of this chapter depend on time-scales below the mean infection life-time. So once again, there is some degree of flexibility in the precise time-scale of $I_{n}\rightarrow R$.
+The last transition to consider is from infected to removed $I_{n}\rightarrow R$. Given a $95\%$ mortality rate, ADB can be regarded as lethal. % REFERENCE
+Therefore, once an ash tree becomes infected, an eventual transition to the $R$ compartment is assumed with certainty\footnote{Interestingly, certain edge-cases can contradict this assumption. 
+For example, a sufficiently large quantity of inoculum deposited on ash leaves can result in leaf shed before the infection has the chance to spread throughout the tree \cite{https://doi.org/10.1111/mpp.12073}.}. 
+The precise probability distribution describing $I_{n}\rightarrow R$ is, to my knowledge, non-existent in the literature. 
+
+As a first approximation, infected ash were chosen to have exponentially distributed life-times with a mean of five years, see table \ref{tab:SEIR-model}. 
+This choice was informed by experimental observations of ash mortality after years of infection. In particular, reports of $5\%$ mortality after two years of infection \cite{kessler2012dieback}, $75\%$ mortality within five years \cite{langer2015ash} and no observations of infected ash surviving beyond $15$ years \cite{wylder2018evidence} provide some guidance towards an approximate time-scale.
+
+However, as discussed in detail later, the main results of this chapter depend on time-scales below the mean infection life-time. So once again, there is some degree of flexibility in the precise time-scale of $I_{n}\rightarrow R$.
+\textcolor{red}{Re-fame and discuss interpretation of time-scale and ash age...}
 
 
 % subdividing compartments in this manner could also provide an easier implementation to hosts which become more infectious, through a greater production of spores, as the infectious cycle continues not to mention particular periods of environmental unsuitability.
@@ -109,11 +119,11 @@ The precise probability distribution describing $I_{n}\rightarrow R$ is, to my k
 \begin{figure}
     \centering
     \includegraphics[scale=0.25]{chapter6/figures/fig2.pdf}
-    \caption{Dispersal gradients at the local spatial scale, parameters are informed by the work of \cite{grosdidier2018tracking}. The authors provide estimates for Gaussian and inverse power-law kernels: $\ell_{ga} = 195\mathrm{m}$ and ($\ell_{pl} = 205\mathrm{m}$, $a=3.3$) respectively, where $a$ represents the inverse power-law exponent.}
+    \caption{Dispersal gradients at the local spatial scale, parameters are informed by the work of \cite{grosdidier2018tracking}. The authors provide estimates for Gaussian and inverse power law kernels: $\ell_{ga} = 195\mathrm{m}$ and ($\ell_{pl} = 205\mathrm{m}$, $a=3.3$) respectively, where $a$ represents the inverse power law exponent.}
     \label{fig:dispersal-parameterisation}
 \end{figure}
 
-Dispersal was informed by data collected in France by \cite{grosdidier2018tracking}. The field study conducted by \cite{grosdidier2018tracking} provide estimates for dispersal parameters by fitting data against a Gaussian and inverse power-law kernels. Notably, the authors studied dispersal at two different spatial scales, local and regional, \textcolor{red}{on the order of $1\mathrm{km}$, to $10-100 \mathrm{km}$ respectively}. For a review on the importance of scale, see chapter \ref{chapter2:litreview}. 
+Dispersal was informed by data collected in France by \cite{grosdidier2018tracking}. The field study conducted by \cite{grosdidier2018tracking} provide estimates for dispersal parameters by fitting data against a Gaussian and inverse power law kernels. Notably, the authors studied dispersal at two different spatial scales, local and regional, \textcolor{red}{on the order of $1\mathrm{km}$, to $10-100 \mathrm{km}$ respectively}. For a review on the importance of scale, see chapter \ref{chapter2:litreview}. 
 
 The experimental data analysed by \cite{grosdidier2018tracking} tracked ADB spores about known sources of infection. Although data on spore depositions does not necessarily correspond to a new infection, it sheds essential light on the spatial scale of ADB dispersal. Given that the spatial scale in the $SEIR$ model is small, at a  resolution of $5\mathrm{m} \times 5\mathrm{m}$, a decision was made to parameterise dispersal with the local-level dispersal values given by \cite{grosdidier2018tracking}. See table \ref{tab:SEIR-model} an Fig\ref{fig:dispersal-parameterisation}. 
 
@@ -139,10 +149,10 @@ Lastly, the regional-scale dispersal analysed by \cite{grosdidier2018tracking}, 
 
 \section{Seasonal $SEIR$ model behaviour}
 
-Previously in section \ref{sec:infection-dynamics} the details of sporulation were omitted. For robustness, two sporulation functions are considered, a step function defined by equation \ref{eq:step-function} and a normal distribution located at the midpoint between June and September. For now, the simplest form of sporulation is adopted:
+Previously in section \ref{sec:infection-dynamics} the details of sporulation were omitted. For robustness, two sporulation functions are considered, a step function defined by equation \ref{eq:step-function} and a normal distribution located at the midpoint between June and September. For now, the simplest form of sporulation is adopted: % DISCUSS PLANK SPORULATION...
 \begin{equation}
 \label{eq:step-function}
-\phi(t) = 
+\phi_1(t) = 
 \begin{array}{cc}
   \{ & 
     \begin{array}{cc}
@@ -152,27 +162,53 @@ Previously in section \ref{sec:infection-dynamics} the details of sporulation we
 \end{array}
 \end{equation}
 
-The $SEIR$ model behaviour is shown in Figure \ref{fig:SEIR-spread} for the inverse power-law dispersal model over the average density of ash in Great Britain\textemdash see Appendix \ref{section:ga-SEIR-variant} for the Gaussian variant. During each season, a rise in the number of exposed trees in $E$ can be seen during summertime sporulation, June-September, followed by a rise in the number of infected trees in the Autumn, highlighted by Figure \ref{fig:SEIR-spread}(a). 
+The $SEIR$ model behaviour is shown in Figure \ref{fig:SEIR-spread} for the inverse power law dispersal model over the average density of ash in Great Britain.
+The Gaussian-based dispersal model displays the same seasonal behaviour, as demonstrated in appendix \ref{section:ga-SEIR-variant}. For each year after outbreak, a rise in the number of latently infected ash in $E$ can be seen during summertime sporulation, June-September, followed by a rise in the number of infectious ash in the Autumn-Winter. 
 
-The spatial progression of ADB is shown in Figures \ref{fig:SEIR-spread}(b-d). The simulations begin from an initial condition of $25$ infected ash distributed throughout the host landscape. Each sporulation season leads to new secondary infections into the $E$ compartment, shown by the orange markers. The black markers depict a steady transition of infected ash into the $R$ compartment.
+The spatial progression of ADB in the $SEIR$ model is shown in Figures \ref{fig:SEIR-spread}(a-c) over one year. The simulation begins in Figure \ref{fig:SEIR-spread}(a) with an initial condition of $25$ infected ash distributed throughout the host landscape during March. At this point in the year, fungal fruiting bodies on infected leaf litter will be preparing to release ascospores.
+During the sporulation season, secondary infections are produced, and latently infected ash spread throughout the domain, depicted by the orange dots in Figure \ref{fig:SEIR-spread}(b). After the sporulation season ends in September, latently infected ash begin to transition into the $I$ compartment, reflected by the increased number of red dots in Figure \ref{fig:SEIR-spread}(c). The cycle will continue when the next cohort of secondary infections are produced in the following summer when the sporulation function next becomes non-zero.
 
-The number of ash in the $SEIR$ compartments over $10$ years is shown in Figure \ref{fig:SEIR-spread} for a domain of size $2\mathrm{km}\times2\mathrm{km}$ and three variations of the infectivity parameter $\beta$. Figure \ref{fig:SEIR-spread} shows three scenarios with infectivity parameters $\beta \in [2.5\times 10 ^{-4}, 1.5\times 10 ^{-4}, 1.5\times 10 ^{-5}]$, above, equal to and below the threshold for spread, (e-g) respectively.
-
-Figure (g) highlights that even if the epidemic parameters are below the threshold, as indicated by the slow but steady decline of ash in $I$, the fungus may survive for long periods. This behaviour is known as `\textit{persistence}'. Persistence is, in general, one aspect of plant-based diseases that makes epidemic control difficult\textemdash see chapter \ref{ch3:invasions_and_persistence} for a review of invasion and persistence in the spread of plant-based diseases.  
+The number of ash in the $SEIR$ compartments (on logarithmic axes) is shown in Figure \ref{fig:SEIR-spread} for three infectivity parameters in a $2\mathrm{km}\times2\mathrm{km}$ domain. Figure \ref{fig:SEIR-spread} shows three scenarios over $10$ years with infectivity parameters $\beta \in [2.5\times 10 ^{-4}, 1.5\times 10 ^{-4}, 1.5\times 10 ^{-5}]$, above, around and below the epidemic threshold, (d-f) respectively. In Figure \ref{fig:SEIR-spread}(d), $\beta$ is above the epidemic threshold and the number of ash in $S$ decline rapidly, shown by the blue line. During seasonal sporulation, large spikes in the number of latently infected ash can be seen in orange. Latently infected ash quickly transition into $I$ during Autumn and winter, as shown by the seasonal rise of $I$ in green.
 
 \begin{landscape}
 \begin{figure}
     \centering
     \includegraphics[scale=0.45]{chapter6/figures/fig4-seir.pdf}
-    \caption{The number of trees in compartments $SEIR$ for the inverse power law model over the average ash density $\overline{\rho} = 0.017$. (a) A two year simulation above epidemic threshold, the inset axis shows sporulation function (b-d) The spatial progression of disease in a $2\mathrm{km} \times 2\mathrm{km}$ domain.(e-g) Simulations show the epidemic progression over ten years above, around and below the threshold.}
+     \caption{The inverse power law $SEIR$ model of ADB shown over the average ash density $\overline{\rho} = 0.017$. (a-c) The spatial progression of disease in a $2\mathrm{km} \times 2\mathrm{km}$ domain over one sporulation season beginning with $25$ infected ash distributed throughout the domain. (d-f) The number of ash in the $SEIR$ compartments are shown over ten years for infectivity parameters above, around and below the epidemic threshold respectively.}
     \label{fig:SEIR-spread}
 \end{figure}
 \end{landscape}
 
+In Figure \ref{fig:SEIR-spread}(e) infectivity parameters are slightly above the epidemic threshold and the model behaviour is similar, albeit with a slower seasonal decline and rise in $S$ and $I$. For infectivity parameters below the epidemic threshold, Figure \ref{fig:SEIR-spread}(f), $S$ remains approximately constant and $I$ slowly declines. Interestingly, Figure \ref{fig:SEIR-spread}(f) persistence in model of ADB; whereby, even if the epidemic parameters are below the threshold, the fungus may survive for long periods of time. In general, persistence in plant-based pathogens is one aspect that complicates epidemic control\textemdash see chapter \ref{ch3:invasions_and_persistence} for a review of invasion and persistence in the spread of plant-based diseases.  
+
+
 \subsection{Sporulation}
-\textcolor{red}{demonstrate a Gaussian-based sporualation function...}
+\label{ch6:sporulation}
+In a realist scenario, the time-dependency of infectivity during sporulation is unlikely to be uniform, as suggested by the piece-wise function in Equation \ref{eq:step-function}.
+Experimental observations in France by \cite{grosdidier2018tracking} suggest that ADB spore production reaches a maximum in July-August for example. % Show Figure ? Showing plot 
+As a rudimentary tool to explore time-varying sporulation, a second 'peaked' sporulation function would therefore be useful. 
+A normally-distributed sporulation function, $\phi_2(t)$ centered in August, mid-way between June and September, is used to parsimoniously imitate the peaked appearance of Figure 2. in \cite{grosdidier2018tracking}. 
+As far as I am aware, Gaussian sporulation has not been detailed in the literature\footnote{\textcolor{red}{Compare, for example, the Gamma(k) function examined by \cite{time-varying-infectivity}.}} and can therefore only serve as a comparative tool. 
+
+A typical simulation with time-varying sporulation, reaching a maximal infectivity during August, is shown in Figure \ref{fig:SEIR-sporulation}(b). Despite a different scaling of $\beta$, model behaviour looks similar. With 
+
+\blindtext
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.45]{chapter6/figures/fig5-sporulation.pdf}
+    \caption{Two year simulations of the power law dispersal model are shown for the sporulation functions $\phi_1(t)$ and $\phi_2(t)$, (a) and (b) respectively.}
+    \label{fig:SEIR-sporulation}
+\end{figure}
+
 
 \section{Defining an $R_0$}
+
+Before the $SEIR$ model can be investigated, a measure of the pathogens ability to invade must be defined. For epidemic systems, this usually comes in the form of a reproduction number $R_0$. There are, however, various challenges involved in defining $R_0$ when there are dispersal-mediated secondary infections and spatial structure, as explored in chapter \ref{ch5:dispersal-model}. Chapter \ref{ch5:dispersal-model} demonstrated that $R_0$ is a spatiotemporal function of various epidemiological parameters, and measuring $R_0$ over different spatiotemporal scales can lead to different, and sometimes misleading, results for $R_0$; for a seasonal-based pathogen such as ADB, additional factors only complicate the definition. 
+
+\textit{From this point on, unless otherwise sated, the method for calculating $R_0$ will refer to the average number contact traced secondary infections for each generation of infection, as per Definition \ref{def:R0_contact_traced}. However, this time, secondary infections characterise the transition $S\rightarrow E$ and successive generations of infected ash arise seasonally during sporulation.}
+
+As demonstrated in chapter \ref{ch5:dispersal-model}, a suitable spatial and temporal scale must be chosen to measure $R_0$. Figure \ref{fig:SEIR-R0-definition} shows the contact-traced $R_0$ for the inverse power law model $SEIR$ spreading above the threshold\footnote{The Gaussian variant of the $SEIR$ model also follows the same characteristic decline in $R_0$ for each subsequent generation, as demonstrated in chapter \ref{ch5:dispersal-model}}. For the particular combination of pathogen parameters shown in Figure \ref{fig:SEIR-R0-definition}(a), $R_0$ saturates to around $4$ and there is little difference in measuring $R_0$ between $10, 15$ and $20$ years. Although, measuring $R_0$ over a five year is slightly below the $10-20$ year average. This behaviour is also reflected in Figure \ref{fig:SEIR-R0-definition}(b) where $R_0$ for the first generation infected ash saturates at around $R_0 = 4$. On average, we would expect to see more infectious pathogens saturate faster and less infectious pathogens take longer\textemdash see Appendix \ref{fig:a-R0-saturate}.
 
 \begin{figure}
     \centering
@@ -180,12 +216,6 @@ Figure (g) highlights that even if the epidemic parameters are below the thresho
     \caption{Contact-tracing $R_0$ in the seasonal $SEIR$ model. (a) The average number of secondary infections are shown for ash infected in the $n^{th}$ generation after outbreak (b) The average number of secondary infections is shown against the years after outbreak for different generations $0-10$.}
     \label{fig:SEIR-R0-definition}
 \end{figure}
-
-Before the $SEIR$ model can be investigated, a measure of the pathogens ability to invade must be defined. For epidemic systems, this usually comes in the form of a reproduction number $R_0$. There are, however, various challenges involved in defining $R_0$ when there are dispersal-mediated secondary infections and spatial structure, as explored in chapter \ref{ch5:dispersal-model}. Chapter \ref{ch5:dispersal-model} demonstrated that $R_0$ is a spatiotemporal function of various epidemiological parameters, and measuring $R_0$ over different spatiotemporal scales can lead to different, and sometimes misleading, results for $R_0$; for a seasonal-based pathogen such as ADB, additional factors only complicate the definition. 
-
-\textit{From this point on, unless otherwise sated, the method for calculating $R_0$ will refer to the average number contact traced secondary infections for each generation of infection, as per Definition \ref{def:R0_contact_traced}. However, this time, secondary infections characterise the transition $S\rightarrow E$ and successive generations of infected ash arise seasonally during sporulation.}
-
-As demonstrated in chapter \ref{ch5:dispersal-model}, a suitable spatial and temporal scale must be chosen to measure $R_0$. Figure \ref{fig:SEIR-R0-definition} shows the contact-traced $R_0$ for the inverse power-law model $SEIR$ spreading above the threshold\footnote{The Gaussian variant of the $SEIR$ model also follows the same characteristic decline in $R_0$ for each subsequent generation, as demonstrated in chapter \ref{ch5:dispersal-model}}. For the particular combination of pathogen parameters shown in Figure \ref{fig:SEIR-R0-definition}(a), $R_0$ saturates to around $4$ and there is little difference in measuring $R_0$ between $10, 15$ and $20$ years. Although, measuring $R_0$ over a five year is slightly below the $10-20$ year average. This behaviour is also reflected in Figure \ref{fig:SEIR-R0-definition}(b) where $R_0$ for the first generation infected ash saturates at around $R_0 = 4$. On average, we would expect to see more infectious pathogens saturate faster and less infectious pathogens take longer\textemdash see Appendix \ref{fig:a-R0-saturate}.
 
 From Figure \ref{fig:SEIR-R0-definitio}(a-b) we can see the familiar saturation of $R_0$ for later generations. The decline in $R_0$ with each generation can be understood by the decline in susceptible ash with time. The first generation infected ash, at $t=0$, have a higher number of susceptible neighbours available to infect, which declines in time. The saturation point of $R_0$ mirrors the infectious lifetime which, in this model are taken to be exponentially-distributed with mean $\lambda=5\ \mathrm{yr}$. In light of better data, this choice of distribution and parameterisation could be updated. 
 
@@ -218,7 +248,7 @@ Up to this point, a thorough description of the host data set has been omitted. 
 \begin{figure}
     \centering
     \includegraphics[scale=0.30]{chapter6/figures/fig3-ash-data.pdf}
-    \caption{Ash canopy cover data, as modelled by \cite{hill.data} converted into a density. (a) a map of ash densities at a resolution of $1\mathrm{km} \times 1\mathrm{km}$ (b) the distribution of ash density over Great Britain, the inset shows a inverse power-law behaviour.}
+    \caption{Ash canopy cover data, as modelled by \cite{hill.data} converted into a density. (a) a map of ash densities at a resolution of $1\mathrm{km} \times 1\mathrm{km}$ (b) the distribution of ash density over Great Britain, the inset shows a inverse power law behaviour.}
     \label{fig:ash-host-data}
 \end{figure}
 
@@ -235,20 +265,20 @@ In this section, $R_0$ values of the $SEIR$ model of ADB will be projected onto 
 \subsection{Re-scaling the host distribution}
 \label{ch6:re-scaling-host-data}
 
-A choice was made to re-scale the pixel size of ash density in Figure \ref{fig:ash-host-data}(a), from $1\mathrm{km} \times 1 \mathrm{km}$, to $5\mathrm{km} \times 5 \mathrm{km}$. In the local scale field study conducted by \cite{grosdidier2018tracking}, fungal spores were detected at a maximum distance of $500\mathrm{m}$ away from a known source of infection. So on the surface, the original $1\mathrm{km} \times 1 \mathrm{km}$ resolution of the abundance data, as reported by \cite{hill.data}, appears reasonable. However, with moderate-high values of $\beta$ the power-law $SEIR$ model demonstrates that singular jumps can exceed $1\mathrm{km}$ and since we cannot know $\beta$ for sure, it is desirable to air on the side of caution and re-scale the domain such that pixels represent larger spatial areas. In doing so, the resolution is lowered along with the level of spatial-structure. 
+A choice was made to re-scale the pixel size of ash density in Figure \ref{fig:ash-host-data}(a), from $1\mathrm{km} \times 1 \mathrm{km}$, to $5\mathrm{km} \times 5 \mathrm{km}$. In the local scale field study conducted by \cite{grosdidier2018tracking}, fungal spores were detected at a maximum distance of $500\mathrm{m}$ away from a known source of infection. So on the surface, the original $1\mathrm{km} \times 1 \mathrm{km}$ resolution of the abundance data, as reported by \cite{hill.data}, appears reasonable. However, with moderate-high values of $\beta$ the power law $SEIR$ model demonstrates that singular jumps can exceed $1\mathrm{km}$ and since we cannot know $\beta$ for sure, it is desirable to air on the side of caution and re-scale the domain such that pixels represent larger spatial areas. In doing so, the resolution is lowered along with the level of spatial-structure. 
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.40]{chapter6/figures/fig5-beta-vs-max_d.pdf}
-    \caption{The maximum distance that can be be traversed by the pathogen in a single jump is shown against different values of $\beta$. (a) the inverse power-law based dispersal (b) the Gaussian dispersal.}
+    \caption{The maximum distance that can be be traversed by the pathogen in a single jump is shown against different values of $\beta$. (a) the inverse power law based dispersal (b) the Gaussian dispersal.}
     \label{fig:max_dist_vs_R0}
 \end{figure}
 
 Suppose two patches of land, having tree densities above the threshold, $R_0 = 1$, are separated by an intermediary patch below the threshold. If we are not careful, dispersal could traverse the below-threshold patch within a single jump, even at local spatial scales. As such, we must choose a domain resolution that gives some assurance that, at the local scale, wind-dispersed spores cannot jump over whole patches with singular jumps. As always, there is the possibility that spores disperse more considerable distances, from mainland Europe to Great Britain, for example, \cite{freer2017tree, wylder2018evidence}. Nevertheless, this chapter aims at targeting dispersal at local scales, and LDD can be omitted for now.
 
-Ensemble simulations can measure the maximum dispersal distance by averaging the maximum distance of secondary infections. Figure \ref{fig:max_dist_vs_R0} shows of the maximum distance traversed by the pathogen for different values of $\beta$ over a large domain, $20\mathrm{km^2}$, in a single year\textemdash or jump. The ensemble simulations shown in Figure \ref{fig:max_dist_vs_R0} start from a small number of infected trees at the centre of the domain and contrast the difference between inverse power-law and Gaussian models\footnote{This is indicated by the difference in subscript on $\beta$. Technically, both are models in their own right, so a comparison between both of them with the same value of $\beta$ does not make sense. Although both models cannot be compared directly, insight can be gained by comparing model behaviours over the same $R_0$ axis.}, (a) and (b) respectively. 
+Ensemble simulations can measure the maximum dispersal distance by averaging the maximum distance of secondary infections. Figure \ref{fig:max_dist_vs_R0} shows of the maximum distance traversed by the pathogen for different values of $\beta$ over a large domain, $20\mathrm{km^2}$, in a single year\textemdash or jump. The ensemble simulations shown in Figure \ref{fig:max_dist_vs_R0} start from a small number of infected trees at the centre of the domain and contrast the difference between inverse power law and Gaussian models\footnote{This is indicated by the difference in subscript on $\beta$. Technically, both are models in their own right, so a comparison between both of them with the same value of $\beta$ does not make sense. Although both models cannot be compared directly, insight can be gained by comparing model behaviours over the same $R_0$ axis.}, (a) and (b) respectively. 
 
-Interestingly, dispersal in the Gaussian model can be seen to level off between $500-600\mathrm{m}$ in line with the results from \cite{grosdidier2018tracking}, whereas, for power-law dispersal, dispersal continues to rise. No doubt, this observation reflects the thin-tailed Gaussian and fat-tailed inverse power-law dispersal kernels. For the exact value of $R_0$, inverse power-law model can be seen to travel much further than Gaussian model and echos the difficulty of controlling fat-tailed dispersal \cite{WEBIDEMICS}, and more broadly, LDD.
+Interestingly, dispersal in the Gaussian model can be seen to level off between $500-600\mathrm{m}$ in line with the results from \cite{grosdidier2018tracking}, whereas, for power law dispersal, dispersal continues to rise. No doubt, this observation reflects the thin-tailed Gaussian and fat-tailed inverse power law dispersal kernels. For the exact value of $R_0$, inverse power law model can be seen to travel much further than Gaussian model and echos the difficulty of controlling fat-tailed dispersal \cite{WEBIDEMICS}, and more broadly, LDD.
 
 For a $5\mathrm{km} \times 5 \mathrm{km}$ host distribution, we can therefore place an upper limit on $\beta$, indicated by the shaded region in Figure \ref{fig:max_dist_vs_R0} (a). If an infectivity parameter surpasses $\beta = 0.0016$, the pathogen has potential to jump over $5\mathrm{km} \times 5 \mathrm{km}$ patches and infect non-nearest neighbours. In this scenario, patches either need to be re-scaled to larger values, or the neighbourhood of interaction made non-local, as in \textcolor{red}{cite non-local R0 maps, Gilligan.} Fortunately for us however, the reproduction ratio of $R_0=6$, shown in Figure \ref{fig:max_dist_vs_R0} (a) indicates that infectivity parameters of $\beta = 0.0016$ and above are likely too high\footnote{\textcolor{red}{The value of $R_0$ shown in Figure \ref{fig:max_dist_vs_R0} (a) was measured over one sporulation season. If $R_0$ for this value of $\beta$ was measured over the mean life-time of an infected tree, we could expect to see exceedingly high, and probably unrealistic, values of $R_0$. To put this into context, the highest known case of $R_0$ is measles that...}}.
 
@@ -259,11 +289,11 @@ The relationship between $R_0$ and tree density $\rho$ is shown in Figure \ref{f
 \begin{figure}
     \centering
     \includegraphics[scale=0.55]{chapter6/figures/fig6-R0-map-generation.pdf}
-    \caption{Generating $R_0$ maps for ADB over Great Britain. (a) Ensemble-averaged results of $R_0$ are plotted against the tree densities informed by \cite{hill.data}. (b-c) Projecting $SEIR$ inverse power-law $R_0$ values onto the re-scaled $5\mathrm{km} \times 5 \mathrm{km}$ ash host-distribution for two values of $\beta_{pl}$. Patches of land below $R_0 = 1$ are shown as white space. (d-e) The top $10$ largest connected, and susceptible, $R_0$-clusters that are present in maps (b-c).} % in fig (a), include Gaussian and phi(t)_2
+    \caption{Generating $R_0$ maps for ADB over Great Britain. (a) Ensemble-averaged results of $R_0$ are plotted against the tree densities informed by \cite{hill.data}. (b-c) Projecting $SEIR$ inverse power law $R_0$ values onto the re-scaled $5\mathrm{km} \times 5 \mathrm{km}$ ash host-distribution for two values of $\beta_{pl}$. Patches of land below $R_0 = 1$ are shown as white space. (d-e) The top $10$ largest connected, and susceptible, $R_0$-clusters that are present in maps (b-c).} % in fig (a), include Gaussian and phi(t)_2
     \label{fig:R0-map-generation}
 \end{figure}
 
-Figures \ref{fig:R0-map-generation}(b-c) show the reproductive ratios for the inverse power-law model projected onto the host distribution of ash. For all variants of the $SEIR$ model, $R_0$-maps look similar, albeit with different $\beta$ values, see Appendix \ref{fig:a-R0-maps-SEIR-variants}. The values of $\beta$ shown in Figures \ref{fig:R0-map-generation}(b-c) correspond to the exact values of $\beta$ shown by blue and orange lines in Figure \ref{fig:R0-map-generation}(a) respectively. Under the influence of a more infectious pathogen, larger areas of the ash population become susceptible by supporting the growth and reproduction of the pathogen, illustrated by the higher density of patches in Figure \ref{fig:R0-map-generation}(c). All locations below the transmission threshold were presumed disease-free and given numerical values of zero, depicted by inland white space. All values of $R_0$ over and above the threshold were taken as susceptible. 
+Figures \ref{fig:R0-map-generation}(b-c) show the reproductive ratios for the inverse power law model projected onto the host distribution of ash. For all variants of the $SEIR$ model, $R_0$-maps look similar, albeit with different $\beta$ values, see Appendix \ref{fig:a-R0-maps-SEIR-variants}. The values of $\beta$ shown in Figures \ref{fig:R0-map-generation}(b-c) correspond to the exact values of $\beta$ shown by blue and orange lines in Figure \ref{fig:R0-map-generation}(a) respectively. Under the influence of a more infectious pathogen, larger areas of the ash population become susceptible by supporting the growth and reproduction of the pathogen, illustrated by the higher density of patches in Figure \ref{fig:R0-map-generation}(c). All locations below the transmission threshold were presumed disease-free and given numerical values of zero, depicted by inland white space. All values of $R_0$ over and above the threshold were taken as susceptible. 
 
 \subsection{Clustering in the $R_0$ map}
 
