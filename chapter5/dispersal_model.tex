@@ -1,5 +1,6 @@
 \chapter{A non-local dispersal model}
 
+% SHOW THAT THE INITIAL CONDITION LEADS TO THE SAME RESULT OVER A DIFFERENT TIME-SCALE
 \section{Dispersal model: basic reproduction number}
 
 As remarked in the opening chapters, the basic reproduction number is widely used in the %
@@ -58,7 +59,6 @@ Throughout a simulation, a record is kept of all infection histories i.e. which 
 To achieve this, trees are treated as particles in the sense that individual interactions between them are computed. 
 This can be seen as equivalent to contact-tracing the resulting epidemic \cite{eames2003contact}. \\
 
-
 For the remainder of this thesis, the basic reproduction number will be defined as $R_0=R^2_0$ unless otherwise stated. 
 Defining $R_0$ in this way extends the previous definition to account for the realistic %
 saturation around the primary infected trees neighbourhood. This gives an improved measure %
@@ -78,6 +78,8 @@ of the threshold for invasion. The average number of contact-traced secondary in
 \end{figure}
 
 \subsection{Capturing $R_0$ in space and time}
+
+For high levels of infection, the number of secondary infections are reduced because a lower number of susceptible trees are available to infect. 
 
 In Figure \ref{fig:contact-trace}(b), we can see that measuring $R_0$ in a typical simulation, %
 will likely over-estimate the contagiousness of the pathosystem at earlier times. %

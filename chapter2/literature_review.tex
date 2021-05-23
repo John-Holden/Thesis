@@ -48,7 +48,20 @@ One of the key features that distinguish tree disease from human-based disease i
 \end{itemize}}
 
 \section{Compartmentalised models}
+\label{ch2:lit-rev-compartmentalised-models}
 Compartmentalised models are the dominate theme in epidemiological modelling...
+
+% - describe how plank model can be represented in terms of a compartmentalised model \cite{time-varying-infectivity}
+% In his seminal work, van der Plank \cite{van2013plant} considered a latency and infectious period, with a constant rate of infection while infectious; this model is represented by the equation:
+% \begin{equation}
+% \label{eq:plank-model}
+%     \frac{dI(t)}{dt} = R\big(I(t - p)  - I(t - p - i)\big)\big(1 - I(t)\big)
+% \end{equation}
+
+% where $p$ and $i$ are constant latency and infectivity periods and $R$ is the corrected infection rate (i.e. including host demography). Equation \ref{eq:plank-model} is seldom used in contemporary literature, owing to the difficulty in analytically solving its time-delay \cite{madden2006botanical}. However, it provides a simple basis to understand time-varying infectivities. 
+
+% Later, \cite{time-varying-infectivity} demonstrated that sporulation can be decomposed into a suite of $SEIR$-like models. Specifically, the authors of \cite{time-varying-infectivity} demonstrated that both compartmentalised $SEIR$ models and the plank formulation can be decomposed into a $SEmInR$ model i.e. where transitions follow $S\rightarrow E_1, E_2,.., E_m \rightarrow I_1, I_2, ..., I_n \rightarrow R$.
+% By taking suitable limits of $n$ and $m$ the plank and $SEIR$ models can be recovered. 
 
 \subsection{Lattice-based modelling}
 Lattice-based models have been used to describe the spread of disease in many contexts, such as the spread of malaria, the bubonic plague and the spread of tree disease...

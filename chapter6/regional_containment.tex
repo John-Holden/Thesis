@@ -179,20 +179,42 @@ The number of ash in the $SEIR$ compartments (on logarithmic axes) is shown in F
 \end{figure}
 \end{landscape}
 
-In Figure \ref{fig:SEIR-spread}(e) infectivity parameters are slightly above the epidemic threshold and the model behaviour is similar, albeit with a slower seasonal decline and rise in $S$ and $I$. For infectivity parameters below the epidemic threshold, Figure \ref{fig:SEIR-spread}(f), $S$ remains approximately constant and $I$ slowly declines. Interestingly, Figure \ref{fig:SEIR-spread}(f) persistence in model of ADB; whereby, even if the epidemic parameters are below the threshold, the fungus may survive for long periods of time. In general, persistence in plant-based pathogens is one aspect that complicates epidemic control\textemdash see chapter \ref{ch3:invasions_and_persistence} for a review of invasion and persistence in the spread of plant-based diseases.  
+In Figure \ref{fig:SEIR-spread}(e) infectivity parameters are slightly above the epidemic threshold and the model behaviour is similar, albeit with a slower seasonal decline and rise in $S$ and $I$. For infectivity parameters below the epidemic threshold, Figure \ref{fig:SEIR-spread}(f), $S$ remains approximately constant and $I$ slowly declines. Interestingly, Figure \ref{fig:SEIR-spread}(f) persistence in model of ADB; whereby, even if the epidemic parameters are below the threshold, the fungus may survive for long periods of time. In general, persistence in plant-based pathogens is one aspect that complicates epidemic control\textemdash see chapter \ref{ch3:invasions_and_persistence} for a review of invasion and persistence in the spread of plant-based diseases
 
-
-\subsection{Sporulation}
+\subsection{Sporulation: time-varying infectivity}
 \label{ch6:sporulation}
-In a realist scenario, the time-dependency of infectivity during sporulation is unlikely to be uniform, as suggested by the piece-wise function in Equation \ref{eq:step-function}.
-Experimental observations in France by \cite{grosdidier2018tracking} suggest that ADB spore production reaches a maximum in July-August for example. % Show Figure ? Showing plot 
-As a rudimentary tool to explore time-varying sporulation, a second 'peaked' sporulation function would therefore be useful. 
-A normally-distributed sporulation function, $\phi_2(t)$ centered in August, mid-way between June and September, is used to parsimoniously imitate the peaked appearance of Figure 2. in \cite{grosdidier2018tracking}. 
-As far as I am aware, Gaussian sporulation has not been detailed in the literature\footnote{\textcolor{red}{Compare, for example, the Gamma(k) function examined by \cite{time-varying-infectivity}.}} and can therefore only serve as a comparative tool. 
+
+Time varying infectivity rates are an important concept in epidemiology, this is true for the spread of disease in both human/animal \cite{svensson2007note, liu2012infectious} and botanical populations \cite{suffert2018some, leclerc2014estimating, time-varying-infectivity, van2013plant}; this holds true for ADB. The time varying infectivity of ADB is modelled by two sporulation functions, $\phi_1(t)$ and $\phi_2(t)$, based on the work of \cite{time-varying-infectivity}. That is, a step function, and a Gaussian\footnote{Here, the Gaussian sporulation function $\phi_2(t)$ is a special case of the Gamma(k) presented in \cite{time-varying-infectivity} i.e. by taking the limits of $m$ and $n$ in the more general $SEmInR$ model.}, as shown on the insets of Figures \ref{fig:SEIR-sporulation}(a-b) respectively. 
+A detailed review on the work of \cite{time-varying-infectivity} is conducted in chapter \ref{ch2:lit-rev-compartmentalised-models}.
+
+
+The authors of \cite{time-varying-infectivity} demonstrated that different functions of time-varying infectivity, refereed to as sporulation curves, can be represented by an $SEmInR$ model\footnote{Note, the terms $n$ and $m$ in the $SEmInR$ model given by \cite{time-varying-infectivity} are in no way related to the subscript used in Figure \ref{fig:SEIR-transitions} to describe the seasonal component of ADB.}. The sporulation functions in \cite{time-varying-infectivity} describe how latently infected plants transition into the infectious compartment, $E\rightarrow I$ as different functions of time. 
+
+
+For the seasonal $SEIR$ model of ADB a slightly different interpretation was required and the sporulation functions $\phi_1(t)$ and $\phi_2(t)$ were used control the transition $S \rightarrow E$.
+
+For the pathosystem ADB, we have the unusual case whereby a tree can disperse infected leaf litter in autumn-winter, and thus in a sense become infectious, yet not produce any secondary infections until summer.
+In the model of ADB considered here, ash are categorised as infectious when leaf shedding begins in autumn-winter, however no secondary infections will be produced until summer. 
+In our $SEIR$ model of ADB, a sporulation function $\phi(t)$ is therefore suited to multiply $\beta$ and control how infectivity changes throughout the year. 
+The crucial difference 
+
+the time-dependency of fruiting bodies on infectious leaf litter releasing their spores in summer
+
+Sporulation functions in the context of ADB are well suited to model the time-dependency of fruiting bodies on infectious leaf litter releasing their spores in summer; in the seasonal model of ADB shown in Figure \ref{fig:SEIR-transitions}, this happens when ash are already in the infectious compartment. 
+
+Applying a time-varying sporulation function to ash already in the infectious compartment, is a simplistic way of describing 
+There, it makes sense to define sporulation to capture 
+and yet not produce secondary infections. In the in
+
+
+% % A time-varying infectious 
+% In a realist scenario, the time-dependency of infectivity during ADB sporulation is unlikely to be uniform, as suggested by Equation \ref{eq:step-function}.
+% Experimental observations in France by \cite{grosdidier2018tracking} suggest that spore production reaches a maximum in July-August for example. % Show Figure ? Showing plot 
+% As a rudimentary tool to explore time-varying sporulation, a second 'peaked' sporulation function would therefore be useful. 
+% A normally-distributed sporulation function, $\phi_2(t)$ centered in August, mid-way between June and September, is used to parsimoniously imitate the peaked appearance of Figure 2. in \cite{grosdidier2018tracking}. 
+% As far as I am aware, Gaussian sporulation has not been detailed in the literature and can therefore only serve as a comparative tool.
 
 A typical simulation with time-varying sporulation, reaching a maximal infectivity during August, is shown in Figure \ref{fig:SEIR-sporulation}(b). Despite a different scaling of $\beta$, model behaviour looks similar. With 
-
-\blindtext
 
 \begin{figure}
     \centering
@@ -324,8 +346,6 @@ Classical percolation theory requires lattice points to be independently open or
 \blindtext % introduce the largest cluster figure, and large jumps
 
 \blindtext. % explain why different scaling of beta ?
-
-
 
 
 
