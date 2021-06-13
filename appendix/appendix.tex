@@ -1,7 +1,7 @@
 \appendix
 \chapter{Simple lattice Model}
 
-\section{Propagation Algorithm}
+\section{Propagation algorithm}
 \label{a:propagation}
 Starting from simplicity, the model assumes local transmission between nearest neighbours. Local structure within the network is described by the von Neumann neighbourhood. To demonstrate the algorithm, take a $3 \times 3$  matrix $\mathbb{S}$ representing a small patch of forest, $1's$ represent trees in state $S$ while $0's$ represent insusceptible states $\emptyset$. An and infection matrix $\mathbb{I}$ is defined with an infected matrix element $I_{2,2}=2$. A removed matrix is also given by $\mathbb{R}$. At time $t=0$:
 \begin{equation}
@@ -21,6 +21,9 @@ Starting from simplicity, the model assumes local transmission between nearest n
 0 & 0 & 0 \\
 \end{array} \right)\qquad
 \end{equation}
+
+\subsection{Assessing the probability of transition}
+\label{a:probablity-transition}
 
 A centrally infected state in $\mathbb{I}$ can be seen\textemdash when $\mathbb{I}_{i,j} = 2,\ \mathbb{S}_{i,j} = 0$. The algorithm singles out neighbours surrounding the infected tree and generates random numbers $\{ R_{0,1},R_{1,0},R_{3,2}\}$. From this a potential infection matrix $\mathbb{I}^{'}$ is formed:
 

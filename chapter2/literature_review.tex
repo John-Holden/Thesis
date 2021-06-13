@@ -51,7 +51,15 @@ One of the key features that distinguish tree disease from human-based disease i
 \label{ch2:lit-rev-compartmentalised-models}
 Compartmentalised models are the dominate theme in epidemiological modelling...
 
-% - describe how plank model can be represented in terms of a compartmentalised model \cite{time-varying-infectivity}
+% 1 - early work that decomposed KMc model 
+\cite{segarra2001epidemic}
+
+% 2 - describe how plank model can be represented in terms of a compartmentalised model
+The authors of \cite{time-varying-infectivity} demonstrated that different sporulation functions can be derived from a more general class of $SEmInR$ models. 
+Sporulation functions can then be used to describe lifetime of transitions between $E\rightarrow I$ along with the time-dependency of infectivity rates in the transition $S\rightarrow E$. 
+In the seasonal model of ADB, $\phi_1(t)$ and $\phi_2(t)$ control the time-dependency of $\beta$ and the transition $S\rightarrow E$ alone.
+The transition of ash between states $E\rightarrow I$ occurs in the first autumn leaf-shedding after infection\footnote{In theory, the transition of ash between states $E\rightarrow I$, set by a normal distribution centred in autumn, could be represented by taking a suitability large limit $m$ in the $SEmInR$ model proposed by \cite{time-varying-infectivity}.}. 
+
 % In his seminal work, van der Plank \cite{van2013plant} considered a latency and infectious period, with a constant rate of infection while infectious; this model is represented by the equation:
 % \begin{equation}
 % \label{eq:plank-model}
@@ -63,6 +71,8 @@ Compartmentalised models are the dominate theme in epidemiological modelling...
 % Later, \cite{time-varying-infectivity} demonstrated that sporulation can be decomposed into a suite of $SEIR$-like models. Specifically, the authors of \cite{time-varying-infectivity} demonstrated that both compartmentalised $SEIR$ models and the plank formulation can be decomposed into a $SEmInR$ model i.e. where transitions follow $S\rightarrow E_1, E_2,.., E_m \rightarrow I_1, I_2, ..., I_n \rightarrow R$.
 % By taking suitable limits of $n$ and $m$ the plank and $SEIR$ models can be recovered. 
 
+
+%
 \subsection{Lattice-based modelling}
 Lattice-based models have been used to describe the spread of disease in many contexts, such as the spread of malaria, the bubonic plague and the spread of tree disease...
 
@@ -75,15 +85,19 @@ Lattice-based models have been used to describe the spread of disease in many co
 \end{itemize}}
 
 \section{The role of scale}
-
+% WORK IN PROGRESS
 The role of scale is crucial to describing the spread of tree-based disease...
-\textcolor{red}{
 \begin{itemize}
     \item The spatial aggregation of vegetation, how does clustering look on different spatial resolutions ?
     \item Spatial scale in dispersal ? What does this mean for disease gradients ?
-    \item \cite{https://doi.org/10.1111/jbi.13642}
-    \item \cite{ pautasso2013european}, search for 'modelling' in this review paper. It contains references to LDD models.
-\end{itemize}}
+    \item % \cite{https://doi.org/10.1111/jbi.13642}
+    \item % \cite{pautasso2013european}, search for 'modelling' in this review paper. It contains references to LDD models.
+    \item LDD is an important factor of the scale of spread 
+    \item \cite{wingen2013long} demonstrated how host heterogeneity and distance between patches can...
+    \item traditional model of plant disease consider a wave-like spread of disease, a biological wave-like phenomena, that spreads from region to region (CITATIONS...).
+    However, this is not the case, as demonstrated by \cite{mundt2009aerial}. Epidemic fronts and disease gradients can range over multiple scales. The spread of disease through plant-based populations is thus, a multi-scale problem.
+    \item indeed, fungal spores can disperse over large distances, as confirmed by modelling work \cite{shaw2006assembling} 
+\end{itemize}
 
 \section{Modelling landscape-level epidemics}
 
@@ -114,7 +128,6 @@ Network models are useful to describe the spread disease of human-based trade an
 \section{Thresholds in plant-based disease}
 
 A key theme in the spread of tree-disease, and disease in the broadest sense, can be understood through a threshold...
-
 \textcolor{red}{
 \begin{itemize}
     \item What was the first paper to use this term ? Give mini-historical recount
@@ -215,17 +228,109 @@ The first ecological application came in \cite{pub.1031591030} where forest fire
 
 
 \section{Ash dieback}
-
 % WORK IN PROGRESS
-Ash dieback will be the subject of chapter \ref{ch:6} and presents an interesting case-study of an emerging epidemic. Ash dieback is lethal to ash and affects trees of all ages, although age is a significant component of the disease severity \cite{marccais2017estimation}. % this section should relate the biology of ADB to the model, a literature review in ch2 should explore a more complete picture
 
-Ash dieback, caused by the fungus \textit{H.pseudoalbidus} (HP), is a highly seasonal \cite{bengtsson2014seasonal} and follows a complicated, yearly, polycyclic infection cycle. The ADB pathosystem, has been the subject of much research over the years, the taxonomy, symptoms and life-cycle of the pathogen are well-known \cite{https://doi.org/10.1111/mpp.12073}. Although, compartmentalised models of ADB have a noticeable absence in the literature.
+% the combination of ash dieback and emerald ash borer present a significant threat to UK and European ash \cite{musolin2017between}
+% managing the spread of ADB in areas already infected is hardly possible \cite{gross2014h}
 
-The control of ash dieback in an established focus of infestation is virtually impossible, as noted by \cite{havrdova2017environmental}. Moreover, it is already well recognised that ADB will wipe out the vast majority of ash, in Europe and Great Britain alike.
+% - but slowing the spread of disease is still valuable to allow ash populations vital time to recover and policy makers \cite{PAUTASSO201337}
+
+% multi-scale approaches have been outlined \cite{hart2020theoretical}
+% multi-seasonal frameworks comprise a common theme in the spread of crop-based epidemics see  x, y, and typically involve soil-borne nematodes-based outbreaks \cite{tankam2020modelling} <- see references inside.
+% ash dieback has a strong morality rate \cite{stocks2017first}
+
+\label{ch2:ash-dieback}
+Ash dieback (ADB) presents an interesting case-study of an emerging epidemic currently ravaging through large geographic areas of Europe \cite{enderle2019overview}.
+The history, and predicted evolution of ash dieback demonstrates how an invasive, non-indigenous pathogen can rapidly spread through a foreign ecosystem which lacks evolutionary defences.
+Among the many factors driving the spread of ash dieback, long-distance anthropomorphic trade is the mechanism responsibly for the initial introduction into Europe from the far-east \cite{zhao2013hymenoscyphus, queloz2011cryptic}.
+
+The pathosystem, has been the subject of much research over the years, the taxonomy, symptoms and life-cycle of the pathogen are now well-known \cite{https://doi.org/10.1111/mpp.12073}.
+However, the classification and identification of the novel pathogen has an interesting back-story and required a great deal of work.
+Understanding the spread of ADB, and managing the epidemic impact to ecosystems, could only be achieved by the confluence of molecular biologists, forest-managers, policy makers and modellers.
+Although the epidemic is well underway, and little can be done to contain the spread, slowing the spread of ash dieback remains essential to allow ash population time to adapt.
+
+\subsection{Historical developments}
+
+Initially, a large-scale outbreak of severe ash dieback was first noted in Poland in $1992$, however the causal agent was not identified for a decade \cite{kowalski2001zamieraniu}.
+The novel pathogenic fungi was identified as an ascomycete anamorph (i.e. asexual), and given the name \textit{Chalara fraxinea} \cite{kowalski2006chalara}, a member of the hyphomycete genus \textit{Chalara}
+The sexual telemorphic stage of the pathogen was later attributed to \textit{Hymenoscyphus albidus} \cite{kowalski2009teleomorph}, a well-known non-pathogenic fungus indigenous to Europe.
+
+Linking the hitherto non-pathogenic \textit{H. albidus} to the casual agent of ash dieback perplexed researchers. 
+Although, the enigma was resolved through DNA sequencing by \cite{queloz2011cryptic}, a second morphologically identical ascomycete named \textit{`Hymenoscyphus pseudoalbidus'} was identified as the pathogen responsible for wide-spread dieback of European ash. 
+
+Interestingly, the emergent epidemic caused by \textit{H. pseudoalbidus} coincided with developments in the phylogenetic classification system of the kingdom Fungi \cite{hibbett2007higher}, and dual nomenclature\footnote{Originally, fungi were classified through the structure of their sexual organs. Problematically, ascomycete fungi have a dual `pleomorphic' reproductive mode that often caused confused. However, a move toward a one-name fungi classification system has since simplified fungi taxonomy.} \cite{wingfield2012one}. Subsequently, the pathogen \textit{`Hymenoscyphus pseudoalbidus'} was renamed to \textit{Hymenoscyphus fraxineus}.
+
+The detection of ADB is complicated to its morphologically identical twin \textit{Hymenoscyphus albidus} \cite{queloz2011cryptic} 'Cryptic speciation'
+
+\subsection{Symptoms and epidemiology}
+
+Ash dieback, caused by the fungal pathogen \textit{H. fraxineus} (HF), is a lethal pathogen to European ash (\textit{Fraxinus excelsior}) of all age classes. 
+Although, age remains a significant factor of disease severity \cite{marccais2017estimation}.
+% talk about other factors of stress...
+ 
+The fungus HF poses little to it's native hosts \textit{Fraxinus mandshurica} and \textit{Fraxinus chinensis}.
+However, European ash did not co-evolve with the fungus, and demonstrates a high susceptibility.
+Once the fungus colonises a European ash leaf, it can spread through twigs, branches, and the xylem where it eventually spreads throughout the whole tree;
+symptoms include necrotic lesions, crown dieback, wilting and eventual death \cite{gross2014h}.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{chapter2/figures/gross2014.jpg}
+    \caption{The symptoms of ash dieback, taken from the work of \cite{gross2014h}. The pathogen \textit{H. fraxineus} infects the leaves of ash, leading to early onset wilting and desiccation. The fungus then reproduces asexually, spreading through twigs, branches and eventually the xylem. Symptoms include wilting, necrotic lesions, crown dieback and eventual mortality.}
+    \label{fig:my_label}
+\end{figure}
+ Once infected, the time ash survive depends on a plethora of factors such as age, surrounding landscape, genetic susceptibility or the particular mode of pathogen infection\footnote{For example, the pathogen can colonise the root-system \cite{schumacher2011general}, usually in severely infected ash \cite{https://doi.org/10.1111/mpp.12073}. From this point, it is only a matter of time before opportunistic fungi invade and significantly accelerate mortality \cite{enderle2013temporal}.}. 
+ 
+ Various sources of ash mortality data have been collected in different European countries. 
+ In Germany, a forest stand of planted ash trees showed a $73\%$ mortality rate after five years \cite{langer2015ash} (as cited in a review \cite{enderle2017ash}), while observations of ADB progression in Austria suggest a low mortality rate of $5\%$ measured over a two-year window \cite{kessler2012dieback}. 
+ A study conducted at different sites throughout Great Britain suggests a time-scale ranging between $3-15$ years of infected tree growth before death \cite{wylder2018evidence}.
+
+\subsection{Life cycle and reproductive mode}
+% talk about reproductive mode
+% WIKI: Hymenoscyphus fraxineus has two phases to its life-cycle: sexual and asexual.[9] The asexual stage (anamorph) grows in affected trees attacking the bark and encircling twigs and branches.[9] The sexual, reproductive stage, (teleomorph) grows during summer on ash petioles in the previous year's fallen leaves.[7] The ascospores are produced in asci and are transmitted by wind; this might explain the rapid spread of the fungus.[
+
+The primary natural driver of disease propagation is wind-dispersal during summertime sporulation.
+Sporulation typically occurs from June-September when fungal fruiting bodies on the previous years litter-fall release ascospores \cite{grosdidier2018tracking, hietala2013invasive}.
+Although the primary natural driver is wind, infection (and re-infection) of ash are also possible through the soil-borne mechanisms \cite{fones2016role}, albeit with low frequency.
+
+Ash infected with the pathogen will then shed its leaves in the autumn. Fungal fruiting bodies then grow on dead leaf litter until summertime; at that point, spores produced by the fruiting body are wind-dispersed and continue the cycle by producing new secondary infections.% expand on the fruiting body spore production.
+
+The reproductive mode of ADB is complicated, and leaves can be infected by multiple sources of ascospores \cite{gross2012reproductive}.
+Modelling work suggest various environmental factors are important to predict the vulnerability of ash and subsequent spread of disease \cite{dal2014risk, chumanova2019predicting}.
+
+The reproductive mode is complicated and can infect hosts through soil, water and air \cite{gross2012reproductive}.
+Ash dieback, caused by the fungus \textit{H.pseudoalbidus} (HP), is a highly seasonal \cite{bengtsson2014seasonal} and follows a complicated, yearly, polycyclic infection cycle.
+
+Specific to ADB, there are two stages of dispersal: the causal agent HP is dispersed on infected leaves during the yearly shed of ash, secondly, wind dispersal of fungal spores. Fortunately, the aggregate behaviour of two-stage dispersal is captured by sampling the amount of fungal spores with distance from a nearby source of infected ash \cite{grosdidier2018tracking}\textemdash discussed more below. 
+Be that as it may, an infected tree is treated as the dispersal site in the model, although the realistic description is not so simple.
+
+The life cycle of the fungus HF can be understood to have two well-differentiated reproductive modes, sexual and asexual\textemdash a common trait of phyla Ascomycota, or ascomycetes fungi \cite{hawker2016physiology}.
+Asexual reproduction primarily occurs when the pathogen amplifies within an infected host, throughout the year. 
+The sexual phase of HP occurs during the summer months, from June until September when wind-dispersed spores infect new ash trees.
+
+The seasonal infection cycle of ADB resembles that of crop-based disease \cite{tankam2020modelling}. Although, in the context of crop disease, removal usually coincides with harvest time. In contrast, ash infected with HP can be removed by the pathogen over a time frame spanning years.
 
 % draw analogy between exponential kernel of \cite{} <- tracking adb and \cite{} <- landscape spread of adb
 % commonly referred to as \textit{H.pseudoalbidus}-\textit{F. excelsior}
 
+\subsection{Management and control}
 
-The controlling ADB in both natural and artificial ash stands is incredibly challenging, verging on impossible if the pathogen is already established \cite{havrdova2017environmental}.
+The control of ash dieback in an established focus of infestation in both natural and artificial ash stands is virtually impossible, as noted by \cite{havrdova2017environmental}. Moreover, it is already well recognised that ADB will wipe out the vast majority of ash, in Europe and Great Britain alike \cite{ash-dieback-costs}. Managing the spread of ADB is a conservation challenge \cite{pautasso2013european} % talk about the control of ADB
 
+% Approaches to conservation differ between forest and commercial ash stand \cite{skovsgaard2017silvicultural}. 
+
+% Among the control strategies, application of fungicide to infected biomass has been shown effective \cite{hauptman2015application}
+
+\blindtext
+
+\subsection{Modelling}
+
+\blindtext
+
+% statistical modelling work has shown the importance of environmental factors in the spread of disease \cite{dal2014risk, chumanova2019predicting}
+
+% Although, compartmentalised models of ADB have a noticeable absence in the literature.
+
+% the risk of spread.. was conduced by \cite{fellenor2019ash}....
+
+% \cite{dal2015epidemiology} un-published thesis

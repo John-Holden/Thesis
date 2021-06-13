@@ -173,3 +173,14 @@
 \makeatletter
 \newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
 \makeatother
+
+% fancy table
+\usepackage{comment}
+% \usepackage[table]{xcolor}
+\setlength{\arrayrulewidth}{0.5mm}
+\setlength{\tabcolsep}{12pt}
+\renewcommand{\arraystretch}{1.5}
+
+\newcolumntype{s}{>{\columncolor[HTML]{AAACED}} p{3cm}}
+
+\usepackage{rotating}
