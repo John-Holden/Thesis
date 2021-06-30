@@ -9,7 +9,7 @@
 % 4) The thesis summary, highlight key findings and where we sit in the field ? 
 %.   - what the thesis entails and the general story line.
 % -----------------------------------------------------------------------------
-\chapter{Introduction} % -->  customize header and footer + chapter styles
+\chapter{\textcolor{red}{Introduction (WORK IN PROGRESS)}} % -->  customize header and footer + chapter styles
 
 % \begin{itemize}
 %     \item talk about various routes to understanding tree disease Fig 2 of \cite{pub.1012384986} \cite{francl2001disease}
@@ -28,10 +28,9 @@ Modernity and the common era (CE) of regular recorded history has witnessed dras
 This introductory chapter serves to inform the reader about the background, societal importance and modelling paradigms used in tree-based epidemiology. Firstly, the background and motivation for understanding tree disease will be reviewed. After which, a historical perspective will be outlined and I will conduct a through review into the various types of approaches that can be used to model the spread of disease through a population of trees. To this aim, several key concepts will be reviewed, including the basic reproduction number for plant-based diseases, the role of scale in transmission and dispersal. 
 
 Infectious tree diseases are increasingly harder to manage. The nature of understanding such threats favours an interdisciplinary nature involving a diverse range of models from different fields and disciplines.
-
 In this study, I will focus on the mathematical and computational modelling tree-based epidemics in Great Britain. The problem of tree disease is vast and multifaceted, in reality, a country is likely to be effected by multiple threats involving diverse species of host and pathogen. Managing any a single outbreak is in itself an ambitious task, let alone managing simultaneous outbreaks on several fronts. However, we proceed.\\
 
-\section{Invasive tree diseases}
+\section{\textcolor{red}{Invasive tree diseases}}
 % set the scene with a few examples and current main threats to the UK
 \textbf{A pressing and dangerous phenomena: } The modern world is characterised by global trade networks which rely heavily on imports and exports. Importing and exporting foreign plant material can introduce invasive pests and pathogens into non-native landscapes and threaten entire populations. This poses world-wide risks to crops, flowering plants and trees which may lack evolutionary defences to invasive species \cite{doi:10.1002/9781444329988.ch8}. Epidemics through plant populations can be devastating: classic examples include Irish potato blight, Dutch elm disease \cite{doi:10.1111/j.1365-3059.2010.02391.x} and North American chestnut blight \cite{doi:10.1002/9780470535486.ch7}. Two epidemics currently underway in the UK include ash dieback (Hymenoscyphus fraxineus) in ash trees (Fraxinus excelsior),  \cite{ash-dieback-costs} and phytophthora ramorum, a general disease which acts on many plant populations including larch and oak trees \cite{p.ramourum}.
 
@@ -41,12 +40,12 @@ Epidemics through plant populations are pressing issues for societies to manage 
 The benefit of controlling an epidemic should outweigh the costs of letting an outbreak spread unchecked. This can be accomplished with well designed control polices which maximally reduce epidemic impact and minimise the expenditure of resources\textemdash both natural and economic. Achieving this in practice is hard due to various unknowns \cite{13-challenges} and history gives examples of insufficient control policies which fail to halt pathogen spread. For example, Dutch elm disease in the late 1960s and early 1970s \cite{dutch-elm-mismanage}. 
 
 % - The progression of an epidemic can be briefly summarised by the time-line of, arrival, spread, impact and management.
-\textcolor{blue}{Expand this to include some numbers on cost and societal effects. Go into more examples of how tree diseases can cause harm to ecosystems and expand on wider environmental impacts e.g. Carbon sequestration, soil bindings and biodiversity. Expand  on current threats. !!! Talk about biology of pathogens and main divisions of diseases !!!}
+% \textcolor{blue}{Expand this to include some numbers on cost and societal effects. Go into more examples of how tree diseases can cause harm to ecosystems and expand on wider environmental impacts e.g. Carbon sequestration, soil bindings and biodiversity. Expand  on current threats. !!! Talk about biology of pathogens and main divisions of diseases !!!}
 
-\section{Trees-health and ecosystem function}
-\begin{itemize}
-    \item \textcolor{red}{I could expand on the economics, along with climatic and ecological importance of trees}
-\end{itemize}
+\section{\textcolor{red}{Trees-health and ecosystem function}}
+% \begin{itemize}
+%     \item \textcolor{red}{I could expand on the economics, along with climatic and ecological importance of trees}
+% \end{itemize}
 Trees grow naturally, in both rural and urban settings, this includes commercially managed plantations and orchards. Protecting and ensuring tree-health is of essential importance for society \cite{Boyd1235773}. Trees play a central role in terrestrial ecosystems \cite{boyd2013consequence} and their importance of forestry health is widely recognised. The motivations to protect tree populations in rural and urban landscapes are numerous. The most widely known, and well researched, themes include economic, climatic and ecological function \cite{freer2017tree}. However, the benefits of maintaining tree-health also stretch into of realms of human well-being, mental health, recreation and the perception of natural beauty \cite{tyrvainen2005benefits}. See Table \ref{table:tree-health} for a brief overview of the different benefits tree-health can offer to ecosystem and ecosystem function.\\
 
 \begin{table}
@@ -78,9 +77,9 @@ Trees grow naturally, in both rural and urban settings, this includes commercial
 The terms `pest' and `pathogen' are both broad referring to taxonomically diverse organisms. A pest is defined as any organism that harms humans or human interests such as crops or livestock \cite{oerke2006crop, de1964biological, buckle2015rodent}. The main pest-threats to tree species are typically insects \cite{metcalf1994introduction}. As an example, the Asian longhorn beetle (ALB) \cite{haack2010managing} and oak processionary moth OPM \cite{tomlinson2015managing} are two pests that currently threaten trees in Great Britain. On the other hand, an organism is a pathogen if it causes disease \cite{balloux2017q}. In the context of tree disease this includes fungi, bacteria, virus, oomycetes \cite{Boyd1235773}. In Great Britain, \textit{Phytophthora ramorum} \cite{brasier2005phytophthora} and Ash dieback \textit{Hymenoscyphus fraxineus} \cite{mitchell2014ash, ash-dieback-costs} are two pathogens that threaten tree-health. Some of the most pressing threats to Great British trees are provided in Table \ref{table:tree_threats}.\\
 
 \subsection{Human trade and transport}
-\begin{itemize}
-    \item \textcolor{red}{Expand on the plant-passport, how do I cite government reports ?}
-\end{itemize}
+% \begin{itemize}
+%     \item \textcolor{red}{Expand on the plant-passport, how do I cite government reports ?}
+% \end{itemize}
 % why globalised modern world is more at risk than ever
 It is widely accepted that trade and transport of foreign plant material, through imports and exports, has increased the risk of introducing pests and pathogens into non-native landscapes \cite{POTTER201761, lovett2016nonnative, roy2014increasing}. Epidemics caused by non-native pathogens can be catastrophic to tree populations which may lack immunity and genetic resistance to the invasive species \cite{doi:10.1002/9781444329988.ch8}. This can be understood from an evolutionary perspective. In an environment unaltered by human transportation, tree and plant species are thought to co-evolve alongside pests and pathogens in a gene-for-gene like arm-race \cite{flor1971current, dangl2001plant, Thrall1735}. However, the introduction of a foreign pathogen can overwhelm a population which has no such immunity \cite{desprez2016evolutionary}. Two classic examples that shook the world are: Dutch elm disease \cite{doi:10.1111/j.1365-3059.2010.02391.x} in the United Kingdom and chestnut blight \cite{doi:10.1002/9780470535486.ch7} in North America. Thus, given our dependence on globalised trade, the threat to trees, flowering plants and crops grows evermore alarming.\\ 
 
@@ -101,26 +100,27 @@ It is widely accepted that trade and transport of foreign plant material, throug
 % Control of tree disease
 In recent years the importance of effective trade regulations, for the purpose of preventative epidemic control, has become apparent \cite{rodoni2009role}. The role of shipping and human-transport is an important factor which risks the introduction of invasive pests and pathogens into vulnerable landscapes within a country. As a case in point, the shipping of elm timber infected with scolytid bark beetles, carrying the fungus \textit{Ophiostoma novo‐ulmi}, has been identified as and important epidemic driver in the Dutch elm outbreak in the United Kingdom \cite{doi:10.1111/j.1365-3059.2010.02391.x}. Effective boarder controls are an important step in a nations arsenal to stop the spread of disease. Ordinarily, these preventative measures take the form of custom checks on imported and exported plant material such as timber, crops or horticultural goods. The common use of plant passports\footnote{Enacted by European Commission in 2017, \textcolor{red}{Not sure how to cite government report.}} is a an example of a large-scale policy regulating checks on the trade and transport of plant goods. 
 
-\subsection{The natural spread of plant-based diseases}
+\subsection{\textcolor{red}{The natural spread of plant-based diseases}}
 If checks and policy implementations fail, a pathogen might then be introduced into the landscape and start spreading through natural pathways via dispersal. At this point, the biological control may become a necessary. The biological control of plant-based disease can be achieved in numerous ways, commonly this can include chemical agents such as pesticide, predatory insects or planting genetically resistant cultivars \cite{pal2006biological, baker1974biological}. In this thesis, we are motivated investigate the eradication of tree-based pathogens. In this scenario control, we are typically limited to eradicating infected and diseased trees through sanitation felling. The questions to be answered in this case are: A) How do we effectively identify an infected tree? B) Which infected trees are the best choices to fell ? C) What is the risk that a large-scale epidemic will result ?\\
 
-\textcolor{blue}{Re-draft and include details on what this project found out, host-structure, epidemiological spread, with toy-models, formulation of a novel method of large-scale realistic spread given abundance data. Formalise the notion of what questions were asked...}
+% \textcolor{blue}{Re-draft and include details on what this project found out, host-structure, epidemiological spread, with toy-models, formulation of a novel method of large-scale realistic spread given abundance data. Formalise the notion of what questions were asked...}
 
-\section{Policy-making and epidemic control}
+\section{\textcolor{red}{Policy-making and epidemic control}}
 
 %Air this towards a government prospective ? Include some arrow diagrams for the decision chain and how it works in the UK.
 
 % control and the benefits
 The benefit of controlling an epidemic should outweigh the costs of letting an outbreak spread unchecked. A well designed control policy should maximally reduce epidemic impact and minimise the expenditure of resources\textemdash both natural and economic. Achieving the optimal control of an epidemic in practice is a challenge due to various unknowns \cite{13-challenges} and history gives examples of insufficient control policies that failed to halt pathogen spread. The management and policy implementations of citrus canker in Florida \cite{schubert2001meeting} and Dutch Elm disease in Great Britain \cite{dutch-elm-mismanage} serve as two stark reminders. In both of these these scenarios, policy makers were slow to act and did not sufficiently comprehend the scale of the problem before it was too late. So, efficient control relies on well informed strategies. Moreover, understanding gained through accurate modelling and informed policy go hand-in-hand \cite{jones2020modelling}.\\
 
-\section{Modelling as an antidote}
+\section{\textcolor{red}{Modelling as an antidote}}
 % Mathematical modelling of diseases
 With mathematical models we may attempt to understand what dictates optimal control of tree diseases. Strategies have been explored on both smaller landscapes \cite{WEBIDEMICS, risk-potential-control} and larger landscapes \cite{large-scale-control, large-scale-control2}. Current consensus on all spatial scales agree that the scale of response must equal the scale of epidemic \cite{control-scale-matching}. Furthermore, any response must be carried out swiftly otherwise the likelihood of successful management rapidly decreases and the cost of inaction soars.
 
 \subsection{Epidemic control of plant-based diseases}
-\begin{itemize}
-    \item \textcolor{red}{Maybe more from a government prospective ? Include some arrow diagrams for the decision chain and how it works in the UK.}
-\end{itemize}
+
+% \begin{itemize}
+%     \item \textcolor{red}{Maybe more from a government prospective ? Include some arrow diagrams for the decision chain and how it works in the UK.}
+% \end{itemize}
 
 % control and the benefits
 The benefit of controlling an epidemic should outweigh the costs of letting an outbreak spread unchecked. A well designed control policy should maximally reduce epidemic impact and minimise the expenditure of resources\textemdash both natural and economic. Achieving the optimal control of an epidemic in practice is a challenge due to various unknowns \cite{13-challenges} and history gives examples of insufficient control policies that failed to halt pathogen spread. The management and policy implementations of citrus canker in Florida \cite{schubert2001meeting} and Dutch Elm disease in Great Britain \cite{dutch-elm-mismanage} serve as two stark reminders. In both of these these scenarios, policy makers were slow to act and did not sufficiently comprehend the scale of the problem before it was too late. So, efficient control relies on well informed strategies. Moreover, understanding gained through accurate modelling and informed policy go hand-in-hand \cite{jones2020modelling}.\\
@@ -131,7 +131,7 @@ With mathematical models, we can attempt to understand what dictates optimal con
 %. Optimal responses in epidemic management
 Conventional eradication strategies involve detecting symptomatic trees and culling neighbours within a radius \cite{WEBIDEMICS}. This is made difficult by numerous factors including the cryptic nature of tree diseases and resource constraints which may vary over time \cite{control-theory, control-theory-application}. The naive strategy can be fine-tuned and optimised in many ways to increase efficiency. One scheme involves ranking targets according to the risk they pose in order to prioritise culling \cite{risk-potential-control}. Over large-scales, evidence suggests epidemics are most effectively controlled by targeting infected trees either at or ahead of the infectious wave-front, as has been shown for sudden oak death in California \cite{large-scale-control}. In this study, optimal tree eradication is developed by considering which locations ahead of the wave-front make for efficient targets when taking into account large-scale host structure.
 
-\textcolor{blue}{Re-frame and talk about more generalist modelling (opposed to strategies of control), specifically 1) what has been investigated mathematically and how this has helped government form policies i.e. successes for the field and failures}
+% \textcolor{blue}{Re-frame and talk about more generalist modelling (opposed to strategies of control), specifically 1) what has been investigated mathematically and how this has helped government form policies i.e. successes for the field and failures}
 
 \section{Approaches adopted in this thesis}
 
@@ -139,7 +139,7 @@ A simple easy to understand model of tree epidemics is seldom used in tandem wit
 
 This study will outline how to construct models of infectious tree disease for the purpose of epidemic control. Starting from a simple, parsimonious mathematical model of tree disease and limited information on parameter-values, I will show how to construct more elaborate models. As we move from simple model definitions, based on a uniform lattice, this thesis rigorously accesses limiting assumption in the model at each step as we move towards a more elaborate and sophisticated model. From a well constructed model, optimal large-scale epidemiological control will be investigated in an attempt to help inform policy makers about the best decision of resource expenditure and control efficiency. Throughout this study, I hope to provide useful techniques to capture and quantify the spread of disease through a population of trees.\\
 
-\textcolor{blue}{Summaries current landscape of models and how the work we have done fits into the paradigm in particular 1) do large-scale models incorporate small scale epidemiology, 2) have simple lattice models been developed on realistic heterogeneous data-sets of native species ? Have-spatially explicit sub-grid models been investigated in tree disease, talk about the scale problem in tree epidemiology. Large-scale and small scale and how we innovated a familiar yet different approach.}
+% \textcolor{blue}{Summaries current landscape of models and how the work we have done fits into the paradigm in particular 1) do large-scale models incorporate small scale epidemiology, 2) have simple lattice models been developed on realistic heterogeneous data-sets of native species ? Have-spatially explicit sub-grid models been investigated in tree disease, talk about the scale problem in tree epidemiology. Large-scale and small scale and how we innovated a familiar yet different approach.}
 
 % Fix referencing 
 Tree health is effected by trade networks, a higher volume in international trade of goods in horticulture has increased the risk of introducing invasive non-indigenous pathogens into UK tree populations. A number of epiphytotics are currently affecting tree health in the UK such as Sweet Chestnut Blight, \cite{MITCHELL201495, CB}, Dutch Elm \cite{DUTCH_ELM1,DUTCH_ELM2} and Chalara Ash Die Back \cite{ADB}. Natural wide scale epiphytotics are rare as native tree populations develop defence mechanisms via evolutionary mechanisms over very long time periods. The problem of modern infectious tree disease results from the introduction of foreign pathogens into ecosystems which have no genetic resistance. An outbreak of infectious tree disease can reduce biodiversity, harm ecosystems and cause considerable economic expense. For example, confirmed in 2011 Sweet Chestnut Blight was found in southern England. Historically Sweet Chestnut Blight killed an estimated 3.5 billion chestnut trees during the first half of the $20^{th}$ century in North America. In the UK, chestnut trees are utilised for both timber and nut production and represent an iconic species part of UK country sides. A detailed understanding of tree disease dynamics is needed before effective control methods can be implemented by policy makers.
@@ -147,11 +147,11 @@ Tree health is effected by trade networks, a higher volume in international trad
 Host-pathogen-environment interactions are extremely complicated, when all three of factors are favourable an epiphytotic takes hold. The project will begin with a stochastic lattice model. Although lattice models have been employed in human epidemiology as far as tree epidemics are concerned nothing has  been published as of yet. Therefore, the project modelling approach is novel in its construction as will now be discussed.
 
 
-\section{Chapter summary}
+\section{\textcolor{red}{Chapter summary}}
 
-\begin{itemize}
-    \item Talk about the general methods and strategies favoured in this thesis. Discuss main findings and the layout of this thesis, discuss where the main results fit in i.e. control of diseases.
-\end{itemize}
+% \begin{itemize}
+%     \item Talk about the general methods and strategies favoured in this thesis. Discuss main findings and the layout of this thesis, discuss where the main results fit in i.e. control of diseases.
+% \end{itemize}
 
 The main aim of this thesis was to develop workable models of infectious tree diseases from the ground up, from which, robust and more refined models can be established. Developing a simple model of infectious tree diseases was found to have merits when applied to realistic data sets of hosts. The aim was to further understand the nature of epidemics through tree populations. The research questions of this project involved asking to what extent a simple lattice model need be extended and what assumptions were important for each conceptual leap in modelling. The modelling work was in conjunction with .... and aimed to establish a starting model.
 

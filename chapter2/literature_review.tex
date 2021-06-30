@@ -10,44 +10,32 @@
 % -----------------------------------------------------------------------------
 
 
-\chapter{Modelling infectious tree diseases}
+\chapter{\textcolor{red}{Tree diseases epidemics: an interdisciplinary problem (WORK IN PROGRESS)}}
 \label{chapter2:litreview} 
 
-The mathematical and computational modelling of infectious tree diseases began to emerge after Plank had others put forward seminal works on the modelling of crops. Tree disease is import to consider for tree-health in both commercially cultured of stands and naturally occurring forestry and ecosystems. The modelling tree-based disease has many features in common with modelling crop diseases. However, differences in the spatial distribution of hosts and growth cycles remain large.\\
+The mathematical and computational modelling of infectious tree diseases began to emerge after Plank had others put forward seminal works on the modelling of crops. Tree disease is import to consider for tree-health in both commercially cultured of stands and naturally occurring forestry and ecosystems. The modelling tree-based disease has many features in common with modelling crop diseases. However, differences in the spatial distribution of hosts and growth cycles remain large.
 
-The aim of tree disease modelling is to help design effective control policies. From well designed control policies, the spread of disease through commercial and rural environments can be managed and tree-health maintained. This chapter begins with a chronological overview of tree disease models and the different approaches that have been used in the past.\\
+The aim of tree disease modelling is to help design effective control policies. From well designed control policies, the spread of disease through commercial and rural environments can be managed and tree-health maintained. This chapter begins with a chronological overview of tree disease models and the different approaches that have been used in the past.
 
-Having reviewed typical models in literature, the theme of control will be reviewed. That is, how the optimal control of a pathogen can be investigated from the construction of models.\\
+Having reviewed typical models in literature, the theme of control will be reviewed. That is, how the optimal control of a pathogen can be investigated from the construction of models.
 
 Modern Epidemiology is extremely interdisciplinary utilising various tools from mathematics, physics and computer science. The project will explore infectious diseases specific to tree species. There have been various models used to model tree disease including: 1) Lattice-based percolation. 2) Continuum. 3) Meta-population. 4) Network models. A summary of these models will be given in this chapter along with their main usage, control. A review of epidemic control in plant populations will be given in support of chapter where we detail a novel method stop the spread of disease. 
 
 
-\section{Determinism and stochasticity}
+\section{\textcolor{red}{Determinism and stochasticity}}
 
 The spread of disease inherently takes the form of a stochastic process, whereby an epidemic unexpectedly arises and quickly cease, seemingly out of the blue. In order to capture the spread of disease, stochastic effects cannot be overlooked... 
 
-\textcolor{red}{
-\begin{itemize}
-    \item Explain differences in modelling approaches
-    \item Why use stochastic methods
-    \item How do you collect results of a stochastic model ? Ensemble averaging
-    \item Give an overview of some results in the literature
-\end{itemize}}
+% \textcolor{red}{
+% \begin{itemize}
+%     \item Explain differences in modelling approaches
+%     \item Why use stochastic methods
+%     \item How do you collect results of a stochastic model ? Ensemble averaging
+%     \item Give an overview of some results in the literature
+% \end{itemize}}
 
 
-\section{Dispersal}
-
-One of the key features that distinguish tree disease from human-based disease is dispersal. The dispersal of a pathogen may take many forms..l
-\textcolor{red}{
-\begin{itemize}
-    \item The importance of dispersal
-    \item How is dispersal treated mathematically ?
-    \item What type of dispersal kernels have been studied?
-    \item What parameter-values have been inferred ?
-    \item How long-range can dispersal be ? Talk about long-range inter-Continental dispersal
-\end{itemize}}
-
-\section{Compartmentalised models}
+\section{\textcolor{red}{Compartmentalised models}}
 \label{ch2:lit-rev-compartmentalised-models}
 Compartmentalised models are the dominate theme in epidemiological modelling...
 
@@ -73,100 +61,121 @@ The transition of ash between states $E\rightarrow I$ occurs in the first autumn
 
 
 %
-\subsection{Lattice-based modelling}
+\subsection{\textcolor{red}{Lattice-based modelling}}
 Lattice-based models have been used to describe the spread of disease in many contexts, such as the spread of malaria, the bubonic plague and the spread of tree disease...
 
-\textcolor{red}{
-\begin{itemize}
-    \item Spatial SIR model
-    \item Agent-based modelling
-    \item A good place to talk about Percolation models
-    \item \textcolor{red}{Murray}: travelling waves that do not change shape
-\end{itemize}}
+% \textcolor{red}{
+% \begin{itemize}
+%     \item Spatial SIR model
+%     \item Agent-based modelling
+%     \item A good place to talk about Percolation models
+%     \item \textcolor{red}{Murray}: travelling waves that do not change shape
+% \end{itemize}}
 
-\section{The role of scale}
+\section{\textcolor{red}{The role of scale}}
 % WORK IN PROGRESS
 The role of scale is crucial to describing the spread of tree-based disease...
-\begin{itemize}
-    \item The spatial aggregation of vegetation, how does clustering look on different spatial resolutions ?
-    \item Spatial scale in dispersal ? What does this mean for disease gradients ?
-    \item % \cite{https://doi.org/10.1111/jbi.13642}
-    \item % \cite{pautasso2013european}, search for 'modelling' in this review paper. It contains references to LDD models.
-    \item LDD is an important factor of the scale of spread 
-    \item \cite{wingen2013long} demonstrated how host heterogeneity and distance between patches can...
-    \item traditional model of plant disease consider a wave-like spread of disease, a biological wave-like phenomena, that spreads from region to region (CITATIONS...).
-    However, this is not the case, as demonstrated by \cite{mundt2009aerial}. Epidemic fronts and disease gradients can range over multiple scales. The spread of disease through plant-based populations is thus, a multi-scale problem.
-    \item indeed, fungal spores can disperse over large distances, as confirmed by modelling work \cite{shaw2006assembling} 
-\end{itemize}
+\blindtext
+% \begin{itemize}
+%     \item The spatial aggregation of vegetation, how does clustering look on different spatial resolutions ?
+%     \item Spatial scale in dispersal ? What does this mean for disease gradients ?
+%     \item  \cite{https://doi.org/10.1111/jbi.13642}
+%     \item  \cite{pautasso2013european}, search for 'modelling' in this review paper. It contains references to LDD models.
+%     \item LDD is an important factor of the scale of spread. Long distance dispersal has been considered for many biological processes including seed and pollen dispersal \cite{baguette2012dispersal, levin2003ecology}.
+%     \item LDD is highly stochastic \cite{nathan2006long}
+%     \item \cite{wingen2013long} demonstrated how host heterogeneity and distance between patches can...
+%     \item traditional model of plant disease consider a wave-like spread of disease, a biological wave-like phenomena, that spreads from region to region (CITATIONS...).
+%     However, this is not the case, as demonstrated by \cite{mundt2009aerial}. Epidemic fronts and disease gradients can range over multiple scales. The spread of disease through plant-based populations is thus, a multi-scale problem.
+%     \item indeed, fungal spores can disperse over large distances, as confirmed by modelling work \cite{shaw2006assembling} 
+% \end{itemize}
 
-\section{Modelling landscape-level epidemics}
+\subsection{\textcolor{red}{Dispersal}}
+One of the key features that distinguish tree disease from human-based disease is dispersal. The dispersal of a pathogen may take many forms..
+\blindtext
+% \begin{itemize}
+%     \item The importance of dispersal
+%     \item How is dispersal treated mathematically ?
+%     \item What type of dispersal kernels have been studied?
+%     \item What parameter-values have been inferred ?
+%     \item How long-range can dispersal be ? Talk about long-range inter-Continental dispersal
+%     \item see \cite{nathan2012dispersal} for a review of dispersal kernels
+% \end{itemize}
 
-Modernity has witnessed the spread of tree-based epidemics at the regional, country and continental level. 'landscape-level'...
+\section{\textcolor{red}{Modelling landscape-level epidemics}}
 
-\subsection{The Metapopulation model}
-\begin{itemize}
-    \item this variation in epidemic outcome from variants of environmental factors was likened to the metapopulation used in ecology and population dynamics in order to describe environment `patchiness'
-    \item variability in the host landscape was considered and recognised as important, the patchiness of a landscape lends itself well to a metapopulation model
-    \cite{doi:10.1098/rstb.1986.0072}
-    \item \cite{large-scale-control}
-\end{itemize}
+Modernity has witnessed the spread of tree-based epidemics at the regional, country and continental level. 'landscape-level'
 
-\subsection{Network Modelling}
+\subsection{\textcolor{red}{The Metapopulation model}}
+\blindtext
+% \begin{itemize}
+%     \item this variation in epidemic outcome from variants of environmental factors was likened to the metapopulation used in ecology and population dynamics in order to describe environment `patchiness'
+%     \item variability in the host landscape was considered and recognised as important, the patchiness of a landscape lends itself well to a metapopulation model
+%     \cite{doi:10.1098/rstb.1986.0072}
+%     \item \cite{large-scale-control}
+% \end{itemize}
+
+\subsection{\textcolor{red}{Network Modelling}}
 
 Network models are useful to describe the spread disease of human-based trade and transport of infectious trees...
 
-\textcolor{red}{
-\begin{itemize}
-    \item What paradigm do network models suit?
-    \item Human trade and transport and networks 
-    \item plant-to-plant interactions and networks ? 
-    \item give examples of how network models have been used in the literature
-    \item review \cite{doi:10.1098/rsif.2005.0051}
-\end{itemize}}
+\blindtext
+
+% \textcolor{red}{
+% \begin{itemize}
+%     \item What paradigm do network models suit?
+%     \item Human trade and transport and networks 
+%     \item plant-to-plant interactions and networks ? 
+%     \item give examples of how network models have been used in the literature
+%     \item review \cite{doi:10.1098/rsif.2005.0051}
+% \end{itemize}}
 
 % Consider doing a chapter on `thresholds` that can incorporate Invasion & Persistence
-\section{Thresholds in plant-based disease}
+\section{\textcolor{red}{Thresholds in plant-based disease}}
 
 A key theme in the spread of tree-disease, and disease in the broadest sense, can be understood through a threshold...
-\textcolor{red}{
-\begin{itemize}
-    \item What was the first paper to use this term ? Give mini-historical recount
-    \item What is Invasion and persistence ? Give examples of papers and results in literature 
-    \item The importance of thresholds
-    \item Where does this number come from and why is \textbf{}this an important number ?
-    \item How can one define $R_0$ ? Talk about how the there are different ways to calculate it e.g. next-generation operator 
-    \item Survey what results have been obtained in the literature using $R_0$
-\end{itemize}}
+\blindtext
+% \textcolor{red}{
+% \begin{itemize}
+%     \item What was the first paper to use this term ? Give mini-historical recount
+%     \item What is Invasion and persistence ? Give examples of papers and results in literature 
+%     \item The importance of thresholds
+%     \item Where does this number come from and why is \textbf{}this an important number ?
+%     \item How can one define $R_0$ ? Talk about how the there are different ways to calculate it e.g. next-generation operator 
+%     \item Survey what results have been obtained in the literature using $R_0$
+% \end{itemize}}
 
 \subsection{The basic reproduction number}
 The basic reproduction number, denoted by $R_0$, can be seen to arise in the study of population dynamics and demographics to categorize offspring \cite{heesterbeek2002brief}. In the study of epidemics, $R_0$ was adapted in order to categorize the number of infectious offspring and is widely agreed to be the most important and informative parameter. The basic reproduction number can be derived from the $SIR$ model \cite{kermack-model}, and from it, we can see how a likely disease is to spread though a population. Numerous definitions of $R_0$, and methods of determination, have been proposed in the literature resulting in confusion and multiple $R_0$ values for one pathogen \cite{delamater2019complexity}. However, a common definition states:
 
 \textit{The expected number of secondary infections that result from one infected individual, over it's entire infectious lifetime, in a completely susceptible population.}
 
-here, the infectious life-time is the total amount of time an individual remains infectious. The individuals infectious status will culminate in either recovery or death. Importantly, from $R_0$ a threshold can be determined which dictates whether or not the disease will spread through large parts of the population. That is, if $R_0>1$ an \textit{epidemic} will result, otherwise the spread of disease will likely halt. The value of $R_0$ can be determined from different methods\footnote{Common approaches include, the survival function, next-generation operator and estimation from epidemiological data \cite{perspectives-on-r0}} and from it many surrogate parameters can be calculated which leads to confusion \cite{diekmann2010construction}.\\
+here, the infectious life-time is the total amount of time an individual remains infectious. The individuals infectious status will culminate in either recovery or death. Importantly, from $R_0$ a threshold can be determined which dictates whether or not the disease will spread through large parts of the population. That is, if $R_0>1$ an \textit{epidemic} will result, otherwise the spread of disease will likely halt. The value of $R_0$ can be determined from different methods\footnote{Common approaches include, the survival function, next-generation operator and estimation from epidemiological data \cite{perspectives-on-r0}} and from it many surrogate parameters can be calculated which leads to confusion \cite{diekmann2010construction}.
 
-The basic reproduction number is used extensively by researchers wishing to understand the spread of disease through human populations. In the study of plant-based disease however, the basic reproduction number has attracted far less attention despite being a convenient parameter from which a threshold can be derived. Thresholds are of great importance to understand epidemics in plant-based populations. A threshold criteria similar to the $R_0$-threshold was first introduced by \cite{van2013plant} in the logistic growth model. However, the logistic-growth based threshold was a vast simplification and had limitations in accurately predicting the threshold for growth and spread \cite{onstad1992evaluation}.\\
+The basic reproduction number is used extensively by researchers wishing to understand the spread of disease through human populations. In the study of plant-based disease however, the basic reproduction number has attracted far less attention despite being a convenient parameter from which a threshold can be derived. Thresholds are of great importance to understand epidemics in plant-based populations. A threshold criteria similar to the $R_0$-threshold was first introduced by \cite{van2013plant} in the logistic growth model. However, the logistic-growth based threshold was a vast simplification and had limitations in accurately predicting the threshold for growth and spread \cite{onstad1992evaluation}.
 
 The basic reproduction number $R_0$ was studied by \cite{gubbins2000population} in order to understand thresholds in plant-parasite \textit{pathosystems}. A plant-host under attack from a parasite may respond to the \textit{parasite load} with either the promotion or inhibition of susceptible tissue, see \cite{gilligan1997analysis} for further details on this mechanism. In order to model this problem, \cite{gubbins2000population} used a system of three linked differential equations describing the density of susceptible hosts, infected hosts and the primary source of innoculum\footnote{\textemdash here, innoculum is a general term that refers to any part of the parasite that, when in contact with the plant, may induce disease \cite{agrios2005chapter}}. Transmission of innoculum could occur through a dual source, that is, through primary or secondary pathways. Local stability analysis on the linked equations lead to various $R_0$ values, and subsequently threshold criteria, dependant on the functional form assumed by the host-response.\\
 
-\subsection{Invasion and Persistence}
+\subsection{\textcolor{red}{Invasion and Persistence}}
 \label{ch3:invasions_and_persistence}
-When calculating thresholds, the spatial structure of the host population cannot be overlooked. A study conducted by \cite{park2001invasion} considered how spatial heterogeneity effects the dynamics of plant-parasite interactions and derived the basic reproduction number for a spatially structured host population. The density of susceptible and infected hosts were comparatively examined with deterministic and stochastic model variants. The host population in \cite{park2001invasion} consisted of \textit{patches}, which in reality could be either a single host, field or region of land. Inside each patch, the \textit{within-patch} dynamics were governed by a basic reproduction number, $R_p$. If $R_p > 1$ the parasite could survive and reproduce locally or otherwise die. The infection could jump between different patches via a longer-range interaction, set by a coupling strength. Patches were locally coupled together in a neighbourhood and the infection could jump between neighboring patches. The strength of interactions between neighboring patches were set by a coupling strength $\epsilon$ which was independently of distance.\\
+When calculating thresholds, the spatial structure of the host population cannot be overlooked. A study conducted by \cite{park2001invasion} considered how spatial heterogeneity effects the dynamics of plant-parasite interactions and derived the basic reproduction number for a spatially structured host population. The density of susceptible and infected hosts were comparatively examined with deterministic and stochastic model variants. The host population in \cite{park2001invasion} consisted of \textit{patches}, which in reality could be either a single host, field or region of land. Inside each patch, the \textit{within-patch} dynamics were governed by a basic reproduction number, $R_p$. If $R_p > 1$ the parasite could survive and reproduce locally or otherwise die. The infection could jump between different patches via a longer-range interaction, set by a coupling strength. Patches were locally coupled together in a neighbourhood and the infection could jump between neighboring patches. The strength of interactions between neighboring patches were set by a coupling strength $\epsilon$ which was independently of distance.
 
-From the model put forward by \cite{park2001invasion}, the concept of \textit{persistence} could be observed. Persistence occurs when a pathogen can reproduce, and thus spread from host-to-host, however the the spread is slow enough such that host-regrowth can keep continually supplying the pathogen with susceptible matter. Whereas, if the pathogen spread more aggressively through the population, the supply of susceptible material would be quickly exhausted and the pathogen would quickly die.\\
-
+From the model put forward by \cite{park2001invasion}, the concept of \textit{persistence} could be observed. Persistence occurs when a pathogen can reproduce, and thus spread from host-to-host, however the the spread is slow enough such that host-regrowth can keep continually supplying the pathogen with susceptible matter. Whereas, if the pathogen spread more aggressively through the population, the supply of susceptible material would be quickly exhausted and the pathogen would quickly die.
 
 % $R_0$ is a complex function which changes in time, to this end, the next generation operator is used to derive a value for $R_0$ \cite{doi:10.1098/rsif.2009.0386}.
 % ref 2 \cite{doi:10.1146/annurev.phyto.011108.135838} ref 3. \cite{van2011periodic}
 
-\section{Controlling Plant-Based Epidemics}
-\begin{itemize}
-    \item Describe how control has been approached ?
-    \item What type of models have been used to access control ? \cite{WEBIDEMICS} \cite{large-scale-control}
-    \item what is the dominant narrative in controlling plant-based, and by extension tree-based, disease ? i.e. the scale of control must equal the scale of the outbreak.
-\end{itemize}
+\section{\textcolor{red}{Controlling Plant-Based Epidemics}}
 
-\section{Host data sets: epidemiology and landscape ecology}
+\blindtext
+
+% \begin{itemize}
+%     \item Describe how control has been approached ?
+%     \item What type of models have been used to access control ? \cite{WEBIDEMICS} \cite{large-scale-control}
+%     \item what is the dominant narrative in controlling plant-based, and by extension tree-based, disease ? i.e. the scale of control must equal the scale of the outbreak.
+% \end{itemize}
+
+\section{\textcolor{red}{Host data sets: epidemiology and landscape ecology}}
+
 % \textbf{This couples tree disease section to percolation and provides a good intro linking the above paragraph:}
 % \begin{itemize}
 %     \item A proper investigation of diseases spread through a tree population cannot be studied in isolation from the landscape. Disease spreads based on the spatial pattern of hosts, heterogeneity of resistance and `reservoir'? Landscape features play an important role in shaping the evolution of the spread. Forest pathology demands a landscape or spatial perspective. Broad scale epidemic (opposed to local outbreaks) require a landscape perspective, see \cite{pub.1012384986} for a review. \textbf{see \cite{pub.1073292723} for an early consideration of spatial considerations... ? double check}
@@ -186,20 +195,14 @@ From the model put forward by \cite{park2001invasion}, the concept of \textit{pe
 %     \item \textbf{introducing space into the problem lead to percolation...}
 % \end{itemize}
 
-
 Data regarding different tree species distributions will predominantly come in two forms, abundance and presence/absence data. Using abundance data is usually represented in $km^2$ tree cover per hectare (or percentage cover), whereas presence only data only gives binary information if a tree species is present or not.
 
 Abundance data is preferred as more information is captured about the tree species, however, good quality abundance data is in short supply. An interesting model put forward by Louise et at \cite{2STAGE} uses a two stage distribution model. First, presence only data is combined with a series of environmental covariates using a species distribution model in order to produce a map of predicted occurrence data. Random forest regression is then applied to a training sample of real life abundance data producing a high resolution map predicting abundance over the UK at a resolution of $1km^2$. The final result was compared with the remaining abundance data and found to perform much better than existing models. Moving to realistic tree distributions is preferable as the parameter space is reduced by the removal of $\rho$.
 
 % The accuracy of modeled canopy cover data depend on the quality, and quantity, of data sources. Key species that have greater ecological and economic importance, such as ash or oak, typically have better data availability.
+
 \section{Percolation\textemdash from forest fires to epidemics}
 \label{section:lit-rev-perc}
-\begin{figure}
-    \centering
-    \includegraphics{chapter2/figures/perc1.jpg}
-    \caption{A space-time representation of an epidemic spreading at the critical threshold. The spatial (horizontal) and time (vertical) axis show self-similar propagation of diseased individuals in grey, produced by \cite{GRASSBERGER1986273}}
-    \label{fig:1d_perc_basis}
-\end{figure}
 
 The original formulation of percolation theory was first used to describe properties of a fluid and the bonds which form between molecules \cite{perco_origin} (the reader may jump to \ref{fig:ch3-perc-invariance} for an account of percolation). The problem was posed on a graph\textemdash illustrated in terms of vertices and edges. However re-interpretations were subsequently put forward by physicists studying material sciences, naturally on a lattice. \cite{Essam_1980}. The attractive feature of this new paradigm was that percolation demonstrated a phase-transition. Thus, percolation could be treated with scaling theory used in the study of critical-phenomena. Accordingly, early work rigorously ensued to map out the behaviour of percolation around criticality in terms of critical exponents \cite{STAUFFER19791}. 
 
@@ -211,14 +214,21 @@ Beginning with a simple $SIR$ framework put forward by \cite{kermack-model}, the
 
 A fractal-like pattern of epidemics was observed by \cite{GRASSBERGER1986273}, shown in Figure \ref{fig:1d_perc_basis}. Parsimoniously describing Figure \ref{fig:1d_perc_basis}, lighter grey sites represent removed individuals, black sites indicate actively infected sites and white sites indicate unaffected sites. All lattice sites in the bottom row were initially infected and the infection can be seen to propagate from the bottom up. The lattice was initialised at the critical-density $p\sim p_c$ culminating in a fractal-like pattern. \cite{GRASSBERGER1986273} did not attribute the hosts of this model to be trees, but instead a general host-population with very low mobility. Local interactions between hosts and infected were elucidated as vast simplifications and long-range interactions (following a power-law) were discussed\textemdash we shall see how these ideas form a important component of modelling tree disease.
 
+\begin{figure}
+    \centering
+    \includegraphics{chapter2/figures/perc1.jpg}
+    \caption{A space-time representation of an epidemic spreading at the critical threshold. The spatial (horizontal) and time (vertical) axis show self-similar propagation of diseased individuals in grey, produced by \cite{GRASSBERGER1986273}}
+    \label{fig:1d_perc_basis}
+\end{figure}
+
 The behaviour of percolation-based epidemic models continued (e.g. \cite{pub.1060474189, pub.1059069981}) to be investigated with various methods such as renormalisation-groups and Monte-Carlo, the critical exponents were found along with phase transition graphs characterising epidemic (super-critical) or extinction (sub-critical) regimes. The properties of both epidemics and forest fire percolation models were studied together in \cite{pub.1052857560}, highlighting their similarity.
 
 The first ecological application came in \cite{pub.1031591030} where forest fire (and epidemic) percolation models were adapted in order to study landscape disturbances. Broadly speaking, landscape disturbances constitute a broad array of physical process which lead to a rapid ecological change, this could include invasion of pests, climate-change and fire.
 
-\textemdash\cite{GRASSBERGER1983157} <- reference for early considerations towards percolation as a model for tree diseases and percolation
-\textemdash\cite{SANDER2002293}, read and get more info + research links
+\textemdash \cite{GRASSBERGER1983157} <- reference for early considerations towards percolation as a model for tree diseases and percolation
+\textemdash \cite{SANDER2002293}, read and get more info + research links
 
-\section{Early warning signals}
+\section{\textcolor{red}{Early warning signals}}
 
 \label{section:ews}
 \begin{itemize}
@@ -227,7 +237,7 @@ The first ecological application came in \cite{pub.1031591030} where forest fire
 \end{itemize}
 
 
-\section{Ash dieback}
+\section{\textcolor{red}{Ash dieback}}
 % WORK IN PROGRESS
 
 % the combination of ash dieback and emerald ash borer present a significant threat to UK and European ash \cite{musolin2017between}
@@ -273,6 +283,10 @@ However, European ash did not co-evolve with the fungus, and demonstrates a high
 Once the fungus colonises a European ash leaf, it can spread through twigs, branches, and the xylem where it eventually spreads throughout the whole tree;
 symptoms include necrotic lesions, crown dieback, wilting and eventual death \cite{gross2014h}.
 
+% Leaf-infections are caused by ascospores landing on leaves, and 
+% symptoms take around two weeks to develop \cite{khttps://doi.org/10.1111/ppa.12048}.
+% Infection through the leafs occurs through....\cite{https://doi.org/10.1111/ppa.12844}
+
 \begin{figure}
     \centering
     \includegraphics[scale=0.5]{chapter2/figures/gross2014.jpg}
@@ -295,7 +309,7 @@ Although the primary natural driver is wind, infection (and re-infection) of ash
 
 Ash infected with the pathogen will then shed its leaves in the autumn. Fungal fruiting bodies then grow on dead leaf litter until summertime; at that point, spores produced by the fruiting body are wind-dispersed and continue the cycle by producing new secondary infections.% expand on the fruiting body spore production.
 
-The reproductive mode of ADB is complicated, and leaves can be infected by multiple sources of ascospores \cite{gross2012reproductive}.
+The reproductive mode of ADB is complicated, leaves can be infected by multiple sources of ascospores \cite{gross2012reproductive}.
 Modelling work suggest various environmental factors are important to predict the vulnerability of ash and subsequent spread of disease \cite{dal2014risk, chumanova2019predicting}.
 
 The reproductive mode is complicated and can infect hosts through soil, water and air \cite{gross2012reproductive}.
@@ -310,12 +324,41 @@ The sexual phase of HP occurs during the summer months, from June until Septembe
 
 The seasonal infection cycle of ADB resembles that of crop-based disease \cite{tankam2020modelling}. Although, in the context of crop disease, removal usually coincides with harvest time. In contrast, ash infected with HP can be removed by the pathogen over a time frame spanning years.
 
+Although research has suggested that asexual reproduction of the pathogen may play a role in driving the pathogen spread \cite{fones2016role}, 
+the role of asexual reproduction is still not fully understood.
+
+\subsection{Dispersal}
+
+Fungal spores are known to travel large distances \cite{shaw2006assembling, mundt2009aerial, wingen2013long}.
+
+In their paper, \cite{grosdidier2018tracking} tracked the local and landscape-level dispersal of ascospores produced by \textit{H. fraxineus}.
+Two dispersal kernels were used, a thin tailed Gaussian and an inverse power law of the forms:
+\begin{equation}
+    D(a, r) = \frac{1}{\pi a^2} * \exp\big[-\frac{r^2}{a^2}\big]
+    \label{eq:adb-ga}
+\end{equation}
+and
+\begin{equation}
+    D(a, r) = \frac{(b-1)(b-2)}{2\pi a^2} * \big[ 1+ \frac{r}{a}\big]^{-b}
+    \label{eq:geometric-invserse-power-law}
+\end{equation}
+where $a$ and $b$ are fitted parameters (For the Gaussian kernel, $a=\sqrt{2}\sigma$ with $\sigma$ being the standard deviation.). Equation \ref{eq:geometric-invserse-power} falls into the classical two-parameter geometric family of dispersal distributions.
+The scale parameter is described by $a$ and the shape parameter by $b$.
+The mean dispersal distance described by Equation \ref{eq:geometric-invserse-power} is  $\frac{2a}{b-3}$, and parameters $a$ and $b$ are valid for $a>0$ and $b>2$.
+
+The form of Equation \ref{eq:geometric-invserse-power} is based on pollen dispersal studies , as reviewed by \cite{nathan2012dispersal}. 
+The particular form of Equation \ref{eq:geometric-invserse-power} is more suited to describe LDD events, as noted by \cite{https://doi.org/10.1111/j.1365-294X.2004.02100.x} in relation to a pollen dispersal. Moreover, a study by \cite{https://doi.org/10.1111/j.1365-294X.2006.03155.x} demonstrated the potential of Equation \ref{eq:geometric-invserse-power} to model pollen-movements (and thus gene-flow) over landscape-level spatial scales. Although pollen is different from ascospores..., ; Presumably, the ability of Equation \ref{eq:geometric-invserse-power} to model LDD events motivated the authors of \cite{grosdidier2018tracking} to include it in their field-study.
+
+% Although data on spore depositions does not necessarily correspond to a new infection, it sheds essential light on the spatial scale of ADB dispersal. 
 % draw analogy between exponential kernel of \cite{} <- tracking adb and \cite{} <- landscape spread of adb
 % commonly referred to as \textit{H.pseudoalbidus}-\textit{F. excelsior}
 
 \subsection{Management and control}
 
 The control of ash dieback in an established focus of infestation in both natural and artificial ash stands is virtually impossible, as noted by \cite{havrdova2017environmental}. Moreover, it is already well recognised that ADB will wipe out the vast majority of ash, in Europe and Great Britain alike \cite{ash-dieback-costs}. Managing the spread of ADB is a conservation challenge \cite{pautasso2013european} % talk about the control of ADB
+
+
+% read me ->\cite{MITCHELL201495}
 
 % Approaches to conservation differ between forest and commercial ash stand \cite{skovsgaard2017silvicultural}. 
 
