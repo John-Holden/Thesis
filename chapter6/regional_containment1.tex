@@ -314,7 +314,7 @@ and
 \begin{figure}.
     \centering
     \includegraphics[scale=0.35]{chapter6/figures/fig5-sporulation.pdf}
-    \caption{One year simulations contrasting the form of sporulation for models $\phi_1(t)$-ga and $\phi_2(t)$-ga, (a) and (b) respectively. The auxiliary infectiviy $\beta^*$ effectively matches the epidemic impact between models.}
+    \caption{One year simulations contrasting the form of sporulation for models $\phi_1(t)$-ga and $\phi_2(t)$-ga, (a) and (b) respectively. The auxiliary infectiviy, $\beta^*=2000$, effectively matches the epidemic impact between models\textemdash indicative of the area under each curve.}
     \label{fig:SEIR-sporulation}
 \end{figure}
 
@@ -324,7 +324,7 @@ Due to the seasonality and perennial nature of ADB, both $\phi_1(t)$ and $\phi_2
 For $\phi_2$, the chance of new secondary infections outside of June-September is trivially small.
 
 Figure \ref{fig:SEIR-sporulation} contrasts sporulation models, by computing the number of ash transitioning into the $E$ compartment for one season over an ensemble of size $10$.
-Simulations started with a $100$ infected ash distributed randomly throughout a $\mathrm{5km \times 5km}$ domain at time $t=0$ (i.e. January).
+Simulations started with a $100$ infected ash distributed randomly throughout a $\mathrm{5km \times 5km}$ domain at the mean GB ash density in January (i.e. time $t=0$ ).
 Both models show a rise in the number of infected ash during the sporulation season.
 The infectivity rate for function $\phi_2$ can be seen to vary, in contrast $\phi_1$ is uniform\textemdash both dispersal models $\phi_1$-pl and $\phi_2$-pl demonstrated the exact behaviour.
 Although infectivity rates differed, the normalised infectivity $\beta^*$ ensured the same approximate area under each curve and therefore epidemic impact.
@@ -358,13 +358,12 @@ Initially, all simulations began with a small number of infected ash at the doma
 Figures \ref{fig:ash-mortalty}(a-b) shows the proportion of infected $I$, removed $R$ and susceptible $S$ ash over $30$ years of ADB exposure.
 The proportion of ash is depicted for model $\phi_1$-ga on a $1\mathrm{km}\times 1 \mathrm{km}$ domain for two different values of infectivity, $\beta^*=1000$ and $\beta^*=1500$, both above the threshold for epidemic.
 A higher infectivity, as shown in Figure \ref{fig:ash-mortalty}(b), produces an outbreak that spreads through the domain much quicker.
-Although, all seasonal $SEIR$ systems above the epidemic threshold will, on average, reach $100\%$ mortality eventually.
-
+Although, all systems in this framework above the epidemic threshold will, on average, reach $100\%$ mortality eventually.
 
 The seasonal $SEIR$ model produced a characteristic sigmoidal s-shaped mortality curve for high mortality proportions (i.e. approaching $100\%$), shown in Figures \ref{fig:ash-mortalty}(b).
 Similar s-shaped ADB mortality curves ave been witnessed by various authors \cite{https://doi.org/10.1002/ppp3.11, lohmus2014ash}.
 However, not including host demography in the model prevents host-pathogen coexistence\textemdash as explained by \cite{time-varying-infectivity} in their manuscript.
-Thus, mortality curves failed to demonstrate a curve that saturates below $100\%$ mortality\textemdash c.f. the modelled logistic ADB mortality curves presented by \cite{https://doi.org/10.1002/ppp3.11}.
+Thus, mortality curves failed to demonstrate a stead-state that saturates below $100\%$ mortality\textemdash c.f. the modelled logistic ADB mortality curves presented by \cite{https://doi.org/10.1002/ppp3.11}.
 
 Figures \ref{fig:ash-mortalty}(c-d) show the morality percentage on two different domain sizes for each model with a single infectiviy parameter $\beta^*=2000$, above the epidemic threshold.
 For all models, the larger domain-size shown in Figure \ref{fig:ash-mortalty}(c) effectively reduced the proportion of removed ash over the $30$ period\textemdash because more trees populate the domain. 
@@ -372,11 +371,11 @@ Figure \ref{fig:ash-mortalty}(c) shows that on a smaller $1\mathrm{km}\times 1\m
 This behaviour can be understood by noting that for inverse power law spread, secondary infections are on average likely to be under-counted
 by virtue the of fat-tailed dispersal kernel extending beyond the domain boundary.
 Increasing the domain size to $5\mathrm{km}\times 5\mathrm{km}$ brings both dispersal models into closer a agreement on the scale of epidemic.
-Nevertheless, directly comparing the epidemic-scale between models is difficult by the relationship between domain-size and dispersal.
+Nevertheless, directly comparing the epidemic-scale between models is difficult considering the relationship between domain-size and dispersal.
 
 Domain-size is known to play important role in shaping the evolution in spatially-explicit population growth models \cite{tang2011asymptotic}.
 A related topic, `plant-pathogen invasiveness and field-size', was investigated by \cite{mikaberidze2016invasiveness} in the context of crop disease.
-In particular, \cite{mikaberidze2016invasiveness} demonstrated that $R_0$ saturates to a maximum for a suitably large domain-size, beyond which domain-size had no effect on $R_0$.
+In particular, \cite{mikaberidze2016invasiveness} demonstrated that $R_0$ saturates to a maximum for a suitably large domain-size, beyond which, increasing the domain-size had no effect on $R_0$.
 Choosing a suitable domain size for each mode of dispersal therefore remains critical to accurately capture the scale of epidemic.
 In the next section, a definition of $R_0$ is outlined for the seasonal $SEIR$ model, and we revisit the topic domain-size.
 
@@ -384,24 +383,71 @@ In the next section, a definition of $R_0$ is outlined for the seasonal $SEIR$ m
 
 % Although it is hard to enforce a true $R_0$ value, the most important feature introduced from the definition is a threshold from which we can see if a local invasion is likely to take place.
 
-Before the $SEIR$ model can be investigated, a measure of the pathogens ability to invade must be defined. For epidemic systems, this usually comes in the form of a reproduction number $R_0$. There are, however, various challenges involved in defining $R_0$ when there are dispersal-mediated secondary infections and spatial structure, as explored in chapter \ref{ch5:dispersal-model}. Chapter \ref{ch5:dispersal-model} demonstrated that $R_0$ is a spatiotemporal function of various epidemiological parameters, and measuring $R_0$ over different spatiotemporal scales can lead to different, and sometimes misleading, results for $R_0$; for a seasonal-based pathogen such as ADB, additional factors only complicate the definition. 
+Before the $SEIR$ model can be investigated, a measure of the pathogens ability to invade must be defined.
+Tree mortality, shown in Figure \ref{fig:ash-mortalty}, gives insight into the final-size epidemic and the time-scale of spread.
+However computing tree mortality requires simulations to run over a number of years, which not considering host-demography is problematic.
+Additionally, as we look to scale-up the $SEIR$ model over large areas within GB, running tree mortality simulations over long periods becomes increasingly computationally expensive.
+To overcome these challenge, epidemic severity in the system will be categorised by a basic reproduction number $R_0$.
 
-\textit{From this point on, unless otherwise sated, the method for calculating $R_0$ will refer to the average number contact traced secondary infections for each generation of infection, as per Definition \ref{def:R0_contact_traced}. However, this time, secondary infections characterise the transition $S\rightarrow E$ and successive generations of infected ash arise seasonally during sporulation.}
+\textit{From this point on, unless otherwise sated, the method for calculating $R_0$ is based on the average number of secondary infections resulting from the first-generation of infected hosts, as per Definition \ref{def:R0_contact_traced}. However, this time, secondary infections characterise the transition $S\rightarrow E$ and the number of first-generation induced secondary infections is measured over the mean life-time of infected ash, i.e. five years.}
+
+Within this epidemic system, secondary infections are mediated by dispersal with a spatially-structured host population.
+Chapter \ref{ch5:dispersal-model} explored the use of a spatially-explicit $R_0$ as a function of various epidemiological parameters,
+and demonstrated that complications arise when there is spatial-structure.
+However, a proper investigation into $R_0$ and the domain-size was omitted
+\footnote{As referred to here, domain size is represented by $L$ i.e. the boundaries/area over which an epidemic may spread. The scale constant between pixels, $\alpha=5\mathrm{m}$, remains fixed for each simulation.}.
+To this aim, the contact-traced $R_0$ is studied over domain-size to explain the results of Figures \ref{fig:ash-mortalty}(c-d).
+
+\subsection{Computing $R_0$: initial conditions}
+
+Initial conditions play a minor role in shaping the value of $R_0$ and give rise to different behaviour between models. 
+In this section, initial conditions will be investigated for $\phi_1$-ga and $\phi_2$-pl, variations in the sporulation played a negligible role.
+Simulations can begin with different numbers of infected ash distributed either at the domain center (IC1) or randomly (IC2).
+Figure \ref{fig:seir-ash-IC} contrasts the contact-traced $R_0$ for first-generation infected ash over five years between the models $\phi_1$-ga and $\phi_2$-pl.
+Although the ensemble mean $\overline{R}_0$ (i.e.the  horizontal black line) compared similarly for each initial condition, differences can be seen in the statistics.
+
+Figure \ref{fig:seir-ash-IC} shows an ensemble of $R_0$ values for IC1 and IC2 with 10 and 20 initially infected ash with epidemic parameters well-above the threshold.
+A more localised dispersal kernel in $\phi_1$-ga produces a value of $R_0$ that is generally higher for IC2 and lower for IC1.
+Adjacently infected hosts at $t=0$ reduce the density of susceptible ash within a relatively small neighbourhood\textemdash up to a maximum radius of approximately $\approx 3\ell_{ga}$.
+When a number infected trees are located in close proximity for IC1, $R_0$ is smaller as the surrounding neighbourhood quickly becomes saturated with infected trees, thereby limiting the number of new secondary infections.
+The effect of $R_0$-saturation for model $\phi_1$-ga is most apparent in Figure \ref{fig:seir-ash-IC}(a), when a lower value of $\overline{R}_0$ results by increasing the number infected ash to 20.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.45]{chapter6/figures/fig5-IC.pdf}
+    \caption{The value of $R_0$ is computed for 500 simulations with four different initial conditions at $t=0$ that varied A) the number of infected hosts at and B) the spatial locations of infected trees. 
+    At time $t=0$, infected ash can be located either centrally (IC1), or scattered randomly (IC2) throughout the domain.
+    The mean value of $R_0$ compares most similarly between models and number of infected ash when using IC1.
+    Epidemic parameters for each ensemble: $\beta^*=1500$, $\rho_{avg}=0.017$, on a domain of size $\mathrm{2km\times 2km}$.}
+    \label{fig:seir-ash-IC}
+\end{figure}
+
+In contrast, initial conditions had the opposite effect on inverse power law based epidemics.
+For inverse power law spread, Figure \ref{fig:seir-ash-IC}(a-b) demonstrate that $R_0$ is generally lower for IC2 and higher for IC1.
+These observations can be explained by realising that fat-tailed dispersal models are more sensitive to the domain boundary, on account of their longer-range kernels extending beyond the boundary.
+In particular, domain-sensitivity is pronounced in \ref{fig:seir-ash-IC}(b), and $R_0$ is lower because more infected hosts will be located closer to the domain edge.
+Nevertheless secondary infections induced by $\phi_1$-pl are spread over a wider area and the effect of $R_0$-saturation is far less in comparison to $\phi_1$-ga.
+
+Overall, $\overline{R}_0$ agreed most for when infected ash are placed at the domain center IC1\textemdash indicated by distance of $\overline{R}_0$ about the red horizontal line.
+Moreover, boundary effects and domain sensitivity was least when using IC1.
+Therefore, going forward, ensemble simulations of $R_0$ will be chosen to evolve from IC1.
+Although epidemic impact is slightly lowered in IC1 for Gaussian-based spread, on account of $R_0$-saturation, 
+this points more towards a difference in model behaviour that artifacts of domain boundary size.
+
+\subsection{Domain size $L$ and $R_0$}
 
 As demonstrated in chapter \ref{ch5:dispersal-model}, a suitable spatial and temporal scale must be chosen to measure $R_0$. Figure \ref{fig:SEIR-R0-definition} shows the contact-traced $R_0$ for the inverse power law model $SEIR$ spreading above the threshold\footnote{The Gaussian variant of the $SEIR$ model also follows the same characteristic decline in $R_0$ for each subsequent generation, as demonstrated in chapter \ref{ch5:dispersal-model}}. For the particular combination of pathogen parameters shown in Figure \ref{fig:SEIR-R0-definition}(a), $R_0$ saturates to around $4$ and there is little difference in measuring $R_0$ between $10, 15$ and $20$ years. Although, measuring $R_0$ over a five year is slightly below the $10-20$ year average. This behaviour is also reflected in Figure \ref{fig:SEIR-R0-definition}(b) where $R_0$ for the first generation infected ash saturates at around $R_0 = 4$. On average, we would expect to see more infectious pathogens saturate faster and less infectious pathogens take longer\textemdash see Appendix \ref{fig:a-R0-saturate}.
 
 \begin{figure}
     \centering
-    \includegraphics[scale=0.3]{chapter6/figures/fig5-R0-def.pdf}
-    \caption{Contact-tracing $R_0$ in the seasonal $SEIR$ model. (a) The average number of secondary infections are shown for ash infected in the $n^{th}$ generation after outbreak (b) The average number of secondary infections is shown against the years after outbreak for different generations $0-10$.}
-    \label{fig:SEIR-R0-definition}
+    \includegraphics[scale=0.42]{chapter6/figures/fig5-R0-domain-size.pdf}
+    \caption{Caption}
+    \label{fig:my_label}
 \end{figure}
 
 From Figure \ref{fig:SEIR-R0-definitio}(a-b) we can see the familiar saturation of $R_0$ for later generations. The decline in $R_0$ with each generation can be understood by the decline in susceptible ash with time. The first generation infected ash, at $t=0$, have a higher number of susceptible neighbours available to infect, which declines in time. The saturation point of $R_0$ mirrors the infectious lifetime which, in this model are taken to be exponentially-distributed with mean $\lambda=5\ \mathrm{yr}$. In light of better data, this choice of distribution and parameterisation could be updated. 
 
 It makes sense to define a measure for $R_0$ based on the first generation of infections, given that the first generation has, on average, a higher $R_0$. Choosing an $R_0$ in this manner gives us an upper-bound of invasiveness, which for control, is better than an under-estimate:
-
-\textit{The results of this, and the proceeding chapter, therefore, are based on the average number of first generation infected ash.}
 
 Lastly, a suitable domain size $5\mathrm{km} \times 5\mathrm{km}$ was chosen to measure the $R_0$ for first generation infected ash over a $10$ year period. Primarily, this choice was taken for two reasons: 1) larger domain sizes beyond $5\mathrm{km} \times 5\mathrm{km}$ incur increasingly larger computer run times 2) there is little dependence of $R_0$ at, or beyond, this domain size or most values of $\beta$. Although, as shown in Appendix \ref{a:seir-with-L}, it is possible to under-estimated $R_0$ for high values of $\beta$, albeit slightly.
 
