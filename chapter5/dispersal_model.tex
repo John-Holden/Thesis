@@ -28,13 +28,13 @@ $\gamma$ & Lattice constant & $5\mathrm{m}$ \\
 % Introduce sub-grid model
 
 %1. Only  scale parameter is present in the dispersal kernel representing short-distance spread. Long distance dispersal effects are not considered.
-We begin with a model fixed inside a square lattice of size $\mathcal{L}$ at a resolution of $\mathrm{25m^2}$. At each lattice point a tree is initialised with probability $\rho$, thus generating a random homogeneous distribution of trees over the domain. The probability $\rho$ can therefore be seen as a tree-density parameter. Empty lattice points are insusceptible and denoted by $\emptyset$. The state of a tree can be in one of three conditions: susceptible, infected, or removed\textemdash $SIR$. We assume all trees are equally susceptible and trees that become infected transition through the states $S\rightarrow I\rightarrow R$ without the possibility of recovery.\\
+We begin with a model fixed inside a square lattice of size $\mathcal{L}$ at a resolution of $\mathrm{25m^2}$. At each lattice point a tree is initialised with probability $\rho$, thus generating a random homogeneous distribution of trees over the domain. The probability $\rho$ can therefore be seen as a tree-density parameter. Empty lattice points are insusceptible and denoted by $\emptyset$. The state of a tree can be in one of three conditions: susceptible, infected, or removed\textemdash $SIR$. We assume all trees are equally susceptible and trees that become infected transition through the states $S\rightarrow I\rightarrow R$ without the possibility of recovery.
 
 Given two trees, one susceptible ($S_x$) and one infected ($I_{x^\prime}$), separated by a distance $r=|x - x^\prime|$, an expected transition rate for $S_x \rightarrow I_x$ can be determined from a Gaussian kernel $g(r; \ell)$ multiplied by an infectivity rate $\beta$:
 \begin{equation}
     Pr(S_{x} \rightarrow I_{x} ;\ I_{x^{\prime}} ) = \beta \exp\Big[\frac{-r^2}{2\ell^2}\Big]
 \end{equation}
-where $\ell$ is a distance setting the scale of dispersal. If a tree transitions into the $I$ compartment it will remain infectious for an arbitrary number of $T=100$ days before uniformly transitioning into the $R$ compartment\footnote{Each Monte Carlo step through the simulation is set to be a single day of elapsed time. This is arbitrary (along with $T$) and could be re-scaled.}. A typical simulation through two time-steps is shown in Fig \ref{fig:sgm-evol}(a-b) with parameters $\rho=0.010,\ \ell = 25\mathrm{m},\ \beta=0.05\ \mathrm{day^{-1}}$ on a domain of size $400\times400$ representing an area of $\mathrm{2km^2}$. Model parameters are shown in Table $1$.\\
+where $\ell$ is a distance setting the scale of dispersal. If a tree transitions into the $I$ compartment it will remain infectious for an arbitrary number of $T=100$ days before uniformly transitioning into the $R$ compartment\footnote{Each Monte Carlo step through the simulation is set to be a single day of elapsed time. This is arbitrary (along with $T$) and could be re-scaled.}. A typical simulation through two time-steps is shown in Fig \ref{fig:sgm-evol}(a-b) with parameters $\rho=0.010,\ \ell = 25\mathrm{m},\ \beta=0.05\ \mathrm{day^{-1}}$ on a domain of size $400\times400$ representing an area of $\mathrm{2km^2}$. Model parameters are shown in Table $1$.
 
 \begin{figure}
     \centering
@@ -44,6 +44,8 @@ where $\ell$ is a distance setting the scale of dispersal. If a tree transitions
 \end{figure}{}
 
 After $t$ time-steps, the maximum distance reached by the pathogen is $D_{max}(t)$. This is found to be a useful metric that dynamically captures a pathogen progressing through the domain. Using the same domain conditions as shown in Fig \ref{fig:sgm-evol}(a-b), the time-series of $D_{max}(t)$ are shown in Fig \ref{fig:sgm-evol}(c) for a single simulation run and four variations of $\beta$. The time-series of $D_{max}(t)$ indicate if the pathogen becomes extinct or propagates to the lattice boundary and survives, shown by the vertical red and black dashed lines respectively. Gaussian dispersal does not permit the pathogen to jump large discontinuous distances, therefore, survival to the boundary defines a connected cluster of infectious-removed trees spanning the domain\footnote{This behaviour in Fig \ref{fig:sgm-evol}(a-b) could be considered an approximation to percolation, given the finite size of $\mathcal{L}$.} representing a small-scale epidemic spreading locally.\\
+
+% It makes sense to define a measure for $R_0$ based on the first generation of infections, given that the first generation has, on average, a higher $R_0$. Choosing an $R_0$ in this manner gives us an upper-bound of invasiveness, which for control, is better than an under-estimate:
 
 \section{Non-local $SIR$ behaviour}
 
