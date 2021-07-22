@@ -29,8 +29,22 @@ As such, in this chapter, we will examine how host-heterogeneity, under the infl
 % Moreover, HP can infect ash through diverse mechanisms such as water-course and contaminated soil and LDD means that new and distant foci can emerge over large distances without the need for nearby ash\textemdash for a more detailed review of ADB, including the challenges of control and biology, see chapter \ref{chapter2:litrevieiw}.
 % Subsequently, we found connectedness inside a given cluster could depend on just a small number of `connecting points' which if removed, thinned below $\rho_c$, would lead to significant fragmentation and divide the cluster
 
+%-----------------------------------
 % Suppose two patches of land, having tree densities above the threshold, $R_0 = 1$, are separated by an intermediary patch below the threshold. If we are not careful, dispersal could traverse the below-threshold patch within a single jump, even at local spatial scales. As such, we must choose a domain resolution that gives some assurance that, at the local scale, wind-dispersed spores cannot jump over whole patches with singular jumps. As always, there is the possibility that spores disperse more considerable distances, from mainland Europe to Great Britain, for example, \cite{freer2017tree, wylder2018evidence}. Nevertheless, this chapter aims at targeting dispersal at local scales, and LDD can be omitted for now.
+%-----------------------------------
+% Assuming percolation-like problem
+% In this model, the epidemic spread within an $R_0$-cluster of ash can be reduced to a `\textit{percolation-like}' problem, with the caveat of heterogeneity. If susceptible patches of ash were homogeneously distributed, a minimum number of susceptible (or `open' in percolation theory) positions would define a critical density, and a spanning cluster would percolate through the domain, as laid out in chapter \ref{ch3:two-param-model}. A similar picture is painted within the $R_0$-maps shown in Figures \ref{fig:R0-map-generation}(d-e). Figure \ref{fig:R0-map-generation}(d) depicts a fragmented domain at $\beta_{pl}=...$, increasing the pathogen infectivity to $\beta_{pl}=...$ yields a much larger '\textit{dominating}' $R_0$-cluster, as shown in Figure \ref{fig:R0-map-generation}(e).
 
+% Classical percolation theory requires lattice points to be independently open or closed, with no dependence on the state of nearest neighbours. So, strictly speaking, the analogy to percolation breaks down because the susceptibility of a given patch of ash is likely dependent on its neighbours $R_0$-value; as can be seen in Figures \ref{fig:uk-mapping}(d-e), particularly in the south of England where ash densities are high. 
+% Heterogeneity in the $R_0$-map becomes particularly useful in the the next chapter, where we investigate a potential strategy of landscape-level control based on disrupting epidemic connectivity and fragmentation.
+% Before we can move towards epidemic control, it is desirable to understand $R_0$-clustering more fully.
+%-----------------------------------
+% Assuming connectivity
+% Patches below the threshold present a natural barrier to ADB spore dispersal between clusters, for two reasons: 
+% 1) Below-threshold patches do not support high levels of infected biomass, spore dispersal emanating from these patches will therefore be lessened.
+% 2) The domain resolution, configured in section \ref{ch6:re-scaling-host-data}, ensures that no secondary infections will result for the parameter values and spatial scale under consideration in the seasonal $SEIR$ model of ADB.
+% Likewise, susceptible and connected $R_0$-clusters reveal which regions in Great Britain are likely to be the most severely devastated, and
+% where transmission between neighbouring patches is tightly coupled.
 
 \section{Optimal fragmentation of $R_0$-maps}
 
