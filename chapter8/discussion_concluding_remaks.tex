@@ -4,3 +4,39 @@ Throughout this thesis, we focused on the development of generalisable and flexi
 
 
 The scope of this thesis is vast, and subsequently relatively general, although I presented several key themes.
+
+% Interestingly, the disparity between clusters-size, and the distance between clusters could be used to give insight into
+% which spatial scale is the dominant driver of disease spread.
+% The more sparsely distributed\textemdash and thus fragmented\textemdash the $R_0$-map, the more important LDD becomes as the driver of between-cluster spread.
+% Crucially, accessing the relative importance of spatial scale between disease drivers would rely on a fitted value of $\beta$,
+% and the knowledge that ADB is estimated to spread with impunity and kill over $85\%$ of ash in Great Britain.
+
+
+%---------------------------------------------------------
+% comment on lack of ADB modelling
+% To demonstrate the method, four simplified compartmentalised $SEIR$ models of ADB were constructed, composed of different sporulation and dispersal functions.
+% Given the threat ADB poses to European ash, and the resulting economic impact, it was surprising to find a lack of spatio-temporal modelling work in the literature.
+% A lack of dynamic spatial-explicit ADB models most likely reflect its complex life-cycle and lack of epidemic parameters.
+% However, only in recent years has the sexual reproductive mode become widely accepted as the dominant disease-driver \cite{https://doi.org/10.1111/ppa.12844, havnavckova2017direct}.
+% In addition to the life-cycle of ADB, multi-scale parameters for ascospore dispersal have only been published within the last few years \cite{grosdidier2018tracking}.
+
+% To define invasibility over the landscape, we relied on a spatially-explicit value of $R_0$\textemdash i.e the mean number of infections produced by the first generation of infected ash.
+
+%---------------------------------------------------------
+% relation of work to more commonplace Metapopulation models
+% In the process of computing a value for $R_0$, several insights into dispersal-based epidemic progression and spatial-scale came to light.
+% Namely, computing $R_0$ for a fat-tailed inverse power law dispersal kernel required a larger to domain-size in comparison to the thin-tailed Gaussian variants.
+% A larger domain-size necessitated a lower landscape-level resolution (or equivalently larger patch-size) when forming the $R_0$-map.
+% Thus to define an $R_0$-value in the framework, landscape-level patch-size needs to reflect the nature of dispersal;
+% metapopulation-type models do not have this limitation. 
+% Yet, at the same time typical metapopulation models are not predicated on small-scale epidemiological properties, 
+% but tend to model patch-sizes on the order of $100\mathrm{m}-1\mathrm{km}$ \cite{large-scale-control, doi:10.1111/j.1365-3059.2010.02391.x}.
+
+%---------------------------------------------------------
+% generalisation to the approach
+% In favour of parsimony, infectivity $\beta$ was kept constant over the entire landscape of Great Britain.
+% However, epidemic severity of ADB is known to vary in response to either urban or rural environments \cite{marciulyniene2017can}.
+% So in reality, $\beta$ may very well exhibit a spatial dependence.
+% Likewise, including an index on, $\beta_i$, could reflect yearly changes due to climate change or habitat suitability\textemdash thus generalising the yearly infection cycles according to Figure \ref{fig:SEIR-transitions}.
+% An attractive feature of the $SEIR$ model therefore includes the scope of its adaptability 
+% and generalisations to our notion of $\beta$ could support more in-depth studies on spatio-temporal epidemic heterogeneity.
