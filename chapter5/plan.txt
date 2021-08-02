@@ -5,7 +5,7 @@ Aims:
     3: Show that reducing tree density, ahead of a wave-front, can slow and even contain the spread.
 
 MVP/steal thread:
-    1. Construct SIR model from first principles (small 25m \ell)
+    1. Construct SIR model from first principles (small 25m \ell) i.e. generalise ch3-4 to include dispersal 5-10 pages
         - outline probability of transition(s) 
         - show stochastic time-series
         - show simulation frames
@@ -14,34 +14,36 @@ MVP/steal thread:
         - mortality, distance reached/velocity/ probability of survival/percolation
         - density variations
         - \beta variations
-        
         whys : 1) show that a small value ell will give back a model of the SLM 
                2) highlights the importance of modelling a type of pathogen water course, wind borne, soil etc
-    
-    2. Increasing dispersal
-        - show that upping dispersal parameters in this model requires a smaller \beta
+    2. Increasing dispersal  2 pages
+        - show that upping dispersal parameters in this model requires a smaller \beta and motivates normalised/auxiliary beta
         - fit to SIR model and demonstrate the spread is more diffuse
-        
         whys : 1) this shows section highlights the difference in model behaviour when ell is large 
-               2) shows that beta must be changed to accommodate changes in ell 
-               3) motivates the need for R0 as a metric to compare different models
-    3. R0
+               2) shows that beta must be changed to accommodate changes in ell -> normalized beta
+    4. R0 3-4 pages
         - derive R0 with idealistic upper bound expression
         - show that it overestimates the spread when compared to probability of survival 
-    3.1 Contact tracing R0
+    4.1 Contact tracing R0
         - show that contact tracing R0 now describes the spread more reliably 
-    3.2 R0 and scale 
+    4.2 R0 and scale? 
         - show that R0 is a function of time and space, that later generations will under estimate R0, first generations will over-estimate
         - show that a small domain will under-estimate R0
         - show that a large domain will saturate the estimate of R0
-    
-    4.2. Power-law spread 
-        - explore the scale parameter and the exponent 
+
+    3. Power-law spread, perhaps use a Cauchy distribution, something not a LDD as ch6?
+        (Do I include...?, showing that distance 
+        - explore the scale parameter and the exponent
         - show that for the same value of R0 exponent and scale parameter combinations yield a faster spread
         whys: 1) power law spread is used throughout the literature
               2) demonstrates the difficulty in containing power-law spread 
-              3) sets up chapter 6    
+              3) sets up chapter 6
+              4) show a move away from percolation, and motivate need for R0 as a metric to compare different models
 
-Stretch: density reductions ?
+Results:
+1) Including dispersal results density issues and essentially recovers wave-like spread of the percolation based model
+1) For ell comparable to domain, can fit to traditional SIR
+3) Construct notion of spatially-explicit R0 + contact tracing method correlates well to eventual mortality
+4) potentially show that R0 needs to be measured from IC1 and larger domain (post-rationalise ch6)?
 
     

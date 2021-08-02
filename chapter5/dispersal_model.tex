@@ -1,30 +1,15 @@
-\chapter{\textcolor{red}{A non-local $SIR$ model of tree disease (WORK IN PROGRESS)}}
+\chapter{A non-local $SIR$ model of tree disease (WORK IN PROGRESS)}
 
-% Introduction...
-\blindtext
+In this chapter, a non-localised dispersal kernel is included to generalise the SLM.
+The resulting 
+The previous chapter introduced a realistic host data-set of oak. Doing so revealed limitations in the SLM, namely its failure to spread at realistic host densities.
+This chapter will generalise the SLM to include a non-local dispersal kernel\textemdash the dominant theme in modern literature.
 
-\blindtext
+\newpage
 
-\subsection{Constructing a generic $SIR$ model} % Describe a Gaussian dispersal model....
+\section{Including non-local dispersal} % Describe a Gaussian dispersal model....
 \label{section:sgm-expo}
-\begin{table}[h]
-\centering
-\begin{tabular}{l l l}
-\hline
-\textbf{Model parameter} & \textbf{Description} & \textbf{Typical value(s)}\\
-\hline
-$\rho$  & Tree density & $0.00 - 0.10$ \\ 
-$\beta$ & Infectivity & $0.001 - 0.100\ \mathrm{day}^{-1}$ \\
-$\ell$ & Pathogen dispersal distance & $5-30\mathrm{m}$ \\
-$T$ & Infectious life-time & $100$ days \\
-$t$ & Time-step & $[0, T]$ days\\
-$R_0$ & Mean reproduction number & $0-20$ \\
-$\mathcal{L}$ & Lattice dimension & $400\times400$ \\
-$\gamma$ & Lattice constant & $5\mathrm{m}$ \\
-\hline
-\end{tabular}
-\caption{Model parameters}
-\end{table}
+
 % Introduce sub-grid model
 
 %1. Only  scale parameter is present in the dispersal kernel representing short-distance spread. Long distance dispersal effects are not considered.
@@ -36,35 +21,74 @@ Given two trees, one susceptible ($S_x$) and one infected ($I_{x^\prime}$), sepa
 \end{equation}
 where $\ell$ is a distance setting the scale of dispersal. If a tree transitions into the $I$ compartment it will remain infectious for an arbitrary number of $T=100$ days before uniformly transitioning into the $R$ compartment\footnote{Each Monte Carlo step through the simulation is set to be a single day of elapsed time. This is arbitrary (along with $T$) and could be re-scaled.}. A typical simulation through two time-steps is shown in Fig \ref{fig:sgm-evol}(a-b) with parameters $\rho=0.010,\ \ell = 25\mathrm{m},\ \beta=0.05\ \mathrm{day^{-1}}$ on a domain of size $400\times400$ representing an area of $\mathrm{2km^2}$. Model parameters are shown in Table $1$.
 
+\newpage
+\section{Non-localised dispersal behaviour}
+
+\blindtext
+
+
+\subsection{Emergent wave-fronts: small-scale dispersal}
+\blindtext
+
 \begin{figure}
     \centering
-    \includegraphics[scale=0.325]{chapter5/figures/figure1.pdf}
-    \caption{Stochastic dispersal in the sub-grid model is shown through two time-steps of 400 (a) and 600 (b) days given parameters $\rho=0.01,\ \ell = 25\textrm{m}\ $ and $ \beta=0.05\ \mathrm{day^{-1}}$. Green pixels represent susceptible trees in $S$, while yellow and red pixels represent infected trees at different different steps in the $I$ category. Infected trees uniformly transition into the removed compartment shown in brown-black. (c) The time-series of maximum distance reached by an infected tree is shown for four typical simulations with parameters $\rho=0.01$, $\ell=25\textrm{m}$ and four variations infectivity. Vertical dashed red lines represent time-steps where the pathogen becomes extinct and dies while vertical black lines show when the pathogen survives to reach the domain boundary. (d) The mean number of secondary infections $R_0(t)$ is shown using the same model parameters as Fig \ref{fig:sgm-evol}(c). The black-dotted curves show the corresponding behaviour predicted from equation (\ref{eq:R0-final}).}
+    \includegraphics[scale=0.50]{chapter5/figures/fig1-sir-spatio-temporal.pdf}
+    \caption{Spatio-temporal disease progression in the generic $SIR$ model with fixed parameters $\rho=0.01,\ \ell = 25$ on a domain of size $\mathcal{L} \times \mathcal{L} = 500 \times 500$. (a-b) An evolving epidemic with infectivity $\beta=1.0\times 10^{-3}$ is shown through two time-steps. Green pixels represent susceptible trees in $S$, while red pixels represent infected trees at different different steps in the $I$ category. Infected trees uniformly transition into the removed compartment at $t=100$, shown in black. (c-d) An ensemble-averaged spatio-temporal frequency distribution (of 200 repeats) representing the number of trees in the infected compartment. The probability of a infected tree located at row $x$ and column $y$ is represented by a KDE estimate in the upper and horizontal marginals. (d) The maximum infectious distance ensemble averaged over 100 repeats for epidemic parameters shown.}
 \label{fig:sgm-evol}
 \end{figure}
 
+
 After $t$ time-steps, the maximum distance reached by the pathogen is $D_{max}(t)$. This is found to be a useful metric that dynamically captures a pathogen progressing through the domain. Using the same domain conditions as shown in Fig \ref{fig:sgm-evol}(a-b), the time-series of $D_{max}(t)$ are shown in Fig \ref{fig:sgm-evol}(c) for a single simulation run and four variations of $\beta$. The time-series of $D_{max}(t)$ indicate if the pathogen becomes extinct or propagates to the lattice boundary and survives, shown by the vertical red and black dashed lines respectively. Gaussian dispersal does not permit the pathogen to jump large discontinuous distances, therefore, survival to the boundary defines a connected cluster of infectious-removed trees spanning the domain\footnote{This behaviour in Fig \ref{fig:sgm-evol}(a-b) could be considered an approximation to percolation, given the finite size of $\mathcal{L}$.} representing a small-scale epidemic spreading locally.\\
+
 
 % It makes sense to define a measure for $R_0$ based on the first generation of infections, given that the first generation has, on average, a higher $R_0$. Choosing an $R_0$ in this manner gives us an upper-bound of invasiveness, which for control, is better than an under-estimate:
 
-\section{Non-local $SIR$ behaviour}
 
-\blindtext
+\subsection{Contact-mixing: increasing the scale of dispersal}
 
-\subsection{Small-scale dispersal}
 
 \blindtext % The probability of percolation...
-
-\subsection{Increasing the scale of dispersal}
-
-\blindtext
-
-\blindtext
+\newpage
 
 
-\section{An analytic approximation to $R_0$}
 
-% Introduce uses and quantities taken from sub-grid --> R_0
+\section{A spatially-explicit reproduction number}
+
+As remarked in the opening chapters, the basic reproduction number is widely used in the %
+study of epidemics in human and animal populations. %
+The $R_0$ value is fundamental to understand the threshold of transmission, if $R_0>1$ the %
+disease will spread through the population, or otherwise die out. The concept of $R_0$ is %
+widely used, and misinterpreted \cite{delamater2019complexity}, and many different ways of %
+calculating $R_0$ and available \cite{perspectives-on-r0}.
+
+Various studies have considered $R_0$ for plant-based diseases %
+\cite{gubbins2000population, park2001invasion, doi:10.1146/annurev.phyto.011108.135838, van2011periodic, mikaberidze2016invasiveness}. %
+However, in the context of tree and plant-based epidemiology the concept remains far less %
+explored. In general, $R_0$ is a complicated parameter which may vary in response to abiotic %
+factors, such as temperature, humidity and wind-speed, or a changing contact network. %
+When defining an $R_0$ value for tree-disease, the importance of spatial structure cannot be %
+ignored \cite{park2001invasion}.
+
+At the small scale we have a uniformly structured population. %
+However, for larger scales there is considerable spatial heterogeneity. %
+Therefore, it is expected that some regions above the threshold host-density can support %
+local reproduction of the pathogen, while some regions below the density-threshold cannot. %
+Importantly, any measure of $R_0$ should separate these regimes with the threshold $R_0>1$. %
+Infected regions are therefore likely to be `\textit{patchily}', distributed among the host %
+population \cite{park2001invasion}.
+
+Defining an informative $R_0$-value for tree-based pathosystems is far from simple. %
+In particular, the value of $R_0$ will likely depend on the spatial scale we choose to %
+consider \cite{mikaberidze2016invasiveness}. %
+If  $R_0$ is measured over a small domain, we would under-count the number of secondary %
+infections because long-range dispersal could infect a non-trivial amount of trees in %
+neighbouring domains. %
+Furthermore, a spatially-structured host population with dispersal-mediated interactions %
+can expect to violate the \textit{well-mixed} population assumption\footnote{A spatially-dependant dispersal mechanism will limit the contact network and prevent the host population from being well-mixed}. 
+Therefore care is needed in deciding how to define $R_0$.
+
+\subsection{Analytically approximating $R_0$}
+
 An `effective' reproduction number can be defined through the following thought experiment: consider a single (primary) infected tree surrounded by a random homogeneous distribution of susceptible neighbours. Over the course of it's infectious life-time, the primary infection will lead to $R_0$ secondary infections. If secondary infections are not permitted to produce tertiary infections, the neighbourhood around the primary infection remains untouched by other diseased trees and the reproductive potential of the pathogen can be approximated by $R_0$. This can be directly simulated in a straightforward manner through ensemble-averages of the model.\\
 
 \label{section:apendix_A}
@@ -123,6 +147,9 @@ R_0(T) & = 2\pi\rho_0 \ell^2 \sum^{\infty}_{n=1} \frac{(-1)^{n+1} (\beta T)^n}{(
 \end{split}
 \end{equation}
 
+
+(d) The mean number of secondary infections $R_0(t)$ is shown using the same model parameters as Fig \ref{fig:sgm-evol}(c). The black-dotted curves show the corresponding behaviour predicted from equation
+
 where the function $E_1(x)$ is the mathematically well studied exponential function $E_1(x)=\int^{\infty}_x t^{-1}\exp^{-t}dt$ and $\gamma$ is Euler's constant $\approx 0.57721$.
 
 % A simplified approximation of the total number of secondary infections, after $T$ time-steps can be shown to be:
@@ -137,54 +164,11 @@ In Fig \ref{fig:sgm-evol}(d), the ensemble-averaged number of secondary infectio
 
 From the effective reproduction number, a transmission threshold is defined by $R_0=1$, illustrated in Fig \ref{fig:sgm-evol}(d) by the grey horizontal line. When model parameters satisfy $R_0>1$, the pathogen may either propagate for a time before dying off (as demonstrated by the blue and orange time-series in Fig \ref{fig:sgm-evol}) or continue indefinitely\textemdash indicating an epidemic. For $R_0<1$, the pathogen has little chance of spreading to neighbouring trees and zero chance of culminating in an epidemic through the domain\protect\footnotemark \footnotetext{A stable epidemic regime through the domain $\mathcal{L}$ required parameters slightly above the transmission threshold. See \cite{R0-perc-ref} for a related discussion on the `final epidemic size' and reproductive ratios.}.\\
 
-\section{Ensemble simulations}
-
-% Mortality, max distance, R0 
-\blindtext
-
-
-% SHOW THAT THE INITIAL CONDITION LEADS TO THE SAME RESULT OVER A DIFFERENT TIME-SCALE
-\section{Dispersal model: basic reproduction number}
-
 % R0 can be calculated from experimental data : \cite{segarra2001epidemic}
-
-As remarked in the opening chapters, the basic reproduction number is widely used in the %
-study of epidemics in human and animal populations. %
-The $R_0$ value is fundamental to understand the threshold of transmission, if $R_0>1$ the %
-disease will spread through the population, or otherwise die out. The concept of $R_0$ is %
-widely used, and misinterpreted \cite{delamater2019complexity}, and many different ways of %
-calculating $R_0$ and available \cite{perspectives-on-r0}.\\
-
-Various studies have considered $R_0$ for plant-based diseases %
-\cite{gubbins2000population, park2001invasion, doi:10.1146/annurev.phyto.011108.135838, van2011periodic, mikaberidze2016invasiveness}. %
-However, in the context of tree and plant-based epidemiology the concept remains far less %
-explored. In general, $R_0$ is a complicated parameter which may vary in response to abiotic %
-factors, such as temperature, humidity and wind-speed, or a changing contact network. %
-When defining an $R_0$ value for tree-disease, the importance of spatial structure cannot be %
-ignored \cite{park2001invasion}.\\
-
-At the small scale we have a uniformly structured population. %
-However, for larger scales there is considerable spatial heterogeneity. %
-There fore, it is expected that some regions above the threshold host-density can support %
-local reproduction of the pathogen, while some regions below the density-threshold cannot. %
-Importantly, any measure of $R_0$ should separate these regimes with the threshold $R_0>1$. %
-Infected regions are therefore likely to be `\textit{patchily}', distributed among the host %
-population \cite{park2001invasion}.\\
-
-Defining an informative $R_0$-value for tree-based pathosystems is far from simple. %
-In particular, the value of $R_0$ will likely depend on the spatial scale we choose to %
-consider \cite{mikaberidze2016invasiveness}. %
-If  $R_0$ is measured over a small domain, we would under-count the number of secondary %
-infections because long-range dispersal could infect a non-trivial amount of trees in %
-neighbouring domains. %
-Furthermore, a spatially-structured host population with dispersal-mediated interactions %
-can expect to violate the \textit{well-mixed} population assumption\footnote{A spatially-dependant dispersal mechanism will limit the contact network and prevent the host population from being well-mixed}. 
-Therefore care is needed in deciding how to define $R_0$.\\
-
-\label{ch5:dispersal-model}
+% \label{ch5:dispersal-model}
 
 
-\subsection{Contact-tracing $R_0$}. % A computational approach to understanding $R_0$ 
+\section{Contact-tracing $R_0$: a computational approach}.
 
 An analytical solution to $R_0$ was presented previously in \textcolor{red}{CHAPTER 4}. %
 In that approach, tertiary ($3^{rd}$ order generation) infections were not permitted. %
@@ -209,7 +193,6 @@ Defining $R_0$ in this way extends the previous definition to account for the re
 saturation around the primary infected trees neighbourhood. This gives an improved measure %
 of the threshold for invasion. The average number of contact-traced secondary infections, $R_0$, can be defined as:
 \begin{defn}. % look into definitions of next-generation operator
-....
 \label{def:R0_contact_traced}
 \end{defn}
 
@@ -219,6 +202,7 @@ of the threshold for invasion. The average number of contact-traced secondary in
     \caption{Contact-traced $R_0$, the 'true' $R_0$. Tracking the history of all infected trees allows us to count how many infections are produced for each infectious tree over a simulation. At $t=0$, a single ($1^{st}$-generation) infection is positioned at the center of the domain. The quantity $R^i_0$ is defined as the mean number of infections produced for  the $i^{th}$ generation.}
     \label{fig:contact-trace}
 \end{figure}
+
 
 \subsection{Capturing $R_0$ in space and time}
 
@@ -312,32 +296,14 @@ increasing effective host canopy cover. %
 In changing $\alpha$, the spatial resolution is rescaled and the expectation is that a higher value of $\beta$ should be seen to reflected a larger canopy cover. %
 The infectivity $\beta$ represents a simplified compound parameter that incorporates information about the spore production rate. %
 Re-scaling the canopy cover means more susceptible plant material can become infected and produce further spores. 
-% JS_what does this mean 
-\textcolor{red}{Tighten me up, talk about me to group.}\\
-
-% beta is a per-capita rate of infection, that can be seen as a compound parameter...
-
-
-\section{Inverse power law dispersal}
-
-% - explore the scale parameter and the exponent 
-% - show that for the same value of R0 exponent and scale parameter combinations yield a faster spread
-
-\blindtext 
-
-\blindtext
-
 
 \section{Invasiveness: patch-to-patch transitions}
 
-\blindtext
+\textcolor{red}{\blindtext}
+\newpage
 
-\blindtext
-
-\blindtext
 
 \section{Chapter summary}
 
-\blindtext
-
-\blindtext
+\textcolor{red}{\blindtext}
+\newpage

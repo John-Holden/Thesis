@@ -101,23 +101,23 @@ see Appendix \ref{a:probablity-transition} for an example of implementation.
       \beta  \exp\Big[-\frac{r^2}{\ell^2_{ga}}\Big] &  t \in [\mathrm{June, September}] \\
       0 & \mathrm{otherwise} \\
 \end{array} 
-\right. \] & $\frac{1}{T}*\frac{1}{\pi\ell_{ga}^2}$  \\
+\right. \] & $\frac{1}{T} \frac{1}{\pi\ell_{ga}^2}$  \\
  2: $\phi_1$-pl & 
  \[  Pr(S_{x} \rightarrow E_{x,n}; I_{x^{\prime}})  = \left\{
 \begin{array}{ll}
       \beta  \big[1 + \frac{r}{\ell_{pl}}\big]^{-a}  &  t \in [\mathrm{June, September}] \\
       0 & \mathrm{otherwise} \\
 \end{array} 
-\right. \] & $\frac{1}{T} * \frac{(b-1)(b-2)}{2\pi\ell_{pl}^2}$  \\
+\right. \] & $\frac{1}{T} \frac{(b-1)(b-2)}{2\pi\ell_{pl}^2}$  \\
 3: $\phi_2$-ga & 
-  $Pr(S_{x} \rightarrow E_{x,n}; I_{x^{\prime}})  =  \beta \exp\Big[-\frac{(t - T_{SP})^2}{2\sigma_{SP}^2}\Big] * \exp\Big[-\frac{r^2}{\ell^2_{ga}}\Big]
+  $Pr(S_{x} \rightarrow E_{x,n}; I_{x^{\prime}})  =  \beta \exp\Big[-\frac{(t - T_{SP})^2}{2\sigma_{SP}^2}\Big] \exp\Big[-\frac{r^2}{\ell^2_{ga}}\Big]
 $  
-  & $ \frac{1}{\sqrt{2\pi}\sigma_{SP}} * \frac{1}{\pi\ell_{ga}^2}$ \\
+  & $ \frac{1}{\sqrt{2\pi}\sigma_{SP}} \frac{1}{\pi\ell_{ga}^2}$ \\
   && \\
 4: $\phi_2$-pl & 
-  $Pr(S_{x} \rightarrow E_{x,n}; I_{x^{\prime}})  =  \beta \exp\Big[-\frac{(t - T_{SP})^2}{2\sigma_{SP}^2}\Big] * \big[1 + \frac{r}{\ell_{pl}}\big]^{-a}
+  $Pr(S_{x} \rightarrow E_{x,n}; I_{x^{\prime}})  =  \beta \exp\Big[-\frac{(t - T_{SP})^2}{2\sigma_{SP}^2}\Big] \big[1 + \frac{r}{\ell_{pl}}\big]^{-a}
 $  
-  & $ \frac{1}{\sqrt{2\pi}\sigma_{SP}} * \frac{(b-1)(b-2)}{2\pi\ell_{pl}^2}$ \\
+  & $ \frac{1}{\sqrt{2\pi}\sigma_{SP}} \frac{(b-1)(b-2)}{2\pi\ell_{pl}^2}$ \\
    && \\
  \hline
  \end{tabular}
