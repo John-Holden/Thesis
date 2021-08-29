@@ -5,7 +5,7 @@
 % 4) Set the basis model and establish the main ensemble method 
 % -----------------------------------------------------------------------------
 
-\chapter{Simple lattice model}
+\chapter{Tree disease: a simple lattice model}
 \label{chapter:SLM}
 % 1. emphasis generality
 % 2. emphasis the simplicity 
@@ -38,7 +38,7 @@ conversely, if $\rho$ is large then one very large connected network of open pos
 At some point for $\rho \in [0, 1]$ a critical threshold ($\rho_c$) would be reached and a singularity of connected open lattice positions would span the length of an infinite sized lattice. %
 On a finite lattice, the cluster is said to percolate and form a `spanning cluster' ($C_\infty$) that extends between at least two different edges of the lattice. %
 The formation of the spanning cluster occurs abruptly between a very narrow range of $\rho$ values. %
-Therefore, the threshold for percolation defines a critical-point \citep[see][]{STAUFFER19791}. %
+Therefore, the threshold for percolation defines a critical-point \cite{STAUFFER19791}. %
 
 The critical point can be defined as the least value of $\rho$ where percolation occurs with non-zero probability. %
 This can be formalised by first considering the probability function: $\theta (\rho)= \lbrace \rho:|C|=\infty\rbrace$ where $\theta(\rho)$ is the probability of an arbitrary site, %
@@ -168,7 +168,7 @@ This is useful to highlight crucial aspects of percolation and how the model  be
 
 At the critical density, the emergence of some interesting phenomena is witnessed. %
 Figure \ref{fig:ch3-perc-invariance} shows the spanning cluster of infectious-removed trees (in red and white respectively) at $\rho =\rho_c$. %
-The cluster looks remarkably similar at all spatial resolutions and is said to be `self-similar' \citep{Kapitulnik_1983}. %
+The cluster looks remarkably similar at all spatial resolutions and is said to be `self-similar' \cite{Kapitulnik_1983}. %
 Within $C_\infty$, one can identify clusters of untouched susceptible trees (in green) of various sizes. %
 This suggests a distribution of different cluster sizes that occupy all possible length-scales within the lattice. %
 In the literature, clusters within a distribution are described by $n_s$ (the `cluster number'), where $n_s$ is the number of clusters containing $s$ open lattice sites. %
@@ -176,10 +176,10 @@ In the literature, clusters within a distribution are described by $n_s$ (the `c
 Increasing the lattice size $L$ as $\rho = \rho_c$, the largest cluster present (denoted by $M$) would scale as $M\propto L^{1.9}$ (opposed to $M\propto L^{2}$ for $\rho > \rho_c$). %
 This is indicative of the cluster fractal dimension $d_F=1.9$ and is important when considering changes in the size of the lattice. %
 If the cluster is normalised by the size of the lattice ($L^2$), the mean density of $M$ would decay with an increase in lattice size, i.e. $L^{1.9}/L^2 = L^{-0.10}$. %
-This is a non-intuitive relationship and has implications for finite sized scaling, \cite[see][p8 for more information]{stauffer2018introduction}. %
+This is a non-intuitive relationship and has implications for finite sized scaling\textemdash see \cite{stauffer2018introduction} for further discussion. %
 
 At $\rho \sim \rho_c$, percolation and scaling theory explain how the system follows a power law of the form $\propto (\rho - \rho_c)^{\alpha}$ where $\alpha$ is a universal critical exponent. %
-All systems that possess the same exponent are members of the same `universality class' \citep{PhysRev.180.594, RevModPhys.76.663}. %
+All systems that possess the same exponent are members of the same `universality class' \cite{PhysRev.180.594, RevModPhys.76.663}. %
 
 Consider the probability that one open site (at the origin) is connected to another open site a distance $r$ away. %
 In this scenario, the probability is described by the `correlation function' $g(r)$. %
@@ -203,7 +203,7 @@ Importantly, the critical exponent $\nu$ is universal for all lattice types and 
 
 If the system crosses the percolation threshold, it can be likened to a phase-transition. %
 Subsequently, the terms `phase-transition' and `percolation' will be used interchangeably throughout this work. %
-Broadly speaking, the critical phenomena found in percolation theory, thermodynamics and magnetism have close ties and are described by similar power laws underpinned by scaling theory \citep{Essam_1980}. %
+Broadly speaking, the critical phenomena found in percolation theory, thermodynamics and magnetism have close ties and are described by similar power laws underpinned by scaling theory \cite{Essam_1980}. %
 
 \section{Introducing infectivity\textemdash a two parameter model}
 \label{ch3:two-param-model}
@@ -276,7 +276,8 @@ Where, $N_I$ is the number of infected trees in the domain at time-step $t$. %
 The difference in $N_I$ between time-steps gives an `effective' radial velocity. %
 That is, the number of spatial units progressed by the pathogen averaged over all angles per unit time. %
 Strictly speaking, Eq (\ref{eq:vel_eff_r}) is valid only for $\rho > \rho_c$, %
-at the percolation threshold the wave-front assumes a fractal dimension and averaging over two dimensions becomes unreasonable \citep[see][for more information]{OROZCOFUENTES201912}. %
+at the percolation threshold the wave-front assumes a fractal dimension and averaging over two dimensions becomes unreasonable\textemdash
+see \cite{OROZCOFUENTES201912} for information on the fractal dimension and wave-front. %
 
 The time-series, $v_{radial}(t)$ is shown in Figure \ref{fig:vel_eff_rad_metric}(a) for three high-low combinations $(\rho, \beta)$. %
 Variance in the time-series is greatest through the first $\sim 200$ time-steps, %

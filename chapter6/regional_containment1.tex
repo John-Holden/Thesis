@@ -51,11 +51,7 @@ For the model presented in this chapter, epidemic uncertainty requires analysis 
 \label{sec:infection-dynamics}
 
 The infection dynamic comprises four states: susceptible $S$, latently infected $E$, infectious $I$ and removed $R$, and transitions occur through $S\rightarrow E \rightarrow I \rightarrow R$, without the possibility of recovery. Figure \ref{fig:SEIR-transitions} shows a typical scenario, an infected ash tree in the $n^{th}$ cycle (or equivalently $n$ years after the initial outbreak) may infect ash in the $S$ compartment. 
-Newly infected ash transition into the $n^{th}$ $E$ compartment, denoted by $E_n$, and become infectious in the following year $I_{n+1}$.
-
-According to a binomial distribution, the distribution of susceptible ash is initialised by a Bernoulli trial with probability $\rho$.
-Interactions between individual hosts are thus modelled over a flat and randomly distributed population.
-The probability $\rho$ defines the host density inside a square domain of size $\mathcal{L}$. 
+Newly infected ash transition into the $n^{th}$ $E$ compartment, denoted by $E_n$, and become infectious in the following year $I_{n+1}$. The distribution of susceptible ash is described by the same flat randomly distributed population of trees used previously in chapters 3-5.
 
 \begin{figure}
     \centering
@@ -80,12 +76,7 @@ The probability of transition follows:
     Pr(S_{x} \rightarrow E_{x,n} ;\ I_{x^{\prime}, n} ) = \beta  \phi(t) D(r;\ell)
 \end{equation}
 where $r$ is the distance between $x$ and $x^{\prime}$, and $\phi(t)$ is a time-dependant function reflecting the seasonal life-cycle of ADB.
-The probability of transition is calculated for each susceptible tree in the domain (i.e. $\forall S_x \in [L, L]$),
-and repeated for all infectious trees in $I_n$.
-Transition probabilities are calculated at each time-step, taken to be days, while trees are infectious.
-From a computational perspective, the probability of transition is assessed against samples drawn from a continuous uniform distribution $U(0, 1)$;
-see Appendix \ref{a:probablity-transition} for an example of implementation.
-
+As explained in chapter \ref{ch:dispersal-model}, transition probabilities are computed for each step a host remains infectious.
 
 \begin{table}
 \centering
