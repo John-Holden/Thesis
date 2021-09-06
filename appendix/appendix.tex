@@ -166,8 +166,46 @@ R_0 & = 2\pi\beta\ell^2\rho_0 \int ^T _0 \big(1 - 2\pi\beta\frac{\ell^2}{L^2} \b
     R_0 = 2\pi\beta\rho_0\ell^2 \frac{(1 - 2/9\beta)^T - 1}{\ln(1-2/9\beta)}
 \end{align*}
 
+\newpage
+
+\section{SIR fitting}
+\label{A:sir-fitting}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.54]{chapter5/figures/fig2-sir-fitting-A.pdf}
+    \caption{Infected hosts are plotted as a function hosts, according to the $SIR$ model for various ratios of $\alpha=\gamma / \beta$.
+            Initial conditions began from one infected and 2500 susceptible hosts\textemdash equivalent to a $500\times500$ domain at tree density $0.01$.
+            Numerical solutions of the $SIR$ model are plotted against predictions from equation \ref{eq:SIR-1param1}, shown as crosses.}
+    \label{fig:sir-fitting-a}
+\end{figure}
+
+The standard $SIR$ model has no well-known analytic solution, which complicates model fitting.
+As such, a simplified scheme that reduced the $SIR$ model to one parameter was used as a comparative tool to access NLM simulations.
+Previously in chapter \ref{ch:dispersal-model}, details were omitted about the behaviour of equation \ref{eq:SIR-1param1}, i.e.
+\[
+I(S) = -S +  N \Big( 1 + \alpha \ln(S / S_0) \Big)
+\]
+In Figure \ref{fig:sir-fitting-a}, numerical simulations of the $SIR$ model are compared against analytic predictions from equation \ref{eq:SIR-1param1}.
+Specifically, the $SIR$ model was simulated\textemdash using the Euler method\textemdash for various combinations of infectivity rate $\beta$ and removal rate $\gamma$ beginning from
+one initially infected and 2500 susceptible hosts.
+Numerical $SIR$ simulations and predictions of infected hosts $I$ (from equation \ref{eq:SIR-1param1}) are shown as solid lines and crosses respectively.
+As the ratio $\alpha=\gamma/\beta$ decreases, a sharper rise in the infections field $I$ results, indicating a more infectious outbreak.
+In contrast, a larger value of $\alpha$ defines a smoother curve which attains a lower peak.
+Although equation \ref{eq:SIR-1param1} has clear limitations and descriptive power, it allows a simple one-parameter model to fit the NLM against.
+
+\newpage
+
 \section{Exponentially distributed times}
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.4]{chapter5/figures/fig2-sir-fitting-exp.pdf}
+    \caption{Caption}
+    \label{fig:SIR-fitting-expontial}
+\end{figure}
+
+
+\label{a:exponentially-distributed-lt}
 In chapter 5 the NLM was constructed with uniform transitions into the removed compartment. 
 Here, uniform refers to a transition into the $R$ compartment exactly $T$ time-steps after the host becomes infected.
 Arguably, uniform life-time transitions are simple and unrealistic.
@@ -176,13 +214,78 @@ Figure \ref{fig:SIR-fitting-expontial} shows the SIR fitting procedure against t
 Model behaviour in Figure \ref{fig:SIR-fitting-expontial} looks much the same, although fitting the exponentially-distributed NLM to the SIR model resulted in a closer fit for all panels except (b). 
 Figure \ref{fig:SIR-fitting-expontial}(b) shows a much larger disparity between the NLM and SIR model.
 
+
+\newpage
+
+\section{Combining probabilities in the NLM}
+\label{A:combiniing-probabilities}
+
+As mentioned in section \ref{sec:contract-traced-R0}, probabilities in the NLM are simplistic.
+That is, we consider interactions between infected and susceptible hosts one by one at each time-step.
+In pseudo-code, the essential implementation follows:
+
+\begin{lstlisting}[style=pythoncode,
+    caption = ,
+    label = py:rand]
+
+def run_algorithm():
+    for time_step in range(run_times):  # iterate over time
+        for infected_tree in I_arr:  # iterate over I trees
+            for susceptible_tree in S_arr:  # iterate over S trees
+                Pr(S_x --> I_x ; I_y)
+                ...
+                ...
+                ...
+\end{lstlisting}
+
+although these singular between-tree interactions (handled sequentially) are sufficient to model the spread of disease, it would be interesting to compare against a `multi-interaction' implementation by combining probabilities of the form:
+\begin{equation}
+    Pr(S_x \rightarrow I_{x}; I_{y1}, I_{y2})
+\end{equation}
+where $I_{y1}$ and $I_{y2}$ are two distinct trees and $y1 \neq y2$.
+Now, suppose infection pressure from the two infected trees at location $y1$ and $y2$ simultaneously interact with one susceptible tree at location $x$.
+Over a single time-step the combined probability is then:
+\begin{equation}
+    Pr(S_x \rightarrow I_{x}; I_{y1}, I_{y2}) = P_{y1} + P_{y2} - \big[ P_{y1} \cap P_{yn} \big] 
+\end{equation}
+where $P_{y1}$ and $P_{y2}$ are the individual probabilities of transition due to $y1$ and $y2$ respectively.
+Now, suppose there are $yN$ infected trees, the combined probability is given by the inclusion-exclusion principle:
+\begin{equation}
+\label{eq:combined-pr}
+     Pr(S_x \rightarrow I_{x}; I_{y1}, I_{y2}...I_{yN}) = \sum_{k=1}^{N} \big(  -1 \big)^{k+1} \Big[ \sum _{1\leq y1 \leq y2 \leq....\leq P_{yk} \leq N} \big| P_{y1}\cap ...\cap P_{yk}  \big|   \Big]
+\end{equation}
+
+where each union $P_{y1} \cap ... \cap P_{yk}$ adds a small order correction to the original NLM formulation.
+It must be remarked how equation \ref{eq:combined-pr} would incur a significant computational cost.
+Moreover, because secondary can be induced under the influence of multiple sources the definition of $R_0$ becomes obscure.  
+Although implementing equation \ref{eq:combined-pr} would be an interesting\textemdash and potentially insightful\textemdash endeavour, the analysis was not undertaken.
+
+\section{Contact-tracing $R_0$}
+\label{A:R0-contact-traced-mortality}
+
 \begin{figure}
     \centering
-    \includegraphics[scale=0.4]{chapter5/figures/fig2-sir-fitting-exp.pdf}
-    \caption{Caption}
-    \label{fig:SIR-fitting-expontial}
+    \includegraphics[scale=0.60]{chapter5/figures/fig6-R0-contact-vs-mortality-A.pdf}
+    \caption{Comparing the contact-traced reproduction ratio against tree mortality. (a) Inverting the plot of Figure \ref{fig:contact-trace-vs-mortality} to show the spread of $R_0^{(1)}$ against the ensemble averaged tree mortality. (b)
+    Re-running the ensemble shown in Figure \ref{fig:contact-trace-vs-mortality} with $10$ initially infected trees. The threshold appears more abrupt and stochasticity is reduced.}
+    \label{fig:R0-contact-vs-morality-A}
 \end{figure}
 
+In Figure \ref{fig:R0-contact-vs-morality-A}(a), we invert the plot (shown in chapter \ref{ch:dispersal-model} Figure \ref{fig:contact-trace-vs-mortality}) and show the range of first generation reproduction ratios $R_0^{(i1)}$ against the ensemble-averaged tree mortality.
+Inverting the plot gives information about the spread of $R_0^{(1)}$;
+as we can see, low values of infectiviy produce a skewed distribution which becomes more centered as infectivity increases.
+A threshold can be seen around $R_0^{(1)}=1$, although a number of simulations can produce a low-valued $R_0^{(1)}$ for any value of infectivity due to initial extinction events.
+
+In chapter \ref{ch:dispersal-model} both the contact and analytic values of $R_0$ were computed/observed for a single infectious tree at the domain center.
+As elaborated in chapter \ref{ch:dispersal-model}, initial stochastic forces had the tendency to reduce the chance of epidemic by causing early extinction events\textemdash thereby reducing the mean tree mortality.
+However, a number of initial conditions are possible.
+As such, the plot of Figure \ref{fig:contact-trace-vs-mortality} was re-run with $10$ infectious trees in the domain center at $t=0$ to test how initial stochasticity in the system changes, shown by Figure \ref{fig:R0-contact-vs-morality-A}(b).
+
+As expected, increasing the number of infected trees at $t=0$ reduces stochastic and early extinction events;
+this is demonstrated by noting that Figure \ref{fig:R0-contact-vs-morality-A}(b) has a smoother ensemble mean, and no instances of zero mortality for highly infectious epidemics (c.f. the bottom right hand side of Figure \ref{fig:contact-trace-vs-mortality} where multiple observations can be seen of zero tree mortality for high $\beta^*$).
+Surprisingly, for later generations the degree of inflexion for $R_0^{(4)}$-$R_0^{(5)}$ is reduced at high $\beta^*$ in comparison to Figure \ref{fig:contact-trace-vs-mortality},
+
+\newpage
 
 \chapter{Regional containment: a formal explanation of the Cluster Fragmentation}
 \label{section:alpha-step}
@@ -201,17 +304,6 @@ where $(i,j)$ are spatial coordinates in $\mathbf{C}$ and $\alpha$ taking values
 Applying CCA over each binary map is performed through each $\alpha$-step in order to identify and label sub-clusters. At particular steps $\alpha \rightarrow \alpha - \delta\alpha$, $\mathbf{C}$ will begin to form when two\footnote{It is possible but unlikely that three or more sub-clusters suddenly connect to form $\mathbf{C}$ in the same step} distinct sub-clusters $\mathbf{C_1}$ and $\mathbf{C_2}$ suddenly connect when certain critical links become non-zero\textemdash analogous to the formation of a spanning cluster opening up in a percolation. When $\mathbf{C_1}$ and $\mathbf{C_2}$ abruptly merge and form the basis of $\mathbf{C}$, a large discontinuous jump in cluster size is detected. When a discontinuity is detected all spatial points $(i,j)$ which bridge the gap between $\mathbf{C_1}$ and $\mathbf{C_2}$ are found and felled.\\
 
 Successive steps through $\alpha$ continue until $\alpha=1$ and critical links are felled for each discontinuity event. This prevents $\mathbf{C_1}$ and $\mathbf{C_2}$ from merging over $\alpha \in [1, R_{max}]$ and fragments the target-cluster $\mathbf{C}$ into two disconnected sub-clusters. The process is then repeated, the next cluster target will be either $\mathbf{C_1}$ or $\mathbf{C_2}$, whichever has the largest number of Ash trees. Iterating this $N$ times will yield $N+1$ disconnected cluster fragments.\\
-
-\chapter{PDE modelling - finite difference solver}
-
-\label{a:pde}
-
-\begin{itemize}
-    \item \textcolor{red}{How does the diffusion and growth parameters change the measured speed with dx and dt ? perhaps worth detailing...}
-\end{itemize}
-\blindtext
-
-\blindtext
 
 
 \chapter{Seasonal $SEIR$ model of Ash dieback}
