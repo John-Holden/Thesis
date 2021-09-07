@@ -11,7 +11,7 @@ After establishing a non-local dispersal model, a spatially explicit analytical 
 Analytical predictions of $R_0$ are compared against the total tree mortality\textemdash equivalent to the final-sized epidemic.
 Lastly, the analytical expression of $R_0$ is scrutinised against the `actual' number of secondary infections, computed by tracking individual tree-to-tree infections within the model.
 The analytic and contact-traced methods to calculate $R_0$ are shown to define a threshold at $R_0=1$.
-The analysis is kept generic and purposefully parsimonious before incorporating more biological realism in the next chapter. 
+The analysis is kept generic before incorporating more biological realism in the next chapter. 
 
 \section{A non-local $SIR$ model}
 \label{section:sgm-expo}
@@ -51,20 +51,21 @@ Uniform transitions into the $R$ compartment help to keep the model simple but p
 \centering
 \begin{tabular}{l l l}
 \hline
-\textbf{Model parameter} & \textbf{Description} & \textbf{Value(s) taken}\\
+\textbf{Model parameter} & \textbf{Description} & \textbf{Typical value(s)}\\
 \hline
 $\rho$  & Tree density & $0.00 - 0.10$ \\ 
-$\beta$ & Infectivity & $0 - 10^{-3}$ \\
+$\beta$ & Infectivity probability & $0 - 10^{-3}$ \\
 $\beta^*$ & Auxiliary infectivity & $0 - 10$ \\
-$\ell$ & Dispersal scale parameter $=\sqrt{2}\sigma_{ga}$ & $ 0 - 100$ \\
-$t$ & Simulation time step & $1 \mathrm{Au}$ )\\
+$\ell$ & Gaussian dispersal parameter & $ 0 - 100$ \\
+$t$ & Simulation time step & $1\ \mathrm{Au}$\\
 $T$ & Infectious life time & $100$  \\
-$\alpha$ & Lattice constant & $1 \mathrm{Au}$ \\
+$\alpha$ & Lattice constant & $1\ \mathrm{Au}$ \\
 $\mathcal{L}$ & Square lattice dimension & $200$ - $2000$ \\
-$R_0$ & Mean reproduction number & $0-20$ \\
+$R_0$ & Basic reproduction number & $0-20$ \\
+$R_0^{(i)}$ & Generational reproduction number & $0-20$ \\
 \hline
 \end{tabular}
-\caption{Parameters used in the NLM, typical host densities are informed from by \cite{hill.data}.}
+\caption{Parameters used in the generic NLM, time and distance are given in arbitrary units and host densities are informed from by \cite{hill.data}.}
 \label{tab:SIR-model}
 \end{table}
 
@@ -119,6 +120,7 @@ In particular, as $\frac{\ell}{\mathcal{L}}$ becomes larger, tracking the maximu
 because of longer-range dispersal\textemdash no doubt, these effects would become more pronounced with fatter-tailed dispersal kernels.
 Therefore, the time-series of $D_{max}(t)$ can dynamically capture the pathogen progressing through the domain when the scale of dispersal is small in comparison to the domain, but as we look to increase the scale of dispersal (ultimately to model wind-dispersal in chapter 6), an alternative metric is required to understand epidemic progression\textemdash
 thus motivating a thorough examination of the reproductive ratio $R_0$ in section \ref{sec:spatially-explicit-reproduction-ration}.
+\newpage 
 
 \subsection{Normalising infectivity $\beta$}
 
@@ -129,7 +131,7 @@ Undoubtedly, more transitions into the $I$ compartment would result because the 
 More secondary infections produced by each infected tree affords a more severe epidemic; in essence, infectivity (i.e. the strength of interaction between trees) in equation \ref{eq:pr-dispersal-transition} depends strongly on the scale of dispersal $\ell$ and epidemic-impact would vary significantly under different dispersal parameters.
 This presents a challenge when accessing the model behaviour over different $\ell$ parameters.
 
- The value of $\beta$ could be manually varied to match epidemic-impact between different $\ell$ valued simulations\footnote{One may suggest that directly normalising the kernel poses a solution to fix the epidemic scale for all values of $\ell$.
+The value of $\beta$ could be manually varied to match epidemic-impact between different $\ell$ valued simulations\footnote{One may suggest that directly normalising the kernel poses a solution to fix the epidemic scale for all values of $\ell$.
 Although, this is ultimately incorrect from an implementation perspective. 
 If the Gaussian kernel in \ref{fig:sgm-evol} is normalised, it will cease to be a yield a probability describing individual tree-to-tree interactions and the transition between states.}.
 Undesirably, scaling $\beta$ differently for each $\ell$ parameter is cumbersome and ultimately untenable for many simulations.
@@ -140,9 +142,8 @@ A mathematical sleight-of-hand can resolve the dilemma by simply factoring the d
 \end{equation}
 where $\beta^*$ is an `auxiliary' infectivity parameter that isolates infection pressure to a single parameter that remains fixed between simulations with different $\ell$ values.
 In this manor, infectivity remains a probability $\beta=\beta^*/2\pi\ell^2 \in [0, 1]$ alongside the dispersal kernel $\exp\big[-r^2/(2\ell^2)\big] \in [0, 1]$, but importantly epidemic severity will be approximately matched\textemdash the limitations of this method are discussed below in section \ref{sec:spatially-explicit-reproduction-ration}.
-So, henceforth, unless otherwise stated, the remainder of this chapter will employ the normalised infectivity\textemdash defined by the right-hand side of equation \ref{eq:normalised-infectivity}\textemdash will be substituted into equation \ref{eq:pr-dispersal-transition} to permit model comparisons over the parameter space of $\ell$.
-
-\newpage
+So, henceforth, unless otherwise stated, the remainder of this chapter will employ the normalised infectivity.
+That is, the right-hand side of equation \ref{eq:normalised-infectivity} will be substituted into equation \ref{eq:pr-dispersal-transition} (and the analytic expression of $R_0$ outlined below) to permit model comparisons over the parameter space of $\ell$.
 
 \subsection{SIR fitting: dispersal-mediated contact-mixing}
 
@@ -283,7 +284,7 @@ Thus, after the infectious life-time of $T$ time-steps, the final number of expe
 For transparency, the above derivation is based on $\beta$ and not the normalised infectivity parameter. 
 However, from equation \ref{eq:Appendix_final_r0_approx} it is clear to see how the normalised infectivity $\beta^*/2\pi\ell^2$ negates the influence of $\ell$ on the number of expected secondary infections.
 
-Equation \ref{eq:Appendix_final_r0_approx} can be used as a first approximation toward an $R_0$ value.
+Equation \ref{eq:Appendix_final_r0_approx} can be used as a first approximation toward an $R_0$ value\footnote{The reader can find an alternate, but equivalent, derivation in appendix \ref{eq:alternate-R0}.}.
 Nonetheless, it implicitly assumes that secondary infections are equally likely at all spatial locations about the primarily infected tree\textemdash by uniform density reductions in equation \ref{eq:drho/dt}. 
 Neglecting the spatial variation of expected secondary infections on average overestimates the spread of disease.
 A more accurate, albeit more complex, equation can be derived, allowing for Gaussian spatial variations.
@@ -565,7 +566,7 @@ Hence, a non-local dispersal model (NLM) of tree disease was constructed with $S
 Notwithstanding its generic construction, the NLM provides a foundation for the remaining chapters in this thesis.
 After describing the NLM, it was compared to the standard $SIR$ framework for various dispersal length scales and domain sizes.
 Despite some differences, the NLM compared more favourable with the $SIR$ model when the dispersal scale parameter was comparable to the domain size.
-comparisons, therefore, provide compelling indications that spatially-explicit contact-mixing in the tree population may arise with sufficient dispersal;
+Comparisons, therefore, provide compelling indications that spatially-explicit contact-mixing in the tree population may arise with sufficient dispersal;
 from this observation, we may question the need for spatial models for systems where the dispersal length scale is comparable to the size of domain\textemdash e.g. modelling the spread of disease in small fields or plantations.
 
 Two methods of calculating a reproduction ratio, one analytic ($R_0$) and one numerically contact-traced ($R_0^{(i)}$), were outlined to categorize the NLM.
@@ -575,8 +576,8 @@ The overestimation of $R_0$ can be compared to well-known results by \cite{R0-pe
 who showed that the first-generation basic reproduction ratio for farms infected with foot-and-mouth overestimates the growth rate of infection.
 As opposed to analytical predictions, the contact-traced reproduction ratio effectively mirrors the reduction of susceptible trees. % Effective R0?
 In addition, \cite{R0-perc-ref} found that the second generation of infected farms gave a better predictor of the final-sized epidemic (conditional on the epidemic occurring);
-presenting a link to our observation that the tree mortality threshold defined $R_0^{(i)}=1$ was sharper for later generations.
-Crucially, each method of calculating the reproduction ratio defined a threshold around $R_0=1$, beyond which epidemic impact becomes non-trivial.
+presenting a link to our observation that the tree mortality threshold defined by $R_0^{(i)}=1$ was sharper for later generations.
+Crucially, each method of calculating the reproduction ratio defined a threshold around unity, beyond which epidemic impact becomes non-trivial.
 
 An attractive feature of the contact-tracing method, as per definition \ref{def:R0_contact_traced}, 
 pertains to its flexibility in the face of more complex spatially explicit models.
@@ -590,11 +591,14 @@ However, given sufficient data, one might fit a value of $\beta$ and reverse-eng
 which leads us to a discussion around the infectivity parameter $\beta$.
 
 Infectivity in the NLM is a probability of state-change, which followed naturally from the percolation model outlined in section \ref{ch3:two-param-model} and published by \cite{OROZCOFUENTES201912}.
-However, going back to the original $SIR$ framework \cite{kermack-model}, growth rates are usually employed to describe infectivity.
-The approach adopted in this chapter is, therefore, a-typical of contemporary dispersal models based on growth rates, e.g. \cite{fabre2021optimising, control-theory, white2017modelling, large-scale-control}.
-Furthermore, given that growth rates parameterize most diseases in the literature, the NLM might arguably require a modification towards a rate-based implementation.
-Although unconfirmed, we may suppose an equivalence between the infectivity $\beta$ and an emergent growth rate; this assertion is supported by the similarities exhibited between the NLM and the rate-based standard SIR model in Figure \ref{fig:SIR-fitting} (in addition to appendix \ref{a:exponentially-distributed-lt}).
+However, growth rates are usually employed to describe infectivity\textemdash going back to the original $SIR$ framework \cite{kermack-model} and the logistic growth model of \cite{van2013plant}.
+The approach adopted in this chapter is, therefore, a-typical of contemporary dispersal models based on rates, e.g. \cite{fabre2021optimising, control-theory, white2017modelling, large-scale-control}.
+Given that growth rates parameterize most diseases in the literature, the NLM might arguably require a modification towards a rate-based implementation;
+however, it must be remarked that sometimes this may not be needed, given that measuring growth rates\textemdash particularly for time-varying infectivities\textemdash is extremely difficult \cite{13-challenges}.
+Although unconfirmed, we may suppose an equivalence between the infectivity $\beta$ and an emergent growth rate. This assertion is supported by the similarities exhibited between the NLM and the rate-based standard SIR model in Figure \ref{fig:SIR-fitting} (in addition to appendix \ref{a:exponentially-distributed-lt}).
 Nevertheless, presenting $\beta$ as a probability describes an intuitive low-level (microscopic) perspective of disease spread which would, 
-in theory, be observable/measurable in reality\textemdash in contrast to the $R_0^{(i)}$.
+in theory, be observable/measurable in reality, in contrast to the $R_0^{(i)}$.
+Hence, we may consider infectivity $\beta$ as a fitting parameter.
+
 
 \newpage

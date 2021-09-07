@@ -10,24 +10,26 @@
 % 8) Talk about alternate more, non-linear models and consult Rammile...
 % ------------------------------------------------------------------------------
 
-\chapter{Towards landscape-level control (WORK IN PROGRESS)}
+\chapter{Towards landscape-level control}
 
 % In reality, connectivity between patches depend on the dispersal kernel, and not on an arbitrarily defined nearest-neighbour structuring element.
 % Connectivity between patches can extend radially non-locally over a number of surrounding patches.
 
-% \begin{enumerate}
-%     \item recap on limitation of chapter 6
-%     \item demonstrate the probably of infection falls off with distance, and that ga is more localised from a pr(D) perspective
-%     \item if possible, project patch probabilities for ga and pl
-%     \item on the premise of ga being more localised, motive the fragmentation algorithm
-%     \item demonstate that optimal fragmentation occurs for a specific regime of beta
-% \end{enumerate}
-
+\begin{enumerate}
+    \item In this chapter, we develop a method of epidemic control at the landscape-level.
+    \item summary of the flow...
+\end{enumerate}
 
 \label{ch7:landscape-level-control}
-There has been a great deal of work carried out into the nature of control in plant and tree-based epidemics\footnote{See section \ref{chapter2:plant-ecologoy} for a review on the control in plant-based epidemics.}. In particular, the spatial structure of plant-hosts is an essential factor when considering how to manage an outbreak \cite{spatial-control-optimisation, control-heterogeneous-landscapes}. The accepted paradigm of control typically considers infected tree removals over a relatively small spatial scale, near infected hosts \cite{WEBIDEMICS}, or more broadly, ahead of the wavefront \cite{large-scale-control}. However, landscape-level epidemic control, based solely on the structure of large-scale spatial distribution of hosts incorporating topography, has yet to be explored in-depth.\\
+A great deal of research has been put into optimising the control of plant and and tree-based epidemics\footnote{See section \ref{chapter2:plant-ecologoy} for a review on the control in plant-based epidemics.}. 
+Spatial structure is an essential factor when considering how to manage an outbreak \cite{spatial-control-optimisation, control-heterogeneous-landscapes}. 
+The main-stream paradigm of control typically considers infected tree removals over a relatively small spatial scale, near infected hosts \cite{WEBIDEMICS}, or more broadly, ahead of the wavefront \cite{large-scale-control}. 
+However, landscape-level epidemic control, based solely on the structure of large-scale spatial distribution of hosts incorporating topography, has yet to be explored in-depth.
 
-As such, in this chapter, we will examine how host-heterogeneity, under the influence of a wind-dispersed pathogen, can give rise to natural pinch-points and fault lines in the spatial distribution of hosts. Population pinch points may give rise to a bottleneck in the epidemic spread, which in principle, may be exploited with targeted tree felling to fragment the host population with minimised effort. In essence, a strategy of 'regional containment', targeting the local wind-based pathogen dispersal mechanism, is formulated and scaled up over large spatial scales. Similar concepts for crop and livestock diseases have been outlined \cite{PAPAIX201435, GILIOLI20131, Gilligan-disease-management}, however, to our knowledge, this has not been generalised to tree population distributions over large spatial scales.
+In this chapter, we will examine how host-heterogeneity, under the influence of a wind-dispersed pathogen, can give rise to natural pinch-points and fault lines in the spatial distribution of hosts. 
+Population pinch points may give rise to a bottleneck in the epidemic spread, which in principle, 
+may be exploited with targeted tree felling to fragment the host population with minimised effort. 
+In essence, a strategy of 'regional containment', targeting the local wind-based pathogen dispersal mechanism, is formulated and scaled up over large spatial scales. Similar concepts for crop and livestock diseases have been outlined \cite{PAPAIX201435, GILIOLI20131, Gilligan-disease-management}, however, to our knowledge, this has not been generalised to tree population distributions over large spatial scales.
 
 % - This leads us to develop a heuristically-based fragmentation algorithm. 
 % -As we define it, fragmentation considers which locations in the population, if artificially taken below $R_0 = 1$ through felling, would disrupt epidemiological connectivity\textemdash, thus leading to containment. 
@@ -59,40 +61,147 @@ As such, in this chapter, we will examine how host-heterogeneity, under the infl
 % Likewise, susceptible and connected $R_0$-clusters reveal which regions in Great Britain are likely to be the most severely devastated, and
 % where transmission between neighbouring patches is tightly coupled.
 
-\section{Optimal fragmentation of $R_0$-maps}
+\section{***Patch-level density-reductions***}
+Stretch goal
 
-Each cluster (denoted by $\mathbf{C}$) detected in the $R_0$-map represents a connected network of susceptible Ash where pathogen survival and spread is possible. The shape of each cluster is constrained by landscape topography and geography. If no control is attempted, all trees within a cluster are put at risk if one point in the cluster becomes infected. Given this, a control strategy is formulated by noting that removing specific positions of Ash (or breaking critical `links') via selective tree felling would efficiently break the cluster into two fragments. A technical explanation of the fragmentation algorithm is given in Appendix B.\\
+\textcolor{red}{\blindtext}
 
-Cluster fragments define two disconnected `sub-clusters' (named $\mathbf{C_1}$ and $\mathbf{C_2}$). This eliminates risk for trees inside one sub-cluster and accomplishes control by regionally containing an epidemic inside a `confining cluster'. Ash trees inside the confining cluster are assumed to be removed by the pathogen while Ash trees inside the remaining sub-cluster survive and remain susceptible. If the number of felled trees is low in comparison to the number saved, then efficient control is achieved.\\
+\section{Cluster fragmentation}
 
-The notion of fragmenting a cluster $\mathbf{C}$ into two sub-clusters $\mathbf{C_1}$ and $\mathbf{C_2}$ may be repeated $N$ times to produce a set of disconnected sub-clusters. After each fragmentation, sub-clusters were ranked according to the Ash population size they contained. This allowed the largest sub-cluster to be targeted in the next iteration. \textcolor{red}{Figure X} shows the largest cluster identified in the $R_0$-map (named $\mathbf{C_T}$) iteratively fragmented $N=5$ times culminating in six disconnected sub-clusters, depicted as the colour-filled regions from orange-green. The zoomed inset of $\mathbf{C_T}$ highlights the critically-connecting links found during each fragmentation.\\
+The modelled distribution of ash depicts a continuum of connectivity throughout Great Britain.
+Whereas, each cluster (denoted by $\mathbf{C}$) detected in the $R_0$-map represents a connected network of susceptible Ash where ADB survival and spread is possible. 
+Patches below the threshold are presumed to present a natural barrier to the spread of ADB, 
+as they do not support high levels of infected biomass, and spore dispersal emanating from these patches will therefore be lessened.
+The shape of each cluster is constrained by landscape topography and geography. 
+If no control is attempted, all trees within a cluster are put at risk if one point in the cluster becomes infected. 
+Given this, a control strategy is formulated by noting that removing specific positions of Ash (or breaking critical `links')
+via selective tree felling would efficiently break the cluster into two fragments. 
 
+Cluster fragments define two disconnected `sub-clusters' (named $\mathbf{C_1}$ and $\mathbf{C_2}$). 
+This eliminates risk for trees inside one sub-cluster and accomplishes control by regionally containing an epidemic inside a `confining cluster'. 
+Ash trees inside the confining cluster are assumed to be removed by the pathogen while Ash trees inside the remaining sub-cluster survive and remain susceptible.
+If the number of felled trees is low in comparison to the number saved, then efficient control is achieved;
+undoubtedly, a number of assumptions underpin this argument including the omission of LDD and stochastic spread below the threshold.
 
-We assume the average Ash tree in the population covers an area of $\mathrm{25m^2}$ (giving a maximum of $400$ trees per hectare of canopy cover \cite{ash-tree2, ash-tree1}). Combining this assumption with the data permits us to estimate the number density of Ash trees per point and subsequently the population size of Ash contained inside each sub-cluster. Additionally, an estimate towards the number of felled trees can be formed, thus giving insight into the scale of resource expenditure. This is achieved by first finding the difference between $\rho_c$ and the density values of critical links (i.e. the level of required density reductions), then multiplying this by the number density.\\
+\subsection{Map connectivity: $\Phi(\xi)$}
 
-\textcolor{red}{Figure \ref{fig:result-cluster-reductions}(b)} shows the maximum sub-cluster population size in blue alongside the estimated number of trees needed to be felled in red. The largest sub-cluster continually decreased over $N=30$ iterations of fragmentation. Size reductions occurred more rapidly at first, starting from $\mathrm{3.5\times 10^7}$ trees and decreasing to $\mathrm{1.1\times 10^7}$ trees within $5$ iterations. By $N=30$, the rate of sub-cluster size reductions leveled off suggesting fragmentation in the field may tend towards diminishing returns on control efficiency. That is, larger values of $N$ produce smaller changes in the number of saved trees in proportion to the expenditure of resources needed to fell trees. This is demonstrated when the red and blue lines begin to approach each other, attaining comparable values.\\ 
+\textcolor{red}{Describe Single cluster break C -> C1 + C2}
+In this section, map connectivity will be examined under a threshold function.
+That is, given $\mathbf{C}$, a CCA-identified cluster in the $R_0$-map, we can define a binary threshold function $\Phi(\xi)$ by:
+\begin{align}
+\label{eq:alpha-step}
+\Phi(\xi) = \left\{ \begin{array}{cc} 
+                1 & R_0(i, j) \geq \xi \\
+                0 & R_0(i, j) < \xi \\
+                \end{array} \right.
+\end{align}
 
-\textcolor{red}{Figure \ref{fig:result-cluster-reductions}(c)}, sub-cluster size reductions in $\mathbf{C_T}$ are shown alongside the $2^{nd}$ and $3^{rd}$ largest $R_0$-clusters on a log-log plot\textemdash from solid blue through to green. The straight lines indicate a power-law. The sub-cluster size reductions were fitted to a power-law of the form $f(x) = ax^{-k}$, shown by the corresponding dashed lines. Fitted parameter values of $a$ and $k$ represent the initial cluster population size and rate of decrease respectively. Importantly, all sub-cluster size reductions demonstrate an exponent of $k\sim 3/4$. In addition to the Ash species shown here, Conifer (\textit{Pseudotsuga menziesii}) and Beech (\textit{Fagus sylvatica}) were given by \cite{hill.data} and were used comparatively to test fragmentation. For each species considered, all iteratively fragmented clusters had similar exponent values, $k\sim 3/4$.\\
+where $R(i,j)$ is the patch-level reproduction ratio at spatial coordinates $(i,j)$ in $\mathbf{C}$; 
+the parameter $\xi$ takes values in interval $\big[1, \mathrm{max}[R_0(i,j)]\big]$, 
+where $\mathrm{max}[R_0(i, j)]$ is the highest value of $R_0$ in $\mathbf{C}$\textemdash henceforth denoted by $R_{max}$.
+\textcolor{red}{Figure X}(a) shows the threshold function applied at $\alpha = R_{max}$;
+at $\xi=R_{max}$, only the small number of highest-valued $R_0$ patches are non-zero, resulting in a low density binary map. 
+Whereas, at $\alpha=1$ all susceptible points will assume binary values of one and $\mathbf{C}$ will be defined exactly, shown in Figure \textcolor{red}{Figure X}(b).
 
+Applying the threshold function to $\mathbf{C}$ and moving in small discrete steps backward from $\alpha = R_{max}$ to $\alpha=1$ will create a set of binary maps from lower to higher pixel density,
+graphically illustrated by \textcolor{red}{Figure X}(c).
+\textcolor{red}{Explain behaviour in Figure X(c)}.
 
-\subsection{Towards epidemic control}
+\subsection{Iterative felling: $\Phi: \alpha \rightarrow 0$}
+
+% describe the iterative nature of fragmentation
+\textcolor{red}{When clusters are identified, iterative felling as $\alpha\rightarrow 0$ is conducted}
+
+The notion of fragmenting a cluster $\mathbf{C}$ into two sub-clusters $\mathbf{C_1}$ and $\mathbf{C_2}$ may be repeated $N$ times to produce a set of disconnected sub-clusters. 
+After each fragmentation, sub-clusters were ranked according to the Ash population size they contained. 
+This allowed the largest sub-cluster to be targeted in the next iteration. 
+\textcolor{red}{Figure X} shows the largest cluster identified in the $R_0$-map (named $\mathbf{C_T}$) iteratively fragmented $N=5$ times culminating in six disconnected sub-clusters, 
+depicted as the colour-filled regions from orange-green. 
+The zoomed inset of $\mathbf{C_T}$ highlights the critically-connecting links found during each fragmentation.
+
+\subsection{Fragmentation behaviour}
+
+\begin{itemize}
+    \item \textcolor{red}{Test domain, random patches...}
+    \item \textcolor{red}{Demonstrate, fragmentation for a single value of $\beta$...}
+\end{itemize}
+
+% Paragraph defining connected component analysis
+Applying CCA over each binary map is performed through each $\alpha$-step in order to identify and label sub-clusters. 
+At particular steps $\alpha \rightarrow \alpha - \delta\alpha$, $\mathbf{C}$ will begin to form when two\footnote{
+It is possible but unlikely that three or more sub-clusters suddenly connect to form $\mathbf{C}$ in the same step} 
+distinct sub-clusters $\mathbf{C_1}$ and $\mathbf{C_2}$ suddenly connect when certain critical links become non-zero\textemdash
+analogous to the formation of a spanning cluster opening up in a percolation. 
+When $\mathbf{C_1}$ and $\mathbf{C_2}$ abruptly merge and form the basis of $\mathbf{C}$, a large discontinuous jump in cluster size is detected. 
+When a discontinuity is detected all spatial points $(i,j)$ which bridge the gap between $\mathbf{C_1}$ and $\mathbf{C_2}$ are found and felled.
+
+Successive steps through $\alpha$ continue until $\alpha=1$ and critical links are felled for each discontinuity event. 
+This prevents $\mathbf{C_1}$ and $\mathbf{C_2}$ from merging over $\alpha \in [1, R_{max}]$ and fragments the target-cluster $\mathbf{C}$ into two disconnected sub-clusters. 
+The process is then repeated, the next cluster target will be either $\mathbf{C_1}$ or $\mathbf{C_2}$, whichever has the largest number of Ash trees. 
+Iterating this $N$ times will yield $N+1$ disconnected cluster fragments.
+
+We assume the average Ash tree in the population covers an area of $\mathrm{25m^2}$ (giving a maximum of $400$ trees per hectare of canopy cover \cite{ash-tree2, ash-tree1}). 
+Combining this assumption with the data permits us to estimate the number density of Ash trees per point and subsequently the population size of Ash contained inside each sub-cluster. 
+Additionally, an estimate towards the number of felled trees can be formed, thus giving insight into the scale of resource expenditure. 
+This is achieved by first finding the difference between $\rho_c$ and the density values of critical links (i.e. the level of required density reductions), then multiplying this by the number density.
+
+\textcolor{red}{Figure \ref{fig:result-cluster-reductions}(b)} shows the maximum sub-cluster population size in blue alongside the estimated number of trees needed to be felled in red. 
+The largest sub-cluster continually decreased over $N=30$ iterations of fragmentation. Size reductions occurred more rapidly at first, starting from $\mathrm{3.5\times 10^7}$ trees and decreasing to $\mathrm{1.1\times 10^7}$ trees within $5$ iterations. 
+By $N=30$, the rate of sub-cluster size reductions leveled off suggesting fragmentation in the field may tend towards diminishing returns on control efficiency. 
+That is, larger values of $N$ produce smaller changes in the number of saved trees in proportion to the expenditure of resources needed to fell trees. 
+This is demonstrated when the red and blue lines begin to approach each other, attaining comparable values.
+
+\textcolor{red}{Figure \ref{fig:result-cluster-reductions}(c)}, sub-cluster size reductions in $\mathbf{C_T}$ are shown alongside the $2^{nd}$ and $3^{rd}$ largest $R_0$-clusters on a log-log plot\textemdash
+from solid blue through to green. The straight lines indicate a power-law. 
+The sub-cluster size reductions were fitted to a power-law of the form $f(x) = ax^{-k}$, shown by the corresponding dashed lines. 
+Fitted parameter values of $a$ and $k$ represent the initial cluster population size and rate of decrease respectively. 
+Importantly, all sub-cluster size reductions demonstrate an exponent of $k\sim 3/4$. 
+In addition to the Ash species shown here, Conifer (\textit{Pseudotsuga menziesii}) and Beech (\textit{Fagus sylvatica}) were given by \cite{hill.data} and were used comparatively to test fragmentation. 
+For each species considered, all iteratively fragmented clusters had similar exponent values, $k\sim 3/4$.
+
+\section{Regional epidemic containment}
 % Main results figure 7
-Regional containment as a strategy of epidemic control was tested by considering outbreaks from different epicenters inside the target cluster $\mathbf{C_T}$. Starting from an epicenter, epidemic containment can be achieved in a variety of ways. \textcolor{red}{Figure \ref{fig:scenario-expo}} demonstrates this for a single epicenter marked by the black cross. The number of fragmentation iterations is varied from $N=1$ to $N=30$. For each step $N$, we identify which critical links, shown in red and denoted as $F$, should be felled below $\rho_c$ in order to define a confining sub-cluster around the epicenter. The population of saved Ash, illustrated in light grey, remains in state $S$ while all trees inside the confining sub-cluster, shown in dark grey, are assumed to transition into state $R$. By assessing the number of trees saved against the number of trees felled we can define a `payoff' ratio as $N_S/N_F$.\\
 
-A set of epicenters were defined in $\mathbf{C_T}$ (by identifying the center of mass for each sub-cluster when $\mathbf{C_T}$ was iteratively fragmented $N=30$ times). From $31$ different epicenters and $30$ iterations, $930$ containment scenarios were simulated. For some epicenters, typically in close proximity, containment looked identical up to $N$ iterations before a different payoff ratio was registered. Subsequently, less than $930$ unique data-points between $N_S$ and $N_F$ were found\textemdash shown in \textcolor{red}{Figure\ref{fig:result-culling-efficiency}}.\\
+\subsection{Scenario-test: method}
+\textcolor{red}{Outline method to scenario tests...\blindtext}
 
-The payoff ratios determined from the top $50$ performing containment scenarios were then ranked and plotted, shown in \textcolor{red}{Figure} \ref{fig:result-culling-efficiency}(a) by the blue line overlaid with a coloured scatter plot. For the purposes of our model, the payoff efficiency is shown alongside the corresponding number of felled trees in dashed grey. Payoff efficiencies begin to level off around $\mathrm{10^3}$ involving around $\mathrm{10^4}$ felled trees. In reality, this would be a challenge to accomplish in a reasonable time-frame. \textcolor{red}{Figure}\ref{fig:result-culling-efficiency}(b) shows a scatter plot of all the data, $N_S$ and $N_F$ are plotted with color corresponding to the payoff. The efficiency ranged over multiple orders of magnitude up to a maximum efficiency of $\mathrm{10^6}$. The top left quadrant of \textcolor{red}{Figure} \ref{fig:result-culling-efficiency}(b) represents viable scenarios where containment felling could be pragmatically implemented by policy makers with the greatest efficiency.\\
+\subsection{Results: optimised landscape-level control}
 
-A small number of exceedingly high payoff results were found. In \textcolor{red}{Figure}\ref{fig:result-culling-efficiency}(c), the top three ranking payoff scenarios are illustrated on the same map and reinforces the intuitive notion that epicenters around edge positions can be most efficiently contained. The zoomed inset highlights just $\mathrm{2\times 1km^2}$ Ash patches located at a single point of contact for the top ranked sub-cluster. Critical links for the best performing scenarios were all found in lower-density regions within the $R_0$-cluster and were easily fragmented with a low number of felled trees. This highlights the possibility that fragmentation is most easily achieved with tree felling through critically linking regions and demonstrates how regional variation in host density can be exploited for efficient control. 
+\textcolor{red}{Outline method to scenario tests...}
 
+Regional containment as a strategy of epidemic control was tested by considering outbreaks from different epicenters inside the target cluster $\mathbf{C_T}$. 
+Starting from an epicenter, epidemic containment can be achieved in a variety of ways. \textcolor{red}{Figure \ref{fig:scenario-expo}} demonstrates this for a single epicenter marked by the black cross. 
+The number of fragmentation iterations is varied from $N=1$ to $N=30$. 
+For each step $N$, we identify which critical links, shown in red and denoted as $F$, should be felled below $\rho_c$ in order to define a confining sub-cluster around the epicenter. 
+The population of saved Ash, illustrated in light grey, remains in state $S$ while all trees inside the confining sub-cluster, shown in dark grey, are assumed to transition into state $R$. 
+By assessing the number of trees saved against the number of trees felled we can define a `payoff' ratio as $N_S/N_F$.
 
-% Notes
-% A quantity of interest that appears frequently in the literature is the initial growth rate $r$, that is the density-independent growth at the start of any epidemic <- this could be linked with alpha
+A set of epicenters were defined in $\mathbf{C_T}$ (by identifying the center of mass for each sub-cluster when $\mathbf{C_T}$ was iteratively fragmented $N=30$ times). 
+From $31$ different epicenters and $30$ iterations, $930$ containment scenarios were simulated. 
+For some epicenters, typically in close proximity, containment looked identical up to $N$ iterations before a different payoff ratio was registered. 
+Subsequently, less than $930$ unique data-points between $N_S$ and $N_F$ were found\textemdash shown in \textcolor{red}{Figure\ref{fig:result-culling-efficiency}}.
 
+The payoff ratios determined from the top $50$ performing containment scenarios were then ranked and plotted, 
+shown in \textcolor{red}{Figure} \ref{fig:result-culling-efficiency}(a) by the blue line overlaid with a coloured scatter plot. 
+For the purposes of our model, the payoff efficiency is shown alongside the corresponding number of felled trees in dashed grey. 
+Payoff efficiencies begin to level off around $\mathrm{10^3}$ involving around $\mathrm{10^4}$ felled trees. 
+In reality, this would be a challenge to accomplish in a reasonable time-frame. 
+\textcolor{red}{Figure}\ref{fig:result-culling-efficiency}(b) shows a scatter plot of all the data, $N_S$ and $N_F$ are plotted with color corresponding to the payoff. 
+The efficiency ranged over multiple orders of magnitude up to a maximum efficiency of $\mathrm{10^6}$. 
+The top left quadrant of \textcolor{red}{Figure} \ref{fig:result-culling-efficiency}(b) represents viable scenarios where containment felling could be pragmatically implemented by policy makers with the greatest efficiency.
+
+A small number of exceedingly high payoff results were found. 
+In \textcolor{red}{Figure}\ref{fig:result-culling-efficiency}(c), the top three ranking payoff scenarios are illustrated on the same map and reinforces the intuitive notion that epicenters around edge positions can be most efficiently contained. 
+The zoomed inset highlights just $\mathrm{2\times 1km^2}$ Ash patches located at a single point of contact for the top ranked sub-cluster. 
+Critical links for the best performing scenarios were all found in lower-density regions within the $R_0$-cluster and were easily fragmented with a low number of felled trees. 
+This highlights the possibility that fragmentation is most easily achieved with tree felling through critically linking regions and
+demonstrates how regional variation in host density can be exploited for efficient control. 
 
 \section{Chapter summary}
 
-The article published by \cite{time-varying-infectivity} indicates the possibility of \textit{preferentially} controlling an area based on the final-sized epidemic. It goes without saying that areas of land that have the largest final sized epidemic are likely the most density populated. However, we outline the possibility it might be more beneficial to preferentially control an area based on its spatial location and how it couples to to neighbouring areas.
+The article published by \cite{time-varying-infectivity} indicates the possibility of \textit{preferentially} controlling an area based on the final-sized epidemic. 
+It goes without saying that areas of land that have the largest final sized epidemic are likely the most density populated. 
+However, we outline the possibility it might be more beneficial to preferentially control an area based on its spatial location and how it couples to to neighbouring areas.
 
 % genetic tolerance is currently the only viable strategy of control\cite{kosawang2018fungal}
 

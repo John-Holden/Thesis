@@ -91,20 +91,59 @@ def run(S, I, R, beta, T=10, L=500):
             # continue...
 \end{lstlisting}
 
-\section{SLM metrics}
-\label{a:slm_metrics}
 
-\textcolor{red}{Fill me with center of infectious mass information? If not, remove my reference in chapter \ref{chapter:SLM}}
+\section{SLM\textemdash a mean-filed theory}
 
-\chapter{SLM\textemdash a mean-filed theory}
-
+\section{Continuum model}
 \label{a:slm-mean-field-theory}
+% Could probably get 10-20+ pages out of LMB
 
-Do, equations...
+% section short summary:
+Here, we move away from the discrete stochastic percolation model outlined previously and examine alternate modelling paradigms. 
+A set of field equations describing the evolution of the probability fields $S$, $I$ and $R$ for the simple lattice model are described.
+
+\subsection{Field equations}
+
+From the percolation model in \textit{section 1}, three states were defined for each lattice site $i$: susceptible, infected, removed $S_i, I_i, R_i$. The evolution of these lattice sites were dictated by Mote-Carlo steps where each infected lattice site has a chance to infect a nearest neighbour moving a susceptible tree in state $S$ to infectious state $I$ before finally transitioning into the $R$ compartment in $T=10$ time steps. Each simulation can be seen as an individual realisation of the physical process, however, a great many other potential realisations could have occurred. This is easily demonstrated around percolation threshold where successive iterations lead to differing results, some simulations will percolate and be considered an epidemic while some will not. Even if well above or below the threshold of transmission, infected trees will propagate differently and trace out unique pathways through the domain owing to a very small probability of tracing out exactly the same pathway. Therefore, this individuum paradigm is noisy and only useful for understanding average behavioural quantities when ensemble averaged which is limited in scope by computer memory.
+
+An alternate method, requiring no ensemble-averaging, would be to formulate a set of differential equations which describe the probability-evolution of lattice sites $i$ in the domain being in either states $S,I,R$. This method would yield the benefit of not needing to ensemble-average results in order to determine average behaviours as a single iteration of the simulation by construction gives us the \textit{mean} field evolution. Furthermore, simulations when animated spatially would give \textit{average} travelling wave behaviour equivalent to running many stochastic simulations and combining frames (which could require large amounts of data). As before, the initial population of trees in the domain is seeded with probability $p$, with exception of a small number of initially infected trees at the center of the domain. The empty lattice sites at $t=0$ and the removed lattice sites at $t \ge T$ behave exactly the same remaining non-infectious to susceptible trees therefore both empty and removed lattice sites can be described by state $R$
+\begin{equation}
+       S_i = p;\quad I_i = 0;\quad R_i = (1 - p) 
+\end{equation}{}
+
+Where $p$ is the probability of being occupied by a susceptible tree (\textit{equivalent to tree density}). Now a set of dynamical equations which govern the evolution of fields $S,I,R$ can be outlined by considering the dynamics of the simple lattice model; over a single time-step an infected tree at position $i$ has probability $\beta$ of infecting a healthy nearest neighbour, this is given by $\beta I(t)_i$ i.e. the probability of transmission multiplied by the probability being infected. Considering a healthy tree at position $i$ surrounded by 4 nearest neighbours $j$, where j denotes $j= \pm \Delta x $ or $ j=\pm \Delta y$, we can describe the probability of $S_i$ remaining healthy by: 
+\begin{equation}
+    \prod_j (1 - \beta I(t)_{i+j})
+    \label{eq:rep-prod-S}
+\end{equation}{}
+where the repeated product gives us the chance of \textit{not being} infected iterated over all nearest neighbours \footnote{In reality the event of a healthy tree being infected by its neighbours are statistically independent events and therefore calculating the total probability of being infected constitutes a combinatorics problem of combining the union of n events. It is much simpler to consider the single event of \textit{remaining healthy}.}. The reduction of probability in a tree at site $i$ remaining susceptible is then given by:
+\begin{equation}
+    S_i(t+\Delta t) - S_i(t) =  - S_i(t)\prod_j \Big [1 - \beta I(t)_{i+j} \Big ] 
+    \label{eq:s-field-evol}
+\end{equation}{}
+From this, the field $S$ can be seen to monotonically decrease. From this point it is easiest to consider the evolution of field $R$. In the simple percolation model transition times where set to $n$ time-steps before an infected tree transitions into the removed compartment, therefore a tree infected at time-step $t-n\Delta t$ will during time-step $t \rightarrow t + \Delta t$. In original simulations in chapter \ref{ch3:two-param-model} the value was held constant at $n = 10$. The change in field $R$ can then be given in terms of field $S$ by:
+\begin{multline}
+     R_i(t+\Delta t) - R_i(t)  = -\Big[S_i(t - n\Delta t) - S_i(t-(n+1)\Delta t\Big] = \\
+     S(t - (n+1)\Delta t) \Big[ 1 - \prod_j \big(1 - \beta I_{i+j}(t - (n+1)\Delta t)\big)\Big]
+     \label{eq:r-field-evol}
+\end{multline}
+Where the right hand side of the top line is substituted with the right hand side of equation \ref{eq:s-field-evol} at time $t-(n+1)\Delta t$. Lastly, noting that all probabilities add to unity, $S_i(t) + I_i(t) + R_i(t) = 1$, the equations which govern the evolution of infectious field $I$ can be written as:
+\begin{multline}
+    I_i(t+\Delta t) - I_i(t) = S_i(t)\Big[1 - \prod_j\big( 1 - \beta I_{i+j}\big)\Big] - \\ S(t - (n+1)\Delta t) \Big[ 1 - \prod_j \big(1 - \beta I_{i+j}(t - (n+1)\Delta t)\big)\Big]
+    \label{eq:i-field-evol}
+\end{multline}
+
+equations \ref{eq:s-field-evol} - \ref{eq:i-field-evol} are finite-difference equations and thus describe the evolution of probabilities at lattice site $i$ given a set of initial conditions. These finite difference equations can be iterated over a set of time-steps to model average behaviour of an ideal system away from the critical regime. At criticallity there will be large fluctuations in behaviour, as the system is in a highly chaotic state and does not belong to any one power-law distribution, therefore simulations would deviate quite considerably and fail to show any fractal-like critical structure. Furthermore, equations \ref{eq:s-field-evol} - \ref{eq:i-field-evol} only describe systems of sufficiently large domain size due to domain sensitivity effects.
+
+\subsection{1D simulations}
+\textcolor{red}{Show 1D simulations \blindtext}
+
+\section{SLM heterogeneous data\textemdash alternative metrics}
+\label{a:slm_heterogeneous}
+
 \blindtext
 
-\chapter{SLM heterogeneous data\textemdash alternative metrics}
-\label{a:slm_heterogeneous}
+\blindtext
 
 \begin{figure}
     \centering
@@ -113,13 +152,11 @@ Do, equations...
     \label{fig:my_label}
 \end{figure}
 
-\blindtext
-\blindtext
-
 \chapter{The non-local dispersal model}
 \label{section:apendix_A}
 
 \section{An alternate derivation}
+\label{eq:alternate-R0}
 Starting from an un-normalised Gaussian kernel $g(p, q; \ell) = \exp(\frac{p^2-q^2}{2\ell^2})$ and infectivity constant $\beta$, we may define the probability of position $q$ being infected due to an infected tree at $p$ as $Pr(q; p) = \beta g(p, q; \ell)$. The domain has tree density $\rho_0$ at time $t=0$ and trees transition through states: $S\rightarrow I\rightarrow R$, with $I$ lasting for $T$ time-steps. Considering the probability of point $q = (x, y)$ becoming infected on account of an infected tree located at the origin during the first time-step:
 \begin{equation}
     Pr(x, y, t=0) = \beta \rho_0 \exp(-\frac{x^2+y^2}{2\ell^2})
@@ -287,24 +324,6 @@ Surprisingly, for later generations the degree of inflexion for $R_0^{(4)}$-$R_0
 
 \newpage
 
-\chapter{Regional containment: a formal explanation of the Cluster Fragmentation}
-\label{section:alpha-step}
-Given $\mathbf{C}$, a connected cluster in the $R_0$-map and threshold function $\phi(\alpha)$ defined by:
-\begin{align}
-\label{eq:alpha-step}
-\phi(\alpha) = \left\{ \begin{array}{cc} 
-                1 & R_0(i, j) \geq \alpha \\
-                0 & R_0(i, j) < \alpha \\
-                \end{array} \right.
-\end{align}
-
-where $(i,j)$ are spatial coordinates in $\mathbf{C}$ and $\alpha$ taking values in interval $[1, R_{max}]$. The value $R_{max}$ is the highest value of $R_0$ in $\mathbf{C}$. Applying the threshold function to $\mathbf{C}$ and moving in small discrete steps backward from $\alpha = R_{max}$ to $\alpha=1$ will create a set of binary maps from lower to higher pixel density. For example, applying the threshold function at $\alpha = R_{max}$ will map only the highest $R_0$ Ash tree patches in $\mathbf{C}$ to a value of one and produce a low density binary map. Whereas, at $\alpha=1$ all susceptible points will assume binary values of one and $\mathbf{C}$ will be defined exactly.\\
-
-% Paragraph defining connected component analysis
-Applying CCA over each binary map is performed through each $\alpha$-step in order to identify and label sub-clusters. At particular steps $\alpha \rightarrow \alpha - \delta\alpha$, $\mathbf{C}$ will begin to form when two\footnote{It is possible but unlikely that three or more sub-clusters suddenly connect to form $\mathbf{C}$ in the same step} distinct sub-clusters $\mathbf{C_1}$ and $\mathbf{C_2}$ suddenly connect when certain critical links become non-zero\textemdash analogous to the formation of a spanning cluster opening up in a percolation. When $\mathbf{C_1}$ and $\mathbf{C_2}$ abruptly merge and form the basis of $\mathbf{C}$, a large discontinuous jump in cluster size is detected. When a discontinuity is detected all spatial points $(i,j)$ which bridge the gap between $\mathbf{C_1}$ and $\mathbf{C_2}$ are found and felled.\\
-
-Successive steps through $\alpha$ continue until $\alpha=1$ and critical links are felled for each discontinuity event. This prevents $\mathbf{C_1}$ and $\mathbf{C_2}$ from merging over $\alpha \in [1, R_{max}]$ and fragments the target-cluster $\mathbf{C}$ into two disconnected sub-clusters. The process is then repeated, the next cluster target will be either $\mathbf{C_1}$ or $\mathbf{C_2}$, whichever has the largest number of Ash trees. Iterating this $N$ times will yield $N+1$ disconnected cluster fragments.\\
-
 
 \chapter{Seasonal $SEIR$ model of Ash dieback}
 
@@ -312,16 +331,27 @@ Successive steps through $\alpha$ continue until $\alpha=1$ and critical links a
 \begin{itemize}
     \item The Gaussian and inverse power-law models are distinct and could be considered to have different infecitivity parameters $\beta_{ga}$ and $\beta_{pl}$k.
 \end{itemize}
+
+\section{Connected component analysis}
+
+\blindtext
+
+\blindtext
+
+
+\chapter{Towards landscape-level control}
+
+\blindtext
+
+\blindtext
+
 \begin{figure}
     \centering
-    \includegraphics[scale=0.30]{appendix/figures/A-ch6-ga-seir.pdf}
-    \caption{Ten year simulations of the Gaussian variant of seasonal the $SEIR$ model. (a-c) show three variations of infectivity $\beta$ over the average density of ash in Great Britain.}
-    \label{fig-ga-SEIR-variant}
+    \includegraphics[scale=0.5]{appendix/Graphical_Abstract.pdf}
+    \caption{Caption}
+    \label{fig:my_label}
 \end{figure}
 
 
-\section{Defining an $R_0$}
 
 
-
-INSERT CCA ILLUSTRATION

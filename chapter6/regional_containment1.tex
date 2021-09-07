@@ -78,7 +78,7 @@ The probability of transition follows:
     Pr(S_{x} \rightarrow E_{x,n} ;\ I_{x^{\prime}, n} ) = \beta  \phi(t) D(r;\ell)
 \end{equation}
 where $r$ is the distance between $x$ and $x^{\prime}$, and $\phi(t)$ is a time-dependant function reflecting the seasonal life-cycle of ADB, henceforth referred to as the \textit{sporulation function}.
-As explained in chapter \ref{ch:dispersal-model}, transition probabilities are computed for each step a host remains infectious.
+As explained in chapter \ref{ch5:dispersal-model}, transition probabilities are computed for each step a host remains infectious.
 
 \begin{table}
 \centering
@@ -236,18 +236,22 @@ e.g. for $\phi_1$-ga, this takes the form:
     \beta = \frac{\beta^*}{T \pi \ell^2_{ga}} \in [0, 1]
 \label{eq:normalised-beta}
 \end{equation}
-where $\beta^*$ is an auxiliary parameter that does not depend on the form of sporulation or dispersal function (provided that both functions are normalisable).
-The normalised infectivity parameter, $\beta^*$, isolates infection pressure to a single parameter.
-However, even with normalising infectivity comparing the epidemic-scale between models presents difficulties\textemdash discussed more below.
+where $\beta^*$ is an auxiliary parameter that does not depend on the form of sporulation or dispersal function (provided that both functions are normalisable);
+hence, as before, $\beta^*$ isolates infection pressure to a single parameter.
+On account of the sporulation function and longer range kernel, $\beta^*$ in equation \ref{eq:normalised-beta} assumes a larger value when compared to $\beta^*$ in chapter \ref{ch5:dispersal-model}.
+
 
 \begin{landscape}
 \begin{figure}
     \centering
     \includegraphics[scale=0.45]{chapter6/figures/fig4-seir.pdf} % SHOW 5 YEAR simulations instead, 10 years is too long...
-     \caption{The evolution of $\phi_1$-ga is shown over the average ash density $\overline{\rho} = 0.017$. 
-     (a-c) The number of ash in the $SEIR$ compartments is shown over five years for arbitrary infectivity parameters above, around, and below the epidemic threshold, respectively. 
-     (e-h) The spatial progression of disease in a $1\mathrm{km} \times 1\mathrm{km}$ domain over a full year, beginning with $20$ infected ash distributed throughout the domain in (e). The tree density is fixed to $\rho=0.017$ alongside an infectiviy \textcolor{red}{$\beta^*=1000$}. 
-     All panels, from (e) to (h), show dispersal events well-mixed throughout the domain\textemdash in contrast to the wave-like behaviour witnessed for small dispersal length scales in chapter \ref{ch5:dispersal-model}.}
+     \caption{Simulating the $SEIR$ model over the median ash density, i.e. $\rho_{\mathrm{med}} = 0.011$. 
+     In all panels, a small clump of $20$ infected hosts seeds the domain centre at time $t=0$.
+     (a-b) The number of ash in each $SEIR$ compartment is plotted over five years for the model $\phi_1$-ga.
+     Panels (a) and (b) depict simulations above ($\beta^*=2000$) and below ($\beta^*=500$) the epidemic threshold, respectively. 
+     (c-f) The spatial progression of disease in a $2\mathrm{km} \times 2\mathrm{km}$ domain over a full year for model $\phi_1$-pl; 
+     infectivity is fixed to  $\beta^*=3000$, well above the threshold.
+     From the first sporulation season (c)-(d) to the second (e)-(f), secondary infections scatter throughout the whole domain, in contrast to the wave-like behaviour witnessed for small dispersal length scales in chapter \ref{ch5:dispersal-model}.}
     \label{fig:SEIR-spread}
 \end{figure}
 \end{landscape}
@@ -256,30 +260,29 @@ However, even with normalising infectivity comparing the epidemic-scale between 
 \section{Seasonal $SEIR$ model behaviour}
 \label{sec:seir-behaviour}
 
-The essential $SEIR$ model behaviour is shown in Figure \ref{fig:SEIR-spread} for $\phi_1$-ga over the average density of ash in Great Britain.
-For each year after outbreak, a rise in the number of latently infected ash in $E$ can be seen during summertime sporulation, June-September, followed by a rise in the number of infectious ash in the autumn-winter. 
-All model variants display the same pattern seasonal behaviour. 
+The essential $SEIR$ model behaviour is shown in Figure \ref{fig:SEIR-spread}, simulated with the median ash density in Great Britain\textemdash according to \cite{hill.data}.
+For each year after the outbreak, a rise in the number of latently infected ash in $E$ can be seen during summertime sporulation, June-September, followed by a rise in the number of infectious ash in the autumn-winter. 
+All model variants display the same pattern of seasonal behaviour. 
 
-The number of ash in the $SEIR$ compartments is shown in Figure \ref{fig:SEIR-spread}(a-c) for three infectivity parameters in a $1\mathrm{km}\times1\mathrm{km}$ domain.
-Figure \ref{fig:SEIR-spread} shows three scenarios over $5$ years with infectivity ($\beta$) parameters, above, around and below (d-f) the epidemic threshold for $\phi_1$-ga.
-In Figure \ref{fig:SEIR-spread}(a), $\beta$ is above the epidemic threshold and the number of ash in $S$ decline rapidly, shown by the blue line. 
-During seasonal sporulation, large spikes in the number of latently infected ash can be seen in orange. 
-Latently infected ash quickly transition into $I$ during autumn and winter, as shown by the seasonal rise of $I$ in green.
+The number of ash in the $SEIR$ compartments is shown in Figure \ref{fig:SEIR-spread}(a-b) for two infectivity parameters in a $1\mathrm{km}\times1\mathrm{km}$ domain.
+Figures \ref{fig:SEIR-spread}(a-b) depict two scenarios above and below the epidemic threshold for model $\phi_1$-ga;
+the compartments are plotted over $5$ years with infectivity ($\beta^*$) parameters shown. 
+In Figure \ref{fig:SEIR-spread}(a), the number of ash in $S$ decline, shown by the green line,
+and during seasonal sporulation, large spikes in the number of latently infected ash can be seen in orange. 
+Then, latently infected ash transition into $I$ during autumn and winter, as shown by the seasonal rise of $I$ in green.
+For infectivity parameters below the epidemic threshold, Figure \ref{fig:SEIR-spread}(b), $S$ remains approximately constant as $I$ slowly declines. 
+Interestingly, Figure \ref{fig:SEIR-spread}(b) demonstrates persistence in model of ADB; 
+whereby, even if the epidemic parameters are below the threshold, the fungus may survive for long periods. 
+In general, persistence in plant-based pathogens is one aspect that complicates epidemic control\textemdash see chapter \ref{ch3:invasions_and_persistence} for a review of invasion and persistence in the spread of plant-based diseases.
 
-In Figure \ref{fig:SEIR-spread}(b) infectivity parameters are slightly above the epidemic threshold and the model behaviour is similar, albeit with a slower seasonal decline and rise in $S$ and $I$.
-For infectivity parameters below the epidemic threshold, Figure \ref{fig:SEIR-spread}(f), $S$ remains approximately constant as $I$ slowly declines. 
-Interestingly, Figure \ref{fig:SEIR-spread}(f) demonstrates persistence in model of ADB; 
-whereby, even if the epidemic parameters are below the threshold, the fungus may survive for long periods of time. 
-In general, persistence in plant-based pathogens is one aspect that complicates epidemic control\textemdash see chapter \ref{ch3:invasions_and_persistence} for a review of invasion and persistence in the spread of plant-based diseases
-
-The spatial progression of ADB in the $SEIR$ model is shown in Figures \ref{fig:SEIR-spread}(e-h) over a full year. 
-The simulation begins in Figure \ref{fig:SEIR-spread}(a) with an initial condition of $20$ infected ash distributed throughout the host landscape during March. 
+The spatial progression of ADB in the $SEIR$ model is shown in Figures \ref{fig:SEIR-spread}(c-f) over a full year. 
+The simulation in Figure \ref{fig:SEIR-spread}(c) begins with an initial condition of $20$ infected ash centrally distributed in the host landscape during March (not shown). 
 At this point in the year, fungal fruiting bodies on infected leaf litter will be preparing to release ascospores.
-During the first sporulation season, secondary infections are produced, and latently infected ash spread throughout the domain, depicted by the orange dots in Figure \ref{fig:SEIR-spread}(e-f). 
-
-After the sporulation season ends in September, latently infected ash begin to transition into the $I$ compartment, reflected by the increased number of red dots in Figure \ref{fig:SEIR-spread}(g). 
-The cycle will continue when the next cohort of secondary infections are produced in the following summer, when the sporulation function next becomes non-zero in Figure \ref{fig:SEIR-spread}(h).
-At any time-step, the chance of removal to the $R$ compartment s non-zero, demonstrated by the three black dots in Figure \ref{fig:SEIR-spread}(c).
+During sporulation, secondary infections are produced, and latently infected ash spread throughout the domain, depicted by the orange dots in Figure \ref{fig:SEIR-spread}(c-d). 
+At any time step, the chance of removal to the $R$ compartment s non-zero, demonstrated by the small number of black dots in Figures \ref{fig:SEIR-spread}(c-d).
+After the sporulation season ends in September (not shown), latently infected ash begin to transition into the $I$ compartment;
+eventually, all latently infect ash become infectious during the following season, reflected by the increased number of red dots in Figure \ref{fig:SEIR-spread}(e). 
+The cycle will continue when the next cohort of secondary infections are produced in the following summer when the sporulation function next becomes non-zero.
 
 \subsection{Sporulation: time-varying infectivity}
 \label{ch6:sporulation}
@@ -389,8 +392,6 @@ As we saw previously through sections \ref{sec:spatially-explicit-reproduction-r
 
 \textit{From this point on, unless otherwise stated, the method for calculating $R_0$ is based on the average number of secondary infections resulting from the first-generation of infected hosts, as per definition \ref{def:R0_contact_traced}. However, this time, secondary infections characterise the transition $S\rightarrow E$, and the number of first-generation secondary infections $(R_0^{(1)})$ is measured over the mean lifetime of infected ash, i.e. five years.
 The first-generation contact-traced secondary infections $R_0^{(1)}$ will be denoted by $R_0$ for brevity.}
-
-\newpage
 
 % Within this epidemic system, secondary infections are mediated by dispersal with a spatially structured host population.
 % Chapter \ref{ch5:dispersal-model} explored the use of a spatially-explicit $R_0$ as a function of various epidemiological parameters; however, a proper investigation into $R_0$ and the domain size was omitted\footnote{As referred to here, $L$ represents the domain size, i.e. the boundaries/area over which an epidemic may spread. The scaling constant between pixels, $\alpha=5\mathrm{m}$, remains fixed for each simulation.}.
@@ -559,6 +560,12 @@ due to the phenomena of $R_0$-saturation witnessed in section \ref{section:initi
 Figure \ref{fig:R0-map-generation}(b) reveals a larger area of shaded grey, 
 suggesting that the sole difference between sporulation models is that $\phi_2$-ga deviates from linearity more than $\phi_1$-ga.
 
+In Figures \ref{fig:R0-map-generation}(b-c), the regime of pathogen extinction is indicated by the horizontal red lines, 
+which correspond to a critical `density threshold' denoted by $\rho_c$ (equivalent to the threshold $R_0 = 1$).
+When used in conjunction with the data-set from \cite{hill.data}, Figures \ref{fig:R0-map-generation}(b-c) represent an appropriate projection of $R_0$ over the map of Great Britain.
+Below the threshold $R_0=1$, infected ash can still survive and reproduce (i.e. persist below the threshold, as we saw in Figure \ref{fig:SEIR-spread}(c)), albeit at slower rates.
+Negating below-threshold patches is a vital assumption\textemdash discussed more below.
+
 \begin{landscape}
 \begin{figure}
     \centering
@@ -567,12 +574,6 @@ suggesting that the sole difference between sporulation models is that $\phi_2$-
     \label{fig:R0-map-generation}
 \end{figure}
 \end{landscape}
-
-In Figures \ref{fig:R0-map-generation}(b-c), the regime of pathogen extinction is indicated by the horizontal red lines, 
-which correspond to a critical `density threshold' denoted by $\rho_c$ (equivalent to the threshold $R_0 = 1$).
-When used in conjunction with the data-set from \cite{hill.data}, Figures \ref{fig:R0-map-generation}(b-c) represent an appropriate projection of $R_0$ over the map of Great Britain.
-Below the threshold $R_0=1$, infected ash can still survive and reproduce (i.e. persist below the threshold, as we saw in Figure \ref{fig:SEIR-spread}(c)), albeit at slower rates.
-Negating below-threshold patches is a vital assumption\textemdash discussed more below.
 
 Figures \ref{fig:R0-map-generation}(d-e) and (h-i) present $R_0$-values of the small-scale $\phi_1$-ga and $\phi_1$-pl $SEIR$ models projected onto the host distribution of ash.
 Both sets of $R_0$-maps are projected onto the same coarse-grained $5\mathrm{km} \times 5\mathrm{km}$ re-scaled host distribution.
@@ -705,6 +706,14 @@ Similar landscape-level features in the $R_0$-maps are witnessed for each domain
 Nevertheless, disparities exist in cluster size at different landscape-level resolutions.
 As the $R_0$-map is resolved to a small spatial-scales, connectivity within an $R_0$-cluster can depend more critically on a small number of above-threshold patches, identified by the red circles in the inset in Figure \ref{fig:gaussian-clustering}(c).
 
+In the coarse-grained domain of Figure \ref{fig:gaussian-clustering}(e), the critically-connecting patches circled in Figure \ref{fig:gaussian-clustering}(g) 
+are smoothed in the process of averaging the small number of surroundings patches. 
+Similarly, some above-threshold patches can be smoothed to below-threshold patches, thus increasing the cluster size, shown in Figure \ref{fig:gaussian-clustering}(b) circled in red.
+Ultimately, differences in cluster size are caused by the simplistic notion of connectivity within CCA that fails to scale with the domain resolution.
+Witnessing a difference in CCA-identified clusters is not desirable and outlines an inherent limitation of the framework.
+Even though clusters appear different, these observations emphasise that connectivity over a region can depend on a small number of patches, 
+which sets the scene for chapter \ref{ch7:landscape-level-control}.
+
 \begin{landscape}
 \begin{figure}
     \centering
@@ -713,16 +722,6 @@ As the $R_0$-map is resolved to a small spatial-scales, connectivity within an $
     \label{fig:gaussian-clustering}
 \end{figure}
 \end{landscape}
-
-In the coarse-grained domain of Figure \ref{fig:gaussian-clustering}(e), the critically-connecting patches circled in Figure \ref{fig:gaussian-clustering}(g) 
-are smoothed in the process of averaging the small number of surroundings patches. 
-Similarly, some above-threshold patches can be smoothed to below-threshold patches, thus increasing the cluster size, shown in Figure \ref{fig:gaussian-clustering}(b) circled in red.
-Ultimately, differences in cluster size are caused by the simplistic notion of connectivity within CCA that fails to scale with the domain resolution.
-
-Witnessing a difference in CCA-identified clusters is not desirable and outlines an inherent limitation of the framework.
-Even though clusters appear different, these observations emphasise that connectivity over a region can depend on a small number of patches, 
-which sets the scene for chapter \ref{ch7:landscape-level-control}.
-
 
 \section{Chapter summary}
 
@@ -747,10 +746,10 @@ Multi-scale CCA demonstrated how failing to include relevant epidemiological inf
 Furthermore, resolving Gaussian $R_0$-maps at different landscape resolutions emphasises an implicit assumption when defining connectivity based solely on nearest-neighbour interactions between patches. 
 That is, Moore and Von Neumann structuring elements do not scale with the dispersal kernel under a change of map resolution:
 
-\textit{Suppose secondary infections between patches are possible up to a maximum distance $D_{max} = 2\mathrm{km}$.
-Resolving the map to $\mathrm{2km \times 2km}$ (or lower) is permissible because patches interact locally i.e. infections between non-nearest neighbour patches are unlikely.
+\textit{Suppose secondary infections can be induced up to a maximum distance of $D_{max} = 2\mathrm{km}$.
+Resolving the map to $\mathrm{2km \times 2km}$ (or lower) is permissible because patches interact locally i.e. infections between non-nearest neighbour patches are unlikely (neglecting atmospheric of human-mediated LDD).
 In contrast, suppose the map is now resolved to $\mathrm{1km \times 1km}$.
-In this scenario, patches have the possibility of interacting non-locally because to $D_{max}$ exceeds the domain length;
+In this scenario, patches have the possibility of interacting non-locally because $D_{max}$ exceeds intermediary patches;
 nearest-neighbour structuring elements therefore fail to describe connectivity accurately.}
 Given all the above, an improved understanding of the connectivity between patches is required to progress the framework.
 
@@ -760,16 +759,11 @@ Therefore, epidemic maps depicting inverse power law $R_0$-values require a larg
 Omitting finer-scale epidemic information can lead to disparate results, witnessed by varying the Gaussian-based $R_0$-map patch-size.
 Thus, mapping $R_0$ values for inverse power law dispersal is called into question.
 
-\textcolor{red}{Arguably, when modelling the spread of disease inside an individual forest or nursery, `patch isolation' could be considered inside a smaller fixed domain.
-Nevertheless, here the modelled distribution of ash depicts a continuum of connectivity throughout Great Britain.}
-
 Despite the limitations of CCA, clusters grew up to four orders of magnitude over the initial interval of infectivity, $\beta^*\in [100, 400]$.
 Rapid cluster growth between $\beta^*\in [100, 400]$ occurred for all $SEIR$ model-variants and domain resolutions considered.
 Landscape-level spread within our framework, therefore, demonstrates a threshold-like behaviour, below witch ($\beta^* \lessapprox 100$), no models would be able to invade Great Britain.
 The next valuable step would be to fit a value of $\beta$ to data on ADB spread\footnote{Given the high availability of ADB mortality data in different European countries, fitting the $SEIR$ model to mortality curves would be most accessible.}, 
 and construct the resulting $R_0$-map.
-
-
 
 % \section{Chapter summary}
 
