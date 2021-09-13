@@ -10,11 +10,22 @@
 % 1. emphasis generality
 % 2. emphasis the simplicity 
 % 3. the vale in this chapter is ?
-Typically, models of tree disease are complicated and involve multiple parameters informed by experimental data. Furthermore, modelling a specific pathosystem requires in-depth, specialist knowledge to incorporate biological realism, such as pathogen lifecycles or environmental suitability. This chapter shall outline a model of tree disease, beginning from simplicity, that will lay the foundations for more detailed treatment in later chapters. Specifically, I will recount the compartmentalised $SIR$ percolation-based model used by \cite{OROZCOFUENTES201912}. From first principles, this involves an analysis of one parameter, tree density $\rho$, leading to a mathematical and conceptual definition of percolation. Lastly, the one-parameter model will give way to a discussion of criticality and self-similarity in the context of tree-based epidemics. The discussion will include a summary of critical phenomena and some universal behaviour within the model.  The results of this chapter are primarily generic but crucially demonstrate the importance of thresholds in the spread of tree-based diseases.
+Typically, models of tree disease are complicated and involve multiple parameters informed by experimental data. Furthermore, modelling a specific pathosystem requires in-depth, specialist knowledge to incorporate biological realism, such as pathogen lifecycles or environmental suitability. This chapter shall outline a model of tree disease, beginning from simplicity, that will lay the foundations for more detailed treatment in later chapters.
+Consequently, the compartmentalised $SIR$, percolation-based, model used by \cite{OROZCOFUENTES201912} will be recounted. 
+From first principles, this involves an analysis of one parameter, tree density $\rho$, leading to a mathematical and conceptual definition of percolation. 
+The simple one-parameter model will then give way to a discussion of criticality and self-similarity in the context of tree-based epidemics. 
+The discussion will include a summary of critical phenomena and some universal behaviour within the model.
+Crucially, this this chapter demonstrates the importance of thresholds in the spread of tree-based diseases.
 
-Having established a simple one-parameter model, a more involved two-parameter, `stochastic percolation', model, will be developed and examined. Stochastic percolation will include an extra parameter representing the degree of pathogen infectivity. In general, measuring infectivity is challenging and subject to much spatial and temporal variation, such as changing climatic/environment conditions or species-level genetic variations in susceptibilities.  However, incorporating infectivity by a stochastic parameter is essential to construct representative models of tree-based epidemics. In particular to tree disease, the susceptibility and infectivity between trees are thought to vary widely over a landscape. The two-parameter model will constitute a simple lattice model (SLM) of disease dynamics. Importantly, this introductory chapter will introduce an ensemble-averaging method used throughout the thesis. In the present case, this takes the form of an investigation into the SLM behaviour, using ensemble-averaged parameter sweeps.
+Having established a simple one-parameter model, a more involved two-parameter, `stochastic percolation', model, will be developed and examined. 
+Stochastic percolation will include an extra parameter representing the degree of pathogen infectivity. 
+In general, measuring infectivity is challenging and subject to much spatial and temporal variation, such as changing climatic/environment conditions or species-level genetic variations in susceptibilities.  
+However, including a stochastic infectivity parameter is essential to construct representative models of tree-based epidemics. 
+In particular to tree disease, the susceptibility and infectivity between trees are thought to vary widely over a landscape. 
+The two-parameter model will constitute a simple lattice model (SLM) of disease dynamics. This introductory chapter will introduce an ensemble-averaging method used throughout the thesis. 
+In the present case, this takes the form of an investigation into the SLM behaviour, using ensemble-averaged parameter sweeps.
 
-Lastly, the results of early-warning signals (EWS), investigated by \cite{OROZCOFUENTES201912}, will be extended. %
+Lastly, the results of early-warning signals (EWS), investigated by \cite{OROZCOFUENTES201912}, will be extended. 
 Extensions will include forming an alternate lattice configuration and a metric that permits clearer EWS detection. %
 Additionally, EWS are generalised to a two-dimensional parameter-space of $\rho$ and $\beta$ from which follows the observation that it is easier to observe EWS through specific parameter combinations.
 
@@ -336,9 +347,9 @@ Given an incrase in the infectious life-time $T$, $\beta_c$ would shift towards 
 
 \section{Early warning signals\textemdash detection and method}
 
-Applications of early warning signals for forest management and ecosystems-services were %
-investigated by \cite{OROZCOFUENTES201912} using the SLM\textemdash for a review on early %
-warning signals and critical-slowing down in landscape ecology, see Section \ref{section:ews}. %
+Applications of early warning signals were investigated by \cite{OROZCOFUENTES201912} for forest management and ecosystems-services
+\textemdash for a review on early 
+warning signals and critical-slowing down in landscape ecology, see Section \ref{section:ews}. 
 The work of \cite{OROZCOFUENTES201912} concentrated on a one dimensional parameter space of %
 tree density $\rho$ over a square lattice. %
 Statistically significant changes (or signals) in the moment-generating functions, %
@@ -346,11 +357,10 @@ that being variance, skew and auto-correlation, were calculated from the ensembl
 Observations of these statistical measures can be used to preempt phase-transitions into the epidemic regime. %
 This is useful information that could aid forest and plantation managers to maintain tree health. %
 
-Here, we offer an extension to some of the concepts presented by \cite{OROZCOFUENTES201912}. %
+Here, we offer a small extension to some of the concepts presented by \cite{OROZCOFUENTES201912}. %
 In particular, a new domain and metric is used that allows for clearer, more realistic early warning signals.  %
 Additionally, analysis is generalised to two-dimensions in the parameter-space of $\rho$ and $\beta$. %
-After introducing these alternative concepts, we discuss some of the problems and complexities one encounters %
-when ensemble-averaging these systems. %
+After introducing these alternative concepts, we discuss some of the problems and complexities encountered with ensemble-averaging. %
 
 \subsection{Alternative early warning detection}
 

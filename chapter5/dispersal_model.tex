@@ -7,11 +7,11 @@ This chapter will generalise the SLM to include non-nearest neighbour interactio
 That is, we will combine dispersal-based interactions within a simplistic $SIR$-based dispersal model to construct a non-local model (NLM) of tree disease.
 Following this, model behaviour is examined under various dispersal length scales and fitted against the standard $SIR$ model.
 
-After establishing a non-local dispersal model, a spatially explicit analytical expression for the basic reproduction number for the model, denoted by $R_0$, will be derived.
-Analytical predictions of $R_0$ are compared against the total tree mortality\textemdash equivalent to the final-sized epidemic.
-Lastly, the analytical expression of $R_0$ is scrutinised against the `actual' number of secondary infections, computed by tracking individual tree-to-tree infections within the model.
+After establishing the non-local dispersal model, a spatially explicit (analytic) expression for the basic reproduction number will be derived for the model, denoted by $R_0$.
+Analytical predictions of $R_0$ are then compared against the total tree mortality\textemdash equivalent to the final-sized epidemic.
+Lastly, the expression of $R_0$ is scrutinised against the `actual' number of secondary infections, computed by contact-traced individual tree-to-tree infections.
 The analytic and contact-traced methods to calculate $R_0$ are shown to define a threshold at $R_0=1$.
-The analysis is kept generic before incorporating more biological realism in the next chapter. 
+The analysis is kept generic, with arbitrary units of time and distance, before incorporating more biological realism in the next chapter. 
 
 \section{A non-local $SIR$ model}
 \label{section:sgm-expo}
@@ -444,7 +444,7 @@ In Figure \ref{fig:R0-vs-NLM-sims}(d), non-trivial density reductions could be e
 leading to an environment where the primary infected host $A_{1, 0}$ has less neighbours to infect.
 Given these potential limitations, an improved, more flexible method of calculating $R_0$ is investigated in the next section.
 
-\section{Contact-tracing $R_0$: a computational approach}
+\section{Contact-tracing secondary infections}
 \label{sec:contract-traced-R0}
 
 \begin{figure}
