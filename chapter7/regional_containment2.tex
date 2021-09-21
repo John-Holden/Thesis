@@ -17,15 +17,26 @@
 
 \label{ch7:landscape-level-control}
 
-A great deal of research has been carried out to understand the optimisation of control for plant and and tree-based epidemics\textemdash as reviewed section \ref{chapter2:plant-ecologoy} \textcolor{red}{for a review}. 
+In this chapter, we will examine how host-heterogeneity, under the influence of a wind-dispersed pathogen, can give rise to natural pinch-points and fault lines in the spatial distribution of hosts. 
+Population pinch points may give rise to a bottleneck in the epidemic spread, which in principle could be exploited with targeted epidemic control to fragment the host population with minimised effort. 
+In essence, a strategy of 'regional containment', targeting the local wind-based pathogen dispersal mechanism, 
+is formulated and scaled up over Great Britain.
+Similar concepts for crop and livestock diseases have been outlined \cite{PAPAIX201435, GILIOLI20131, Gilligan-disease-management}, yet to our knowledge, this has not been generalised to tree populations over large spatial scales.
+
+A great deal of research has been carried out to understand the optimisation of control in crop and tree-based epidemics\textemdash as reviewed section \ref{ch2:control-review} \textcolor{red}{for a review}. 
 Spatial structure is an essential factor when considering how to manage an outbreak \cite{spatial-control-optimisation, control-heterogeneous-landscapes}. 
-The main-stream paradigm of control typically considers infected tree removals over a relatively small spatial scale, near infected hosts \cite{WEBIDEMICS}, or more broadly, ahead of the wavefront \cite{large-scale-control}. 
+The mainstream paradigm of control typically considers infected tree removals over a relatively small spatial scale, near infected hosts \cite{WEBIDEMICS}, or, more broadly, ahead of the wavefront \cite{large-scale-control}. 
 However, landscape-level epidemic control, based solely on the structure of large-scale spatial distribution of hosts incorporating topography, has yet to be explored in-depth.
 
-In this chapter, we will examine how host-heterogeneity, under the influence of a wind-dispersed pathogen, can give rise to natural pinch-points and fault lines in the spatial distribution of hosts. 
-Population pinch points may give rise to a bottleneck in the epidemic spread, which in principle, 
-may be exploited with targeted tree felling to fragment the host population with minimised effort. 
-In essence, a strategy of 'regional containment', targeting the local wind-based pathogen dispersal mechanism, is formulated and scaled up over large spatial scales. Similar concepts for crop and livestock diseases have been outlined \cite{PAPAIX201435, GILIOLI20131, Gilligan-disease-management}, but to our knowledge this has not been generalised to tree populations over large spatial scales.
+The chapter begins by investigating the probability of patch-to-patch transmission with distance.
+Then, using the $SEIR$ model of ADB, we access the probability of invasion as a function of the distance between patches\textemdash
+a facet overlooked by the nearest-neighbour based $R_0$-maps presented previously.
+Then, considering a coupled system of three patches, section \ref{sec:density-reductions} examines intermediary-patch density reductions for epidemic control.
+Following on, a method to regionally contain the epidemic is described through sections \ref{sec:fragmentation-method-1}-\ref{sec:fragmentation-method-2}.
+In section \ref{sec:towards-regional-control} the method is analysed; however, the analysis constitutes unfinished work, as discussed.
+The work conducted in this chapter rests on the $SEIR$ model of ADB, although the outlook is less specific to ADB and more general-purpose, suitable to any class of wind-dispersed tree pathogens with comparable dispersal parameters. 
+
+\newpage
 
 % - The challenge of controlling ADB reflects the challenge of containing a pathogen that spreads via long-distance dispersal (LDD). 
 % Moreover, HP can infect ash through diverse mechanisms such as water-course and contaminated soil and LDD means that new and distant foci can emerge over large distances without the need for nearby ash\textemdash for a more detailed review of ADB, including the challenges of control and biology, see chapter \ref{chapter2:litrevieiw}.
@@ -41,9 +52,6 @@ In essence, a strategy of 'regional containment', targeting the local wind-based
 % - Currently, large-scale control efforts aim to slow the spread, in contrast, to complete containment. % Find references of current efforts/guidelines 
 % - A slower rate of spread benefits ash populations allowing them to recover alongside artificial replanting. % reference 
 
-%-----------------------------------
-% Suppose two patches of land, having tree densities above the threshold, $R_0 = 1$, are separated by an intermediary patch below the threshold. If we are not careful, dispersal could traverse the below-threshold patch within a single jump, even at local spatial scales. As such, we must choose a domain resolution that gives some assurance that, at the local scale, wind-dispersed spores cannot jump over whole patches with singular jumps. As always, there is the possibility that spores disperse more considerable distances, from mainland Europe to Great Britain, for example, \cite{freer2017tree, wylder2018evidence}. Nevertheless, this chapter aims at targeting dispersal at local scales, and LDD can be omitted for now.
-%-----------------------------------
 
 % Classical percolation theory requires lattice points to be independently open or closed, with no dependence on the state of nearest neighbours. So, strictly speaking, the analogy to percolation breaks down because the susceptibility of a given patch of ash is likely dependent on its neighbours $R_0$-value; as can be seen in Figures \ref{fig:uk-mapping}(d-e), particularly in the south of England where ash densities are high. 
 % Heterogeneity in the $R_0$-map becomes particularly useful in the the next chapter, where we investigate a potential strategy of landscape-level control based on disrupting epidemic connectivity and fragmentation.
@@ -55,33 +63,42 @@ In essence, a strategy of 'regional containment', targeting the local wind-based
 % 2) The domain resolution, configured in section \ref{ch6:re-scaling-host-data}, ensures that no secondary infections will result for the parameter values and spatial scale under consideration in the seasonal $SEIR$ model of ADB.
 % Likewise, 
 
-\section{Case-study: patch-level density-reductions \\ (unfinished)}
+\section{Patch-to-patch transmission}
 \label{sec:cast-study-jump-patches}
+ \textcolor{red}{\blindtext}
+
+
+\section{Intermediately density-reductions}
+\label{sec:density-reductions}
+
 \textcolor{red}{\blindtext}
 
 \section{Method: cluster fragmentation}
+\label{sec:fragmentation-method}
 
 In chapter \ref{ch:6-adb}, $R_0$-clusters were introduced.
-Clusters in the $R_0$-map revealed which regions in Great Britain are likely to be the most severely devastated by the pathogen.
-Whereas, patches below the threshold present a natural barrier to the spread of disease;
-in this simplified interpretation below-threshold patches can be presumed to not support high levels of infected biomass and infectious spore production.
-Moving forward, we presume that the pathogen will remain confined within isolated $R_0$-clusters and not spread through patches below $R_0=1$.
-Undoubtedly, a number of assumptions underpin this argument including the omission of LDD, both wind-borne and human-mediated, alongside stochastic outbreaks below the threshold.
+Clusters of susceptible patches of land in the $R_0$-map revealed which regions in Great Britain are likely to be the most severely devastated by the pathogen. 
+Whereas patches below the threshold present a natural barrier to the spread of disease;
+in this simplified interpretation, below-threshold patches can be presumed not to support high levels of infected biomass and infectious spore production.
+Moving forward, we assume that the pathogen will remain confined within isolated $R_0$-clusters and not spread through patches below $R_0=1$.
+Undoubtedly, several assumptions underpin this argument, including the omission of LDD, both wind-borne and human-mediated, alongside stochastic outbreaks below the threshold.
  
-Here, epidemics inside an $R_0$-map are reduced to a `\textit{percolation-like}' problem, with the caveat of clustering. 
-If no control is attempted, all patches within a susceptible cluster are put at risk if one patch becomes infected;
+Here, epidemics propagating through the $R_0$-map describe a `\textit{percolation-like}' problem, with the caveat of clustering.
+If no control is attempted, all patches within a susceptible cluster are put at risk if one patch becomes infected; 
 this motivates a control strategy based on cluster fragmentation to accomplish regional containment.
 Specifically, by artificially reducing $R_0$ in a small number of identified patches, connectivity within the cluster can be efficiently disrupted with minimal effort.
 Cluster fragments then define disconnected `sub-clusters' (e.g. $\mathbf{C_1}$ and $\mathbf{C_2}$) that eliminates risk for trees inside one sub-cluster.
-Ash trees inside the confining cluster are assumed to be removed by the pathogen while Ash trees inside the remaining sub-cluster survive and remain susceptible.
-If the control effort is small in comparison to the reduction of epidemic-impact, then efficient control is achieved.
+Host patches inside the confining cluster are assumed to be removed (or put at risk) by the pathogen, while hosts inside the remaining sub-cluster are saved and remain susceptible.
+If the control effort is small compared to the reduction of epidemic impact, efficient control is achieved.
+
 
 % - The modelled distribution of ash depicts a continuum of connectivity throughout Great Britain.
 % - The shape of each cluster is constrained by landscape topography and geography. 
 
 \subsection{Identifying high-priority patches}
+\label{sec:fragmentation-method-1}
 
-An algorithm was developed to identify high-priority patches in the host distribution, which, if taken below the threshold disrupts epidemic connectivity.
+An algorithm was developed to identify high-priority patches in the host distribution, which disrupts epidemic connectivity if taken below the threshold.
 Given a CCA-identified cluster in the $R_0$-map, $\mathbf{C}$, we can define a binary-valued threshold function $\Phi(\xi)$ by:
 \begin{align}
 \label{eq:xi-step}
@@ -98,9 +115,10 @@ where $\mathrm{max}\big(R_0(i, j)\big)$ is the highest value of $R_0$ in $\mathb
 \begin{figure}
     \centering
     \includegraphics[scale=0.5]{chapter7/figures/figure1-frag-method.pdf}
-    \caption{A graphical illustration of the algorithm developed to fragment $R_0$-clusters. 
+    \caption{
+    A graphical illustration of the algorithm developed to fragment $R_0$-clusters.  
     (a) The largest cluster, denoted by $\mathbf{C}$, is shown inside an arbitrary domain at resolution $3\mathrm{km} \times 3 \mathrm{km}$ and infectiviy $\beta^*=450$ for the model $\phi_1$-ga.
-    Applying the threshold function $\Phi$ at $\xi=1$ recovers the $\mathbf{C}$ exactly, because all patches are above the threshold $R_0=1$.
+    Applying the threshold function $\Phi$ at $\xi=1$ recovers the $\mathbf{C}$ exactly because all patches are above the threshold $R_0=1$.
     (b) Applying the threshold function $\Phi$ at $\xi=4$ yields a low-density map with sparsely distributed clusters, as few patches surpass $R_0\geq 4$. 
     (c) The top three largest clusters, by area $\mathrm{km^2}$, are shown as a function of $\xi$.
     (d) At specific values of $\xi$, some sub-clusters join to form larger clusters\textemdash here, the blue and orange clusters proceed to join at $\xi = 1.15$.
@@ -125,19 +143,20 @@ these complexities are taken into account by the algorithm.}
 analogous to the formation of a spanning cluster opening up in a percolation. 
 Figure \ref{fig:R0-threshold-function}(d) depicts a scenario with a number of disconnected sub-clusters at $\xi=1.19$ that merge together at $\xi=1.15$.
 The well-known `binary dilation' operator \cite{liang1989erosion, 23111, nachtegael2001connections} was used to detect all patches that become non-zero and bridge sub-clusters, as elaborated in \textcolor{red}{appendix X}.
-Henceforth, patches that connect sub-clusters in a discontinuity-step are refereed to as `connecting patches'.
+Henceforth, `connecting patches' refer to patches that connect sub-clusters in a discontinuity step.
 
-When $\mathbf{C_1}$ and $\mathbf{C_2}$ abruptly merge to form the basis of $\mathbf{C}$, a large discontinuous jump in cluster size is detected. 
+When $\mathbf{C_1}$ and $\mathbf{C_2}$ abruptly merge to form the basis of $\mathbf{C}$, a significant discontinuous jump in cluster size is detected. 
 All spatial locations $(i,j)$ which bridge the gap between $\mathbf{C_1}$ and $\mathbf{C_2}$ are then identified and removed by taking $R_0$ below the threshold.
 Figure \ref{fig:R0-threshold-function}(e) shows two singular patches in blue (and highlighted in red) that if taken below $R_0=1$,
 would fragment $\mathbf{C}$ into two sub-clusters $\mathbf{C_1}$ and $\mathbf{C_2}$.
 Successive steps through $\xi$ continue until $\xi=1$.
 For each discontinuity event, connecting patches are detected and removed from the system,
 thus preventing $\mathbf{C_1}$ and $\mathbf{C_2}$ from merging over $\xi \in [1, R_{max}]$.
-In this manor, the target-cluster $\mathbf{C}$ is fragmented into two disconnected sub-clusters. 
+In this manner, the target-cluster $\mathbf{C}$ is fragmented into two separate sub-clusters. 
 As we can see, connectedness within the domain can depend on a small number of patches.
 
 \subsection{Iterative cluster fragmentation}
+\label{sec:fragmentation-method-2}
 
 Each $R_0$-cluster can be iteratively fragmented $N$ times to produce a set of disconnected sub-clusters, 
 where, on average, each fragmentation iteration produces $N+1$ sub-divided clusters.
@@ -150,24 +169,26 @@ The process is then repeated $N=10$ times to produce $11$ disconnected fragments
 \begin{figure}
     \centering
     \includegraphics[scale=0.41]{chapter7/figures/figure2-Iiterative-frag.pdf}
-    \caption{The fragmentation algorithm shown as an iterative process. 
+    \caption{
+    The fragmentation algorithm is shown as an iterative process. 
     (a) The example cluster ($\mathbf{C}$) is fragmented into two sub-clusters ($\mathbf{C_1}$ and $\mathbf{C_2}$) during the first iteration of the algorithm.
     (b) During the next iteration, the largest sub-cluster $\mathbf{C_1}$ is targeted to produce an additional cluster fragment, denoted here by $\mathbf{C_3}$ in green.
     (c) The process is iteratively repeated $N=10$ times to produce $11$ sub-dived clusters.
-    (d) The sub-cluster size reductions are plotted for $25$ iterations of the algorithm over a range of infectiviy parameters;  
-    approximately, size-reductions follow an inverse power law, as indicated by the corresponding fitted dashed lines.
-    Lower infectivity parameters correlate to a efficient fragmentation in contrast to higher $\beta^*$ values\textemdash suggested by the logarithmic inset plot.
+    (d) The sub-cluster size reductions are plotted for $25$ iterations of the algorithm over a range of infectivity parameters;  
+    approximately, size-reduction follows an inverse power law, as indicated by the corresponding fitted dashed lines.
+    Lower infectivity parameters correlate to an efficient fragmentation in contrast to higher $\beta^*$ values\textemdash suggested by the logarithmic inset plot.
     (e) The area of connecting patches, or `control area', is plotted against the iteration\textemdash truncated to $15$. 
-    Generally, the number of connecting patches increases with infectivity and decrease with iteration.}
+    Generally, the number of connecting patches increases with infectivity and decrease with iteration.
+    }
     \label{fig:iterative-fragmentations}
 \end{figure}
 
 Figure \ref{fig:iterative-fragmentations}(d) shows the sub-cluster size reductions for $N=25$ iterations and a number of different infectivity parameters.
 For all infectivity parameters considered, the largest sub-cluster continually decreased for each iteration of fragmentation.
-Moreover, cluster size reductions occurred more rapidly at first, and slowed down as $N\rightarrow 25$.
+Moreover, cluster size reductions occurred more rapidly at first and slowed down as $N\rightarrow 25$.
 Sub-cluster size reductions were fitted to an inverse power law of the form $f(x) = ax^{-k}$, shown by the corresponding colored dashed lines in Figure \ref{fig:iterative-fragmentations}(d).
 Fitted parameter values of $a$ and $k$ reflect the initial cluster size and rate of decrease, respectively. 
-Higher invectivity parameters can be seen to fit a larger constant $a$ and smaller exponents $k$, indicated in the legend.
+Higher infectivity parameters fit a larger constant $a$ and a smaller exponent $k$, indicated in the legend.
 Therefore, the fragmentation process becomes progressively inefficient as $\beta^*$ increases,
 demonstrated most clearly by comparing the gradient of the purple and blue lines in the logarithmic inset axes\footnote{
 Additionally, fragmentation was tested alongside the $2^{nd}$ and $3^{rd}$ largest $R_0$-clusters (not shown); 
@@ -177,71 +198,94 @@ Lastly, Figure \ref{fig:iterative-fragmentations}(e) shows the corresponding num
 The number of removed patches tends to decrease with iteration\textemdash most likely due to the smaller areas involved\textemdash and increase with infectivity.
 For example, when $\beta^*=850$, Figure \ref{fig:iterative-fragmentations}(e) shows a control area on the order of $100\mathrm{km^2}$,
 arguably, treating a spatial extent of this magnitude would be exceedingly challenging in practice.
-Thus, when $\beta^*$ becomes high it is clear to see a limitation in the framework.
-In the next section, we outline a potential framework for using cluster-fragmentation as a means to achieve `regional containment'.
+Thus, when $\beta^*$ becomes high, it is clear to see a limitation in the framework.
+In the next section, we outline a potential framework for using cluster fragmentation as a means to achieve `regional containment'.
 
-\newpage
-
-\section{Towards regional epidemic containment}
+\section{Towards regional containment (unfinished)}
+\label{sec:towards-regional-control}
 
 Regional containment can be tested as an epidemic control strategy by considering hypothetical outbreaks from various epicentres. 
 Figure \ref{fig:scenario-expo} demonstrates containment for a single epicenter marked by the black cross\textemdash 
 located inside the same target cluster shown in Figures \ref{fig:R0-threshold-function} and \ref{fig:iterative-fragmentations}.
 We can achieve epidemic containment in several ways, as alluded to by Figure \ref{fig:scenario-expo}.
-The connecting patches (identified over $N=25$ fragmentation iterations) can be combined in a number of ways to define different boundaries around the epicentre.
+The connecting patches (identified over $N=25$ fragmentation iterations) can be combined in many ways to define different boundaries around the epicentre.
 For example, Figure \ref{fig:scenario-expo}(a) defines a boundary by considering connecting patches determined in the $1^{st}, 3^{rd}, 7^{th}$ and $8^{th}$ iterations, shown in red.
 The boundary then defines a confining sub-cluster around the epicentre; 
 in theory, light-grey patches remain disconnected and susceptible whilst the dark grey patches are removed/at-risk.
 
 A simple notion of `control-payoff' can be described by the ratio $N_{S}/(N_{R}\times N_{C})$,
 where $N_S$, $N_{R}$ and $N_{C}$ are the number of patches that remain susceptible, become removed and are targeted for control, respectively.
-That is, we have efficient containment when the number of `saved' patches is high and number of patches removed and controlled is low.
-For the remainder of this chapter the notion of control is kept generic and undefined\textemdash
+We have efficient containment when the number of `saved' patches is high and the number of patches removed and controlled is low.
+For the remainder of this chapter, the notion of control is kept generic and undefined\textemdash
 although it typically involves either the culling or biological treatment of infected hosts.
 Furthermore, resources to control the pathogen are finite and depend on governmental budgets.
-With more work we may be able to compute a limit on $N_{C}$ and perform a more sophisticated analysis.
-In a similar vein, $N_R$ paints the simple of picture of patches becoming removed/at-risk; 
-in reality, the number of patches at risk of removal would be more complicated and subject to the aforementioned factors of LDD and stochastic below-threshold outbreaks. 
+With more work, we may be able to compute a limit on $N_{C}$ and perform a more sophisticated analysis.
+In a similar vein, $N_R$ paints the simple picture of patches becoming removed/at-risk; 
+in reality, the number of patches at risk of removal would be more complicated and subject to LDD and stochastic below-threshold outbreaks. 
 However, with no expressed limit on $N_{C}$ and a simple notion of $N_S$ we continue with a theoretic investigation.
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.575]{chapter7/figures/figure3-scenario-test.pdf}
-    \caption{For each epicenter, a variety of different control-choices are possible, based on the landscape-level host aggregation. 
-    Here, the algorithm was used to recursively fragment the target cluster $\mathbf{C}$ through $N=25$ iterations, 
+    \caption{
+    A variety of different control choices are possible for each epicentre, based on the landscape-level host aggregation. 
+    Here, the algorithm recursively fragments the target cluster $\mathbf{C}$ through $N=25$ iterations, 
     then different combinations of connecting patches can be used to contain the outbreak in a variety of ways.
-    Panels (a-d) represent a small sample of control-scenarios for an arbitrary epicenter, marked by the central black cross.
+    Panels (a-d) represent a small sample of control scenarios for an arbitrary epicentre marked by the central black cross.
     Red patches indicate where landscape-level control $C$ should be targeted to contain the epidemic.
-    Light grey patches then remain susceptible ($S$) whilst dark grey parches are assumed removed/at-risk, denoted by $R$.
-    In practice, every possible control-scenario is assessed against every possible epicenter.
+    Light grey patches remain susceptible ($S$) whilst dark grey parches are assumed removed/at-risk, denoted by $R$.
+    In practice, every possible control scenario is assessed against every possible epicentre.
      }
     \label{fig:scenario-expo}
 \end{figure}
 
-Lastly, it is worthwhile to describe some edge-cases and complexities that arise when determining containment scenarios.
-Suppose that containment is detected about an epicenter by combining the connecting patches identified in two arbitrary iterations $N_i$ and $N_j$.
+Lastly, it is worthwhile to describe some edge cases and complexities that arise when determining containment scenarios.
+Suppose that containment is detected about an epicentre by combining the connecting patches identified in two arbitrary iterations $N_i$ and $N_j$.
 In this scenario, some patches from $N_i$ and $N_j$ may be located away from the containing sub-clusters boundary, i.e. in distant (non-bounding) locations.
-Thus, irrelevant `non-bounding' patches were identified by employing the binary dilation operator, in this way only patches neighbouring the confining sub-clusters perimeter contribute to $N_C$.
-Moreover, combinations of connecting-patch iterations that failed to define a confining sub-cluster must be ruled out from analysis.
+Thus, irrelevant (non-connecting) patches were identified by employing the binary dilation operator; in this way, only patches neighbouring the confining sub-clusters perimeter contribute to $N_C$.
+Moreover, combinations of connecting-patch iterations that failed to define a confining sub-cluster about the epicentre must be ruled out from the analysis.
 
-\subsection{Results: control-payoff}
-Landscape-level epidemic containment in Great Britain was accessed over a variety of different epicenters.
-Specifically, epicenters are defined by each sub-cluster center of mass (COM), i.e.  we compute the COM for each sub-cluster produced from $N=20$ iterations of target-cluster fragmentation. 
+\newpage
+
+\subsection{Results: control payoff}
+
+Scenarios tests employ a variety of different epicentres to consider Landscape-level epidemic containment in Great Britain.
+Moreover, the sub-cluster centre of mass (COM) defines an epicentre, i.e. we compute the COM for each sub-cluster produced from $N=20$ iterations of target-cluster fragmentation. 
 As before, `target cluster' refers to the largest dominating cluster detected in the $R_0$ map for each $\beta$-valued domain.
 Containment scenarios can then be determined for each epicenter\textemdash as described above.
-The payoff ratios were then ranked according to the payoff ratio $N_S/ (N_R\times N_C)$, as shown in Figure \ref{fig:payoff-efficiency}.
-Figure \ref{fig:payoff-efficiency}(a) presents the top $25$ epidemic containment scenarios over a range of infectiviy parameters for the model\footnote{
-Because the relation between $R_0$ and tree density is similar between ADB models at the same infectivity $\beta^*$ (demonstrated previously in Figures \ref{fig:R0-map-generation}), 
-$R_0$-maps look similar between models.
-Payoff comparisons between model variants were therefore not considered.} 
-$\phi_1$-ga.
+The payoff ratios were then ranked according to the payoff ratio $N_S/ (N_R\times N_C)$, as shown in Figure \ref{fig:payoff-efficiency}\textemdash 
+all panels consider the model $\phi_1$-ga resolved to $\mathrm{5 km \times 5 km}$ sized patches.
 
-For the purposes of our model, the payoff efficiency is shown alongside the corresponding number of felled trees in dashed grey. 
-Payoff efficiencies begin to level off around $\mathrm{10^3}$ involving around $\mathrm{10^4}$ felled trees. 
-In reality, this would be a challenge to accomplish in a reasonable time-frame. 
-\textcolor{red}{Figure}\ref{fig:result-culling-efficiency}(b) shows a scatter plot of all the data, $N_S$ and $N_F$ are plotted with color corresponding to the payoff. 
-The efficiency ranged over multiple orders of magnitude up to a maximum efficiency of $\mathrm{10^6}$. 
-The top left quadrant of \textcolor{red}{Figure} \ref{fig:result-culling-efficiency}(b) represents viable scenarios where containment felling could be pragmatically implemented by policy makers with the greatest efficiency.
+Figure \ref{fig:payoff-efficiency}(a) presents the top $25$ epidemic containment scenarios over a range of infectiviy parameters in the interval $\beta^* \in [0, 1000]$. 
+The reader is referred back to chapter \ref{ch:6-adb} (i.e. Figures \ref{fig:R0-map-generation} and \ref{fig:gaussian-clustering}) for background information on cluster size with infectiviy $\beta^*$.
+Beyond $\beta^*=200$, each value of infectivity involved a large number of containment scenarios, i.e. typically between $10^3-10^4$ containment scenarios per $\beta^*$ parameter.
+The payoff ratio starts small with low infectivity values and begins to peak before dropping off. 
+The control payoff is low for low values of $\beta^*$ since the number of trees saved is generally lower on account of small susceptible clusters.
+Figure \ref{fig:payoff-efficiency}(a) therefore indicates that this strategy of control is not desirable for pathogens with low infectivities.
+For exceptionally high values of $\beta^*$, a small number of high-valued payoff ratios are plotted in the shaded region Figure \ref{fig:payoff-efficiency}(a); 
+this represents a limitation when using the payoff ratio as defined in this chapter\textemdash \textcolor{red}{see Appendix X for a graphical explanation}.
+
+Interestingly, Figure \ref{fig:payoff-efficiency}(a) suggests that regional epidemic containment is most efficient over a specific parameter regime,
+since the highest payoff scenarios occur in the interval $\beta^* \in [400, 600]$.
+Although, these are preliminary indications. 
+As section \ref{sec:gaussian-r0-clustering} demonstrated, nearest-neighbour structuring elements do not scale with changes landscape-level resolution.
+Given that Figure \ref{fig:payoff-efficiency}(a) is based on $\phi_1$-ga at the resolution $5\mathrm{km} \times 5\mathrm{km}$, the results presented by Figure \ref{fig:payoff-efficiency}(a)
+are likely to change if containment scenarios are computed with smaller patch sizes.
+Although Figure \ref{fig:payoff-efficiency}(a) demonstrates an important observation, 
+more work is needed to be confident that regional containment is most effective over the interval $\beta^* \in [400, 600]$.
+
+Figure \ref{fig:payoff-efficiency}(b) shows the complete list of scenario tests for $\beta^*=500$, the infectivity that registered the highest control payoff.
+The number saved patches that remain in $S$ (i.e, $N_S$) is plotted against $N_R \times N_C$.
+The upper and right-hand marginal plots show the corresponding probability density functions for $N_S$ and $N_R \times N_C$.
+Each PDF shows a skewed distribution, with most scenarios involving a smaller value of $N_S$ and $N_R \times N_C$.
+Of the $3850$ containment scenarios, a small number of high performing tests populate the bottom right-hand quadrant, when $N_S$ is large and $N_R \times N_C$ is low;
+this region represents viable scenarios where containment is most efficient i.e. the right and left-hand distribution tails when $N_S$ is large and $N_R \times N_C$ is small.
+
+Figures \ref{fig:payoff-efficiency}(c-e) show three scenarios of interest, orange and blue clusters depict removed/at-risk and susceptible/saved patches, respectively. 
+Red crosses indicate where the control should be focused to achieve containment. 
+The targeted control patches in Figure \ref{fig:payoff-efficiency}(c) resemble those identified previously in Figure \ref{fig:R0-threshold-function}(e), albeit this time for a higher $\beta^*$-valued domain at a lower landscape-level resolution.
+Desirably, observing connecting patches in approximately the same location for different infectivity values suggests that some patches may be important for control at various epidemic scales.
+Moreover, Figure \ref{fig:payoff-efficiency}(c) hints toward there being similarities at and different resolutions\textemdash the concern mentioned above.
 
 \begin{landscape}
 \begin{figure}
@@ -249,27 +293,74 @@ The top left quadrant of \textcolor{red}{Figure} \ref{fig:result-culling-efficie
     \includegraphics[scale=0.47]{chapter7/figures/figure4-scenario-payoff.pdf}
     \caption{The control `payoff' is accessed by comparing the number of patches that remain susceptible ($N_S$) against the number of patches removed ($N_R$) and controlled ($N_C$).
              (a) The payoff ratio $N_S / (N_R \times N_C)$ is plotted against the infectiviy parameter $\beta^*$ for the top $25$ highest payoff scenarios.
-             (b) The complete list of scenario tests are plotted for the highest payoff infectiviy parameter $\beta^*=500$; the lower right-hand quadrant defines the most efficient control scenarios.
-             (c-e) Spatial plots showing three hypothetical scenarios from panel (b). 
+             (b) The complete list of (3850) different scenario tests are plotted for the highest payoff infectivity parameter $\beta^*=500$; the lower right-hand quadrant defines the most efficient control scenarios.
+             (c-e) Spatial plots that show three hypothetical scenarios from panel (b). 
              Blue and orange clusters outline patches that remain susceptible and become removed, respectively.
-             (f-g) Probability density functions for $N_S$ and $N_R \times N_C$ are plotted over a sample of shown infectiviy parameters.
+             (f-g) Probability density functions for $N_S$ and $N_R \times N_C$ are plotted over the sample of shown infectivity parameters.
              }
     \label{fig:payoff-efficiency}
 \end{figure}
 \end{landscape}
 
-A small number of exceedingly high payoff results were found. 
-In \textcolor{red}{Figure}\ref{fig:result-culling-efficiency}(c), the top three ranking payoff scenarios are illustrated on the same map and reinforces the intuitive notion that epicenters around edge positions can be most efficiently contained. 
-The zoomed inset highlights just $\mathrm{2\times 1km^2}$ Ash patches located at a single point of contact for the top ranked sub-cluster. 
-Critical links for the best performing scenarios were all found in lower-density regions within the $R_0$-cluster and were easily fragmented with a low number of felled trees. 
-This highlights the possibility that fragmentation is most easily achieved with tree felling through critically linking regions and
-demonstrates how regional variation in host density can be exploited for efficient control. 
+Figure \ref{fig:payoff-efficiency}(c) reveals the highest payoff result for $\beta^*=500$.
+In this scenario, the epicentre lies close to the Eastern coastline (Skegness), 
+and the control area is located slightly inland (approximately towards southernly situated Lincolnshire Wolds).
+The zoomed inset highlights a single $\mathrm{5km \times 5 km}$ patch, and control saves the vast majority of GB from infection.
+This scenario is no doubt idealistic and unlikely to be realised in a real-life outbreak.
+In a real-life outbreak, epicentres are unlikely to be so conveniently located about the coastline.
+Furthermore, detecting and controlling the pathogen remains difficult before it spreads to distant (and more centralised) locations.
+Nevertheless, Figure \ref{fig:payoff-efficiency}(c) reinforces the intuitive notion that epicentres around edge positions are contained efficiently.
+The inset highlights where pathogen dispersal might jump between clusters, indicated by the curved arrows.
+Although wind-dispersed secondary infections are likely rare over these spatial scales ($5$-$20\mathrm{km}$), they are nevertheless thought possible for fungal spores \cite{grosdidier2018tracking};
+the analysis presented here neglect these complexities, which requires further investigation.
+
+The last spatial plot, Figure \ref{fig:payoff-efficiency}(d), depicts a more likely scenario with a centrally located focus.
+Most of GB remains at risk, yet some Northern and Southern regions surrounding the target cluster remain protected from the pathogen.
+If the disease has not yet reached the connecting patches (identified by the red crosses), Figure \ref{fig:payoff-efficiency}(d) indicates that regional containment might be attempted alongside targeting a disease wave-front \cite{large-scale-control}, or more local-scale pathogen eradication \cite{WEBIDEMICS}. 
+Although, ultimately, more work is needed to assess the efficacy and possibility of halting/slowing the spread.
+
+Figures \ref{fig:payoff-efficiency}(f-g) show the probability density functions associated with $N_S$ and $N_R \times N_C$ for the infectiviy values shown.
+Generally, higher infectivity parameters skew the distribution of $N_S$ towards higher values because the number of patches available to save generally grows alongside the overall cluster size.
+Similarly, the distributions of $N_R \times N_C$ also becomes skewed toward the right, indicating that most control scenarios become progressively inefficient as infectivity grows.
+However, landscape-level control is possible when scenarios occupy the right and left-hand distribution tails of $N_S$ and $N_R \times N_C$.
 
 \section{Chapter summary}
 
-The article published by \cite{time-varying-infectivity} indicates the possibility of \textit{preferentially} controlling an area based on the final-sized epidemic. 
-It goes without saying that areas of land that have the largest final sized epidemic are likely the most density populated. 
-However, we outline the possibility it might be more beneficial to preferentially control an area based on its spatial location and how it couples to to neighbouring areas.
+This chapter outlined a conceptual strategy of landscape-level control, targeting a pathogens local wind-dispersal mechanism.
+The strategy preferentially controls the pathogen through identified patches throughout the host population.
+If taken below the epidemic threshold, $R_0$-cluster fragmentation could be achieved along with an idealistic `regional containment'.
+Although, the utility, efficiency and practicality of real-life implementation remain unproven, given that the effects of LDD (beyond $5\mathrm{km}$) was neglected and spores likely disperse over large distances, e.g. from mainland Europe to Great Britain \cite{freer2017tree, wylder2018evidence}.
+Nevertheless, the results of section \ref{sec:cast-study-jump-patches} provide indications that pathogen dispersal might, at worst, be slowed by performing patch-level density reductions;
+in the best-case scenario, policymakers and forest managers might gain vital time to respond to the threat of invasion and tree populations provided with crucial recovery time.
+
+\textcolor{red}{
+Section \ref{sec:cast-study-jump-patches} demonstrated that density reductions between intermediary patches might be a viable option of epidemic control, according to the model of $SEIR$ model of ADB.
+This method contrasts with other small-scale control strategies, which typically consider a risk-based cull-radius or identify high priority hosts about known sources of infection.
+Epidemic control in the Gaussian-based model was achieved with relative ease in comparison to the inverse power law variant;
+inverse power law spread required more severe density reductions over larger spatial scales.
+These results mirror contemporary concerns relating to the control of fat-tailed inverse power law dispersal kernels.}
+
+Although the control paradigm presented in this chapter was based on density reductions, in line with more traditional methods of eradication, 
+the possibility of other biological control methods remains an attractive option.
+Specifically, fungicide treatments \cite{hauptman2015application}...\textcolor{red}{elaborate}.
+In addition, targeted epidemic control goes hand-in-hand with an understanding of which regions are infected.
+Naturally, this leads to the emerging theme of monitoring and surveillance \textemdash discussed in section \ref{ch2:control-review}.
+Various authors have suggested \textcolor{red}{x and y and z} lead to efficient monitoring;
+however, none seem to involve the spatial arguments based on population heterogeneity presented in this chapter.
+Consequently, future work could access the method of critical/connecting patch detection for enhanced landscape-level monitoring.
+
+The algorithm constructed in section \ref{sec:fragmentation-method} presented a means to identify `connecting patches', which if taken below $R_0=1$ would fragment the cluster.
+A related network paradigm has been articulated by many authors, relating to finding the optimal fragmentation of a network \textcolor{red}{CITE};
+however, no such sources could be found relating to spatial, epidemic equivalent.
+The algorithm described in \ref{sec:fragmentation-method} treated patches below the threshold as negligible.
+Without this assumption, CCA would cease to work.
+Given the possibility of stochastic below-threshold spread, future work should move towards a generalised (risk-based) scheme that factors in the presence of patches below $R_0=1$;
+in such a scheme, we may ultimately question the choice of CCA due to its binary nature.
+
+
+% The article published by \cite{time-varying-infectivity} indicates the possibility of \textit{preferentially} controlling an area based on the final-sized epidemic. 
+% It goes without saying that areas of land that have the largest final sized epidemic are likely the most density populated. 
+% However, we outline the possibility it might be more beneficial to preferentially control an area based on its spatial location and how it couples to to neighbouring areas.
 
 % genetic tolerance is currently the only viable strategy of control\cite{kosawang2018fungal}
 
@@ -283,10 +374,4 @@ However, we outline the possibility it might be more beneficial to preferentiall
 
 % There is evidence to suggest regional variation in mortality due to ash dieback \cite{stocks2017first}, this could be incorporated into the model...
 
-% Our results support the call for more research to be undertaken into multi-scale dispersal, 
-
-% Recently, it has been suggested that the dispersal-kernel of wind-borne pathogens might follow a scaling law \cite{https://doi.org/10.1111/jbi.13642}. The significance of such a finding would allow us to analyse the $R_0$-maps over much more flexible spatial scales. % Explain.
-
-% This sentence is wrong, the cited paper makes an argument for the spatially-scaling up of dispersal kernels, which happens to still be useful paper to cite, re-phrase and re-frame accordingly.
-
-% see \cite{ash-dieback-costs}, and the references therein (methodology excel spread sheet S1), for mortality references the latest findings suggest a mean mortality rate of 95%.
+% Recently, it has been suggested that the dispersal-kernel of wind-borne pathogens might follow a scaling law \cite{https://doi.org/10.1111/jbi.13642}
