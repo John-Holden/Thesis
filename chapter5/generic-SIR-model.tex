@@ -4,13 +4,13 @@
 Previously, we employed a simple lattice model with several limitations. 
 In particular, the percolation-based model relied on local, nearest-neighbour contacts and could not spread at lower, more realistic tree densities. 
 This chapter will generalise the SLM to include non-nearest neighbour interactions by including a generic Gaussian dispersal kernel.
-That is, we will combine dispersal-based interactions within a simplistic $SIR$-based dispersal model to construct a non-local model (NLM) of tree disease.
+That is, we will combine dispersal-based interactions within a simplistic $SIR$-based model to construct a non-local model (NLM) of tree disease.
 Following this, model behaviour is examined under various dispersal length scales and fitted against the standard $SIR$ model.
 
 After establishing the non-local dispersal model, a spatially explicit (analytic) expression for the basic reproduction number will be derived for the model, denoted by $R_0$.
 Analytical predictions of $R_0$ are then compared against the total tree mortality\textemdash equivalent to the final-sized epidemic.
 Lastly, the expression of $R_0$ is scrutinised against the `actual' number of secondary infections, computed by contact-traced individual tree-to-tree infections.
-The analytic and contact-traced methods to calculate $R_0$ are shown to define a threshold at $R_0=1$.
+The analytic and contact-traced methods of calculating $R_0$ are shown to define a threshold at $R_0=1$.
 The analysis is kept generic, with arbitrary units of time and distance, before incorporating more biological realism in the next chapter. 
 
 \section{A non-local $SIR$ model}
@@ -39,7 +39,8 @@ The probability of transition is calculated for each susceptible tree in the dom
 and repeated for all infectious trees in $I$ over their infectious life-times.
 From a computational perspective, the probability of transition is assessed against samples drawn from a continuous uniform distribution $U(0, 1)$;
 see Appendix \ref{a:probablity-transition} for an example of implementation.
-\textcolor{red}{Contrast to other tree-to-tree models in the literature.}
+
+% NB: I will contrast the other tree-to-tree models in the literature.
 
 The same uniform lifetime dynamics (used in the SLM) controls the period hosts remain infectious.
 A host transitioning into the $I$ compartment will remain infectious for $T$ time steps before uniformly transitioning into the $R$ compartment.
@@ -574,9 +575,8 @@ The analytic threshold predicted by equation \ref{eq:Appendix_final_expression1}
 caveat-ed by the observation that it tends to overestimate $R_0$ when epidemic severity is high.
 The overestimation of $R_0$ can be compared to well-known results by \cite{R0-perc-ref, doi:10.1098/rsif.2005.0051},
 who showed that the first-generation basic reproduction ratio for farms infected with foot-and-mouth overestimates the growth rate of infection.
-As opposed to analytical predictions, the contact-traced reproduction ratio effectively mirrors the reduction of susceptible trees. % Effective R0?
-In addition, \cite{R0-perc-ref} found that the second generation of infected farms gave a better predictor of the final-sized epidemic (conditional on the epidemic occurring);
-presenting a link to our observation that the tree mortality threshold defined by $R_0^{(i)}=1$ was sharper for later generations.
+In addition, \cite{R0-perc-ref} found that the second generation of infected farms gave a better predictor of the final-sized epidemic (conditional on the epidemic occurring),
+thus presenting a clear link to our observation that the tree mortality threshold defined by $R_0^{(i)}=1$ was sharper for later generations.
 Crucially, each method of calculating the reproduction ratio defined a threshold around unity, beyond which epidemic impact becomes non-trivial.
 
 An attractive feature of the contact-tracing method, as per definition \ref{def:R0_contact_traced}, 

@@ -37,7 +37,7 @@ open with probability $\rho$ or closed with probability ($1-\rho$). %
 The probability $\rho$ therefore describes a density parameter and encapsulates the occupancy of a random % JS avoid using "random". Describe as a distribution (eg a gamma distribution?) 
 homogeneous distribution of open and closed lattice positions. %
 One open site ($c_p$) is connected to another ($c_q$) if laid within the Von Neumann neighbourhood \cite{toffoli1987cellular}. %
-% \citep[see][p 50]{toffoli1987cellular}.
+
 A connected set of open nearest neighbours define a cluster denoted by $C$, where $c_i \in C$.%
 Given the set $C$, it is possible to traverse between any member site $c_i \in C$ by moving through the lattice in either horizontal or vertical steps `Von Neumann motion'. %
 Given two distinct non-overlapping clusters $c_i \in C_1$ and $c_j \in C_2$, then $c_i \neq c_j $ i.e. there is no way to jump from $C_1$ to $C_2$ following Von Neumann motion. %
@@ -370,10 +370,6 @@ analogous to Figures \ref{fig:vel_eff_rad_metric}(b-d). %
 The variance, skewness and autocorrelation were then calculated over these distributions. %
 In this scheme, an early warning signal is detected from the \textit{variance of the mean} velocity i.e. $var\big\langle \overline{v}(t) \big\rangle $. %
 
-% ALREADY REMARKED OUT
-% This is permissible in an abstract setting, however measuring an ensemble of mean velocity values is not possible in practice as there is no way to measure an ensemble of $\langle\overline{v}(t)\rangle$.
-% although in theory one could extend this analysis to a more sophisticated `moving variance' that requires no ensemble. Measuring the variability of the time-series directly from simulations translates more usefully to real systems. In this work, variance will be the only statistic under consideration, nevertheless a comparative study of skewness and autocorrelation could easily be undertaken.
-
 When assessing alternative techniques for early warning detection, we found an early warning signal was more accurately %
 detected with calculations based on the mean \textit{time-series variance} i.e. $var\big(v(t) \big)$. %
 From the measure of time-series variance, repeated simulations generate an ensemble mean $\langle \overline{var}\big(v(t) \big)\rangle$. %
@@ -582,17 +578,6 @@ slowly but predictably through the domain. The pathogen is thus more likely to s
 These observations and Figure \ref{fig:ews-primer} point toward a distinction between an %
 aggressive pathogen just below $\rho_c$ and a less aggressive pathogen well beyond $\rho_c$. %
  
-%  \textcolor{red}{
-%  \textbf{Notes}:
-%  \begin{itemize}
-%      \item I could add two additional sections for this Chapter:
-%      \begin{enumerate}
-%          \item The field equations as-per Rammiles derivation and simulate accordingly
-%          \item The SLM running on a Voronoi lattice, which I did in first year but didn't take very far..
-%      \end{enumerate}
-%     \item These two points would in theory contribute to novelty of the project however, I see this as non-essential and something I can do at the end, if it comes to it
-%  \end{itemize}}
- 
 \section{Chapter Summary}
 
 This chapter started by introducing concepts from percolation theory. %
@@ -621,7 +606,7 @@ For now, a simplified local model will suffice. %
 
 
 The parallels between cluster-size and epidemic status are clear: % spell it out ore than this.
- an infinite cluster describes %
+an infinite cluster describes %
 uncontrollable and infinite pathogen propagation. Clusters around $\rho_c$ describe a system %
 on the verge of epidemic and sub-critical regimes describe systems below the epidemic threshold. %
 In this model, a system below the threshold may sustain an outbreak for a time, but they will %
