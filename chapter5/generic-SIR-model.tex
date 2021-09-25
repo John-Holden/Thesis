@@ -3,12 +3,12 @@
 \label{ch5:dispersal-model}
 Previously, we employed a simple lattice model with several limitations. 
 In particular, the percolation-based model relied on local, nearest-neighbour contacts and could not spread at lower, more realistic tree densities. 
-This chapter will generalise the SLM to include non-nearest neighbour interactions by including a generic Gaussian dispersal kernel.
-That is, we will combine dispersal-based interactions within a simplistic $SIR$-based model to construct a non-local model (NLM) of tree disease.
+This chapter will generalise the SLM to incorporate non-nearest neighbour interactions by introducing a generic Gaussian dispersal kernel.
+That is, we will combine dispersal-based interactions within a simplistic $SIR$ framework to construct a non-local model (NLM) of tree disease.
 Following this, model behaviour is examined under various dispersal length scales and fitted against the standard $SIR$ model.
 
 After establishing the non-local dispersal model, a spatially explicit (analytic) expression for the basic reproduction number will be derived for the model, denoted by $R_0$.
-Analytical predictions of $R_0$ are then compared against the total tree mortality\textemdash equivalent to the final-sized epidemic.
+Analytical predictions of $R_0$ are compared against the total tree mortality\textemdash equivalent to the final-sized epidemic.
 Lastly, the expression of $R_0$ is scrutinised against the `actual' number of secondary infections, computed by contact-traced individual tree-to-tree infections.
 The analytic and contact-traced methods of calculating $R_0$ are shown to define a threshold at $R_0=1$.
 The analysis is kept generic, with arbitrary units of time and distance, before incorporating more biological realism in the next chapter. 
@@ -286,8 +286,9 @@ For transparency, the above derivation is based on $\beta$ and not the normalise
 However, from equation \ref{eq:Appendix_final_r0_approx} it is clear to see how the normalised infectivity $\beta^*/2\pi\ell^2$ negates the influence of $\ell$ on the number of expected secondary infections.
 
 Equation \ref{eq:Appendix_final_r0_approx} can be used as a first approximation toward an $R_0$ value\footnote{The reader can find an alternate, but equivalent, derivation in appendix \ref{eq:alternate-R0}.}.
-Nonetheless, it implicitly assumes that secondary infections are equally likely at all spatial locations about the primarily infected tree\textemdash by uniform density reductions in equation \ref{eq:drho/dt}. 
-Neglecting the spatial variation of expected secondary infections on average overestimates the spread of disease.
+Nonetheless, uniform density reductions (in equation \ref{eq:drho/dt}) assume that secondary infections are equally likely at all spatial locations about the primarily infected tree. 
+On average, neglecting spatial variations overestimates the number of secondary infections induced by the tail-ends of the dispersal kernel,
+thus giving rise to a greater $R_0$ value.
 A more accurate, albeit more complex, equation can be derived, allowing for Gaussian spatial variations.
 
 \subsection{Including spatial heterogeneity into $R_0$}
