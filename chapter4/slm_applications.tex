@@ -5,75 +5,122 @@
 % 4) show how heterogeneity changes the problem i.e. discontinuities in the phase diagram
 % -----------------------------------------------------------------------------
 
-\chapter{Simple lattice model: applications (Re-work in progress)}
+\chapter{Simple lattice model: applications}
 \label{chapter:SLM-applications}
 
-This project is focused on tree disease in the United Kingdom. %
-So far, the investigation has been limited to an abstraction on a homogeneous lattice. %
-Therefore, in this chapter the simple lattice model will be projected onto the distribution of Oak canopy cover data given %
-by \cite{hill.data}. %
-This chapter will demonstrate how a more realistic model can be developed %
-incorporating heterogeneity and how %
-introducing a heterogeneous distribution of hosts constrains the model behaviour %
-in a number of ways. %
-This chapter is divided into two parts. %
-First, the more complicated irregular boundary is considered and this changes the nature of pathogen%
- spread in the model. %
-Secondly,  heterogeneity in the host distribution is examined along with the altered properties %
-of disease transmission. %
-Previously, it has been shown that heterogeneity strongly influences the  dynamical properties %
-of a pathogen invasion \cite{madden1995plant}. %
-Therefore, transitioning into a realistic domain informed by data-sets will significantly %
-alter the  behaviour of the model.  %
+Previously, a percolation-based $SIR$ model of tree disease spreading through a forest was outlined, named the simple lattice model (SLM).
+The SLM provides a flexible foundation for generalising as we look to model the spread of disease over realistic landscapes focused in Great Britain.
+This chapter aims to examine some applications of the SLM.
+In particular, two applications divide the chapter, beginning with the early warning systems (EWS) for forest management and ending with a toy model of landscape-level spread.
 
-In Chapter \ref{ch3:two-param-model} a host-unit is comprised of a single tree. %
-Here, the scale is increased and host-units now represent as  $1\mathrm{km}^2$ patches of land \textemdash inline with the data reported by \cite{hill.data}. %
+Firstly, the system for EWS detection put forward by \cite{OROZCOFUENTES201912} is extended; the original publication considered one fixed parameter of $\beta$, here we generalise the analysis to the entire $\beta$ parameter space. In addition, we employ an alternative metric that permits a more precise EWS detection.
+Secondly, the SLM will be adapted to construct a toy model of landscape-level epidemics in Great Britain using the Oak canopy cover data given
+by \cite{hill.data}. More specifically, units of individual trees in the SLM are re-scaled to $\mathrm{1km \times 1km}$ patches and projected onto a realistic host distribution.
 
-Lastly, the results of early-warning signals (EWS), investigated by \cite{OROZCOFUENTES201912}, will be extended. 
-Extensions will include forming an alternate lattice configuration and a metric that permits clearer EWS detection. %
-Additionally, EWS are generalised to a two-dimensional parameter-space of $\rho$ and $\beta$ from which follows the observation that it is easier to observe EWS through specific parameter combinations.
+Thus far, the SLM spread through a square lattice with regular domain boundaries and homogeneously distributed hosts.
+Wheres, the domain (or field) shape is thought to influence the spatial progression of disease \cite{mikaberidze2016invasiveness} along with host heterogeneity \cite{madden1995plant}.
+Therefore, the first toy model application assesses the effect of complicated geographic boundaries on the spread of disease, and
+the second application evaluates the role of population heterogeneity.
+The toy model of landscape-level epidemics forms the first step towards a more representative model.
 
+\section{Early warning signals}
 
-% These are notes, write these as prose (proper sentences ) please!
-% \begin{itemize}
-%     \item \textcolor{red}{introduce the notion of scale change}
-%     \item \textcolor{red}{introduce data-set more thoroughly }
-%     \item \textcolor{red}{allude to some of the problems of moving to heterogeneous data-set}
-% \end{itemize}
+Applications of early warning signals have been investigated by \cite{OROZCOFUENTES201912} for forest management and ecosystems services.
+The results focused on a one-dimensional parameter space of tree density $\rho$ over a square lattice with fixed infectivity $\beta$.
+The study observed statistically significant changes (or signals) in the
+moment-generating functions (of variance, skew and auto-correlation) for the radial velocity.
+Changes in variance, skew or auto-correlation can preempt epidemic phase transitions, 
+thus providing helpful information that could aid forest and plantation managers to maintain tree health. 
+Here, we offer a small extension to some of the concepts presented by \cite{OROZCOFUENTES201912}.
+In particular, a new domain and metric are used to detect more precise, early warning signals.  
+The analysis is generalised to two dimensions in the parameter-space of $\rho$ and $\beta$. 
+After introducing these alternative concepts, we discuss some of the problems and complexities encountered with ensemble-averaging. 
 
-\section{Early warning signals\textemdash detection and method}
+\subsection{Cylindrical geometry}
 
-Applications of early warning signals were investigated by \cite{OROZCOFUENTES201912} for forest management and ecosystems-services
-\textemdash for a review on early 
-warning signals and critical-slowing down in landscape ecology, see Section \ref{section:ews}. 
-The work of \cite{OROZCOFUENTES201912} concentrated on a one dimensional parameter space of %
-tree density $\rho$ over a square lattice. %
-Statistically significant changes (or signals) in the moment-generating functions, %
-that being variance, skew and auto-correlation, were calculated from the ensemble distributions of Figures \ref{fig:vel_eff_rad_metric}(b-d). %
-Observations of these statistical measures can be used to preempt phase-transitions into the epidemic regime. %
-This is useful information that could aid forest and plantation managers to maintain tree health. %
+The metric used by \cite{OROZCOFUENTES201912} to quantify early warning signals had a similar form as Equation \ref{eq:vel_eff_r}, albeit with the inclusion of $N_R$.
+That is, the results included both the infected and removed ($N_{I+R}$), whereas Equation \ref{eq:vel_eff_r} is based on just the infected ($N_I$). 
+Unfortunately, the radial velocity (based on the number of infected and removed trees) can lead to confusing results, as geometrical effects imply a rate of increase as the wave spreads outward; this is particularly visible for later times when the wavefront extent is considerable.\footnote{See Figure 4d in \cite{OROZCOFUENTES201912}, the apparent rate of increase in the velocity metric is purely due to geometry artefacts and the metric definition.}.
+To mitigate geometric effects, we will use an alternate lattice geometry.
 
-Here, we offer a small extension to some of the concepts presented by \cite{OROZCOFUENTES201912}. %
-In particular, a new domain and metric is used that allows for clearer, more realistic early warning signals.  %
-Additionally, analysis is generalised to two-dimensions in the parameter-space of $\rho$ and $\beta$. %
-After introducing these alternative concepts, we discuss some of the problems and complexities encountered with ensemble-averaging. %
+Consider a rectangular domain of size $[L_x, L_y]$ where $L_x>L_y$ and $(x, y)$ represent dimensions of width and height respectively.
+Figures \ref{fig:ews-primer}(a-c) shows the `channel' domain over three time-steps for parameters above the threshold, $\rho=0.65$ and $\beta=0.50$.
+The initial conditions are adjusted, so the first column (denoted by $x_0$, taken as the origin) is infected.
+In addition, the boundary conditions permit the disease to propagate freely in the $+x$ and $\pm y$ directions, thus realising a cylindrical geometry with periodic boundary conditions in $y$ direction and fixed boundary conditions in $x$.
 
-\subsection{Alternative early warning detection}
+We register a percolation event in the channel domain if an infected tree reaches the last column, denoted by $x_m$
+The percolation threshold shifts toward higher densities if the domain is sufficiently narrow (having a high aspect ratio), as the dimensionality of the travelling wave to somewhere between one and two dimensions\footnote{Additionally less space in computer memory is occupied and simulation time is lowered}. 
+The higher percolation threshold can be explained by gradually increasing the domains aspect ratio;
+in the limit $L_y = 1$ and $L_x  \gg 1$, a one-dimensional domain is realised, and the critical host density increases to $\rho_c=1$, i.e. the well-known one-dimensional percolation threshold.
 
-In order to detect an early warning signal, an assessment of  the temporal variability of the system is needed. %
-The findings of \cite{OROZCOFUENTES201912} were gathered by first producing a distribution of \textit{mean} time-series velocities $\overline{v}(t)$, %
-analogous to Figures \ref{fig:vel_eff_rad_metric}(b-d). %
-The variance, skewness and autocorrelation were then calculated over these distributions. %
-In this scheme, an early warning signal is detected from the \textit{variance of the mean} velocity i.e. $var\big\langle \overline{v}(t) \big\rangle $. %
+As expected, studies have confirmed that site and bond percolation in two and three-dimensional cylinders depend critically on the aspect ratio \cite{sangare2009continuum, munson1991estimation}.
+Therefore, to keep consistent with the results of chapter \ref{ch3:two-param-model} we choose an aspect ratio that approaches the percolation threshold for a two-dimensional square. In practice, a domain size of $(L_x, L_y) = (350, 50)$, was sufficient, as shown through Figures \ref{fig:ews-primer}(a-c). 
 
-When assessing alternative techniques for early warning detection, we found an early warning signal was more accurately %
-detected with calculations based on the mean \textit{time-series variance} i.e. $var\big(v(t) \big)$. %
-From the measure of time-series variance, repeated simulations generate an ensemble mean $\langle \overline{var}\big(v(t) \big)\rangle$. %
-This slight variation in methods was found to yield a stronger signal in comparison to the original formulation. %
+\newpage
 
-We proceed by detailing an ensemble-method that permits the capture of `in-simulation' variance. %
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.30]{chapter4/figures/figure1-channel-domain.pdf}
+    \caption{(a) A channel domain of size $50\times350$ showing three time-steps of the model with parameters $\rho=0.65$ and $\beta=0.50$. The center of infectious mass is recorded for each time-step. (b) The center of mass time-series over the simulation. (c) The mean center of mass time-series (of $10^4$ repeats) for three variations in density and $\beta=0.50$. Time-series begin to decay around the mean simulation run-time.  The zoomed inset shows the ensemble averaged time-series for $t\in[100, 200]$ and reveals increases in error bars lower density parameters.}
+    \label{fig:ews-primer}
+\end{figure}
+
+\subsection{Center of infection mass}
+
+The rectangular domain, referred to as the \textit{`channel'}, now provides an advantageous setting to capture early warning signals. %
+One may to define a new metric, useful for capturing the disease progression, is by considering the difference in mean distance between column $x_0$ obtained by infected trees per time-step:
+\begin{equation}
+   v_{cm}(t) = \frac{\sum^i x_i(t)}{N_I(t)} - \frac{\sum^i x_i(t-1)}{N_I(t-1)}
+   \label{eq:COM}
+\end{equation}
+
+where $x_i(t)$ is the spatial location along the $x$ axis of the $ith$ infected tree at %
+time $t$ and $N_I(t)$ is the total number of infected trees at time-step $t$. %
+Comparing Eq (\ref{eq:COM}) with the Newtonian equation for center of mass: %
+\begin{equation}
+    x_{cm} = \frac{\sum^i x_i\times m_i}{\sum_i m_i}
+\end{equation}
+One can see the rate change in Eq (\ref{eq:COM}) can be considered as the `center-of-infection-mass' (COM) velocity %
+with $m_i=1$ and $\sum^im_i= N_I$. %
+This is easily implemented in Python, see Appendix \ref{a:slm_metrics}. %
+The time-series of Figure \ref{fig:ews-primer}(a) is shown in Figure \ref{fig:ews-primer}(b) using $v_{cm}$. %
+The COM time-series looks different to those shown previously in Figure \ref{fig:vel_eff_rad_metric}(a) allowing for the possibility of negative values. %
+
+An ensemble average of the time-series, denoted by $\langle v_{cm}\rangle$ is illustrated in Figure \ref{fig:ews-primer}(c). %
+Three different values of density were used and show  interesting properties: %
+the mean time-series begins to systematically decay after the mean life-time of the simulation, %
+the blue time-series shows a drastic decrease around $t \in [800, 900]$ when the pathogen %
+reaches the boundary of the domain\textemdash illustrated in Figure \ref{fig:ews-primer}(a). %
+The green time-series (being just above the threshold for percolation) decays gradually from %
+the onset $t=0$ on account of a higher probability of extinction. %
+A small number of long-lasting simulations $t>1000$ occurred in the green time-series and reflect criticalilty in the system. %
+
+The inset of Figure \ref{fig:ews-primer}(c) shows the ensemble-averaged time-series between %
+$t\in [100, 200]$ with the error measured for each time-step. Error bars, and therefore variance, %
+is greatest for lower values of density, suggesting a more chaotic spread. %
+In principle, if in-simulation variance such as this looks different before and %
+after the epidemic regime is attained in parameter-space, an early warning signal could be detected. %
+
+In general, a single simulation with parameters $\rho, \beta \in [0, 1]$ will last for $f$ time-steps. %
+The metric-value at each step is defined Eq (\ref{eq:COM}) and can be described by the series, $v_{cm}^{t=1}, v_{cm}^{t=2},..., v_{cm}^{t=f} \in V^{\rho\beta}$. %
+A set of independent time-series are generated by repeating $N$ simulations. %
+A single point in the phase-space diagram is then described by $V_1^{\rho\beta}, V_2^{\rho \beta},..., V_N^{\rho\beta} \in \{\mathcal{V}_{\rho\beta}\}$, %
+where $V_i^{\rho\beta}$ represents an arbitrary simulation time-series. %
+Using this notation, an early warning signal is detected by calculating the mean time-series variance, %
+defined by:
+\begin{equation}
+\label{eq:ews_eq}
+    \big\langle \overline{var}(v^{\rho\beta}_{cm}) \big\rangle = \frac{1}{N}\sum\limits_{i=1}^{N} var(V_i^{\rho\beta})
+\end{equation}
 
 \subsection{Ensemble averaging method}
+
+An assessment of the temporal variability of the system is needed to detect an early warning signal. 
+The findings of \cite{OROZCOFUENTES201912} were gathered by first producing a distribution of mean time-series velocities $\overline{v}(t)$ 
+(analogous to calculating variance, skewness and autocorrelation over the distributions of Figures \ref{fig:vel_eff_rad_metric}(b-d)).
+In this scheme, an early warning signal is detected from the \textit{variance of the mean} velocity i.e. $var\big\langle \overline{v}(t) \big\rangle $.
+Although, assessing calculations based on the mean time-series variance i.e. $var\big(v(t) \big)$ revealed a clearer EWS.
+We proceed by detailing an ensemble-method that permits the capture of `in-simulation' variance. %
 
 In order to properly analyse an ensemble of time-series variances, we require that the same %
 number of observations are made within each ensemble. %
@@ -141,90 +188,6 @@ and the domain configuration of in Figure \ref{fig:ews-primer}(a), most simulati
 threshold (with some exceptions that are discussed below) were found to survive for longer %
 than $200$ time-steps allowing for a multi-dimensional parameter-space analysis of early %
 warning signals. %
-
-\subsection{Cylindrical geometry\textemdash a change of domain}
-
-The metric used by \cite{OROZCOFUENTES201912} to quantify early warning signals had the same form as Eq (\ref{eq:vel_eff_r}), albeit with a slight difference. %
-The results included both the infected and removed ($N_{I+R}$), whereas Eq (\ref{eq:vel_eff_r}) %
-was defined in terms of just the infected ($N_I$). %
-Both metrics, based on the number of infected, are subject to geometrical effects as the wave %
-spreads outwards and increases in radial extent. %
-This can be seen by net increases in the velocity time-series for later times %
-\footnote{See Figure 4d in \cite{OROZCOFUENTES201912}. Increase in the velocity metric are purely due to artifacts of geometry and metric definitions, in contrast to the wave of infected trees propagating through the domain at a faster rate.}
-
-To mitigate any unwanted geometric effects, %JS explain
-we use an alternate lattice configuration. %
-Consider a rectangular domain of size $[L_x, L_y]$ where $L_x>L_y$ and $(x, y)$ represent dimensions %
-of length and height respectively. This scenario is shown in Figure \ref{fig:ews-primer}(a). %
-The initial conditions are changed such that the first column (denoted by $x_0$, taken as the origin) is infected. %
-Additionally, boundary conditions are altered so disease propagates freely in the $+x$ and $\pm y$ directions. %
-Thus, a cylindrical geometry is assumed with periodic boundary conditions in the $y$ direction and fixed boundary conditions in $x$. %
-If an infected tree reaches the last column, denoted by $x_m$, simulations are terminated. %
-
-A sufficiently narrow rectangular domain has the effect of collapsing the dimensionality of the travelling wave to somewhere between one and two dimensions. %
-This is beneficial as geometrical effects are now reduced\footnote{Additionally, less space in computer memory is occupied, thus simulation time is reduced.} %
-Percolation can be captured as before, but here defined between the $x_0$ and $x_m$ in the $x$ direction. %
-
-A rigorous treatment of percolation theory would reveal different properties in the channel domain. % JS_Why write this and not be explicit?
-Take for example, gradual reductions in the height of the domain, in the limit $L_x = 1$ a one-dimensional domain is realised and the percolation threshold increases to $\rho_c=1$. %
-Therefore, universality classes will begin to look different as the height decreases. %
-
-
-\subsection{Center of infection mass - a change of metric}
-
-The rectangular domain, referred to as the \textit{`channel'}, now provides an advantageous setting to capture early warning signals. %
-One may to define a new metric, useful for capturing the disease progression, is by considering the difference in mean distance between column $x_0$ obtained by infected trees per time-step:
-\begin{equation}
-   v_{cm}(t) = \frac{\sum^i x_i(t)}{N_I(t)} - \frac{\sum^i x_i(t-1)}{N_I(t-1)}
-   \label{eq:COM}
-\end{equation}
-
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.30]{chapter3/figures/figure10.pdf}
-    \caption{(a) A channel domain of size $50\times350$ showing three time-steps of the model with parameters $\rho=0.65$ and $\beta=0.50$. The center of infectious mass is recorded for each time-step. (b) The center of mass time-series over the simulation. (c) The mean center of mass time-series (of $10^4$ repeats) for three variations in density and $\beta=0.50$. Time-series begin to decay around the mean simulation run-time.  The zoomed inset shows the ensemble averaged time-series for $t\in[100, 200]$ and reveals increases in error bars lower density parameters.}
-    \label{fig:ews-primer}
-\end{figure}
-
-where $x_i(t)$ is the spatial location along the $x$ axis of the $ith$ infected tree at %
-time $t$ and $N_I(t)$ is the total number of infected trees at time-step $t$. %
-Comparing Eq (\ref{eq:COM}) with the Newtonian equation for center of mass: %
-\begin{equation}
-    x_{cm} = \frac{\sum^i x_i\times m_i}{\sum_i m_i}
-\end{equation}
-One can see the rate change in Eq (\ref{eq:COM}) can be considered as the `center-of-infection-mass' (COM) velocity %
-with $m_i=1$ and $\sum^im_i= N_I$. %
-This is easily implemented in Python, see Appendix \ref{a:slm_metrics}. %
-The time-series of Figure \ref{fig:ews-primer}(a) is shown in Figure \ref{fig:ews-primer}(b) using $v_{cm}$. %
-The COM time-series looks different to those shown previously in Figure \ref{fig:vel_eff_rad_metric}(a) allowing for the possibility of negative values. %
-
-An ensemble average of the time-series, denoted by $\langle v_{cm}\rangle$ is illustrated in Figure \ref{fig:ews-primer}(c). %
-Three different values of density were used and show  interesting properties: %
-the mean time-series begins to systematically decay after the mean life-time of the simulation, %
-the blue time-series shows a drastic decrease around $t \in [800, 900]$ when the pathogen %
-reaches the boundary of the domain\textemdash illustrated in Figure \ref{fig:ews-primer}(a). %
-The green time-series (being just above the threshold for percolation) decays gradually from %
-the onset $t=0$ on account of a higher probability of extinction. %
-A small number of long-lasting simulations $t>1000$ occurred in the green time-series and reflect criticalilty in the system. %
-
-The inset of Figure \ref{fig:ews-primer}(c) shows the ensemble-averaged time-series between %
-$t\in [100, 200]$ with the error measured for each time-step. Error bars, and therefore variance, %
-is greatest for lower values of density, suggesting a more chaotic spread. %
-In principle, if in-simulation variance such as this looks different before and %
-after the epidemic regime is attained in parameter-space, an early warning signal could be detected. %
-
-In general, a single simulation with parameters $\rho, \beta \in [0, 1]$ will last for $f$ time-steps. %
-The metric-value at each step is defined Eq (\ref{eq:COM}) and can be described by the series, $v_{cm}^{t=1}, v_{cm}^{t=2},..., v_{cm}^{t=f} \in V^{\rho\beta}$. %
-A set of independent time-series are generated by repeating $N$ simulations. %
-A single point in the phase-space diagram is then described by $V_1^{\rho\beta}, V_2^{\rho \beta},..., V_N^{\rho\beta} \in \{\mathcal{V}_{\rho\beta}\}$, %
-where $V_i^{\rho\beta}$ represents an arbitrary simulation time-series. %
-Using this notation, an early warning signal is detected by calculating the mean time-series variance, %
-defined by:
-\begin{equation}
-\label{eq:ews_eq}
-    \big\langle \overline{var}(v^{\rho\beta}_{cm}) \big\rangle = \frac{1}{N}\sum\limits_{i=1}^{N} var(V_i^{\rho\beta})
-\end{equation}
-
 
 \section{Early warning signal results}
 \label{section:ews_slm}
