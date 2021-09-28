@@ -302,6 +302,7 @@ If $T$ is held fixed, the critical threshold definition can now be generalised f
 \newpage
 
 \section{Epidemic thresholds}
+\label{sec:SLM-epidemic-threshold}
 
 Previously in section \ref{section:universality}, the percolation probability was examined over one parameter of host density.
 A threshold occurred over a narrow range of densities and separated the regime of epidemic and pathogen extinction.
@@ -366,7 +367,8 @@ a narrow range of critical parameters $\rho_c$ and $\beta_c$ separate epidemic a
 In contrast, Figure \ref{fig:slm_pspace}(d) shows the ensemble-averaged velocity that describes a smoother transition between states.
 Therefore, one might argue that percolation captures the threshold with greater clarity as the distinction between epidemic states is more apparent.
 
-One significant difference between the percolation and velocity-based metrics is that percolation depends trivially on infectivity beyond $\beta \approx 0.40$; meanwhile, the radial velocity tends to increases for higher infectivities.
+One significant difference between the percolation and velocity-based metrics is that percolation depends trivially on infectivity beyond $\beta \approx 0.40$;
+meanwhile, the radial velocity tends to increases for higher infectivities.
 Between $0.15 <\beta<0.30$, a higher value of $\rho$ is needed for percolation to occur;
 the equivalent velocity-based behaviour can also be seen, albeit with a more continuous transition.
 A higher infectious lifetime $T$ lowers $\beta_c$, as more infectious time-steps increase the chance of secondary infections, thus lowering the threshold.
@@ -380,7 +382,6 @@ Here, the parameter-sweeps can be understood to portray an `\textit{epidemic pha
     }
     \label{fig:slm_pspace}
 \end{figure}
-
 
 \newpage
 
@@ -440,7 +441,7 @@ As we look to construct a more representative model, it is worth remarking on th
     \item \textbf{Host distribution}: natural tree populations present rich spatial structures with varying degrees of clustering and aggregation \cite{doi:10.1086/342823}.
     Indeed population clustering has been confirmed over various spatial, from the tree-level to the field-level \cite{wiegand2007analyzing}.
     Therefore, the flat randomly distributed host population considered in this chapter falls short of a realistic description.
-Moreover, the SLM models disease spread through densely populated forest-like contexts, and as we look to model the spread of disease over Great Britain, realistic tree canopy cover data should be incorporated into the framework.
+    Moreover, the SLM describes the spread of disease in a densely populated forest, and as we look to model the spread of disease over Great Britain realistic tree canopy cover data should be incorporated into the framework.
 \end{enumerate}
 Despite the assumptions and simplicity of the SLM, it provides a general setting upon which to elaborate.
 The next chapter outlines all the applications that were investigated using the SLM.

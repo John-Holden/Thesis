@@ -44,7 +44,7 @@ Unfortunately, the radial velocity (based on the number of infected and removed 
 To mitigate geometric effects, we will use an alternate lattice geometry.
 
 Consider a rectangular domain of size $[L_x, L_y]$ where $L_x>L_y$ and $(x, y)$ represent dimensions of width and height respectively.
-Figures \ref{fig:ews-primer}(a-c) shows the `channel' domain over three time-steps for parameters above the threshold, $\rho=0.65$ and $\beta=0.50$.
+Figures \ref{fig:ews-primer}(a-c) shows the domain, henceforth referred to as the `channel' domain, over three time-steps for parameters above the threshold, $\rho=0.65$ and $\beta=0.50$.
 The initial conditions are adjusted, so the first column (denoted by $x_0$, taken as the origin) is infected.
 In addition, the boundary conditions permit the disease to propagate freely in the $+x$ and $\pm y$ directions, thus realising a cylindrical geometry with periodic boundary conditions in $y$ direction and fixed boundary conditions in $x$.
 
@@ -53,160 +53,131 @@ The percolation threshold shifts toward higher densities if the domain is suffic
 The higher percolation threshold can be explained by gradually increasing the domains aspect ratio;
 in the limit $L_y = 1$ and $L_x  \gg 1$, a one-dimensional domain is realised, and the critical host density increases to $\rho_c=1$, i.e. the well-known one-dimensional percolation threshold.
 
-As expected, studies have confirmed that site and bond percolation in two and three-dimensional cylinders depend critically on the aspect ratio \cite{sangare2009continuum, munson1991estimation}.
-Therefore, to keep consistent with the results of chapter \ref{ch3:two-param-model} we choose an aspect ratio that approaches the percolation threshold for a two-dimensional square. In practice, a domain size of $(L_x, L_y) = (350, 50)$, was sufficient, as shown through Figures \ref{fig:ews-primer}(a-c). 
+As expected, studies have confirmed that site and bond percolation in two and three dimensions depend critically on a cylinders aspect ratio \cite{sangare2009continuum, munson1991estimation}.
+Therefore, to keep consistent with the results of chapter \ref{chapter:SLM}, we choose an aspect ratio that approaches the percolation threshold for a two-dimensional square. In practice, a channel of size $(L_x, L_y) = (350, 50)$, was sufficient, as shown through Figures \ref{fig:ews-primer}(a-c). 
 
 \newpage
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.30]{chapter4/figures/figure1-channel-domain.pdf}
-    \caption{(a) A channel domain of size $50\times350$ showing three time-steps of the model with parameters $\rho=0.65$ and $\beta=0.50$. The center of infectious mass is recorded for each time-step. (b) The center of mass time-series over the simulation. (c) The mean center of mass time-series (of $10^4$ repeats) for three variations in density and $\beta=0.50$. Time-series begin to decay around the mean simulation run-time.  The zoomed inset shows the ensemble averaged time-series for $t\in[100, 200]$ and reveals increases in error bars lower density parameters.}
+    \caption{
+    (a-c) A channel domain of size $50\times350$ is shown over three time-steps for model parameters $\rho=0.65$ and $\beta=0.50$. 
+    The center of infectious mass is recorded for each time-step. 
+    (d) Plots of the center of mass time-series for the simulation illustrated in panels (a-c). 
+    (e) The mean center of mass time-series (of $10^4$ repeats) for three variations in density and $\beta=0.50$. 
+    Time-series begin to decay around the mean simulation run-time.  
+    The zoomed inset shows the ensemble averaged time-series for $t\in[100, 200]$ and reveals increases in error bars lower density parameters.
+    }
     \label{fig:ews-primer}
 \end{figure}
 
-\subsection{Center of infection mass}
+\subsection{Centre of infectious mass}
 
-The rectangular domain, referred to as the \textit{`channel'}, now provides an advantageous setting to capture early warning signals. %
-One may to define a new metric, useful for capturing the disease progression, is by considering the difference in mean distance between column $x_0$ obtained by infected trees per time-step:
+The channel domain provides an advantageous setting to capture early warning signals, avoiding two-dimensional geometrical effects.
+Moreover, the channel permits an improved (more intuitive) `centre of mass' metric (COM), based on the mean infectious tree displacement from the origin:
 \begin{equation}
    v_{cm}(t) = \frac{\sum^i x_i(t)}{N_I(t)} - \frac{\sum^i x_i(t-1)}{N_I(t-1)}
    \label{eq:COM}
 \end{equation}
+where $x_i(t)$ is the spatial location along the $x$ axis of the $ith$ infected tree at 
+time $t$ and $N_I(t)$ is the total number of infected trees at time-step $t$. 
+ The form of Equation \ref{eq:COM} displays intrinsic similarities to the Newtonian center of mass:
+ \[x_{cm} = \frac{\sum^i x_i\times m_i}{\sum_i m_i}\]
+(where $m_i=1$ and $\sum^im_i= N_I$ in Equation \ref{eq:COM}).
+Subsequently, COM velocity will denote the metric defined by Equation \ref{eq:COM}. 
+Figure \ref{fig:ews-primer}(b) depicts the COM time-series corresponding to the simulation shown in Figure \ref{fig:ews-primer}(a). 
+The COM time-series allows for negative values and looks different to those shown previously in Figure \ref{fig:vel_eff_rad_metric}(a).
 
-where $x_i(t)$ is the spatial location along the $x$ axis of the $ith$ infected tree at %
-time $t$ and $N_I(t)$ is the total number of infected trees at time-step $t$. %
-Comparing Eq (\ref{eq:COM}) with the Newtonian equation for center of mass: %
-\begin{equation}
-    x_{cm} = \frac{\sum^i x_i\times m_i}{\sum_i m_i}
-\end{equation}
-One can see the rate change in Eq (\ref{eq:COM}) can be considered as the `center-of-infection-mass' (COM) velocity %
-with $m_i=1$ and $\sum^im_i= N_I$. %
-This is easily implemented in Python, see Appendix \ref{a:slm_metrics}. %
-The time-series of Figure \ref{fig:ews-primer}(a) is shown in Figure \ref{fig:ews-primer}(b) using $v_{cm}$. %
-The COM time-series looks different to those shown previously in Figure \ref{fig:vel_eff_rad_metric}(a) allowing for the possibility of negative values. %
+Figure \ref{fig:ews-primer}(c) illustrates the COM ensemble-average, denoted by $\langle v_{cm}\rangle$, for the three values of tree density.
+On average, the mean time series begins to decay after the mean lifetime of the simulation; the blue time-series shows a drastic decrease around $t \in [800, 900]$, which coincides with the pathogen reaching the domain boundary\textemdash also reflected in Figure \ref{fig:ews-primer}(c).
+The green time series lies just above the threshold for percolation, and it decays more gradually $t=0$ because of the higher pathogen extinction probability. 
+A small number of long-lasting simulations with run times exceeding $t>1000$ occurred in the green time-series, indicating criticality in the system\textemdash 
+previously likened to a regime of persistence in section \ref{sec:SLM-epidemic-threshold}.
+The inset of Figure \ref{fig:ews-primer}(c) shows the ensemble-averages between $t\in [100, 200]$, plotted beside the standard error for each time-step.
+Error bars are most significant for the lowest-valued density shown in green, suggesting a more chaotic spread.
+In principle, if the variance signature looks different before and after the epidemic regime, an early warning signal can be detected. 
 
-An ensemble average of the time-series, denoted by $\langle v_{cm}\rangle$ is illustrated in Figure \ref{fig:ews-primer}(c). %
-Three different values of density were used and show  interesting properties: %
-the mean time-series begins to systematically decay after the mean life-time of the simulation, %
-the blue time-series shows a drastic decrease around $t \in [800, 900]$ when the pathogen %
-reaches the boundary of the domain\textemdash illustrated in Figure \ref{fig:ews-primer}(a). %
-The green time-series (being just above the threshold for percolation) decays gradually from %
-the onset $t=0$ on account of a higher probability of extinction. %
-A small number of long-lasting simulations $t>1000$ occurred in the green time-series and reflect criticalilty in the system. %
+\subsection{Ensemble averaging method}
 
-The inset of Figure \ref{fig:ews-primer}(c) shows the ensemble-averaged time-series between %
-$t\in [100, 200]$ with the error measured for each time-step. Error bars, and therefore variance, %
-is greatest for lower values of density, suggesting a more chaotic spread. %
-In principle, if in-simulation variance such as this looks different before and %
-after the epidemic regime is attained in parameter-space, an early warning signal could be detected. %
+An assessment of the temporal variability of the system is needed to detect an early warning signal. 
+The findings of \cite{OROZCOFUENTES201912} were gathered by first producing a distribution of mean time-series velocities $\overline{v}_t$,
+analogous to calculating variance, skewness and autocorrelation over the distributions of Figures \ref{fig:vel_eff_rad_metric}(b-d)
+In this scheme, an early warning signal is detected from the variance of the mean velocity: $var\big\langle \overline{v}_t \big\rangle $.
+Although assessing calculations based on the mean simulation variance, $ \big\langle \overline{var}({v}_t) \big\rangle $. revealed a clearer EWS.
+We proceed by detailing an ensemble method that permits the capture of within-simulation variance. 
 
-In general, a single simulation with parameters $\rho, \beta \in [0, 1]$ will last for $f$ time-steps. %
-The metric-value at each step is defined Eq (\ref{eq:COM}) and can be described by the series, $v_{cm}^{t=1}, v_{cm}^{t=2},..., v_{cm}^{t=f} \in V^{\rho\beta}$. %
-A set of independent time-series are generated by repeating $N$ simulations. %
-A single point in the phase-space diagram is then described by $V_1^{\rho\beta}, V_2^{\rho \beta},..., V_N^{\rho\beta} \in \{\mathcal{V}_{\rho\beta}\}$, %
-where $V_i^{\rho\beta}$ represents an arbitrary simulation time-series. %
-Using this notation, an early warning signal is detected by calculating the mean time-series variance, %
+Before the ensemble averaging method is elaborated, it makes sense to define the relevant notion.
+Suppose a simulation with parameters $\rho, \beta$ will last for $f$ time-steps, Equation \ref{eq:COM} describes the time series: $v_{cm}^{t=1}, v_{cm}^{t=2},..., v_{cm}^{t=f} \in V^{\rho\beta}$. 
+Then, a set of independent time series can be generated by repeating $N$ simulations. 
+A set of $N$ repeated simulations for an arbritrary point in the parameter-space ($\rho, \beta$) 
+can be labelled as: \{$V_1^{\rho\beta}, V_2^{\rho \beta},..., V_N^{\rho\beta}\} \in \mathcal{V}_{\rho\beta}$, 
+where each $V_i^{\rho\beta}$ describes an individual simulation time series and $\mathcal{V}_{\rho\beta}$ describes the entire ensemble for parameters $(\rho, \beta)$. 
+Thus, an early warning signal is detected by calculating the mean time-series variance:
 defined by:
 \begin{equation}
 \label{eq:ews_eq}
     \big\langle \overline{var}(v^{\rho\beta}_{cm}) \big\rangle = \frac{1}{N}\sum\limits_{i=1}^{N} var(V_i^{\rho\beta})
 \end{equation}
 
-\subsection{Ensemble averaging method}
-
-An assessment of the temporal variability of the system is needed to detect an early warning signal. 
-The findings of \cite{OROZCOFUENTES201912} were gathered by first producing a distribution of mean time-series velocities $\overline{v}(t)$ 
-(analogous to calculating variance, skewness and autocorrelation over the distributions of Figures \ref{fig:vel_eff_rad_metric}(b-d)).
-In this scheme, an early warning signal is detected from the \textit{variance of the mean} velocity i.e. $var\big\langle \overline{v}(t) \big\rangle $.
-Although, assessing calculations based on the mean time-series variance i.e. $var\big(v(t) \big)$ revealed a clearer EWS.
-We proceed by detailing an ensemble-method that permits the capture of `in-simulation' variance. %
-
-In order to properly analyse an ensemble of time-series variances, we require that the same %
-number of observations are made within each ensemble. %
-Otherwise, classification of an early warning signal might be confused and interpreted as %
-a false positive\textemdash i.e. misjudged on account of statistical fluctuations and error. %
-To ensure the number of observations are equal between all simulations, %
-it is important to distinguish between a set of \textit{independent} simulations and the %
-time-step observations which may differ between simulations. %
-
-In general, any two independent simulations will not have the same number of time-steps, %
-i.e. $|V_i^{\rho\beta}| \neq |V_j^{\rho\beta}|$. %
-If this is not taken into account, comparisons between different ensembles will not be %
-comparable because the variance calculated for short-lived simulations will be more error-prone %
-than long-lived simulations. %
-To remedy this, a fixed window of time-steps ($t_O\leq t \leq t_F$) is introduced. %
-Provided the window length $t_F-t_O$ captures a sufficient number of time-steps, the effects %
-of \textit{unlikely} large fluctuations in $V_i^{\rho\beta}$ are alleviated. Inside this window, %
-the variance for all simulations will be calculated, Eq (\ref{eq:ews_eq}) is then slightly altered: %
+To rigorously analyse an ensemble of time-series variances, 
+we require the same number of observations within each ensemble. 
+Otherwise, the classification of an early warning signal might be confused with statistical fluctuations and errors.
+There are two observations to consider: 
+A) the number of time steps within simulations, i.e. $v_{cm}^{t}$ 
+B) the number of repeated simulations, $N$.
+In general, stochasticity will prevent two simulations from having the same number of time steps, 
+$|V_i^{\rho\beta}| \neq |V_j^{\rho\beta}|$.
+Therefore, short-lived simulations with a small number of time steps might be more error-prone than long-lived simulations;
+we introduce a fixed window of time-steps ($t_O\leq t \leq t_F$) to remedy this.
+Provided the window length $t_F-t_O$ captures a sufficient number of time-steps, we avoid significant fluctuations in $V_i^{\rho\beta}$. 
+Variance inside this window is defined by:
 
 \begin{equation}
 \label{eq:ews_eq1}
     \big\langle \overline{var}(v^{\rho\beta}_{cm}) \big\rangle = \frac{1}{N}\sum\limits_{i=1}^{N} var(V_i^{\rho\beta}\Big|^{t_F}_{t_O})
 \end{equation}
 
-The precise choice of $t_O$ and $t_F$ is constrained by initial transience in the channel %
-domain\textemdash analogously mentioned in the discussion of Figure \ref{fig:vel_eff_rad_metric}(a). %
-Initial instability in the domain deserves some special consideration as it could distort %
-calculations of the time-series variance. %
-Figure \ref{fig:ews-primer}(c) reveals that transience occurs most for $t\in[0, 100]$, %
-clearly demonstrated by increases in the blue time-series. %
-The initial transience is less obvious for the blue and green time-series. %
-As such, the first $100$ time-steps should not be included when calculating the variance. %
-This means that all simulations that become extinct in less than $100$ time-steps are not %
-included in the ensemble average. From these observations, the lower bound is valid for $t_O \geq 100$.%
+Initial transience constrains the particular choice of $t_O$ in the channel domain, 
+which could, in principle, distort calculations of the time-series variance\textemdash 
+analogously presented when discussing Figure \ref{fig:vel_eff_rad_metric}(a). 
+We set $t_0=100$, as initial instability occurred most over the first $100$ time-steps 
+(as shown in Figure \ref{fig:ews-primer}(e), particularly by the blue time series). 
 
-Unfortunately, neglecting short-lived simulations $t<100$ introduces an additional complication. %
-Namely, if we do not include these simulations, some ensembles $\mathcal{V}_{\rho\beta}$ %
-(typically with low values of $\rho$ and $\beta$) will comprise less than $N$ measures of %
-time-series variances. The ensemble mean, as calculated by Eq (\ref{eq:ews_eq}), will therefore %
-be subject to more error which again could lead us to misclassify an early warning signal. %
+Neglecting the first $100$ time steps helps limit the initial transience,
+although it introduces an additional complication.
+Namely, if we do not include simulations with less than $t_O=100$ steps, some ensembles $\mathcal{V}_{\rho\beta}$ % 
+might comprise less than $N$ variance observations;
+an ensemble mean might therefore be more error-prone and lead to misclassified EWS.
+In a similar vein, if the value of $t_F$ is too high, a large proportion of simulations might not survive to give $N$ measures of variance. 
 
-An unbiased treatment of the ensemble thus requires i) the same number of time-steps in all %
-simulations ii) the mitigation of initial instability iii) the same number of $N$ simulations %
-are averaged for all points in phase-space. Combining all these requirements is clearly impossible %
-for some points in parameter-space. Take the trivial example of $\rho=0$ and $\beta=0$, even %
-as $N\rightarrow\infty$ not a single simulation will exist for $t\geq100$ steps and the %
-variance remains undefined. For some fixed values of $\rho < \rho_c$ and $\beta<\beta_c$, %
-the probability of all $N$ simulations surviving for longer than initial transience is zero. %
+Unfortunately, the criterion of measuring simulation variance in the window $[t_O, t_F]$ 
+and capturing all $N$ observations is infeasible, mainly when parameters are low, e.g. the trivial case of $\rho=0$ and $\beta=0$.
+Fortunately, however, an early warning signal is only detectable immediately before 
+and after the epidemic threshold; other parameter space regions are less important.
+Thus, if the relevant regions in parameter space survive long enough to measure variance in the window $t \in [t_O, t_F]$, 
+we may confidently detect an early warning signal.
+Given the above concern, we chose $t_F = 200$; 
+this struck the best balance between avoiding initial transience and ensuring the maximum possible number of simulations 
+survive long enough to calculate variance over a sufficient window.
 
-Fortunately, an early warning signal is only detectable immediately before and after the %
-transition into an epidemic. If the \textit{mean} extinction time for these regions is %
-above $t_F$, an early warning signal may be can be detected with confidence. %
-Other regions in parameter-space well below-threshold are not important. %
-So, a comparable treatment of ensembles can be accomplished provided that regions just %
-below the point of epidemic-transition survive long enough to measure variance in the %
-window $t \in [t_O, t_F]$. Should the value of $t_F$ be too large, a large proportion of %
-simulations close, but below threshold, might not survive to give $N$ measures of variance. %
 
-Given these concerns, a window was defined by setting the lower bound equal to the minimum %
-value of $t_O=100$ and the upper bound to a value $t_F = 200$. %
-These values were found to strike the best balance between: avoiding initial transience, %
-ensuring that \textit{as many simulations as possible} on the verge of epidemic survive long %
-enough to calculate variance and providing a sufficient window size. Using these conditions %
-and the domain configuration of in Figure \ref{fig:ews-primer}(a), most simulations just below %
-threshold (with some exceptions that are discussed below) were found to survive for longer %
-than $200$ time-steps allowing for a multi-dimensional parameter-space analysis of early %
-warning signals. %
-
-\section{Early warning signal results}
+\subsection{EWS parameter-sweeps}
 \label{section:ews_slm}
 
-Figure \ref{fig:ews-results} shows the mean time-series variance between $100\leq t \leq 200$. %
-The value of variance is shown in the colour bar from white to black. %
-The lower and upper red lines highlight regions in parameter space for which the %
-probability of percolation is $Pr(\rho, \beta)=0.05$ and $Pr(\rho, \beta)=0.95$ respectively, %
-those being the  critical regions in parameter-space that support an epidemic. %
-The precise value of variance is not important, but crucially, a rise in time-series variance %
-can be seen before the onset of epidemic. %
-This is in agreement with the results found by \cite{OROZCOFUENTES201912}. %
-%% with the benefit of being more adaptable to real-life time-series observations of tree diseases.
+Figure \ref{fig:ews-results} displays the mean time-series variance, as per Equation \ref{eq:ews_eq1}.
+The colour bar shows variance over the entire parameter space of density and infectivity from white to back.
+In Figure \ref{fig:ews-results}, the lower and upper red lines indicate a percolation probability of $Pr(\rho, \beta)=0.05$ and $Pr(\rho, \beta)=0.95$, respectively.
+Inside these regions, the system transitions into an epidemic and we witness a considerable rise in the variance.
 
-Assessing early warnings over a two-dimensional parameter-space reveals that some values %
-of $\rho, \beta$ preempt the epidemic by a larger margin\textemdash indicated by the red %
-arrows in Figure \ref{fig:ews-results}. Specifically this occurs for a lower infectivity %
-($\beta<0.40$) and higher density. What aspect of the SLM gives rise to these differences %
-behaviour when detecting an early warning signal? %
+The observations of Figure \ref{fig:ews-results} agree with the results of \cite{OROZCOFUENTES201912}. 
+Interestingly, measuring EWS over a two-dimensional parameter space reveals that some values 
+of $\rho, \beta$ preempt the epidemic by a larger margin\textemdash indicated by the red 
+arrows. 
+Precisely, this occurs for a lower infectivity 
+($\beta<0.40$) and higher density. 
+
+\newpage
 
  \begin{figure}
     \centering
@@ -217,21 +188,31 @@ behaviour when detecting an early warning signal? %
     \label{fig:ews-results} 
 \end{figure}
 
-The asymmetry in early warning detection can be understood through the following thought-experiment: %
-first, consider a high value of $\beta$ and density just below criticality $\rho\lesssim\rho_c$. %
-In this case, the rate of disease progression is higher on account of $\beta$ and all hosts %
-that are susceptible will become infected quickly. %
-However, disease spread will soon come to a halt due to insufficient number ofhosts. %
-An aggressive pathogen that has a low density of hosts will therefore propagate rapidly, %
-have short extinction times and give rise to a more chaotic metric signature. %
-Hence, the smallest arrow in Figure \ref{fig:ews-results} points toward a region where the %
-variance spike is greatest and has no trace below the lowest bound of $5\%$ percolation probability. %
+The following thought experiment can explain the EWS asymmetries in Figure \ref{fig:ews-results}: %
+suppose infectivity is high, and density lies just below criticality ($\rho\lesssim\rho_c$), 
+so susceptible clusters do not percolate. 
+In this case, disease transmission is high on account of $\beta$, 
+and all susceptible hosts become quickly infected, 
+although an outbreak will come to a halt due to insufficient hosts. Therefore, in this model, 
+an aggressive pathogen spreading through low tree densities may propagate rapidly but have a short, 
+chaotic signature. Hence the transition is steep,
+and the simulation variance is significant, as indicated by the smallest arrow in Figure \ref{fig:ews-results}. 
+In this region, detecting an EWS is hard because transitions occur most rapidly.
 
-Conversely, a pathogen that has a low infectivity but an abundance of hosts will spread %
-slowly but predictably through the domain. The pathogen is thus more likely to spread for a longer time before becoming extinct. In this scenario extinction times are long enough to process an early warning signal which precedes the epidemic by a larger margin, indicated by the large arrow(s) in Figure \ref{fig:ews-primer}. Here, variance can be seen to preempt the transition to a larger degree, however, the variance spike is not as strong.
- 
-These observations and Figure \ref{fig:ews-primer} point toward a distinction between an %
-aggressive pathogen just below $\rho_c$ and a less aggressive pathogen well beyond $\rho_c$. %
+Now consider the converse, a less infectious pathogen with an abundance of susceptible hosts, 
+located in the top-left region of Figure \ref{fig:ews-results}.
+Here, transitions into the $I$ compartment are slower because the pathogen is less infectious, 
+although this time, hosts are abundant.
+Thus, a pathogen is likely to spread predictably for longer times, 
+giving rise to a slightly less abrupt variance signature, 
+as indicated by a lighter colour before the transition in the top left quadrant of Figure \ref{fig:ews-primer}.
+Although the variance spike is not as significant, 
+it preempts the epidemic transition by a more considerable degree\textemdash
+indicated by the larger arrows in Figure \ref{fig:ews-results}.
+Altogether, Figure \ref{fig:ews-results} suggests that EWS strength depends on the particular combination of epidemic parameters; 
+although fundamentally, an EWS is detectable for all parameter combinations/
+
+\newpage
 
 
 \section{Modelling with realistic geometries}
