@@ -130,11 +130,26 @@ Where the right hand side of the top line is substituted with the right hand sid
 
 equations \ref{eq:s-field-evol} - \ref{eq:i-field-evol} are finite-difference equations and thus describe the evolution of probabilities at lattice site $i$ given a set of initial conditions. These finite difference equations can be iterated over a set of time-steps to model average behaviour of an ideal system away from the critical regime. At criticallity there will be large fluctuations in behaviour, as the system is in a highly chaotic state and does not belong to any one power-law distribution, therefore simulations would deviate quite considerably and fail to show any fractal-like critical structure. Furthermore, equations \ref{eq:s-field-evol} - \ref{eq:i-field-evol} only describe systems of sufficiently large domain size due to domain sensitivity effects.
 
+\subsection{Alternative toy landscape SLM metrics}
+\label{a:landscape-toy-model}
+Below in Figure \ref{fig:max-distance-metrix}, a distance-based metric is projected onto the example distribution of modelled oak data.
+In generally, a variety of metrics could be captured and displayed in the heterogeneous landscape SLM;
+although here, observations of the pathogens maximum distance is recorded over many simulations and ensemble-averaged.
+In comparison to the mortality ratio (as discussed in section \ref{sec:slm-spatial-ensembles}), a similar pattern is witnessed,
+i.e. southerly regions are most effected and maximum distance increases with the effective density.
+
+Nevertheless, Figure \ref{fig:max-distance-metrix} paints a clearer picture of the extent of disease progression.
+Intuitively, epidemics beginning from effected edge locations in Figures \ref{fig:max-distance-metrix})(a-c) can
+travel further than centrally located epicentres, verified by the more yellow cluster edges.
+Moreover, the same high-variance regions are witnessed through Figure \ref{fig:max-distance-metrix}(d-f).
+Together, the pathogens maximum distance and mortality ratio complement one another, and 
+as we see from their similarities, a clear correlation exists between them.
+
 \begin{figure}
     \centering
     \includegraphics[scale=0.55]{appendix/figures/A-ch4figure1.pdf}
-    \caption{The max-distance ($d_{max}$)} metric...
-    \label{fig:my_label}
+    \caption{Spatial plots showing the pathogens ensemble-averaged maximum distance $d_{max}$ for infectiviy $\beta=0.25$ and density parameters shown.}
+    \label{fig:max-distance-metrix}
 \end{figure}
 
 \chapter{The non-local dispersal model}
