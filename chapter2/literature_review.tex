@@ -10,7 +10,7 @@
 % -----------------------------------------------------------------------------
 
 
-\chapter{Tree diseases epidemics: an interdisciplinary problem (WORK IN PROGRESS)}
+\chapter{Tree diseases epidemics: an interdisciplinary problem--WORK IN PROGRESS}
 \label{chapter2:litreview} 
 
 The mathematical and computational modelling of infectious tree diseases began to emerge after Plank had others put forward seminal works on the modelling of crops. Tree disease is import to consider for tree-health in both commercially cultured of stands and naturally occurring forestry and ecosystems. The modelling tree-based disease has many features in common with modelling crop diseases. However, differences in the spatial distribution of hosts and growth cycles remain large.
@@ -21,21 +21,57 @@ Having reviewed typical models in literature, the theme of control will be revie
 
 Modern Epidemiology is extremely interdisciplinary utilising various tools from mathematics, physics and computer science. The project will explore infectious diseases specific to tree species. There have been various models used to model tree disease including: 1) Lattice-based percolation. 2) Continuum. 3) Meta-population. 4) Network models. A summary of these models will be given in this chapter along with their main usage, control. A review of epidemic control in plant populations will be given in support of chapter where we detail a novel method stop the spread of disease. 
 
+\section{Historical developments}
 
-\section{Determinism and stochasticity}
+\begin{itemize}
+    \item outline Seminal SIR model \cite{kermack-model}
+    \item outline Seminal plank model \cite{van1999pandemics}
+    \item link the two historical models and contrast their functional forms
+\end{itemize}
+
+\section{Epidemic stochasticity}
 
 The spread of disease inherently takes the form of a stochastic process, whereby an epidemic unexpectedly arises and quickly cease, seemingly out of the blue. In order to capture the spread of disease, stochastic effects cannot be overlooked... 
 
-% \textcolor{red}{
-% \begin{itemize}
-%     \item Explain differences in modelling approaches
-%     \item Why use stochastic methods
-%     \item How do you collect results of a stochastic model ? Ensemble averaging
-%     \item Give an overview of some results in the literature
-% \end{itemize}}
+\begin{itemize}
+    \item Motivate this chapter based on the determinism of \cite{kermack-model} and \cite{van1999pandemics}
+    \item Explain why stochastic is an essential part of epidemics
+    \item How do you collect results of a stochastic model ? Ensemble averaging
+\end{itemize}
 
+\section{Percolation: from forest fires to epidemics}
+\label{section:lit-rev-perc}
 
-\section{Compartmentalised models}
+\begin{itemize}
+    \item Motivate percolation based on the stochastic arguments listed above 
+    \item articulate that percolation has a spatial context 
+\end{itemize}
+
+The original formulation of percolation theory was first used to describe properties of a fluid and the bonds which form between molecules \cite{perco_origin} (the reader may jump to \ref{fig:ch3-perc-invariance} for an account of percolation). The problem was posed on a graph\textemdash illustrated in terms of vertices and edges. However re-interpretations were subsequently put forward by physicists studying material sciences, naturally on a lattice. \cite{Essam_1980}. The attractive feature of this new paradigm was that percolation demonstrated a phase-transition. Thus, percolation could be treated with scaling theory used in the study of critical-phenomena. Accordingly, early work rigorously ensued to map out the behaviour of percolation around criticality in terms of critical exponents \cite{STAUFFER19791}. 
+
+Different flavours of percolation models, such as, site or bond percolation were described to model different processes. Percolation proved a convenient theory and various phenomena including, gelation, magnetism and telecommunications were described \cite{trove.nla.gov.au/work/26493727}. Interestingly, forest fires were also applicable to a description within percolation theory \cite{MacKay_1984}. This was a short conceptual jump from time-dependant percolation used to study the growth of crystals \cite{Family_1985}. 
+
+A fire spreading through a population of trees is not to dissimilar to a disease spreading through a population. This lead to a general epidemic-formalisation within percolation-based framework when \cite{pub.1059067807} argued that epidemics were in the same universality class as percolation. It is alluring to remark how modelling the same processes with different microscopic interactions (e.g. different lattice geometries) lead to the macroscopic behaviour should they have the same universality class\textemdash see chapter \ref{fig:ch3-perc-invariance} for more information.
+
+Beginning with a simple $SIR$ framework put forward by \cite{kermack-model}, the field of epidemiology was already well established around the time percolation theory was conceived \cite{baily1975mathematical}. In particular, initial assumptions about population mixing could be relaxed with more elaborate spatial-contact models, naturally, percolation theory could serve as a useful tool when developing spatially-structured epidemic models.
+
+A fractal-like pattern of epidemics was observed by \cite{GRASSBERGER1986273}, shown in Figure \ref{fig:1d_perc_basis}. Parsimoniously describing Figure \ref{fig:1d_perc_basis}, lighter grey sites represent removed individuals, black sites indicate actively infected sites and white sites indicate unaffected sites. All lattice sites in the bottom row were initially infected and the infection can be seen to propagate from the bottom up. The lattice was initialised at the critical-density $p\sim p_c$ culminating in a fractal-like pattern. \cite{GRASSBERGER1986273} did not attribute the hosts of this model to be trees, but instead a general host-population with very low mobility. Local interactions between hosts and infected were elucidated as vast simplifications and long-range interactions (following a power-law) were discussed\textemdash we shall see how these ideas form a important component of modelling tree disease.
+
+\begin{figure}
+    \centering
+    \includegraphics{chapter2/figures/perc1.jpg}
+    \caption{A space-time representation of an epidemic spreading at the critical threshold. The spatial (horizontal) and time (vertical) axis show self-similar propagation of diseased individuals in grey, produced by \cite{GRASSBERGER1986273}}
+    \label{fig:1d_perc_basis}
+\end{figure}
+
+The behaviour of percolation-based epidemic models continued (e.g. \cite{pub.1060474189, pub.1059069981}) to be investigated with various methods such as renormalisation-groups and Monte-Carlo, the critical exponents were found along with phase transition graphs characterising epidemic (super-critical) or extinction (sub-critical) regimes. The properties of both epidemics and forest fire percolation models were studied together in \cite{pub.1052857560}, highlighting their similarity.
+
+The first ecological application came in \cite{pub.1031591030} where forest fire (and epidemic) percolation models were adapted in order to study landscape disturbances. Broadly speaking, landscape disturbances constitute a broad array of physical process which lead to a rapid ecological change, this could include invasion of pests, climate-change and fire.
+
+% \textemdash \cite{GRASSBERGER1983157} <- reference for early considerations towards percolation as a model for tree diseases and percolation
+% \textemdash \cite{SANDER2002293}, read and get more info + research links
+
+\section{Spatially-explicit epidemic models}
 \label{ch2:lit-rev-compartmentalised-models}
 Compartmentalised models are the dominate theme in epidemiological modelling...
 
@@ -45,8 +81,6 @@ Compartmentalised models are the dominate theme in epidemiological modelling...
 % 2 - describe how plank model can be represented in terms of a compartmentalised model
 The authors of \cite{time-varying-infectivity} demonstrated that different sporulation functions can be derived from a more general class of $SEmInR$ models. 
 Sporulation functions can then be used to describe lifetime of transitions between $E\rightarrow I$ along with the time-dependency of infectivity rates in the transition $S\rightarrow E$. 
-In the seasonal model of ADB, $\phi_1(t)$ and $\phi_2(t)$ control the time-dependency of $\beta$ and the transition $S\rightarrow E$ alone.
-The transition of ash between states $E\rightarrow I$ occurs in the first autumn leaf-shedding after infection\footnote{In theory, the transition of ash between states $E\rightarrow I$, set by a normal distribution centred in autumn, could be represented by taking a suitability large limit $m$ in the $SEmInR$ model proposed by \cite{time-varying-infectivity}.}. 
 
 % In his seminal work, van der Plank \cite{van2013plant} considered a latency and infectious period, with a constant rate of infection while infectious; this model is represented by the equation:
 % \begin{equation}
@@ -60,7 +94,6 @@ The transition of ash between states $E\rightarrow I$ occurs in the first autumn
 % By taking suitable limits of $n$ and $m$ the plank and $SEIR$ models can be recovered. 
 
 
-%
 \subsection{Lattice-based modelling}
 Lattice-based models have been used to describe the spread of disease in many contexts, such as the spread of malaria, the bubonic plague and the spread of tree disease...
 
@@ -72,10 +105,21 @@ Lattice-based models have been used to describe the spread of disease in many co
 %     \item \textcolor{red}{Murray}: travelling waves that do not change shape
 % \end{itemize}}
 
-\section{The role of scale}
+\subsection{Dispersal}
+\label{ch2:dispersal}
+One of the key features that distinguish tree disease from human-based disease is dispersal. The dispersal of a pathogen may take many forms..
+% \begin{itemize}
+%     \item The importance of dispersal
+%     \item How is dispersal treated mathematically ?
+%     \item What type of dispersal kernels have been studied?
+%     \item What parameter-values have been inferred ?
+%     \item How long-range can dispersal be ? Talk about long-range inter-Continental dispersal
+%     \item see \cite{nathan2012dispersal} for a review of dispersal kernels
+% \end{itemize}
+
+\subsection{The role of scale}
 % WORK IN PROGRESS
 The role of scale is crucial to describing the spread of tree-based disease...
-\blindtext
 % \begin{itemize}
 %     \item The spatial aggregation of vegetation, how does clustering look on different spatial resolutions ?
 %     \item Spatial scale in dispersal ? What does this mean for disease gradients ?
@@ -89,25 +133,12 @@ The role of scale is crucial to describing the spread of tree-based disease...
 %     \item indeed, fungal spores can disperse over large distances, as confirmed by modelling work \cite{shaw2006assembling} 
 % \end{itemize}
 
-\subsection{Dispersal}
-\label{ch2:dispersal}
-One of the key features that distinguish tree disease from human-based disease is dispersal. The dispersal of a pathogen may take many forms..
-\blindtext
-% \begin{itemize}
-%     \item The importance of dispersal
-%     \item How is dispersal treated mathematically ?
-%     \item What type of dispersal kernels have been studied?
-%     \item What parameter-values have been inferred ?
-%     \item How long-range can dispersal be ? Talk about long-range inter-Continental dispersal
-%     \item see \cite{nathan2012dispersal} for a review of dispersal kernels
-% \end{itemize}
-
 \section{Modelling landscape-level epidemics}
 
 Modernity has witnessed the spread of tree-based epidemics at the regional, country and continental level. 'landscape-level'
 
 \subsection{The Metapopulation model}
-\blindtext
+
 % \begin{itemize}
 %     \item this variation in epidemic outcome from variants of environmental factors was likened to the metapopulation used in ecology and population dynamics in order to describe environment `patchiness'
 %     \item variability in the host landscape was considered and recognised as important, the patchiness of a landscape lends itself well to a metapopulation model
@@ -119,8 +150,6 @@ Modernity has witnessed the spread of tree-based epidemics at the regional, coun
 
 Network models are useful to describe the spread disease of human-based trade and transport of infectious trees...
 
-\blindtext
-
 % \textcolor{red}{
 % \begin{itemize}
 %     \item What paradigm do network models suit?
@@ -130,11 +159,10 @@ Network models are useful to describe the spread disease of human-based trade an
 %     \item review \cite{doi:10.1098/rsif.2005.0051}
 % \end{itemize}}
 
-% Consider doing a chapter on `thresholds` that can incorporate Invasion & Persistence
+
 \section{Thresholds in plant-based disease}
 
 A key theme in the spread of tree-disease, and disease in the broadest sense, can be understood through a threshold...
-\blindtext
 % \textcolor{red}{
 % \begin{itemize}
 %     \item What was the first paper to use this term ? Give mini-historical recount
@@ -168,6 +196,7 @@ From the model put forward by \cite{park2001invasion}, the concept of \textit{pe
 % $R_0$ is a complex function which changes in time, to this end, the next generation operator is used to derive a value for $R_0$ \cite{doi:10.1098/rsif.2009.0386}.
 % ref 2 \cite{doi:10.1146/annurev.phyto.011108.135838} ref 3. \cite{van2011periodic}
 
+
 \section{Controlling Plant-Based Epidemics}
 \label{ch2:control-review}
 
@@ -175,8 +204,6 @@ From the model put forward by \cite{park2001invasion}, the concept of \textit{pe
     \item Control
     \item Monitoring
 \end{itemize}
-
-\blindtext
 
 % Epidemiological models are commonly used to for 'control'. Spatial aggregation of the host landscape has been shown to play an important role in effective management. In their paper \cite{doi:10.1094/PHYTO-100-7-0638}
 % showed that the optimal radius of control depends strongly on the level of aggregation (clustering).
@@ -214,41 +241,6 @@ Data regarding different tree species distributions will predominantly come in t
 Abundance data is preferred as more information is captured about the tree species, however, good quality abundance data is in short supply. An interesting model put forward by Louise et at \cite{2STAGE} uses a two stage distribution model. First, presence only data is combined with a series of environmental covariates using a species distribution model in order to produce a map of predicted occurrence data. Random forest regression is then applied to a training sample of real life abundance data producing a high resolution map predicting abundance over the UK at a resolution of $1km^2$. The final result was compared with the remaining abundance data and found to perform much better than existing models. Moving to realistic tree distributions is preferable as the parameter space is reduced by the removal of $\rho$.
 
 % The accuracy of modeled canopy cover data depend on the quality, and quantity, of data sources. Key species that have greater ecological and economic importance, such as ash or oak, typically have better data availability.
-
-\section{Percolation\textemdash from forest fires to epidemics}
-\label{section:lit-rev-perc}
-
-The original formulation of percolation theory was first used to describe properties of a fluid and the bonds which form between molecules \cite{perco_origin} (the reader may jump to \ref{fig:ch3-perc-invariance} for an account of percolation). The problem was posed on a graph\textemdash illustrated in terms of vertices and edges. However re-interpretations were subsequently put forward by physicists studying material sciences, naturally on a lattice. \cite{Essam_1980}. The attractive feature of this new paradigm was that percolation demonstrated a phase-transition. Thus, percolation could be treated with scaling theory used in the study of critical-phenomena. Accordingly, early work rigorously ensued to map out the behaviour of percolation around criticality in terms of critical exponents \cite{STAUFFER19791}. 
-
-Different flavours of percolation models, such as, site or bond percolation were described to model different processes. Percolation proved a convenient theory and various phenomena including, gelation, magnetism and telecommunications were described \cite{trove.nla.gov.au/work/26493727}. Interestingly, forest fires were also applicable to a description within percolation theory \cite{MacKay_1984}. This was a short conceptual jump from time-dependant percolation used to study the growth of crystals \cite{Family_1985}. 
-
-A fire spreading through a population of trees is not to dissimilar to a disease spreading through a population. This lead to a general epidemic-formalisation within percolation-based framework when \cite{pub.1059067807} argued that epidemics were in the same universality class as percolation. It is alluring to remark how modelling the same processes with different microscopic interactions (e.g. different lattice geometries) lead to the macroscopic behaviour should they have the same universality class\textemdash see chapter \ref{fig:ch3-perc-invariance} for more information.
-
-Beginning with a simple $SIR$ framework put forward by \cite{kermack-model}, the field of epidemiology was already well established around the time percolation theory was conceived \cite{baily1975mathematical}. In particular, initial assumptions about population mixing could be relaxed with more elaborate spatial-contact models, naturally, percolation theory could serve as a useful tool when developing spatially-structured epidemic models.
-
-A fractal-like pattern of epidemics was observed by \cite{GRASSBERGER1986273}, shown in Figure \ref{fig:1d_perc_basis}. Parsimoniously describing Figure \ref{fig:1d_perc_basis}, lighter grey sites represent removed individuals, black sites indicate actively infected sites and white sites indicate unaffected sites. All lattice sites in the bottom row were initially infected and the infection can be seen to propagate from the bottom up. The lattice was initialised at the critical-density $p\sim p_c$ culminating in a fractal-like pattern. \cite{GRASSBERGER1986273} did not attribute the hosts of this model to be trees, but instead a general host-population with very low mobility. Local interactions between hosts and infected were elucidated as vast simplifications and long-range interactions (following a power-law) were discussed\textemdash we shall see how these ideas form a important component of modelling tree disease.
-
-\begin{figure}
-    \centering
-    \includegraphics{chapter2/figures/perc1.jpg}
-    \caption{A space-time representation of an epidemic spreading at the critical threshold. The spatial (horizontal) and time (vertical) axis show self-similar propagation of diseased individuals in grey, produced by \cite{GRASSBERGER1986273}}
-    \label{fig:1d_perc_basis}
-\end{figure}
-
-The behaviour of percolation-based epidemic models continued (e.g. \cite{pub.1060474189, pub.1059069981}) to be investigated with various methods such as renormalisation-groups and Monte-Carlo, the critical exponents were found along with phase transition graphs characterising epidemic (super-critical) or extinction (sub-critical) regimes. The properties of both epidemics and forest fire percolation models were studied together in \cite{pub.1052857560}, highlighting their similarity.
-
-The first ecological application came in \cite{pub.1031591030} where forest fire (and epidemic) percolation models were adapted in order to study landscape disturbances. Broadly speaking, landscape disturbances constitute a broad array of physical process which lead to a rapid ecological change, this could include invasion of pests, climate-change and fire.
-
-\textemdash \cite{GRASSBERGER1983157} <- reference for early considerations towards percolation as a model for tree diseases and percolation
-\textemdash \cite{SANDER2002293}, read and get more info + research links
-
-\section{Early warning signals}
-
-\label{section:ews}
-\begin{itemize}
-    \item Set the scene for chapters 1 and 2, what are early warning signals and how did they develop ?
-    \item Review Siro's paper and give examples of how early warning signals have been used to increase tree-health and resilience 
-\end{itemize}
 
 
 \section{Ash dieback}

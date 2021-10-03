@@ -454,7 +454,7 @@ compared to $\rho^*$, as evidenced by smoother curves.
 
 For each value of density in Figure \ref{fig:heterogeneous-phase-space}(d), 
 the mortality remains fixed beyond $0.30 \lessapprox \beta$.
-We may understand the independence of $\chi$ and infectivity as follows:
+We may understand the independence between $\chi$ and infectivity through a numerical example:
 the probability of a susceptible patch remaining susceptible when it encounters 
 an infected neighbour is given by Equation \ref{eq:pr_s_s} as $Pr(S \rightarrow S) = (1 - 0.30)^{10} = 0.03$. 
 Therefore, on average the pathogen transmits successfully to susceptible neighbours with probability $Pr(S\rightarrow I)=0.97$, 
@@ -464,7 +464,7 @@ mortality\footnote{
 Increasing the infectivity to $\beta=0.40$ yields a $Pr(S \rightarrow S) = 0.006$, 
 leading to negligible changes in the final epidemic size\textemdash however, the rate of progression is still faster.
 }. 
-For $0.30 \lessapprox \beta$, only increases to the domain density have the potential to raise the final epidemic size, 
+When $0.30 \sim \beta$, only increases to the domain density have the potential to raise the final epidemic size, 
 indicated by the increases in the height of the curves in Figure \ref{fig:heterogeneous-phase-space}(d). 
 
 \begin{figure}
@@ -488,44 +488,61 @@ indicated by the increases in the height of the curves in Figure \ref{fig:hetero
 In this chapter, we explored two applications of the SLM viz; early warning signals and a toy landscape-level model.
 The original analysis conducted by \cite{OROZCOFUENTES201912} relied on a velocity metric based on the number of 
 infected and removed trees, $N_I$ and $N_R$ respectively. In this scheme, the number of infected and removed hosts scales as
-$\proto (N_I + N_R)^2$ above the threshold, giving rise to an effective increase in velocity for later times;
+$\propto (N_I + N_R)^2$ above the threshold, giving rise to an effective increase in velocity for later times;
 as we discussed, these undesirable artefacts of domain geometry lead to confusing increases in the time series velocity, 
 despite a constant rate of progression. Therefore, EWS were detected using an alternate (COM) time-series metric and abstract 
 cylindrical domain configuration that negated geometrical effects.
 A two-dimensional investigation was undertaken, sweeping the entire parameter space of tree density $\rho$ and infectivity $\beta$.
 
-After setting up the EWS framework, the two-dimensional parameter sweep revealed that preemptive EWS detection is 
-slightly more achievable when infectivity is lower. Observing asymmetries in EWS detection, conditioned on infectivity
-$\beta$, highlights the possible challenge of preempting progressively infectious pathogens.
-Given that host susceptibility is likely to increase as a consequence of climatic stressors \cite{garrett2006climate},
-we may therefore highlight the potential difficulty of future EWS detection.
-In general, EWS have found applications in a variety of ecological processes, e.g. aquatic ecosystem function \cite{kramer1991aquatic}, 
-forest desertification \cite{yang2005desertification} and species-level extinctions \cite{drake2010early}.
-Nevertheless, few sources focus explicitly on EWS from tree epidemics, akin to \cite{OROZCOFUENTES201912};
-most research has focused instead on the more general class of forest health \cite{torres2021role}. 
-As such, it is challenging to contrast the specific EWS results of section \ref{sec:EWS} 
+After setting up the EWS framework, the two-dimensional parameter sweep revealed that preemptive EWS detection is more obtainable 
+when infectivity is lower. Observing these asymmetries in EWS detection, conditioned on infectivity
+$\beta$, highlights the possible challenge of preempting progressively infectious pathogens;
+in particular, given that host susceptibility is likely to increase as a consequence of climatic stressors \cite{garrett2006climate}.
+Subsequently, we may hypothesise the heightened challenge of early warning indicator detection for forest-based pathosystems in the face of climate change.
+
+In general, EWS have found applications in a variety of ecological processes, 
+e.g. aquatic ecosystem function \cite{kramer1991aquatic}, forest desertifications \cite{yang2005desertification}
+and species-level extinctions \cite{drake2010early}.
+Nevertheless, few sources focus explicitly on EWS from tree epidemics, akin to the dynamic (velocity-based) 
+approach of \cite{OROZCOFUENTES201912}; most research has focused instead on the more general class of forest
+health and tree mortality\footnote{ 
+See \cite{torres2021role} for a related review on remote sensing technologies and forest-health
+},  based primariliy on tree growth rings e.g. \cite{mamet2015tree, rogers2018detecting}. 
+As such, it is challenging to contrast the specific EWS method and results of section \ref{sec:EWS} 
 with the wider literature.
 
-Secondly, we constructed a toy landscape SLM spreading through an example distribution oak, as generated by \cite{hill.data}.
+Secondly, we constructed a toy landscape-level SLM spreading through an example distribution oak, as generated by \cite{hill.data}.
 The model of landscape-level epidemics neglects several essential features of invasive disease; most importantly, 
-it spreads through nearest neighbour contacts; hence, labelled as a `toy' model.
+it inherited the nearest neighbour contact assumption, as discussed in chapter \ref{chapter:SLM}.
+Hence, we labelled the landscape-level interpretation a`toy' model.
 Although many limitations underpin the toy model (e.g. the omission of long-distance dispersal \cite{long-range-dispersal}
 and cryptic infections \cite{gilligan2007impact}), it highlighted the inability of the SLM to describe the spread of disease
 through lower tree densities ($\rho \in [0.01, 0.10]$), typical throughout GB.
 
 As the SLM could not describe the spread of disease through more realistic host densities, 
 we introduced an effective density parameter $\rho^*$, predicated on an arbitrarily chosen threshold.
-Introducing an additional parameter in the form of a density threshold is undesirable, unnatural and speculative.
+Introducing an additional density threshold parameter is undesirable, unnatural and speculative.
 Therefore, in the proceeding chapter, we are motivated to change direction and construct a non-local
-dispersal model in line with more contemporary dispersal-based approaches, such as \cite{parnell2009optimal, meentemeyer2011epidemiological}.
+dispersal model, in line with more contemporary dispersal-based approaches such as \cite{parnell2009optimal, meentemeyer2011epidemiological}.
 In this paradigm, transmission between trees can occur over larger length scales and permit the spread over lower tree densities. 
 
-
-Notwithstanding the inherent toy SLM shortcomings, its construction demonstrates a novel use of modelled abundance
-data provided by \cite{hill.data};
+Notwithstanding the inherent toy SLM shortcomings, its construction demonstrates the use of a novel modelled abundance
+dataset provided by \cite{hill.data};
 the modelled data is partly generated but combines various data sets\footnote{
 Including ancient woodland shapefiles https://onlinelibrary.wiley.com/doi/full/10.1002/ece3.2661, BSBI distribution database https://database.bsbi.org, Countryside Survey data https://ora.ox.ac.uk, myForest https://ora.ox.ac.uk and the National Forest Inventory Great Britain 2014 https://www.gov.uk/guidance/access-forestry-commission-datasets}.
+However, statistically regressed (modelled) abundance data contains uncertainties and 
+inaccuracies alongside the loss of small-scale host spatial structure $<1\mathrm{km^2}$.
+As argued by \cite{13-challenges}, capturing host spatial structure, even when data are limited, 
+is essential, and methods are required to assess the impact of incomplete or inaccurate host data.
 
+Following this argument, host data accuracy presents a notable assumption in the toy model.
+Be that as it may, density parameter sweeps over GB (as shown in Figure \ref{fig:heterogeneous-phase-space}) could 
+form a simple procedure to assess the effect of host error, i.e. contrasting epidemic outcomes between two upper
+and lower density error bounds. Evaluating landscape-level parameter-sweeps are uncommon, 
+and most large-scale models repeat simulations over numerous control scenarios and rest on 
+fitted parameters e.g. \cite{large-scale-control, doi:10.1111/j.1365-3059.2010.02391.x}.
+Assessing disease outbreaks over a range of landscape-level densities parameters would describe a risk-based approach,
+as articulated by some authors investigating epidemics through smaller spatial scales \cite{risk-potential-control}.
 
 
 \newpage

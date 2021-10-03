@@ -498,8 +498,10 @@ before we determine $R_0$ as a function of host density in section \ref{section:
 \section{Constructing $R_0$-maps over Great Britain}
 
 \label{sec:r0-map-construct}
-In this section, $R_0$ values of the small-scale $SEIR$ model of ADB will be projected onto the host distribution of ash, given by \cite{hill.data}, to create landscape-level $R_0$-maps over Great Britain. 
-Doing so will permit the investigation of a novel control strategy and allow the local-scale epidemic severity, based on tree-to-tree interactions, to be efficiently scaled over large areas.
+In this section, $R_0$ values of the small-scale $SEIR$ model of ADB will be projected onto the host distribution of ash, 
+given by \cite{hill.data}, to create landscape-level $R_0$-maps over Great Britain. 
+Doing so will permit the investigation of a novel control strategy in chapter \ref{ch7:landscape-level-control} 
+and allow the local-scale epidemic severity, based on tree-to-tree interactions, to be efficiently scaled over large areas.
 
 \subsection{Ash host distribution}
 
@@ -733,7 +735,8 @@ In the face of low budgets, limited resources and short decision windows, an eff
 Given the sessile nature of trees, the spatial distribution of hosts remains of paramount importance for epidemic modelling.
 As such, a modelled distribution of ash covering Great Britain was used to parameterise host densities.
 This choice was motivated by the non-existence of freely available, high-quality ash abundance data that spans Great Britain.
-Consequently, combining our small-scale $SEIR$ model with data given by \cite{hill.data} demonstrates a novel use of modelled abundance data.
+Consequently, combining our small-scale $SEIR$ model with data given by \cite{hill.data} demonstrates a novel use of modelled abundance data\textemdash
+as remarked when summarising the toy SLM model of chapter \ref{chapter:SLM-applications}.
 
 Due to the complexity of ADB, some important assumptions had to be employed in the $SEIR$ model.
 In particular, leaf-shed was assumed to fall close to ash hosts; 
@@ -753,7 +756,7 @@ In this scenario, patches have the possibility of interacting non-locally becaus
 nearest-neighbour structuring elements therefore fail to describe connectivity accurately.}
 Given all the above, an improved understanding of the connectivity between patches is required to progress the framework.
 
-In a nutshell, multi-scale CCA pokes holes in the very notion of constructing $R_0$-maps for systems described by fat-tailed dispersal kernels.
+In a nutshell, multi-scale CCA questions the very notion of constructing $R_0$-maps for systems described by fat-tailed dispersal kernels.
 The invasiveness of a pathogen described by a fat-tailed dispersal kernel cannot be defined by $R_0$ reliably inside a small domain.
 Therefore, epidemic maps depicting inverse power law $R_0$-values require a larger patch size that motivates a coarse-grained host distribution, lowering map resolution.
 Omitting finer-scale epidemic information can lead to disparate results, witnessed by varying the Gaussian-based $R_0$-map patch-size.
