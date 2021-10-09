@@ -1,34 +1,153 @@
-% -----------------------------------------------------------------------------
-% 1) Paint a story line of developments beginning from SIR
-% 2) Give adequate breakdown of types of models:
-%.   -  Percolation-based lattice models 
-%    -  Non-local dispersal models culminating in the meta-population model
-%    -  The continuum-based PDE models ? Spatial SIR models
-%.   -  Network models ? 
-% 3) Give a breakdown of control methods with these types of models
-%.   - Clear examples of how mathematical and computational models inform policy
-% -----------------------------------------------------------------------------
-
-
-\chapter{Tree diseases epidemics: an interdisciplinary problem--WORK IN PROGRESS}
+\chapter{Interdisciplinary tree disease epidemics}
 \label{chapter2:litreview} 
 
-The mathematical and computational modelling of infectious tree diseases began to emerge after Plank had others put forward seminal works on the modelling of crops. Tree disease is import to consider for tree-health in both commercially cultured of stands and naturally occurring forestry and ecosystems. The modelling tree-based disease has many features in common with modelling crop diseases. However, differences in the spatial distribution of hosts and growth cycles remain large.
+Mathematically modelling communicative disease spread in tree populations is interdisciplinary, 
+made possible by the convergence of numerous scientific fields. Consequently, this chapter reviews
+several prerequisite themes essential to acknowledge before modelling the spread of tree disease. 
+    
+Modelling tree disease aims to help design effective control policies and inform policymakers.
+Well-informed policymakers can then help to maintain tree health in numerous rural, urban and 
+commercial environments. Although myriad environmental, biological and anthropomorphic factors 
+complicate the scientific understanding and thus effective disease control. As such, understanding
+modern-day tree disease epidemics requires a holistic, interdisciplinary scientific approach. 
 
-The aim of tree disease modelling is to help design effective control policies. From well designed control policies, the spread of disease through commercial and rural environments can be managed and tree-health maintained. This chapter begins with a chronological overview of tree disease models and the different approaches that have been used in the past.
+The review begins by narrating early historical developments in human and botanical epidemiology before presenting
+a variety of present-day modelling frameworks. After introducing some mainstream plant-based epidemiological models, an examination
+of dispersal, thresholds, and epidemic control follows naturally. In addition, different host data sources in Great Britain
+are reviewed. Finally, the chapter ends with an ash dieback case study, reflecting the multi-faceted difficulties posed by a
+a recent emergent epidemic.
 
-Having reviewed typical models in literature, the theme of control will be reviewed. That is, how the optimal control of a pathogen can be investigated from the construction of models.
+\section{Historical perspectives}
 
-Modern Epidemiology is extremely interdisciplinary utilising various tools from mathematics, physics and computer science. The project will explore infectious diseases specific to tree species. There have been various models used to model tree disease including: 1) Lattice-based percolation. 2) Continuum. 3) Meta-population. 4) Network models. A summary of these models will be given in this chapter along with their main usage, control. A review of epidemic control in plant populations will be given in support of chapter where we detail a novel method stop the spread of disease. 
+Historically, plant pathology had no cross-fertilisation with mathematical epidemiology. 
+Instead, both fields existed in different spheres where early plant pathologists focused
+on the biological mechanism of pathogen growth. Although pioneering discoveries 
+in mathematical epidemiology permitted a more quantitative treatment of botanical diseases. 
+In particular, the seminal $SIR$ model of \cite{kermack-model} 
+provided a firm foundation to examine plant-based epidemics mathematically. 
 
-\section{Historical developments}
+\subsection{Standard $SIR$}
 
-\begin{itemize}
-    \item outline Seminal SIR model \cite{kermack-model}
-    \item outline Seminal plank model \cite{van1999pandemics}
-    \item link the two historical models and contrast their functional forms
-\end{itemize}
+The mathematical model put forward by \cite{kermack-model} involved three compartmentalised fields, 
+susceptible $S(t)$, infected $I(t)$ and removed $R(t)$.
+Here, each field models a closed population of size $N$, where $N = S(t) + I(t) + R(t)$. 
+A coupled system of ODEs then follow:
+\begin{align}
+\label{eq:SIR-model1}
+    &\frac{dS}{dt} = -\beta SI \\
+    &\frac{dI}{dt} = \beta SI - \mu I \\
+    \label{eq:SIR-model3}
+    &\frac{dR}{dt} = \mu I
+\end{align}
+where the term $\beta S I$ dictates the flow of susceptible hosts into the infected compartment according 
+to the rate $\beta$. Likewise, $\mu I$ controls the transition of infected hosts into the removed compartment
+through a removal rate $\mu$.
 
+The coupled ODE system through Equations (\ref{eq:SIR-model1}-\ref{eq:SIR-model3}) rely on several assumptions including:
+1) a closed population with no births or deaths 2) no exposed/incubation period 3) lifetime immunity following recovery
+4) mass action population mixing, where contact mixing rates between individuals in $S$ and $I$ are proportional 
+to the number of individuals in either field.
+
+Today countless articles have relaxed these assumptions to extend the standard $SIR$ framework\footnote{
+Indeed, following the COVID-19 pandemic, $SIR$-type models remain an active field of research 
+and dominate present-day epidemic literature \cite{atkeson2020using}.}.
+Nevertheless, a keystone result emerged from Equations (\ref{eq:SIR-model1}-\ref{eq:SIR-model3}), namely 
+the existence of a critical epidemic threshold:
+\begin{align}
+    \label{eq:R0-SIR}
+    & R_0 = \frac{\beta}{\mu}\\
+    \label{eq:R0-effective}
+    & R_e = \frac{S(t)}{N} \frac{\beta}{\mu}
+\end{align}
+where $R_0$ and $R_c$ are referred to as the basic and effective reproduction numbers, respectively.
+Following the introduction of one infected host at $t=0$, $N\sim S(0)$ and 
+we have $R_e=\big((N-1)/N\big) \beta / \mu$. Therefore, in the limit of a large population at $t=0$, 
+$\big((N-1)/N\big)$ approximates unity and $R_e = R_0$, otherwise $R_e=\big(S(t)/N\big) R_0$.
+
+Both quantities $R_0$ and $R_e$ describe an epidemic threshold, 
+yet $R_e$ reflects the monotonically declining susceptible host population by including the ratio $S(t)/N$.
+In particular, Equation \ref{eq:R0-effective} defines a critical threshold by the simple criterion:
+1) when $R_e > 1$, then $I(t)$ rises sharply, culminating in an epidemic before declining in the absence of newly
+infected hosts
+2) if $R_e \leq 1$, then $I(t)$ quickly declines to zero as $t\rightarrow 0$ and the outbreak subsides.
+The reader is directed towards \cite{weiss2013sir} for a more comprehensive mathematical proof of $SIR$ 
+model thresholds.
+
+\subsection{Logistic growth}
+
+The seminal work of \cite{van2013plant} firmly established ties between plant pathology and 
+mathematical epidemiology.
+Fundamentally, Van der Plank equated the growth of plant pathogens (or `inoculum') to logistic growth of the form:
+\begin{equation}
+    \label{van-plank}
+    \frac{dI}{dt} = rI(1 - I)
+\end{equation}
+where $r$ describes the rate of pathogen growth and $I$ reflects the proportion of infected tissue.
+In Equation \ref{van-plank}, the amount of infected tissue $I$ snowballs at first, 
+in proportion to the amount of inoculum. As time passes and $I$ grows, $(1-I)$ approximates zero and
+the systems plateaus as all susceptible tissue becomes infected. 
+From Equation \ref{van-plank}, a simple method to determine the the infected rate $r$ follows:
+\begin{equation}
+    \label{eq:van-plank-r}
+    r =\frac{1}{t_2 - t_1} \log \Big(\frac{I_2}{1 - I_2} - \frac{I_1}{1 - I_1}\Big)
+\end{equation}
+where $I_1$ and $I_2$ are the proportions of infected tissue at times $t_1$ and $t_2$ respectively\textemdash 
+see \cite{van2013plant} Chapter 3. Importantly, both $I_1$ and $I_2$, and by extension the infection rate $r$,
+are measurable in laboratory conditions. 
+In Equation \ref{van-plank}, newly infected tissue becomes infectious immediately following infection.
+Realistically, infectious tissue (and symptom expression) takes time to develop, described by an incubation period.
+Accordingly, Van der Plank adapted Equation \ref{van-plank} as follows:
+\begin{equation}
+\label{van-plank-incubation}
+    \frac{dI}{dt} = RI_{t-p}(1 - I_{t})
+\end{equation}
+where $I_t$ and $I_{t-p}$ describe the infectious tissue at times $t$ and $t-p$. 
+Hence, infectious tissue grows in response to the factor $R I_{t-p}$, and saturates
+according to the logistic term $(1 - I_t)$. The parameter $R$ now describes pathogen
+growth at step $t-p$, as opposed to $r$ that describes the spread of disease at step $t$, leading to the ratio:
+\begin{equation}
+    \frac{R}{r} = \frac{x_t}{x_{t-p}}
+\end{equation}
+where $r$ represents an `apparent' infection rate (measurable in laboratories from Equation \ref{eq:van-plank-r}),
+and $R$ denotes the `basic' infection rate. As Plank argues, one usually seeks
+to determine $R$ from the constant $r$. Assuming that $r$ indeed stays constant over the epidemic:
+the basic infection rate $R$ must decrease as $x_t/x_{t-p}$ gets progressively smaller as $x_{t-p}\rightarrow x_t $.
+At this point, the basic infection rate $R$ begins to resemble the effective reproduction ratio $R_e$
+from Equation \ref{eq:R0-effective}.
+
+ % I think this was proved, cited in SEnImR model 
+ 
+%  Here, the parameter $r$ provides a course-grained summary of the complex interaction between host, 
+% pathogen and environment.
+ 
+ \begin{figure}
+     \centering
+     \includegraphics[scale=0.55]{chapter2/figures/SIR-vs-Plank.pdf}
+     \caption{(a) The $SIR$ model as presented by \cite{kermack-model} is shown for fixed removal rate $\mu = 0.20$ and variations of $\beta$. 
+                  The coupled system of ODEs can be solved numerically with Euler's method. Here, simulations begin with 
+                  $2500$ susceptible and one infected individuals, and evolve for $t=200$ steps.
+                  (b) The logistic growth model \cite{van2013plant} used to describe the growth of infected plant material.
+                  Simulations are numerically computed with a forward-time finite difference method for $10$ different growth rates $r$.
+       } 
+     \label{fig:my_label}
+ \end{figure}
+
+\subsection{Progressive botanical epidemiology}
+
+Hitherto, plant pathologists had been trained to research botanical disease mainly through laboratory experiments
+of infected tissue under the influence of various environmental conditions \cite{doi:10.1146/annurev.py.01.090163.000245}.
+This had utility and practicality for understanding microscopic biological interactions, however, experiments of this
+nature over scales ranging from individual plants, fields through to regions were untenable. With a new epidemiological
+insight, borrowing from different mathematical techniques, plant pathologists were now able to extend their research to
+account for the large-scale impact of diseases. 
+    
+% Early models : extensions of van der plank
+The next few decades where characterised by theoretical investigation into mathematical models of `plant epidemiology' and the adoption of computer simulations. The original framework by \cite{van2013plant} was applied to different pathosystems, halo blight in beans for example \cite{doi:10.1111/j.1744-7348.1979.tb06527.x}. Modifications of Eq (\ref{van-plank}) were made by \cite{sall1980epidemiology} in order to account for variations in the infection rate in grape powdery mildew by taking the infection rate to be a function of time $r(t)$. In addition, other mathematical techniques were reviewed for the purpose of modelling plant epidemiology. One such framework was multiple regression analysis see \cite{butt1974multiple} for a detailed review. The work of \cite{zadoks1979epidemiology} provided a consolidation of these early mathematical models of plant disease and expanded upon Van der Plank\textemdash a review of predominant models from this era was given by \cite{jeger1984use}.
+    
+\textcolor{red}{computational models incorporate more information regarding host-pathogen biological interactions} \textcolor{blue}{for a review on computational modelling see \cite{doi:10.1146/annurev.py.23.090185.002031}} Advances in plant epidemiology through this period were compounded by developments in computing. Improved accessibility and computer architectures permitted faster calculations and more intensive models. The first epidemic simulator written in FORTRAN IV came by \cite{waggoner1969epidem}. The simulator was named `EPIDEM' and modelled the spread of the fungal `Alternaria solani' effecting potatoes and tomatoes. The growth of infected tissue within leaves were considered under the influence of different environmental conditions. The ability to simulate more intricate models grew in proportion the amount of computer memory available \cite{zadoks1972methodology}
+
+An interesting early simulator `EPIMUL76' developed by \cite{zadoks1977role} adapted Van der Plank's logistic growth model into a spatio-temporal framework in two spatial dimensions. Simulations were conducted on a computer with $128\mathrm{K}$ of memory. The two dimensional domain was subdivided into $20\times 20$ host units named `compartments' (as such, this can be considered an agent-based model). \cite{zadoks1977role} eluded to the problem of scale; that is, compartments could represent different spatial scales, conceptualised as microscale ($\leq 1\mathrm{m}$), mesoscale ($10^2\mathrm{m}$) and macroscales ($10^6\mathrm{m}$). In this picture, microscales ranged from plant leafs through to individual plants, the mesoscales could be taken as fields of crops and the macro scales as large regional expanses over country-wide scale. The probability of dispersal between infected host units was assumed to follow the functional form of a Gaussian distribution\textemdash in contrast to \cite{doi:10.1146/annurev.py.06.090168.001201}.
+    
 \section{Epidemic stochasticity}
 
 The spread of disease inherently takes the form of a stochastic process, whereby an epidemic unexpectedly arises and quickly cease, seemingly out of the blue. In order to capture the spread of disease, stochastic effects cannot be overlooked... 
@@ -183,7 +302,7 @@ here, the infectious life-time is the total amount of time an individual remains
 
 The basic reproduction number is used extensively by researchers wishing to understand the spread of disease through human populations. In the study of plant-based disease however, the basic reproduction number has attracted far less attention despite being a convenient parameter from which a threshold can be derived. Thresholds are of great importance to understand epidemics in plant-based populations. A threshold criteria similar to the $R_0$-threshold was first introduced by \cite{van2013plant} in the logistic growth model. However, the logistic-growth based threshold was a vast simplification and had limitations in accurately predicting the threshold for growth and spread \cite{onstad1992evaluation}.
 
-The basic reproduction number $R_0$ was studied by \cite{gubbins2000population} in order to understand thresholds in plant-parasite \textit{pathosystems}. A plant-host under attack from a parasite may respond to the \textit{parasite load} with either the promotion or inhibition of susceptible tissue, see \cite{gilligan1997analysis} for further details on this mechanism. In order to model this problem, \cite{gubbins2000population} used a system of three linked differential equations describing the density of susceptible hosts, infected hosts and the primary source of innoculum\footnote{\textemdash here, innoculum is a general term that refers to any part of the parasite that, when in contact with the plant, may induce disease \cite{agrios2005chapter}}. Transmission of innoculum could occur through a dual source, that is, through primary or secondary pathways. Local stability analysis on the linked equations lead to various $R_0$ values, and subsequently threshold criteria, dependant on the functional form assumed by the host-response.\\
+The basic reproduction number $R_0$ was studied by \cite{gubbins2000population} in order to understand thresholds in plant-parasite \textit{pathosystems}. A plant-host under attack from a parasite may respond to the \textit{parasite load} with either the promotion or inhibition of susceptible tissue, see \cite{gilligan1997analysis} for further details on this mechanism. In order to model this problem, \cite{gubbins2000population} used a system of three linked differential equations describing the density of susceptible hosts, infected hosts and the primary source of inoculum\footnote{\textemdash here, inoculum is a general term that refers to any part of the parasite that, when in contact with the plant, may induce disease \cite{agrios2005chapter}}. Transmission of inoculum could occur through a dual source, that is, through primary or secondary pathways. Local stability analysis on the linked equations lead to various $R_0$ values, and subsequently threshold criteria, dependant on the functional form assumed by the host-response.\\
 
 \subsection{Invasion and Persistence}
 \label{ch3:invasions_and_persistence}
@@ -444,8 +563,6 @@ when describing the dispersal of pollen particulates. Moreover, a study by \cite
 used Equation \ref{eq:geometric-invserse-power-law} to model pollen-dispersal (and thus plant gene-flow) over landscape-level spatial scales. 
 Presumably, the ability of Equation \ref{eq:geometric-invserse-power-law} to describe LDD, and the size similarity between pollen and fungi spores, 
 motivated \cite{grosdidier2018tracking} to include it their field study. 
-
-
 % A recent article published by \cite{golan2017long} presents an interesting system to 
 
 \newpage
@@ -473,17 +590,20 @@ However, LDD accounts for only a small minority of spore dispersal.
 Furthermore, despite many notions of LDD, no unified LDD classification system exist, 
 which led \cite{golan2017long} to propose a definition based on the distance traversed by the top $1\%$ of spores.
 
-The long-term survival of ash depends on a small proportion of genetically resistant ash trees;
-\cite{doi:10.1094/PHYTO-11-15-0284-R} first demonstrated genetic tolerance and the heritability 
-of crown dieback and collar-lesion symptom expression. In the three French provenances sampled,
-\cite{doi:10.1094/PHYTO-11-15-0284-R} found no evidence for regional tolerance. \cite{doi:10.1094/PHYTO-11-15-0284-R}.
+The long-term survival of ash depends on a small proportion of genetically resistant ash trees.
+Despite many unpublished reports, genetic tolerance studies only began surfacing around a decade
+after the widespread outbreak \cite{kjaer2012adaptive, stener2013clonal, mckinney2014ash}.
+In particular, \cite{doi:10.1094/PHYTO-11-15-0284-R} showed the heritability of crown dieback and
+collar-lesion symptom expression. In the three French provenances sampled,
+\cite{doi:10.1094/PHYTO-11-15-0284-R} found no evidence for regional tolerance.
 Presently, genetic tolerance is widely accepted \cite{havrdova2016differences, skovsgaard2017silvicultural},
-and more recent work has focused on metabolomic tolerance classification, 
-profiling which metabolites predict resistance \cite{nemesio2020canditate, nemesio2020metabolomics, sidda2020diversity, chaudhary2020identification}.
+and more recent work has focused on metabolomic tolerance classification,
+profiling which metabolite markers correlate with resistance 
+\cite{nemesio2020canditate, nemesio2020metabolomics, sidda2020diversity, chaudhary2020identification}.
 
 A silvicultural system proposed by \cite{skovsgaard2017silvicultural} involves visually scoring severity based on crown dieback
-and collar lesions. In this scheme, forest managers would inspect disease severity to record disease progression over time. Forest
-managers should then record genetically resistant trees to cultivate for future timber production. In addition, 
+and collar lesions. In this scheme, forest managers would inspect disease severity to record disease progression over time
+and record genetically resistant trees to cultivate for future timber production. In addition, 
 \cite{skovsgaard2017silvicultural} proposed that diseased forest stands should not be indiscriminately felled on account of high-value
 tolerant individuals; this suggestion stands in contrast to the idea of a `cull radius', as alluded to by \cite{WEBIDEMICS}. 
 In general, felling infected stands is ill-advised  \cite{chandelier2017ash}, except when infected hosts present a risk of uncontrolled 
@@ -494,24 +614,12 @@ rest on cultivating and replanting trees that exhibit low damage levels. Breedin
 programs in many European countries are currently underway, as reviewed by \cite{https://doi.org/10.1002/ppp3.10060}.
 In the UK, the Living Tree Project (https://livingashproject.org.uk) aims to collate tolerant UK ash for future breeding.
 
-% LDD events
-
 % \cite{ash-tree2}
-
 % - Approaches to conservation differ between forest and commercial ash stand \cite{skovsgaard2017silvicultural}. 
-
 % - Among the control strategies, application of fungicide to infected biomass has been shown effective \cite{hauptman2015application}
-
 % Among LDD human-mediated.
-
-
-
 % - read me ->
 
-
-
-
 % - statistical modelling work has shown the importance of environmental factors in the spread of disease \cite{dal2014risk, chumanova2019predicting}
-% - Although, compartmentalised models of ADB have a noticeable absence in the literature.
 % - the risk of spread.. was conduced by \cite{fellenor2019ash}....
 % - \cite{dal2015epidemiology} un-published thesis
