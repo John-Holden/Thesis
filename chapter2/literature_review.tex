@@ -41,7 +41,8 @@ A coupled system of ODEs then follow:
 \end{align}
 where the term $\beta S I$ dictates the flow of susceptible hosts into the infected compartment according 
 to the rate $\beta$. Likewise, $\mu I$ controls the transition of infected hosts into the removed compartment
-through a removal rate $\mu$.
+through a removal rate $\mu$. Figure \ref{fig:SIR-vs-plank}(a) illustrates the coupled $SIR$ system for 
+fixed $\mu$ and four values of $\beta$.
 
 The coupled ODE system through Equations (\ref{eq:SIR-model1}-\ref{eq:SIR-model3}) rely on several assumptions including:
 1) a closed population with no births or deaths 2) no exposed/incubation period 3) lifetime immunity following recovery
@@ -85,7 +86,9 @@ Fundamentally, Van der Plank equated the growth of plant pathogens (or `inoculum
 where $r$ describes the rate of pathogen growth and $I$ reflects the proportion of infected tissue.
 In Equation \ref{van-plank}, the amount of infected tissue $I$ snowballs at first, 
 in proportion to the amount of inoculum. As time passes and $I$ grows, $(1-I)$ approximates zero and
-the systems plateaus as all susceptible tissue becomes infected. 
+the systems plateaus as all susceptible tissue becomes infected;
+this essential behaviour is shown in Figure \ref{fig:SIR-vs-plank}(b) over $10$ values
+growth rates $r$.
 From Equation \ref{van-plank}, a simple method to determine the the infected rate $r$ follows:
 \begin{equation}
     \label{eq:van-plank-r}
@@ -96,10 +99,10 @@ see \cite{van2013plant} Chapter 3. Importantly, both $I_1$ and $I_2$, and by ext
 are measurable in laboratory conditions. 
 In Equation \ref{van-plank}, newly infected tissue becomes infectious immediately following infection.
 Realistically, infectious tissue (and symptom expression) takes time to develop, described by an incubation period.
-Accordingly, Van der Plank adapted Equation \ref{van-plank} as follows:
+Accordingly, Van der Plank adapted Equation \ref{van-plank} to a delay differential equation (DDE):
 \begin{equation}
 \label{van-plank-incubation}
-    \frac{dI}{dt} = RI_{t-p}(1 - I_{t})
+    \frac{dI_t}{dt} = RI_{t-p}(1 - I_{t})
 \end{equation}
 where $I_t$ and $I_{t-p}$ describe the infectious tissue at times $t$ and $t-p$. 
 Hence, infectious tissue grows in response to the factor $R I_{t-p}$, and saturates
@@ -108,19 +111,7 @@ growth at step $t-p$, as opposed to $r$ that describes the spread of disease at 
 \begin{equation}
     \frac{R}{r} = \frac{x_t}{x_{t-p}}
 \end{equation}
-where $r$ represents an `apparent' infection rate (measurable in laboratories from Equation \ref{eq:van-plank-r}),
-and $R$ denotes the `basic' infection rate. As Plank argues, one usually seeks
-to determine $R$ from the constant $r$. Assuming that $r$ indeed stays constant over the epidemic:
-the basic infection rate $R$ must decrease as $x_t/x_{t-p}$ gets progressively smaller as $x_{t-p}\rightarrow x_t $.
-At this point, the basic infection rate $R$ begins to resemble the effective reproduction ratio $R_e$
-from Equation \ref{eq:R0-effective}.
-
- % I think this was proved, cited in SEnImR model 
- 
-%  Here, the parameter $r$ provides a course-grained summary of the complex interaction between host, 
-% pathogen and environment.
- 
- \begin{figure}
+\begin{figure}
      \centering
      \includegraphics[scale=0.55]{chapter2/figures/SIR-vs-Plank.pdf}
      \caption{(a) The $SIR$ model as presented by \cite{kermack-model} is shown for fixed removal rate $\mu = 0.20$ and variations of $\beta$. 
@@ -129,8 +120,61 @@ from Equation \ref{eq:R0-effective}.
                   (b) The logistic growth model \cite{van2013plant} used to describe the growth of infected plant material.
                   Simulations are numerically computed with a forward-time finite difference method for $10$ different growth rates $r$.
        } 
-     \label{fig:my_label}
+     \label{fig:SIR-vs-plank}
  \end{figure}
+where $r$ represents an `apparent' infection rate (measurable in laboratories from Equation \ref{eq:van-plank-r}),
+and $R$ denotes the `basic' infection rate. As Plank explained, one usually seeks
+to determine $R$ from the constant $r$. Assuming that $r$ indeed stays constant over the epidemic:
+the basic infection rate $R$ must decrease as $x_t/x_{t-p}$ gets progressively smaller as $x_{t-p}\rightarrow x_t $.
+At this point, the basic infection rate $R$ begins to resemble the effective reproduction ratio $R_e$
+from Equation \ref{eq:R0-effective}. Equation \ref{van-plank-incubation} describes a system where
+infections incubate for a period $p$ before inducing the growth of more infectious plant tissue.
+However, it does not describe the infectious period (where infected tissue remains before becoming epidemiologically inert),
+which lead Plank to extend the Equation \ref{van-plank-incubation} to follow:
+\begin{equation}
+\label{van-plank-infectious-p}
+    \frac{dI_t}{dt} = R_c(I_{t-p} - I_{t-i-p})(1 - I_{t})
+\end{equation}
+where $R_c$ is the basic infection rate `corrected' for removals and $i$ is the infectious period.
+In this DDE, a unit of latently infectious tissue starts becoming infectious after $p$ steps, and stops becoming infectious $i$ steps.
+More formally, as $I_{t-i-p} \rightarrow I_{t-p}$, the rate of infectious tissue growth approaches zero, $dI_t/dt \rightarrow 0$.
+
+\subsection{Contrasting approaches}
+
+The $SIR$ model does not include an incubation period, and therefore differs from the delayed differential formulation in Equation \ref{van-plank-infectious-p}.
+Nonetheless, the compartmentalised approach is easy to extend, leading to an $SEIR$ system:
+\begin{align}
+\label{eq:SEIR-model1}
+    &\frac{dS}{dt} = -\beta SI \\
+\label{eq:SEIR-model2}
+    &\frac{dE}{dt} = \beta SI - \gamma E\\
+    &\frac{dI}{dt} = \gamma E - \mu I \\
+    \label{eq:SEIR-model3}
+    &\frac{dR}{dt} = \mu I
+\end{align}
+where Equation \ref{eq:SEIR-model2} describes the population of latently (or exposed) infected hosts.
+Susceptible hosts transition into the exposed compartment at the same rate as before, namely $\beta SI$, but now have an
+exponentially distributed latency period of $\gamma^{-1}$ before transitioning into $I$.
+
+Both Equations \ref{eq:SEIR-model1}-\ref{eq:SEIR-model3} and Equation \ref{van-plank-infectious-p} outline similar systems,
+though infected tissue in Equation \ref{van-plank-infectious-p} remains infectious for precisely $i$ units.
+This contrasts with the exponentially distributed exposed lifetime implicit within Equation \ref{eq:SEIR-model2}.
+Nevertheless, \cite{segarra2001epidemic} illustrated how Plank's DDE and the $SEIR$ system are both special cases of
+the $SIR$ model proposed by \cite{kermack-model}, when the $SIR$ model incorporates a sporulation function, $\phi(\tau)$. 
+The sporulation function appropriately models spore production in plant pathogens. 
+In particular, if $\phi(\tau) = 0$ for small $t$, $\phi(\tau)$ can model incubation periods. 
+Similarly, if $\phi(\tau) = 0$  for large $t$, we recover an infectious period. 
+
+More recently, \cite{time-varying-infectivity} simplified the analysis of \cite{segarra2001epidemic}, showing that 
+both Plank's DDE and the $SEIR$ model can be recovered with an $SE_nI_mR$ model.
+Both $n$ and $m$ represent an arbitrary number of exposed and infectious compartments:
+\[
+    S\rightarrow E_1 \rightarrow E_2 \rightarrow ... \rightarrow E_n \rightarrow I_1 \rightarrow I_2 \rightarrow ... I_m
+\]
+In the trivial case, the $SEIR$ model is recovered when $n=1$ and $m=1$. However, when $n,m \rightarrow \infty$,
+\cite{time-varying-infectivity} demonstrated that we recover an expression equivalent to the DDE in Equation \ref{van-plank-infectious-p}.
+Despite the sameness of both DDE and $SEIR$ formulations, the overarching theme of modern epidemiological models is compartmental,
+owing to their increased flexibility and easier analysis.
 
 \subsection{Progressive botanical epidemiology}
 
