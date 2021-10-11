@@ -1,36 +1,34 @@
 \chapter{Interdisciplinary tree disease epidemics}
 \label{chapter2:litreview} 
 
-Mathematically modelling communicative disease spread in tree populations is interdisciplinary, 
-made possible by the convergence of numerous scientific fields. Consequently, this chapter reviews
-several prerequisite themes essential to acknowledge before modelling the spread of tree disease. 
-    
-Modelling tree disease aims to help design effective control policies and inform policymakers.
-Well-informed policymakers can then help to maintain tree health in numerous rural, urban and 
-commercial environments. Although myriad environmental, biological and anthropomorphic factors 
-complicate the scientific understanding and thus effective disease control. As such, understanding
-modern-day tree disease epidemics requires a holistic, interdisciplinary scientific approach. 
+Understanding modern-day tree disease epidemics requires a holistic, interdisciplinary scientific 
+approach, made possible only by the convergence of numerous scientific fields. 
+Consequently, this Chapter reviews several key modelling themes.
+
+Typically, models of tree disease aim to help design effective control policies and inform policymakers.
+Well-informed policymakers can then help to maintain tree health in rural, urban and commercial environments. 
+Although myriad environmental, biological and anthropomorphic factors complicate the scientific understanding 
+and thus effective disease control. 
 
 The review begins by narrating early historical developments in human and botanical epidemiology before presenting
-a variety of present-day modelling frameworks. After introducing some mainstream plant-based epidemiological models, an examination
-of dispersal, thresholds, and epidemic control follows naturally. In addition, different host data sources in Great Britain
-are reviewed. Finally, the chapter ends with an ash dieback case study, reflecting the multi-faceted difficulties posed by a
-a recent emergent epidemic.
+a variety of present-day modelling frameworks. After introducing the mainstream paradigm of plant-based epidemic models,
+an inspection of dispersal, thresholds, and epidemic control follow naturally. In addition, several host data sources 
+in Great Britain are presented. Finally, the Chapter ends with an ash dieback case study, reflecting the multi-faceted 
+difficulties posed by a recent emergent epidemic.
 
 \section{Historical perspectives}
 
-Historically, plant pathology had no cross-fertilisation with mathematical epidemiology. 
-Instead, both fields existed in different spheres where early plant pathologists focused
-on the biological mechanism of pathogen growth. Although pioneering discoveries 
-in mathematical epidemiology permitted a more quantitative treatment of botanical diseases. 
+Historically, the fields of plant pathology and mathematical epidemiology existed in different spheres.
+Plant pathology researchers furthered biological understanding of pathogen growth (e.g. \cite{doi:10.1146/annurev.py.01.090163.000245}), not predictive mathematical theories.
+Although, pioneering discoveries in mathematical epidemiology permitted a more quantitative treatment of botanical diseases. 
 In particular, the seminal $SIR$ model of \cite{kermack-model} 
-provided a firm foundation to examine plant-based epidemics mathematically. 
+provided a foundation to examine plant-based epidemics mathematically.
 
 \subsection{Standard $SIR$}
 
-The mathematical model put forward by \cite{kermack-model} involved three compartmentalised fields, 
+The \cite{kermack-model} (K \& M) model involves three compartmentalised fields, 
 susceptible $S(t)$, infected $I(t)$ and removed $R(t)$.
-Here, each field models a closed population of size $N$, where $N = S(t) + I(t) + R(t)$. 
+Each field models the evolution of a closed population of size $N$, where $N = S(t) + I(t) + R(t)$. 
 A coupled system of ODEs then follow:
 \begin{align}
 \label{eq:SIR-model1}
@@ -44,16 +42,16 @@ to the rate $\beta$. Likewise, $\mu I$ controls the transition of infected hosts
 through a removal rate $\mu$. Figure \ref{fig:SIR-vs-plank}(a) illustrates the coupled $SIR$ system for 
 fixed $\mu$ and four values of $\beta$.
 
-The coupled ODE system through Equations (\ref{eq:SIR-model1}-\ref{eq:SIR-model3}) rely on several assumptions including:
+The coupled differential system of Equations (\ref{eq:SIR-model1}-\ref{eq:SIR-model3}) rely on several assumptions, including:
 1) a closed population with no births or deaths 2) no exposed/incubation period 3) lifetime immunity following recovery
 4) mass action population mixing, where contact mixing rates between individuals in $S$ and $I$ are proportional 
 to the number of individuals in either field.
 
-Today countless articles have relaxed these assumptions to extend the standard $SIR$ framework\footnote{
+Today, countless articles have relaxed these assumptions to extend the standard $SIR$ framework\footnote{
 Indeed, following the COVID-19 pandemic, $SIR$-type models remain an active field of research 
 and dominate present-day epidemic literature \cite{atkeson2020using}.}.
 Nevertheless, a keystone result emerged from Equations (\ref{eq:SIR-model1}-\ref{eq:SIR-model3}), namely 
-the existence of a critical epidemic threshold:
+the existence of a critical epidemic threshold, captured through either:
 \begin{align}
     \label{eq:R0-SIR}
     & R_0 = \frac{\beta}{\mu}\\
@@ -65,14 +63,15 @@ Following the introduction of one infected host at $t=0$, $N\sim S(0)$ and
 we have $R_e=\big((N-1)/N\big) \beta / \mu$. Therefore, in the limit of a large population at $t=0$, 
 $\big((N-1)/N\big)$ approximates unity and $R_e = R_0$, otherwise $R_e=\big(S(t)/N\big) R_0$.
 
-Both quantities $R_0$ and $R_e$ describe an epidemic threshold, 
-yet $R_e$ reflects the monotonically declining susceptible host population by including the ratio $S(t)/N$.
-In particular, Equation \ref{eq:R0-effective} defines a critical threshold by the simple criterion:
+Both quantities $R_0$ and $R_e$ describe an epidemic threshold, though $R_e$ captures a threshold in the face
+of a declining susceptible population by including the ratio $S(t)/N$.
+Equation \ref{eq:R0-effective} defines a critical threshold by the simple criterion\footnote{
+For a more comprehensive mathematical proof of $SIR$
+model thresholds, the reader is directed towards \cite{weiss2013sir}}:
 1) when $R_e > 1$, then $I(t)$ rises sharply, culminating in an epidemic before declining in the absence of newly
 infected hosts
 2) if $R_e \leq 1$, then $I(t)$ quickly declines to zero as $t\rightarrow 0$ and the outbreak subsides.
-The reader is directed towards \cite{weiss2013sir} for a more comprehensive mathematical proof of $SIR$ 
-model thresholds.
+
 
 \subsection{Logistic growth}
 
@@ -85,11 +84,10 @@ Fundamentally, Van der Plank equated the growth of plant pathogens (or `inoculum
 \end{equation}
 where $r$ describes the rate of pathogen growth and $I$ reflects the proportion of infected tissue.
 In Equation \ref{van-plank}, the amount of infected tissue $I$ snowballs at first, 
-in proportion to the amount of inoculum. As time passes and $I$ grows, $(1-I)$ approximates zero and
-the systems plateaus as all susceptible tissue becomes infected;
-this essential behaviour is shown in Figure \ref{fig:SIR-vs-plank}(b) over $10$ values
-growth rates $r$.
-From Equation \ref{van-plank}, a simple method to determine the the infected rate $r$ follows:
+in proportion to the amount of inoculum. Then, as time passes and $I$ grows, $(1-I)$ approximates zero, 
+and the system plateaus as all susceptible tissue becomes infected.
+The essential model behaviour is shown in Figure \ref{fig:SIR-vs-plank}(b) over $10$ values growth rates $r$.
+From Equation \ref{van-plank}, a simple method to determine the rate $r$ follows:
 \begin{equation}
     \label{eq:van-plank-r}
     r =\frac{1}{t_2 - t_1} \log \Big(\frac{I_2}{1 - I_2} - \frac{I_1}{1 - I_1}\Big)
@@ -98,13 +96,13 @@ where $I_1$ and $I_2$ are the proportions of infected tissue at times $t_1$ and 
 see \cite{van2013plant} Chapter 3. Importantly, both $I_1$ and $I_2$, and by extension the infection rate $r$,
 are measurable in laboratory conditions. 
 In Equation \ref{van-plank}, newly infected tissue becomes infectious immediately following infection.
-Realistically, infectious tissue (and symptom expression) takes time to develop, described by an incubation period.
+Realistically, infectious tissue (and symptom expression) takes time to develop, described by an `incubation period'.
 Accordingly, Van der Plank adapted Equation \ref{van-plank} to a delay differential equation (DDE):
 \begin{equation}
 \label{van-plank-incubation}
     \frac{dI_t}{dt} = RI_{t-p}(1 - I_{t})
 \end{equation}
-where $I_t$ and $I_{t-p}$ describe the infectious tissue at times $t$ and $t-p$. 
+where $I_t$ and $I_{t-p}$ describe the infectious tissue at times $t$ and $t-p$ and $p$ is the incubation period. 
 Hence, infectious tissue grows in response to the factor $R I_{t-p}$, and saturates
 according to the logistic term $(1 - I_t)$. The parameter $R$ now describes pathogen
 growth at step $t-p$, as opposed to $r$ that describes the spread of disease at step $t$, leading to the ratio:
@@ -127,10 +125,12 @@ and $R$ denotes the `basic' infection rate. As Plank explained, one usually seek
 to determine $R$ from the constant $r$. Assuming that $r$ indeed stays constant over the epidemic:
 the basic infection rate $R$ must decrease as $x_t/x_{t-p}$ gets progressively smaller as $x_{t-p}\rightarrow x_t $.
 At this point, the basic infection rate $R$ begins to resemble the effective reproduction ratio $R_e$
-from Equation \ref{eq:R0-effective}. Equation \ref{van-plank-incubation} describes a system where
+from Equation \ref{eq:R0-effective}. 
+
+Equation \ref{van-plank-incubation} describes a system where
 infections incubate for a period $p$ before inducing the growth of more infectious plant tissue.
 However, it does not describe the infectious period (where infected tissue remains before becoming epidemiologically inert),
-which lead Plank to extend the Equation \ref{van-plank-incubation} to follow:
+which lead Plank to extend Equation \ref{van-plank-incubation} to:
 \begin{equation}
 \label{van-plank-infectious-p}
     \frac{dI_t}{dt} = R_c(I_{t-p} - I_{t-i-p})(1 - I_{t})
@@ -141,8 +141,9 @@ More formally, as $I_{t-i-p} \rightarrow I_{t-p}$, the rate of infectious tissue
 
 \subsection{Contrasting approaches}
 
-The $SIR$ model does not include an incubation period, and therefore differs from the delayed differential formulation in Equation \ref{van-plank-infectious-p}.
-Nonetheless, the compartmentalised approach is easy to extend, leading to an $SEIR$ system:
+The $SIR$ model does not include an incubation period, and therefore differs from the delayed differential formulation 
+of Equation \ref{van-plank-infectious-p}. Nonetheless, the compartmentalised approach is easy to extend, leading to an 
+$SEIR$ system:
 \begin{align}
 \label{eq:SEIR-model1}
     &\frac{dS}{dt} = -\beta SI \\
@@ -164,40 +165,52 @@ the $SIR$ model proposed by \cite{kermack-model}, when the $SIR$ model incorpora
 The sporulation function appropriately models spore production in plant pathogens. 
 In particular, if $\phi(\tau) = 0$ for small $t$, $\phi(\tau)$ can model incubation periods. 
 Similarly, if $\phi(\tau) = 0$  for large $t$, we recover an infectious period. 
-
 More recently, \cite{time-varying-infectivity} simplified the analysis of \cite{segarra2001epidemic}, showing that 
 both Plank's DDE and the $SEIR$ model can be recovered with an $SE_nI_mR$ model.
-Both $n$ and $m$ represent an arbitrary number of exposed and infectious compartments:
+In an $SE_nI_mR$ framework, both $n$ and $m$ represent an arbitrary number of distinct exposed and infectious compartments:
 \[
     S\rightarrow E_1 \rightarrow E_2 \rightarrow ... \rightarrow E_n \rightarrow I_1 \rightarrow I_2 \rightarrow ... I_m
 \]
-In the trivial case, the $SEIR$ model is recovered when $n=1$ and $m=1$. However, when $n,m \rightarrow \infty$,
+Trivially, the $SEIR$ model is recovered when $n=1$ and $m=1$. However, when $n,m \rightarrow \infty$,
 \cite{time-varying-infectivity} demonstrated that we recover an expression equivalent to the DDE in Equation \ref{van-plank-infectious-p}.
-Despite the sameness of both DDE and $SEIR$ formulations, the overarching theme of modern epidemiological models is compartmental,
-owing to their increased flexibility and easier analysis.
+Despite the sameness of both DDE and $SEIR$ formulations, the overarching theme of modern epidemiology is overwhelmingly compartmentalised,
+owing to the increased flexibility and easier analysis of compartmental models.
 
 \subsection{Progressive botanical epidemiology}
 
-Hitherto, plant pathologists had been trained to research botanical disease mainly through laboratory experiments
-of infected tissue under the influence of various environmental conditions \cite{doi:10.1146/annurev.py.01.090163.000245}.
-This had utility and practicality for understanding microscopic biological interactions, however, experiments of this
-nature over scales ranging from individual plants, fields through to regions were untenable. With a new epidemiological
-insight, borrowing from different mathematical techniques, plant pathologists were now able to extend their research to
-account for the large-scale impact of diseases. 
-    
-% Early models : extensions of van der plank
-The next few decades where characterised by theoretical investigation into mathematical models of `plant epidemiology' and the adoption of computer simulations. The original framework by \cite{van2013plant} was applied to different pathosystems, halo blight in beans for example \cite{doi:10.1111/j.1744-7348.1979.tb06527.x}. Modifications of Eq (\ref{van-plank}) were made by \cite{sall1980epidemiology} in order to account for variations in the infection rate in grape powdery mildew by taking the infection rate to be a function of time $r(t)$. In addition, other mathematical techniques were reviewed for the purpose of modelling plant epidemiology. One such framework was multiple regression analysis see \cite{butt1974multiple} for a detailed review. The work of \cite{zadoks1979epidemiology} provided a consolidation of these early mathematical models of plant disease and expanded upon Van der Plank\textemdash a review of predominant models from this era was given by \cite{jeger1984use}.
-    
-\textcolor{red}{computational models incorporate more information regarding host-pathogen biological interactions} \textcolor{blue}{for a review on computational modelling see \cite{doi:10.1146/annurev.py.23.090185.002031}} Advances in plant epidemiology through this period were compounded by developments in computing. Improved accessibility and computer architectures permitted faster calculations and more intensive models. The first epidemic simulator written in FORTRAN IV came by \cite{waggoner1969epidem}. The simulator was named `EPIDEM' and modelled the spread of the fungal `Alternaria solani' effecting potatoes and tomatoes. The growth of infected tissue within leaves were considered under the influence of different environmental conditions. The ability to simulate more intricate models grew in proportion the amount of computer memory available \cite{zadoks1972methodology}
+After \cite{van2013plant} moved the field of botanical diseases into a more quantitative discipline,
+theoretical investigations (alongside the adoption of computer simulations) characterised the next few decades.
+Plank's DDE was applied to numerous pathosystems, halo blight in beans \cite{doi:10.1111/j.1744-7348.1979.tb06527.x} 
+and grape powdery mildew \cite{sall1980epidemiology} to name a few. In particuar, \cite{sall1980epidemiology} adapted Plank's
+logistic approach to include a time-varying infection rate $r(t)$. Moreover, diverse mathematical techniques, 
+including multiple  regression analysis, were incorporated into mainstream plant epidemiology \cite{butt1974multiple}. 
+Subsequently, \cite{zadoks1979epidemiology} consolidated various early mathematical models of plant disease 
+alongside \cite{jeger1984use}.
 
-An interesting early simulator `EPIMUL76' developed by \cite{zadoks1977role} adapted Van der Plank's logistic growth model into a spatio-temporal framework in two spatial dimensions. Simulations were conducted on a computer with $128\mathrm{K}$ of memory. The two dimensional domain was subdivided into $20\times 20$ host units named `compartments' (as such, this can be considered an agent-based model). \cite{zadoks1977role} eluded to the problem of scale; that is, compartments could represent different spatial scales, conceptualised as microscale ($\leq 1\mathrm{m}$), mesoscale ($10^2\mathrm{m}$) and macroscales ($10^6\mathrm{m}$). In this picture, microscales ranged from plant leafs through to individual plants, the mesoscales could be taken as fields of crops and the macro scales as large regional expanses over country-wide scale. The probability of dispersal between infected host units was assumed to follow the functional form of a Gaussian distribution\textemdash in contrast to \cite{doi:10.1146/annurev.py.06.090168.001201}.
+Developments in computing compounded advances in plant epidemiology through this period. 
+Improved accessibility and computer architectures permitted faster calculations and more intensive models. 
+The first epidemic simulator (EPIDEM) written in FORTRAN IV came by \cite{waggoner1969epidem}. 
+EPIDEM modelled the fungi `Alternaria solani' spreading through infected potato and tomato leaf tissue under different environmental conditions. 
     
+An interesting early simulator (EPIMUL76) developed by \cite{zadoks1977role} adapted Van der Plank's logistic growth model into a spatio-temporal framework of two spatial dimensions. 
+EPIMUL76 simulated the spread of disease on a two-dimensional domain, subdivided into $20\times 20$ host units referred to as `compartments', that took place inside a computer with $128\mathrm{K}$ of memory.
+Arguably, subdividing the domain into separate compartments could be considered as an
+agent-based model. 
+
+In their analysis, \cite{zadoks1977role} alluded to the problem of scale in plant disease, as spatial scales
+were conceptualised as microscale ($\leq 1\mathrm{m}$), mesoscale ($10^2\mathrm{m}$) and macroscales ($10^6\mathrm{m}$). 
+In this picture: microscales ranged from plant leaves to individual plants, the mesoscale as crop fields, and the macro scale
+as large regional expanses over a country-wide scale. Moreover, the probability of dispersal between infected hosts assumed a
+Gaussian distribution\textemdash in contrast to \cite{doi:10.1146/annurev.py.06.090168.001201}.
+In general, the ability to simulate more intricate models grew in proportion to the amount of computer memory available.
+For a review of early plant disease simulators, see \cite{doi:10.1146/annurev.py.23.090185.002031}.
+
 \section{Epidemic stochasticity}
 
 The spread of disease inherently takes the form of a stochastic process, whereby an epidemic unexpectedly arises and quickly cease, seemingly out of the blue. In order to capture the spread of disease, stochastic effects cannot be overlooked... 
 
 \begin{itemize}
-    \item Motivate this chapter based on the determinism of \cite{kermack-model} and \cite{van1999pandemics}
+    \item Motivate this Chapter based on the determinism of \cite{kermack-model} and \cite{van1999pandemics}
     \item Explain why stochastic is an essential part of epidemics
     \item How do you collect results of a stochastic model ? Ensemble averaging
 \end{itemize}
@@ -214,7 +227,7 @@ The original formulation of percolation theory was first used to describe proper
 
 Different flavours of percolation models, such as, site or bond percolation were described to model different processes. Percolation proved a convenient theory and various phenomena including, gelation, magnetism and telecommunications were described \cite{trove.nla.gov.au/work/26493727}. Interestingly, forest fires were also applicable to a description within percolation theory \cite{MacKay_1984}. This was a short conceptual jump from time-dependant percolation used to study the growth of crystals \cite{Family_1985}. 
 
-A fire spreading through a population of trees is not to dissimilar to a disease spreading through a population. This lead to a general epidemic-formalisation within percolation-based framework when \cite{pub.1059067807} argued that epidemics were in the same universality class as percolation. It is alluring to remark how modelling the same processes with different microscopic interactions (e.g. different lattice geometries) lead to the macroscopic behaviour should they have the same universality class\textemdash see chapter \ref{fig:ch3-perc-invariance} for more information.
+A fire spreading through a population of trees is not to dissimilar to a disease spreading through a population. This lead to a general epidemic-formalisation within percolation-based framework when \cite{pub.1059067807} argued that epidemics were in the same universality class as percolation. It is alluring to remark how modelling the same processes with different microscopic interactions (e.g. different lattice geometries) lead to the macroscopic behaviour should they have the same universality class\textemdash see Chapter \ref{fig:ch3-perc-invariance} for more information.
 
 Beginning with a simple $SIR$ framework put forward by \cite{kermack-model}, the field of epidemiology was already well established around the time percolation theory was conceived \cite{baily1975mathematical}. In particular, initial assumptions about population mixing could be relaxed with more elaborate spatial-contact models, naturally, percolation theory could serve as a useful tool when developing spatially-structured epidemic models.
 
