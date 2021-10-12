@@ -1,53 +1,53 @@
-\chapter{Constructing landscape-level $R_0$-maps}
+\chapter{Constructing $R_0$-maps over Great Britain}
 \label{ch:6-adb}
 
-Previously in chapter \ref{ch5:dispersal-model}, we considered a generic $SIR$-based non-local dispersal model (NLM) that spread via a Gaussian dispersal. 
+In the last Chapter, we considered a generic $SIR$-based non-local dispersal model (NLM) that spread via a Gaussian dispersal. 
 The NLM resolved the major problem witnessed in section \ref{fig:ch4_uk_spread}, 
 namely, the failure of the percolation-based model to spread on a realistic host density. 
-However, Chapter \ref{ch5:dispersal-model} and the NLM lacked biological specificity.
-The present chapter aims to construct a simplified $SEIR$ model of ash dieback capturing only the essential dynamics of wind-borne dispersal.
+However, Chapter \ref{ch5:dispersal-model} and the NLM lacked biological specificity. 
+Therefore, the present Chapter presents a simplified $SEIR$ model of ash dieback capturing only the essential dynamics of wind-borne dispersal.
 Ash dieback (ADB), caused by the fungus \textit{Hymenoscyphus fraxineus}, poses a threat to the survival of European ash (\textit{F. excelsior})\textemdash
 the reader is referred to section \ref{ch2:ash-dieback} for a more in-depth discussion of ADB symptoms, life-cycle and management.
 
-In section \ref{sec:seir-model}, a seasonal-based $SEIR$-like model is developed to simulate the natural wind-dispersal mechanism of ash dieback at local-spatial scales. 
-The $SEIR$ model is then examined in section \ref{sec:seir-behaviour}, before outlining an effective reproduction number in section \ref{sec:SEIR-R0-definition}.
-Then, in section \ref{sec:r0-map-construct} a framework is developed to spatially-scale up the local-scale model over Great Britain (GB) using a modelled ash canopy cover data-set \cite{hill.data}.
-The framework is mainly generic, and could in principle, be adapted for any dispersal-based tree pathosystem\textemdash provided that a sufficient host abundance data-set is available.
-Combining two models at different spatial scales has clear analogies to a sub-grid model \cite{sub-grid}.
- 
-A spatially explicit reproductive ratio, denoted by $R_0$, is computed from model simulations to measure invasiveness.
-Critically, the wind-dispersal model of ADB relies on $R_0$  measured over an appropriate spatio-temporal scale.
-The value of $R_0$ is projected onto the map of ash canopy cover data-set given by \cite{hill.data}.
-From an $R_0$-map, a simplified notion of epidemic impact can be visualised through an '$R_0$-cluster' over the ash population.
+In section \ref{sec:seir-model}, a seasonal-based $SEIR$-like model is developed to simulate the natural wind-dispersal mechanism of ADB at local-spatial scales. 
+Next, section \ref{sec:seir-behaviour} examines the general pattern of epidemic spread in the $SEIR$ model before section \ref{sec:SEIR-R0-definition} 
+outlines a formal definition of an effective reproduction number to measure pathogen invasiveness. 
+The effective reproduction number is spatially explicit and based on the same contact-traced method presented in Chapter \ref{ch5:dispersal-model}.
+Critically, the wind-dispersal model of ADB rests on $R_0$ measured over an appropriate spatio-temporal scale.
 
-The local-scale epidemic model demonstrates that long-distance dispersal (LDD) and long-term survival (i.e. persistence)  
-can occur even below the threshold $R_0=1$.
-Additionally, model analysis at the landscape-level reveals the size of susceptible $R_0$-clusters grow most rapidly over a narrow range of infectivity parameters.
-The result of this chapter presents how the epidemic scale can vary significantly with slight deviations of epidemic parameters, 
-thus supporting the call for a risk-based approach to modelling the spread of epidemics in tree populations.
+Lastly, in section \ref{sec:r0-map-construct} a framework is developed to spatially-scale $R_0$ values over Great Britain (GB) using a modelled ash canopy cover data-set \cite{hill.data}. 
+In effect, this means embedding $R_0$ values from a small-scale epidemic model inside each pixel of an extensive host data set spanning GB, 
+thus coupling two models at different spatial scales.\footnote{In general, combining two models at different spatial scales has clear analogies to a 
+sub-grid model \cite{sub-grid}, or more recently, a metapopulation-like model \cite{GRENFELL1997395}.} 
+Fundamentally, projecting $R_0$ values onto a map of ash densities permits the visualisation of epidemic impact over GB.
+The framework is generic and adaptable to any dispersal-based pathosystem, provided a sufficient host density data-set.
+
+The local-scale epidemic model demonstrates that long-distance dispersal (LDD) and long-term survival 
+can occur even below the threshold $R_0=1.0$. In addition, analysis at the landscape-level covering GB reveals 
+that susceptible clusters of ash grow most rapidly over a narrow range of infectivity parameters, 
+presenting behaviour akin to an epidemic phase transition. Finally, the method developed in this Chapter demonstrates how the epidemic scale can vary significantly, 
+albeit with minor epidemic parameter variations. Together, these observations support the call for a risk-based approach to modelling the spread of epidemics in tree populations.
 
 \section{A spatially-explicit seasonal $SEIR$ model}
 \label{sec:seir-model}
 
-In this chapter, only the `teleomorphic' sexual reproduction of \textit{H. fraxineus} is reflected in the $SEIR$ model.
-Sexual reproduction of ADB occurs when wind-dispersed ascospores land on ash leaves.
-The sexual reproductive mode of ADB is highly seasonal and subject to natural (and anthropomorphic) long-distance dispersal \cite{grosdidier2018tracking} and 
-widely accepted as the dominant driver of disease-spread \cite{https://doi.org/10.1111/ppa.12844, havnavckova2017direct, gross2012reproductive, Timmermann2011elal},
-Although, some research suggests the asexual component may have contributed to driving the current epidemic in Europe \cite{fones2016role}.
+\textit{H. fraxineus} has two modes of reproduction, sexual and asexual (teleomorphic and anamorphic, respectively).
+As some research suggests, the asexual element may have contributed to the European epidemic \cite{fones2016role}. 
+Although the sexual reproductive mode of ADB is widely acknowledged to be the dominant driver of disease-spread 
+\cite{https://doi.org/10.1111/ppa.12844, havnavckova2017direct, gross2012reproductive, Timmermann2011elal}.
+Subsequently, only the sexual reproduction of \textit{H. fraxineus} is reflected in the $SEIR$ model.
 
-The precise reproductive mode presents an interesting modelling scenario: leaves and trees could both be argued to host the pathogen \textit{H. fraxineus}.
-As such, ash leaf litter is assumed to fall close to infected ash.
-This way, both tree and shed leaves are located at the same lattice position.
-A more elaborate treatment could aim to include a non-local leaf-fall dispersal kernel\textemdash well-known to researchers studying forest health, and ecosystems \cite{staelens2003model}.
-For example, the spatial pattern of leaf-fall dispersal has been collected and modelled for oak, beech, hornbeam and birch \cite{nickmans2019modelling};
-leaf-fall for these species typically peak close to the tree trunk, and leaf dispersal rarely exceeds $30\mathrm{m}$.
-Although, similar work on ash appears absent in the literature.
-
-Despite a well-researched sexual reproductive mode and the widely known seasonal life-cycle of ADB, epidemic parameters are rarely published.
-A lack of epidemic parameters (e.g. infectivity rates) possibly relate to the immerse difficulty in quantifying a time-varying infectivity \cite{13-challenges}.
-Therefore, an essential theme in this chapter emphasises modelling a system with epidemiological uncertainty, 
-as noted by well-known literature \cite{13-challenges, WEBIDEMICS}.
-For the model presented in this chapter, epidemic uncertainty requires analysis over the parameter-space of infectivity.
+The entire sexual reproductive cycle occurs on ash leaves, yet the fungus will spread through ash hosts once infected. 
+Accordingly, the precise sexual reproductive mode presents a peculiar modelling scenario where both leaves and trees can be argued
+to host the pathogen \textit{H. fraxineus}. 
+Typically, leaf dispersal emanating from a large deciduous tree species (such as \textit{H. fraxineus}) remains close to the tree 
+trunk and rarely exceeds $30\mathrm{m}$ \cite{nickmans2019modelling}. Hence, leaf litter is assumed to fall close to infected ash, 
+allowing both trees and their litterfall to be treated at the same lattice position. 
+A more intricate model of ADB could aim to relax this assumption and aim to treat leaf-shed and trees separately by including leaf-fall dispersal kernel\footnote{
+    Patterns of leaf fall are vital for ecosystem nutrient recycling \cite{staelens2003model}. 
+    As such, leaf-fall dispersal kernels have been collected (and modelled) for oak, beech, hornbeam and birch \cite{nickmans2019modelling}.
+Despite a detailed search, no such dispersal kernel for ash could be found.
+}
 
 \subsection{Infection dynamics}
 \label{sec:infection-dynamics}
