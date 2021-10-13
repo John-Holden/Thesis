@@ -32,61 +32,71 @@ albeit with minor epidemic parameter variations. Together, these observations su
 \label{sec:seir-model}
 
 \textit{H. fraxineus} has two modes of reproduction, sexual and asexual (teleomorphic and anamorphic, respectively).
-As some research suggests, the asexual element may have contributed to the European epidemic \cite{fones2016role}. 
+As some research suggests, the asexual element has contributed to the European epidemic \cite{fones2016role}. 
 Although the sexual reproductive mode of ADB is widely acknowledged to be the dominant driver of disease-spread 
 \cite{https://doi.org/10.1111/ppa.12844, havnavckova2017direct, gross2012reproductive, Timmermann2011elal}.
 Subsequently, only the sexual reproduction of \textit{H. fraxineus} is reflected in the $SEIR$ model.
 
 The entire sexual reproductive cycle occurs on ash leaves, yet the fungus will spread through ash hosts once infected. 
-Accordingly, the precise sexual reproductive mode presents a peculiar modelling scenario where both leaves and trees can be argued
+As such, the precise sexual reproductive mode presents a peculiar modelling scenario where both leaves and trees can be argued
 to host the pathogen \textit{H. fraxineus}. 
-Typically, leaf dispersal emanating from a large deciduous tree species (such as \textit{H. fraxineus}) remains close to the tree 
-trunk and rarely exceeds $30\mathrm{m}$ \cite{nickmans2019modelling}. Hence, leaf litter is assumed to fall close to infected ash, 
-allowing both trees and their litterfall to be treated at the same lattice position. 
-A more intricate model of ADB could aim to relax this assumption and aim to treat leaf-shed and trees separately by including leaf-fall dispersal kernel\footnote{
+Typically, leaf dispersal emanating from a large deciduous tree species (such as \textit{H. fraxineus}) remains close
+to the tree trunk and rarely exceeds $30\mathrm{m}$ \cite{nickmans2019modelling}. Hence, leaf litter is assumed to fall close
+to infected trees to treat both ash hosts and infected litterfall at the same lattice position in the model. 
+A more intricate model of ADB could aim to relax this assumption and describe autumn leaf-shed with a suitable leaf-fall dispersal kernel\footnote{
     Patterns of leaf fall are vital for ecosystem nutrient recycling \cite{staelens2003model}. 
-    As such, leaf-fall dispersal kernels have been collected (and modelled) for oak, beech, hornbeam and birch \cite{nickmans2019modelling}.
-Despite a detailed search, no such dispersal kernel for ash could be found.
-}
+    Leaf-fall dispersal kernels have been collected (and modelled) for oak, beech, hornbeam and birch \cite{nickmans2019modelling},
+    although despite a detailed search, no such dispersal kernel for ash could be found.
+}.
 
 \subsection{Infection dynamics}
 \label{sec:infection-dynamics}
 
-The infection dynamic comprises four states: susceptible $S$, latently infected $E$, infectious $I$ and removed $R$, and transitions occur through $S\rightarrow E \rightarrow I \rightarrow R$, without the possibility of recovery. Figure \ref{fig:SEIR-transitions} shows a typical scenario, an infected ash tree in the $n^{th}$ cycle (or equivalently $n$ years after the initial outbreak) may infect ash in the $S$ compartment. 
-Newly infected ash transition into the $n^{th}$ $E$ compartment, denoted by $E_n$, and become infectious in the following year $I_{n+1}$. The distribution of susceptible ash is described by the same flat randomly distributed population of trees used previously in chapters 3-5.
+The infection dynamic comprises four states: susceptible $S$, latently infected $E$, infectious $I$ and removed $R$
+that transition through $S\rightarrow E \rightarrow I \rightarrow R$ without the possibility of recovery.  
+Figure \ref{fig:SEIR-transitions} shows a typical scenario where an infected ash tree in the $n^{th}$ cycle (or equivalently $n$ 
+years after the initial outbreak) can infect ash in the $S$ compartment. A newly infected ash transitions into the $n^{th}$ $E$ compartment at time $t$, 
+denoted by $E_n$, and becomes infectious in the following year $I_{n+1}$. The distribution of susceptible ash is described by 
+the same flat randomly distributed population of trees used previously in chapters 3-5.
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.40]{chapter6/figures/fig1-seir-transitions.pdf}
-    \caption{The seasonal $SEIR$ model of ADB. (a) In year $n$ of an outbreak, an infectious tree may cause a transition $S\rightarrow E_n$ during summer, depicted by the bottom dashed grey arrow. A tree that becomes latently infected in year $n$ will lead to an infectious tree in year $n+1$. Eventually, all infected ash are removed without the possibility of recovery. (b) The yearly cycle of the pathosystem ADB. Leaf-flush coincides with the sporulation season. Sporulating fruiting bodies release ascospores between June-September. Ash shedding takes place from late summer-early winter. }
+    \caption{The seasonal $SEIR$ model of ADB. (a) In year $n$ of an outbreak, an infectious tree may cause a transition $S\rightarrow E_n$ during summer, 
+             depicted by the bottom dashed grey arrow. A tree that becomes latently infected in year $n$ will lead to an infectious tree in year $n+1$. 
+             Eventually, all infected ash are removed without the possibility of recovery. 
+             (b) The yearly cycle of the pathosystem ADB. Leaf-flush coincides with the sporulation season. 
+             Sporulating fruiting bodies release ascospores between June-September. Ash shedding takes place from late summer-early winter.}
     \label{fig:SEIR-transitions}
 \end{figure}
 
-Each lattice point in the $L\times L$ domain is chosen to represent a $5\mathrm{m}\times5\mathrm{m}$ patch of land that approximates the canopy cover of an average ash tree
-\textemdash although young saplings typically assume less area. 
-A domain resolution of $5\mathrm{m}\times5\mathrm{m}$ yields an upper bound of $400$ ash trees per hectare of canopy cover, indicative of some densely populated ash stands \cite{ash-tree2, ash-tree1}. % CHECK!
+Here, each lattice point in the $L\times L$ domain is chosen to represent a $5\mathrm{m}\times5\mathrm{m}$ patch of land
+that approximates the canopy cover of an average ash tree\textemdash although young saplings usually assume less area. 
+A domain resolution of $5\mathrm{m}\times5\mathrm{m}$ yields an upper bound of $400$ ash trees per hectare of canopy cover, 
+indicative of densely populated ash stands \cite{ash-tree2, ash-tree1}.
 
 \subsubsection{Transitions: $S\rightarrow E_n$}
 
-Individual tree-to-tree interactions are modelled as a system of particles\textemdash discussed in chapter \ref{ch5:dispersal-model}.
+Individual tree-to-tree interactions are modelled as a system of particles (introduced previously in Chapter \ref{ch5:dispersal-model}).
 Transitions from $S$ to $E$ involve two components: a time-varying infectivity $\beta\phi(t)\in [0, 1]$ and dispersal function $D(r; \ell)\in [0, 1]$.
 A thin-tailed Gaussian was considered alongside a normalisable fat-tailed inverse power law distribution to model dispersal.
-
-In year $n$, ash located at position $x$ may transition into the exposed category under the influence of infected ash located at $x^\prime$, denoted by $S_x \rightarrow E_{x,n}; I_{x^\prime, n}$.
-The probability of transition follows:
+We assume that in year $n$, ash located at position $x$ can transition into the exposed category under the influence of infected
+ash located at $x^\prime$, denoted by $S_x \rightarrow E_{x,n}; I_{x^\prime, n}$.
+For an infected tree that remains infectious during the step $t\rightarrow t + \delta t$, the probability of transition follows:
 \begin{equation}
     Pr(S_{x} \rightarrow E_{x,n} ;\ I_{x^{\prime}, n} ) = \beta  \phi(t) D(r;\ell)
 \end{equation}
-where $r$ is the distance between $x$ and $x^{\prime}$, and $\phi(t)$ is a time-dependant function reflecting the seasonal life-cycle of ADB, henceforth referred to as the \textit{sporulation function}.
-As explained in chapter \ref{ch5:dispersal-model}, transition probabilities are computed for each step a host remains infectious.
+where $r$ is the distance between $x$ and $x^{\prime}$, and $\phi(t)$ is a time-dependant function reflecting the seasonal life-cycle of ADB, 
+henceforth referred to as a \textit{sporulation function}. Following the method outlined in Chapter \ref{ch5:dispersal-model}, 
+transition probabilities are calculated at each time-step, taken to be days, while trees are infectious.
 
 \begin{table}
 \centering
     \includegraphics[scale=0.3]{chapter6/figures/fig-phi-disp.pdf}
-\begin{tabular}{  p{2.3cm}  p{10cm}  p{3.cm} }
-\multicolumn{3}{c}{Infection models} \\
+\begin{tabular}{ m{2.3cm}  m{7cm}  m{4.cm} }
+ \\
  \hline
- Model name &  $Pr(S_{x} \rightarrow E_{x,n}; I_{x^{\prime}}) \in [0, 1]$ & $\beta^*$ factor\\
+ Model name &  \hspace{3em} $Pr(S_{x} \rightarrow E_{x,n}; I_{x^{\prime}}) \in [0, 1]$ & \hspace{2em} $\beta^*$ factor\\
  \hline
  1: $\phi_1$-ga & 
  \[= \left\{
@@ -94,24 +104,38 @@ As explained in chapter \ref{ch5:dispersal-model}, transition probabilities are 
       \beta  \exp\Big[-\frac{r^2}{\ell^2_{ga}}\Big] &  t \in [\mathrm{June, September}] \\
       0 & \mathrm{otherwise} \\
 \end{array} 
-\right. \] & $\frac{1}{T} \frac{1}{\pi\ell_{ga}^2}$  \\
+\right. \] & 
+\[ 
+\frac{1}{T} \frac{1}{\pi\ell_{ga}^2}
+\]  \\ \\
  2: $\phi_1$-pl & 
  \[   = \left\{
 \begin{array}{ll}
       \beta  \big[1 + \frac{r}{\ell_{pl}}\big]^{-a}  &  t \in [\mathrm{June, September}] \\
-      0 & \mathrm{otherwise} \\
+      0 & \mathrm{otherwise}
 \end{array} 
-\right. \] & $\frac{1}{T} \frac{(b-1)(b-2)}{2\pi\ell_{pl}^2}$  \\
+\right. 
+\] 
+& 
+\[
+\frac{1}{T} \frac{(b-1)(b-2)}{2\pi\ell_{pl}^2}\]
+\\
 3: $\phi_2$-ga & 
-  \[  =  \beta \exp\Big[-\frac{(t - T_{SP})^2}{2\sigma_{SP}^2}\Big] \exp\Big[-\frac{r^2}{\ell^2_{ga}}\Big]
+\[ 
+  =  \beta \exp\Big[-\frac{(t - T_{SP})^2}{2\sigma_{SP}^2}\Big] \exp\Big[-\frac{r^2}{\ell^2_{ga}}\Big]
 \]  
-  & $ \frac{1}{\sqrt{2\pi}\sigma_{SP}} \frac{1}{\pi\ell_{ga}^2}$ \\
-  && \\
+  & 
+\[ 
+\frac{1}{\sqrt{2\pi}\sigma_{SP}} \frac{1}{\pi\ell_{ga}^2}\]
+\\
 4: $\phi_2$-pl & 
-  \[ =  \beta \exp\Big[-\frac{(t - T_{SP})^2}{2\sigma_{SP}^2}\Big] \big[1 + \frac{r}{\ell_{pl}}\big]^{-a}
+  \[ 
+  =  \beta \exp\Big[-\frac{(t - T_{SP})^2}{2\sigma_{SP}^2}\Big] \big[1 + \frac{r}{\ell_{pl}}\big]^{-a}
 \]  
-  & $ \frac{1}{\sqrt{2\pi}\sigma_{SP}} \frac{(b-1)(b-2)}{2\pi\ell_{pl}^2}$ \\
-   && \\
+  & 
+\[ 
+\frac{1}{\sqrt{2\pi}\sigma_{SP}} \frac{(b-1)(b-2)}{2\pi\ell_{pl}^2}\]
+\\
  \hline
  \end{tabular}
   \caption{Four infection models are considered, composed of either: Gaussian (ga) or inverse power law (pl) dispersal, and step function ($\phi_1$) or peaked ($\phi_2$) sporulation. All component functions yield values in the interval $[0, 1]$ and are normalisable. The corresponding model parameters are shown below in Table \ref{tab:SEIR-model}. 
@@ -149,34 +173,44 @@ The sporulation function $\phi$ dictates when infectious trees in $I_n$ produce 
 For ADB, sexual reproduction repeats yearly from June to September during its \textit{`sporulation season'}.
 As such, $\phi$ is non-zero during the sporulation period.
 Two sporulation functions are considered, $\phi_1$ and $\phi_2$, based on the step function and normal distribution, respectively.
-Sporulation is the topic of section \ref{ch6:sporulation} below, alongside the precise functional form of $\phi_1$ and $\phi_2$.
+Sporulation is developed later in section \ref{ch6:sporulation}, alongside the precise functional form of $\phi_1$ and $\phi_2$.
 Altogether there are four infection models, summarised in table \ref{tab:model-variants}.
 
 Once in the $E$ compartment, trees are infected but not infectious, i.e. latently infected.
-For example, ash infected with \textit{H. fraxineus} take approximately two weeks to display symptoms \cite{https://doi.org/10.1111/ppa.12048, https://doi.org/10.1111/ppa.12844},
+For example, ash infected with \textit{H. fraxineus} take approximately two weeks to display 
+symptoms \cite{https://doi.org/10.1111/ppa.12048, https://doi.org/10.1111/ppa.12844},
 and start to shed infectious leaves in following autumn after infection \cite{gross2014h}.
-The compartments $(E_1, E_n,..,E_n)$ represent the same biological state of latently infected, the index $n$ is merely included for convenience to highlight the fact that in this model, it takes latently infected ash takes approximately one year to start producing new secondary infections during the $(n+1)^{th}$ sporulation peak.
+The sub-compartments $(E_1, E_2,..,E_n)$ represent the same biological state of latently infected,
+the index $n$ is merely included for convenience to highlight the fact that in this model, 
+the mean latent period is one year and new secondary infections are produced during the $(n+1)^{th}$ sporulation peak\textemdash as elaborated in section \ref{sec:En-In+1} below.
 
 \subsubsection{Transitions: $E_n\rightarrow I_{n+1}$}
+\label{sec:En-In+1}
 
-As defined here, latently infected ash in $E_n$ transitions into the infectious compartment, $I_{n+1}$, at the first onset of seasonal leaf shedding between autumn and winter.
-Infected ash disperse infectious leaf litter each year following infection until its eventual demise;
-this dynamic assumes that all ash are susceptible and that leaf infection spreads to the ash xylem with perfect fidelity. 
+As defined here, latently infected trees (in $E_n$) transition into the infectious compartment ($I_{n+1}$) during their 
+first seasonal leaf shedding following infection, between autumn and winter.
+Then, infected ash trees disperse infectious leaf litter each year following infection until its eventual demise. 
+This dynamic assumes that all ash are susceptible and \textit{H. fraxineus} spreads to the xylem after infecting ash leaves.
 In reality, a variety of genetic and environmental factors determine the ability of ADB to invade an ash\footnote{
-The pathogen \textit{H. fraxineus} can infect ash leaves regardless of tolerance. However, only the minority of tolerant individuals can prevent inoculum from spreading to the xylem.}.
+The pathogen \textit{H. fraxineus} can infect ash leaves regardless of tolerance. 
+However, only the minority of tolerant individuals can prevent inoculum from spreading to the xylem.}.
 
 A Gaussian distribution represents the onset of ash leaf-shed, and therefore the transition $E_n\rightarrow I_{n+1}$.
-The distribution is centred in November, $T_{LS},$ with a two-week standard deviation $\sigma_{LS}$.
-Centring the normal distribution in mid-November, with a two-week standard deviation, ensures that the earliest possible onset of leaf-shed (described by the left-hand tail) begins in September.
+Leaf-shed repeats yearly, centred in mid-November (denoted by $\sigma_{LS}$) with a two-week standard deviation ($\sigma_{LS}$) 
+and repeats yearly. Centring the normal distribution in mid-November, with a two-week standard deviation, ensures that the earliest
+possible onset of leaf-shed (described by the left-hand tail) begins in September.
 In the field, the timing of ash shedding their leaves is more complicated and depends on tree age. 
-Observations by \cite{hietala2013invasive} suggest that younger ash begin to defoliate in late August, while large dominant ash starts to shed in early October.
+Observations by \cite{hietala2013invasive} suggest that younger ash begin to defoliate in late August,
+while large dominant ash starts to shed in early October.
 
-Despite a thorough search, litter-fall rates for ash appear to be unknown, so choosing a normal distribution centred in mid-November with a two-week standard deviation is ultimately ill-informed.
-Notwithstanding, the normally distributed form of leaf-shedding is supported by observations of leaf litter-fall in deciduous forest \cite{zhang2014seasonal, dixon1976analysis}, 
-which typically follow peaked distributions that repeat yearly.
-Moreover, research conducted on wetland forests in South Carolina has demonstrated that the temporal pattern of litter-fall peaks yearly between August and November, albeit with some variation \cite{shure1985litter}.
-That said, within the $SEIR$ model a the time delay exists between transition $E_n \rightarrow I_{n+1}$ in autumn/winter and the sporulation function $\phi(t)$ becoming sufficiently large in summer;
-so we can afford some degree of flexibility in the exact time scale.
+Despite a thorough search, research on ash litterfall distributions appears absent from the literature, 
+so choosing a normal distribution centred in mid-November with a two-week standard deviation is ultimately ill-informed. 
+Nevertheless, selecting a normal distribution is supported by observations of leaf litter-fall in deciduous 
+forest \cite{zhang2014seasonal, dixon1976analysis}, which typically follow peaked distributions that repeat yearly\footnote{
+    For example, research conducted on wetland forests in South Carolina demonstrates that the temporal pattern of litter-fall
+    peaks yearly between August and November, albeit with some variation \cite{shure1985litter}.}
+That said, within the $SEIR$ model, a time delay exists between transition $E_n \rightarrow I_{n+1}$ in autumn/winter and the 
+sporulation function $\phi(t)$ becoming sufficiently large in summer; so we can afford some degree of flexibility in the exact time scale.
 From a mathematical standpoint, provided that latently infected ash transitions into the infected compartment before the sporulation season,
 the epidemic spread in this model will remain the same.
 
