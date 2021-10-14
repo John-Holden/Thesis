@@ -328,15 +328,90 @@ Surprisingly, for later generations the degree of inflexion for $R_0^{(4)}$-$R_0
 \chapter{Seasonal $SEIR$ model of Ash dieback}
 
 \label{section:ga-SEIR-variant}
-\begin{itemize}
-    \item The Gaussian and inverse power-law models are distinct and could be considered to have different infecitivity parameters $\beta_{ga}$ and $\beta_{pl}$k.
-\end{itemize}
 
 \section{Connected component analysis}
+\label{a:CCA}
+\textcolor{red}{Update this}
 
-\blindtext
+As discussed earlier, identifying the different clusters is a key part of the analysing the systems’ behaviour, 
+allowing further analysis of a variety of properties to take place. 
+In order to distinguish between different clusters, a cluster multiple labelling algorithm can be used. 
+Within Matlab this has been encapsulated by the in-built bwconncomp function. 
+The functionality of bwconncomp requires two main pieces of information, the object/image to be analysed and the type of connectivity used, which in this case is 4-connectedness
+The object/image to be analysed needs to be in the form of a binary matrix. 
+This requirement is immediately fulfilled here through the implementation of the occupation probability, p, which identifies which sites are occupied and unoccupied.
+However this is not always the case. 
+Through this, a binary matrix is produced with the occupied sites being represented by a 1 and unoccupied represented by a 0. 
+Having established this, the cluster multiple labelling algorithm can be performed.
 
-\blindtext
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.55]{appendix/figures/CCA-Flow.pdf}
+    \caption{Flowchart describing the cluster labelling algorithm.}
+    \label{fig:my_label}
+\end{figure}
+
+\newpage
+
+The bwconncomp function performs the following steps to find the connected sites within the binary matrix:
+\begin{enumerate}
+    \item Search for the next unlabelled site, i.
+    \item Perform a flood-fill algorithm to label all the sites connected to site i.
+    \item Repeat steps 1 and 2 until all sites are labelled.
+\end{enumerate}
+
+The algorithm then produces a structure which contains details on the type of connectivity used, 
+the size of the image that has been analysed, the number of clusters found within the object (i.e. system) and the size of each cluster. 
+Using this information, a new matrix can be assigned to be the matrix containing labelled clusters and a new variable can detail the cluster sizes. 
+The output of this is a symbolic image showing each cluster labelled with a unique integer number. 
+Through this, all of the sites contained within this cluster have the same unique integer label.
+
+The algorithm is performed column by column and starts the sweep from the top left-most column. 
+There are two preliminary variables that are created to store the number of clusters in the system and the size of each cluster found. 
+Both of these are displayed in the structure that is outputted by bwconncomp. 
+These variables are two one-dimensional arrays, denoted here by Cs and Cl which represent the cluster sizes and the cluster numbers respectively. 
+Using these two variables and the occupancy of sites, the methodology of the algorithm is described in the flowchart shown in Figure 3.1.
+
+$\mathbf{C_s}$ and $\mathbf{C_l}$ are an integral part of the labelling process but are used in fundamentally different ways.
+$\mathbf{C_l}$ is used to label each occupied site using the following method:
+
+\begin{itemize}
+    \item If both sites to the north and west of the occupied site i are unoccupied, 
+    i.e. it has an entry of 0, then site i is given the current index of $\mathbf{C_l}$ . 
+    This index is set to 1 at the beginning of the algorithm and is increased upon finding a new cluster.
+    \item If the site to the north OR the west of the occupied site i are occupied, i.e. 
+    it doesn’t have an entry of 0, the site i is assigned the label of the occupied site.
+    \item If both sites to the north and west of the occupied site i are occupied, then site i and the site to north of site 
+    i are both assigned the label of the site to the west of site i.
+\end{itemize}
+
+Through the use of $\mathbf{C_l}$ , the label $j$ $(j = 1,2,3,...)$ of each site can be found through satisfying $\mathbf{C_l}(j) = j$ 
+The label for each site i that will be stored in $\mathbf{C_l}$ is identified using the following argument. 
+First, let the original entry of site $(i − 1)$ be j1 and the label assigned to site $(i − 1)$ be $j_2$. 
+Then for site $i$, the following values can be assigned: $\mathbf{C_l}(j1) = j_2 and \mathbf{C_l}(j2) = j_2$.
+Hence, resulting in $j_2$ being stored as the label for site $i$. Having established the uses of $\mathbf{C_l}$, the uses of $\mathbf{C_s}$ will now be explored.
+
+$\mathbf{C_s}$ is used to store the different cluster sizes. In order to do this, whenever an occupied site is assigned a label, 
+the corresponding entry of Cs is increased by one. In the case where both the sites to the north and west of site $i$ are occupied 
+but have different labels, it is necessary to merge the two clusters together and ensure all sites have identical labels. 
+To do this, the size of the cluster that has the same label as the entry of the site to the north of $i$, is
+added to the size of the cluster that has the same label as the site to the west of $i$. The size of the cluster corresponding to the site
+north of $i$ is then zeroed out. Repeating this method allows the algorithm to perform a complete sweep. 
+This provides an accurate labelling of all occupied sites and the size of all the clusters too. Due to this, only one sweep of the
+algorithm is necessary \cite{hoshen1976percolation}.
+
+Using the bwconncomp function creates an efficient way of labelling multiple clusters relatively quickly. 
+An example of the labelled cluster output for p = 0.5 is shown in \textcolor{red}{Figure 3.2}. 
+The output of the algorithm produces easily distinguishable clusters whilst providing data that can be analysed further in a variety of ways. 
+This demonstrates the importance of a cluster multiple labelling algorithm (or connected component labelling technique) within many applications, 
+be this in percolation theory or other areas of research. 
+One of the main complications of using this method is the computational cost that accompanies it. 
+We will now go on to explore how this has affected choosing the size of the system to analyse.
+
+% \subsection{CCA Computation cost}
+
+
+% Cluster multiple labelling techniques are computationally expensive to operate. The com- pletion time of this algorithm is commonly found to be critical in the feasibility of a given algorithm. The algorithm, discussed in more detail in Section 3.2.1, works by assigning a label to an occupied site and attempting to propagate the label to the site’s east and south neighbours [11]. The time taken to perform a full sweep varies dependent on the size of the system, denoted by L, number of clusters and the size of clusters found in the system. Note that the latter two directly depend on the value of p. To demonstrate the effect of changing these two factors (i.e. size and p), the time taken for the foundation code to run has been measured and recorded in Table 3.1. These measurements were obtained using the same machine, as the results are deterministic of the machine used. This provides a realistic representation of how the time scales as the system size, L, is increased. The foundation code consists of the following steps: assigning a matrix size, generating the matrix, and applying the occupation probability p, running the bwconncomp function, creating the labelled cluster matrix and extracting the cluster size information from the output.
 
 
 \chapter{Towards landscape-level control}
