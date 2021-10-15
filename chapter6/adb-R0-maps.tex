@@ -227,7 +227,7 @@ Therefore, we assume an eventual transition to the $R$ compartment once an ash t
 As mentioned above, the picture is more complex in reality. 
 For example, stress-free trees in urban settings can survive for long periods if pruned \cite{marciulyniene2017can}, and a low minority of healthy tolerant trees can fight off the infection.
 Additionally, other outlying edge-cases can contradict this assumption, including
-laboratory experiments that have shown leaf-shed can result before the infection has the chance to spread through to the petiole following \textit{`massive ascospore inoculation'} \cite{https://doi.org/10.1111/mpp.12073}.
+laboratory experiments that have shown leaf-shed can result before the infection has the chance to spread through to the petiole following a \textit{`massive ascospore inoculation'} \cite{https://doi.org/10.1111/mpp.12073}.
 
 Ash dieback affects trees of all ages, with younger ash being more susceptible while larger, mature ash appear more tolerant. 
 As a first approximation, infected ash trees were chosen to have exponentially distributed lifetimes with a mean of five years, see table \ref{tab:SEIR-model}.
@@ -432,7 +432,7 @@ Moreover, as we look to scale up the $SEIR$ model over large areas within GB, ru
 becomes increasingly computationally expensive. 
 
 Consequently, the basic reproduction number will be employed to navigate these computational challenges. 
-As we saw previously through sections \ref{sec:spatially-explicit-reproduction-ration}-\ref{sec:contract-traced-R0}, 
+As we saw previously, through sections \ref{sec:spatially-explicit-reproduction-ration}-\ref{sec:contract-traced-R0}, 
 the system can be characterised by a basic reproduction ($R_0$) number that corresponds to a threshold, above which epidemic severity drastically increases.
 
 \textit{From this point on, unless otherwise stated, the method for calculating $R_0$ is based on the average number of secondary infections
@@ -448,28 +448,41 @@ of infected ash, i.e. five years. The first-generation contact-traced secondary 
 
 \label{section:initial-conditions}
 
-This section will investigate initial conditions for just $\phi_1$-ga and $\phi_2$-pl, as differences between sporulation models were negligible.
+This section will investigate initial conditions for just $\phi_1$-ga and $\phi_2$-pl, 
+as differences between sporulation models were negligible.
 Initial conditions play a role in shaping the final value of $R_0$ and produce distinct model behaviours. 
 At $t=0$, the following initial conditions can seed the domain:  
 IC1) infected hosts occupy the domain centre  
 IC2) infected hosts are scattered randomly throughout the domain.
-Figure \ref{fig:seir-ash-IC} contrasts the contact-traced $R_0$ for first-generation infected ash over five years between the models $\phi_1$-ga and $\phi_2$-pl.
-Although the ensemble average $\overline{R}_0$ (i.e. the horizontal black line) compared similarly for each initial condition, differences can be seen in the statistics.
+Figure \ref{fig:seir-ash-IC} contrasts the contact-traced $R_0$ for 
+first-generation infected ash over five years between the models $\phi_1$-ga and $\phi_2$-pl.
+Although the ensemble average $\overline{R}_0$ (i.e. the horizontal black line) compared similarly 
+for each initial condition, differences can be seen in the statistics.
 
-Figure \ref{fig:seir-ash-IC} shows an ensemble of $R_0$ values for IC1 and IC2 with 10 and 20 initially infected ash with epidemic parameters well above the threshold\footnote{
-Following the findings of Chapter \ref{ch5:dispersal-model}, a small number of initially infected trees seed the domain at $t=0$; having more than one infected tree helps to reduce initial stochasticity, which thereby lowers the number of early pathogen extinction events.}.
+Figure \ref{fig:seir-ash-IC} shows an ensemble of $R_0$ values for IC1 (a) and IC2 (b) with 10 and 20 initially infected 
+ash with epidemic parameters well above the threshold\footnote{
+Following the findings of Chapter \ref{ch5:dispersal-model}, a small number of initially infected trees seed 
+the domain at $t=0$; having more than one infected tree helps to reduce initial stochasticity, 
+which thereby lowers the number of early pathogen extinction events.}.
 A more localised dispersal kernel in $\phi_1$-ga produces a value of $R_0$ that is generally higher for IC2 and lower for IC1.
-Adjacently infected hosts at $t=0$ reduce the density of susceptible ash within a relatively small neighbourhood\textemdash up to a maximum radius of approximately $\approx 3\ell_{ga}$.
-When several infected trees are located nearby, as for IC1, $R_0$ is generally smaller because the surrounding neighbourhood quickly becomes saturated with infected trees, limiting the number of new secondary infections.
-The effect of $R_0$-saturation for model $\phi_1$-ga is most apparent in Figure \ref{fig:seir-ash-IC}(a) when a lower value of $\overline{R}_0$ results by increasing the number of infected ash to 20.
+Adjacently infected hosts at $t=0$ reduce the density of susceptible ash within a relatively small 
+neighbourhood\textemdash up to a maximum radius of approximately $\approx 3\ell_{ga}$.
+When several infected trees are located nearby, as for IC1, $R_0$ is generally smaller because the
+surrounding neighbourhood quickly becomes saturated with infected trees, limiting the number of new secondary infections.
+The effect of $R_0$-saturation for model $\phi_1$-ga is most apparent in Figure \ref{fig:seir-ash-IC}(a) 
+when a lower value of $\overline{R}_0$ results by increasing the number of infected ash to 20.
 
 \begin{figure}
     \centering
-    \includegraphics[scale=0.45]{chapter6/figures/fig5-IC.pdf}
-    \caption{The value of $R_0$ is computed for 500 simulations with four different initial conditions at $t=0$ that varied A) the number of infected hosts at and B) the spatial locations of infected trees. 
-    At time $t=0$, infected ash can be located either centrally (IC1), or scattered randomly (IC2) throughout the domain.
-    The mean value of $R_0$ compares most similarly between models and number of infected ash when using IC1.
-    Epidemic parameters for each ensemble: $\beta^*=1500$, $\rho_{avg}=0.017$, on a domain of size $\mathrm{2km\times 2km}$.}
+    \includegraphics[scale=0.475]{chapter6/figures/fig5-IC.pdf}
+    \caption{
+    The effect of four different initial conditions on $R_0$ are compared for the Gaussian and inverse power law models, $\phi$-ga and $\phi$-pl.
+    Each box describes $R_0$ simulated over an ensemble of size $N=500$. 
+    (a) At $t=0$, between 10 and 20 infected hosts are placed at the domain centre for $\phi$-ga (in blue) and $\phi$-pl (in orange).
+    (b) At $t=0$, between 10 and 20 infected hosts are randomly scattered throughout the domain for both models.
+    The mean value of $R_0$ compares most similarly using IC1.
+    Epidemic parameters for each ensemble: $\beta^*=1500$, $\rho_{avg}=0.017$, on a domain of size $\mathrm{2km\times 2km}$.
+  }
     \label{fig:seir-ash-IC}
 \end{figure}
 
@@ -743,38 +756,59 @@ Given that $R_0$ can be captured inside a smaller domain, we may consider resolv
 Resolving $R_0$-maps to the highest resolution possible is desirable to apprehend the nature of epidemic severity and spatial heterogeneity.
 Otherwise, relevant epidemic information is lost when coarse-graining the host distribution. 
 
-Figure \ref{fig:gaussian-clustering} shows how CCA changes clustering in the $R_0$-map for different landscape-level resolutions.
-Figures \ref{fig:gaussian-clustering}(a-c) show the frequency distributions of cluster size for $\beta^*=500$ and three different patch sizes, of lengths $\mathrm{5km,\ 3km,\ 1km}$ respectively.
+Figure \ref{fig:gaussian-clustering-A} shows how CCA changes clustering in the $R_0$-map for different landscape-level resolutions.
+Figures \ref{fig:gaussian-clustering-A}(a-c) show the frequency distributions of cluster size for $\beta^*=500$ and three different patch sizes, of lengths $\mathrm{5km,\ 3km,\ 1km}$ respectively.
 As discussed in section \ref{sec:inverse-power-law-r0-clustering}, the same general trend remains, i.e. a small number of large clusters alongside more numerous small clusters.
 Although, decreasing the patch size produces a more fragmented domain, indicated by the greater variety of cluster sizes.
 The largest ranked cluster toward the far-right of each distribution also shrinks for successively smaller patch sizes.
-However, decreasing the patch size brings frequency distributions between structuring elements into closer alignment, seen by a closer agreement of blue and orange distributions in Figure \ref{fig:gaussian-clustering}(c).
+However, decreasing the patch size brings frequency distributions between structuring elements into closer alignment, seen by a closer agreement of blue and orange distributions in Figure \ref{fig:gaussian-clustering-A}(c).
 
-As before, cluster size for the largest ranked cluster exhibits the most significant growth over the first few values of infectivity, $\beta^* \in [100, 400]$.
-However, performing CCA at different landscape-level resolutions produces a change in the size of $R_0$-clusters.
-At the most extreme point of $\beta^*=500$, more significant deviations can be seen between the size of rank-1 susceptible $R_0$-clusters, illustrated by the vertical arrow in Figure \ref{fig:gaussian-clustering}.
-Figures \ref{fig:gaussian-clustering}(e-g) depict visual differences of CCA at domain resolution $\mathrm{5km \times 5km, 3km\times 3km}$ and $\mathrm{1km\times 1km}$.
+As before, cluster size for the largest ranked cluster exhibits the most significant growth over the first few values of infectivity, 
+$\beta^* \in [100, 400]$. However, performing CCA at different landscape-level resolutions produces a change in the size of $R_0$-clusters.
+At the most extreme point of $\beta^*=500$, more significant deviations can be seen between the size of rank-1 susceptible $R_0$-clusters,
+illustrated by the vertical arrow in Figure \ref{fig:gaussian-clustering-A}(d).
 
-Similar landscape-level features in the $R_0$-maps are witnessed for each domain resolution considered.
+Figures \ref{fig:gaussian-clustering-B}(a-c) depict visual differences of CCA at domain resolutions: $\mathrm{5km \times 5km}$, $\mathrm{3km\times 3km}$, and $\mathrm{1km\times 1km}$.
+Similar landscape-level features in the largest ranked $R_0$-cluster (in blue) are witnessed for each domain resolution considered.
 Nevertheless, disparities exist in cluster size at different landscape-level resolutions.
-As the $R_0$-map is resolved to a small spatial-scales, connectivity within an $R_0$-cluster can depend more critically on a small number of above-threshold patches, identified by the red circles in the inset in Figure \ref{fig:gaussian-clustering}(c).
+As the $R_0$-map is resolved to a small spatial-scales, connectivity within an $R_0$-cluster 
+can depend more critically on a small number of above-threshold patches, identified by the red circles in the inset in Figure \ref{fig:gaussian-clustering-B}(c).
 
-In the coarse-grained domain of Figure \ref{fig:gaussian-clustering}(e), the critically-connecting patches circled in Figure \ref{fig:gaussian-clustering}(g) 
-are smoothed in the process of averaging the small number of surroundings patches. 
-Similarly, some above-threshold patches can be smoothed to below-threshold patches, thus increasing the cluster size, shown in Figure \ref{fig:gaussian-clustering}(b) circled in red.
+In the coarse-grained $\mathrm{5km\times 5km}$ resolution domain of Figure \ref{fig:gaussian-clustering-B}(a), 
+the critically-connecting patches circled in Figure \ref{fig:gaussian-clustering-B}(c) are smoothed in the process of averaging the small number of surroundings patches. 
+Similarly, some above-threshold patches can be smoothed to below-threshold patches, thus increasing the cluster size, shown in Figure \ref{fig:gaussian-clustering-B}(b) circled in red.
 Ultimately, differences in cluster size are caused by the simplistic notion of connectivity within CCA that fails to scale with the domain resolution.
-Witnessing a difference in CCA-identified clusters is not desirable and outlines an inherent limitation of the framework.
+Undesirably, witnessing a difference in CCA-identified clusters outlines an inherent limitation of the framework.
 Even though clusters appear different, these observations emphasise that connectivity over a region can depend on a small number of patches, 
 which sets the scene for Chapter \ref{ch7:landscape-level-control}.
 
-\begin{landscape}
 \begin{figure}
     \centering
-    \includegraphics[scale=0.395]{chapter6/figures/fig6-ga-cluster-distribution.pdf} 
-    \caption{Multi-scale CCA performed over different landscape-level resolutions, namely from $\mathrm{1km \times 1km}$ to $\mathrm{5km \times 5km}$ patch-sizes. (a-c) Cluster-size distributions are shown for three landscape-level domain resolutions and both Moore and Von-Neumann structuring elements. As domain resolution is increased to $\mathrm{1km \times 1km}$, clusters can be resolved to a finer scale and yield a set of clusters over more length-scales (d) Cluster sizes over infectivity $\beta^*$ and structuring elements, comparing behaviour at two pixel-sizes. At the most extreme point, large disparities in cluster sizes become apparent, indicated by the vertical arrow at $\beta^*=500$. (e-g) Spatial interpretations of cluster-size deviations at different domain resolutions according to the Moore neighbourhood at $\beta^*=500$.}
-    \label{fig:gaussian-clustering}
+    \includegraphics[scale=0.375]{chapter6/figures/fig6A-ga-cluster-distribution.pdf}
+    \caption{
+    Multi-scale CCA performed over different landscape-level resolutions, namely from $\mathrm{1km \times 1km}$ to $\mathrm{5km \times 5km}$ patch-sizes. 
+    (a-c) Cluster-size distributions are shown for three landscape-level domain resolutions and both Moore and Von-Neumann structuring elements. 
+    As domain resolution is increased to $\mathrm{1km \times 1km}$, clusters can be resolved to a finer scale and yield a set of clusters over more length-scales 
+    (d) Cluster sizes over infectivity $\beta^*$ and structuring elements, comparing behaviour at two pixel-sizes. 
+    At the most extreme point, large disparities in cluster sizes become apparent, indicated by the vertical arrow at $\beta^*=500$.}
+    \label{fig:gaussian-clustering-A}
 \end{figure}
-\end{landscape}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.55]{chapter6/figures/fig6B-ga-cluster-distribution.pdf}
+    \caption{ 
+     Spatial interpretations of Figures \ref{fig:gaussian-clustering-A}(a-c), according to the Moore neighbourhood, are shown for $\beta^*=500$. 
+    (a) The largest ranked $R_0$-cluster is shown in blue for the most coarse domain at resolution $\mathrm{5km \times 5km}$ 
+    (b) Resolving $R_0$-valued patches to a $\mathrm{3km \times 3km}$ resolution can lead to extra patches opening up 
+    (i.e. becoming susceptible $R_0 > 1$) to form connections between other, distinct $R_0$-clusters. 
+    Here, patches circled in red form a bridge to a previously disconnected cluster 
+    (c) Resolving $R_0$-valued patches to the highest resolution of $\mathrm{1km \times 1km}$ causes a more fragmented domain. 
+    A small number of below-threshold patches can fragment the $R_0$-cluster, highlighted in red.
+    For each domain resolution considered, the largest ranked cluster appears different, pointing to an inherent limitation in the framework.
+    }
+    \label{fig:gaussian-clustering-B}
+\end{figure}
 
 \section{Chapter summary}
 
