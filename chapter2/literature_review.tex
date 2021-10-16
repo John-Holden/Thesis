@@ -309,7 +309,6 @@ The role of scale is crucial to describing the spread of tree-based disease...
 %     \item indeed, fungal spores can disperse over large distances, as confirmed by modelling work \cite{shaw2006assembling} 
 % \end{itemize}
 
-\section{Modelling landscape-level epidemics}
 
 Modernity has witnessed the spread of tree-based epidemics at the regional, country and continental level. 'landscape-level'
 
@@ -390,33 +389,85 @@ From the model put forward by \cite{park2001invasion}, the concept of \textit{pe
 %     \item what is the dominant narrative in controlling plant-based, and by extension tree-based, disease ? i.e. the scale of control must equal the scale of the outbreak.
 % \end{itemize}
 
-\section{Host data sets: epidemiology and landscape ecology}
+\section{Datasets in Great Britain}
 \label{ch2:hostdata}
 
-% \textbf{This couples tree disease section to percolation and provides a good intro linking the above paragraph:}
-% \begin{itemize}
-%     \item A proper investigation of diseases spread through a tree population cannot be studied in isolation from the landscape. Disease spreads based on the spatial pattern of hosts, heterogeneity of resistance and `reservoir'? Landscape features play an important role in shaping the evolution of the spread. Forest pathology demands a landscape or spatial perspective. Broad scale epidemic (opposed to local outbreaks) require a landscape perspective, see \cite{pub.1012384986} for a review. \textbf{see \cite{pub.1073292723} for an early consideration of spatial considerations... ? double check}
-%     \item \cite{doi:10.1098/rstb.1998.0226} gave a three population (host, parasite and hyperparasite), which considered transmission via a reaction-diffusion process.
-%     \item including spatial components within an epidemiological frame-work demanded an interdisciplinary approach between forest pathologists and landscape ecologists, this combined knowledge of plant-based diseases with the methods and tools needed to present a working model in space.
-%     \item remote sensing tools were used \cite{kelly2002monitoring} to track the study of sudden oak death in California
-%     \item The need for spatial considerations within disease management was widely accepted at this point,
-%     \item \cite{kelly2002landscape} demonstrated clustering at the landscape level, spatial structure is important
-%     \item ... 
-%     \item various frameworks were put forward, \cite[see][for a detailed analysis]{Gilligan-disease-management}
-%     \item Percolation theory was used by bailey et al 2000, \textbf{find citations...}
-%     \item the link between percolation and managing crops were obvious, 
-%     \item dispersal has been modelled as a random-walk process \cite{PhysRevE.67.031913}
-%     \item dispersal modelled in relation to heterogeneity?? \cite{CARACO2001185}
-%     \item anthropogenic factors were noted \cite{doi:10.1890/0012-9658(2002)083[3167:SOAIPO]2.0.CO;2}, along with abiotic factors \cite{doi:10.1046/j.1439-0434.2003.00730.x} such as sunlight intensity ? double check
-%     \item \cite{doi:10.1046/j.1442-9993.2002.01202.x} the spatial scale is important when modelling the process \cite{spatial-scale}
-%     \item \textbf{introducing space into the problem lead to percolation...}
-% \end{itemize}
+Large-scale epidemic models of tree disease rest on high-quality host data. 
+Data-driven approaches are crucial for predicting disease spread over country-wide scales, 
+though collecting high-quality host data involves myriad challenges. 
+Most notably, large-scale species distributions require vast datasets that demand significant economic resources
+and person-hours to assemble and maintain over time. 
+However, satellite-based remote sensing technologies pose an attractive solution\textemdash see \cite{camarretta2020monitoring} for a recent review of remote sensing technologies.
+Despite the significant advances of remote sensing technologies, most freely available data sets still rely on traditional surveying methods to collect data throughout Great Britain (GB).
+Consequently, the most widely known and widely used datasets are reviewed below.
 
-Data regarding different tree species distributions will predominantly come in two forms, abundance and presence/absence data. Using abundance data is usually represented in $km^2$ tree cover per hectare (or percentage cover), whereas presence only data only gives binary information if a tree species is present or not.
+\subsection{National Surveys}
 
-Abundance data is preferred as more information is captured about the tree species, however, good quality abundance data is in short supply. An interesting model put forward by Louise et at \cite{2STAGE} uses a two stage distribution model. First, presence only data is combined with a series of environmental covariates using a species distribution model in order to produce a map of predicted occurrence data. Random forest regression is then applied to a training sample of real life abundance data producing a high resolution map predicting abundance over the UK at a resolution of $1km^2$. The final result was compared with the remaining abundance data and found to perform much better than existing models. Moving to realistic tree distributions is preferable as the parameter space is reduced by the removal of $\rho$.
+Surveyed data predominantly comes in two forms: abundance or presence-only data. 
+Generally, abundance data describes percentage canopy cover per $\mathrm{km^2}$,
+as opposed to binary-valued presence-only data that reports whether or not a species is present.
+Abundance captures significantly more information than presence-only data, yet unfortunately, they are in short supply.
 
-% The accuracy of modeled canopy cover data depend on the quality, and quantity, of data sources. Key species that have greater ecological and economic importance, such as ash or oak, typically have better data availability.
+\subsubsection{Countryside Survey}
+
+The countryside survey (CS) is a long-running, national survey of diversity and species abundance in GB \cite{wood2017long}.
+The UK Centre of Ecology and Hydrology (UKCEH) undertakes the surveys, primarily funded by the Natural Environmental Research Council alongside other government agencies.
+Individual surveys have been undertaken in: $1978$, $1990$, $1998$, $2007$, and $2019$. 
+Random stratified sampling captures a representative species abundance\footnote{
+A useful (unpublished) project merged abundance data from CS with myForest. The abundance data can be found at the Oxford University research archive: \nolinkurl{https://ora.ox.ac.uk}.} 
+over of all land cover compositions, e.g. lowland acid grassland, freshwater, and broad-leaf forest.
+
+Abundance data is collected for numerous dominant species, including trees, shrubs, ground flora and soil type, 
+making the scope of CS data vast. Moreover, long-running records spanning decades reveal ecosystem trends imperative for ecological monitoring.
+More recently, $100$ $1\mathrm{km^2}$ plots of vegetation and soil data were collected\footnote{
+The data is free to download on the UKCEH website: \nolinkurl{https://catalogue.ceh.ac.uk}} \cite{10.5285/fd6ae272-aeb5-4573-8e8a-7ccfae64f506}.
+The dataset constitutes the first of five planned surveys, part of a rolling monitoring strategy collected every five years.
+
+\subsubsection{National Forest Inventory}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.25]{chapter2/figures/NFI-figure.pdf}
+    \caption{NFI data super imposed onto a Google earth image, taken from a report (unpublished) by S. Orozco-Fuentes et al.
+             NFI data covering Thetford Forest Park ($16.684 \mathrm{km}^2$) is shown as a polygon in the NFI `woodland' category.
+             Data is interpreted as the conifer forest type. Here, data comprises presence-only data and no tree species percentage cover
+             is reported.}
+    \label{fig:NFI-data}
+\end{figure}
+
+The National Forest Inventory (NFI) collects and maintains forest and woodlands data in GB.
+Originally, the NFI was established to help restore and expand Britain's woodlands following the First World War \cite{james1990history}.
+Regular programs ($10$-$15\mathrm{year}$ intervals) implement surveys of woodland and forest size, distribution, composition and condition across GB.
+Records cover areas over $0.5\mathrm{ha}$ and $20\%$ coverage.
+As of $2019$, $622,381$ individual records exist, spanning $2.9 \times 10^6 \mathrm{ha}$ over $13\%$ of the total land cover within GB.
+NFI data comprise ESRI shape files\footnote{
+Free to download at: \nolinkurl{https://data-forestry.opendata.arcgis.com}},
+that outline numerous forest types, e.g. broadleaved, conifer, mixed-predominantly broadleaved or mixed predominantly conifer.
+Despite an extensive coverage, publicly available NFI surveys describes presence-only data\textemdash with no proportion or species coverage.
+Although, additional datasets are available to purchase, including: 
+1) Tree species percentage per region by woodland type
+2) Tree species proportions within the upper canopy of each NFI sample plot, without supplying the exact location of the individual sample plot.
+
+\subsubsection{Botanical Society of Britain and Ireland}
+
+\blindtext 
+
+\blindtext
+
+\subsection{Species distribution models}
+
+An interesting model put forward by Louise et at \cite{2STAGE} uses a two stage distribution model. First, presence only data is combined with a series of environmental covariates using a species distribution model in order to produce a map of predicted occurrence data. Random forest regression is then applied to a training sample of real life abundance data producing a high resolution map predicting abundance over the UK at a resolution of $1km^2$. The final result was compared with the remaining abundance data and found to perform much better than existing models. Moving to realistic tree distributions is preferable as the parameter space is reduced by the removal of $\rho$.
+
+\blindtext 
+
+\blindtext
+
+%\item \cite{doi:10.1098/rstb.1998.0226} gave a three population (host, parasite and hyperparasite), which considered transmission via a reaction-diffusion process.
+%\item remote sensing tools were used \cite{kelly2002monitoring} to track the study of sudden oak death in California
+%\item The need for spatial considerations within disease management was widely accepted at this point,
+%\item \cite{kelly2002landscape} demonstrated clustering at the landscape level, spatial structure is important
+
+
 
 \newpage
 \section{Ash dieback case study}
