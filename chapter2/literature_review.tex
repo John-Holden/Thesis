@@ -293,7 +293,15 @@ One of the key features that distinguish tree disease from human-based disease i
 %     \item see \cite{nathan2012dispersal} for a review of dispersal kernels
 % \end{itemize}
 
-\subsection{The role of scale}
+\subsection{The Metapopulation model}
+
+% \begin{itemize}
+%     \item this variation in epidemic outcome from variants of environmental factors was likened to the metapopulation used in ecology and population dynamics in order to describe environment `patchiness'
+%     \item variability in the host landscape was considered and recognised as important, the patchiness of a landscape lends itself well to a metapopulation model
+%     \cite{doi:10.1098/rstb.1986.0072}
+%     \item \cite{large-scale-control}
+% \end{itemize}
+
 % WORK IN PROGRESS
 The role of scale is crucial to describing the spread of tree-based disease...
 % \begin{itemize}
@@ -312,14 +320,7 @@ The role of scale is crucial to describing the spread of tree-based disease...
 
 Modernity has witnessed the spread of tree-based epidemics at the regional, country and continental level. 'landscape-level'
 
-\subsection{The Metapopulation model}
 
-% \begin{itemize}
-%     \item this variation in epidemic outcome from variants of environmental factors was likened to the metapopulation used in ecology and population dynamics in order to describe environment `patchiness'
-%     \item variability in the host landscape was considered and recognised as important, the patchiness of a landscape lends itself well to a metapopulation model
-%     \cite{doi:10.1098/rstb.1986.0072}
-%     \item \cite{large-scale-control}
-% \end{itemize}
 
 \subsection{Network Modelling}
 
@@ -392,7 +393,7 @@ From the model put forward by \cite{park2001invasion}, the concept of \textit{pe
 \section{Datasets in Great Britain}
 \label{ch2:hostdata}
 
-Large-scale epidemic models of tree disease rest on high-quality host data. 
+Large-scale epidemic models of tree disease rest on robust, high-quality host data.
 Data-driven approaches are crucial for predicting disease spread over country-wide scales, 
 though collecting high-quality host data involves myriad challenges. 
 Most notably, large-scale species distributions require vast datasets that demand significant economic resources
@@ -400,12 +401,13 @@ and person-hours to assemble and maintain over time.
 However, satellite-based remote sensing technologies pose an attractive solution\textemdash see \cite{camarretta2020monitoring} for a recent review of remote sensing technologies.
 Despite the significant advances of remote sensing technologies, most freely available data sets still rely on traditional surveying methods to collect data throughout Great Britain (GB).
 Consequently, the most widely known and widely used datasets are reviewed below.
+Following this, statistically-generated species distribution models, typically based on surveyed data, are reviewed.
 
 \subsection{National Surveys}
 
-Surveyed data predominantly comes in two forms: abundance or presence-only data. 
-Generally, abundance data describes percentage canopy cover per $\mathrm{km^2}$,
-as opposed to binary-valued presence-only data that reports whether or not a species is present.
+Surveyed data predominantly describes either: abundance, presence-only, presence-absence data. 
+Generally, abundance data describes percentage canopy cover per $\mathrm{km^2}$.
+In contrast, presence-only and presence-absence data that record if a species is present or present and absent, respectively.
 Abundance captures significantly more information than presence-only data, yet unfortunately, they are in short supply.
 
 \subsubsection{Countryside Survey}
@@ -427,11 +429,11 @@ The dataset constitutes the first of five planned surveys, part of a rolling mon
 
 \begin{figure}
     \centering
-    \includegraphics[scale=0.25]{chapter2/figures/NFI-figure.pdf}
+    \includegraphics[scale=0.2]{chapter2/figures/NFI-figure.pdf}
     \caption{NFI data super imposed onto a Google earth image, taken from a report (unpublished) by S. Orozco-Fuentes et al.
              NFI data covering Thetford Forest Park ($16.684 \mathrm{km}^2$) is shown as a polygon in the NFI `woodland' category.
-             Data is interpreted as the conifer forest type. Here, data comprises presence-only data and no tree species percentage cover
-             is reported.}
+             Data is interpreted as the conifer forest type. Here, surveys comprises presence-only data, and no tree species percentage cover
+             is reported. NFI data extends throughout $\sim 13\%$ of land coverage in GB and large non-woodland areas remain un-surveyed.}
     \label{fig:NFI-data}
 \end{figure}
 
@@ -450,17 +452,65 @@ Although, additional datasets are available to purchase, including:
 
 \subsubsection{Botanical Society of Britain and Ireland}
 
-\blindtext 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.25]{chapter2/figures/bsbi-data.pdf}
+    \caption{BSBI presence-only datasets\textemdash as reconstructed by S. Orozco-Fuentes et al. (unpublished).
+    Three important large deciduous tree species, European ash (\textit{Fraxinus excelsior}), 
+    Oak (\textit{Quercus spp.}), and sweet chestnut (Castanea sativa), are overlaid onto the same map at $\mathrm{2km \times 2km}$ resolution.
+    The BSBI datasets are extensive and report presence-only data over a country-wide scale.
+    }
+    \label{fig:bsbi-data}
+\end{figure}
 
-\blindtext
+The Botanical Society of Britain and Ireland (BSBI) has recorded species presence-only data since $1950$.
+BSBI datasets are publicly available\footnote{BSBI data can be downloaded from: \nolinkurl{https://database.bsbi.org}.} upto a
+resolution of $\mathrm{2 km \times 2km}$, though records upto $\mathrm{100 m \times 100 m}$ are available to registered members.
+As of $2020$, BSBI records are collected at $\mathrm{1 km \times 1km}$ square resolution or better\textemdash making the datasets among the 
+highest-resolution surveys collected by traditional methods. The BSBI distribution database contains records of plants and charophytes
+as reported by users and conservationists with MapMate\footnote{MapMate is software designed to aid users to share ecological data: \nolinkurl{https://www.mapmate.co.uk}}.
+Despite the availability of high-resolution data, observations are collected ad hoc by users and not curated scientifically.
+Moreover, the distributions contain both well-surveyed and poorly-surveyed plots of land likely to carry uncertainties.
+As such, BSIBI data is helpful to reconstruct several baseline tree distributions across GB, as demonstrated by \cite{hill.data}.
 
 \subsection{Species distribution models}
 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.35]{chapter2/figures/SDM-fig.pdf}
+    \caption{A graphical species distribution model (SDM) illustration, adapted from \cite{SDM_1}. 
+             A variety of predictor variables and input data sources are used in conjugation with modelling algorithms to produce
+             a habitat suitability map.}
+    \label{fig:sdm}
+\end{figure}
+
+Species distribution models (SDMs), first developed in the $1990$s, have become fundamental in ecological and biogeographical inference studies.
+Inferred, or modelled, species distribution data have been used to examine biodiversity, conservation, resource management, 
+ecology and climate change \cite{austin2011improving, franklin2013species, skov2016real, wittmann2016confronting, 10.3958/059.037.0110, zhang2019using}.
+The vast majority of SDMs fall into two categories: correlative \cite{srivastava2019species}, and mechanistic \cite{shabani2016comparison}.
+
+Correlative SDMs relate widely available presence-only (or presence/absence) data to several predictor variable datasets.
+Following this, a species distribution map can be predicted, albeit with some uncertainties and error.
+Commonly used statistical methods include Regression (GLM, GAM, MARS) and Machine Learning (ANN, CART, RF).
+The general correlative approach is reflected in Figure \ref{fig:sdm}; for a more in-depth review of SDM types, see \cite{SDM_1}.
+
+Correlative SDM approaches require little to no prior knowledge of the physiological processes that link organism and environment.
+Hence, mechanistic methods aim to incorporate an organisms behavioural, physiological, and morphological constraints to the environment, 
+as reviewed by \cite{kearney2009mechanistic}. However, linking a species physiological response to the environment comes with significant
+computational challenges, as it typically relies on vast, multi-variable time-series datasets \cite{shabani2016comparison}.
+
+
+In particular, robust (SDM-generated) spatial distributions of forest species are vital to inform policymakers in the face of climate change \cite{SDM_1}
+The 
+
+
+
+
+
+
+\subsubsection{Modelling abundance}
+
 An interesting model put forward by Louise et at \cite{2STAGE} uses a two stage distribution model. First, presence only data is combined with a series of environmental covariates using a species distribution model in order to produce a map of predicted occurrence data. Random forest regression is then applied to a training sample of real life abundance data producing a high resolution map predicting abundance over the UK at a resolution of $1km^2$. The final result was compared with the remaining abundance data and found to perform much better than existing models. Moving to realistic tree distributions is preferable as the parameter space is reduced by the removal of $\rho$.
-
-\blindtext 
-
-\blindtext
 
 %\item \cite{doi:10.1098/rstb.1998.0226} gave a three population (host, parasite and hyperparasite), which considered transmission via a reaction-diffusion process.
 %\item remote sensing tools were used \cite{kelly2002monitoring} to track the study of sudden oak death in California
