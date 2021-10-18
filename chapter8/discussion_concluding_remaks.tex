@@ -49,3 +49,24 @@ The scope of this thesis is vast, and subsequently relatively general, although 
 % - We may speculate about how persistent ash dieback would be, even if a large-scale control effort was undertaken
 % - There is evidence to suggest regional variation in mortality due to ash dieback \cite{stocks2017first}, this could be incorporated into the model...
 % - Recently, it has been suggested that the dispersal-kernel of wind-borne pathogens might follow a scaling law \cite{https://doi.org/10.1111/jbi.13642}
+
+\begin{itemize}
+    \item Data: modelled abundance data is not accurate enough to make such detailed, fine-scale management decisions, as presented in Chapter 7. According to \cite{hill.data},
+    the RMSE for ash abundance distributions was $5\mathrm{ha}$. Given that connectivity, as we've defined it, can depend on a small number of points,
+    large-inaccuracies could be expected in comparison to the identified areas presented in Chapter 7.
+    \item Until modelled abundance data can identify species such as ash more accurately, future work should concentrate on modelling smaller-scale areas, 
+    where abundance data is known. Country-wide applications are questionable, and extraordinarily ambitious at this point in time. However, several fronts could drastically improve the applicability of the framework presented in this thesis...
+    \itme Although landscape management predictions to the individual patch is unrealistic, abundance maps are still expected to capture overall spatial distribution patterns,
+    thus, $R-0$-maps can be expected to present the overarching pattern of pathogen invasiveness.
+    \item More accurate $R-0$-maps would follow naturally from a more accurate spatially-explicit model of tree disease. In this thesis we presented a seasonal $SEIR$-like model 
+    that reflected the lifecycle of ADB. However, several simplying assumptions were made when spatially-scaling the small-scale model over GB.
+    In particular, we assumed the same level of infectiviy throughout GB. In contrast, ADB severity is known to vary widely in response to the environment.
+    Furthermore, in this Thesis infectiviy was treated as a free parameter, and no attempt to fit $\beta$ was undertaken.
+    Arguably, fitting infectiviy to ADB mortality data remains one of the highest priority investigations to follow from this Thesis.
+    Fitting $\beta$ to ADB mortality data in itself would entail several subsequent model improvements: ash life cycles... forest ecosystems...
+    \item Improvements to the model could therefore aid forest restoration, control efforts, and...
+    \item We have...Disease cartography using liking species abundance with spatially-explicit epidemic model. A notable challenge posed by a dispersal-based system
+    is that regions of land couple together non-locally. Throughout this thesis, CCA assessed clustering based on neighbour links. 
+    Going forward, a more sophisticated notion of connectivity could permit higher resolution maps for Inverse power law... method could add significant value... 
+    
+\end{itemize}

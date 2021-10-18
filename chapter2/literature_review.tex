@@ -205,7 +205,7 @@ Gaussian distribution\textemdash in contrast to \cite{doi:10.1146/annurev.py.06.
 In general, the ability to simulate more intricate models grew in proportion to the amount of computer memory available.
 For a review of early plant disease simulators, see \cite{doi:10.1146/annurev.py.23.090185.002031}.
 
-\section{Epidemic stochasticity}
+\subsection{Epidemic stochasticity}
 
 The spread of disease inherently takes the form of a stochastic process, whereby an epidemic unexpectedly arises and quickly cease, seemingly out of the blue. In order to capture the spread of disease, stochastic effects cannot be overlooked... 
 
@@ -273,6 +273,8 @@ Sporulation functions can then be used to describe lifetime of transitions betwe
 \subsection{Lattice-based modelling}
 Lattice-based models have been used to describe the spread of disease in many contexts, such as the spread of malaria, the bubonic plague and the spread of tree disease...
 
+%\item \cite{doi:10.1098/rstb.1998.0226} gave a three population (host, parasite and hyperparasite), which considered transmission via a reaction-diffusion process.
+
 % \textcolor{red}{
 % \begin{itemize}
 %     \item Spatial SIR model
@@ -319,7 +321,6 @@ The role of scale is crucial to describing the spread of tree-based disease...
 
 
 Modernity has witnessed the spread of tree-based epidemics at the regional, country and continental level. 'landscape-level'
-
 
 
 \subsection{Network Modelling}
@@ -484,39 +485,72 @@ As such, BSIBI data is helpful to reconstruct several baseline tree distribution
     \label{fig:sdm}
 \end{figure}
 
-Species distribution models (SDMs), first developed in the $1990$s, have become fundamental in ecological and biogeographical inference studies.
+Species distribution models (SDMs) aim to generate data, from less-extensive surveyed data.
+SDMs were first developed in the $1990$s, and have subsequently become fundamental to ecological and biogeographical inference studies.
 Inferred, or modelled, species distribution data have been used to examine biodiversity, conservation, resource management, 
 ecology and climate change \cite{austin2011improving, franklin2013species, skov2016real, wittmann2016confronting, 10.3958/059.037.0110, zhang2019using}.
 The vast majority of SDMs fall into two categories: correlative \cite{srivastava2019species}, and mechanistic \cite{shabani2016comparison}.
 
-Correlative SDMs relate widely available presence-only (or presence/absence) data to several predictor variable datasets.
-Following this, a species distribution map can be predicted, albeit with some uncertainties and error.
-Commonly used statistical methods include Regression (GLM, GAM, MARS) and Machine Learning (ANN, CART, RF).
-The general correlative approach is reflected in Figure \ref{fig:sdm}; for a more in-depth review of SDM types, see \cite{SDM_1}.
+Correlative SDMs relate (widely available) presence-only, or presence-absence, data to several environmental predictor variable datasets.
+For tree species, predictor variables include temperature, precipitation, altitude, and soil type \cite{hill.data}.
+Following this, a species distribution map can be predicted, albeit with  uncertainties and errors.
+Commonly used statistical methods include Regression\footnote{
+i.e. General Linear Models, General Additive Models, Multivariate Adaptive Regression Splines} and Machine Learning\footnote{
+i.e. Artificial Neural Networks, Classification And Regression Tree, Random Forest}. The general correlative approach is reflected in Figure \ref{fig:sdm}; for a more in-depth review of correlative SDMs, see \cite{SDM_1}.
 
 Correlative SDM approaches require little to no prior knowledge of the physiological processes that link organism and environment.
 Hence, mechanistic methods aim to incorporate an organisms behavioural, physiological, and morphological constraints to the environment, 
 as reviewed by \cite{kearney2009mechanistic}. However, linking a species physiological response to the environment comes with significant
 computational challenges, as it typically relies on vast, multi-variable time-series datasets \cite{shabani2016comparison}.
 
+A review paper by \cite{guillera2015my}, revealed a diverse use of SDMs.
+Out of $100$ publications reviewed by \cite{guillera2015my}, SDMs were applied to: 
+1) managing threatened species ($16\% $ of articles) 
+2) predicting climate change impacts ($13\%$) 
+3) understanding phylogeographic patterns ($9\%$) 
+4) controlling threatening processes ($8\%$) 
+5) landscape management ($8\%$) 
+6) biological invasions ($7\%$). However, no epidemic applications were reported.
 
-In particular, robust (SDM-generated) spatial distributions of forest species are vital to inform policymakers in the face of climate change \cite{SDM_1}
-The 
+Nevertheless, a thorough literature search revealed a variety of epidemiological SDM applications.
+The crossover between ecological SDM methods and epidemiology has been referred to as `Infectious Disease Cartography' \cite{KRAEMER201619}.
+With Infectious Disease Cartography, one seeks to map the likelihood, or risk, of infectious disease outbreaks and produce risk-maps.
+A number of publications have applied SDMs livestock diseases \cite{hollings2017species}, and human-based diseases including the global 
+distribution of Dengue Fervour \cite{bhatt2013global} and Zika virus \cite{messina2016mapping}, and Anthrax in Kenya \cite{otieno2021modeling}.
+However, SDM applications for tree disease epidemics appear absent from the literature.
+
+\subsubsection{Modelling tree abundance}
+
+SDM-generated tree occurrence data has limited applications to ecologists and forest managers.
+This motivates a statistically-generated abundance data, that includes significantly 
+more information about the population occupation/density and ecosystem.
+Modellers have examined numerous modelling approaches to predict species abundance;
+including, linking the abundance-occupancy relationship \cite{gaston2000abundance} and
+the scaling pattern of species occupancy over progressively smaller spatial scales \cite{hui2009extrapolating}.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.50]{chapter2/figures/hill-method-fig.pdf}
+    \caption{The two-stage approach put forward by \cite{hill.data} to model tree species abundance\textemdash as presented in the material and methods.}
+    \label{fig:hill-method}
+\end{figure}
+
+An interesting, and relevant, two-stage approach to predict the abundance of common tree species in GB was put forward by \cite{hill.data}.
+At a high level, (BSBI) presence-only data was combined with a series of environmental covariates using a species distribution model to 
+produce a map of predicted occurrence data. Then, random forest regression was employed with a training sample ($70\%$) of less extensive abundance 
+data\footnote{Surveyed abudnance data-sources were: Countryside survey, myForest and Bluesky's National Canopy Map.}. 
+Results were then cross-validated with the remaining ($30\%$) abundance data; Figure \ref{fig:hill-method} displays a
+flow-diagram of the method presented by \cite{hill.data}. 
+
+A more detailed explanation of the treatment proposed by \cite{hill.data} follows:
+\begin{itemize}
+    \item presence-only BSBI data was converted into presence-absence data by 
+\end{itemize}
 
 
 
-
-
-
-\subsubsection{Modelling abundance}
-
-An interesting model put forward by Louise et at \cite{2STAGE} uses a two stage distribution model. First, presence only data is combined with a series of environmental covariates using a species distribution model in order to produce a map of predicted occurrence data. Random forest regression is then applied to a training sample of real life abundance data producing a high resolution map predicting abundance over the UK at a resolution of $1km^2$. The final result was compared with the remaining abundance data and found to perform much better than existing models. Moving to realistic tree distributions is preferable as the parameter space is reduced by the removal of $\rho$.
-
-%\item \cite{doi:10.1098/rstb.1998.0226} gave a three population (host, parasite and hyperparasite), which considered transmission via a reaction-diffusion process.
 %\item remote sensing tools were used \cite{kelly2002monitoring} to track the study of sudden oak death in California
-%\item The need for spatial considerations within disease management was widely accepted at this point,
 %\item \cite{kelly2002landscape} demonstrated clustering at the landscape level, spatial structure is important
-
 
 
 \newpage
