@@ -205,25 +205,14 @@ Gaussian distribution\textemdash in contrast to \cite{doi:10.1146/annurev.py.06.
 In general, the ability to simulate more intricate models grew in proportion to the amount of computer memory available.
 For a review of early plant disease simulators, see \cite{doi:10.1146/annurev.py.23.090185.002031}.
 
-\subsection{Epidemic stochasticity}
-
-The spread of disease inherently takes the form of a stochastic process, whereby an epidemic unexpectedly arises and quickly cease, seemingly out of the blue. In order to capture the spread of disease, stochastic effects cannot be overlooked... 
-
-\begin{itemize}
-    \item Motivate this Chapter based on the determinism of \cite{kermack-model} and \cite{van1999pandemics}
-    \item Explain why stochastic is an essential part of epidemics
-    \item How do you collect results of a stochastic model ? Ensemble averaging
-\end{itemize}
-
 \subsection{Percolation: from forest fires to epidemics}
 \label{section:lit-rev-perc}
 
-\begin{itemize}
-    \item Motivate percolation based on the stochastic arguments listed above 
-    \item articulate that percolation has a spatial context 
-\end{itemize}
+\textcolor{red}{Percolation theory constitutes an alternative early spatially-explicit approach relevant to epidemic modelling...}
+% \cite{van1999pandemics} <-- probabilistic model... 
 
-The original formulation of percolation theory was first used to describe properties of a fluid and the bonds which form between molecules \cite{perco_origin} (the reader may jump to \ref{fig:ch3-perc-invariance} for an account of percolation). The problem was posed on a graph\textemdash illustrated in terms of vertices and edges. However re-interpretations were subsequently put forward by physicists studying material sciences, naturally on a lattice. \cite{Essam_1980}. The attractive feature of this new paradigm was that percolation demonstrated a phase-transition. Thus, percolation could be treated with scaling theory used in the study of critical-phenomena. Accordingly, early work rigorously ensued to map out the behaviour of percolation around criticality in terms of critical exponents \cite{STAUFFER19791}. 
+The original formulation of percolation theory was first used to describe properties of a fluid and the bonds which form between molecules \cite{perco_origin} (a more formal account of 
+percolation is undertaken in Chapter \ref{ch3:invasions_and_persistence}). The problem was posed on a graph\textemdash illustrated in terms of vertices and edges. However re-interpretations were subsequently put forward by physicists studying material sciences, naturally on a lattice. \cite{Essam_1980}. The attractive feature of this new paradigm was that percolation demonstrated a phase-transition. Thus, percolation could be treated with scaling theory used in the study of critical-phenomena. Accordingly, early work rigorously ensued to map out the behaviour of percolation around criticality in terms of critical exponents \cite{STAUFFER19791}. 
 
 Different flavours of percolation models, such as, site or bond percolation were described to model different processes. Percolation proved a convenient theory and various phenomena including, gelation, magnetism and telecommunications were described \cite{trove.nla.gov.au/work/26493727}. Interestingly, forest fires were also applicable to a description within percolation theory \cite{MacKay_1984}. This was a short conceptual jump from time-dependant percolation used to study the growth of crystals \cite{Family_1985}. 
 
@@ -524,28 +513,83 @@ However, SDM applications for tree disease epidemics appear absent from the lite
 SDM-generated tree occurrence data has limited applications to ecologists and forest managers.
 This motivates a statistically-generated abundance data, that includes significantly 
 more information about the population occupation/density and ecosystem.
-Modellers have examined numerous modelling approaches to predict species abundance;
+Modellers have examined numerous approaches to predict species abundance;
 including, linking the abundance-occupancy relationship \cite{gaston2000abundance} and
 the scaling pattern of species occupancy over progressively smaller spatial scales \cite{hui2009extrapolating}.
 
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.50]{chapter2/figures/hill-method-fig.pdf}
-    \caption{The two-stage approach put forward by \cite{hill.data} to model tree species abundance\textemdash as presented in the material and methods.}
-    \label{fig:hill-method}
-\end{figure}
-
-An interesting, and relevant, two-stage approach to predict the abundance of common tree species in GB was put forward by \cite{hill.data}.
+An interesting, and highly relevant, approach to predict the abundance of common tree species in Great Britain was put forward by \cite{hill.data}.
 At a high level, (BSBI) presence-only data was combined with a series of environmental covariates using a species distribution model to 
 produce a map of predicted occurrence data. Then, random forest regression was employed with a training sample ($70\%$) of less extensive abundance 
-data\footnote{Surveyed abudnance data-sources were: Countryside survey, myForest and Bluesky's National Canopy Map.}. 
+data\textemdash consisting of Countryside survey, myForest and Bluesky's National Canopy Map. 
 Results were then cross-validated with the remaining ($30\%$) abundance data; Figure \ref{fig:hill-method} displays a
 flow-diagram of the method presented by \cite{hill.data}. 
 
 A more detailed explanation of the treatment proposed by \cite{hill.data} follows:
+\textbf{Stage 1)}
+\textit{
 \begin{itemize}
-    \item presence-only BSBI data was converted into presence-absence data by 
+    \item Presence-only BSBI data was downloaded for $25$ common species of trees in GB, 
+    and all records less than $\mathrm{2km \times 2km}$ resolution were discarded.
+    Next, the presence-only data was converted into presence-absence data by considering
+    `well-surveyed' records that Hill et.al defined as having a minimum of two survey
+    between $1950$ and consisting of $50$ species. Species missing from these 
+    well-surveyed areas were assumed truly absent. 
+    \item Using biomod2 \cite{thuiller2016package}, a SDM was then fitted against a cohort of 15 environmental variables, e.g.
+    soil type (European Soil Database), temperature (Worldclim), precipitation (Worldclim), altitude (Worldclim),
+    type of land cover (Countryside Survey), among others. The net result was a map of predicted occupancy at $\mathrm{1 km \times 1 km}$ 
+    resolution.
+    \item For each species, predictions from a suit of models\textemdash GLM, GAM, CTA, GBM, RF\textemdash were
+    repeated and combined into an ensemble distribution model. Each model was cross-validated against
+    $30\%$ of the well-survyed BSBI presence-absence data using the receiver operator curve (ROC) and the true skill statistic (TSS).
+    \cite{hill.data} then selected the best performing predicted occurrence for each species.
 \end{itemize}
+}
+\newpage
+\textbf{Stage 2)}
+\textit{
+\begin{itemize}
+    \item Abundance data from Countryside survey (CS) and myForest were both expressed as hectares covered per kilometer 
+    squared ($\mathrm{ha/km^2}$). This entailed using woodland cover data from the National Forest Inventory (NFI) to multiply
+    the percentage cover of each species within a woodland patch, with a proportion of woodland cover per kilometer.
+    \item Random forest (RF) regression then modelled the relationships between (CS and myForest) abundance data with
+    the SDM-generated map of predicted occupancy. In addition, RF regression used four covariates, 
+    three of which consisted of Bluesky's National Canopy data (i.e. total tree cover, woodland tree cover, non-woodland tree cover)
+    and NFI edge broadleaved woodland (i.e. within $50\mathrm{m}$ of non woodland) data.
+\end{itemize}
+}
+
+The abundance datasets produced by \cite{hill.data} combine several mainstream tree datasets in GB; moreover, 
+constructing the ensemble model involved a variety of statistical models.
+The predicted occurrence data was examined against the Receiver operating characteristic (ROC) \cite{jimenez2012insights}.
+Most species demonstrated functional ROC scores between $0.71$ and $0.96$ and performed exceptionally
+well for ash ($0.96$) and oak ($0.90$).  
+
+Although, numerous assumptions underpinned the method of predicting occupancy.
+Primarily, the BSBI dataset used by \cite{hill.data} exists through ad-hoc user and volunteer self-reports.
+Thus, some regions are more surveyed than others over the years, this led Hill et al. to make the 
+`well surveyed' recorded assumption (i.e. only considering records surveyed twice since $1950$ containing a minimum of $50$ species).
+The assumption permitted the conversion of raw presence-only to presence-absence, 
+at the cost of overestimated absence in these regions. That is, even supposing $50$ species
+are reported within a subset of the ($\mathrm{2km \times 2km}$ tetrad) record, other large regions could remain unsampled. 
+We remark the authors did not appear to scrutinise this assumption sufficiently.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.55]{chapter2/figures/hill-method-fig.pdf}
+    \caption{A flow diagram of the two-stage abundance method put forward by \cite{hill.data} to model tree species abundance  
+    (taken from the publications' materials and methods section).}
+    \label{fig:hill-method}
+\end{figure}
+
+The RF regression used by \cite{hill.data} marked a novel approach to modelling species abundance.
+As argued in the manuscript, RF regression was chosen because of its insensitivity toward the data distribution, which
+worked well with the less extensive abundance data coverage in GB (which has a high percentage of zero-valued positions).
+The abundance model quality was examined against $10$-fold validation (explained in \cite{refaeilzadeh2009cross}).
+The root-mean-square error (RMSE), between predicted and observed abundance, generally ranged between $5$ and $10$.
+Here, the scale reflects the response variable unit of $\mathrm{ha/km^2}$, i.e. $5\%$.
+
+
+
 
 
 
