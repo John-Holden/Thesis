@@ -1,16 +1,16 @@
 \chapter{Interdisciplinary tree disease epidemics}
 \label{chapter2:litreview} 
 
-Understanding modern-day tree disease epidemics requires a holistic, interdisciplinary scientific 
+Understanding modern-day tree disease epidemics requires a holistic, interdisciplinary
 approach, made possible only by the convergence of numerous scientific fields. 
 Consequently, this Chapter reviews several key modelling themes.
 
-Typically, models of tree disease aim to help design effective control policies and inform policymakers.
+Models of tree disease aim to help design effective control policies and inform policymakers.
 Well-informed policymakers can then help to maintain tree health in rural, urban and commercial environments. 
 Although myriad environmental, biological and anthropomorphic factors complicate the scientific understanding 
 and thus effective disease control. 
 
-The review begins by narrating early historical developments in human and botanical epidemiology before presenting
+The review begins by narrating early historical developments in human and botanical epidemiology, before presenting
 a variety of present-day modelling frameworks. After introducing the mainstream paradigm of plant-based epidemic models,
 an inspection of dispersal, thresholds, and epidemic control follow naturally. In addition, several host data sources 
 in Great Britain are presented. Finally, the Chapter ends with an ash dieback case study, reflecting the multi-faceted 
@@ -208,30 +208,65 @@ For a review of early plant disease simulators, see \cite{doi:10.1146/annurev.py
 \subsection{Percolation: from forest fires to epidemics}
 \label{section:lit-rev-perc}
 
-\textcolor{red}{Percolation theory constitutes an alternative early spatially-explicit approach relevant to epidemic modelling...}
-% \cite{van1999pandemics} <-- probabilistic model... 
+Research on percolation occurred alongside the developing field of plant disease modelling.
+The development of percolation theory marked an early approach to modelling epidemic systems that are
+both spatially-explicit and stochastic.
+The original formulation of percolation theory was first used to describe properties of a fluid and the 
+bonds which form between molecules \cite{perco_origin} (a more formal account of 
+percolation is undertaken in section \ref{ch3:invasions_and_persistence}). The problem was posed on a 
+graph\textemdash illustrated in terms of vertices and edges. However re-interpretations were subsequently 
+put forward by physicists studying material sciences, naturally on a lattice. \cite{Essam_1980}. 
+The attractive feature of this new paradigm was that percolation demonstrated a phase-transition. 
+Thus, percolation could be treated with scaling theory used in the study of critical-phenomena. 
+Accordingly, early work rigorously ensued to map out the behaviour of percolation around criticality in 
+terms of critical exponents \cite{STAUFFER19791}. 
 
-The original formulation of percolation theory was first used to describe properties of a fluid and the bonds which form between molecules \cite{perco_origin} (a more formal account of 
-percolation is undertaken in Chapter \ref{ch3:invasions_and_persistence}). The problem was posed on a graph\textemdash illustrated in terms of vertices and edges. However re-interpretations were subsequently put forward by physicists studying material sciences, naturally on a lattice. \cite{Essam_1980}. The attractive feature of this new paradigm was that percolation demonstrated a phase-transition. Thus, percolation could be treated with scaling theory used in the study of critical-phenomena. Accordingly, early work rigorously ensued to map out the behaviour of percolation around criticality in terms of critical exponents \cite{STAUFFER19791}. 
+Different flavours of percolation models, such as site or bond percolation, were described
+to model different processes. Nevertheless, percolation proved a convenient theory and various phenomena including gelation, 
+magnetism and telecommunications were described \cite{trove.nla.gov.au/work/26493727}. In particular, 
+forest fire models were related to percolation \cite{MacKay_1984}, 
+with only a short conceptual jump from time-dependent percolation used to study the growth of crystals \cite{Family_1985}. 
 
-Different flavours of percolation models, such as, site or bond percolation were described to model different processes. Percolation proved a convenient theory and various phenomena including, gelation, magnetism and telecommunications were described \cite{trove.nla.gov.au/work/26493727}. Interestingly, forest fires were also applicable to a description within percolation theory \cite{MacKay_1984}. This was a short conceptual jump from time-dependant percolation used to study the growth of crystals \cite{Family_1985}. 
+A fire spreading through a population of trees is not too different to a disease spreading through 
+a population, thus leading to a general epidemic-formalisation within a percolation-based framework
+\cite{pub.1059067807}; the researchers proposed that epidemics might be in the same universality class
+as percolation. Beginning with a simple $SIR$ framework put forward by \cite{kermack-model}, the field 
+of epidemiology was already well-established around the time percolation theory was conceived \cite{baily1975mathematical}. 
+Naturally, percolation models could relax assumptions about population mixing and serve as a helpful tool
+when developing spatially structured epidemic models.
 
-A fire spreading through a population of trees is not to dissimilar to a disease spreading through a population. This lead to a general epidemic-formalisation within percolation-based framework when \cite{pub.1059067807} argued that epidemics were in the same universality class as percolation. It is alluring to remark how modelling the same processes with different microscopic interactions (e.g. different lattice geometries) lead to the macroscopic behaviour should they have the same universality class\textemdash see Chapter \ref{fig:ch3-perc-invariance} for more information.
-
-Beginning with a simple $SIR$ framework put forward by \cite{kermack-model}, the field of epidemiology was already well established around the time percolation theory was conceived \cite{baily1975mathematical}. In particular, initial assumptions about population mixing could be relaxed with more elaborate spatial-contact models, naturally, percolation theory could serve as a useful tool when developing spatially-structured epidemic models.
-
-A fractal-like pattern of epidemics was observed by \cite{GRASSBERGER1986273}, shown in Figure \ref{fig:1d_perc_basis}. Parsimoniously describing Figure \ref{fig:1d_perc_basis}, lighter grey sites represent removed individuals, black sites indicate actively infected sites and white sites indicate unaffected sites. All lattice sites in the bottom row were initially infected and the infection can be seen to propagate from the bottom up. The lattice was initialised at the critical-density $p\sim p_c$ culminating in a fractal-like pattern. \cite{GRASSBERGER1986273} did not attribute the hosts of this model to be trees, but instead a general host-population with very low mobility. Local interactions between hosts and infected were elucidated as vast simplifications and long-range interactions (following a power-law) were discussed\textemdash we shall see how these ideas form a important component of modelling tree disease.
+A fractal-like pattern of epidemics was observed by \cite{GRASSBERGER1986273}, shown in Figure \ref{fig:1d_perc_basis}. 
+In Figure \ref{fig:1d_perc_basis}, lighter grey sites represent removed individuals, 
+black sites indicate actively infected sites, and white sites indicate unaffected sites. 
+All lattice sites in the bottom row were initially infected, and the infection can be seen to propagate
+from the bottom up. The lattice was initialised at the critical-density $p\sim p_c$ culminating in a fractal-like pattern.
+\cite{GRASSBERGER1986273} did not attribute the hosts of this model to be trees, but instead a general host-population with low mobility. 
+The authors noted that local interactions between hosts and infected were vast simplifications and proposed 
+generalising the system with long-range interactions following a power law. 
+Although, it must be remarked that including long-range interactions would cease to describe a percolation based system.
 
 \begin{figure}
     \centering
     \includegraphics{chapter2/figures/perc1.jpg}
-    \caption{A space-time representation of an epidemic spreading at the critical threshold. The spatial (horizontal) and time (vertical) axis show self-similar propagation of diseased individuals in grey, produced by \cite{GRASSBERGER1986273}}
+    \caption{A space-time representation of an epidemic spreading at the critical threshold. 
+    The spatial (horizontal) and time (vertical) axis show self-similar propagation of diseased 
+    individuals in grey, produced by \cite{GRASSBERGER1986273}}
     \label{fig:1d_perc_basis}
 \end{figure}
 
-The behaviour of percolation-based epidemic models continued (e.g. \cite{pub.1060474189, pub.1059069981}) to be investigated with various methods such as renormalisation-groups and Monte-Carlo, the critical exponents were found along with phase transition graphs characterising epidemic (super-critical) or extinction (sub-critical) regimes. The properties of both epidemics and forest fire percolation models were studied together in \cite{pub.1052857560}, highlighting their similarity.
+Percolation models of epidemics were investigated by several means, 
+e.g. renormalisation-groups \cite{pub.1060474189} and Monte-Carlo methods \cite{pub.1059069981}. 
+Studies generally focused on finding the systems critical exponents and categorising phase
+transition graph that characterised an epidemic (super-critical) or extinction (sub-critical) 
+regimes \cite{GRASSBERGER1986273}. The properties of both epidemics and forest fire percolation 
+models were studied together in \cite{pub.1052857560}, highlighting their similarity.
+One of the first ecological applications was put forward by \cite{pub.1031591030}, 
+who studied the effects of landscape distributions and percolation models 
+(reflecting both forest fire and epidemics). In their study, \cite{pub.1031591030} 
+combined $SIR$-like mechanics inside a percolation-based distribution of hosts and subsequently 
+found a narrow regime where disease epidemics would spread, thus mirroring the threshold-like 
+behaviour witnessed in the $SIR$ model. Although, here, the authors considered the possibility of host recovery.
 
-The first ecological application came in \cite{pub.1031591030} where forest fire (and epidemic) percolation models were adapted in order to study landscape disturbances. Broadly speaking, landscape disturbances constitute a broad array of physical process which lead to a rapid ecological change, this could include invasion of pests, climate-change and fire.
 
 % \textemdash \cite{GRASSBERGER1983157} <- reference for early considerations towards percolation as a model for tree diseases and percolation
 % \textemdash \cite{SANDER2002293}, read and get more info + research links
@@ -363,14 +398,6 @@ From the model put forward by \cite{park2001invasion}, the concept of \textit{pe
 % ref 2 \cite{doi:10.1146/annurev.phyto.011108.135838} ref 3. \cite{van2011periodic}
 
 
-\section{Controlling Plant-Based Epidemics}
-\label{ch2:control-review}
-
-\begin{itemize}
-    \item Control
-    \item Monitoring
-\end{itemize}
-
 % Epidemiological models are commonly used to for 'control'. Spatial aggregation of the host landscape has been shown to play an important role in effective management. In their paper \cite{doi:10.1094/PHYTO-100-7-0638}
 % showed that the optimal radius of control depends strongly on the level of aggregation (clustering).
 
@@ -380,7 +407,7 @@ From the model put forward by \cite{park2001invasion}, the concept of \textit{pe
 %     \item what is the dominant narrative in controlling plant-based, and by extension tree-based, disease ? i.e. the scale of control must equal the scale of the outbreak.
 % \end{itemize}
 
-\section{Datasets in Great Britain}
+\section{Tree distribution datasets in Great Britain}
 \label{ch2:hostdata}
 
 Large-scale epidemic models of tree disease rest on robust, high-quality host data.
@@ -481,11 +508,12 @@ ecology and climate change \cite{austin2011improving, franklin2013species, skov2
 The vast majority of SDMs fall into two categories: correlative \cite{srivastava2019species}, and mechanistic \cite{shabani2016comparison}.
 
 Correlative SDMs relate (widely available) presence-only, or presence-absence, data to several environmental predictor variable datasets.
-For tree species, predictor variables include temperature, precipitation, altitude, and soil type \cite{hill.data}.
+For tree species, predictor variables include temperature, precipitation, altitude, and soil type \cite{ray2021multi, hill.data}.
 Following this, a species distribution map can be predicted, albeit with  uncertainties and errors.
-Commonly used statistical methods include Regression\footnote{
-i.e. General Linear Models, General Additive Models, Multivariate Adaptive Regression Splines} and Machine Learning\footnote{
-i.e. Artificial Neural Networks, Classification And Regression Tree, Random Forest}. The general correlative approach is reflected in Figure \ref{fig:sdm}; for a more in-depth review of correlative SDMs, see \cite{SDM_1}.
+Commonly used statistical methods include Regression 
+(i.e. General Linear Models, General Additive Models, Multivariate Adaptive Regression Splines) and Machine Learning
+(i.e. Artificial Neural Networks, Classification And Regression Tree, Random Forest). 
+The general correlative approach is reflected in Figure \ref{fig:sdm}; for a more in-depth review of correlative SDMs, see \cite{SDM_1}.
 
 Correlative SDM approaches require little to no prior knowledge of the physiological processes that link organism and environment.
 Hence, mechanistic methods aim to incorporate an organisms behavioural, physiological, and morphological constraints to the environment, 
@@ -525,6 +553,7 @@ Results were then cross-validated with the remaining ($30\%$) abundance data; Fi
 flow-diagram of the method presented by \cite{hill.data}. 
 
 A more detailed explanation of the treatment proposed by \cite{hill.data} follows:
+\newpage
 \textbf{Stage 1)}
 \textit{
 \begin{itemize}
@@ -544,7 +573,6 @@ A more detailed explanation of the treatment proposed by \cite{hill.data} follow
     \cite{hill.data} then selected the best performing predicted occurrence for each species.
 \end{itemize}
 }
-\newpage
 \textbf{Stage 2)}
 \textit{
 \begin{itemize}
@@ -582,33 +610,33 @@ We remark the authors did not appear to scrutinise this assumption sufficiently.
 \end{figure}
 
 The RF regression used by \cite{hill.data} marked a novel approach to modelling species abundance.
-As argued in the manuscript, RF regression was chosen because of its insensitivity toward the data distribution, which
-worked well with the less extensive abundance data coverage in GB (which has a high percentage of zero-valued positions).
+The authors chose to argue in favour of RF regression because of its insensitivity toward the data distribution,
+which worked well with the less comprehensive abundance data sources (as the map of abundance had a high percentage of zeros from missing records).
 The abundance model quality was examined against $10$-fold validation (explained in \cite{refaeilzadeh2009cross}).
-The root-mean-square error (RMSE), between predicted and observed abundance, generally ranged between $5$ and $10$.
-Here, the scale reflects the response variable unit of $\mathrm{ha/km^2}$, i.e. $5\%$.
+The root-mean-square error (RMSE), between predicted and observed abundance, generally ranged between $5$ and $10$,
+where the RMSE scale reflects the response variable units ($\mathrm{ha/km^2}$), i.e. $5\%$ and $10\%$ respectively.
+The result was country-wide predicted abundance.
 
-
-
-
-
+The low amount of available abundance data in GB significantly impoverished the abundance maps produced by \cite{hill.data}. 
+Consequently, datasets for the $25$ species considered will contain numerous (small-scale) errors and uncertainties. 
+Nonetheless, the modelled abundance maps captured more large-scale spatial structures than the original BSBI and CS distributions.
+More recently, \cite{ray2021multi} produced a similar SDM as Hill et al. for oak in GB using biomod2 \cite{thuiller2016package}.
+The authors focused on mapping high-density oak woodlands (with 60$\%$ canopy cover or above) 
+to predict which NFI map polygons (by forest type) were most likely to contain oak stands. 
+However, \cite{ray2021multi} did not make their oak maps publicly available, nor did they produce a general-purpose
+abundance map relevant for epidemiological studies. 
+To date, the predicted abundance maps produced by \cite{hill.data} constitute the best publicly available 
+country-wide maps in GB, despite their limitations.
 
 %\item remote sensing tools were used \cite{kelly2002monitoring} to track the study of sudden oak death in California
 %\item \cite{kelly2002landscape} demonstrated clustering at the landscape level, spatial structure is important
 
-
-\newpage
 \section{Ash dieback case study}
-% WORK IN PROGRESS
 
-% the combination of ash dieback and emerald ash borer present a significant threat to UK and European ash \cite{musolin2017between}
-% managing the spread of ADB in areas already infected is hardly possible \cite{gross2014h}
-
+% - the combination of ash dieback and emerald ash borer present a significant threat to UK and European ash \cite{musolin2017between}
+% - managing the spread of ADB in areas already infected is hardly possible \cite{gross2014h}
 % - but slowing the spread of disease is still valuable to allow ash populations vital time to recover and policy makers \cite{PAUTASSO201337}
-
-% multi-scale approaches have been outlined \cite{hart2020theoretical}
-% multi-seasonal frameworks comprise a common theme in the spread of crop-based epidemics see  x, y, and typically involve soil-borne nematodes-based outbreaks \cite{tankam2020modelling} <- see references inside.
-% ash dieback has a strong morality rate \cite{stocks2017first}
+% - multi-scale approaches have been outlined \cite{hart2020theoretical}
 
 \label{ch2:ash-dieback}
 Ash dieback (ADB) presents an interesting case study of an emerging epidemic currently devastating ash
@@ -641,7 +669,7 @@ of European ash in a process referred to as `Cryptic speciation'.
 Interestingly, the emergent epidemic caused by \textit{H. pseudoalbidus} coincided with developments 
 in the phylogenetic classification system of the kingdom Fungi \cite{hibbett2007higher}, 
 and dual nomenclature\footnote{Originally, fungi were classified through the structure of their sexual organs.
-Problematically, ascomycete fungi have a dual `pleomorphic' reproductive mode that often caused confused. 
+Problematically, ascomycete fungi have a complicated dual reproductive mode (both sexual and asexual) that often caused confused. 
 However, a move toward a one-name fungi classification system has since simplified fungi taxonomy.} 
 \cite{wingfield2012one}. Subsequently, the pathogen \textit{`Hymenoscyphus pseudoalbidus'} was renamed to
 \textit{Hymenoscyphus fraxineus} (HF).
@@ -711,8 +739,6 @@ Modelling work suggests a myriad of environmental factors can also predict the
 vulnerability of ash and subsequent spread of disease \cite{dal2014risk}.
 Spatial regression analysis conducted by \cite{chumanova2019predicting} in the Czech Republic indicates that altitude 
 is an important predictor of pathogen growth, which also support the strong negative temperature dependence observed by \cite{hauptman2013temperature}.
-
-\newpage
 
 \subsection{Life cycle and reproductive mode}
 % WIKI: Hymenoscyphus fraxineus has two phases to its life-cycle: sexual and asexual.[9] The asexual stage (anamorph) grows in affected trees attacking the bark and encircling twigs and branches.[9] The sexual, reproductive stage, (teleomorph) grows during summer on ash petioles in the previous year's fallen leaves.[7] The ascospores are produced in asci and are transmitted by wind; this might explain the rapid spread of the fungus.[
