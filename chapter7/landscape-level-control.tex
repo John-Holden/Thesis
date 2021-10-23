@@ -10,7 +10,7 @@
 % 8) Talk about alternate more, non-linear models and consult Rammile...
 % ------------------------------------------------------------------------------
 
-\chapter{Landscape-level control}
+\chapter{Towards landscape-level control}
 
 % In reality, connectivity between patches depend on the dispersal kernel, and not on an arbitrarily defined nearest-neighbour structuring element.
 % Connectivity between patches can extend radially non-locally over a number of surrounding patches.
@@ -63,33 +63,6 @@ The work conducted in this chapter rests on the $SEIR$ model of ADB, although th
 % 1) Below-threshold patches do not support high levels of infected biomass, spore dispersal emanating from these patches will therefore be lessened.
 % 2) The domain resolution, configured in section \ref{ch6:re-scaling-host-data}, ensures that no secondary infections will result for the parameter values and spatial scale under consideration in the seasonal $SEIR$ model of ADB.
 % Likewise, 
-
-\section{Patch-to-patch transmission}
-\label{sec:cast-study-jump-patches}
-
-\textcolor{red}{
-\begin{itemize}
-    \item \textbf{Outline:}  Here I intend to ascertain the probability of patch-to-patch transmission as a function of distance
-    \item \textbf{Hypothesis:} I envision that the Gaussian-based model will not disperse beyond $\sim 0.70\mathrm{km}$ for any level of infectivity. 
-    On the other hand, inverse power law spread will disperse up to, and beyond, $10 \mathrm{km}$ but the spread beyond $5 \mathrm{km}$ will become rare.
-    \item \textbf{Motivation:}  Accessing an upper bound for both models for different levels of $\beta$ should provide two different length-scales
-    and motivate density reductions in the next section
-    \item \textbf{Time est:} $\leq 1$ week
-\end{itemize}
-}
-
-\section{Intermediately density-reductions}
-\label{sec:density-reductions}
-
-\textcolor{red}{
-\begin{itemize}
-    \item \textbf{Outline:} Here, I will try to gauge how density reductions disrupt the spread of disease in a coupled system of patches. 
-    That is, I will consider three nearest-neighbour patches e.g. a source, target and control. The source patch will host the infection at 
-    $t=0$, and the I will examine how spread to the target patch evolves in response to different levels of control.
-    \item \textbf{Hypothesis:} we can control the Gaussian-based spread with relative ease, and we can slow the inverse-power law spread with more severe density reductions
-    \item  \textbf{Motivation: } assessing the patch-to-patch transmission gives a stronger argument for introducing the containment strategy.
-    \item \textbf{Time est:} $\leq 2$ weeks
-\end{itemize}}
 
 
 \section{Method: cluster fragmentation}

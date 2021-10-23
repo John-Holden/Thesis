@@ -50,6 +50,35 @@ The scope of this thesis is vast, and subsequently relatively general, although 
 % - There is evidence to suggest regional variation in mortality due to ash dieback \cite{stocks2017first}, this could be incorporated into the model...
 % - Recently, it has been suggested that the dispersal-kernel of wind-borne pathogens might follow a scaling law \cite{https://doi.org/10.1111/jbi.13642}
 
+
+% \section{Patch-to-patch transmission}
+% \label{sec:cast-study-jump-patches}
+
+% \textcolor{red}{
+% \begin{itemize}
+%     \item \textbf{Outline:}  Here I intend to ascertain the probability of patch-to-patch transmission as a function of distance
+%     \item \textbf{Hypothesis:} I envision that the Gaussian-based model will not disperse beyond $\sim 0.70\mathrm{km}$ for any level of infectivity. 
+%     On the other hand, inverse power law spread will disperse up to, and beyond, $10 \mathrm{km}$ but the spread beyond $5 \mathrm{km}$ will become rare.
+%     \item \textbf{Motivation:}  Accessing an upper bound for both models for different levels of $\beta$ should provide two different length-scales
+%     and motivate density reductions in the next section
+%     \item \textbf{Time est:} $\leq 1$ week
+% \end{itemize}
+% }
+
+% \section{Intermediately density-reductions}
+% \label{sec:density-reductions}
+
+% \textcolor{red}{
+% \begin{itemize}
+%     \item \textbf{Outline:} Here, I will try to gauge how density reductions disrupt the spread of disease in a coupled system of patches. 
+%     That is, I will consider three nearest-neighbour patches e.g. a source, target and control. The source patch will host the infection at 
+%     $t=0$, and the I will examine how spread to the target patch evolves in response to different levels of control.
+%     \item \textbf{Hypothesis:} we can control the Gaussian-based spread with relative ease, and we can slow the inverse-power law spread with more severe density reductions
+%     \item  \textbf{Motivation: } assessing the patch-to-patch transmission gives a stronger argument for introducing the containment strategy.
+%     \item \textbf{Time est:} $\leq 2$ weeks
+% \end{itemize}}
+
+
 \begin{itemize}
     \item Data: modelled abundance data is not accurate enough to make such detailed, fine-scale management decisions, as presented in Chapter 7. According to \cite{hill.data},
     the RMSE for ash abundance distributions was $5\mathrm{ha}$. Given that connectivity, as we've defined it, can depend on a small number of points,
@@ -58,7 +87,9 @@ The scope of this thesis is vast, and subsequently relatively general, although 
     where abundance data is known. Country-wide applications are questionable, and extraordinarily ambitious at this point in time. However, several fronts could drastically improve the applicability of the framework presented in this thesis...
     \item Although landscape management predictions to the individual patch is unrealistic, abundance maps are still expected to capture overall spatial distribution patterns,
     thus, $R-0$-maps can be expected to present the overarching pattern of pathogen invasiveness.
-    \item More accurate $R-0$-maps would follow naturally from a more accurate spatially-explicit model of tree disease. In this thesis we presented a seasonal $SEIR$-like model 
+    \item More accurate $R-0$-maps would follow naturally from a more accurate spatially-explicit model of tree disease. In this thesis we presented a seasonal $SEIR$-like model \cite{gottwald2002geo}
+    \item we could fit $\beta$ to spatial-temporal tree mortality patterns, "Monte Carlo algorithm using spatiotemporal data from an 18- month epidemiological study in southeast Florida" for citrus canker \cite{neri2014bayesian}. We need biologically plausible parameters
+    \item \cite{WEBIDEMICS}, the risk to outside sources set by the time-to-control, could be factored in to a landscape-level approach
     that reflected the lifecycle of ADB. However, several simplying assumptions were made when spatially-scaling the small-scale model over GB.
     In particular, we assumed the same level of infectiviy throughout GB. In contrast, ADB severity is known to vary widely in response to the environment.
     Furthermore, in this Thesis infectiviy was treated as a free parameter, and no attempt to fit $\beta$ was undertaken.
@@ -68,5 +99,5 @@ The scope of this thesis is vast, and subsequently relatively general, although 
     \item We have...Disease cartography using liking species abundance with spatially-explicit epidemic model. A notable challenge posed by a dispersal-based system
     is that regions of land couple together non-locally. Throughout this thesis, CCA assessed clustering based on neighbour links. 
     Going forward, a more sophisticated notion of connectivity could permit higher resolution maps for Inverse power law... method could add significant value... 
-    
+    \item focus on a small study area, as in \cite{he2019integrating}
 \end{itemize}

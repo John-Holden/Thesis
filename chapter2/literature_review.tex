@@ -10,10 +10,9 @@ Well-informed policymakers can then help to maintain tree health in rural, urban
 Although myriad environmental, biological and anthropomorphic factors complicate the scientific understanding 
 and thus effective disease control. 
 
-The review begins by narrating early historical developments in human and botanical epidemiology, before presenting
+Here, the review begins by narrating some early historical developments in human and botanical epidemiology before presenting
 a variety of present-day modelling frameworks. After introducing the mainstream paradigm of plant-based epidemic models,
-an inspection of dispersal, thresholds, and epidemic control follow naturally. In addition, several host data sources 
-in Great Britain are presented. Finally, the Chapter ends with an ash dieback case study, reflecting the multi-faceted 
+an inspection of dispersal, thresholds, and epidemic control follow naturally. Then, several tree distribution datasets in Great Britain are presented and compared. Finally, the Chapter ends with a case study of ash dieback, reflecting the multi-faceted 
 difficulties posed by a recent emergent epidemic.
 
 \section{Historical perspectives}
@@ -177,7 +176,7 @@ Despite the sameness of both DDE and $SEIR$ formulations, the overarching theme 
 owing to the increased flexibility and easier analysis of compartmental models.
 
 \subsection{Progressive botanical epidemiology}
-
+\label{sec:prog-epi}
 After \cite{van2013plant} moved the field of botanical diseases into a more quantitative discipline,
 theoretical investigations (alongside the adoption of computer simulations) characterised the next few decades.
 Plank's DDE was applied to numerous pathosystems, halo blight in beans \cite{doi:10.1111/j.1744-7348.1979.tb06527.x} 
@@ -266,50 +265,133 @@ who studied the effects of landscape distributions and percolation models
 combined $SIR$-like mechanics inside a percolation-based distribution of hosts and subsequently 
 found a narrow regime where disease epidemics would spread, thus mirroring the threshold-like 
 behaviour witnessed in the $SIR$ model. Although, here, the authors considered the possibility of host recovery.
-
-
 % \textemdash \cite{GRASSBERGER1983157} <- reference for early considerations towards percolation as a model for tree diseases and percolation
 % \textemdash \cite{SANDER2002293}, read and get more info + research links
+\newpage
 
 \section{Spatially-explicit epidemic models}
 \label{ch2:lit-rev-compartmentalised-models}
-Compartmentalised models are the dominate theme in epidemiological modelling...
 
-% 1 - early work that decomposed KMc model 
-\cite{segarra2001epidemic}
+Emergent infectious diseases (EIDs) in tree populations are multi-scale,
+they can span regional, country or continental spatial scales. Considerable variations in landscape composition,
+tree densities, population aggregation, and the climatic factors give rise to diverse spatio-temporal
+patterns of disease spread \cite{he2019integrating, suzuki2003spatial}. Incorporating spatial structure
+in tree-disease models is therefore vital to accurately capture the environmental influences upon host-pathogen 
+interactions and dispersal \cite{liu2007characterizing}. This section outlines several approaches to modelling
+the spread of tree disease.
 
-% 2 - describe how plank model can be represented in terms of a compartmentalised model
-The authors of \cite{time-varying-infectivity} demonstrated that different sporulation functions can be derived from a more general class of $SEmInR$ models. 
-Sporulation functions can then be used to describe lifetime of transitions between $E\rightarrow I$ along with the time-dependency of infectivity rates in the transition $S\rightarrow E$. 
-
-% In his seminal work, van der Plank \cite{van2013plant} considered a latency and infectious period, with a constant rate of infection while infectious; this model is represented by the equation:
-% \begin{equation}
-% \label{eq:plank-model}
-%     \frac{dI(t)}{dt} = R\big(I(t - p)  - I(t - p - i)\big)\big(1 - I(t)\big)
-% \end{equation}
-
-% where $p$ and $i$ are constant latency and infectivity periods and $R$ is the corrected infection rate (i.e. including host demography). Equation \ref{eq:plank-model} is seldom used in contemporary literature, owing to the difficulty in analytically solving its time-delay \cite{madden2006botanical}. However, it provides a simple basis to understand time-varying infectivities. 
-
-% Later, \cite{time-varying-infectivity} demonstrated that sporulation can be decomposed into a suite of $SEIR$-like models. Specifically, the authors of \cite{time-varying-infectivity} demonstrated that both compartmentalised $SEIR$ models and the plank formulation can be decomposed into a $SEmInR$ model i.e. where transitions follow $S\rightarrow E_1, E_2,.., E_m \rightarrow I_1, I_2, ..., I_n \rightarrow R$.
-% By taking suitable limits of $n$ and $m$ the plank and $SEIR$ models can be recovered. 
-
-
-\subsection{Lattice-based modelling}
-Lattice-based models have been used to describe the spread of disease in many contexts, such as the spread of malaria, the bubonic plague and the spread of tree disease...
-
-%\item \cite{doi:10.1098/rstb.1998.0226} gave a three population (host, parasite and hyperparasite), which considered transmission via a reaction-diffusion process.
-
-% \textcolor{red}{
-% \begin{itemize}
-%     \item Spatial SIR model
-%     \item Agent-based modelling
-%     \item A good place to talk about Percolation models
-%     \item \textcolor{red}{Murray}: travelling waves that do not change shape
-% \end{itemize}}
-
-\subsection{Dispersal}
+\subsection{Stochastic Dispersal}
 \label{ch2:dispersal}
-One of the key features that distinguish tree disease from human-based disease is dispersal. The dispersal of a pathogen may take many forms..
+
+Pathogen dispersal through wind, watercourse or human trade underpins a key feature of EDIs. 
+Numerous functions have been used to model dispersal, but generally, all describe a continuous 
+non-negative (real-valued) function that is normalisable: $\int_{-\infty}^{\infty}  D(x)dx = 1$.
+Various review articles provide comprehensive functional examples \cite{bullock2017synthesis, nathan2012dispersal, howe1982ecology}; 
+however, the general class of dispersal kernels include thin-tailed Gaussian and 
+exponential alongside fat-tailed inverse power law variants.
+
+Early plant disease simulators (e.g. EPIDEM and EPIMUL76) included stochastic dispersal\textemdash 
+discussed at length in section \ref{sec:prog-epi}. A more recent article by \cite{parnell2010effect} 
+modelled stochastic dispersal in Citrus canker to investigate the effects of landscape aggregation 
+patterns and disease progression.
+\cite{parnell2010effect} studied landscape patterns of two kinds: 
+1) varying degrees of randomly distributed densities 
+2) varying degrees of host aggregation.
+The epidemic model was based on a series of prior Citrus canker works
+\cite{parnell2009optimal, gilligan2008epidemiological, cook2008constructing}.
+The epidemic model is described by:
+\begin{equation}
+\label{eq:prob-trans}
+    Pr(S_i \rightarrow I_i)_{\Delta t} = 1 - \exp\big[- \beta \sum_j^N\exp^{-\alpha d_{ij}} + \epsilon \big]
+\end{equation}
+Here, a transition probability describes the $i^{th}$ susceptible tree becoming infected 
+during the step $t \rightarrow t + \Delta t$ on account of $N$ infected trees.
+Equation \ref{eq:prob-trans} assumes that dispersal exponentially decreases with distance (i.e. $\exp^{-\alpha d_{ij}}$), 
+where $\alpha$ denotes the dispersal scale parameter. Infection pressure from the $j^{th}$ infected tree is multiplied by an
+infection rate, $\beta$. The last parameter to consider in Equation \ref{eq:prob-trans}
+is the primary infection rate $\epsilon$. The primary infection rate reflects the chance of infection from sources outside
+the immediate system, i.e. at time $t=0$, distant infected populations external to the
+closed host population under consideration.
+
+The outside exponential term of Equation \ref{eq:prob-trans} depicts a cumulative exponential threshold above which 
+trees become infected. Interestingly, this threshold is based on the `Skelle construction' \cite{sellke1983asymptotic}. 
+More specifically, Skelle assumed that susceptive hosts need an arbitrary (cumulative) degree of infection
+exposure before becoming infectious. Using Equation \ref{eq:prob-trans}, \cite{parnell2010effect} proceeded to define 
+a control radius and found that both landscape aggregation and (randomly distributed) high host densities increase the
+optimal control radius. 
+
+A later paper by \cite{WEBIDEMICS} proceeded to generalise the Citrus canker model.
+Primarily, the authors examined an $SECIR$ model\footnote{
+Here, compartments are (S)usceptible, (E)xposed, (C)ryptic and (R)emoved) where $C$ 
+denotes unobservable cryptic infections.}, though several other model variants were included. 
+\cite{WEBIDEMICS} contrasted both Gaussian and Cauchy dispersal kernels.
+Cunniffe et al. included dispersal parameters provided by \cite{neri2014bayesian}, who
+assessed Cauchy kernels\textemdash in addition to exponential kernels.
+The general model followed:
+\begin{equation}
+\label{eq: webidemics}
+     \phi_i(t) = w(t)\big[\beta \sum_j K(d_{ij}; \alpha) + \epsilon \big]
+\end{equation}
+where $w(t)$ is a time-dependent infectivity function, $\epsilon$ is the primary infection 
+(set to zero in the manuscript), $\beta$ is the rate of secondary infection, and $K(d_{ij}; \alpha)$
+is the dispersal function. This time, Equation \ref{eq: webidemics} presents a rate of transition for a single
+susceptible tree (from $S_i \rightarrow E_i$) under the influence of all infected neighbours (represented by the $j^{th}$ index),
+as opposed to the probability of Equation \ref{eq:prob-trans}.
+
+Cunniffe et al. examined the effects of a cull radius, similar to \cite{parnell2010effect}. 
+However, this time, results were aimed towards assessing control when there is epidemic uncertainty.
+Consequently, \cite{WEBIDEMICS} assessed different epidemic serveries by varying $\beta$, alongside
+numerous control parameters, e.g. eradication response time, detection probabilities and revisit/survey intervals. 
+
+All in all, \cite{WEBIDEMICS} highlighted an intuitive result, namely, that the scale of control should
+reflect the "intrinsic epidemic scale". More succinctly, \textit{aggressive pathogens should be met with 
+an aggressive control strategy}. Moreover, Cunniffe et al. suggested that thick-tailed dispersal kernels
+(in this case, a Cauchy distribution) prove more challenging to control.
+
+The Citrus canker models developed in Equations \ref{eq:prob-trans} and \ref{eq: webidemics} 
+contrast with non-spatial analytical systems. For example, the model of pine wilt disease (PWD)
+constructed by \cite{khan2020modelling}, who coupled a differential system of pine (H)osts and beetle (V)ectors 
+following:
+\begin{align}
+    \label{eq:PWD-model1}
+    &\frac{dS_H}{dt} = \lambda_H - \beta_1\Psi S_H I_V - \beta_2\Phi\alpha S_H I_V - \gamma_1 S_H \\
+    &\frac{dE_H}{dt} = \beta_1\Psi S_H I_V - \beta_2\Phi\alpha S_H I_V  - (\gamma_1 + m)E_H \\
+    &\frac{dA_H}{dt} = m(1 - \omega)E_H - \gamma_1 A_H \\
+    \label{eq:PWD-model-H}
+    &\frac{dI_H}{dt} = m \omega E_H - (\gamma_1 + \mu ) I_H \\
+    \label{eq:PWD-model-V}
+    &\frac{dS_v}{dt} = \lambda_V - K S_v I_H - \gamma_2 S_V \\
+    &\frac{dE_v}{dt} = K S_v I_H - (\gamma_2 + \eta) E_V \\
+    \label{eq:PWD-model7}
+    &\frac{dI_v}{dt} = \eta E_V - \gamma_2 I_V
+\end{align}
+In this system, pine tree hosts interact with beetle vectors that carry pathogenic nematodes 
+(\textit{Bursaphelenchus xylophilus}). Stepping through the system:
+Equations \ref{eq:PWD-model1}-\ref{eq:PWD-model-H} describe the host population;
+births and naturally occurring deaths in the host population occur at rates $\lambda_H$ and $\gamma$, 
+respectively. Pine trees become infected by two mechanisms: $\beta_1\Psi$ that describes the incidence
+rate with infected mature beetles, and $\beta_2\Phi$ that describes the incidence rate with beetle offspring.
+Once pine hosts become exposed, a fraction ($\omega$) transition into the infectious symptomatic state $I$, 
+while the remaining fraction ($1 -\omega$) become asymptomatic\textemdash both pathways occur at rate $m$. 
+Disease induced death happens at a rate $\mu$. Equations \ref{eq:PWD-model-V}-\ref{eq:PWD-model7} outline a 
+($SEI$) dynamic for beetle vectors. Natural births and deaths in the beetle population happen with rates 
+$\lambda_V$ and $\gamma_2$, respectively. Furthermore, susceptible beetles become exposed by feeding infected
+hosts at rate $K$ and transitioning into the infected beetle class at rate $\eta$.
+
+Equations \ref{eq:PWD-model1}-\ref{eq:PWD-model-H} assume mass action population mixing of beetles 
+without stochasticity. Presumably, this assumption led \cite{khan2020modelling} to model PWD as a non-spatial
+system on account of the migratory population of Beetle vectors. In reality, a dispersal kernel is likely to 
+describe beetle movements more accurately than the well-mixed system presented in Equations 
+\ref{eq:PWD-model1}-\ref{eq:PWD-model-H}. Case in point, the spatio-temporal dynamics of Asian longhorned
+beetle was examined by \cite{smith2004dispersal} who inferred a median dispersal rate of $30\mathrm{m/day}$
+according to an exponential dispersal kernel (with only $2\%$ of beetles exceeding $920\mathrm{m}$).
+
+Linear stability analysis was performed on the deterministic system of Equations \ref{eq:PWD-model1}-\ref{eq:PWD-model-H}. 
+Whereas the stochastic spatio-temporal framework of Equations \ref{eq:prob-trans} and \ref{eq: webidemics} were analysed by repeating
+simulations inside an ensemble. Ensemble-averaging simulations constitute a common approach for plant disease
+models, as discussed at length by \cite{petrasova2020geospatial} who compared deterministically (single-realisation) and
+stochastic (ensemble-realisation) approaches applied to Sudden oak death in California. 
+
 % \begin{itemize}
 %     \item The importance of dispersal
 %     \item How is dispersal treated mathematically ?
@@ -319,17 +401,59 @@ One of the key features that distinguish tree disease from human-based disease i
 %     \item see \cite{nathan2012dispersal} for a review of dispersal kernels
 % \end{itemize}
 
-\subsection{The Metapopulation model}
+\newpage
 
-% \begin{itemize}
-%     \item this variation in epidemic outcome from variants of environmental factors was likened to the metapopulation used in ecology and population dynamics in order to describe environment `patchiness'
-%     \item variability in the host landscape was considered and recognised as important, the patchiness of a landscape lends itself well to a metapopulation model
-%     \cite{doi:10.1098/rstb.1986.0072}
-%     \item \cite{large-scale-control}
-% \end{itemize}
+\subsection{Large-scale models}
+% -\cite{doi:10.1098/rstb.1986.0072}
+% -item \cite{large-scale-control}
+
+
+Ultimately, microscopic (host-pathogen) interactions propagate the spread of disease.
+Although once disease-establishment has taken place, large-scale outbreaks can spread through vast areas,
+e.g. the spread of ash dieback through Europe \cite{alsop2015ash}.
+As a result, a contemporary modes of tree disease have examined the large-scale spread over entire landscapes.
+The previous section outlined a number of small-scale models (on the order of $1 \sim 10 \mathrm{km}$),
+however, in this section, we focus on large-scale epidemic models.
+
+Over large scales, disease drivers include long distance dispersal (LDD) through wind \cite{golan2017long, gross2014h} and human 
+trade \cite{ash-dieback-costs, perrings2016options, harwood2009epidemiological, doi:10.1098/rsif.2005.0051}.
+However, linking both human trade networks and dispersal in a large-scale model is challenging due to large number of parameters.
+
+A framework constructed by \cite{harwood2009epidemiological} incorporated the growth and reproduction, dispersal and trade
+of infectious plant material into a single model. The study conducted by \cite{harwood2009epidemiological} aimed
+to assess the risk of \textit{Phytophthora ramorum} and \textit{Phytophthora kernoviae} in the UK by
+employing a linked network approach. 
+In the linked network, single grid cells of area $\mathrm{1km \times 1km}$. 
+Following earlier work \cite{madden2007study}, the population inside each grid cell evolved according to an $SEIS$ model:
+\begin{align}
+    \label{eq:phyt-model1}
+    &\frac{dS}{dt} = \mu E + \mu I - \beta S i\\
+    &\frac{dE}{dt} =  \beta S i - k E - \mu E   \\
+    \label{eq:phyt-model3}
+    &\frac{dI}{dt} = k E - \mu I
+\end{align}
+where host introductions were assumed to balance the total number of removals $\mu (S + E + I$).
+Then, dispersal between $\mathrm{1km \times 1km}$ grids took place inside a domain of size $\mathrm{700km × 1300km}$ 
+covering the UK. A negative inverse square power law described wind-borne dispersal (with a scale constant of $2\mathrm{m}$),
+though parameterisation was qualitative and uniformed by experimental data.
+
+In addition, a simulated trade network linked $\mathrm{1km \times 1km}$ cells. 
+In the trade network, plant nurseries and retailers were connected by LDD
+trade and transport. In this manor, \textit{Phytophthora ramorum} and \textit{Phytophthora kernoviae}
+could jump between cells. The same linked-network approach was later used to reconstruct the 
+highly popularised Dutch elm disease epidemic in Great Britain \cite{doi:10.1111/j.1365-3059.2010.02391.x, potter2011learning}.
+
+
+\subsubsection{Metapopulation}
+
+The linked network models above \cite{doi:10.1111/j.1365-3059.2010.02391.x, potter2011learning, harwood2009epidemiological}
+have noticeable similarities to a metapopulation \cite{hanski1991metapopulation}. 
+A meta popualtion...
+
+
+
 
 % WORK IN PROGRESS
-The role of scale is crucial to describing the spread of tree-based disease...
 % \begin{itemize}
 %     \item The spatial aggregation of vegetation, how does clustering look on different spatial resolutions ?
 %     \item Spatial scale in dispersal ? What does this mean for disease gradients ?
@@ -344,68 +468,50 @@ The role of scale is crucial to describing the spread of tree-based disease...
 % \end{itemize}
 
 
-Modernity has witnessed the spread of tree-based epidemics at the regional, country and continental level. 'landscape-level'
 
+\subsubsection{Diseaes fronts}
 
-\subsection{Network Modelling}
+% initially travelling waves... 
+% describe FKPP...
+% power law dispersal... \cite{severns2019consequences} accelerating fronts...
 
-Network models are useful to describe the spread disease of human-based trade and transport of infectious trees...
 
 % \textcolor{red}{
 % \begin{itemize}
-%     \item What paradigm do network models suit?
-%     \item Human trade and transport and networks 
-%     \item plant-to-plant interactions and networks ? 
-%     \item give examples of how network models have been used in the literature
 %     \item review \cite{doi:10.1098/rsif.2005.0051}
 % \end{itemize}}
 
+% \subsection{Diffusion}
 
-\section{Thresholds in plant-based disease}
+% \cite{mundt2009long} 
 
-A key theme in the spread of tree-disease, and disease in the broadest sense, can be understood through a threshold...
+% In one spatial dimension, the FKPP model is given by:
+% \begin{equation}
+%     \frac{\partial u}{\partial t} = \mathcal{D}\nabla u + ru(1 - u/K)
+% \end{equation}
+% where $\mathcal{D}$ is a diffusion coefficient measured in units $\mathrm{m^2 t^{-1}}$ 
+% and $r$ is a growth constant (or rate) with units $t^{-1}$. 
+% This model assumes logistic growth and diffusion, where the field $u$ represents a `concentration',
+% and $K$ represents the carrying capacity, when $u=K$, the system growth goes to zero.
+
+% \begin{figure}
+%     \centering
+%     \includegraphics[scale=0.325]{chapter2/figures/FKPP.pdf}
+%     \caption{
+%     A simulations of the FKPP model for $r=0.10$ and $\mathcal{D}=0.10$ in one spatial dimension. 
+%     A non-zero field value is initialised at $x=10$ at time $t=0$. Uniform growth and diffusion 
+%     give rise to a wave-front that propagates with constant speed.}
+%     \label{fig:fkpp-expo1D}
+% \end{figure}
+%\item \cite{doi:10.1098/rstb.1998.0226} gave a three population (host, parasite and hyperparasite), which considered transmission via a reaction-diffusion process.
+
 % \textcolor{red}{
 % \begin{itemize}
-%     \item What was the first paper to use this term ? Give mini-historical recount
-%     \item What is Invasion and persistence ? Give examples of papers and results in literature 
-%     \item The importance of thresholds
-%     \item Where does this number come from and why is \textbf{}this an important number ?
-%     \item How can one define $R_0$ ? Talk about how the there are different ways to calculate it e.g. next-generation operator 
-%     \item Survey what results have been obtained in the literature using $R_0$
+%     \item Spatial SIR model
+%     \item Agent-based modelling
+%     \item A good place to talk about Percolation models
+%     \item \textcolor{red}{Murray}: travelling waves that do not change shape
 % \end{itemize}}
-
-\subsection{The basic reproduction number}
-\label{ch2:R0}
-The basic reproduction number, denoted by $R_0$, can be seen to arise in the study of population dynamics and demographics to categorize offspring \cite{heesterbeek2002brief}. In the study of epidemics, $R_0$ was adapted in order to categorize the number of infectious offspring and is widely agreed to be the most important and informative parameter. The basic reproduction number can be derived from the $SIR$ model \cite{kermack-model}, and from it, we can see how a likely disease is to spread though a population. Numerous definitions of $R_0$, and methods of determination, have been proposed in the literature resulting in confusion and multiple $R_0$ values for one pathogen \cite{delamater2019complexity}. However, a common definition states:
-
-\textit{The expected number of secondary infections that result from one infected individual, over it's entire infectious lifetime, in a completely susceptible population.}
-
-here, the infectious life-time is the total amount of time an individual remains infectious. The individuals infectious status will culminate in either recovery or death. Importantly, from $R_0$ a threshold can be determined which dictates whether or not the disease will spread through large parts of the population. That is, if $R_0>1$ an \textit{epidemic} will result, otherwise the spread of disease will likely halt. The value of $R_0$ can be determined from different methods\footnote{Common approaches include, the survival function, next-generation operator and estimation from epidemiological data \cite{perspectives-on-r0}} and from it many surrogate parameters can be calculated which leads to confusion \cite{diekmann2010construction}.
-
-The basic reproduction number is used extensively by researchers wishing to understand the spread of disease through human populations. In the study of plant-based disease however, the basic reproduction number has attracted far less attention despite being a convenient parameter from which a threshold can be derived. Thresholds are of great importance to understand epidemics in plant-based populations. A threshold criteria similar to the $R_0$-threshold was first introduced by \cite{van2013plant} in the logistic growth model. However, the logistic-growth based threshold was a vast simplification and had limitations in accurately predicting the threshold for growth and spread \cite{onstad1992evaluation}.
-
-The basic reproduction number $R_0$ was studied by \cite{gubbins2000population} in order to understand thresholds in plant-parasite \textit{pathosystems}. A plant-host under attack from a parasite may respond to the \textit{parasite load} with either the promotion or inhibition of susceptible tissue, see \cite{gilligan1997analysis} for further details on this mechanism. In order to model this problem, \cite{gubbins2000population} used a system of three linked differential equations describing the density of susceptible hosts, infected hosts and the primary source of inoculum\footnote{\textemdash here, inoculum is a general term that refers to any part of the parasite that, when in contact with the plant, may induce disease \cite{agrios2005chapter}}. Transmission of inoculum could occur through a dual source, that is, through primary or secondary pathways. Local stability analysis on the linked equations lead to various $R_0$ values, and subsequently threshold criteria, dependant on the functional form assumed by the host-response.\\
-
-\subsection{Invasion and Persistence}
-\label{ch3:invasions_and_persistence}
-When calculating thresholds, the spatial structure of the host population cannot be overlooked. A study conducted by \cite{park2001invasion} considered how spatial heterogeneity effects the dynamics of plant-parasite interactions and derived the basic reproduction number for a spatially structured host population. The density of susceptible and infected hosts were comparatively examined with deterministic and stochastic model variants. The host population in \cite{park2001invasion} consisted of \textit{patches}, which in reality could be either a single host, field or region of land. Inside each patch, the \textit{within-patch} dynamics were governed by a basic reproduction number, $R_p$. If $R_p > 1$ the parasite could survive and reproduce locally or otherwise die. The infection could jump between different patches via a longer-range interaction, set by a coupling strength. Patches were locally coupled together in a neighbourhood and the infection could jump between neighboring patches. The strength of interactions between neighboring patches were set by a coupling strength $\epsilon$ which was independently of distance.
-
-From the model put forward by \cite{park2001invasion}, the concept of \textit{persistence} could be observed. Persistence occurs when a pathogen can reproduce, and thus spread from host-to-host, however the the spread is slow enough such that host-regrowth can keep continually supplying the pathogen with susceptible matter. Whereas, if the pathogen spread more aggressively through the population, the supply of susceptible material would be quickly exhausted and the pathogen would quickly die.
-
-% A persisting pathogen might perniciously survive for long periods, seemingly under the radar, and suddenly re-emerge when conditions become favourable \cite{gilligan2008epidemiological}, an important consideration when designing management and control strategies.
-
-% $R_0$ is a complex function which changes in time, to this end, the next generation operator is used to derive a value for $R_0$ \cite{doi:10.1098/rsif.2009.0386}.
-% ref 2 \cite{doi:10.1146/annurev.phyto.011108.135838} ref 3. \cite{van2011periodic}
-
-
-% Epidemiological models are commonly used to for 'control'. Spatial aggregation of the host landscape has been shown to play an important role in effective management. In their paper \cite{doi:10.1094/PHYTO-100-7-0638}
-% showed that the optimal radius of control depends strongly on the level of aggregation (clustering).
-
-% \begin{itemize}
-%     \item Describe how control has been approached ?
-%     \item What type of models have been used to access control ? \cite{WEBIDEMICS} \cite{large-scale-control}
-%     \item what is the dominant narrative in controlling plant-based, and by extension tree-based, disease ? i.e. the scale of control must equal the scale of the outbreak.
-% \end{itemize}
 
 \section{Tree distribution datasets in Great Britain}
 \label{ch2:hostdata}
@@ -553,7 +659,6 @@ Results were then cross-validated with the remaining ($30\%$) abundance data; Fi
 flow-diagram of the method presented by \cite{hill.data}. 
 
 A more detailed explanation of the treatment proposed by \cite{hill.data} follows:
-\newpage
 \textbf{Stage 1)}
 \textit{
 \begin{itemize}
