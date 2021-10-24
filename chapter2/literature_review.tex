@@ -280,7 +280,7 @@ in tree-disease models is therefore vital to accurately capture the environmenta
 interactions and dispersal \cite{liu2007characterizing}. This section outlines several approaches to modelling
 the spread of tree disease.
 
-\subsection{Stochastic Dispersal}
+\subsection{Small-scale: stochastic dispersal}
 \label{ch2:dispersal}
 
 Pathogen dispersal through wind, watercourse or human trade underpins a key feature of EDIs. 
@@ -385,12 +385,9 @@ describe beetle movements more accurately than the well-mixed system presented i
 \ref{eq:PWD-model1}-\ref{eq:PWD-model-H}. Case in point, the spatio-temporal dynamics of Asian longhorned
 beetle was examined by \cite{smith2004dispersal} who inferred a median dispersal rate of $30\mathrm{m/day}$
 according to an exponential dispersal kernel (with only $2\%$ of beetles exceeding $920\mathrm{m}$).
-
 Linear stability analysis was performed on the deterministic system of Equations \ref{eq:PWD-model1}-\ref{eq:PWD-model-H}. 
-Whereas the stochastic spatio-temporal framework of Equations \ref{eq:prob-trans} and \ref{eq: webidemics} were analysed by repeating
-simulations inside an ensemble. Ensemble-averaging simulations constitute a common approach for plant disease
-models, as discussed at length by \cite{petrasova2020geospatial} who compared deterministically (single-realisation) and
-stochastic (ensemble-realisation) approaches applied to Sudden oak death in California. 
+Whereas the stochastic spatio-temporal framework of Equations \ref{eq:prob-trans} and \ref{eq: webidemics} 
+were analysed by repeating simulations inside an ensemble.
 
 % \begin{itemize}
 %     \item The importance of dispersal
@@ -401,30 +398,31 @@ stochastic (ensemble-realisation) approaches applied to Sudden oak death in Cali
 %     \item see \cite{nathan2012dispersal} for a review of dispersal kernels
 % \end{itemize}
 
-\newpage
 
-\subsection{Large-scale models}
+\subsection{Large-scale}
 % -\cite{doi:10.1098/rstb.1986.0072}
 % -item \cite{large-scale-control}
 
-
-Ultimately, microscopic (host-pathogen) interactions propagate the spread of disease.
-Although once disease-establishment has taken place, large-scale outbreaks can spread through vast areas,
-e.g. the spread of ash dieback through Europe \cite{alsop2015ash}.
-As a result, a contemporary modes of tree disease have examined the large-scale spread over entire landscapes.
-The previous section outlined a number of small-scale models (on the order of $1 \sim 10 \mathrm{km}$),
+Ultimately, microscopic (host-pathogen) interactions propagate the spread of disease. 
+Although once disease-establishment has taken place, large-scale outbreaks can spread through vast
+areas, e.g. the spread of ash dieback through Europe \cite{alsop2015ash}.
+As a result, contemporary modes of tree disease have examined the large-scale spread over entire landscapes.
+The previous section outlined some small-scale models (on the order of $1 \sim 10 \mathrm{km}$), 
 however, in this section, we focus on large-scale epidemic models.
 
-Over large scales, disease drivers include long distance dispersal (LDD) through wind \cite{golan2017long, gross2014h} and human 
+Over large scales, disease drivers include long distance dispersal (LDD) through wind \cite{golan2017long, gross2014h} and
 trade \cite{ash-dieback-costs, perrings2016options, harwood2009epidemiological, doi:10.1098/rsif.2005.0051}.
-However, linking both human trade networks and dispersal in a large-scale model is challenging due to large number of parameters.
+However, linking human trade networks and dispersal in one large-scale model is challenging due to numerous complex parameters 
+and epidemiological drivers. 
 
 A framework constructed by \cite{harwood2009epidemiological} incorporated the growth and reproduction, dispersal and trade
 of infectious plant material into a single model. The study conducted by \cite{harwood2009epidemiological} aimed
 to assess the risk of \textit{Phytophthora ramorum} and \textit{Phytophthora kernoviae} in the UK by
 employing a linked network approach. 
-In the linked network, single grid cells of area $\mathrm{1km \times 1km}$. 
-Following earlier work \cite{madden2007study}, the population inside each grid cell evolved according to an $SEIS$ model:
+In the linked network, single grid cells of area $\mathrm{1km \times 1km}$ were coupled together by a (wind-borne)
+dispersal kernel and a trade network. 
+Following earlier earlier work \cite{madden2007study}, the population inside each grid cell evolved according
+to an $SEIS$ model:
 \begin{align}
     \label{eq:phyt-model1}
     &\frac{dS}{dt} = \mu E + \mu I - \beta S i\\
@@ -433,43 +431,119 @@ Following earlier work \cite{madden2007study}, the population inside each grid c
     &\frac{dI}{dt} = k E - \mu I
 \end{align}
 where host introductions were assumed to balance the total number of removals $\mu (S + E + I$).
-Then, dispersal between $\mathrm{1km \times 1km}$ grids took place inside a domain of size $\mathrm{700km × 1300km}$ 
-covering the UK. A negative inverse square power law described wind-borne dispersal (with a scale constant of $2\mathrm{m}$),
-though parameterisation was qualitative and uniformed by experimental data.
+Then, dispersal between $\mathrm{1km \times 1km}$ grids took place inside a domain of size $\mathrm{700km \times 1300km}$ 
+covering the UK. Here, the host population was informed by the Country side survey data\textemdash discussed more 
+below in section \ref{ch2:hostdata}. An inverse square power law described wind-borne dispersal (with a scale constant
+of $2\mathrm{m}$), though parameterisation was qualitative and uniformed by experimental data.
 
 In addition, a simulated trade network linked $\mathrm{1km \times 1km}$ cells. 
-In the trade network, plant nurseries and retailers were connected by LDD
-trade and transport. In this manor, \textit{Phytophthora ramorum} and \textit{Phytophthora kernoviae}
-could jump between cells. The same linked-network approach was later used to reconstruct the 
-highly popularised Dutch elm disease epidemic in Great Britain \cite{doi:10.1111/j.1365-3059.2010.02391.x, potter2011learning}.
+In the trade network, plant nurseries and retailers were connected by LDD trade and transport. 
+In this manner, \textit{Phytophthora ramorum} and \textit{Phytophthora kernoviae} could jump 
+between cells. The same linked-network approach was later used to reconstruct the highly 
+popularised 1970s Dutch elm disease epidemic in Great Britain \cite{doi:10.1111/j.1365-3059.2010.02391.x, potter2011learning}.
 
+A similar construction was put forward by \cite{meentemeyer2011epidemiological} to 
+forecast the spread of sudden oak death (SOD) in California from (1990-2030).
+A distribution of host\footnote{In this context, `host' refers to a wide-range
+species susceptible to \textit{P. ramorum} \cite{tooley2004susceptibility}.
+} abundance was derived from previous SOD modelling work 
+\cite{meentemeyer2004mapping} and comprised $\mathrm{250 \times 250}$ grid cells
+weighted by the relative susceptibility to \textit{P. ramorum} from 1-100. As a result,
+a high-resolution map of `host index' was produced throughout the state of California.
 
-\subsubsection{Metapopulation}
+The large-scale SOD model included several epidemiological drivers of \textit{P. ramorum}: 
+forest-type, local weather conditions, oak density, local pathogen growth and transmission
+and longer-range transmission. Local-scale dispersal were estimated
+using Markov chain Monte Carlo (MCMC) methods from aerial surveys \cite{valachovic2008wildland} 
+of \textit{P. ramorum}, and positive sites (2001–2007) confirmed by the California Department of
+Food and Agriculture were used to estimate the long-range dispersal. \cite{meentemeyer2004mapping}
+found that a long-range Cauchy distribution fitted the data most appropriately over both spatial scales.
+Hence, a multi-scale kernel was given as:
+\begin{equation}
+\label{eq:multi-scale-kernel}
+    K(d; \alpha_1, \alpha_2, \gamma) = \gamma( 1 + (d/\alpha_1)^2 )^{-1} + (1 - \gamma)( 1 + (d/\alpha_2)^2 )^{-1}
+\end{equation}
+where $\alpha_1 = 20.57\mathrm{m}$ and $\alpha_2 = 9.5\mathrm{km}$ represent the short and long range dispersal
+kernels respectively, and the ratio $\gamma=0.99$ estimates the total contribution to short and
+long-range dispersal. Using the multi-scale dispersal kernel in Equation \ref{eq:multi-scale-kernel},
+the epidemiological model between $\mathrm{250 \times 250}$ grid cells assume the form:
+\begin{equation}
+\label{eq:large-scale-model}
+    \Psi_{ijt} = \beta \sum_i \big(\chi_t (f_i) m_{it} c_{it} I_{it} \big) \big( \chi_t(f_j) m_{jt} c_{jt} S_{jt} /N_{max} \big) \times K(d_{ij}; \alpha_1, \alpha_2, \gamma)
+\end{equation}
+where $\Psi_{ijt}$ represents the infection pressure from grid $i$ to grid $j$ in one week $t$ intervals. 
+Equation \ref{eq:large-scale-model} includes multiple component-functions and parameters: 
+\begin{itemize}
+    \item A binary-valued function $\chi_t(f_i)$ that indicates if forest type $f_i$ can infect and become infected at time $t$
+    \item two indices $m_{it}$ and $c_{it}$ that indicate moister and temperate of patch $i$ at time $t$
+    \item $I_i$ and $S_j$, the number of infected in grid $i$ and susceptibles at $j$
+    \item $K(d_{ij})$, the dispersal kernel from Equation \ref{eq:multi-scale-kernel}
+    \item $\beta$ that models the rate of spore production per site per week.
+\end{itemize}
 
-The linked network models above \cite{doi:10.1111/j.1365-3059.2010.02391.x, potter2011learning, harwood2009epidemiological}
-have noticeable similarities to a metapopulation \cite{hanski1991metapopulation}. 
-A meta popualtion...
+From the model, \cite{meentemeyer2004mapping} predicted which areas in California
+had the highest secondary infection risk of SOD over $40$ years.
+Simulations were ensemble-averaged based on predicted weather conditions from 2008–2030.
+Climatic variations were classified as `favourable', `random' and `unfavourable'.
+In all variations, SOD was predicted to spread through California and effect $1000$s
+of square kilometers. However, considerable spatial and temporal variation were witnessed
+across different Californian states. Additionally, \cite{meentemeyer2004mapping} 
+observed that $93\%$ of short-range dispersal occurred within the range of a single $\mathrm{250 \times 250}$ and 
+$95\%$ of infrequent long-range spread remain within $100\mathrm{km}$ in their model.
+Although, most dispersal remained localised $<1\mathrm{km}$.
 
+The manuscript authored by \cite{meentemeyer2004mapping} emphasises the multi-faceted 
+parameters and processes that one needs to consider before modelling a large-scale epidemic
+outbreak; these included, host data, dispersal, and climate.
+\cite{large-scale-control} subsequently extended the analysis of \cite{meentemeyer2004mapping}
+to assess the large-scale effects of epidemic control. 
+In particular, \cite{large-scale-control} examined how to optimise eradication of SOD with 
+limited resources. When resources are low, the authors suggested that small localised 
+eradication zones around \textit{known} foci optimise control; justified by the fact that
+small, but more numerous, control areas about diseased areas reduces the risk of failing 
+to treat a high-risk site that causes many secondary infections. 
 
+\cite{large-scale-control} also tested management strategies based on targeting:
+1) hosts irrespective of disease 
+status (the "host" strategy)
+2) local areas with high prevalence ("hazard" strategy)
+3) areas with high basic reproduction numbers ("susceptible" strategy)
+4) regions ahead of the wavefront ('wavefront" strategy).
+Of all the management scenarios tested, \cite{large-scale-control} found
+that 4), treating areas ahead of the wavefront, reduced epidemic spread the most.
+In this scenario, the affected area was reduced by $\sim 2400\mathrm{km^2}$ and 
+the optimal culling radius was determined to be $362.5\mathrm{m}$.
 
-
+All the large-scale models discussed above split the population into smaller (sub)girds.
+As such, they share noticeable similarities to a metapopulation\footnote{
+Metapopulation dynamics generally aim to deconstruct a spatial population into separate sub-populations contained within a `patch'. Then, between-patch interactions aim to model population migrations, connectedness and fragmentation, while within-patch
+dynamics aims to model colonisation, persistence, competition, coexistence, and habitat suitability.} commonly used by ecologists studying spatially-structured animal and plant populations \cite{hanski1998metapopulation}. 
+However, plant-disease modellers increasingly utilise metapopulation settings to study the effects of landscape features on disease progression, e.g. \cite{beninca2020trade, soubeyrand2009spatiotemporal, doi:10.1046/j.1461-0248.2002.00378.x}.
+ 
 % WORK IN PROGRESS
-% \begin{itemize}
-%     \item The spatial aggregation of vegetation, how does clustering look on different spatial resolutions ?
-%     \item Spatial scale in dispersal ? What does this mean for disease gradients ?
 %     \item  \cite{https://doi.org/10.1111/jbi.13642}
 %     \item  \cite{pautasso2013european}, search for 'modelling' in this review paper. It contains references to LDD models.
-%     \item LDD is an important factor of the scale of spread. Long distance dispersal has been considered for many biological processes including seed and pollen dispersal \cite{baguette2012dispersal, levin2003ecology}.
-%     \item LDD is highly stochastic \cite{nathan2006long}
-%     \item \cite{wingen2013long} demonstrated how host heterogeneity and distance between patches can...
-%     \item traditional model of plant disease consider a wave-like spread of disease, a biological wave-like phenomena, that spreads from region to region (CITATIONS...).
-%     However, this is not the case, as demonstrated by \cite{mundt2009aerial}. Epidemic fronts and disease gradients can range over multiple scales. The spread of disease through plant-based populations is thus, a multi-scale problem.
-%     \item indeed, fungal spores can disperse over large distances, as confirmed by modelling work \cite{shaw2006assembling} 
-% \end{itemize}
+%     \item LDD is an important factor of the scale of spread. Long distance dispersal has been considered for many biological processesd distance between patches can...
 
 
+\subsection{Disease fronts}
 
-\subsubsection{Diseaes fronts}
+\blindtext
+
+\blindtext
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.325]{chapter2/figures/FKPP.pdf}
+    \caption{
+    A simulations of the FKPP model for $r=0.10$ and $\mathcal{D}=0.10$ in one spatial dimension. 
+    A non-zero field value is initialised at $x=10$ at time $t=0$. Uniform growth and diffusion 
+    give rise to a wave-front that propagates with constant speed.}
+    \label{fig:fkpp-expo1D}
+\end{figure}
+
+\blindtext
+
 
 % initially travelling waves... 
 % describe FKPP...
@@ -483,7 +557,7 @@ A meta popualtion...
 
 % \subsection{Diffusion}
 
-% \cite{mundt2009long} 
+% \cite{mundt2009long}  \cite{mundt2009aerial}
 
 % In one spatial dimension, the FKPP model is given by:
 % \begin{equation}
@@ -494,15 +568,6 @@ A meta popualtion...
 % This model assumes logistic growth and diffusion, where the field $u$ represents a `concentration',
 % and $K$ represents the carrying capacity, when $u=K$, the system growth goes to zero.
 
-% \begin{figure}
-%     \centering
-%     \includegraphics[scale=0.325]{chapter2/figures/FKPP.pdf}
-%     \caption{
-%     A simulations of the FKPP model for $r=0.10$ and $\mathcal{D}=0.10$ in one spatial dimension. 
-%     A non-zero field value is initialised at $x=10$ at time $t=0$. Uniform growth and diffusion 
-%     give rise to a wave-front that propagates with constant speed.}
-%     \label{fig:fkpp-expo1D}
-% \end{figure}
 %\item \cite{doi:10.1098/rstb.1998.0226} gave a three population (host, parasite and hyperparasite), which considered transmission via a reaction-diffusion process.
 
 % \textcolor{red}{
