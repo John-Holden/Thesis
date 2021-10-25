@@ -368,15 +368,16 @@ following:
 In this system, pine tree hosts interact with beetle vectors that carry pathogenic nematodes 
 (\textit{Bursaphelenchus xylophilus}). Stepping through the system:
 Equations \ref{eq:PWD-model1}-\ref{eq:PWD-model-H} describe the host population;
-births and naturally occurring deaths in the host population occur at rates $\lambda_H$ and $\gamma$, 
+naturally occurring births and deaths in the host population occur at rates $\lambda_H$ and $\gamma_1$, 
 respectively. Pine trees become infected by two mechanisms: $\beta_1\Psi$ that describes the incidence
-rate with infected mature beetles, and $\beta_2\Phi$ that describes the incidence rate with beetle offspring.
+rate due to mature infected beetles, and $\beta_2\Phi$ that describes the incidence rate due to the offspring
+of infected beetles.
 Once pine hosts become exposed, a fraction ($\omega$) transition into the infectious symptomatic state $I$, 
 while the remaining fraction ($1 -\omega$) become asymptomatic\textemdash both pathways occur at rate $m$. 
 Disease induced death happens at a rate $\mu$. Equations \ref{eq:PWD-model-V}-\ref{eq:PWD-model7} outline a 
 ($SEI$) dynamic for beetle vectors. Natural births and deaths in the beetle population happen with rates 
-$\lambda_V$ and $\gamma_2$, respectively. Furthermore, susceptible beetles become exposed by feeding infected
-hosts at rate $K$ and transitioning into the infected beetle class at rate $\eta$.
+$\lambda_V$ and $\gamma_2$, respectively. Furthermore, susceptible beetles become exposed by feeding on
+infected pine trees at rate $K$ and transition into the infected beetle class at rate $\eta$.
 
 Equations \ref{eq:PWD-model1}-\ref{eq:PWD-model-H} assume mass action population mixing of beetles 
 without stochasticity. Presumably, this assumption led \cite{khan2020modelling} to model PWD as a non-spatial
@@ -406,11 +407,11 @@ were analysed by repeating simulations inside an ensemble.
 Ultimately, microscopic (host-pathogen) interactions propagate the spread of disease. 
 Although once disease-establishment has taken place, large-scale outbreaks can spread through vast
 areas, e.g. the spread of ash dieback through Europe \cite{alsop2015ash}.
-As a result, contemporary modes of tree disease have examined the large-scale spread over entire landscapes.
+As a result, contemporary models of tree disease have examined the large-scale spread over entire landscapes.
 The previous section outlined some small-scale models (on the order of $1 \sim 10 \mathrm{km}$), 
 however, in this section, we focus on large-scale epidemic models.
 
-Over large scales, disease drivers include long distance dispersal (LDD) through wind \cite{golan2017long, gross2014h} and
+Over large scales, two primary disease drivers include long distance dispersal (LDD) through wind \cite{golan2017long, gross2014h} and
 trade \cite{ash-dieback-costs, perrings2016options, harwood2009epidemiological, doi:10.1098/rsif.2005.0051}.
 However, linking human trade networks and dispersal in one large-scale model is challenging due to numerous complex parameters 
 and epidemiological drivers. 
@@ -436,7 +437,7 @@ covering the UK. Here, the host population was informed by the Country side surv
 below in section \ref{ch2:hostdata}. An inverse square power law described wind-borne dispersal (with a scale constant
 of $2\mathrm{m}$), though parameterisation was qualitative and uniformed by experimental data.
 
-In addition, a simulated trade network linked $\mathrm{1km \times 1km}$ cells. 
+In addition to wind-borne dispersal, a simulated trade network linked $\mathrm{1km \times 1km}$ grid cells. 
 In the trade network, plant nurseries and retailers were connected by LDD trade and transport. 
 In this manner, \textit{Phytophthora ramorum} and \textit{Phytophthora kernoviae} could jump 
 between cells. The same linked-network approach was later used to reconstruct the highly 
@@ -449,10 +450,11 @@ species susceptible to \textit{P. ramorum} \cite{tooley2004susceptibility}.
 } abundance was derived from previous SOD modelling work 
 \cite{meentemeyer2004mapping} and comprised $\mathrm{250 \times 250}$ grid cells
 weighted by the relative susceptibility to \textit{P. ramorum} from 1-100. As a result,
-a high-resolution map of `host index' was produced throughout the state of California.
+a high-resolution map of was produced throughout the state of California detailing the `host index'
+from 1-100.
 
-The large-scale SOD model included several epidemiological drivers of \textit{P. ramorum}: 
-forest-type, local weather conditions, oak density, local pathogen growth and transmission
+The large-scale SOD model developed by \cite{meentemeyer2011epidemiological} included several epidemiological 
+drivers of \textit{P. ramorum}: forest-type, local weather conditions, oak density, local pathogen growth and transmission
 and longer-range transmission. Local-scale dispersal were estimated
 using Markov chain Monte Carlo (MCMC) methods from aerial surveys \cite{valachovic2008wildland} 
 of \textit{P. ramorum}, and positive sites (2001–2007) confirmed by the California Department of
@@ -484,7 +486,8 @@ Equation \ref{eq:large-scale-model} includes multiple component-functions and pa
 From the model, \cite{meentemeyer2004mapping} predicted which areas in California
 had the highest secondary infection risk of SOD over $40$ years.
 Simulations were ensemble-averaged based on predicted weather conditions from 2008–2030.
-Climatic variations were classified as `favourable', `random' and `unfavourable'.
+Climatic variations were classified as `favourable', `random' and `unfavourable' for
+pathogen growth.
 In all variations, SOD was predicted to spread through California and effect $1000$s
 of square kilometers. However, considerable spatial and temporal variation were witnessed
 across different Californian states. Additionally, \cite{meentemeyer2004mapping} 
@@ -525,24 +528,82 @@ However, plant-disease modellers increasingly utilise metapopulation settings to
 %     \item  \cite{pautasso2013european}, search for 'modelling' in this review paper. It contains references to LDD models.
 %     \item LDD is an important factor of the scale of spread. Long distance dispersal has been considered for many biological processesd distance between patches can...
 
+\newpage
 
 \subsection{Disease fronts}
 
-\blindtext
+Through the years, numerous researchers have conceptualised the spread of disease, or more broadly, biological invasions, 
+through the lens of diffusion, random walks, or localised dispersal. As a consequence of such ideas, we see the prediction
+of travelling waves \cite{skellam1951random, mollison1977spatial, GRASSBERGER1983157, ferrandino1993dispersive}.
+A classic example can be found in the Fisher Kolmogorov–Petrovsky–Piskunov (FKPP) equation \cite{fisher1937wave}.
 
-\blindtext
+Although recent work has called travelling waves into question, as we discuss more below, 
+the FKPP model is important from a historical and contextual perspective;
+the model comprises some fundamental `reaction diffusion' properties that emerge from the interplay of a populations growth and spread.
+In two spatial dimensions, the FKKP model is given by a partial differential equation of the form:
+\begin{equation}
+\label{eq:fkpp}
+    \frac{\partial u}{\partial t} = \mathcal{D}\nabla u + ru(1 - u/K)
+\end{equation}
+where $\mathcal{D}$ is a diffusion coefficient ($m^2\ t^{-1}$), $r$ is a growth rate ($t^{-1}$),
+and $K$ is carrying capacity. More explicitly, $\mathcal{D}$ represents a populations mobility, 
+$r$ represents how quickly individuals in the population reproduce, and $K$ represents 
+the maximum number (or concentration) of individuals can occupy a region in space at any one time.
+If $K=u$, the whole growth term goes to zero and we only have outward diffusion (provided neighbouring
+regions are not fully occupied as well). 
+
+The essential travelling-wave behaviour of Equation \ref{eq:fkpp} is displayed in Figure \ref{fig:fkpp} 
+in both one and two spatial dimensions. In all panels, travelling waves are simulated 
+with parameters $r=0.10$, $\mathcal{D}=0.10$, and $K=0.00$; at $t=0$, a field is set to $u(0.50)=0.10$ (at the domains mid-point).
+
+Figures \ref{fig:fkpp}(a-c), show a one-dimensional wave propagating under different conditions:
+(a) symmetric growth and diffusion
+(b) extending a linearly increasing diffusion gradient from left ($\mathcal{D}=0.01$ at $x=0.00$) to right
+($\mathcal{D}=2.00$ at $x=1.00$)
+(c) extending a linearly increasing growth gradient that increases from left ($r=0.01$ at $x=0.00$) to right
+($r=2.00$ at $x=1.00$).
+Figures \ref{fig:fkpp}(d-f) show the equivalent two-dimensional behaviour.
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.325]{chapter2/figures/FKPP.pdf}
     \caption{
-    A simulations of the FKPP model for $r=0.10$ and $\mathcal{D}=0.10$ in one spatial dimension. 
-    A non-zero field value is initialised at $x=10$ at time $t=0$. Uniform growth and diffusion 
-    give rise to a wave-front that propagates with constant speed.}
-    \label{fig:fkpp-expo1D}
+    Simulating the FKPP model in one and two spatial dimensions with parameters $r=0.10$, $\mathcal{D}=0.10$, and $K=0.00$. 
+    In all panels, a non-zero field value is initialised at the domains mid-point (i.e. $u(0.50)=0.10$) at time $t=0$;
+    simulations then evolve according to a forward time centered difference (FTCD) finite difference scheme. 
+    (a) Symmetric growth and diffusion in $1D$.
+    (b) An asymmetric diffusion-gradient increasing from left to right in $1D$.
+    (c) An asymmetric growth-gradient increasing from left to right in $1D$.
+    (d) Symmetric growth and diffusion in $2D$.
+    (e) An asymmetric diffusion-gradient increasing from left to right in $2D$.
+    (f) An asymmetric growth-gradient increasing from left to right in $2D$.}
+    \label{fig:fkpp}
 \end{figure}
 
-\blindtext
+From these conditions, we can see that $\mathcal{D}$ and $r$ control the thickness of the wavefront,
+which can be inferred by the quantity  $\ell_{w} \sim \sqrt{ \frac{\mathcal{D}}{r}}$ 
+(as can be seen by the cancellation of units, i.e. $\frac{length^2}{t} \frac{1}{t^{-1}}$).
+Although, for all panels shown in Figure \ref{fig:fkpp}, the travelling front speed remains
+approximately constant; this can be understood through the predicted front velocity:
+\begin{equation}
+    \label{eq:fkpp_vel}
+    v \geq v_{min} = 2\sqrt{r\mathcal{D}}
+\end{equation}
+where $v_{min}$ is the minimum wave-speed admitted by the front\footnote{
+The reader can find comprehensive derivation in \cite{murray2002mathematicalbiology}, 
+in Chapter 11 "Biological Waves". In there, we see that strictly speaking Equation \ref{eq:fkpp_vel} 
+is incorrect in two spatial dimensions on account of wavefront curvature. However, it still provides
+a reasonable estimate.}.
+The numerical stability of simulations is ensured provided that the Courant–Friedrichs–Lewy (CFL) condition
+is met \cite{cfl-condition}.
+In the case of the FKPP model, the CFL condition is given by: $\mathcal{D} \times (dt/dx^2 )< \frac{1}{2}$
+where $dx$ and $dt$ represent the discretized domain and time-steps respectively.
+
+The travelling wave solutions of the FKPP model presents a simple, intuitive place to begin modelling the spread of disease 
+through a population of trees. However, recent work now suggests otherwise.  
+
+
+
 
 
 % initially travelling waves... 
@@ -578,6 +639,8 @@ However, plant-disease modellers increasingly utilise metapopulation settings to
 %     \item \textcolor{red}{Murray}: travelling waves that do not change shape
 % \end{itemize}}
 
+\newpage
+
 \section{Tree distribution datasets in Great Britain}
 \label{ch2:hostdata}
 
@@ -595,7 +658,7 @@ Following this, statistically-generated species distribution models, typically b
 
 Surveyed data predominantly describes either: abundance, presence-only, presence-absence data. 
 Generally, abundance data describes percentage canopy cover per $\mathrm{km^2}$.
-In contrast, presence-only and presence-absence data that record if a species is present or present and absent, respectively.
+In contrast, binary-valued presence-only and presence-absence data simply record if a species is present or present and absent, respectively.
 Abundance captures significantly more information than presence-only data, yet unfortunately, they are in short supply.
 
 \subsubsection{Countryside Survey}

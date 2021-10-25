@@ -26,19 +26,18 @@ From first principles, the probability of infection at a distance $r$ can be des
 where $\ell$ is a distance that sets the scale of dispersal. 
 Suppose two trees, one susceptible ($S_x$) and one infected ($I_{x^\prime}$), are separated by a distance $r=|x - x^\prime|$;
 a transition probability between the states $S_x \rightarrow I_x$ can therefore be governed by the `dispersal function' $g(r; \ell)$, multiplied by an infectivity parameter:
-
 \begin{equation}
 \label{eq:pr-dispersal-transition}
     Pr(S_{x} \rightarrow I_{x} ;\ I_{x^{\prime}} ) = \beta \exp\Big[\frac{-r^2}{2\ell^2}\Big]
 \end{equation}
-
-where $\beta$ is a probability. 
+where $\beta$ is interpreted as a probability, i.e. $\beta \in [0, 1]$. 
 Equation \ref{eq:pr-dispersal-transition} generalises the SLM to include non-local interactions, hence referred to as the non-local model (NLM).
-A table of parameters for the NLM is shown below in Table \ref{tab:SIR-model}.
-The probability of transition is calculated for each susceptible tree in the domain (i.e. $\forall S_x \in [\mathcal{L}, \mathcal{L}]$),
-and repeated for all infectious trees in $I$ over their infectious life-times.
-From a computational perspective, the probability of transition is assessed against samples drawn from a continuous uniform distribution $U(0, 1)$;
-see Appendix \ref{a:probablity-transition} for an example of implementation.
+Each probability of transition is assessed against a sample drawn from a continuous uniform distribution $U(0, 1)$ following a Poisson construction \cite{cook2008constructing}. 
+Probabilities are then calculated for each times step while host $S_x$ 
+remains susceptible, and repeated for each susceptible tree in the domain (i.e. $\forall S_x \in [\mathcal{L}, \mathcal{L}]$).
+See Appendix \ref{a:probablity-transition} for further information on the computational implementation. A table of parameters for the NLM is shown below in Table \ref{tab:SIR-model}.
+
+
 
 % NB: I will contrast the other tree-to-tree models in the literature.
 
