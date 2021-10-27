@@ -73,7 +73,7 @@ infected hosts
 
 
 \subsection{Logistic growth}
-
+\label{sec:logistic-growth}
 The seminal work of \cite{van2013plant} firmly established ties between plant pathology and 
 mathematical epidemiology.
 Fundamentally, Van der Plank equated the growth of plant pathogens (or `inoculum') to logistic growth of the form:
@@ -175,6 +175,7 @@ Trivially, the $SEIR$ model is recovered when $n=1$ and $m=1$. However, when $n,
 Despite the sameness of both DDE and $SEIR$ formulations, the overarching theme of modern epidemiology is overwhelmingly compartmentalised,
 owing to the increased flexibility and easier analysis of compartmental models.
 
+
 \subsection{Progressive botanical epidemiology}
 \label{sec:prog-epi}
 After \cite{van2013plant} moved the field of botanical diseases into a more quantitative discipline,
@@ -211,28 +212,29 @@ Research on percolation occurred alongside the developing field of plant disease
 The development of percolation theory marked an early approach to modelling epidemic systems that are
 both spatially-explicit and stochastic.
 The original formulation of percolation theory was first used to describe properties of a fluid and the 
-bonds which form between molecules \cite{perco_origin} (a more formal account of 
-percolation is undertaken in section \ref{ch3:invasions_and_persistence}). The problem was posed on a 
+bonds that form between molecules \cite{perco_origin} (a more formal description of 
+percolation is undertaken later in section \ref{sec:perc-form}). The problem was posed on a 
 graph\textemdash illustrated in terms of vertices and edges. However re-interpretations were subsequently 
 put forward by physicists studying material sciences, naturally on a lattice. \cite{Essam_1980}. 
-The attractive feature of this new paradigm was that percolation demonstrated a phase-transition. 
-Thus, percolation could be treated with scaling theory used in the study of critical-phenomena. 
+An attractive feature outlined by this new approach was a phase-transition that could be treated with scaling theory\textemdash
+used in the study of critical-phenomena. 
 Accordingly, early work rigorously ensued to map out the behaviour of percolation around criticality in 
 terms of critical exponents \cite{STAUFFER19791}. 
 
 Different flavours of percolation models, such as site or bond percolation, were described
 to model different processes. Nevertheless, percolation proved a convenient theory and various phenomena including gelation, 
-magnetism and telecommunications were described \cite{trove.nla.gov.au/work/26493727}. In particular, 
-forest fire models were related to percolation \cite{MacKay_1984}, 
-with only a short conceptual jump from time-dependent percolation used to study the growth of crystals \cite{Family_1985}. 
+magnetism and telecommunications were described \cite{trove.nla.gov.au/work/26493727}. 
+With only a short conceptual jump from time-dependent percolation used to study the growth of crystals \cite{Family_1985},
+forest fire models were subsequently related to percolation \cite{MacKay_1984}.
+
 
 A fire spreading through a population of trees is not too different to a disease spreading through 
 a population, thus leading to a general epidemic-formalisation within a percolation-based framework
 \cite{pub.1059067807}; the researchers proposed that epidemics might be in the same universality class
-as percolation. Beginning with a simple $SIR$ framework put forward by \cite{kermack-model}, the field 
-of epidemiology was already well-established around the time percolation theory was conceived \cite{baily1975mathematical}. 
-Naturally, percolation models could relax assumptions about population mixing and serve as a helpful tool
-when developing spatially structured epidemic models.
+as percolation. Beginning with a simple $SIR$ framework was already well-established around the time percolation
+theory was conceived \cite{baily1975mathematical}. Owing to an implicit spatio-temporal construction,
+percolation models could relax assumptions about population mixing and serve as a helpful tool when developing
+spatially structured epidemic models.
 
 A fractal-like pattern of epidemics was observed by \cite{GRASSBERGER1986273}, shown in Figure \ref{fig:1d_perc_basis}. 
 In Figure \ref{fig:1d_perc_basis}, lighter grey sites represent removed individuals, 
@@ -386,9 +388,11 @@ describe beetle movements more accurately than the well-mixed system presented i
 \ref{eq:PWD-model1}-\ref{eq:PWD-model-H}. Case in point, the spatio-temporal dynamics of Asian longhorned
 beetle was examined by \cite{smith2004dispersal} who inferred a median dispersal rate of $30\mathrm{m/day}$
 according to an exponential dispersal kernel (with only $2\%$ of beetles exceeding $920\mathrm{m}$).
-Linear stability analysis was performed on the deterministic system of Equations \ref{eq:PWD-model1}-\ref{eq:PWD-model-H}. 
-Whereas the stochastic spatio-temporal framework of Equations \ref{eq:prob-trans} and \ref{eq: webidemics} 
-were analysed by repeating simulations inside an ensemble.
+
+The particular method of analysis constitutes a major difference between spatially explicit stochastic models 
+and their non-spatial analytic counterparts. Linear stability analysis was performed on the deterministic system
+of Equations \ref{eq:PWD-model1}-\ref{eq:PWD-model-H}. Whereas the stochastic spatio-temporal framework of Equations
+\ref{eq:prob-trans} and \ref{eq: webidemics} were analysed by repeating simulations inside an ensemble.
 
 % \begin{itemize}
 %     \item The importance of dispersal
@@ -483,22 +487,22 @@ Equation \ref{eq:large-scale-model} includes multiple component-functions and pa
     \item $\beta$ that models the rate of spore production per site per week.
 \end{itemize}
 
-From the model, \cite{meentemeyer2004mapping} predicted which areas in California
+From the model, \cite{meentemeyer2011epidemiological} predicted which areas in California
 had the highest secondary infection risk of SOD over $40$ years.
 Simulations were ensemble-averaged based on predicted weather conditions from 2008–2030.
 Climatic variations were classified as `favourable', `random' and `unfavourable' for
 pathogen growth.
 In all variations, SOD was predicted to spread through California and effect $1000$s
 of square kilometers. However, considerable spatial and temporal variation were witnessed
-across different Californian states. Additionally, \cite{meentemeyer2004mapping} 
+across different Californian states. Additionally, \cite{meentemeyer2011epidemiological} 
 observed that $93\%$ of short-range dispersal occurred within the range of a single $\mathrm{250 \times 250}$ and 
 $95\%$ of infrequent long-range spread remain within $100\mathrm{km}$ in their model.
 Although, most dispersal remained localised $<1\mathrm{km}$.
 
-The manuscript authored by \cite{meentemeyer2004mapping} emphasises the multi-faceted 
+The manuscript authored by \cite{meentemeyer2011epidemiological} emphasises the multi-faceted 
 parameters and processes that one needs to consider before modelling a large-scale epidemic
 outbreak; these included, host data, dispersal, and climate.
-\cite{large-scale-control} subsequently extended the analysis of \cite{meentemeyer2004mapping}
+\cite{large-scale-control} subsequently extended the analysis of \cite{meentemeyer2011epidemiological}
 to assess the large-scale effects of epidemic control. 
 In particular, \cite{large-scale-control} examined how to optimise eradication of SOD with 
 limited resources. When resources are low, the authors suggested that small localised 
@@ -519,22 +523,19 @@ the optimal culling radius was determined to be $362.5\mathrm{m}$.
 
 All the large-scale models discussed above split the population into smaller (sub)girds.
 As such, they share noticeable similarities to a metapopulation\footnote{
-Metapopulation dynamics generally aim to deconstruct a spatial population into separate sub-populations contained within a `patch'. Then, between-patch interactions aim to model population migrations, connectedness and fragmentation, while within-patch
-dynamics aims to model colonisation, persistence, competition, coexistence, and habitat suitability.} commonly used by ecologists studying spatially-structured animal and plant populations \cite{hanski1998metapopulation}. 
-However, plant-disease modellers increasingly utilise metapopulation settings to study the effects of landscape features on disease progression, e.g. \cite{beninca2020trade, soubeyrand2009spatiotemporal, doi:10.1046/j.1461-0248.2002.00378.x}.
- 
-% WORK IN PROGRESS
-%     \item  \cite{https://doi.org/10.1111/jbi.13642}
-%     \item  \cite{pautasso2013european}, search for 'modelling' in this review paper. It contains references to LDD models.
-%     \item LDD is an important factor of the scale of spread. Long distance dispersal has been considered for many biological processesd distance between patches can...
-
-\newpage
+Metapopulation dynamics generally aim to deconstruct a spatial population into separate sub-populations
+contained within a `patch'. Then, between-patch interactions aim to model population migrations, 
+connectedness and fragmentation, while within-patch dynamics aims to model colonisation, persistence,
+competition, coexistence, and habitat suitability.} commonly used by ecologists studying spatially-structured
+animal and plant populations \cite{hanski1998metapopulation}. However, plant-disease modellers increasingly
+utilise metapopulation settings to study the effects of landscape features on disease progression,
+e.g. \cite{beninca2020trade, soubeyrand2009spatiotemporal, doi:10.1046/j.1461-0248.2002.00378.x}.
 
 \subsection{Disease fronts}
 
 Through the years, numerous researchers have conceptualised the spread of disease, or more broadly, biological invasions, 
 through the lens of diffusion, random walks, or localised dispersal. As a consequence of such ideas, we see the prediction
-of travelling waves \cite{skellam1951random, mollison1977spatial, GRASSBERGER1983157, ferrandino1993dispersive}.
+of constant travelling waves \cite{skellam1951random, mollison1977spatial, GRASSBERGER1983157, ferrandino1993dispersive}.
 A classic example can be found in the Fisher Kolmogorov–Petrovsky–Piskunov (FKPP) equation \cite{fisher1937wave}.
 
 Although recent work has called travelling waves into question, as we discuss more below, 
@@ -552,9 +553,11 @@ the maximum number (or concentration) of individuals can occupy a region in spac
 If $K=u$, the whole growth term goes to zero and we only have outward diffusion (provided neighbouring
 regions are not fully occupied as well). 
 
+Hence, the two terms in Equation \ref{eq:fkpp} describe a populations
+the logistic growth ($ru(1 - u/K)$) and spread ($\mathcal{D}\nabla u$).
 The essential travelling-wave behaviour of Equation \ref{eq:fkpp} is displayed in Figure \ref{fig:fkpp} 
 in both one and two spatial dimensions. In all panels, travelling waves are simulated 
-with parameters $r=0.10$, $\mathcal{D}=0.10$, and $K=0.00$; at $t=0$, a field is set to $u(0.50)=0.10$ (at the domains mid-point).
+with parameters $r=0.10$, $\mathcal{D}=0.10$, and $K=0.00$; at $t=0$, a field is set to $u(0.50)=0.10$ at the domains mid-point.
 
 Figures \ref{fig:fkpp}(a-c), show a one-dimensional wave propagating under different conditions:
 (a) symmetric growth and diffusion
@@ -584,7 +587,7 @@ From these conditions, we can see that $\mathcal{D}$ and $r$ control the thickne
 which can be inferred by the quantity  $\ell_{w} \sim \sqrt{ \frac{\mathcal{D}}{r}}$ 
 (as can be seen by the cancellation of units, i.e. $\frac{length^2}{t} \frac{1}{t^{-1}}$).
 Although, for all panels shown in Figure \ref{fig:fkpp}, the travelling front speed remains
-approximately constant; this can be understood through the predicted front velocity:
+approximately constant that can be understood through the predicted front velocity:
 \begin{equation}
     \label{eq:fkpp_vel}
     v \geq v_{min} = 2\sqrt{r\mathcal{D}}
@@ -599,12 +602,20 @@ is met \cite{cfl-condition}.
 In the case of the FKPP model, the CFL condition is given by: $\mathcal{D} \times (dt/dx^2 )< \frac{1}{2}$
 where $dx$ and $dt$ represent the discretized domain and time-steps respectively.
 
-The travelling wave solutions of the FKPP model presents a simple, intuitive place to begin modelling the spread of disease 
-through a population of trees. However, recent work now suggests otherwise.  
+The travelling-wave behaviour of Equation \ref{eq:fkpp} has been used in various epidemiological applications
+\cite{britton1986reaction, murray2002mathematicalbiology, klein2010reaction,bianco2013reaction, yano2017kinetic}.
+The FKKP model has close connections to alternative travelling-wave models examined in the context of
+plant disease epidemics \cite{heesterbeek1987modelling, van1988focus}. Although, in the context of plant disease models, 
+travelling wave solutions typically emerge from the inclusion of short-range exponentially-bounded\footnote{
+Here, the choice of exponential distribution can be considered as slightly longer-range than a Gaussian dispersal kernel 
+with the same scale parameter. Although, both kernels are still fundamentally thin-tailed.} dispersal contacts
+between individuals\textemdash as proved theoretically by \cite{mollison1977spatial} who compared the FKPP model against 
+exponentially-bounded `contact' models.
 
-
-
-
+Therefore, at first glance, the reaction diffusion (RD) FKPP travelling wave presents a simple, 
+intuitive place to begin modelling the spread of disease through a population of trees.
+However, research is now suggesting that disease fronts that propagate through LDD accelerate,
+in contrast to the constancy predicted by Equation \ref{eq:fkpp_vel}.
 
 % initially travelling waves... 
 % describe FKPP...
