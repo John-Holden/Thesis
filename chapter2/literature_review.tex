@@ -531,7 +531,7 @@ animal and plant populations \cite{hanski1998metapopulation}. However, plant-dis
 utilise metapopulation settings to study the effects of landscape features on disease progression,
 e.g. \cite{beninca2020trade, soubeyrand2009spatiotemporal, doi:10.1046/j.1461-0248.2002.00378.x}.
 
-\subsection{Disease fronts}
+\subsection{Disease fronts: multi-scale}
 
 Through the years, numerous researchers have conceptualised the spread of disease, or more broadly, biological invasions, 
 through the lens of diffusion, random walks, or localised dispersal. As a consequence of such ideas, we see the prediction
@@ -559,7 +559,7 @@ The essential travelling-wave behaviour of Equation \ref{eq:fkpp} is displayed i
 in both one and two spatial dimensions. In all panels, travelling waves are simulated 
 with parameters $r=0.10$, $\mathcal{D}=0.10$, and $K=0.00$; at $t=0$, a field is set to $u(0.50)=0.10$ at the domains mid-point.
 
-Figures \ref{fig:fkpp}(a-c), show a one-dimensional wave propagating under different conditions:
+Figures \ref{fig:fkpp}(a-c) show a one-dimensional wave propagating under different conditions:
 (a) symmetric growth and diffusion
 (b) extending a linearly increasing diffusion gradient from left ($\mathcal{D}=0.01$ at $x=0.00$) to right
 ($\mathcal{D}=2.00$ at $x=1.00$)
@@ -586,7 +586,10 @@ Figures \ref{fig:fkpp}(d-f) show the equivalent two-dimensional behaviour.
 From these conditions, we can see that $\mathcal{D}$ and $r$ control the thickness of the wavefront,
 which can be inferred by the quantity  $\ell_{w} \sim \sqrt{ \frac{\mathcal{D}}{r}}$ 
 (as can be seen by the cancellation of units, i.e. $\frac{length^2}{t} \frac{1}{t^{-1}}$).
-Although, for all panels shown in Figure \ref{fig:fkpp}, the travelling front speed remains
+For a large $\mathcal{D}$ and small $r$, the wave-front extends over a larger region, as 
+demonstrated in Figures \ref{fig:fkpp}(b) and (e). Conversely, for
+small $\mathcal{D}$ and large $r$, we have a thin wavefront, shown in Figures \ref{fig:fkpp}(c) and (f).
+For all panels shown in Figure \ref{fig:fkpp}, the travelling front speed remains
 approximately constant that can be understood through the predicted front velocity:
 \begin{equation}
     \label{eq:fkpp_vel}
@@ -604,18 +607,50 @@ where $dx$ and $dt$ represent the discretized domain and time-steps respectively
 
 The travelling-wave behaviour of Equation \ref{eq:fkpp} has been used in various epidemiological applications
 \cite{britton1986reaction, murray2002mathematicalbiology, klein2010reaction,bianco2013reaction, yano2017kinetic}.
-The FKKP model has close connections to alternative travelling-wave models examined in the context of
-plant disease epidemics \cite{heesterbeek1987modelling, van1988focus}. Although, in the context of plant disease models, 
-travelling wave solutions typically emerge from the inclusion of short-range exponentially-bounded\footnote{
+Indeed, the FKKP model has close connections to alternative travelling-wave models examined in the context of
+plant disease epidemics \cite{heesterbeek1987modelling, van1988focus}. In the context of plant disease models, 
+these travelling waves generally emerge from the inclusion of short-range exponentially-bounded\footnote{
 Here, the choice of exponential distribution can be considered as slightly longer-range than a Gaussian dispersal kernel 
 with the same scale parameter. Although, both kernels are still fundamentally thin-tailed.} dispersal contacts
 between individuals\textemdash as proved theoretically by \cite{mollison1977spatial} who compared the FKPP model against 
 exponentially-bounded `contact' models.
 
-Therefore, at first glance, the reaction diffusion (RD) FKPP travelling wave presents a simple, 
+At first glance, the reaction diffusion (RD) FKPP travelling wave presents a simple, 
 intuitive place to begin modelling the spread of disease through a population of trees.
-However, research is now suggesting that disease fronts that propagate through LDD accelerate,
-in contrast to the constancy predicted by Equation \ref{eq:fkpp_vel}.
+However, following earlier work on turbulent diffusion \cite{scherm1996velocity},
+epidemic systems that spread through fat-tailed LDD are now thought to exhibit an accelerating `dispersive' 
+wavefront \cite{pybus2012unifying, cowger2005velocity},
+in contrast to the constancy predicted by Equation \ref{eq:fkpp_vel}. In this case,
+dispersal becomes evermore efficient as the disease front extends over larger areas.
+
+Inverse power law dispersal kernels are thought to be of significant importance with accelerating disease
+fronts, following from their fat-tailed leptokurtic nature and subsequent scale-variance. In particular,
+they have been successfully used to fit spore dispersal data over five orders of magnitude \cite{mundt2009long}, 
+from $20\mathrm{m}$ to continental spatial scales. 
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.3]{chapter2/figures/multi-spread.pdf}
+    \caption{Wheat strip rust prevalence with distance for three data sources, taken from \cite{severns2019consequences}.
+    }
+    \label{fig:WSR-prevelance}
+\end{figure}
+
+Power law scale invariance was examined by \cite{severns2019consequences} for wheat strip rust (WSR) epidemics. 
+Namely, the authors constructed wheat plantations and artificially introduced WSR to measure its prevalence over time. 
+Consequently, the spatio-temporal WSR incidence rates strongly supported
+an accelerating, disperseive, wavefront. 
+
+In addition to dispersive waves, \cite{severns2019consequences} aggregated other WSR prevalence studies over different spatial 
+scales and fitted the combined data to one common inverse power law ($y=a(x+c)^{-b}$), shown in Figure \ref{fig:WSR-prevelance}.
+More specifically, we see that WSR induces and progressively smaller number of lesions with distance, e.g.  
+the infection could arise up to $10\mathrm{km}$ away from the source, illustrated by triangles in the lower right hand corner.
+An exponent of $b=2.39$ provided a good fit for all scales, suggesting that inverse \textit{square} power laws may 
+prove a useful rule of thumb to predict disease prevalence over different scales.
+
+\newpage
+
+
 
 % initially travelling waves... 
 % describe FKPP...
@@ -650,7 +685,6 @@ in contrast to the constancy predicted by Equation \ref{eq:fkpp_vel}.
 %     \item \textcolor{red}{Murray}: travelling waves that do not change shape
 % \end{itemize}}
 
-\newpage
 
 \section{Tree distribution datasets in Great Britain}
 \label{ch2:hostdata}
@@ -736,15 +770,6 @@ Moreover, the distributions contain both well-surveyed and poorly-surveyed plots
 As such, BSIBI data is helpful to reconstruct several baseline tree distributions across GB, as demonstrated by \cite{hill.data}.
 
 \subsection{Species distribution models}
-
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.35]{chapter2/figures/SDM-fig.pdf}
-    \caption{A graphical species distribution model (SDM) illustration, adapted from \cite{SDM_1}. 
-             A variety of predictor variables and input data sources are used in conjugation with modelling algorithms to produce
-             a habitat suitability map.}
-    \label{fig:sdm}
-\end{figure}
 
 Species distribution models (SDMs) aim to generate data, from less-extensive surveyed data.
 SDMs were first developed in the $1990$s, and have subsequently become fundamental to ecological and biogeographical inference studies.
