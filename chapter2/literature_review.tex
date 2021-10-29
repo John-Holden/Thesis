@@ -386,7 +386,7 @@ without stochasticity. Presumably, this assumption led \cite{khan2020modelling} 
 system on account of the migratory population of Beetle vectors. In reality, a dispersal kernel is likely to 
 describe beetle movements more accurately than the well-mixed system presented in Equations 
 \ref{eq:PWD-model1}-\ref{eq:PWD-model-H}. Case in point, the spatio-temporal dynamics of Asian longhorned
-beetle was examined by \cite{smith2004dispersal} who inferred a median dispersal rate of $30\mathrm{m/day}$
+beetle were examined by \cite{smith2004dispersal} who inferred a median dispersal rate of $30\mathrm{m/day}$
 according to an exponential dispersal kernel (with only $2\%$ of beetles exceeding $920\mathrm{m}$).
 
 The particular method of analysis constitutes a major difference between spatially explicit stochastic models 
@@ -538,7 +538,7 @@ through the lens of diffusion, random walks, or localised dispersal. As a conseq
 of constant travelling waves \cite{skellam1951random, mollison1977spatial, GRASSBERGER1983157, ferrandino1993dispersive}.
 A classic example can be found in the Fisher Kolmogorov–Petrovsky–Piskunov (FKPP) equation \cite{fisher1937wave}.
 
-Although recent work has called travelling waves into question, as we discuss more below, 
+Although recent work has called travelling waves into question for plant-based (LDD) epidemics, as we discuss more below, 
 the FKPP model is important from a historical and contextual perspective;
 the model comprises some fundamental `reaction diffusion' properties that emerge from the interplay of a populations growth and spread.
 In two spatial dimensions, the FKKP model is given by a partial differential equation of the form:
@@ -554,10 +554,11 @@ If $K=u$, the whole growth term goes to zero and we only have outward diffusion 
 regions are not fully occupied as well). 
 
 Hence, the two terms in Equation \ref{eq:fkpp} describe a populations
-the logistic growth ($ru(1 - u/K)$) and spread ($\mathcal{D}\nabla u$).
+the logistic growth and spread, $ru(1 - u/K)$ and $\mathcal{D}\nabla u$ respectively.
 The essential travelling-wave behaviour of Equation \ref{eq:fkpp} is displayed in Figure \ref{fig:fkpp} 
 in both one and two spatial dimensions. In all panels, travelling waves are simulated 
 with parameters $r=0.10$, $\mathcal{D}=0.10$, and $K=0.00$; at $t=0$, a field is set to $u(0.50)=0.10$ at the domains mid-point.
+All simulations evolve according to a forward-time centered-different finite scheme and admit dirichlet boundary conditions.
 
 Figures \ref{fig:fkpp}(a-c) show a one-dimensional wave propagating under different conditions:
 (a) symmetric growth and diffusion
@@ -572,8 +573,9 @@ Figures \ref{fig:fkpp}(d-f) show the equivalent two-dimensional behaviour.
     \includegraphics[scale=0.325]{chapter2/figures/FKPP.pdf}
     \caption{
     Simulating the FKPP model in one and two spatial dimensions with parameters $r=0.10$, $\mathcal{D}=0.10$, and $K=0.00$. 
-    In all panels, a non-zero field value is initialised at the domains mid-point (i.e. $u(0.50)=0.10$) at time $t=0$;
-    simulations then evolve according to a forward time centered difference (FTCD) finite difference scheme. 
+    In all panels, a non-zero field value is initialised at the domains mid-point (i.e. $u(0.50)=0.10$) at time $t=0$.
+    Then, simulations evolve according to a forward time centered difference (FTCD) finite difference scheme and
+    follow dirichlet boundary conditions. 
     (a) Symmetric growth and diffusion in $1D$.
     (b) An asymmetric diffusion-gradient increasing from left to right in $1D$.
     (c) An asymmetric growth-gradient increasing from left to right in $1D$.
@@ -631,59 +633,26 @@ from $20\mathrm{m}$ to continental spatial scales.
 \begin{figure}
     \centering
     \includegraphics[scale=0.3]{chapter2/figures/multi-spread.pdf}
-    \caption{Wheat strip rust prevalence with distance for three data sources, taken from \cite{severns2019consequences}.
+    \caption{Wheat strip rust prevalence with distance shown for three data sources, taken from \cite{severns2019consequences}.
+             The authors found that disparate disease prevalence studies wheat strip rust at different spatial scales could
+             be fitted against a common power law\textemdash displayed in the plots bottom left corner. 
     }
     \label{fig:WSR-prevelance}
 \end{figure}
 
 Power law scale invariance was examined by \cite{severns2019consequences} for wheat strip rust (WSR) epidemics. 
-Namely, the authors constructed wheat plantations and artificially introduced WSR to measure its prevalence over time. 
+In particular, the authors constructed wheat plantations and artificially introduced WSR to measure its prevalence over time. 
 Consequently, the spatio-temporal WSR incidence rates strongly supported
 an accelerating, disperseive, wavefront. 
 
 In addition to dispersive waves, \cite{severns2019consequences} aggregated other WSR prevalence studies over different spatial 
 scales and fitted the combined data to one common inverse power law ($y=a(x+c)^{-b}$), shown in Figure \ref{fig:WSR-prevelance}.
-More specifically, we see that WSR induces and progressively smaller number of lesions with distance, e.g.  
-the infection could arise up to $10\mathrm{km}$ away from the source, illustrated by triangles in the lower right hand corner.
+Generally, we see that WSR induces less lesions with distance, and that infections can arise up to $10\mathrm{km}$ away from the source,
+illustrated by triangles in the lower right hand corner.
 An exponent of $b=2.39$ provided a good fit for all scales, suggesting that inverse \textit{square} power laws may 
 prove a useful rule of thumb to predict disease prevalence over different scales.
 
 \newpage
-
-
-
-% initially travelling waves... 
-% describe FKPP...
-% power law dispersal... \cite{severns2019consequences} accelerating fronts...
-
-
-% \textcolor{red}{
-% \begin{itemize}
-%     \item review \cite{doi:10.1098/rsif.2005.0051}
-% \end{itemize}}
-
-% \subsection{Diffusion}
-
-% \cite{mundt2009long}  \cite{mundt2009aerial}
-
-% In one spatial dimension, the FKPP model is given by:
-% \begin{equation}
-%     \frac{\partial u}{\partial t} = \mathcal{D}\nabla u + ru(1 - u/K)
-% \end{equation}
-% where $\mathcal{D}$ is a diffusion coefficient measured in units $\mathrm{m^2 t^{-1}}$ 
-% and $r$ is a growth constant (or rate) with units $t^{-1}$. 
-% This model assumes logistic growth and diffusion, where the field $u$ represents a `concentration',
-% and $K$ represents the carrying capacity, when $u=K$, the system growth goes to zero.
-
-%\item \cite{doi:10.1098/rstb.1998.0226} gave a three population (host, parasite and hyperparasite), which considered transmission via a reaction-diffusion process.
-
-% \textcolor{red}{
-% \begin{itemize}
-%     \item Spatial SIR model
-%     \item Agent-based modelling
-%     \item A good place to talk about Percolation models
-%     \item \textcolor{red}{Murray}: travelling waves that do not change shape
-% \end{itemize}}
 
 
 \section{Tree distribution datasets in Great Britain}
@@ -790,6 +759,15 @@ Hence, mechanistic methods aim to incorporate an organisms behavioural, physiolo
 as reviewed by \cite{kearney2009mechanistic}. However, linking a species physiological response to the environment comes with significant
 computational challenges, as it typically relies on vast, multi-variable time-series datasets \cite{shabani2016comparison}.
 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.35]{chapter2/figures/SDM-fig.pdf}
+    \caption{A graphical species distribution model (SDM) illustration, adapted from \cite{SDM_1}. 
+             A variety of predictor variables and input data sources are used in conjugation with modelling algorithms to produce
+             a habitat suitability map.}
+    \label{fig:sdm}
+\end{figure}
+
 A review paper by \cite{guillera2015my}, revealed a diverse use of SDMs.
 Out of $100$ publications reviewed by \cite{guillera2015my}, SDMs were applied to: 
 1) managing threatened species ($16\% $ of articles) 
@@ -808,15 +786,15 @@ However, SDM applications for tree disease epidemics appear absent from the lite
 
 \subsubsection{Modelling tree abundance}
 
-SDM-generated tree occurrence data has limited applications to ecologists and forest managers.
-This motivates a statistically-generated abundance data, that includes significantly 
+SDM-generated tree occurrence data have limited applications to ecologists and forest managers.
+This motivates a statistically-generated abundance data that includes significantly 
 more information about the population occupation/density and ecosystem.
 Modellers have examined numerous approaches to predict species abundance;
 including, linking the abundance-occupancy relationship \cite{gaston2000abundance} and
 the scaling pattern of species occupancy over progressively smaller spatial scales \cite{hui2009extrapolating}.
 
 An interesting, and highly relevant, approach to predict the abundance of common tree species in Great Britain was put forward by \cite{hill.data}.
-At a high level, (BSBI) presence-only data was combined with a series of environmental covariates using a species distribution model to 
+At a high level, (BSBI) presence-only data were combined with a series of environmental covariates using a species distribution model to 
 produce a map of predicted occurrence data. Then, random forest regression was employed with a training sample ($70\%$) of less extensive abundance 
 data\textemdash consisting of Countryside survey, myForest and Bluesky's National Canopy Map. 
 Results were then cross-validated with the remaining ($30\%$) abundance data; Figure \ref{fig:hill-method} displays a
@@ -861,14 +839,14 @@ The predicted occurrence data was examined against the Receiver operating charac
 Most species demonstrated functional ROC scores between $0.71$ and $0.96$ and performed exceptionally
 well for ash ($0.96$) and oak ($0.90$).  
 
-Although, numerous assumptions underpinned the method of predicting occupancy.
+Although, numerous assumptions underpinned the methodology.
 Primarily, the BSBI dataset used by \cite{hill.data} exists through ad-hoc user and volunteer self-reports.
 Thus, some regions are more surveyed than others over the years, this led Hill et al. to make the 
 `well surveyed' recorded assumption (i.e. only considering records surveyed twice since $1950$ containing a minimum of $50$ species).
 The assumption permitted the conversion of raw presence-only to presence-absence, 
 at the cost of overestimated absence in these regions. That is, even supposing $50$ species
-are reported within a subset of the ($\mathrm{2km \times 2km}$ tetrad) record, other large regions could remain unsampled. 
-We remark the authors did not appear to scrutinise this assumption sufficiently.
+are reported within a subset of the ($\mathrm{2km \times 2km}$ tetrad) record, other large regions could remain unsampled\textemdash
+the authors did not appear to scrutinise this assumption sufficiently.
 
 \begin{figure}
     \centering
@@ -889,13 +867,14 @@ The result was country-wide predicted abundance.
 The low amount of available abundance data in GB significantly impoverished the abundance maps produced by \cite{hill.data}. 
 Consequently, datasets for the $25$ species considered will contain numerous (small-scale) errors and uncertainties. 
 Nonetheless, the modelled abundance maps captured more large-scale spatial structures than the original BSBI and CS distributions.
+
 More recently, \cite{ray2021multi} produced a similar SDM as Hill et al. for oak in GB using biomod2 \cite{thuiller2016package}.
 The authors focused on mapping high-density oak woodlands (with 60$\%$ canopy cover or above) 
 to predict which NFI map polygons (by forest type) were most likely to contain oak stands. 
 However, \cite{ray2021multi} did not make their oak maps publicly available, nor did they produce a general-purpose
 abundance map relevant for epidemiological studies. 
-To date, the predicted abundance maps produced by \cite{hill.data} constitute the best publicly available 
-country-wide maps in GB, despite their limitations.
+To date, the data sets produced by \cite{hill.data} constitute the best publicly available
+country-wide maps of abundance in GB, despite their limitations.
 
 %\item remote sensing tools were used \cite{kelly2002monitoring} to track the study of sudden oak death in California
 %\item \cite{kelly2002landscape} demonstrated clustering at the landscape level, spatial structure is important
@@ -1021,6 +1000,28 @@ Multiple ascospores sources can infect the same leaf \cite{gross2012reproductive
 Though the primary natural driver is wind, infection (and re-infection) of ash are also thought to be possible 
 through the soil-borne mechanisms \cite{fones2016role}, albeit with low frequency.
 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.425]{chapter2/figures/ash-dieback-illustration.pdf}
+    \caption{A life-cycle illustration of ADB: 
+    1) HF ascospores disperse through wind during summertime sporulation, generally between June-September.
+    Ascospore production constitutes HF's sexual (or `teleomorphic') reproduction mechanism.
+    2) Ascospores penetrate the leaves of susceptible ash, causing the leaves to wilt.
+       After spores infect leaves, the fungus proceeds to spread through twigs, branches and eventually the xylem.
+       Infected leaves are shed in autumn, or from disease induced death.
+    3a) Over winter, a mushroom-like fruiting body grows on infected leaf-fall (usually the petiole).
+    3b) A proposed soil-borne infection mechanism has been proposed \cite{fones2016role}.
+        Here, asexually reproducing HF mycelium are thought to infect the roots of ash trees.
+    Through both steps 3a) and 3b), asexual condia disperse from the infected litterfall, shown in blue.
+    Condia are proposed to act as spermatia, increasing the genetic diversity of HF.
+    4) During the next summer period, immense numbers of ascospores are release from the fruiting body
+    and disperse through wind.
+    5) Ascospore dispersal induces ADB infections in distant susceptible ash. Fungal spores in particular 
+    are known to travel large distances.
+    }
+    \label{fig:my_label}
+\end{figure}
+
 Ash dieback is highly seasonal \cite{bengtsson2014seasonal} and follows a complex, yearly polycyclic infection cycle.
 Infected ash hosts will shed their leaves in the autumn, proceeded by fungal fruiting bodies growing on the dead leaf litter until summertime.
 In summer, fruiting body spores are wind-dispersed and continue the cycle by producing new secondary infections\textemdash 
@@ -1035,15 +1036,6 @@ Initially, asexual spores (conidia) were hypothesised to only increase genetic v
 however \cite{fones2016role} called this into question, suggesting instead that asexual reproduction of the pathogen 
 may play a role in driving the pathogen spread. Despite the potentially significant claim put forward by \cite{fones2016role},
 it has gained seemingly little traction, and the role of asexual reproduction is still not fully understood.
-
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.425]{chapter2/figures/ash-dieback-illustration.pdf}
-    \caption{\textcolor{red}{describe ADB lifecycle} \blindtext }
-    \label{fig:my_label}
-\end{figure}
-
-\newpage
 
 \subsection{Dispersal}
 
@@ -1089,10 +1081,13 @@ and
     D(a, r) = \frac{(b-1)(b-2)}{2\pi a^2}\big[ 1+ \frac{r}{a}\big]^{-b}
     \label{eq:geometric-invserse-power-law}
 \end{equation}
-where $a$ and $b$ are fitted parameters (for the Gaussian kernel, $a=\sqrt{2}\sigma$ with $\sigma$ being the standard deviation.). 
+where $a$ and $b$ are fitted parameters (for the Gaussian kernel, $a=\sqrt{2}\sigma$ with $\sigma$ being the standard deviation.).
+In Equation \ref{eq:adb-ga}, the fitted value was $a=196\mathrm{m}$, while the fitted values in
+Equation \ref{eq:geometric-invserse-power-law} were $a=203\mathrm{m}$ and $b=3.3$ respectively.
+
 Equation \ref{eq:geometric-invserse-power-law} falls into the classical two-parameter geometric family of dispersal distributions.
 The scale parameter is described by $a$ and the shape parameter by $b$. The mean dispersal distance described by Equation
-\ref{eq:geometric-invserse-power-law} is  $\frac{2a}{b-3}$, and parameters $a$ and $b$ are valid for $a>0$ and $b>2$.
+\ref{eq:geometric-invserse-power-law} is $\frac{2a}{b-3}$, and parameters $a$ and $b$ are valid for $a>0$ and $b>2$.
 
 The functional form of Equation \ref{eq:geometric-invserse-power-law} is predicated on pollen dispersal studies,
 as reviewed by \cite{nathan2012dispersal}. The tail of Equation \ref{eq:geometric-invserse-power-law} is 
@@ -1102,8 +1097,6 @@ used Equation \ref{eq:geometric-invserse-power-law} to model pollen-dispersal (a
 Presumably, the ability of Equation \ref{eq:geometric-invserse-power-law} to describe LDD, and the size similarity between pollen and fungi spores, 
 motivated \cite{grosdidier2018tracking} to include it their field study. 
 % A recent article published by \cite{golan2017long} presents an interesting system to 
-
-\newpage
 
 \subsection{Management and control}
 
