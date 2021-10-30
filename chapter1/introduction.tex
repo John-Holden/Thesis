@@ -110,7 +110,7 @@ that threaten tree-health in Great Britain.
 
 % \item \textcolor{red}{Expand on the plant-passport, how do I cite government reports ?}
 
-The trade and transport of foreign plant material are widely recognised to increase the risk
+The t\usepackage[]{}rade and transport of foreign plant material are widely recognised to increase the risk
 of introducing pests and pathogens into non-native landscapes \cite{POTTER201761, lovett2016nonnative, roy2014increasing}.
 Epidemics caused by non-native pathogens can be catastrophic to tree populations that lack immunity and genetic
 resistance to the invasive species \cite{doi:10.1002/9781444329988.ch8}; this can be understood from an evolutionary perspective: 
@@ -136,12 +136,14 @@ how growers and traders can transport plant material between countries\footnote{
 to implement an equivalent passport} \cite{wulfert2010implementation}.
 
 If checks and policy implementations fail, a pathogen might be introduced into the landscape and spread through natural
-dispersal pathways. At this point, biological control becomes necessary. The biological control of plant-based disease
+dispersal pathways. Alternatively, a pathogen might be transported into foreign ecosystems through atmospheric 
+long distance dispersal (LDD) \cite{brown2002aerial}. In either scenario, biological control becomes necessary. 
+The biological control of plant-based disease
 can be achieved in numerous ways. Commonly, this involves chemical agents such as pesticides, predatory insects or planting
 genetically resistant cultivars \cite{pal2006biological, baker1974biological}. 
 
-In this thesis, we are motivated to investigate the eradication of tree-based pathogens. 
-Here, we are typically limited to eradicating infected and diseased trees through sanitation felling. 
+In this thesis, we are motivated to investigate the eradication of tree-based pathogens 
+where eradication generally entails the removal of infected and diseased trees through sanitation felling \cite{pietzsch2021effect}. 
 In this case, the questions to be answered are A) How do we effectively identify an infected tree? B) 
 Which infected trees are the best choices to fell? C) What is the risk that a large-scale epidemic will result?
 
@@ -161,12 +163,66 @@ Prominent examples include Dutch elm disease in the late 1960s and early 1970s \
 and more recently citrus canker in Florida \cite{schubert2001meeting}.
 
 With mathematical models we may attempt to understand what dictates optimal control of tree diseases. 
-Strategies have been explored on both smaller landscapes \cite{WEBIDEMICS, risk-potential-control} 
-and larger landscapes \cite{large-scale-control, large-scale-control2}. Current consensus on all spatial scales
-agree that the scale of response must equal the scale of epidemic \cite{control-scale-matching}. Furthermore, 
+Strategies have been explored on both smaller \cite{WEBIDEMICS, risk-potential-control} 
+and larger landscapes \cite{large-scale-control2}. Current consensus on all spatial scales
+agree that the scale of response must equal the scale of epidemic \cite{control-scale-matching}. In addition, 
 any response must be carried out swiftly otherwise the likelihood of successful management rapidly decreases and the cost of inaction soars.
 
-Conventional eradication strategies involve detecting symptomatic trees and culling neighbours within a radius \cite{WEBIDEMICS}. This is made difficult by numerous factors including the cryptic nature of tree diseases and resource constraints which may vary over time \cite{control-theory, control-theory-application}. The naive strategy can be fine-tuned and optimised in many ways to increase efficiency. One scheme involves ranking targets according to the risk they pose in order to prioritise culling \cite{risk-potential-control}. Over large-scales, evidence suggests epidemics are most effectively controlled by targeting infected trees either at or ahead of the infectious wave-front, as has been shown for sudden oak death in California \cite{large-scale-control}. In this study, optimal tree eradication is developed by considering which locations ahead of the wave-front make for efficient targets when taking into account large-scale host structure.
+Conventional eradication strategies involve detecting symptomatic trees and culling neighbours within a radius \cite{WEBIDEMICS}.
+This is made difficult by numerous factors including the cryptic nature of tree diseases and resource constraints which may vary
+over time \cite{control-theory, control-theory-application}. The naive strategy can be fine-tuned and optimised in many ways to increase
+efficiency. One scheme involves ranking targets according to the risk they pose in order to prioritise culling \cite{risk-potential-control}.
+Over large-scales, evidence suggests epidemics are most effectively controlled by targeting infected trees either at or ahead of
+the infectious wave-front, as has been shown for sudden oak death in California \cite{large-scale-control}. In this study, optimal
+tree eradication is developed by considering which locations ahead of the wave-front make for efficient targets when taking into account large-scale host structure.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.35]{chapter1/figures/modelling-and-policy.pdf}
+    \caption{A coarse-grained model of the interactions shaping research output, public awareness, policy making and 
+    control implementation on the ground. }
+    \label{fig:modelling-and-policies}
+\end{figure}
+
+Optimal eradication complements enhanced `surveillance' and monitoring strategies, 
+which also seek to optimise resource allocations. Here, the surveillance aims to detect infected individuals and infer disease incidence;
+generally, this requires the collection and analysis of data on botanical epidemics \cite{surveillance-review}.
+Ultimately, surveillance and monitoring comprise the last line of defence after preemptive boarder 
+checks and inspections have failed to prevent the introduction of disease. 
+Statistical approaches have been adopted to optimise the number of samples/surveys required to infer disease incidence accurately \cite{yamamura2016sampling}.
+Additionally, optimal surveillance and monitoring strategies have been examined with logistic \cite{parnell2012estimating} 
+and mechanistic \cite{risk-potential-control} epidemic models\textemdash the next Chapter offers a more in depth review on these modelling paradigms.
+
+Even supposing an accurate and well-informed control strategy deduced through mathematical modelling,
+action arises through the adoption of effective policies. A coarse-grained representation
+of the interactions that dictate research, public awareness, policy making and the eventual epidemic control
+is shown in Figure \ref{fig:modelling-and-policies}\textemdash informed from informal conversations through time spent at DEFRA/Fera (San hutton, York).
+Unfortunately, several blockers inhibit a well-informed response.
+
+Scientists in several disciplines\textemdash from molecular biology to mathematics\textemdash receive funding from, and collaborate with, governmental bodies, 
+e.g. the Department for Environment Food & Rural Affairs (DEFRA). However, the accessibility and dissemination of scientific output 
+remains challenging \cite{jones2020modelling}. More succinctly, it requires in-depth domain knowledge and technical skill to leverage 
+scientific models to understand epidemic drivers.
+
+In a bid to make their work more accessible, modellers have endeavoured construct user-friendly interfaces\footnote{
+The reader can find the user-friendly modelling interface constructed by \cite{WEBIDEMICS} at \nolinkurl{http://www.webidemics.com}} \cite{WEBIDEMICS}.
+Other strategies seek to directly increase the discourse between modellers and policymakers.
+Recently, this form of engagement, categorised as `participatory modelling' (PM), 
+has become popular with risk and disaster management research \cite{hamalainen2020leadership, ravera2020participatory, hedelin2017participatory}.
+
+In the context of plant disease, PM approaches are rare, as reviewed by \cite{gaydos2019forecasting}. In addition to 
+the literature review, \cite{gaydos2019forecasting} held an interactive workshop with stakeholders regarding the 
+spread of \textit{P. ramorum } in the United States. The workshop facilitated stakeholder\footnote{Here, `stakeholder' is a broad term that reflects any 
+group, individual, or collective that becomes directly affected by a control decision \cite{reed2018theory}. This lays in contrast to the `public' 
+that are not directly affected by control policies.}
+engagement with an epidemic model \cite{tonini2017tangible} (reviewed in the preceding Chapter).
+In particular, the authors reported that the stakeholders engaged well the modelling framework and
+confirmed that the results were realistic. However, and most interestingly, most of the stakeholders
+remained skeptical of host distribution' validity; thus, demonstrating a firm and positive motivation
+to facilitate modellers and stakeholders through PM.
+
+
+
 
 
 \section{Chapter summary}
