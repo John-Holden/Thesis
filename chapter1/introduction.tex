@@ -106,7 +106,7 @@ In contrast, the term `pathogen' denotes any organism that induces disease.
 In the context of trees populations, diseases include fungi, bacteria, viruses, and oomycetes \cite{balloux2017q, Boyd1235773}. 
 Currently, the oomycete \textit{Phytophthora ramorum} \cite{brasier2005phytophthora}, and Ash dieback (ADB)
 caused by the fungus \textit{Hymenoscyphus fraxineus} \cite{ash-dieback-costs, mitchell2014ash} are two pathogens
-that threaten tree-health in Great Britain.
+that threaten tree-health in GB.
 
 % \item \textcolor{red}{Expand on the plant-passport, how do I cite government reports ?}
 
@@ -162,27 +162,19 @@ Moreover, history gives examples of insufficient control policies which fail to 
 Prominent examples include Dutch elm disease in the late 1960s and early 1970s \cite{dutch-elm-mismanage}, 
 and more recently citrus canker in Florida \cite{schubert2001meeting}.
 
-With mathematical models we may attempt to understand what dictates optimal control of tree diseases. 
+With mathematical models we can attempt to understand what dictates the optimal control of tree diseases epidemics. 
 Strategies have been explored on both smaller \cite{WEBIDEMICS, risk-potential-control} 
 and larger landscapes \cite{large-scale-control2}. Current consensus on all spatial scales
 agree that the scale of response must equal the scale of epidemic \cite{control-scale-matching}. In addition, 
-any response must be carried out swiftly otherwise the likelihood of successful management rapidly decreases and the cost of inaction soars.
+any response must be carried out swiftly, otherwise the likelihood of successful management rapidly decreases and the cost of inaction soars.
 
 Conventional eradication strategies involve detecting symptomatic trees and culling neighbours within a radius \cite{WEBIDEMICS}.
 This is made difficult by numerous factors including the cryptic nature of tree diseases and resource constraints which may vary
 over time \cite{control-theory, control-theory-application}. The naive strategy can be fine-tuned and optimised in many ways to increase
 efficiency. One scheme involves ranking targets according to the risk they pose in order to prioritise culling \cite{risk-potential-control}.
 Over large-scales, evidence suggests epidemics are most effectively controlled by targeting infected trees either at or ahead of
-the infectious wave-front, as has been shown for sudden oak death in California \cite{large-scale-control}. In this study, optimal
-tree eradication is developed by considering which locations ahead of the wave-front make for efficient targets when taking into account large-scale host structure.
+the infectious wave-front, as has been shown for sudden oak death in California \cite{large-scale-control}.
 
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.35]{chapter1/figures/modelling-and-policy.pdf}
-    \caption{A coarse-grained model of the interactions shaping research output, public awareness, policy making and 
-    control implementation on the ground. }
-    \label{fig:modelling-and-policies}
-\end{figure}
 
 Optimal eradication complements enhanced `surveillance' and monitoring strategies, 
 which also seek to optimise resource allocations. Here, the surveillance aims to detect infected individuals and infer disease incidence;
@@ -193,14 +185,22 @@ Statistical approaches have been adopted to optimise the number of samples/surve
 Additionally, optimal surveillance and monitoring strategies have been examined with logistic \cite{parnell2012estimating} 
 and mechanistic \cite{risk-potential-control} epidemic models\textemdash the next Chapter offers a more in depth review on these modelling paradigms.
 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.35]{chapter1/figures/modelling-and-policy.pdf}
+    \caption{A coarse-grained model of the interactions shaping research output, public awareness, policy making and 
+    control implementation on the ground. }
+    \label{fig:modelling-and-policies}
+\end{figure}
+
 Even supposing an accurate and well-informed control strategy deduced through mathematical modelling,
 action arises through the adoption of effective policies. A coarse-grained representation
 of the interactions that dictate research, public awareness, policy making and the eventual epidemic control
-is shown in Figure \ref{fig:modelling-and-policies}\textemdash informed from informal conversations through time spent at DEFRA/Fera (San hutton, York).
+is shown in Figure\footnote{Informed from informal conversations through time spent at DEFRA/Fera (San hutton, York).} \ref{fig:modelling-and-policies}.
 Unfortunately, several blockers inhibit a well-informed response.
 
 Scientists in several disciplines\textemdash from molecular biology to mathematics\textemdash receive funding from, and collaborate with, governmental bodies, 
-e.g. the Department for Environment Food & Rural Affairs (DEFRA). However, the accessibility and dissemination of scientific output 
+e.g. the Department for Environment Food \& Rural Affairs (DEFRA). However, the accessibility and dissemination of scientific output 
 remains challenging \cite{jones2020modelling}. More succinctly, it requires in-depth domain knowledge and technical skill to leverage 
 scientific models to understand epidemic drivers.
 
@@ -214,23 +214,60 @@ In the context of plant disease, PM approaches are rare, as reviewed by \cite{ga
 the literature review, \cite{gaydos2019forecasting} held an interactive workshop with stakeholders regarding the 
 spread of \textit{P. ramorum } in the United States. The workshop facilitated stakeholder\footnote{Here, `stakeholder' is a broad term that reflects any 
 group, individual, or collective that becomes directly affected by a control decision \cite{reed2018theory}. This lays in contrast to the `public' 
-that are not directly affected by control policies.}
-engagement with an epidemic model \cite{tonini2017tangible} (reviewed in the preceding Chapter).
+that are not directly affected by control policies.} engagement with an epidemic model \cite{tonini2017tangible} (reviewed in the preceding Chapter).
 In particular, the authors reported that the stakeholders engaged well the modelling framework and
-confirmed that the results were realistic. However, and most interestingly, most of the stakeholders
-remained skeptical of host distribution' validity; thus, demonstrating a firm and positive motivation
-to facilitate modellers and stakeholders through PM.
-
-
-
-
+confirmed that the results were realistic. However, and most interestingly, most of the stakeholders with expert knowledge of the landscape remained skeptical of
+the host distributions accuracy. Such insights are hard to deduce for modellers who generally remain less connected to the real landscape. 
+As such, \cite{tonini2017tangible} demonstrated a firm and positive motivation to facilitate the collaboration between modellers and stakeholders through PM.
 
 \section{Chapter summary}
 
 % \begin{itemize}
 %     \item Talk about the general methods and strategies favoured in this thesis. Discuss main findings and the layout of this thesis, discuss where the main results fit in i.e. control of diseases.
 % \end{itemize}
+v
+Here, our motivation is to develop robust models of infectious tree disease epidemics from first principles,
+from which, more realistic and elaborate models can be constructed to categorise epidemic severity over GB.
+Previous large-scale investigations have focused on specific pathosystems in a dynamic \textit{metapopulation-like} 
+setting \cite{large-scale-control, meentemeyer2011epidemiological, harwood2009epidemiological}.
+In this thesis, we take an alternative approach and develop a general-purpose framework to spatially-scale a
+small-scale epidemic model (between individual trees) over large areas. The result is an $R_0$-map across GB with closer parallels 
+to the emerging field of Infectious Disease Cartography \cite{otieno2021modeling, KRAEMER201619, messina2016mapping}.
 
-The main aim of this thesis was to develop workable models of infectious tree diseases from the ground up, from which, robust and more refined models can be established. Developing a simple model of infectious tree diseases was found to have merits when applied to realistic data sets of hosts. The aim was to further understand the nature of epidemics through tree populations. The research questions of this project involved asking to what extent a simple lattice model need be extended and what assumptions were important for each conceptual leap in modelling. The modelling work was in conjunction with .... and aimed to establish a starting model.
+Chapter \ref{chapter2:litreview} describes several key modelling themes. First, the review recounts
+several seminal works that founded the field of quantitative botanical epidemiology. Following this,
+a suite of small, large and multi-scale spatial epidemic models are reviewed. Additionally,
+the Chapter provides an account of host distribution datasets available in GB. Lastly, a case study of the emerging
+ash dieback epidemic is presented.
 
-From a simple-localised lattice model of tree disease a sub-grid method was developed and found to be applicable to large-realistic data sets. The thesis contribute a novel, intuitive notion of control based based on host-spatial structure, a multi-scale approach to modelling tree disease (the sub-grid) and investigated a simple, tractable model on a realistic data-set which was found to give insight into the nature of disease spread on heterogeneous data. These results and ideas are generalisable to many instances of tree diseases.
+Chapter \ref{chapter:SLM} examines a percolation-based simple lattice model of tree disease spreading through a highly
+dense forest \cite{OROZCOFUENTES201912}. The model is compartmentalised into an $SIR$ framework and 
+demonstrated to exhibit a sharp threshold of transition, above which, an epidemic will propagate. 
+Above the threshold of transition, a travelling wave-like behaviour is demonstrated.
+
+Chapter \ref{chapter:SLM-applications} builds on the percolation-based model constructed in Chapter \ref{chapter:SLM}.
+Firstly, we extend the work of \cite{OROZCOFUENTES201912} and present an alternative method to detect an early 
+warning signal in a two-dimensional parameter space. Lastly, the epidemic model is coupled to a map of 
+predicted oak abundance over GB \cite{hill.data} to outline a large-scale `toy model' of tree disease. 
+Primarily, Chapter \ref{chapter:SLM-applications} demonstrates that percolation-based nearest-neighbour interactions are
+problematic for realistic tree densities. 
+
+Chapter \ref{ch5:dispersal-model} introduces a generic (non-local) Gaussian dispersal kernel into the epidemic model. 
+Tree disease epidemics are demonstrated to spread at lower, more realistic tree densities and over come the inherent 
+nearest-neighbour limitations witnessed in Chapter \ref{chapter:SLM-applications}. 
+Disease spread is then examined over a range of dispersal scale parameters and compared to the standard $SIR$ model.
+Next, a spatially-explicit analytic expression for $R_0$ is derived and compared to a `\textit{contact tracing}' method of calculating $R_0$.
+Both methods of determining the reproductive ratio are shown to demonstrate a threshold at $R_0=1$.
+
+Chapter \ref{ch:6-adb} builds on the generic (stochastic) dispersal model to construct a simplified mechanistic model 
+reflecting the life cycle of ash dieback. The model involves four compartments, $SEIR$, that repeat yearly according to 
+the sexual reproduction of ash dieback. Having established the seasonal $SEIR$ model, a method is presented to 
+construct $R_0$-maps across GB using a map of predicted ash abundance. Lastly, a connected-component-analysis algorithm is used
+to visual where $R_0$-values are more highly clustered. Examining clustering in the $R_0$-map reveals behaviour
+akin to a global epidemic phase transition. That is, below a certain infectivity threshold, the pathogen would not be able to invade GB.
+
+Building on observations discussed in Chapter \ref{ch:6-adb}, Chapter \ref{ch7:landscape-level-control} presents the first steps toward a novel
+landscape-level control strategy. The epidemic control strategy is based on targeting natural
+pinch-points and fault lines in the spatial distribution of hosts, which, in theory, could bottleneck the epidemic spread
+between at-risk regions. The Chapter ends by discussing the major assumptions in the control method, and presents a series of research questions that need 
+to addressed before the landscape-level control method is sufficiently demonstrated.
