@@ -331,13 +331,12 @@ Surprisingly, for later generations the degree of inflexion for $R_0^{(4)}$-$R_0
 
 \section{Connected component analysis}
 \label{a:CCA}
-\textcolor{red}{Update this}
 
 As discussed earlier, identifying the different clusters is a key part of the analysing the systems’ behaviour, 
 allowing further analysis of a variety of properties to take place. 
 In order to distinguish between different clusters, a cluster multiple labelling algorithm can be used. 
-Within Matlab this has been encapsulated by the in-built bwconncomp function. 
-The functionality of bwconncomp requires two main pieces of information, the object/image to be analysed and the type of connectivity used, which in this case is 4-connectedness
+Within Python this has been encapsulated by the in-built labelomp function. 
+The functionality of lable requires two main pieces of information, the object/image to be analysed and the type of connectivity used, which in this case is 4-connectedness
 The object/image to be analysed needs to be in the form of a binary matrix. 
 This requirement is immediately fulfilled here through the implementation of the occupation probability, p, which identifies which sites are occupied and unoccupied.
 However this is not always the case. 
@@ -353,7 +352,7 @@ Having established this, the cluster multiple labelling algorithm can be perform
 
 \newpage
 
-The bwconncomp function performs the following steps to find the connected sites within the binary matrix:
+The label function performs the following steps to find the connected sites within the binary matrix:
 \begin{enumerate}
     \item Search for the next unlabelled site, i.
     \item Perform a flood-fill algorithm to label all the sites connected to site i.
@@ -368,7 +367,7 @@ Through this, all of the sites contained within this cluster have the same uniqu
 
 The algorithm is performed column by column and starts the sweep from the top left-most column. 
 There are two preliminary variables that are created to store the number of clusters in the system and the size of each cluster found. 
-Both of these are displayed in the structure that is outputted by bwconncomp. 
+Both of these are displayed in the structure that is outputted by label. 
 These variables are two one-dimensional arrays, denoted here by Cs and Cl which represent the cluster sizes and the cluster numbers respectively. 
 Using these two variables and the occupancy of sites, the methodology of the algorithm is described in the flowchart shown in Figure 3.1.
 
@@ -387,7 +386,7 @@ $\mathbf{C_l}$ is used to label each occupied site using the following method:
 
 Through the use of $\mathbf{C_l}$ , the label $j$ $(j = 1,2,3,...)$ of each site can be found through satisfying $\mathbf{C_l}(j) = j$ 
 The label for each site i that will be stored in $\mathbf{C_l}$ is identified using the following argument. 
-First, let the original entry of site $(i − 1)$ be j1 and the label assigned to site $(i − 1)$ be $j_2$. 
+First, let the original entry of site $(i - 1)$ be j1 and the label assigned to site $(i − 1)$ be $j_2$. 
 Then for site $i$, the following values can be assigned: $\mathbf{C_l}(j1) = j_2 and \mathbf{C_l}(j2) = j_2$.
 Hence, resulting in $j_2$ being stored as the label for site $i$. Having established the uses of $\mathbf{C_l}$, the uses of $\mathbf{C_s}$ will now be explored.
 
@@ -400,7 +399,7 @@ north of $i$ is then zeroed out. Repeating this method allows the algorithm to p
 This provides an accurate labelling of all occupied sites and the size of all the clusters too. Due to this, only one sweep of the
 algorithm is necessary \cite{hoshen1976percolation}.
 
-Using the bwconncomp function creates an efficient way of labelling multiple clusters relatively quickly. 
+Using the label function creates an efficient way of labelling multiple clusters relatively quickly. 
 An example of the labelled cluster output for p = 0.5 is shown in \textcolor{red}{Figure 3.2}. 
 The output of the algorithm produces easily distinguishable clusters whilst providing data that can be analysed further in a variety of ways. 
 This demonstrates the importance of a cluster multiple labelling algorithm (or connected component labelling technique) within many applications, 

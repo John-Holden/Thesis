@@ -803,29 +803,30 @@ which sets the scene for Chapter \ref{ch7:landscape-level-control}.
     \centering
     \includegraphics[scale=0.55]{chapter6/figures/fig6B-ga-cluster-distribution.pdf}
     \caption{ 
-     Spatial interpretations of Figures \ref{fig:gaussian-clustering-A}(a-c), according to the Moore neighbourhood, are shown for $\beta^*=500$. 
+     Spatial interpretations of Figures \ref{fig:gaussian-clustering-A}(a-c), according to the Moore neighbourhood, are shown for $\beta^*=500$
+     and different patch resolutions. 
+     For each domain resolution considered, the largest ranked cluster appears different, pointing to an inherent limitation in the framework
     (a) The largest ranked $R_0$-cluster is shown in blue for the most coarse domain at resolution $\mathrm{5km \times 5km}$ 
     (b) Resolving $R_0$-valued patches to a $\mathrm{3km \times 3km}$ resolution can lead to extra patches opening up 
     (i.e. becoming susceptible $R_0 > 1$) to form connections between other, distinct $R_0$-clusters. 
     Here, patches circled in red form a bridge to a previously disconnected cluster 
     (c) Resolving $R_0$-valued patches to the highest resolution of $\mathrm{1km \times 1km}$ causes a more fragmented domain. 
     A small number of below-threshold patches can fragment the $R_0$-cluster, highlighted in red.
-    For each domain resolution considered, the largest ranked cluster appears different, pointing to an inherent limitation in the framework.
     }
     \label{fig:gaussian-clustering-B}
 \end{figure}
 
-\section{Chapter summary}
+\section{Discussion and future work}
 
 The work presented in this Chapter describes how to project a spatially explicit, small-scale compartmentalised model onto a host distribution.
 The method to `spatially scale' a small-scale epidemic model is computationally inexpensive, flexible and generalisable.
 Here, results are focused on helping policymakers implement informed decisions about \textit{where} to control the spread of disease, based on spatial arguments.
-In the face of low budgets, limited resources and short decision windows, an efficient method to prioritise targeted control could aid both policymakers and forest managers\textemdash as noted by \cite{13-challenges, time-varying-infectivity}.
+In the face of low budgets, limited resources and short decision windows, an efficient method to prioritise targeted control could aid both policymakers and (tree health) stakeholders.
 
 Given the sessile nature of trees, the spatial distribution of hosts remains of paramount importance for epidemic modelling.
 As such, a modelled distribution of ash covering Great Britain was used to parameterise host densities.
 This choice was motivated by the non-existence of freely available, high-quality ash abundance data that spans Great Britain.
-Consequently, combining our small-scale $SEIR$ model with data given by \cite{hill.data} demonstrates a novel use of modelled abundance data\textemdash
+Consequently, combining our small-scale $SEIR$ model with data given by \cite{hill.data} demonstrates a novel use of predicted abundance data\textemdash
 as remarked when summarising the toy SLM model of Chapter \ref{chapter:SLM-applications}.
 
 Due to the complexity of ADB, some important assumptions had to be employed in the $SEIR$ model.

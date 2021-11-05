@@ -169,7 +169,7 @@ present an effective early warning system for the prediction of forest-based pat
             (b-c) At the critical density $\rho_c$, a cluster spanning the domain in (b) is assessed over progressively smaller resolutions.
             Similar features are observed on different scales and scale invariance is observed in the model.
             }
-    \label{fig:ch3-perc} % \label{fig:ch3-perc-pr}
+    \label{fig:ch3-perc}
 \end{figure}
 
 \begin{table}[h!]
@@ -229,8 +229,8 @@ thus leaving only small untouched clusters, as $\rho \rightarrow 1$ and $\xi \ri
 See \cite{STAUFFER19791} for a detailed breakdown of power laws and correlation length.
 
 Lastly, it is worth discussing well-known results on how the cluster sizes (or masses) scale with the lattice dimension. 
-If $\rho > \rho_c$, the largest cluster present (denoted by $M$) would scale according to $M\propto L^{2}$, cf. the evolving epidemics above the threshold in Figure \ref{fig:ch3-perc}; 
-in contrast, if $\rho = \rho_c$, $M$ would follow $M\propto L^{1.9}$, 
+If $\rho > \rho_c$, the largest cluster present (denoted by $M$) would scale according to $M\propto L^{2}$. 
+In contrast, if $\rho = \rho_c$, $M$ would follow $M\propto L^{1.9}$, 
 where $d_F=1.9$ describes the cluster fractal dimension.
 If we normalise the cluster by the size of the lattice ($L^2$), the mean density of $M$ will decay as the lattice size increases, i.e. $L^{1.9}/L^2 = L^{-0.10}$. 
 Broadly, the critical phenomena found in percolation theory, thermodynamics and magnetism have close ties and are described by similar power laws underpinned by scaling theory \cite{Essam_1980}.
@@ -351,9 +351,9 @@ Statistical measures over the ensemble have exciting applications and can detect
 Figure \ref{fig:slm_pspace} contrasts the epidemic threshold according to both percolation and velocity-based metrics.
 In Figure \ref{fig:slm_pspace}(a), a one-dimensional line through the parameter-space of $\rho$ reveals the percolation probability for the three different infectivity parameters shown.
 The vertical dashed line shows the accepted percolation threshold, $\rho_c$, for a two-dimensional square lattice. 
-For $\beta \in [0.50, 0.75]$, the probability of percolation is identical to that shown in Figure \ref{fig:ch3-perc-pr};
+For $\beta \in [0.50, 0.75]$, the probability of percolation is identical to that shown in Figure \ref{fig:ch3-perc};
 However, a lower value of $\beta = 0.25$ decreases the percolation threshold, as evidenced by the green line shifting to the right.
-Figure \ref{fig:ch3-perc-pr}(a) intuitively demonstrates that a pathogen with a low value of infectivity requires a more significant tree density to spread.
+Figure \ref{fig:ch3-perc}(a) intuitively demonstrates that a pathogen with a low value of infectivity requires a more significant tree density to spread.
 
 The ensemble-averaged radial velocity $\big\langle \overline{v} \big\rangle$ (as per Equation \ref{eq:vel_eff_r}) mirrors the percolation threshold,
 notwithstanding with some differences.
@@ -390,7 +390,7 @@ Here, the parameter-sweeps can be understood to portray an `\textit{epidemic pha
 
 \newpage
 
-\section{Chapter Summary}
+\section{Discussion}
 
 This chapter introduced percolation theory, leading to a one-parameter percolation $SIR$ model of tree disease spreading through a forest.
 The one-parameter model demonstrated stochasticity on account of the randomly populated host distribution inside a square lattice. 
@@ -421,8 +421,7 @@ Although the percolation probability may prove more beneficial for classifying e
 the radial velocity captured a similar threshold-like behaviour beside additional dynamic information in the form of a time series.
 Subsequently, the time series was ensemble-averaged and examined over a sweep of $\rho$ and $\beta$ values. 
 
-Interestingly, comparing the percolation probability to radial velocity revealed a parameter region above the threshold where the pathogen survives but slowly propagates to the domain boundary. 
-This behaviour approximates persistence; the reader can find a review of invasion and persistence in section \ref{ch3:invasions_and_persistence}.
+Interestingly, comparing the percolation probability to radial velocity revealed a parameter region above the threshold where the pathogen survives but slowly propagates to the domain boundary; this behaviour approximates persistence.
 However, neglected host population dynamics in the SLM prevents long-term coexistence between host and pathogen, 
 an essential requirement of persistence \cite{gilligan2008epidemiological}. 
 Accordingly, the SLM only approximates invasion and persistence, which therefore signifies a limitation in the framework. 
