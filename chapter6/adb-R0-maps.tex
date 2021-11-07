@@ -329,9 +329,9 @@ and botanical populations \cite{suffert2018some, leclerc2014estimating, time-var
 In particular, ADB is known to have a seasonal life-cycle, and time-varying infectivity \cite{grosdidier2018tracking, hietala2013invasive}. 
 The peak of ADB infectivity occurs during summertime sporulation when fruiting bodies on shed litterfall release ascospores.
 
-To demonstrate robustness in the approach, two sporulation functions, $\phi_1(t)$ and $\phi_2(t)$, are used to model the time-dependent ADB ascospore production.
+Two contrasting sporulation functions, $\phi_1(t)$ and $\phi_2(t)$, were used to model the time-dependent ADB ascospore production and demonstrate robustness in the approach.
 The choice of sporulation functions were inspired by the modelling work of \cite{time-varying-infectivity} and \cite{segarra2001epidemic}
-(reviewed in Chapter \ref{ch2:lit-rev-compartmentalised-models}). 
+(reviewed in section \ref{ch2:lit-rev-compartmentalised-models}). 
 Sporulation functions are described by step function and a normal distribution located at the midpoint between June and September:
 
 \begin{equation}
@@ -847,11 +847,13 @@ In this scenario, patches have the possibility of interacting non-locally becaus
 nearest-neighbour structuring elements therefore fail to describe connectivity accurately.}
 Given all the above, an improved understanding of the connectivity between patches is required to progress the framework.
 
-In a nutshell, multi-scale CCA questions the very notion of constructing $R_0$-maps for systems described by fat-tailed dispersal kernels.
-The invasiveness of a pathogen described by a fat-tailed dispersal kernel cannot be defined by $R_0$ reliably inside a small domain.
-Therefore, epidemic maps depicting inverse power law $R_0$-values require a larger patch size that motivates a coarse-grained host distribution, lowering map resolution.
-Omitting finer-scale epidemic information can lead to disparate results, witnessed by varying the Gaussian-based $R_0$-map patch-size.
-Thus, mapping $R_0$ values for inverse power law dispersal is called into question.
+Moreover, nearest neighbour CCA proved difficult when constructing $R_0$-maps for systems described by fat-tailed dispersal kernels.
+That is, $R_0$ cannot reliably define pathogen invasiveness inside a small domain when dispersal is longer-ranged.
+Thus, inverse power law dispersal required a larger patch size to measure $R_0$ from a single focus. 
+In turn, a larger patch-level domain size produced a coarse-grained host distribution that omitted important finer-scale epidemic information.
+However, future research could examine non-local interactions between $R_0$-valued patches, in principle, this
+could permit the construction of a higher resolution $R_0$-map composed of `within' and `between' patch interactions\textemdash echoing 
+the short and long ranged interactions inside a metapopulation \cite{beninca2020trade}.
 
 Despite the limitations of CCA, clusters grew up to four orders of magnitude over the initial interval of infectivity, $\beta^*\in [100, 400]$.
 Rapid cluster growth between $\beta^*\in [100, 400]$ occurred for all $SEIR$ model-variants and domain resolutions considered.
