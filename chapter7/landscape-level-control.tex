@@ -313,10 +313,10 @@ However, landscape-level control is possible when scenarios occupy the right and
 \section{Discussion and future research}
 
 This Chapter outlined a conceptual strategy of landscape-level control, targeting a pathogens local wind-dispersal mechanism.
-The strategy preferentially controls the pathogen through identified patches throughout the host population.
-If taken below the epidemic threshold, $R_0$-cluster fragmentation could be achieved along with an idealistic `regional containment'.
-Given that the effects of LDD (beyond $5\mathrm{km}$) were neglected, the utility, efficiency and practicality of real-life implementation remain unproven.
-Fungal spores in particular are thought to be able to disperse over large distances, e.g. from mainland Europe to Great Britain \cite{freer2017tree, wylder2018evidence}
+The strategy aims to preferentially control the pathogen through identified patches in the host population. 
+In the idealistic scenario, cluster fragmentation can be achieved along with `regional containment' if the identified patches are taken below the epidemic threshold.
+Fungal spores in particular are thought to be able to disperse over large distances, e.g. from mainland Europe to Great Britain \cite{wylder2018evidence, freer2017tree}.
+Given that the effects of LDD (beyond $5\mathrm{km}$) were neglected, the utility, efficiency and practicality of real-life implementation remain unproven. Nevertheless, the work undertaken in this Chapter sets the scene for future investigations.
 
 Various large-scale models have examined spread over contiguous cells, or patches, e.g. \cite{gaydos2019forecasting, large-scale-control, meentemeyer2011epidemiological}.
 However, to our knowledge no large-scale studies involve the spatial arguments based on population heterogeneity presented in this Chapter.
@@ -324,7 +324,7 @@ Although the idea of density reductions unpinned control in this work (consisten
 the possibility of other biological control methods remains an attractive option, e.g. fungicide treatments \cite{hauptman2015application}.
 
 Targeted epidemic control goes hand-in-hand with an on-the-ground understanding of which regions become infected.
-Subsequently, the method presented to identify high-risk areas might also find applications in enhanced monitoring and surveillance \cite{surveillance-review}, discussed previously in section \ref{sec:modelling-and-policy}. Consequently, future work could access the method of critical/connecting patch detection for enhanced landscape-level monitoring.
+Subsequently, the method presented to identify high-risk areas might find applications in enhanced monitoring and surveillance \cite{surveillance-review}, discussed previously in section \ref{sec:modelling-and-policy}. Consequently, future work could access the method of critical/connecting patch detection for enhanced landscape-level monitoring.
 
 The algorithm constructed in section \ref{sec:fragmentation-method} presented a means to identify `connecting patches', which if taken below $R_0=1$ would fragment the cluster.
 Related concepts of network fragmentation exist in telecommunications \cite{albert2000error}, ecological space modeling \cite{luo2021understanding} and human epidemiology \cite{chami2017social}.
@@ -391,18 +391,18 @@ In addition, resource constraints were neglected. In reality, control initiative
 Therefore, any robust control strategy should ideally make efforts to incorporate the influence of government budgets in large-scale control \cite{large-scale-control}.
 
 Figure \ref{fig:future-research}(b) illustrates a potential setup to progress the understanding of landscape-level control by considering a system of three coupled patches.
-The coupled system shown in Figure \ref{fig:future-research}(b) is similar to Figure \ref{fig:future-research}(a), although this time an intermediary `control' patch separates the target and source patches. In this system, dispersal can either jump between or directly over the control patch, shown by the solid black and dashed grey arrows, respectively. In $\rho_{control}$, control could be achieved by reducing tree density through sanitation felling or by reducing $\beta$ (mirroring biological control, e.g. fungicide treatments).
+The coupled system shown in Figure \ref{fig:future-research}(b) is similar to Figure \ref{fig:future-research}(a), although this time an intermediary `control' patch separates the target and source patches. In this system, dispersal can either jump between or directly over the control patch, shown by the solid black and dashed grey arrows, respectively. In $\rho_{control}$, control can be achieved by reducing tree density through sanitation felling or by reducing $\beta$ (mirroring biological control, e.g. fungicide treatments).
 
 Studying the effect of different control measures in $\rho_{control}$ could provide crucial insight into the control strategy proposed in this Chapter.
 In particular, by studying the number of infected trees that arise in $\rho_{target}$ conditional on different control measures. 
-It would be intuitive to expect efficient control on thin-tailed Gaussian kernels.
-However, for fat-tailed dispersal kernels, the efficacy of between-patch control remains far less obvious and more subject to scrutiny.
+Intuitively, we could expect efficient control when propagation occurs through a thin-tailed Gaussian kernel.
+However, for fat-tailed dispersal kernels, the efficacy of between-patch control remains far less obvious and subject to more scrutiny.
 
-In summary, three hypothetical outcomes can be expected from future research: 
+In summary, three hypothetical outcomes can be expected from studying the coupled system: 
 \begin{enumerate}
-    \item Between-patch control is insufficient because large numbers of secondary infections arise in $\rho_{target}$ from infected trees in $\rho_{source}$.
-    \item The development of an outbreak in $\rho_{target}$ is slowed down by control measures in $\rho_{control}$, conditioned on the epidemic and control parameters.
-    \item Epidemic containment between patches can be achieved, thereby preventing the pathogen from propagating to $\rho_{target}$.
+    \item Between-patch control is insufficient because large numbers of secondary infections arise in $\rho_{target}$ due to infected trees in $\rho_{source}$.
+    \item The development of an outbreak in $\rho_{target}$ is slowed down by control measures in $\rho_{control}$, albeit conditioned on the epidemic and control parameters.
+    \item Complete epidemic containment between patches can be achieved, thereby preventing the pathogen from propagating to $\rho_{target}$.
 \end{enumerate}
 For inverse power law dispersal, complete epidemic containment, as described in (3), is unlikely due to its fat-tail.
 However, future research could assess the degree to which control slows down the spread between patches, conditioned on epidemic and control parameters. Although, the answer to these questions remains open to investigation.
