@@ -16,46 +16,73 @@ Furthermore, even with non-local dispersal, Chapter \ref{ch5:dispersal-model} de
 Chapter \ref{ch5:dispersal-model} examined two methods of calculating $R_0$ for a non-local dispersal model (NLM) over a range of epidemic parameters.
 Results from Chapter \ref{ch5:dispersal-model} indicate that when the scale of dispersal is comparable to the domain, the model approximates a mass-action well-mixed system described by the standard $SIR$ model. However, comparisons to the $SIR$ model were simplified and limited to one parameter (i.e. the ratio $\beta/\gamma$). Subsequently, the analysis constitutes a preliminary result, and a more sophisticated method of comparison is required to glean further insight.
 
-Most intriguingly, deriving a spatially-explicit analytic expression of $R_0$ in Chapter \ref{ch5:dispersal-model} led to an `entire function', well-known in complex analysis \cite{abramowitz1948handbook}. 
-The analytic approach contrasts with the wider literature on botanical epidemics where calculations of $R_0$ generally rest on infectivity and removal rates \cite{...}.
+Most intriguingly, deriving a spatially-explicit analytic expression of $R_0$ led to an `entire function' in Equation \ref{eq:ein}, well-known in complex analysis \cite{abramowitz1948handbook}. 
+Equation \ref{eq:ein} contrasts with other non-spatial approaches to calculate $R_0$ that generally rely on infectivity and removal rates alone \cite{...}.
 Instead, Equation \ref{eq:ein} is a function of infectivity, removal, dispersal, and tree density parameters.
-Further theoretical study could perform a more detailed analysis of Equation \ref{eq:ein} and perhaps examine a derivation by replacing the Gaussian dispersal kernel with an inverse power law or by including exponential lifetime dynamics in the model. 
+Further theoretical study could explore a more rigorous analysis of Equation \ref{eq:ein}, or examine an alternate derivation incorporating inverse power law dispersal or exponentially-distributed removal lifetime dynamics.
 However, it is clear to see that the mathematical derivation might ultimately become too challenging in the face of more complicated epidemic models. 
 
 Then in Chapter \ref{ch5:dispersal-model}, the analytic expression of $R_0$ was compared against the `actual' contact-traced reproduction ratio. 
-Both methods to determine $R_0$ described a clear epidemic threshold at $R=1$, thereby marking an important finding.
+Both methods to determine the reproduction ratio demonstrated a clear epidemic threshold at $R_0=1$, thereby marking an important finding.
 Nonetheless, comparing both methods revealed that the analytic expression overestimates $R_0$ for progressively higher values ($R_0 \sim 10$),
-highlighting an important limitation in the approach. Had the analytic expression been applied to dense forest ($\rho >10\%$) where $R_0$ is likely higher, overestimation would only increase.
-Moreover, Equation \ref{eq:ein} would clearly cease to yield sensible predictions for crop disease, where field densities are exceedingly dense and $R_0$ is thought to be high \cite{...}. 
+highlighting an important limitation in the approach. 
+Had the analytic expression been applied to dense forest ($\rho >10\%$) where $R_0$ is likely higher, overestimation would only increase.
+Therefore, the value of Equation \ref{eq:ein} diminishes rapidly when used to describe highly infectious regimes with a large $R_0$.
 
+In contrast, the contact-tracing method computes the mean number of infections per infected trees over different infected generations.
+Computing the mean-generational reproductive ratio proved convenient and led to a sharper epidemic threshold for later generations;
+this observations relate nicely to \cite{R0-perc-ref}, who studied a similar method to calculate $R_0$ for foot and mouth disease.
+Despite the convenience of contact-tracing the mean number of secondary infections in the model, it would be challenging to experimentally measure in real system.
+As such, the method remains applicable to abstract modelling work alone, and not in-the-field experiments.
 
+The central value Chapter \ref{ch:6-adb} results from outlining a novel framework to link a wind-dispersed epidemic model with species abundance data.
+In particular, Chapter \ref{ch:6-adb} developed a simplified spatially-explicit $SEIR$ model that described the seasonal spread of ash dieback (ADB) over local spatial scales.
+Subsequently, the ADB model was coupled with the map of predicted ash abundance given by \cite{hill.data} to produce an $R_0$-map covering GB.  
+Surprisingly, no mechanistic model of ADB could be found in the literature. Thus, to my knowledge, the ADB model presented in this thesis 
+marks the first mechanistic compartmentalised attempt at modelling ADB. 
 
-Behaviour akin to a global epidemic phase transition across GB was witnessed, albeit with a simplified notion of epidemic connectivity.
-
-
+Although ADB has already become established and spread throughout the UK, treating infectiviy as a free parameter in Chapter \ref{ch:6-adb} led to several notable observations.
+Particularly, when the infectivity parameter is low, the $R_0$-maps become sparsely-populated with susceptible patches above the epidemic threshold.
+Consequently, below a minimum infectivity value, the $R_0$-maps indicate that ADB would be unlikely to invade GB.
+In a similar vein, between a narrow range of infectivity parameters clusters in the $R_0$-map grew rapidly, over four orders of magnitude.
+Altogether, the model alludes to behaviour akin to a global epidemic phase transition across GB. Unfortunately, however, numerous assumptions place limitations on the framework.
 
 \begin{itemize}
-    \item Data: modelled abundance data is not accurate enough to make such detailed, fine-scale management decisions, as presented in Chapter 7. According to \cite{hill.data},
-    the RMSE for ash abundance distributions was $5\mathrm{ha}$. Given that connectivity, as we've defined it, can depend on a small number of points,
-    large-inaccuracies could be expected in comparison to the identified areas presented in Chapter 7.
-    \item Until modelled abundance data can identify species such as ash more accurately, future work should concentrate on modelling smaller-scale areas, 
-    where abundance data is known. Country-wide applications are questionable, and extraordinarily ambitious at this point in time. However, several fronts could drastically improve the applicability of the framework presented in this thesis...
-    \item Although landscape management predictions to the individual patch is unrealistic, abundance maps are still expected to capture overall spatial distribution patterns,
-    thus, $R-0$-maps can be expected to present the overarching pattern of pathogen invasiveness.
-    \item More accurate $R-0$-maps would follow naturally from a more accurate spatially-explicit model of tree disease. In this thesis we presented a seasonal $SEIR$-like model \cite{gottwald2002geo}
-    \item we could fit $\beta$ to spatial-temporal tree mortality patterns, "Monte Carlo algorithm using spatiotemporal data from an 18- month epidemiological study in southeast Florida" for citrus canker \cite{neri2014bayesian}. We need biologically plausible parameters
-    \item \cite{WEBIDEMICS}, the risk to outside sources set by the time-to-control, could be factored in to a landscape-level approach
-    that reflected the lifecycle of ADB. However, several simplying assumptions were made when spatially-scaling the small-scale model over GB.
-    In particular, we assumed the same level of infectiviy throughout GB. In contrast, ADB severity is known to vary widely in response to the environment.
-    Furthermore, in this Thesis infectiviy was treated as a free parameter, and no attempt to fit $\beta$ was undertaken.
-    Arguably, fitting infectiviy to ADB mortality data remains one of the highest priority investigations to follow from this Thesis.
-    Fitting $\beta$ to ADB mortality data in itself would entail several subsequent model improvements: ash life cycles... forest ecosystems...
-    \item Improvements to the model could therefore aid forest restoration, control efforts, and...
-    \item We have...Disease cartography using liking species abundance with spatially-explicit epidemic model. A notable challenge posed by a dispersal-based system
-    is that regions of land couple together non-locally. Throughout this thesis, CCA assessed clustering based on neighbour links. 
-    Going forward, a more sophisticated notion of connectivity could permit higher resolution maps for Inverse power law... method could add significant value... 
-    \item focus on a small study area, as in \cite{he2019integrating}
+    \item infectivity $\beta$
+    \item limited incidence data
+    \item small-scale host structure and demography
+    \item large-scale between-patch coupling
 \end{itemize}
+
+
+
+
+
+
+
+
+% \begin{itemize}
+%     \item Data: modelled abundance data is not accurate enough to make such detailed, fine-scale management decisions, as presented in Chapter 7. According to \cite{hill.data},
+%     the RMSE for ash abundance distributions was $5\mathrm{ha}$. Given that connectivity, as we've defined it, can depend on a small number of points,
+%     large-inaccuracies could be expected in comparison to the identified areas presented in Chapter 7.
+%     \item Until modelled abundance data can identify species such as ash more accurately, future work should concentrate on modelling smaller-scale areas, 
+%     where abundance data is known. Country-wide applications are questionable, and extraordinarily ambitious at this point in time. However, several fronts could drastically improve the applicability of the framework presented in this thesis...
+%     \item Although landscape management predictions to the individual patch is unrealistic, abundance maps are still expected to capture overall spatial distribution patterns,
+%     thus, $R-0$-maps can be expected to present the overarching pattern of pathogen invasiveness.
+%     \item More accurate $R-0$-maps would follow naturally from a more accurate spatially-explicit model of tree disease. In this thesis we presented a seasonal $SEIR$-like model \cite{gottwald2002geo}
+%     \item we could fit $\beta$ to spatial-temporal tree mortality patterns, "Monte Carlo algorithm using spatiotemporal data from an 18- month epidemiological study in southeast Florida" for citrus canker \cite{neri2014bayesian}. We need biologically plausible parameters
+%     \item \cite{WEBIDEMICS}, the risk to outside sources set by the time-to-control, could be factored in to a landscape-level approach
+%     that reflected the lifecycle of ADB. However, several simplying assumptions were made when spatially-scaling the small-scale model over GB.
+%     In particular, we assumed the same level of infectiviy throughout GB. In contrast, ADB severity is known to vary widely in response to the environment.
+%     Furthermore, in this Thesis infectiviy was treated as a free parameter, and no attempt to fit $\beta$ was undertaken.
+%     Arguably, fitting infectiviy to ADB mortality data remains one of the highest priority investigations to follow from this Thesis.
+%     Fitting $\beta$ to ADB mortality data in itself would entail several subsequent model improvements: ash life cycles... forest ecosystems...
+%     \item Improvements to the model could therefore aid forest restoration, control efforts, and...
+%     \item We have...Disease cartography using liking species abundance with spatially-explicit epidemic model. A notable challenge posed by a dispersal-based system
+%     is that regions of land couple together non-locally. Throughout this thesis, CCA assessed clustering based on neighbour links. 
+%     Going forward, a more sophisticated notion of connectivity could permit higher resolution maps for Inverse power law... method could add significant value... 
+%     \item focus on a small study area, as in \cite{he2019integrating}
+% \end{itemize}
 
 % Interestingly, the disparity between clusters-size, and the distance between clusters could be used to give insight into
 % which spatial scale is the dominant driver of disease spread.
