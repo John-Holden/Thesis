@@ -22,7 +22,7 @@ can give rise to natural pinch-points and fault lines in the spatial distributio
 Population pinch points may give rise to a bottleneck in the epidemic spread, which in principle could be exploited with targeted epidemic control to fragment the host population with minimised effort. 
 In essence, a strategy of 'regional containment', targeting the local wind-based pathogen dispersal mechanism, 
 is formulated and scaled up over Great Britain.
-Similar concepts for crop and livestock diseases have been articulated \cite{PAPAIX201435, GILIOLI20131, Gilligan-disease-management}, yet to our knowledge, this has not been generalised to tree populations over large spatial scales.
+Similar concepts for crop and livestock diseases have been articulated \cite{PAPAIX201435, GILIOLI20131, Gilligan-disease-management}, yet to our knowledge, this has not been examined rigorously or generalised to tree populations over large spatial scales.
 
 A great deal of research has been carried out to understand the optimisation of control in crop and tree-based epidemics\textemdash as reviewed in section \ref{ch2:lit-rev-compartmentalised-models}. 
 Spatial structure is an essential factor when considering how to manage an outbreak \cite{spatial-control-optimisation, control-heterogeneous-landscapes}. 
@@ -314,9 +314,9 @@ However, landscape-level control is possible when scenarios occupy the right and
 
 This Chapter outlined a conceptual strategy of landscape-level control, targeting a pathogens local wind-dispersal mechanism.
 The strategy aims to preferentially control the pathogen through identified patches in the host population. 
-In the idealistic scenario, cluster fragmentation can be achieved along with `regional containment' if the identified patches are taken below the epidemic threshold.
-Fungal spores in particular are thought to be able to disperse over large distances, e.g. from mainland Europe to Great Britain \cite{wylder2018evidence, freer2017tree}.
-Given that the effects of LDD (beyond $5\mathrm{km}$) were neglected, the utility, efficiency and practicality of real-life implementation remain unproven. Nevertheless, the work undertaken in this Chapter sets the scene for future investigations.
+In an idealistic scenario, cluster fragmentation can be achieved along with `regional containment' if the identified patches are taken below the epidemic threshold.
+Nonetheless, fungal spores are thought to be able to disperse over large distances, e.g. from mainland Europe to Great Britain \cite{wylder2018evidence, freer2017tree}.
+Given that the effects of LDD (beyond $5\mathrm{km}$) were neglected, the utility, efficiency and practicality of real-life implementation remain unproven. However, the work undertaken in this Chapter sets the scene for future investigations.
 
 Various large-scale models have examined spread over contiguous cells, or patches, e.g. \cite{gaydos2019forecasting, large-scale-control, meentemeyer2011epidemiological}.
 However, to our knowledge no large-scale studies involve the spatial arguments based on population heterogeneity presented in this Chapter.
@@ -331,7 +331,7 @@ Related concepts of network fragmentation exist in telecommunications \cite{albe
 However, no sources could be found relating to spatially-explicit epidemic spread over a landscape of trees.
 The algorithm described in \ref{sec:fragmentation-method} treated patches below the threshold as negligible, without this assumption CCA would cease to work.
 Given the possibility of stochastic below-threshold spread, future work should move towards a generalised (risk-based) scheme that factors in the presence of patches below $R_0=1$;
-in such a scheme, we may ultimately question the choice of CCA due to its binary nature and limitation to describe non-local coupling.
+in such a scheme, we may ultimately question the choice of CCA due to its binary nature and inability to describe non-local coupling. Subsequently, routes to progress and improve the framework and control strategy are outlined below.
 
 % Nevertheless, the results of section \ref{sec:cast-study-jump-patches} provide indications that pathogen dispersal might, at worst, be slowed by performing patch-level density reductions;
 % in the best-case scenario, policymakers and forest managers might gain vital time to respond to the threat of invasion and tree populations provided with crucial recovery time.
@@ -357,20 +357,20 @@ in such a scheme, we may ultimately question the choice of CCA due to its binary
 \begin{figure}
     \centering
     \includegraphics[scale=0.35]{chapter7/figures/figure5-future-reserach.pdf}
-    \caption{A diagram illustrating potential research avenues to improve understanding of the framework. 
+    \caption{A diagram illustrating potential research avenues to improve understanding of the framework and control strategy. 
     (a) Examining the transmission probability between a source and target patch as a function of distance $r$ and infectivity $\beta$. 
     (b) Understanding the degree to which control of an intermediary patch ($\rho_{control}$) can disrupt dispersal between a source and target patch.}
     \label{fig:future-research}
 \end{figure}
 
 \subsection{Future research questions}
-
+\label{sec:future-questions}
 Throughout Chapters \ref{ch:6-adb} and \ref{ch7:landscape-level-control}, nearest-neighbour connectivity underpinned $R_0$-map clustering.
 Ultimately, this followed from defining $R_0$-maps based solely on `within-patch' interactions. Moving forward, we require an enhanced understanding of `between-patch' interactions.
 Figure \ref{fig:future-research} illustrates two future research questions that could help develop the framework and assess the utility of landscape-level control.
 
 \subsubsection{Patch-to-patch transmission}
-The modelling setup could define two patches, a source patch ($\rho_{source}$) that hosts the infection at $t=0$, and an infection-free target patch ($\rho_{target}$). Ideally, patches should mirror the highest possible resolution\textemdash given by $1\mathrm{km^2}$ for the maps of predicted ash abundance given by \cite{hill.data}.
+A modelling setup could define two patches, a source patch ($\rho_{source}$) that hosts the infection at $t=0$, and an infection-free target patch ($\rho_{target}$). Ideally, patches should mirror the highest possible resolution\textemdash given by $1\mathrm{km^2}$ for the maps of predicted ash abundance given by \cite{hill.data}.
 One could then assess the transmission probability between $\rho_{source}$ and $\rho_{target}$ as a function of distance $r$ and infectivity $\beta$, reflected in Figure \ref{fig:future-research}(a). 
 A similar on-the-ground experiment was conducted by \cite{https://doi.org/10.1111/1365-2745.13383},
 who accessed the prevalence of collar canker and rachis symptoms in neighbouring ash. 
@@ -388,7 +388,7 @@ Lastly targeted control, outlined in section \ref{sec:towards-regional-control},
 Subsequently, the epidemic spread was assumed non-existent for patches $R_0=1$.
 More research is required to understand this assumption and further assess the efficiency of control.
 In addition, resource constraints were neglected. In reality, control initiatives are limited by governmental budgets and the funding made available to stakeholders.
-Therefore, any robust control strategy should ideally make efforts to incorporate the influence of government budgets in large-scale control \cite{large-scale-control}.
+Therefore, any robust control strategy should make efforts to incorporate the influence of government budgets in large-scale control \cite{large-scale-control}.
 
 Figure \ref{fig:future-research}(b) illustrates a potential setup to progress the understanding of landscape-level control by considering a system of three coupled patches.
 The coupled system shown in Figure \ref{fig:future-research}(b) is similar to Figure \ref{fig:future-research}(a), although this time an intermediary `control' patch separates the target and source patches. In this system, dispersal can either jump between or directly over the control patch, shown by the solid black and dashed grey arrows, respectively. In $\rho_{control}$, control can be achieved by reducing tree density through sanitation felling or by reducing $\beta$ (mirroring biological control, e.g. fungicide treatments).
@@ -397,7 +397,6 @@ Studying the effect of different control measures in $\rho_{control}$ could prov
 In particular, by studying the number of infected trees that arise in $\rho_{target}$ conditional on different control measures. 
 Intuitively, we could expect efficient control when propagation occurs through a thin-tailed Gaussian kernel.
 However, for fat-tailed dispersal kernels, the efficacy of between-patch control remains far less obvious and subject to more scrutiny.
-
 In summary, three hypothetical outcomes can be expected from studying the coupled system: 
 \begin{enumerate}
     \item Between-patch control is insufficient because large numbers of secondary infections arise in $\rho_{target}$ due to infected trees in $\rho_{source}$.
