@@ -9,21 +9,17 @@
 \label{chapter:SLM}
 
 Typically, models of tree disease are complicated and involve multiple parameters informed by experimental data. Moreover, modelling a specific pathosystem requires in-depth, specialist knowledge to incorporate biological realism, such as pathogen lifecycles or environmental suitability. This introductory chapter outlines a simple model of tree disease spreading through a forest that will lay the foundations for more detailed treatment in later chapters.
-Consequently, the compartmentalised $SIR$, percolation-based, model used by \cite{OROZCOFUENTES201912} will be recounted. 
+Consequently, the compartmentalised $SIR$, percolation-based, model used by \cite{OROZCOFUENTES201912} will be re-examined. 
 
-From the first principles, the percolation model will be analysed over one parameter, tree density $\rho$.
-Thus, leading to a mathematical and conceptual definition of percolation in the context of tree-based epidemics. 
-The simple one-parameter model will then give way to a discussion of criticality and self-similarity in the system;
-the discussion will include a summary of critical phenomena and some universal behaviour within the model.
-Crucially, this chapter demonstrates the importance of thresholds in the spread of tree-based diseases.
+From first principles, the percolation model is analysed over a single tree density parameter ($\rho$), leading to a mathematical and conceptual definition of percolation in the context of tree-based epidemics. 
+Then, a discussion of critical phenomena, universal behaviour, and self-similarity in the system will follow. Crucially, this chapter demonstrates the importance of thresholds in the spread of tree-based diseases.
 
 Having established a simple one-parameter model, a more involved two-parameter `stochastic percolation' model will be developed and examined. 
 Stochastic percolation will include an extra parameter representing the degree of pathogen infectivity. 
 In general, measuring infectivity is challenging and subject to much spatial and temporal variation, such as changing climatic/environment conditions or species-level genetic variations in susceptibilities.  
 However, including a stochastic infectivity parameter is essential to construct representative models of tree-based epidemics, as infectivity (or susceptibility) can vary widely over a landscape.
 The two-parameter model will constitute a simple lattice model (SLM) of disease dynamics. 
-This introductory chapter will introduce an ensemble-averaging method used throughout the thesis;
-in the present case, ensemble-averaged parameter sweeps are used to categorize the SLM behaviour.
+This introductory chapter will introduce ensemble-averaging parameter sweeps\textemdash used throughout the thesis\textemdash to categorize the SLM behaviour.
 
 \section{Percolation formalism}
 \label{sec:perc-form}
@@ -50,12 +46,10 @@ The critical point can be defined as the least value of $\rho$ where percolation
 This can be formalised by first considering the probability function: $\theta (\rho)= \lbrace \rho:|C|=\infty\rbrace$ where $\theta(\rho)$ is the probability of an arbitrary site, %
 within a lattice of density $\rho$, belonging to cluster $C$ of size $\infty$ (i.e. the spanning cluster). %
 The critical value then satisfies: %
-
 \begin{equation}
 \label{eq:critical_threshold_1d}
     \rho _{c}=sup \lbrace \rho : \theta (\rho ) = 0 \rbrace
 \end{equation}
-
 At this point, the spanning cluster has been described conceptually, although many nuances and technicalities complicate the definition. %
 For example, the probability of percolation has a non-trivial dependence on the size of the lattice;
 if the mean cluster size, defined by a `characteristic' cluster length $C_r$, is above or comparable to $L$, 
@@ -115,19 +109,11 @@ Typical simulations on a domain of size $500 \times 500$ are shown in Figure \re
     \label{fig:ch3-perc-spread}
 \end{figure}
 
-Figure \ref{fig:ch3-perc-spread} illustrates dynamic simulations of disease spread through a 
-series of $500 \times 500 $ domain. At density $\rho=0.70$, Figures \ref{fig:ch3-perc-spread} (a-c)
-reveal an unnatural diamond-like pattern of spread reflecting artefacts of the lattice geometry.
-In theory, the diamond-like spread would look different if the lattice geometry is changed\textemdash a
-triangular or honeycomb lattice, for example. The diamond-like spread begins to disappear in 
-Figure \ref{fig:ch3-perc-spread}(d-f), when simulations have density $\rho=0.65$.
-At this density, a wave-like propagation of infected trees spread radially from the epicentre outward 
-toward the lattice boundary and look more realistic.
-Interestingly, these observations can be understood through the lens of stochasticity. At a lower tree density, the probability of 
-spread between neighbours is lower, and the spread is more chaotic, thus disrupting the highly ordered wavefront shown 
-through panels (a-c) into a circular travelling wavefront.
+Figure \ref{fig:ch3-perc-spread} illustrates dynamic simulations of disease spread through a series of $500 \times 500 $ domain. At density $\rho=0.70$, Figures \ref{fig:ch3-perc-spread} (a-c) reveal an unnatural diamond-like pattern of spread reflecting artefacts of the lattice geometry.
+The diamond-like spread begins to disappear in Figure \ref{fig:ch3-perc-spread}(d-f), when simulations have density $\rho=0.65$. At this density, a wave-like propagation of infected trees spreads radially from the epicentre outward toward the lattice boundary. Interestingly, these observations can be understood through the lens of stochasticity. At a lower tree density, the probability of spread between neighbours is lower, and the spread is more chaotic, thereby disrupting the highly ordered wavefront shown through panels (a-c) into a circular travelling wavefront.
+However, it is worth remarking that an alternate triangular or honeycomb lattice geometry would change the diamond-like pattern altogether.
 
-Figure \ref{fig:ch3-perc-spread}(g-i), show the spread of disease for a lower host density of $\rho = 0.60$.
+Figures \ref{fig:ch3-perc-spread}(g-i), show the spread of disease for a lower host density of $\rho = 0.60$.
 As the disease spreads outward, a more fractal-like pattern begins to emerge.
 Moreover, the disease spreads slowly, as evidenced by the smaller area traced by the infectious-removed trees shown from white to red.
 In this regime of spread, `persisting' simulations result from the slowly evolving epidemic as it defines a disordered cluster of infectious-removed hosts.
@@ -136,14 +122,10 @@ In this regime of spread, `persisting' simulations result from the slowly evolvi
 \subsection{Percolation threshold}
 \label{section:universality}
 
-Suppose simulations begin at low density, below the threshold; in this case, evolving epidemics are unlikely to percolate to the domain boundary, and the pathogen will become extinct.
-If the host density increases, we can imagine that epidemics begin percolating to the boundary for some specific value.
+Consider a simulation with tree density below the epidemic threshold. In this case, an evolving epidemic is unlikely to percolate to the domain boundary, and the pathogen will become extinct. If the host density increases, we can imagine that epidemics begin percolating to the boundary for some specific value.
 Consequently, the probability of percolation was examined over a sweep of density parameters, shown in Figure \ref{fig:ch3-perc}(a).
-Unsurprisingly, a threshold-like behaviour is revealed.
-All the simulations that form Figure \ref{fig:ch3-perc}(a) evolved inside a $500\times 500$ sized domain.
-The probability of percolation ($Pr(\rho)$) defines
-a critical region, highlighted in orange (where $ \rho \in [0.57, 0.62$]), that separates regimes of pathogen extinction and percolation/epidemic.
-The threshold depicted by Figure \ref{fig:ch3-perc}(a) is consistent with the accepted percolation threshold for a two-dimensional square $\rho_c \approx 0.592$.
+Unsurprisingly, a threshold-like behaviour is revealed. All the simulations that form Figure \ref{fig:ch3-perc}(a) evolved inside a $500\times 500$ sized domain.
+The probability of percolation ($Pr(\rho)$) defines a critical region, highlighted in orange (where $ \rho \in [0.57, 0.62$]), that separates regimes of pathogen extinction and percolation/epidemic. The threshold depicted by Figure \ref{fig:ch3-perc}(a) is consistent with the accepted percolation threshold for a two-dimensional square $\rho_c \approx 0.592$.
 
 The value of $Pr(\rho)$ depends non-trivially on stochasticity, which motivated an ensemble-averaged approach\textemdash 
 further reading on the underlying theory of ensemble-averaging can be found in \cite{gibbs1902elementary}.
@@ -193,24 +175,22 @@ present an effective early warning system for the prediction of forest-based pat
   \end{center}
 \end{table}
 
-This chapter rests on a square lattice, although we could have considered many other configurations, e.g. a triangular, honeycomb or Voronoi lattice.
-From the observation of Figures \ref{fig:ch3-perc-spread}(a-c),
-high host densities would produce highly ordered wavefronts reflecting the different lattice configurations.
+This chapter rests on a simulations developed on a square lattice, though we could have considered different configurations, e.g. a triangular, honeycomb or Voronoi lattice.
+From the observation of Figures \ref{fig:ch3-perc-spread}(a-c), high host densities would produce highly ordered wavefronts reflecting the different lattice configurations.
 In addition, various quantities within the model would change, especially the critical density $\rho_c$ that changes in response to the nearest neighbour (NN) number.
 For completeness, table \ref{tab:perc} shows a selection of site and bond percolation thresholds.
 Even though $\rho_c$ would change between lattice configurations, some universal properties of the model would remain fixed, 
 which leads to a description of universality below.
-
 
 \subsection{Universality}
 
 At $\rho \sim \rho_c$, percolation and scaling theory explain how the system follows a power law of the form $\propto (\rho - \rho_c)^{\alpha}$ 
 where $\alpha$ is a universal critical exponent.
 All systems that possess the same exponent are members of the same `universality class' \cite{PhysRev.180.594, RevModPhys.76.663}.
-Consider the probability that one open site (at the origin) is connected to another open site a distance $r$ away. %
-In this scenario, the probability is described by the `correlation function' $g(r)$. %
-The behaviour of this function defines a length scale, denoted as the `correlation length' $\xi$ that dictates how the probability of `connectedness' decays with distance $r$. %
-For densities close to percolation threshold: %
+Consider the probability that one open site (at the origin) is connected to another open site a distance $r$ away. 
+In this scenario, the probability is described by the `correlation function' $g(r)$. 
+The behaviour of this function defines a length scale, denoted as the `correlation length' $\xi$ that dictates how the probability of `connectedness' decays with distance $r$. 
+For densities close to percolation threshold: 
 \begin{equation}
     \xi \sim |\rho - \rho_c|^{-\nu}
     \label{eq:universal-scaling}
@@ -235,37 +215,28 @@ where $d_F=1.9$ describes the cluster fractal dimension.
 If we normalise the cluster by the size of the lattice ($L^2$), the mean density of $M$ will decay as the lattice size increases, i.e. $L^{1.9}/L^2 = L^{-0.10}$. 
 Broadly, the critical phenomena found in percolation theory, thermodynamics and magnetism have close ties and are described by similar power laws underpinned by scaling theory \cite{Essam_1980}.
 
-% If the system crosses the percolation threshold, it can be likened to a phase-transition. %
-% Subsequently, the terms `phase-transition' and `percolation' will be used interchangeably throughout this work. 
-
 
 \section{Pathogen infectivity}
 \label{ch3:two-param-model}
 
 We have established a percolation-based model of tree disease described by a one-dimensional parameter-space over tree density $\rho$. %
 We now extend the parameter-space to include an `infectivity' parameter, denoted by $\beta$. %
-Previously, we made an implicit assumption about pathogen-transmission, namely: 
-infected trees will transmit the infection to susceptible nearest neighbours with perfect fidelity, that is, a probability of $1$. 
-In reality, a pathogen may display a range of virulence depending on the environmental suitability or host susceptibility; 
-exemplified by the pathogen ash dieback, known to cause more host damage in naturally occurring forest ecosystems \cite{marciulyniene2017can} 
-and release more fungal spores conditional on temperature \cite{chandelier2014detection}.
+Previously, we made an implicit assumption about pathogen transmission. Namely, that infected trees will transmit the infection to susceptible nearest neighbours with perfect fidelity, that is, a probability of $1$. 
+In reality, a pathogen may display a range of virulence depending on the environmental suitability or host susceptibility. For example, the fungus \textit{H. fraxineus} causes more severe ash dieback in natural forest ecosystems \cite{marciulyniene2017can} and releases more spores conditional on temperature \cite{chandelier2014detection}.
 
-To model infectivity, the parameter $\beta$ is introduced. The probability of a susceptible tree becoming infected during a single time-step is given by: $Pr(S \rightarrow I) = \beta$. Appendix \ref{a:propagation} contains more descriptive information on the computational implementation. 
+Here, the parameter $\beta$ is introduced to model infectivity. Now the probability of a susceptible tree becoming infected during a single time-step is given by: $Pr(S \rightarrow I) = \beta$. Appendix \ref{a:propagation} contains more descriptive information on the computational implementation. 
 The infectivity parameter describes a transmission `rate' (i.e. per time-step) and is closely linked to the infectious lifetime $T$ of the tree. %
 If a susceptible host falls within a von Neuman neighbourhood of an infected host, it will remain susceptible with probability:
 \begin{equation}
 \label{eq:pr_s_s}
     Pr(S \rightarrow S) = \rho(1 -\beta)^T
 \end{equation}
-where $T$ is the number of an infectious lifetime;
-thus, the probability of remaining susceptible decreases as the infectious lifetime gets larger.
+where $T$ is the number of an infectious lifetime. As $T$ increases, the likelihood of a tree remaining susceptible decreases.
 Equation (\ref{eq:pr_s_s}) sets the scene for a predictive mean-field theory.
 Subsequently, appendix \ref{a:slm-mean-field-theory} outlines steps toward a novel continuum model of tree disease.
 
-
 Previously in the one-parameter $SIR$ variant, the infectious lifetime played a minor role in determining wavefront because pathogen transmission occurs with a probability of one.
-However, now a susceptible host will survive for $t=T$ time-steps before transitioning into $R$. Ultimately, the model is non-dimensionalised, and the value of $T$ is arbitrary; however, a single step can be envisioned to be on the order of years.
-At this stage, we have recovered the two-parameter model used by \cite{OROZCOFUENTES201912}, henceforth referred to as the `\textit{simple lattice model'} (SLM). 
+However, now a susceptible host will survive for $t=T$ time-steps before transitioning into $R$. Ultimately, the model is non-dimensionalised, and the value of $T$ is arbitrary. However, a single step can be envisioned to be on the order of years. At this stage, we have recovered the two-parameter model used by \cite{OROZCOFUENTES201912}, which henceforth is referred to as the `\textit{simple lattice model'} (SLM). 
 
 Figure \ref{fig:slm} show three SLM simulations, spreading for the shown infectivity parameters through different time-steps.
 All simulations in Figure \ref{fig:slm} are governed by a fixed value of $T=10$, and density $\rho=0.70$.
@@ -273,8 +244,6 @@ The colour bar in Figure \ref{fig:slm} represents different steps through the in
 Higher values of $\beta$ yield a faster spreading velocity,
 as expected.
 Figures \ref{fig:slm}(g-i) allude to $\beta$ altering the percolation threshold, on the basis of $\beta=0.25$ reflecting a more fractal-like spreading pattern, even well beyond the standard percolation threshold of $\rho_c=0.592$.
-
-% Link  \cite{gilligan2008epidemiological} to the critical point
 
 Figure \ref{fig:slm-wave-front} shows how variations in the infection lifetime can change the wave-front properties. 
 The value of $\beta$ predominantly controls the speed of the wave-front, whereas $T$ controls the lag-time on the removal front. 
@@ -299,7 +268,8 @@ If $T$ is held fixed, the critical threshold definition can now be generalised f
 \begin{figure}
     \centering
     \includegraphics[scale=0.35]{chapter3/figures/figure5_.pdf}
-    \caption{Simulations through a single time-step for fixed density and infectivity reveal that $T$ has little impact on the speed of the wave-front. 
+    \caption{Simulations with varying infectious lifetimes $T$, shown through the time-step $t=100$.
+    For fixed $\rho$ and $\beta$ above the threshold, varying $T$ has no impact on the speed of the wavefront. 
     However, increasing $T$ leads to a thicker wavefront, as the posterior interface (between $R$ and $I$) lags behind the evolving wave-front (between $S$ and $I$).}
     \label{fig:slm-wave-front}
 \end{figure}
@@ -320,7 +290,7 @@ In order to capture spreading rates, a metric comprising the `spreading velocity
 where, $N_I$ is the number of infected trees in the domain at time-step $t$. 
 The difference in $N_I$ between time-steps gives an `effective' radial velocity. %
 The number of spatial units progressed by the pathogen is averaged over all angles per unit time. %
-Strictly speaking, Equation (\ref{eq:vel_eff_r}) is valid only for $\rho > \rho_c$; at the percolation threshold, the wave-front assumes a fractal dimension and averaging over two dimensions becomes unreasonable.
+Strictly speaking, Equation (\ref{eq:vel_eff_r}) is valid only for $\rho > \rho_c$. At the percolation threshold, the wave-front assumes a fractal dimension and averaging over two dimensions becomes unreasonable.
 
 The time-series, $v_{radial}(t)$ is shown in Figure \ref{fig:vel_eff_rad_metric}(a) for three combinations of $(\rho, \beta)$.
 Unsurprisingly, higher-valued combinations produce a higher velocity.
@@ -372,10 +342,10 @@ a narrow range of critical parameters $\rho_c$ and $\beta_c$ separate epidemic a
 In contrast, Figure \ref{fig:slm_pspace}(d) shows the ensemble-averaged velocity that describes a smoother transition between states.
 Therefore, one might argue that percolation captures the threshold with greater clarity as the distinction between epidemic states is more apparent.
 
-One significant difference between the percolation and velocity-based metrics is that percolation depends trivially on infectivity beyond $\beta \approx 0.40$;
-meanwhile, the radial velocity tends to increases for higher infectivities.
-Between $0.15 <\beta<0.30$, a higher value of $\rho$ is needed for percolation to occur;
-the equivalent velocity-based behaviour can also be seen, albeit with a more continuous transition.
+One significant difference between the percolation and velocity-based metrics is that percolation depends trivially on infectivity beyond $\beta \approx 0.40$.
+Meanwhile, the radial velocity tends to increases for higher infectivities.
+Between $0.15 <\beta<0.30$, a higher value of $\rho$ is needed for percolation to occur, and
+we see the equivalent velocity-based behaviour\textemdash albeit with a more continuous transition.
 A higher infectious lifetime $T$ lowers $\beta_c$, as more infectious time-steps increase the chance of secondary infections, thus lowering the threshold.
 Here, the parameter-sweeps can be understood to portray an `\textit{epidemic phase diagram}'.
 
@@ -394,32 +364,27 @@ Here, the parameter-sweeps can be understood to portray an `\textit{epidemic pha
 
 This chapter introduced percolation theory, leading to a one-parameter percolation $SIR$ model of tree disease spreading through a forest.
 The one-parameter model demonstrated stochasticity on account of the randomly populated host distribution inside a square lattice. 
-Assessing the model on one lattice configuration signifies a limitation in our analysis; 
-more rigorous treatments might consider examining the spread of disease on alternate lattices.
-However, although only one lattice was employed, universal properties of the model would be expected to remain the same\textemdash such as the critical exponent describing the correlation length $\xi$\textemdash as discussed in section \ref{section:universality}.
+Assessing the model on one lattice configuration signifies a limitation in our analysis, and a comprehensive treatment might consider examining the spread of disease on alternate lattices. However, though we examined behaviour on one lattice type, the universal properties of the model would remain fixed. For example, the critical exponent describing the correlation length $\xi$\textemdash as discussed in section \ref{section:universality}.
 
 In section \ref{ch3:two-param-model}, an infectivity parameter ($\beta$) was included in the model.
-The infectivity parameter introduced temporal stochasticity into the system, as infections spread probabilistically between nearest neighbours \textemdash
-as opposed to the one-parameter model that spreads between hosts with a probability of one.
+The infectivity parameter introduced temporal stochasticity into the system, as infections spread probabilistically between nearest neighbours\textemdash as opposed to the one-parameter model that spreads between hosts with a probability of one.
 The infectivity parameter altered the critical density; 
 higher values of $\beta$ recovered the standard percolation threshold for a two-dimensional square lattice ($\rho_c\approx 0.592$), 
 while lower values of $\beta$ increased the critical density required to support an epidemic.
 
-In nature, a pathogen might interact with diverse hosts over various environmental conditions;
-a relevant and interesting example includes the algae-like oomycete \textit{Phytophthora ramorum} (\textit{P. ramorum}). 
+In nature, a pathogen might interact with diverse hosts over numerous environmental conditions.
+A relevant and interesting example includes the algae-like oomycete \textit{Phytophthora ramorum} (\textit{P. ramorum}). 
 The pathogen \textit{P. ramorum} affects a wide host range \cite{GRUNWALD2012131}, 
 including Larches (deciduous conifers of the genus \textit{Larix}) and southern beech (\textit{Nothofagus}), 
 and some non-native oaks such as red oak (\textit{Quercus rubra}) \cite{grunwald2008phytophthora}.
-Although, different genetic variants of \textit{P. ramorum} affect different hosts with varying severities.
-For example, north American oak speceis are highly suceptible to the NA1 lineage \cite{rizzo2002phytophthora}, 
-while UK larch trees appear highly suceptible to the European lineage EU1 \cite{king2015planta}. 
-Therefore, the integration of $\beta$ in the SLM is undoubtedly simplistic and general; nevertheless, it permits a description of varying degrees of pathogen virulence.
+Moreover, different genetic variants of \textit{P. ramorum} affect different hosts with varying severities.
+For example, North American oak species appear more susceptible to the NA1 lineage \cite{rizzo2002phytophthora},  while UK larch trees appear slightly more highly susceptible to the European lineage EU1 \cite{king2015planta}. Accordingly, although the integration of $\beta$ in the SLM is undoubtedly simplistic and general, it permits a description of varying degrees of pathogen virulence nonetheless.
 
-Two metrics categorized the model's behaviour: the pathogens average radial velocity alongside a probability of percolation.
+Two metrics categorized the model's behaviour: the pathogens average radial velocity and a probability of percolation.
 The percolation probability defined a sharper, more reliable transition between epidemic and pathogen extinction.
-Although the percolation probability may prove more beneficial for classifying epidemic regimes, 
-the radial velocity captured a similar threshold-like behaviour beside additional dynamic information in the form of a time series.
-Subsequently, the time series was ensemble-averaged and examined over a sweep of $\rho$ and $\beta$ values. 
+Conclusively, the percolation probability proves more accurate to classify epidemic regimes.
+Nevertheless, the radial velocity captured a similar threshold-like behaviour besides additional dynamic information in the form of a time series.
+Subsequently, the time series velocity was ensemble-averaged and examined over a sweep of $\rho$ and $\beta$ values. 
 
 Interestingly, comparing the percolation probability to radial velocity revealed a parameter region above the threshold where the pathogen survives but slowly propagates to the domain boundary; this behaviour approximates persistence.
 However, neglected host population dynamics in the SLM prevents long-term coexistence between host and pathogen, 
@@ -434,18 +399,18 @@ As we look to construct a more representative model, it is worth remarking on th
     Moreover, as the pathogen could not jump over empty lattice sites, epidemics were only possible above the percolation threshold, 
     i.e. when connected clusters of hosts span the domain.  
     
-    \item \textbf{Uniform dynamics:} in general, pathogen-host interactions transpire with varying degrees of severity; 
-    for example, age-dependent severity in ash dieback and the species-level virulence of 
-    \textit{P. ramorum}. 
-    In contrast, the SLM considers that A) the transition probability into $R$ occurs with a uniform number of steps 
-    B) the probability of transition into $I$ is identical between hosts 
-    C) $\beta$ is simplistic, with no spatio-temporal (environmental) dependence. 
+    \item \textbf{Uniform dynamics:} in general, pathogen-host interactions transpire with varying degrees of severity.
+    For example, age-dependent severity in ash dieback and the species-level virulence of \textit{P. ramorum}. 
+    In contrast, the SLM considers that: (A) the transition probability into $R$ occurs with a uniform number of steps 
+    (B) the probability of transition into $I$ is identical between hosts 
+    (C) $\beta$ is simplistic, with no spatio-temporal (environmental) dependence. 
     More generally, we have constructed a general, abstract model with no specific pathogen in mind.
     
     \item \textbf{Host distribution}: natural tree populations present rich spatial structures with varying degrees of clustering and aggregation \cite{doi:10.1086/342823}.
     Indeed population clustering has been confirmed over various spatial, from the tree-level to the field-level \cite{wiegand2007analyzing}.
     Therefore, the flat randomly distributed host population considered in this chapter falls short of a realistic description.
-    Moreover, the SLM describes the spread of disease in a densely populated forest, and as we look to model the spread of disease over Great Britain realistic tree canopy cover data should be incorporated into the framework.
+    In addition, the SLM describes the spread of disease in a densely populated forest.
+    Hence, as we look to model the spread of disease over Great Britain, realistic tree canopy cover data should be incorporated into the framework.
 \end{enumerate}
 Despite the assumptions and simplicity of the SLM, it provides a general setting upon which to elaborate.
 The next chapter outlines all the applications that were investigated using the SLM.
