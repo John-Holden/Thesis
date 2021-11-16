@@ -14,10 +14,10 @@ This chapter aims to examine some applications of the SLM.
 In particular, two applications divide the chapter, beginning with the early warning systems (EWS) for forest management and ending with a toy model of landscape-level spread.
 
 Firstly, the system for EWS detection put forward by \cite{OROZCOFUENTES201912} is extended; the original publication considered one fixed parameter of $\beta$, here we generalise the analysis to the entire $\beta$ parameter space. In addition, we employ an alternative metric that permits a more precise EWS detection.
-Secondly, the SLM will be adapted to construct a toy model of landscape-level epidemics in Great Britain
+Secondly, the SLM will be adapted to construct a toy model of landscape-level epidemics in Great Britain.
 More specifically, units of individual trees in the SLM are re-scaled to $\mathrm{1km \times 1km}$ patches 
-and projected onto an example abundance data set of oak from \cite{hill.data}.
-The toy model of landscape-level epidemics forms the first step towards a more representative model.
+and projected onto a predicted oak abundance data set given by \cite{hill.data}.
+The toy model denotes the first step towards a more representative framework over realistic landscapes.
 
 \section{Early warning signals}
 \label{sec:EWS}
@@ -37,8 +37,8 @@ After introducing these alternative concepts, we discuss some of the problems an
 
 The metric used by \cite{OROZCOFUENTES201912} to quantify early warning signals had a similar form as Equation \ref{eq:vel_eff_r}, albeit with the inclusion of $N_R$.
 That is, the results included both the infected and removed ($N_{I+R}$), whereas Equation \ref{eq:vel_eff_r} is based on just the infected ($N_I$). 
-Unfortunately, the radial velocity (based on the number of infected and removed trees) can lead to confusing results, as geometrical effects imply a rate of increase as the wave spreads outward; this is particularly visible for later times when the wavefront extent is considerable.\footnote{See Figure 4d in \cite{OROZCOFUENTES201912}, the apparent rate of increase in the velocity metric is purely due to geometry artefacts and the metric definition.}.
-To mitigate geometric effects, we will use an alternate lattice geometry.
+Unfortunately, the radial velocity (based on the number of infected and removed trees) can lead to confusing results, as geometrical effects alter the a rate of increase as the wave spreads outward; this is particularly visible for later times when the wavefront extent is considerable.\footnote{See Figure 4d in \cite{OROZCOFUENTES201912}, the apparent rate of increase in the velocity metric is purely due to geometry artefacts and the metric definition.}.
+We will use an alternate lattice geometry to mitigate geometric effects.
 
 Consider a rectangular domain of size $[L_x, L_y]$ where $L_x>L_y$ and $(x, y)$ represent dimensions of width and height respectively.
 Figures \ref{fig:ews-primer}(a-c) shows the domain, henceforth referred to as the `channel' domain, over three time-steps for parameters above the threshold, $\rho=0.65$ and $\beta=0.50$.
@@ -83,17 +83,17 @@ time $t$ and $N_I(t)$ is the total number of infected trees at time-step $t$.
  The form of Equation \ref{eq:COM} displays intrinsic similarities to the Newtonian center of mass:
  \[x_{cm} = \frac{\sum^i x_i\times m_i}{\sum_i m_i}\]
 (where $m_i=1$ and $\sum^im_i= N_I$ in Equation \ref{eq:COM}).
-Subsequently, COM velocity will denote the metric defined by Equation \ref{eq:COM}. 
+Subsequently, the COM velocity will denote the metric defined by Equation \ref{eq:COM}. 
 Figure \ref{fig:ews-primer}(b) depicts the COM time-series corresponding to the simulation shown in Figure \ref{fig:ews-primer}(a). 
 The COM time-series allows for negative values and looks different to those shown previously in Figure \ref{fig:vel_eff_rad_metric}(a).
 
 Figure \ref{fig:ews-primer}(c) illustrates the COM ensemble-average, denoted by $\langle v_{cm}\rangle$, for the three values of tree density.
 On average, the mean time series begins to decay after the mean lifetime of the simulation; the blue time-series shows a drastic decrease around $t \in [800, 900]$, which coincides with the pathogen reaching the domain boundary\textemdash also reflected in Figure \ref{fig:ews-primer}(c).
 The green time series lies just above the threshold for percolation, and it decays more gradually $t=0$ because of the higher pathogen extinction probability. 
-A small number of long-lasting simulations with run times exceeding $t>1000$ occurred in the green time-series, indicating criticality in the system\textemdash 
+A small number of long-lasting simulations with run times (exceeding $t>1000$ steps) occurred in the green time-series, indicating criticality in the system\textemdash 
 previously likened to a regime of persistence in section \ref{sec:SLM-epidemic-threshold}.
 The inset of Figure \ref{fig:ews-primer}(c) shows the ensemble-averages between $t\in [100, 200]$, plotted beside the standard error for each time-step.
-Error bars are most significant for the lowest-valued density shown in green, suggesting a more chaotic spread.
+Error bars are most significant for the lowest-valued density shown in green, capturing a more chaotic spread.
 In principle, if the variance signature looks different before and after the epidemic regime, an early warning signal can be detected. 
 
 \subsection{Ensemble averaging method}
@@ -110,18 +110,18 @@ Then, a set of independent time series are generated by repeating $N$ simulation
 A set of $N$ repeated simulations for an arbritrary point in the parameter-space ($\rho, \beta$) 
 can be labelled as: \{$V_1^{\rho\beta}, V_2^{\rho \beta},..., V_N^{\rho\beta}\} \in \mathcal{V}_{\rho\beta}$, 
 where each $V_i^{\rho\beta}$ describes an individual simulation time series and $\mathcal{V}_{\rho\beta}$ describes the entire ensemble for parameters $(\rho, \beta)$. 
-Thus, an early warning signal is detected by calculating the mean time-series variance,
+Thus, an early warning signal (EWS) is detected by calculating the mean time-series variance,
 defined by:
 \begin{equation}
 \label{eq:ews_eq}
     \big\langle \overline{var}(v^{\rho\beta}_{cm}) \big\rangle = \frac{1}{N}\sum\limits_{i=1}^{N} var(V_i^{\rho\beta})
 \end{equation}
 
-We require the same number of observations within each ensemble to rigorously analyse an ensemble of time-series variances.
+We require the same number of observations within each ensemble to properly analyse the mean time-series variances.
 Otherwise, the classification of an early warning signal might be confused with statistical fluctuations and errors.
 There are two observations to consider: 
-A) the number of time steps within simulations, i.e. $v_{cm}^{t}$ 
-B) the number of repeated simulations, $N$.
+(A) the number of time steps within simulations, i.e. $v_{cm}^{t}$ 
+(B) the number of repeated simulations, $N$.
 In general, stochasticity will prevent two simulations from having the same number of time steps, 
 $|V_i^{\rho\beta}| \neq |V_j^{\rho\beta}|$.
 Therefore, short-lived simulations with a small number of time steps might be more error-prone than long-lived simulations;
@@ -135,11 +135,11 @@ Variance inside this window is defined by:
 \end{equation}
 
 Initial transience constrains the particular choice of $t_O$ in the channel domain, 
-which could, in principle, distort calculations of the time-series variance\textemdash 
-analogously presented when discussing Figure \ref{fig:vel_eff_rad_metric}(a). 
+which indeed distorts calculations of the time-series variance\textemdash 
+presenting an analogy to the discussion that followed from Figure \ref{fig:vel_eff_rad_metric}(a). 
 We set $t_0=100$, as initial instability occurred most over the first $100$ time-steps 
 (as shown in Figure \ref{fig:ews-primer}(e), particularly by the blue time series). 
-In addition, the window upper-bound is to $t_F = 200$ so that simulation variance is measured over a sufficient number of steps.
+The window upper-bound is to $t_F = 200$ (a two-fold increase of $t_O$) so that simulation variance is measured over a sufficient number of steps.
 The variance window of $t_O=100,\ t_F=200$ is justified by noting that an early warning signal is only detectable immediately before 
 and after the epidemic threshold; other parameter space regions are less important.
 Thus, if the relevant regions in parameter space survive long enough to measure variance in the window $t \in [t_O, t_F]$, 
@@ -161,7 +161,7 @@ In addition, variance over the epidemic transition appears sharper when $\beta$ 
     \centering
     \includegraphics[scale=0.45]{chapter3/figures/figure11.pdf}
     \caption{The ensemble-averaged variance of $v_{cm}(t)$ over a two dimensional parameter sweep of $\rho$ and $\beta$. Red contours show the lower and upper bound of percolation (i.e. between $5\%$ and $95\%$ probability). 
-     The epidemic regime is preempted by increases in variance more clearly for certain parameter values, %
+     The epidemic regime is pre-empted by increases in variance more clearly for certain parameter values, %
      indicated by the arrows.}
     \label{fig:ews-results} 
 \end{figure}
@@ -177,7 +177,7 @@ chaotic signature. Hence the transition is steep,
 and the simulation variance is significant, as indicated by the smallest arrow in Figure \ref{fig:ews-results}. 
 In this region, detecting an EWS is hard because transitions occur most rapidly.
 
-Now consider the converse, a less infectious pathogen with an abundance of susceptible hosts, 
+Now we consider the converse, a less infectious pathogen with an abundance of susceptible hosts, 
 located in the top-left region of Figure \ref{fig:ews-results}.
 Here, transitions into the $I$ compartment are slower because the pathogen is less infectious, 
 although this time, hosts are abundant.
@@ -193,10 +193,10 @@ although fundamentally, an EWS is detectable for all parameter combinations
 
 \section{A toy landscape-level SLM}
 
-Thus far the work has focused on a homogeneous distribution of hosts randomly populating an ideal domain. 
+So far, this work has focused on a homogeneous distribution of hosts randomly populating an ideal domain. 
 In this section, a toy landscape-level SLM is constructed and simulated on the map of Great Britain.
-Modelling the spread of disease over GB entails a change of scale within the SLM. 
-Specifically, host units now comprise $\mathrm{1km \times 1km}$ `patches' of land.
+Modelling the spread of disease over GB entails a large change of scale within the SLM.
+Specifically, host units now comprise $\mathrm{1km \times 1km}$ `patches' of land. 
 As reviewed in section \ref{ch2:hostdata}, 
 collecting high-quality abundance data over large areas is challenging and expensive; 
 as such, the SLM is combined with the modelled oak (\textit{Quercus robur}) canopy cover dataset produced by \cite{hill.data}.
@@ -234,18 +234,18 @@ respectively, as the previous chapter explains.
     \label{fig:uk-spread-primer}
 \end{figure}
 
-From Figure \ref{fig:uk-spread-primer}(a), we see that coastline edge effects
+In Figure \ref{fig:uk-spread-primer}(a), we see that coastline edge effects
 might reduce the probability of an epidemic.
 For example, epidemics emanating from epicentres located just below the 
-Humber estuary (shown on the inset) might encounter more impedance when 
+Humber estuary (shown on the inset) could encounter more impedance when 
 compared to more centrally-located positions.
 Accordingly, SLM edge effects and domain BCs were examined by assessing the 
 tree mortality from every possible epicentre, as shown in Figure \ref{fig:uk-spread-primer}(b).
 
 Figure \ref{fig:uk-spread-primer}(b) reveals the ensemble-averaged mortality 
-ratio, denoted by $\chi$;
+ratio, denoted by $\chi$.
 The toy landscape-level SLM assumed parameter values just above threshold in a $2D$ square lattice. 
-Each simulation begin from a single patch epicentre, located at located at position $(i, j)$).
+Each simulation began from a single patch epicentre, located at position $(i, j)$).
 Here, the mortality ratio captures the total epidemic impact, defined by: 
 \begin{equation}
 \label{eq:epi_impact}
