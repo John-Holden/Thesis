@@ -241,19 +241,49 @@ Furthermore, when defining an $R_0$ value for tree-disease, the importance of sp
 ignored \cite{park2001invasion}.
 Importantly, any measure of $R_0$ should separate the regime of epidemic and confinement with a simple threshold condition, i.e. defined by $R_0=1$.
 
+
 \subsection{Analytically approximating $R_0$}
+
+% On average, tree populations are more sparsely distributed than Crop-based pathogens, which motivates an assumption that $R_0$ is likely lower than crop based diseases...
 
 In this section, an idealised, spatially explicit expression of $R_0$ is derived for the NLM.
 Defining an informative $R_0$-value for tree-based pathosystems is not simple, and care is needed when defining an $R_0$ value. 
-An `effective' reproduction number can be defined through the following thought experiment: 
+An approximate reproduction number can be defined through the following thought experiment: 
 
 \textit{Consider a single (primary) infected tree at time $t=0$, surrounded by a distribution of susceptible neighbouring trees. Throughout it's infectious lifetime, the primary infection will lead to $R_0$ secondary infections. If secondary infections do not produce other tertiary infections, the neighbourhood around the primary infection remains untouched by other diseased trees and the reproductive potential of the pathogen can be approximated by $R_0$. }
 
-This scenario can be analytically approximated and numerically simulated in a trivially straightforward manner without using advanced mathematics.
-Notwithstanding, the thought experiment is idealised and spatial transmissions are likely to produce non-trivial spatial correlation in a homogeneous population of hosts\textemdash, i.e. negative spatial correlations develop when the local density of susceptible hosts is reduced by other infected trees, discussed below.
-The reader is referred to \cite{R0-perc-ref} for a useful discussion on $R_0$, heterogeneity and spatial correlations.
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.45]{chapter5/figures/fig3a-R0-approx.pdf}
+    \caption{
+    Approximating a spatially explicit value of $R_0$ as a function of $\rho$, $\beta$, $\ell$ and $T$.
+    (a) An idealised scenario where secondary infections do not produce tertiary infections, but instead transition into an inert state\textemdash shown in amber.
+    (b) The usual epidemic branching process where secondary infections produce tertiary (and so on) infections about the primary infection, shown by the solid and dashed arrows respectively.
+    (c) Depictions of a highly infectious regime in the NLM, where $R_0$ is large and the dispersal parameter ($\ell_1$) is small.
+    (d) Illustrations of an alternate, less invasive system when the scale of dispersal ($\ell_2$) happens to be larger. 
+    The $R_0$ derivation aims to compute the scenario shown in (a), and becomes accurate in the epidemic regime illustrated in (d).
+    }
+    \label{fig:R0-approx}
+\end{figure}
 
-Suppose at time $t=0$ the domain is uniform with density $\rho_0$, and one singular infected tree exists inside a large domain.
+The thought experiment simplifies the epidemic branching process by neglecting tertiary (quaternary, and so on) infections,
+illustrated by comparing Figures \ref{fig:R0-approx}(a-b).
+In turn, simplifying the system will help keep the mathematics tractable and permit an analytic derivation of $R_0$ without the need for advanced mathematics. 
+However, the derivation will be idealised and likely to overestimate the true reproduction ratio in specific epidemic regimes\textemdash understood from Figure \ref{fig:R0-approx}.
+
+Figures \ref{fig:R0-approx}(c-d) illustrate two hypothetical epidemic systems, with higher and lower $R_0$ values.
+When the scale of dispersal is small and infectivity is high, as in Figure \ref{fig:R0-approx}(c), we expect a tightly coupled system with a large number of induced secondary infectious inside a smaller area. In this case, the $R_0$ approximation would deviate from model simulations because secondary/tertiary infections would reduce the host density about the primary infection. 
+
+Conversely, Figure \ref{fig:R0-approx}(d) depicts a scenario when the pathogen induces a lower number of secondary infectious over a larger area. 
+Hence, the thought experiment (mentioned above) is expected to become a valid approximation to $R_0$ when the host density surrounding the primary infection is less effected by secondary/tertiary infections. 
+
+% This scenario can be analytically approximated and numerically simulated in a trivially straightforward manner without using advanced mathematics.
+% Notwithstanding, the thought experiment is idealised and spatial transmissions are likely to produce non-trivial spatial correlation in a homogeneous population of hosts\textemdash, i.e. negative spatial correlations develop when the local density of susceptible hosts is reduced by other infected trees, discussed below.
+% The reader is referred to \cite{R0-perc-ref} for a useful discussion on $R_0$, heterogeneity and spatial correlations
+
+\subsection{Derivation}
+
+Suppose the domain is uniform with density $\rho_0$ at time $t=0$, and one singular infected tree exists inside a large domain.
 In such a configuration, the mean number of secondary infections expected over the first time-step can be calculated by integrating equation \ref{eq:pr-dispersal-transition} as follows:
 \begin{equation}
     R_0(t = 0) = \beta \rho_0 \int^{\infty}_{-\infty} \exp\Big(-\frac{r^2}{2\ell^2}\Big)dr= 2\pi\beta\rho_0\ell^2
@@ -275,26 +305,26 @@ Solving the above, with initial condition $\rho_0$ at $t=0$, leads to:
 \label{eq:rho(t)-linear}
     \rho(t) = \rho_0 \exp\Big(-\frac{2\pi\beta\ell^2}{\mathcal{L}^2} t \Big)
 \end{equation}
-Thus, after the infectious life-time of $T$ time-steps, the final number of expected secondary infections is given by:
+If density reductions from secondary and tertiary infections are neglected, the final number of expected secondary infections after $T$ infectious time-steps is given by:
 \begin{equation}
 \label{eq:Appendix_final_r0_approx}
     R_0(T) =  \mathcal{L}^2\big(\rho_0 - \rho(T)\big) = \mathcal{L}^2\rho_0\Big[1 - \exp\big(-\frac{2\pi\beta\ell^2}{\mathcal{L}^2} T \big) \Big]
 \end{equation}
-
-For transparency, the above derivation is based on $\beta$ and not the normalised infectivity parameter. 
-However, from equation \ref{eq:Appendix_final_r0_approx} it is clear to see how the normalised infectivity $\beta^*/2\pi\ell^2$ negates the influence of $\ell$ on the number of expected secondary infections.
-
-Equation \ref{eq:Appendix_final_r0_approx} can be used as a first approximation toward an $R_0$ value\footnote{The reader can find an alternate, but equivalent, derivation in appendix \ref{eq:alternate-R0}.}.
+Equation \ref{eq:Appendix_final_r0_approx} can be used as a first approximation toward an $R_0$ value\textemdash the reader can find an equivalent, discrete-time derivation in Appendix \ref{eq:alternate-R0}.
 Nonetheless, uniform density reductions (in equation \ref{eq:drho/dt}) assume that secondary infections are equally likely at all spatial locations about the primarily infected tree. 
 On average, neglecting spatial variations overestimates the number of secondary infections induced by the tail-ends of the dispersal kernel,
 thus giving rise to a greater $R_0$ value.
-A more accurate, albeit more complex, equation can be derived, allowing for Gaussian spatial variations.
+A more accurate, albeit more complex, equation can be derived, allowing for Gaussian spatial variations
 
-\subsection{Including spatial heterogeneity into $R_0$}
+For transparency, the above derivation is based on $\beta$ and not the normalised infectivity parameter. 
+However, from the exponential exponent in equation \ref{eq:Appendix_final_r0_approx}, it is clear to see how normalising the infectivity ($\beta^*/2\pi\ell^2$) prevents
+the number of expected secondary infections dependency on $\ell$. That is, substituting $\beta^*/2\pi\ell^2$ into the equation \ref{eq:Appendix_final_r0_approx} leads to an exponent of the form: $(T\beta^*)/L^2$.
+
+\subsection{Including Gaussian dispersal into $R_0$}
 
 \label{sec:r0-derivation}
-Equation \ref{eq:Appendix_final_r0_approx} neglects a spatially varying probability of transmission, 
-but it can be refactored by first re-writing the density as:
+Equation \ref{eq:Appendix_final_r0_approx} neglects a spatially varying transmission probability, 
+though it can be refactored by first re-writing the density as:
 \begin{equation}
 \label{eq:rho(t)-ga-variations}
     \rho(r, T) = \rho_0\exp \big(-\beta T g(r; \ell) \big)
@@ -311,6 +341,7 @@ Upon substitution back into equation (\ref{eq:Appendix_final_r0_approx}), the to
 Note, the finite lattice square of size $\mathcal{L}^2$ has been replaced with integration in polar coordinates over $dr$. 
 Equation \ref{eq;R0(t)-ga-variations} is hard to solve directly, but it can be integrated by performing a series expansion on the exponential term. 
 One may then proceed to integrate on a term-by-term basis:
+
 \begin{equation} 
 \label{eq:Appendix_final_expression}
 \begin{split}
@@ -345,27 +376,38 @@ E_1(z) = -\gamma - \ln(z) + \mathrm{Ein}(z)
 \]
 The next section will investigate the suitability of \ref{eq:Appendix_final_expression1} to describe the NLM.
 
-\section{The behaviour of $R_0$ considered analytically}
+\section{$R_0$ behaviour: analytic vs numeric}
 
 % R0 can be calculated from experimental data : \cite{segarra2001epidemic}
 % \label{ch5:dispersal-model}
 \begin{figure}
     \centering
-    \includegraphics[scale=0.40]{chapter5/figures/fig3-R0-analytic.pdf}
-    \caption{Comparisons between the analytical expression for $R_0$, according to equation \ref{eq:Appendix_final_expression1}, and NLM simulations. (a) For a small dispersal value of $\ell=10$ and high infectivities (indicated by colour), $R_0$ begins to saturate to a maximum over the infectious period. Whereas, for smaller infectivity values, $R_0$ increases at a constant rate and fails to saturate\textemdash reflected in purple-red. (b) For a larger dispersal kernel, $R_0$ increases at a constant rate for all infectivities, linearly increasing over the infectious period. (c) $R_0$ is shown as a function of the dispersal parameter for fixed infectivity $\beta^*$. For small length scales, the normalised infectivity produces a less infectious outbreak. However, $R_0$ is approximately fixed for larger $\ell$ values. (d) The 2D $R_0$ phase plane predicted by equation \ref{eq:Appendix_final_expression1}. A threshold, given by $R_0=1$, is plotted in red that predicts the separation between confinement and epidemic.}
-    \label{fig:my_label}
+    \includegraphics[scale=0.475]{chapter5/figures/fig3b-R0-analytic.pdf}
+    \caption{Comparisons between the analytical expression for $R_0$, according to equation \ref{eq:Appendix_final_expression1}, and numerical simulations.
+    In panels (a-b), The cumulative sum of secondary infections is ensemble-averaged (50 repeats) over the infectious lifetime of $T=100$ steps.
+    (a) When the scale of dispersal is smaller ($\ell=35$), a high infectivity (in red) causes $R_0$ to saturate to a maximum over the infectious period.
+    For smaller infectivities (blue-green), $R_0$ increases at a constant rate and fails to saturate.
+    (b) For a larger dispersal kernel ($\ell=100$) and high infectivity, $R_0$ increases at a more constant rate, 
+    yet deviations still exist at the conclusion of its infectious lifetime.
+    (c) $R_0$ is shown as a function of the dispersal parameter for fixed infectivity $\beta^*=5$. For small length scales, the normalised infectivity produces a less infectious outbreak. However, $R_0$ is approximately fixed for larger $\ell$ values. Analytic predictions, shown in orange, tend to overestimate the spread for small $\ell$.
+    (d) The 2D $R_0$ phase plane predicted by equation \ref{eq:Appendix_final_expression1}. A threshold, given by $R_0=1$, is plotted in red that predicts the separation between confinement and epidemic.}
+    \label{fig:R0-analytic-vs-sims}
 \end{figure}
 
-The idealised reproduction number, as discussed above and described by Equation \ref{eq:Appendix_final_expression1}, is compared against NLM simulations\footnote{Implementing a comparative test between NLM simulations and equation \ref{eq:Appendix_final_expression1} was straightforward and only required one minor tweak in the program dynamics: when the primary infected tree produces a secondary infection, it transitions straight into the removed compartment. As a result, simulations were computationally efficient (owing to the single infected tree in $I$), and ensemble-averaged results could be generated in good time.} in Figure \ref{fig:R0-vs-NLM-sims}.
-Stochasticity within the NLM required an ensemble of size $10^3$.
-Figure \ref{fig:R0-vs-NLM-sims}(a) shows the ensemble-averaged number of secondary infections determined at each time-step $t\in [0, T]$, plotted as a time-series $R_0(t)$.
-The ensemble average is depicted as the solid line, and the shaded regions show continuous error bars.
-The time-series in Figure \ref{fig:R0-vs-NLM-sims}(a) show four variations of $\beta^*$ alongside the dotted curves predicted by equation \ref{eq:Appendix_final_expression1} for a small dispersal kernel of $\ell$. 
-The final value of $R_0$ is observed when the infectious lifetime of $T=100$ steps is concluded. 
+In Figure \ref{fig:R0-analytic-vs-sims}, the analytic predictions of $R_0$ from equation \ref{eq:Appendix_final_expression1} are compared to numerical simulations. 
+Figures \ref{fig:R0-analytic-vs-sims}(a-b) plot the primary infection's reproductive ratio over its lifetime, denoted by $\sum_{t=0}^T R_0(t)$.
+In both panels (a-b), NLM simulations were ensemble-averaged $N=50$ times for four infectivity values, indicated by the solid coloured lines. 
+The final value of $R_0$ is observed when the infectious lifetime of $T=100$ steps is concluded.
+Figures \ref{fig:R0-analytic-vs-sims}(a-b) show two epidemic scenarios, with lower ($\ell=35$) and higher ($\ell=100$) dispersal parameters.
+For both dispersal parameters, equation \ref{eq:Appendix_final_expression1} tends to overestimate $R_0$ when infectivity is high, illustrated by the dotted scatter plot.
 
-Lower infectivity values in Figure \ref{fig:R0-vs-NLM-sims}(a), shown from purple-green, approximate a linear relationship which agrees well with equation \ref{eq:Appendix_final_expression1}.
-Here, linearity reflects a constant transition rate into the $I$ compartment as the neighbourhood fails to become saturated with infected trees. 
-The number of secondary infections begins to plateau for progressively higher infectivities, as fewer trees in the neighbourhood are available to infect.
+The time-series in Figure \ref{fig:R0-vs-NLM-sims}(a) reveals that lower $\beta^*$ parameters produce a constant infection rate, indicated by linear relationship in blue-green.
+Equation \ref{eq:Appendix_final_expression1} agrees well with these lower infectivity parameters, however large deviations from model output can be seen for $\beta^*=10$ at later times. 
+Here, the number of new secondary infection plateau for $\beta^*=10$ because host density around the primary infection is reduced by other secondary/tertiary infections. Subsequently, at later times, fewer and fewer trees in the primary infections neighbourhood are available to infect causing $R_0$ to level off.
+Thus, equation \ref{eq:Appendix_final_expression1} describes the constant transition rates accurately, but deviates from model simulations when infection rates decrease because other (secondary/tertiary) infections reduce host local densities.
+
+
+
 For particular high values of $R_0$, equation \ref{eq:Appendix_final_expression1} begins to deviate from model output, reflecting the inability of equation \ref{eq:Appendix_final_expression1}
 to describe highly infectious outbreaks.
 
