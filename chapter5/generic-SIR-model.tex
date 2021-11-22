@@ -271,11 +271,14 @@ illustrated by comparing Figures \ref{fig:R0-approx}(a-b). In turn, simplifying 
 
 Figures \ref{fig:R0-approx}(c-d) illustrate two hypothetical epidemic systems, with higher and lower $R_0$ values.
 When the scale of dispersal is smaller (but still larger than the average distance between trees) and infectivity is high, as in Figure \ref{fig:R0-approx}(c), we expect a coupled system with a large number of secondary infectious induced inside a smaller area. In this case, the $R_0$ approximation would deviate from model simulations because secondary/tertiary infections would reduce the host density about the primary infection.
-In other words, negative spatial correlations develop when other infected trees reduce the local density of susceptible hosts. The reader is referred to \cite{R0-perc-ref} for a useful discussion on $R_0$, heterogeneity and spatial correlations.
+In other words, the finite-sized population gives rise to negative spatial correlations when other infected trees reduce the local density of susceptible hosts. The reader is referred to \cite{R0-perc-ref} for a helpful discussion of $R_0$, heterogeneity, spatial correlations and finite-size effects.
 
 Conversely, Figure \ref{fig:R0-approx}(d) depicts a scenario when the pathogen induces a lower number of secondary infectious over a larger area. Hence, in the limit where secondary/tertiary infected trees do not influence the local density around the primary infection, the thought experiment (mentioned above) is expected to become increasingly accurate. 
-However, even with a larger dispersal kernel, the approximation illustrated by Figure \ref{fig:R0-approx}(a) would become more inaccurate for highly invasive systems with a large $R_0$. For example, incredibly high values $R_0\in [30, 70]$ have been estimated for wheat stripe rust (WSR) epidemics \cite{mikaberidze2016invasiveness, severns2019consequences}. However, 
-a field of crops is significantly dense in comparison to an average tree population distributed over the landscape (discussed extensively in section \ref{sec:ch4-discussion} concerning oak). Consequently, we argue that, in general, the reproduction ratio of a tree pathogen is unlikely to reach super epidemic regimes that parallel WSR epidemics.
+However, even with a larger dispersal kernel, the approximation illustrated by Figure \ref{fig:R0-approx}(a) would become more inaccurate for highly invasive systems with a large $R_0$. 
+
+For example, incredibly high values $R_0\in [30, 70]$ have been estimated for wheat stripe rust (WSR) epidemics \cite{severns2019consequences, mikaberidze2016invasiveness}. However, 
+a field of crops is significantly dense in comparison to an average tree population distributed over the landscape\textemdash discussed extensively in section \ref{sec:ch4-discussion} concerning oak. Consequently, we argue that, in general, the reproduction ratio of a tree pathogen is unlikely to reach super epidemic regimes that parallel WSR epidemics;
+supported further by estimates of $1 \lessapprox R_0 \lessapprox 6$ for the Dutch elm disease epidemic in GB \cite{swinton1996dutch} and $1 \lessapprox R_0 \lessapprox 4$ for oak processionary moth epidemics in London [private correspondence with Dr Laura Wadkin, Newcastle University].
 
 \subsection{Derivation}
 
@@ -413,9 +416,11 @@ Observing $R_0$ deviate with different $\ell$ parameters compels a study of $R_0
 
 In Figure \ref{fig:R0-vs-NLM-sims}(c), the basic reproduction number $R_0$ is assessed over a range of dispersal kernels.
 Tree density in Figure \ref{fig:R0-vs-NLM-sims}(c) is fixed fixed to $\rho=0.01$ together with infectivity $\beta^*=5$.
-Predictions from equation \ref{eq:Appendix_final_expression1} are shown in orange and
-$R_0$ can be seen to increase with the dispersal kernel up to around $\ell \in [25, 30]$ before saturating to $R_0 \sim 5$. 
-Lower $R_0$ values indicate that: (A) neighbourhoods defined by a small $\ell$ parameter are likely to become fully occupied by secondary-infected trees (B) the scale of dispersal is less than the average distance between trees, thereby preventing the spread.
+Predictions from equation \ref{eq:Appendix_final_expression1} are shown in orange,
+and $R_0$ can be seen to increase with the dispersal kernel up to around $\ell \in [25, 30]$ before saturating to $R_0 \sim 5$. 
+When $\ell$ is small, $R_0$ is low; the reason for this are two-fold: 
+(A) neighbourhoods defined by a small $\ell$ parameter are likely to become fully occupied by secondary-infected trees
+(B) the scale of dispersal is less than the average distance between trees, thereby preventing the spread.
 Then, as the kernel is increased, $R_0$ asymptotically increases to a maximum value beyond which increasing $\ell$ bares no impact on $R_0$\textemdash provided that the number of secondarily infected trees is small in comparison to the number of hosts in the neighbourhood\footnote{Insight into the underlying behaviour could be gleaned by looking at equation \ref{eq:Appendix_final_expression1}. That is, by accessing the growth of $2\pi \rho_0 \ell^2$ and the convergence of the function $\mathrm{Ein}$ (defined by equation \ref{eq:ein}) and noting that as $\ell \rightarrow \infty$, $\beta=\beta^*/2\pi\ell^2 \rightarrow 0$. Although an in-depth mathematical analysis was not undertaken, it is clear that for large values of $\ell$, $R_0$ asymptotically approaches a limiting value.}.
 Therefore, if $\ell$ is large enough, the normalised infectivity can be seen to effectively constrains the epidemic severity to a limiting value.
 
