@@ -819,27 +819,21 @@ which sets the scene for Chapter \ref{ch7:landscape-level-control}.
 
 In response to the ADB epidemic, the UK Government commissioned presence-only surveys of ADB, conducted by the Forestry Commission (FC).
 To date, FC surveys of ADB are the most extensive throughout the UK, composed yearly over a large number of $\mathrm{10km \times 10km}$ grids.
-Figures \ref{fig:adb-comparison}(a-d) contrasts the FC data, collected from 2012 (green) to 2020 (purple), against three example $R_0$-maps, from low to high infectivity parameters.
+Figures \ref{fig:adb-comparison}(a-d) contrasts the FC data, collected from 2012 (green) to 2020 (purple), against three example $R_0$-maps from low to high infectivity parameters.
 The $R_0$-maps are based on the the model $\phi_1$-ga, subsequently all $1\mathrm{km \times 1 km}$ susceptible patches were grouped into clusters.
 
-The low infectivity map ($\beta^*=250$) shown in Figure \ref{fig:adb-comparison}(b) looks significantly different from the ADB observations in (a).
+The low-valued infectivity map ($\beta^*=250$) shown in Figure \ref{fig:adb-comparison}(b) looks significantly different from the ADB observations in (a).
 Figure \ref{fig:adb-comparison}(b) is more fragmented and sparsely-populated with susceptible patches.
 As such, reported cases of ADB contradict large below-threshold regions of Figure \ref{fig:adb-comparison}(b).
 Visual deviations become particularly apparent in Scotland, where according to Figure \ref{fig:adb-comparison}(b), a trivially small distribution of patches could support an epidemic. 
 
-Increasing infectivity to $\beta^*=650$ in Figure \ref{fig:adb-comparison}(c) produces map with more similarities to the FC survey data. 
-In particular, visual assessments reveal a comparable degree of patchiness/fragmentation between maps.   
-
-
-% \begin{enumerate}
-%     \item A large insusceptible region (shown in white) appears missing from the $R_0$-map in (b), yet the same region reports infected ash trees inside panel (a) from green-blue.
-%     \item In Scotland, we can see a general correlation between predicted susceptible regions in (b) and FC observations in (a).
-%     \item In panel (b), northern Wales appears significantly more fragmented/patchy and insusceptible when compared to the same region in panel (a).
-%     \item An insusceptible region in central Wales appears in panel (b), whereas, infected ash trees are reported in the same approximate region in panel (a).
-%     \item A region near Plymouth appears appears insusceptible, the same approximate region appears to have no reports of ADB in (a). 
-% \end{enumerate}
-
-Ultimately, validating accuracy in the $R_0$-map is challenging due to insufficient disease incidence data.
+Increasing the infectivity to $\beta^*=650$ in Figure \ref{fig:adb-comparison}(c) produces map with more similarities to the FC survey data. 
+In particular, visual assessments reveal a comparable degree of patchiness/fragmentation between maps. This time, susceptible regions in Scotland (circled 1) begins to reflect where FC surveys report ADB infections, in contrast to Figure \ref{fig:adb-comparison}(b).
+However, a large region in the East of England (circled 2) appears insusceptible, despite positive ADB reports shown in panel Figure \ref{fig:adb-comparison}(a). Moreover, Northern Wales (circled 3) appears significantly more patchy and insusceptible when compared to the FC data.
+ 
+The highest infectivity $\beta^*=1000$ gives rise to a densely populated map with few regions below the threshold. 
+Now clusters of ash in Scotland (circled 1), particularly in the North, appear susceptible whilst the FC survey data in Figure \ref{fig:adb-comparison}(a) show no reports.
+Interestingly, the same insusceptible region (circled 2) in the East deviate from the FC survey dataa, however this the area looks smaller. 
 
 \begin{landscape}
 \begin{figure}
@@ -854,6 +848,11 @@ Ultimately, validating accuracy in the $R_0$-map is challenging due to insuffici
     \label{fig:adb-comparison}
 \end{figure}
 \end{landscape}
+
+Together, Figure \ref{fig:adb-comparison} indicates that when infectivity is low, the resulting $R_0$-map is unlikely to reflect the spread ADB.
+Additionally, at a certain value, increasing the infectiviy produces an $R_0$-map with similar features to observation data.
+On the other hand, if infectiviy is high, the $R_0$-map is likely too overestimate susceptibility.
+Ultimately, validating the $R_0$-map against the FC survey is challenging due to the limited presence-only surveys collected over large $10\times 10$ girds.
 
 
 \section{Discussion and future work}
@@ -901,9 +900,9 @@ Landscape-level spread within our framework, therefore, demonstrates a threshold
 The next valuable step would be to fit a value of $\beta$ to data on ADB spread\footnote{Given the high availability of ADB mortality data in different European countries, fitting the $SEIR$ model to mortality curves would be most accessible.}, 
 and construct the resulting $R_0$-map. Although, a simplified comparison can be achieved by visual inspection alongside Forestry Commission (FC) survey data, as shown in Figure \ref{fig:adb-comparison}.
 
-
-Unfortunately, the presence survey contains no estimates for the number of ADB cases within each grid, meaning that comparisons against the raw $R_0$-map 
-pixel values are untenable with FC data. Thus, a better method to corroborate the model against observational data is required to progress the framework.
+Unfortunately, visually comparing the $R_0$-maps with FC ADB data proved challenging, owing to the limited presence-only survey that contained no estimates for the number of ADB cases within each grid.
+As such, raw $R_0$ values/pixels in the map could not be correlated to a number of observed cases.
+Therefore, an improved method to corroborate the model against observational data is required to progress the framework.
 
 The next Chapter builds on the $R_0$-map and outlines steps toward a novel landscape-level control strategy.
 
