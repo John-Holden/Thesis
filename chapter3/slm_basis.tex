@@ -8,18 +8,18 @@
 \chapter{Tree disease: a simple lattice model}
 \label{chapter:SLM}
 
-Typically, models of tree disease are complicated and involve multiple parameters informed by experimental data. Moreover, modelling a specific pathosystem requires in-depth, specialist knowledge to incorporate biological realism, such as pathogen lifecycles or environmental suitability. This introductory chapter outlines a simple model of tree disease spreading through a forest that will lay the foundations for more detailed treatment in later chapters.
+Typically, models of tree disease are complicated and involve multiple parameters informed by experimental data. Moreover, modelling a specific pathosystem requires in-depth, specialist knowledge to incorporate biological realism, such as pathogen lifecycles or environmental suitability. This introductory Chapter outlines a simple model of tree disease spreading through a forest that will lay the foundations for more detailed treatment in later Chapters.
 Consequently, the compartmentalised $SIR$, percolation-based, model used by \cite{OROZCOFUENTES201912} will be re-examined. 
 
 From first principles, the percolation model is analysed over a single tree density parameter ($\rho$), leading to a mathematical and conceptual definition of percolation in the context of tree-based epidemics. 
-Then, a discussion of critical phenomena, universal behaviour, and self-similarity in the system will follow. Crucially, this chapter demonstrates the importance of thresholds in the spread of tree-based diseases.
+Then, a discussion of critical phenomena, universal behaviour, and self-similarity in the system will follow. Crucially, this Chapter demonstrates the importance of thresholds in the spread of tree-based diseases.
 
 Having established a simple one-parameter model, a more involved two-parameter `stochastic percolation' model will be developed and examined. 
 Stochastic percolation will include an extra parameter representing the degree of pathogen infectivity. 
 In general, measuring infectivity is challenging and subject to much spatial and temporal variation, such as changing climatic/environment conditions or species-level genetic variations in susceptibilities.  
 However, including a stochastic infectivity parameter is essential to construct representative models of tree-based epidemics, as infectivity (or susceptibility) can vary widely over a landscape.
 The two-parameter model will constitute a simple lattice model (SLM) of disease dynamics. 
-This introductory chapter will introduce ensemble-averaging parameter sweeps\textemdash used throughout the thesis\textemdash to categorize the SLM behaviour.
+This introductory Chapter will introduce ensemble-averaging parameter sweeps\textemdash used throughout the thesis\textemdash to categorize the SLM behaviour.
 
 \section{Percolation formalism}
 \label{sec:perc-form}
@@ -58,8 +58,8 @@ The size of the lattice is therefore required to be sufficiently large compared 
 in order to approximate the threshold ($\rho_c$) reliably and produce a spanning cluster ($C_{\infty}$). 
 
 When the domain size is large, the threshold $\rho_c$ will remains approximately constant and insensitive to small changes in the domain. 
-All proceeding simulations in this chapter are conducted on finite-sized domains between two and three orders of magnitude larger than individual lattice points.
-The model presented in this chapter (first published by \cite{OROZCOFUENTES201912}) was 
+All proceeding simulations in this Chapter are conducted on finite-sized domains between two and three orders of magnitude larger than individual lattice points.
+The model presented in this Chapter (first published by \cite{OROZCOFUENTES201912}) was 
 found to agree with the accepted percolation threshold, when the lattice had size $L \sim 500\times500$;
 the lattice configuration used here will therefore assume the same size configuration. 
 
@@ -138,7 +138,7 @@ Within $C_\infty$, one can identify clusters of untouched susceptible trees (in 
 In the literature, clusters can be described by a `cluster number' ($n_s$) distribution, where $n_s$ is the number of clusters containing $s$ open/susceptible lattice sites.
 Furthermore, around the percolation threshold, there can be significant fluctuations in the size of the clusters formed\footnote{
 The related statistical fluctuations analysed by \cite{OROZCOFUENTES201912}
-present an effective early warning system for the prediction of forest-based pathosystems\textemdash revisited in the next chapter.
+present an effective early warning system for the prediction of forest-based pathosystems\textemdash revisited in the next Chapter.
 }.
 
 \begin{figure}
@@ -175,7 +175,7 @@ present an effective early warning system for the prediction of forest-based pat
   \end{center}
 \end{table}
 
-This chapter rests on a simulations developed on a square lattice, though we could have considered different configurations, e.g. a triangular, honeycomb or Voronoi lattice.
+This Chapter rests on a simulations developed on a square lattice, though we could have considered different configurations, e.g. a triangular, honeycomb or Voronoi lattice.
 From the observation of Figures \ref{fig:ch3-perc-spread}(a-c), high host densities would produce highly ordered wavefronts reflecting the different lattice configurations.
 In addition, various quantities within the model would change, especially the critical density $\rho_c$ that changes in response to the nearest neighbour (NN) number.
 For completeness, table \ref{tab:perc} shows a selection of site and bond percolation thresholds.
@@ -309,7 +309,7 @@ Additionally, Figures \ref{fig:vel_eff_rad_metric}(b-d) suggest that $\beta$ pla
 For now, the important statistic is merely the ensemble mean, denoted by $\big\langle\overline{v}\big\rangle$.
 although, from Figures \ref{fig:vel_eff_rad_metric}(b-d), we can begin to access the third-order statistical moment of skew.
 Namely, the green distributions become progressively right-skewed as density is lowered.
-Statistical measures over the ensemble have exciting applications and can detect an early warning signal, a topic covered in the next chapter.
+Statistical measures over the ensemble have exciting applications and can detect an early warning signal, a topic covered in the next Chapter.
 
 \begin{figure}
     \centering
@@ -362,9 +362,9 @@ Here, the parameter-sweeps can be understood to portray an `\textit{epidemic pha
 
 \section{Discussion}
 
-This chapter introduced percolation theory, leading to a one-parameter percolation $SIR$ model of tree disease spreading through a forest.
-The one-parameter model demonstrated stochasticity on account of the randomly populated host distribution inside a square lattice. 
-Assessing the model on one lattice configuration signifies a limitation in our analysis, and a comprehensive treatment might consider examining the spread of disease on alternate lattices. However, though we examined behaviour on one lattice type, the universal properties of the model would remain fixed. For example, the critical exponent describing the correlation length $\xi$\textemdash as discussed in section \ref{section:universality}.
+This Chapter introduced percolation theory, leading to a one-parameter percolation $SIR$ model of tree disease spreading through a forest.
+The one-parameter model exhibited stochasticity on account of the randomly populated host distribution inside a square lattice. 
+Assessing the model on one lattice configuration signifies a limitation in our analysis, and a comprehensive treatment might consider examining the spread of disease on alternate lattices, e.g. the triangular, honeycomb or Voronoi lattice. Nevertheless, although we examined behaviour on one lattice type, the universal properties of the model would remain fixed. For example, the critical exponent describing the correlation length $\xi$\textemdash as discussed in section \ref{section:universality}.
 
 In section \ref{ch3:two-param-model}, an infectivity parameter ($\beta$) was included in the model.
 The infectivity parameter introduced temporal stochasticity into the system, as infections spread probabilistically between nearest neighbours\textemdash as opposed to the one-parameter model that spreads between hosts with a probability of one.
@@ -391,11 +391,11 @@ However, neglected host population dynamics in the SLM prevents long-term coexis
 an essential requirement of persistence \cite{gilligan2008epidemiological}. 
 Accordingly, the SLM only approximates invasion and persistence, which therefore signifies a limitation in the framework. 
 
-As we look to construct a more representative model, it is worth remarking on the most significant assumptions that underpin the SLM:
+As we look to construct a more representative model, it is worth remarking on the most significant assumptions that underpin the SLM so far:
 \begin{enumerate}
     \item \textbf{Local NN interactions}: in reality, many dispersal mechanisms exist to propagate the spread of disease\textemdash 
     section \ref{ch2:dispersal} contains more information. 
-    Undesirably, local interactions in the SLM revealed unnatural artefacts of lattice geometry.
+    Undesirably, local interactions in the SLM revealed unnatural artefacts of lattice geometry\textemdash as we saw in Figures \ref{fig:ch3-perc-spread}(a-c).
     Moreover, as the pathogen could not jump over empty lattice sites, epidemics were only possible above the percolation threshold, 
     i.e. when connected clusters of hosts span the domain.  
     
@@ -404,14 +404,14 @@ As we look to construct a more representative model, it is worth remarking on th
     In contrast, the SLM considers that: (A) the transition probability into $R$ occurs with a uniform number of steps 
     (B) the probability of transition into $I$ is identical between hosts 
     (C) $\beta$ is simplistic, with no spatio-temporal (environmental) dependence. 
-    More generally, we have constructed a general, abstract model with no specific pathogen in mind.
+    More broadly, we have constructed a general, abstract model with no specific pathogen in mind and uniform, simplistic interactions.
     
     \item \textbf{Host distribution}: natural tree populations present rich spatial structures with varying degrees of clustering and aggregation \cite{doi:10.1086/342823}.
     Indeed population clustering has been confirmed over various spatial, from the tree-level to the field-level \cite{wiegand2007analyzing}.
-    Therefore, the flat randomly distributed host population considered in this chapter falls short of a realistic description.
+    Therefore, the flat randomly distributed host population considered in this Chapter falls short of a realistic description.
     In addition, the SLM describes the spread of disease in a densely populated forest.
     Hence, as we look to model the spread of disease over Great Britain, realistic tree canopy cover data should be incorporated into the framework.
 \end{enumerate}
 Despite the assumptions and simplicity of the SLM, it provides a general setting upon which to elaborate.
-The next chapter outlines all the applications that were investigated using the SLM.
+The next Chapter outlines all the applications that were investigated using the SLM.
 \newpage

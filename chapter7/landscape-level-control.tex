@@ -261,54 +261,53 @@ Although Figure \ref{fig:payoff-efficiency}(a) demonstrates an important observa
 more work is needed to be confident that regional containment is most effective over the interval $\beta^* \in [400, 600]$.
 
 Figure \ref{fig:payoff-efficiency}(b) illustrates the complete set of scenario tests for $\beta^*=500$ (i.e. the $\beta^*$ parameter that registered the highest control payoff).
-The number saved patches that remain in $S$ (i.e, $N_S$) is plotted against $N_R \times N_C$.
+The number of saved patches that remain in $S$ (i.e, $N_S$) is plotted against $N_R \times N_C$.
 The upper and right-hand marginal plots show the corresponding probability density functions for $N_S$ and $N_R \times N_C$.
 Each PDF shows a skewed distribution, with most scenarios involving a smaller value of $N_S$ and $N_R \times N_C$.
-Of the $3850$ containment scenarios, a small number of high performing tests populate the bottom right-hand quadrant, when $N_S$ is large and $N_R \times N_C$ is low;
-this region represents viable scenarios where containment is most efficient i.e. the right and left-hand distribution tails when $N_S$ is large and $N_R \times N_C$ is small.
+Of the $3850$ containment scenarios, a small number of high performing tests populate the bottom right-hand quadrant, when $N_S$ is large and $N_R \times N_C$ is low.
+This region in the plot represents scenarios where containment is most efficient i.e. the right and left-hand distribution tails when $N_S$ is large and $N_R \times N_C$ is small.
 
 Figures \ref{fig:payoff-efficiency}(c-e) show three scenarios of interest, orange and blue clusters depict removed/at-risk and susceptible/saved patches, respectively. 
 Red crosses indicate where the control should be focused to achieve containment. 
-The targeted control patches in Figure \ref{fig:payoff-efficiency}(c) resemble those identified previously in Figure \ref{fig:R0-threshold-function}(e), albeit this time for a higher $\beta^*$-valued domain at a lower landscape-level resolution.
-Desirably, observing connecting patches in approximately the same location for different infectivity values suggests that some patches may be important for control at various epidemic scales.
-Moreover, Figure \ref{fig:payoff-efficiency}(c) hints toward there being similarities at and different resolutions\textemdash the concern mentioned above.
+Figure \ref{fig:payoff-efficiency}(c), depicts the likely scenario with a central focus of infection.
+Most of GB remains at risk, yet some Northern and Southern regions surrounding the target cluster remain protected from the pathogen.
+If the disease has not yet reached the connecting patches (identified by the red crosses), Figure \ref{fig:payoff-efficiency}(c) indicates that regional containment might be attempted alongside targeting a disease wave-front \cite{large-scale-control}, or more local-scale pathogen eradication \cite{WEBIDEMICS}. 
+Although, ultimately, more work is needed to assess the efficacy and possibility of halting/slowing the spread.
 
-\begin{landscape}
 \begin{figure}
     \centering
-    \includegraphics[scale=0.47]{chapter7/figures/figure4-scenario-payoff.pdf}
+    \includegraphics[scale=0.45]{chapter7/figures/figure4-scenario-payoff.pdf}
     \caption{The control `payoff' is accessed by comparing the number of patches that remain susceptible ($N_S$) against the number of patches removed ($N_R$) and controlled ($N_C$).
              (a) The payoff ratio $N_S / (N_R \times N_C)$ is plotted against the infectiviy parameter $\beta^*$ for the top $25$ highest payoff scenarios.
              (b) The complete list of (3850) different scenario tests are plotted for the highest payoff infectivity parameter $\beta^*=500$; the lower right-hand quadrant defines the most efficient control scenarios.
-             (c-e) Spatial plots that show three hypothetical scenarios from panel (b). 
+             (c-e) Spatial plots that show three hypothetical scenarios from panel (b), with payoffs ranked 1, 50, 100. 
              Blue and orange clusters outline patches that remain susceptible and become removed, respectively.
-             (f-g) Probability density functions for $N_S$ and $N_R \times N_C$ are plotted over the sample of shown infectivity parameters.
              }
     \label{fig:payoff-efficiency}
 \end{figure}
-\end{landscape}
 
-Figure \ref{fig:payoff-efficiency}(c) reveals the highest payoff result for $\beta^*=500$.
+The targeted control patches in Figure \ref{fig:payoff-efficiency}(d) resemble those identified previously in Figure \ref{fig:R0-threshold-function}(e), yet this time for a higher $\beta^*$-valued domain at a lower landscape-level resolution.
+Desirably, observing connecting patches in approximately the same location for different infectivity values suggests that some patches may be important for control at various epidemic scales.
+Moreover, Figure \ref{fig:payoff-efficiency}(d) hints toward there being similarities at and different resolutions\textemdash the concern mentioned above.
+
+Figure \ref{fig:payoff-efficiency}(e) reveals the highest payoff result for $\beta^*=500$.
 In this scenario, the epicentre lies close to the Eastern coastline (Skegness), 
 and the control area is located slightly inland (approximately between Lincoln and Sheffield).
 The zoomed inset highlights a single $\mathrm{5km \times 5 km}$ patch, and control saves the vast majority of GB from infection.
 This scenario is no doubt idealistic and unlikely to be realised in a real-life outbreak.
 In a real-life outbreak, epicentres are unlikely to be so conveniently located about the coastline.
 Furthermore, detecting and controlling the pathogen remains difficult before it spreads to distant (and more centralised) locations.
-Nevertheless, Figure \ref{fig:payoff-efficiency}(c) reinforces the intuitive notion that epicentres around edge positions are contained efficiently.
+Nevertheless, Figure \ref{fig:payoff-efficiency}(e) reinforces the intuitive notion that epicentres around edge positions are contained efficiently.
 The inset highlights where pathogen dispersal might jump between clusters, indicated by the curved arrows.
 Although wind-dispersed secondary infections are likely rare over these spatial scales ($5$-$20\mathrm{km}$), they are nevertheless thought possible for fungal spores \cite{grosdidier2018tracking};
 the analysis presented here neglect these complexities, which requires further investigation.
 
-The last spatial plot, Figure \ref{fig:payoff-efficiency}(d), depicts a more likely scenario with a centrally located focus.
-Most of GB remains at risk, yet some Northern and Southern regions surrounding the target cluster remain protected from the pathogen.
-If the disease has not yet reached the connecting patches (identified by the red crosses), Figure \ref{fig:payoff-efficiency}(d) indicates that regional containment might be attempted alongside targeting a disease wave-front \cite{large-scale-control}, or more local-scale pathogen eradication \cite{WEBIDEMICS}. 
-Although, ultimately, more work is needed to assess the efficacy and possibility of halting/slowing the spread.
+% The last spatial plot, Figure \ref{fig:payoff-efficiency}(c), depicts a more likely scenario with a centrally located focus.
+% Most of GB remains at risk, yet some Northern and Southern regions surrounding the target cluster remain protected from the pathogen.
+% If the disease has not yet reached the connecting patches (identified by the red crosses), Figure \ref{fig:payoff-efficiency}(c) indicates that regional containment might be attempted alongside targeting a disease wave-front \cite{large-scale-control}, or more local-scale pathogen eradication \cite{WEBIDEMICS}. 
+% Although, ultimately, more work is needed to assess the efficacy and possibility of halting/slowing the spread.
 
-Figures \ref{fig:payoff-efficiency}(f-g) show the probability density functions associated with $N_S$ and $N_R \times N_C$ for the infectiviy values shown.
-Generally, higher infectivity parameters skew the distribution of $N_S$ towards higher values because the number of patches available to save generally grows alongside the overall cluster size.
-Similarly, the distributions of $N_R \times N_C$ also becomes skewed toward the right, indicating that most control scenarios become progressively inefficient as infectivity grows.
-However, landscape-level control is possible when scenarios occupy the right and left-hand distribution tails of $N_S$ and $N_R \times N_C$.
+\newpage 
 
 \section{Discussion and future research}
 

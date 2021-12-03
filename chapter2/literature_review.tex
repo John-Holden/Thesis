@@ -227,14 +227,12 @@ magnetism and telecommunications were described \cite{trove.nla.gov.au/work/2649
 With only a short conceptual jump from time-dependent percolation used to study the growth of crystals \cite{Family_1985},
 forest fire models were subsequently related to percolation \cite{MacKay_1984}.
 
-
+Beginning with the $SIR$ framework, mathematical epidemiology was already well-established
+around the time percolation theory was conceived \cite{baily1975mathematical}. 
 A fire spreading through a population of trees is not too different to a disease spreading through 
-a population, thus leading to a general epidemic-formalisation within a percolation-based framework
-\cite{pub.1059067807}; the researchers proposed that epidemics might be in the same universality class
-as percolation. Beginning with the $SIR$ framework, mathematical epidemiology was already well-established
-around the time percolation theory was conceived \cite{baily1975mathematical}. Owing to an implicit spatio-temporal construction,
-percolation models could relax assumptions about population mixing and serve as a helpful tool when developing
-spatially structured epidemic models.
+a population. Hence, a general percolation-based epidemic-formalisation framework was put forward by
+\cite{pub.1059067807}. The researchers proposed that epidemics might be in the same universality class
+as percolation.
 
 A fractal-like pattern of epidemics was observed by \cite{GRASSBERGER1986273}, shown in Figure \ref{fig:1d_perc_basis}. 
 In Figure \ref{fig:1d_perc_basis}, lighter grey sites represent removed individuals, 
@@ -255,15 +253,16 @@ Although, it must be remarked that including long-range interactions would cease
     \label{fig:1d_perc_basis}
 \end{figure}
 
-Percolation models of epidemics were investigated by several means, 
-e.g. renormalisation-groups \cite{pub.1060474189} and Monte-Carlo methods \cite{pub.1059069981}. 
+Percolation models of epidemics were examined in several contexts,
+including renormalisation-groups \cite{pub.1060474189} and Monte-Carlo methods \cite{pub.1059069981}. 
 Studies generally focused on finding the systems critical exponents and categorising phase
 transition graph that characterised an epidemic (super-critical) or extinction (sub-critical) 
 regimes \cite{GRASSBERGER1986273}. The properties of both epidemics and forest fire percolation 
 models were studied together in \cite{pub.1052857560}, highlighting their similarity.
-One of the first ecological applications was put forward by \cite{pub.1031591030}, 
+
+An early ecological applications of percolation was put forward by \cite{pub.1031591030}, 
 who studied the effects of landscape distributions and percolation models 
-(reflecting both forest fire and epidemics). In their study, \cite{pub.1031591030} 
+(reflecting both forest fire and tree disease epidemics). In their study, \cite{pub.1031591030} 
 combined $SIR$-like mechanics inside a percolation-based distribution of hosts and subsequently 
 found a narrow regime where disease epidemics would spread, thus mirroring the threshold-like 
 behaviour witnessed in the $SIR$ model. Although, here, the authors considered the possibility of host recovery.
@@ -278,9 +277,9 @@ Emergent infectious diseases (EIDs) in tree populations are multi-scale,
 they can span regional, country or continental spatial scales. Considerable variations in landscape composition,
 tree densities, population aggregation, and the climatic factors give rise to diverse spatio-temporal
 patterns of disease spread \cite{he2019integrating, suzuki2003spatial}. Incorporating spatial structure
-in tree-disease models is therefore vital to accurately capture the environmental influences upon host-pathogen 
+into tree disease models is therefore vital to accurately capture environmental influences, host-pathogen 
 interactions and dispersal \cite{liu2007characterizing}. This section outlines several approaches to modelling
-the spread of tree disease.
+the spread of tree disease over small, large and multiple spatial scales.
 
 \subsection{Small-scale: stochastic dispersal}
 \label{ch2:dispersal}
@@ -288,8 +287,8 @@ the spread of tree disease.
 Pathogen dispersal through wind, watercourse or human trade underpins a key feature of EDIs. 
 Numerous functions have been used to model dispersal, but generally, all describe a continuous 
 non-negative (real-valued) function that is normalisable: $\int_{-\infty}^{\infty}  D(x)dx = 1$.
-Various review articles provide comprehensive functional examples \cite{bullock2017synthesis, nathan2012dispersal, howe1982ecology}; 
-however, the general class of dispersal kernels include thin-tailed Gaussian and 
+Various review articles provide comprehensive functional examples \cite{bullock2017synthesis, nathan2012dispersal, howe1982ecology}.
+However, the general class of dispersal kernels include thin-tailed Gaussian and 
 exponential alongside fat-tailed inverse power law variants.
 
 Early plant disease simulators (e.g. EPIDEM and EPIMUL76) included stochastic dispersal\textemdash 
@@ -368,9 +367,9 @@ following:
     &\frac{dI_v}{dt} = \eta E_V - \gamma_2 I_V
 \end{align}
 In this system, pine tree hosts interact with beetle vectors that carry pathogenic nematodes 
-(\textit{Bursaphelenchus xylophilus}). Stepping through the system:
-Equations \ref{eq:PWD-model1}-\ref{eq:PWD-model-H} describe the host population;
-naturally occurring births and deaths in the host population occur at rates $\lambda_H$ and $\gamma_1$, 
+(\textit{Bursaphelenchus xylophilus}). 
+Stepping through the system, equations \ref{eq:PWD-model1}-\ref{eq:PWD-model-H} describe the host population.
+Naturally occurring births and deaths in the host population occur at rates $\lambda_H$ and $\gamma_1$, 
 respectively. Pine trees become infected by two mechanisms: $\beta_1\Psi$ that describes the incidence
 rate due to mature infected beetles, and $\beta_2\Phi$ that describes the incidence rate due to the offspring
 of infected beetles.
@@ -641,7 +640,7 @@ from $20\mathrm{m}$ to continental spatial scales.
     \label{fig:WSR-prevelance}
 \end{figure}
 
-Power law scale invariance was examined by \cite{severns2019consequences} for wheat strip rust (WSR) epidemics. 
+Power law scale invariance was examined by \cite{severns2019consequences} for wheat strip rust (\acrshort{wsr}) epidemics. 
 In particular, the authors constructed wheat plantations and artificially introduced WSR to measure its prevalence over time. 
 Consequently, the spatio-temporal WSR incidence rates strongly supported
 an accelerating, disperseive, wavefront. 
@@ -654,7 +653,6 @@ An exponent of $b=2.39$ provided a good fit for all scales, suggesting that inve
 prove a useful rule of thumb to predict disease prevalence over different scales.
 
 \newpage
-
 
 \section{Tree distribution datasets in Great Britain}
 \label{ch2:hostdata}
@@ -707,8 +705,8 @@ The dataset constitutes the first of five planned surveys, part of a rolling mon
 The National Forest Inventory (NFI) collects and maintains forest and woodlands data in GB.
 Originally, the NFI was established to help restore and expand Britain's woodlands following the First World War \cite{james1990history}.
 Regular programs ($10$-$15\mathrm{year}$ intervals) implement surveys of woodland and forest size, distribution, composition and condition across GB.
-Records cover areas over $0.5\mathrm{ha}$ and $20\%$ coverage.
-As of $2019$, $622,381$ individual records exist, spanning $2.9 \times 10^6 \mathrm{ha}$ over $13\%$ of the total land cover within GB.
+Records cover areas over $0.5\ \mathrm{ha}$ and $20\%$ coverage.
+As of $2019$, $622,381$ individual records exist, spanning $2.9 \times 10^6\ \mathrm{ha}$ over $13\%$ of the total land cover within GB.
 NFI data comprise ESRI shape files\footnote{
 Free to download at: \nolinkurl{https://data-forestry.opendata.arcgis.com}},
 that outline numerous forest types, e.g. broadleaved, conifer, mixed-predominantly broadleaved or mixed predominantly conifer.
@@ -742,10 +740,10 @@ As such, BSIBI data is helpful to reconstruct several baseline tree distribution
 
 \subsection{Species distribution models}
 
-Species distribution models (SDMs) aim to generate data, from less-extensive surveyed data.
+In the absence of extensive host data, species distribution models (SDMs) aim to generate synthetic data, typically from less-extensive surveys.
 SDMs were first developed in the $1990$s, and have subsequently become fundamental to ecological and biogeographical inference studies.
-Inferred, or modelled, species distribution data have been used to examine biodiversity, conservation, resource management, 
-ecology and climate change \cite{austin2011improving, franklin2013species, skov2016real, wittmann2016confronting, 10.3958/059.037.0110, zhang2019using}.
+Synthetic distributions have been used to examine biodiversity, conservation, resource management, 
+ecology and climate change \cite{franklin2013species, skov2016real, wittmann2016confronting, 10.3958/059.037.0110, zhang2019using}.
 The vast majority of SDMs fall into two categories: correlative \cite{srivastava2019species}, and mechanistic \cite{shabani2016comparison}.
 
 Correlative SDMs relate (widely available) presence-only, or presence-absence, data to several environmental predictor variable datasets.

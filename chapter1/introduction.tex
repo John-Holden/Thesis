@@ -48,19 +48,19 @@ the challenge of implementing epidemic control.
 The modern world relies heavily on imports and exports characterised by global trade networks. 
 Unfortunately, importing and exporting foreign plant material can introduce invasive pests and pathogens
 into non-native landscapes. Consequently, this poses worldwide risks to crops, flowering plants
-and trees that may lack evolutionary defences to invasive species. \cite{doi:10.1002/9781444329988.ch8}. 
+and tree populations that may lack evolutionary defences to invasive species \cite{doi:10.1002/9781444329988.ch8}. 
 
-Epidemics through plant populations can be devastating.
+Epidemics through botanical populations can be devastating.
 Classic examples include Irish potato blight, Dutch elm disease \cite{doi:10.1111/j.1365-3059.2010.02391.x} 
 and North American chestnut blight \cite{doi:10.1002/9780470535486.ch7}.
-Two epidemics currently underway in the UK include ash dieback (\textit{Hymenoscyphus fraxineus}) affecting European ash trees (\textit{Fraxinus excelsior})
-\cite{ash-dieback-costs}, and \textit{Phytophthora ramorum}, a prevalent disease that affects over 150 plant species, including oak, 
+Two epidemics currently underway in the UK include ash dieback (\textit{Hymenoscyphus fraxineus}) affecting European ash \textit{Fraxinus excelsior} (\acrshort{fe})
+\cite{ash-dieback-costs}, and \textit{Phytophthora ramorum} (\acrshort{pr}), a prevalent disease affecting over 150 plant species, including oak, 
 larch, and sweet chestnut \cite{p.ramourum}.
 
 Trees play a fundamental role in terrestrial ecosystems \cite{boyd2013consequence} and ensuring tree health marks an urgent challenge for society to address.
-In particular, policymakers can lead a variety of control initiatives to impede the spread of disease to meet this complicated challenge \cite{Gilligan-disease-management}. 
-Effectively controlling epidemics reduces economic resource allocation, and benefits tree health alongside ecological function \cite{ash-dieback-costs, freer2017tree, boyd2013consequence, tyrvainen2005benefits}. 
-Commonly, strategies to prevent epidemics include, thinning host densities \cite{pietzsch2021effect, resiliency-density-reductions} and cultivating genetically diverse distributions \cite{doi:10.1094/PD-89-0969, genetic-heterogeneity, huang1980importance}.
+In particular, policymakers can lead a variety of control initiatives to impede the spread of disease \cite{Gilligan-disease-management}. 
+Effective epidemic control strategies benefit tree populations at a reduced economic cost \cite{ash-dieback-costs, freer2017tree, boyd2013consequence, tyrvainen2005benefits}. 
+Commonly, preventative strategies include, thinning host densities \cite{pietzsch2021effect, resiliency-density-reductions} and cultivating genetically diverse distributions \cite{doi:10.1094/PD-89-0969, genetic-heterogeneity, huang1980importance}.
 
 % - The progression of an epidemic can be briefly summarised by the time-line of, arrival, spread, impact and management.
 % \textcolor{blue}{Expand this to include some numbers on cost and societal effects. Go into more examples of how tree diseases can cause harm to ecosystems and expand on wider environmental impacts e.g. Carbon sequestration, soil bindings and biodiversity. Expand  on current threats. !!! Talk about biology of pathogens and main divisions of diseases !!!}
@@ -94,29 +94,29 @@ Commonly, strategies to prevent epidemics include, thinning host densities \cite
 % \end{table}
 
 
-\subsection{Tree disease drivers}
+\subsection{Epidemic drivers}
 
 %-Talk about the different types of interactions and drivers, based on the pathogen biology and type of disease. How might one conceptualise it mathematically and what are the main factors to consider with tree diseases. Give an intuitive justification of the parameters used in the modelling work. Density infectivity and dispersal
 
 The terms `pest' and `pathogen' denote a broad spectrum of taxonomically diverse organisms. 
 Pests denote any organism that harms humans or human interests such as crops or livestock
 \cite{buckle2015rodent, oerke2006crop, de1964biological}. Overwhelmingly, insects constitute the main
-pest threats to tree species \cite{metcalf1994introduction}. In Great Britain (GB), Asian longhorn beetle
-(ALB) \cite{haack2010managing}, and oak processionary moth OPM \cite{tomlinson2015managing} are two concerts
+pest threats to tree species \cite{metcalf1994introduction}. In Great Britain (\acrshort{gb}), Asian longhorn beetle
+(\acrshort{alb}) \cite{haack2010managing}, and oak processionary moth \acrshort{opm} \cite{tomlinson2015managing} are two concerns
 that currently threaten tree health.
 
 In contrast, the term `pathogen' denotes any organism that induces disease. 
 In the context of trees populations, diseases include fungi, bacteria, viruses, and oomycetes \cite{balloux2017q, Boyd1235773}. 
-Currently, the oomycete \textit{Phytophthora ramorum} \cite{brasier2005phytophthora}, and Ash dieback (ADB)
-caused by the fungus \textit{Hymenoscyphus fraxineus} \cite{ash-dieback-costs, mitchell2014ash} are two pathogens
+Currently, the oomycete \textit{Phytophthora ramorum} \cite{brasier2005phytophthora}, and Ash dieback (\acrshort{adb})
+caused by the fungus \textit{Hymenoscyphus fraxineus} (\acrshort{hf})\cite{ash-dieback-costs, mitchell2014ash} are two pathogens
 that threaten tree-health in GB.
 
 The trade and transport of foreign plant material are widely recognised to increase the risk
 of introducing pests and pathogens into non-native landscapes \cite{POTTER201761, lovett2016nonnative, roy2014increasing}.
 Epidemics caused by non-native pathogens can be catastrophic to tree populations that lack immunity and genetic
 resistance to the invasive species \cite{doi:10.1002/9781444329988.ch8}; this can be understood from an evolutionary perspective: 
-in an environment unaltered by human transportation, tree and plant species are thought to co-evolve alongside pests and pathogens
-in a gene-for-gene like arm-race \cite{Thrall1735, dangl2001plant, flor1971current}. 
+in an environment unaltered by human transportation, tree and plant species are widely acknowledged to co-evolve with pests and pathogens
+in a `gene-for-gene' arms-race \cite{Thrall1735, dangl2001plant, flor1971current}. 
 
 However, the introduction of a foreign pathogen can overwhelm a population that has no such immunity \cite{desprez2016evolutionary}. Two classic examples that shook
 the world are: Dutch elm disease \cite{doi:10.1111/j.1365-3059.2010.02391.x} in the United Kingdom and chestnut blight
@@ -129,24 +129,25 @@ of invasive pests and pathogens into vulnerable landscapes within a country. As 
 infected with scolytid bark beetles, carrying the fungus \textit{Ophiostoma novo‐ulmi} was identified as an essential
 factor in driving the Dutch elm outbreak in the United Kingdom \cite{doi:10.1111/j.1365-3059.2010.02391.x}. 
 
-Thus, adequate border controls are an indispensable step in a nations arsenal to stop the spread of disease.
+Effective border controls on plant imports are indispensable to stop the spread of disease.
 Ordinarily, preventative measures take the form of customs checks on imported and exported plant material such
 as timber, crops or horticultural goods. In particular, the European Commission enacted plant passports to regulate
-how growers and traders can transport plant material between countries\footnote{In light of Brexit, the UK now plans
+how growers and traders can transport plant material between countries\footnote{In light of Brexit, the \acrshort{uk} now plans
 to implement an equivalent passport} \cite{wulfert2010implementation}.
 
 If checks and policy implementations fail, a pathogen might be introduced into the landscape and spread through natural
 dispersal pathways. Alternatively, a pathogen might be transported into foreign ecosystems through atmospheric 
-long distance dispersal (LDD) \cite{brown2002aerial}. In either scenario, biological control becomes necessary. 
+long distance dispersal (\acrshort{ldd}) \cite{brown2002aerial}. In any case, biological control becomes necessary. 
 The biological control of plant-based disease
 can be achieved in numerous ways. Commonly, this involves chemical agents such as pesticides, predatory insects or planting
 genetically resistant cultivars \cite{pal2006biological, baker1974biological}. 
 
 In this thesis, we are motivated to investigate the eradication of tree-based pathogens 
-where eradication generally entails the removal of infected and diseased trees through sanitation felling. 
-In this case, the questions to be answered are A) How do we effectively identify an infected tree? B) 
-Which infected trees are the best choices to fell? C) What is the risk that a large-scale epidemic will result?
-
+where eradication generally entails the removal of infected symptomatic trees through sanitation felling. 
+In this scenario, three vital questions to consider are: 
+A) How do we effectively identify an infected tree? 
+B) Which infected trees are the best choices to fell? 
+C) What is the risk that a large-scale epidemic will result from observations of diseased trees?
 
 \section{Modelling and policy}
 \label{sec:modelling-and-policy}
@@ -159,26 +160,26 @@ Which infected trees are the best choices to fell? C) What is the risk that a la
 The benefit of controlling an epidemic should outweigh the costs of letting an outbreak spread unchecked. 
 Plant disease modellers can help infer well-designed control policies that maximally reduce epidemic impact and minimise the expenditure
 of resources\textemdash both natural and economic. However, achieving this in practice is problematic due to various unknowns \cite{13-challenges}.
-Moreover, history gives examples of insufficient control policies which fail to halt pathogen spread. 
+Moreover, history gives examples of insufficient control policies that fail to halt pathogen spread. 
 Prominent examples include Dutch elm disease in the late 1960s and early 1970s \cite{dutch-elm-mismanage}, 
 and more recently citrus canker in Florida \cite{schubert2001meeting}.
 
 With mathematical models we can attempt to understand what dictates the optimal control of tree diseases epidemics. 
 Control strategies have been explored on both smaller \cite{risk-potential-control} 
 and larger landscapes \cite{large-scale-control2}. Current consensus on all spatial scales
-agree that the scale of response must equal the scale of epidemic \cite{control-scale-matching}. In addition, 
-any on-the-ground response must be carried out swiftly, otherwise the likelihood of successful management rapidly decreases and the cost of inaction soars.
+agree that the scale of response must equal the scale of epidemic \cite{control-scale-matching}. In any case, 
+an on-the-ground response must be carried out swiftly, otherwise the likelihood of successful management rapidly decreases and the cost of inaction soars.
 
 Conventional eradication strategies involve detecting symptomatic trees and culling neighbours within a radius \cite{WEBIDEMICS}.
 This is made difficult by numerous factors including the cryptic nature of tree diseases and resource constraints which may vary
-over time \cite{control-theory, control-theory-application}. The naive strategy can be fine-tuned and optimised in many ways to increase
-efficiency. One scheme involves ranking targets according to the risk they pose in order to prioritise culling \cite{risk-potential-control}.
+over time \cite{control-theory, control-theory-application}. A naive eradication strategy can be fine-tuned and optimised in many ways to increase
+efficiency. One scheme involves ranking host targets according to the risk they pose to prioritise culling \cite{risk-potential-control}.
 Over large-scales, evidence suggests epidemics are most effectively controlled by targeting infected trees either at or ahead of
 the infectious wave-front, as has been shown for sudden oak death in California \cite{large-scale-control}.
 
-Optimal eradication complements enhanced `surveillance' and monitoring strategies, 
-which also seek to optimise resource allocations. Here, surveillance aims to detect infected individuals and disease incidence;
-generally, this requires the collection and analysis of data on botanical epidemics \cite{surveillance-review}.
+Optimal eradication complements enhanced `surveillance and monitoring' strategies, 
+that also seek to optimise resource allocations. Surveillance aims to detect infected individuals and disease incidence,
+generally requiring the collection and analysis of data on botanical epidemics \cite{surveillance-review}.
 Ultimately, surveillance and monitoring comprise the last line of defence after preemptive boarder 
 checks and inspections have failed to prevent the introduction of disease. 
 
@@ -215,7 +216,7 @@ In addition, scientists can engage stakeholders directly (discussed more below) 
 scientific communication. In turn, the public can influence the decisions of policymakers through
 mounting sufficient political pressure \cite{fuller2016public}.
 
-Unfortunately, several blockers inhibit a well-informed, timely and effective response. 
+Unfortunately, several obstacles inhibit a well-informed, timely and effective response. 
 In particular, poor accessibility to scientific research is widely-known to inhibit policy adoption, 
 as disseminating scientific information requires in-depth domain knowledge and technical skill \cite{jones2020modelling}.
 In a bid to make their work more accessible to policymakers and stakeholders, modellers have endeavoured to construct user-friendly interfaces\footnote{
@@ -226,10 +227,10 @@ Recently, PM has become popular with risk and disaster management modelling rese
 Nonetheless, PM approaches are rare in the context of plant disease, as reviewed by \cite{gaydos2019forecasting}.
 In addition to a literature review, \cite{gaydos2019forecasting} held an interactive workshop with stakeholders
 regarding the spread of \textit{P. ramorum} in the United States. The workshop facilitated stakeholder engagement
-with an epidemic model \cite{tonini2017tangible} (reviewed in the preceding Chapter). In particular, the authors reported
-that the stakeholders engaged well with the model and confirmed that the results were consistent with observations in the field. However, and most interestingly, most of the stakeholders with expert knowledge of the landscape remained sceptical of the host distributions accuracy. 
+with an epidemic model \cite{tonini2017tangible}\textemdash reviewed in Chapter \ref{chapter2:litreview}. In particular, the authors reported
+that the stakeholders engaged well with the model and confirmed that the results were consistent with observations in the field. However, and most interestingly, stakeholders with expert knowledge of the landscape remained sceptical of the host distributions accuracy. 
 Such insights are hard to deduce for modellers who generally remain less connected to the actual landscape. 
-As such, \cite{tonini2017tangible} demonstrated a solid and positive motivation to facilitate the collaboration 
+As such, \cite{tonini2017tangible} demonstrated a positive motivation to facilitate the collaboration 
 between plant-health modellers and stakeholders through PM.
 
 An effective response generally relies on widespread adoption of policies among multiple 
@@ -251,13 +252,13 @@ an alternative approach and develop a general-purpose framework to spatially sca
 model (between individual trees) over large areas. The result is an $R_0$-map across GB with closer parallels
 to the emerging field of Infectious Disease Cartography \cite{otieno2021modeling, KRAEMER201619, messina2016mapping}.
 
-Chapter \ref{chapter2:litreview} begins by outlining several requisite modelling themes. First, the review recounts
+Chapter \ref{chapter2:litreview} begins by outlining several requisite modelling themes. First, the review examines
 several seminal works that founded the field of quantitative botanical epidemiology. Following this,
 a suite of small, large and multi-scale spatial epidemic models are reviewed. Additionally,
 the Chapter provides an account of host distribution datasets available in GB. Lastly, a case study of the emerging
 ash dieback epidemic is presented.
 
-Chapter \ref{chapter:SLM} sets the scene with a percolation-based simple lattice model (SLM) of tree
+Chapter \ref{chapter:SLM} sets the scene with a percolation-based simple lattice model (\acrshort{slm}) of tree
 disease spreading through a dense forest \cite{OROZCOFUENTES201912}. The model is compartmentalised
 into an $SIR$ framework and demonstrates a sharp transition threshold above which an epidemic will propagate. 
 Above the threshold of transition, a travelling wave-like behaviour is demonstrated.
@@ -269,7 +270,7 @@ oak abundance over GB \cite{hill.data} to outline a large-scale `toy' model of t
 Primarily, Chapter \ref{chapter:SLM-applications} demonstrates that nearest-neighbour interactions are problematic
 for realistic tree densities, which motivates an improved dispersal model. 
 
-Chapter \ref{ch5:dispersal-model} introduces a generic (non-local) Gaussian dispersal kernel into the epidemic model. 
+Chapter \ref{ch5:dispersal-model} introduces a generic Gaussian dispersal kernel into the epidemic model, denoted as the non-local model (\acrshort{nlm}). 
 Tree disease epidemics are demonstrated to spread at lower, more realistic tree densities across GB; thus, dispersal is shown to overcome 
 the inherent nearest-neighbour limitations witnessed in Chapters \ref{chapter:SLM}-\ref{chapter:SLM-applications}. Disease spread is then examined over a range of dispersal scale parameters and compared to the standard $SIR$ model. Next, a spatially-explicit analytic expression for $R_0$ is derived and compared to a `\textit{contact tracing}' method of calculating $R_0$.
 Both methods of determining the reproductive ratio are shown to demonstrate a threshold at $R_0=1$.
@@ -278,7 +279,7 @@ Chapter \ref{ch:6-adb} develops the generic dispersal model towards a simplified
 model reflecting the life cycle of ash dieback. The model involves four compartments, $SEIR$, that repeat
 annually according to the sexual reproduction of ash dieback. Consequently, a method is presented to compose $R_0$-maps
 across GB using the map of predicted ash abundance given by \cite{hill.data}. Lastly, a connected-component-analysis
-(CCA) algorithm is used to visualise highly clustered regions of $R_0$-values. Examining $R_0$-map clustering as a function
+(\acrshort{cca}) algorithm is used to visualise highly clustered regions of $R_0$-values. Examining $R_0$-map clustering as a function
 of infectivity reveals behaviour akin to a global epidemic phase transition. That is, below a certain infectivity threshold, 
 the pathogen would not be able to invade GB.
 

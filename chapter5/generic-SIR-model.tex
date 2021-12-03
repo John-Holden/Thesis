@@ -3,7 +3,7 @@
 \label{ch5:dispersal-model}
 Previously, we employed a simple lattice model with several limitations. 
 In particular, the percolation-based model relied on local, nearest-neighbour contacts and could not spread at lower, more realistic tree densities. 
-This chapter will generalise the SLM to incorporate non-nearest neighbour interactions by introducing a generic Gaussian dispersal kernel.
+This Chapter will generalise the SLM to incorporate non-nearest neighbour interactions by introducing a generic Gaussian dispersal kernel.
 That is, we will combine dispersal-based interactions within a simplistic $SIR$ framework to construct a non-local model (NLM) of tree disease.
 Following this, model behaviour is examined under various dispersal length scales and fitted against the standard $SIR$ model.
 
@@ -11,7 +11,7 @@ After establishing the non-local dispersal model, a spatially explicit (analytic
 Analytical predictions of $R_0$ are compared against the total tree mortality\textemdash equivalent to the final-sized epidemic.
 Lastly, the expression of $R_0$ is scrutinised against the `actual' number of secondary infections, computed by contact-traced individual tree-to-tree infections.
 The analytic and contact-traced methods of calculating $R_0$ are shown to define a threshold at $R_0=1$.
-The analysis is kept generic, with arbitrary units of time and distance, before incorporating more biological realism in the next chapter. 
+The analysis is kept generic, with arbitrary units of time and distance, before incorporating more biological realism in the next Chapter. 
 
 \section{A small-scale non-local $SIR$ model}
 \label{section:sgm-expo}
@@ -383,7 +383,7 @@ The next section will investigate the suitability of \ref{eq:Appendix_final_expr
     \centering
     \includegraphics[scale=0.475]{chapter5/figures/fig3b-R0-analytic.pdf}
     \caption{Comparisons between the analytical expression for $R_0$, according to equation \ref{eq:Appendix_final_expression1}, and numerical simulations.
-    In panels (a-b), The cumulative sum of secondary infections is ensemble-averaged (50 repeats) over the infectious lifetime of $T=100$ steps.
+    In panels (a-b), The cumulative sum of secondary infections are ensemble-averaged (50 repeats) over the infectious lifetime of $T=100$ steps.
     (a) When the scale of dispersal is smaller ($\ell=35$), a high infectivity (in red) causes $R_0$ to saturate to a maximum over the infectious period.
     For smaller infectivities (blue-green), $R_0$ increases at a constant rate and fails to saturate.
     (b) For a larger dispersal kernel ($\ell=100$) and high infectivity, $R_0$ increases at a more constant rate, 
@@ -561,7 +561,6 @@ whereas Figures (d) and (e) would incur an increased effort to stop the spread.
 In the network representation, optimised control would involve targeting high priority links between nodes;
 this reflects various methods that aim to optimise control by identifying high-risk hosts.
 
-\newpage
 
 \subsection{Contact-traced $R_0$ and tree mortality}
 

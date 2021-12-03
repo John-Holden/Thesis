@@ -3,64 +3,42 @@
 
 \newcommand{\name}{John W. Holden}
 \newcommand{\course}{Doctor of Philosophy}
-\newcommand{\projecttitle}{Modelling Communicative Tree Disease In Great Britain}
+\newcommand{\projecttitle}{Modelling spatio-temporal tree disease epidemics in Great Britain}
 \newcommand{\submissiondate}{September 2020}
 \newcommand{\submissionyear}{2020}
+% \title{Modelling Infectious Tree Disease Epidemics In Great Britain\\
+% \large Submitted in accordance with the requirements for the degree of Doctor of Philosophy}
+% \author{John Holden}
 
-\title{Modelling Infectious Tree Disease Epidemics In Great Britain\\
-\large Submitted in accordance with the requirements for the degree of Doctor of Philosophy}
-\author{John Holden}
 
-\setcounter{tocdepth}{4}
-\setcounter{secnumdepth}{4}
 \begin{document}
 
 \maketitle
 
-
-% 0) abstract, intellectual property and acknowledgements
-\include{preamble/preable}. 
-
+\include{preamble/preable}
 \tableofcontents 
 \listoffigures
 \listoftables
-\gls{alb} \gls{acb} \gls{cca} \gls{com} \gls{slm}  \gls{adb} \gls{opm} \gls{ldd} \gls{nlm}
-\printglossary[title={Abbreviations},type=acronym,style=long]
+ 
+\printglossary[type=\acronymtype, nonumberlist, title={Abbreviations}]
+\printglossary
+
 \newpage
 \setcounter{page}{0}
 \pagenumbering{arabic}
 
-% Uncomment to see individual chapters
-
-% 1)  A introduction to the problem of tree disease
 \include{chapter1/introduction}
-
-% 2) A review of the `interdisciplinary' literature
 \include{chapter2/literature_review}
-
-% % % % 3) The construction of the simple lattice model
 \include{chapter3/slm_basis} 
-
-% % % % 4) Application of the simple lattice model--moving to a realistic host landscape
 \include{chapter4/slm_applications}
-
-% % % 5) Introducing non-local dispersal 
 \include{chapter5/generic-SIR-model}
-
-% % 6) A method of control at the landscape level 
 \include{chapter6/adb-R0-maps}
-
-% % % 7) A method of control at the landscape level 
 \include{chapter7/landscape-level-control}
-
-% % % 8) Final chapter
 \include{chapter8/discussion_concluding_remaks}
-
 \include{appendix/appendix}
 
-% -----------------------------------------------------------------------------
+% ------------------------------------------------
 % Reference list
 \bibliographystyle{apalike}. 
-% \bibliographystyle{acm}
 \bibliography{references}
 \end{document}

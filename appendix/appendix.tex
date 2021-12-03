@@ -155,8 +155,9 @@ as we see from their similarities, a clear correlation exists between them.
 \chapter{The non-local dispersal model}
 \label{section:apendix_A}
 
-\section{An alternate derivation}
+\section{An alternate $R_0$ derivation}
 \label{eq:alternate-R0}
+
 Starting from an un-normalised Gaussian kernel $g(p, q; \ell) = \exp(\frac{p^2-q^2}{2\ell^2})$ and infectivity constant $\beta$, we may define the probability of position $q$ being infected due to an infected tree at $p$ as $Pr(q; p) = \beta g(p, q; \ell)$. The domain has tree density $\rho_0$ at time $t=0$ and trees transition through states: $S\rightarrow I\rightarrow R$, with $I$ lasting for $T$ time-steps. Considering the probability of point $q = (x, y)$ becoming infected on account of an infected tree located at the origin during the first time-step:
 \begin{equation}
     Pr(x, y, t=0) = \beta \rho_0 \exp(-\frac{x^2+y^2}{2\ell^2})
@@ -203,9 +204,8 @@ R_0 & = 2\pi\beta\ell^2\rho_0 \int ^T _0 \big(1 - 2\pi\beta\frac{\ell^2}{L^2} \b
     R_0 = 2\pi\beta\rho_0\ell^2 \frac{(1 - 2/9\beta)^T - 1}{\ln(1-2/9\beta)}
 \end{align*}
 
-\newpage
-
 \section{SIR fitting}
+
 \label{A:sir-fitting}
 \begin{figure}
     \centering
@@ -230,27 +230,25 @@ As the ratio $\alpha=\gamma/\beta$ decreases, a sharper rise in the infections f
 In contrast, a larger value of $\alpha$ defines a smoother curve which attains a lower peak.
 Although equation \ref{eq:SIR-1param1} has clear limitations and descriptive power, it allows a simple one-parameter model to fit the NLM against.
 
-\newpage
 
-\section{Exponentially distributed times}
+\subsection{Exponentially distributed times}
 
-\begin{figure}[h]
+
+\label{a:exponentially-distributed-lt}
+In chapter 5 the NLM was constructed with uniform transitions into the removed compartment,
+where, `uniform' refers to a transition into the $R$ compartment exactly $T$ time-steps after a host becomes infected.
+Arguably, uniform life-time transitions are simple and unrealistic.
+As such, the NLM constructed in Chapter \ref{ch5:dispersal-model} was re-run with exponentially-distributed life-times. 
+Figure \ref{fig:SIR-fitting-expontial} shows the SIR fitting procedure against the exponentially-distributed variant of the NLM. 
+Model behaviour in Figure \ref{fig:SIR-fitting-expontial} looks much the same, although fitting the exponentially-distributed NLM to the SIR model resulted in a closer fit for all panels except (b). 
+Figure \ref{fig:SIR-fitting-expontial}(b) shows a much larger disparity between the NLM and SIR model.
+
+\begin{figure}
     \centering
     \includegraphics[scale=0.4]{chapter5/figures/fig2-sir-fitting-exp.pdf}
     \caption{Caption}
     \label{fig:SIR-fitting-expontial}
 \end{figure}
-
-
-\label{a:exponentially-distributed-lt}
-In chapter 5 the NLM was constructed with uniform transitions into the removed compartment. 
-Here, uniform refers to a transition into the $R$ compartment exactly $T$ time-steps after the host becomes infected.
-Arguably, uniform life-time transitions are simple and unrealistic.
-As such, the NLM constructed in chapter \ref{ch:dispersal-model} was re-run with exponentially-distributed life-times. 
-Figure \ref{fig:SIR-fitting-expontial} shows the SIR fitting procedure against the exponentially-distributed variant of the NLM. 
-Model behaviour in Figure \ref{fig:SIR-fitting-expontial} looks much the same, although fitting the exponentially-distributed NLM to the SIR model resulted in a closer fit for all panels except (b). 
-Figure \ref{fig:SIR-fitting-expontial}(b) shows a much larger disparity between the NLM and SIR model.
-
 
 \newpage
 
@@ -297,6 +295,15 @@ It must be remarked how equation \ref{eq:combined-pr} would incur a significant 
 Moreover, because secondary can be induced under the influence of multiple sources the definition of $R_0$ becomes obscure.  
 Although implementing equation \ref{eq:combined-pr} would be an interesting\textemdash and potentially insightful\textemdash endeavour, the analysis was not undertaken.
 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.60]{chapter5/figures/appendix-implementation.pdf}
+    \caption{Comparing both the approximated and full probability implementation methods reveals little to no differences in the tree mortality, or number of removed trees $R$, over time for different epidemic parameter combinations. All plots show $\rho=0.01$, $L=350$, and were seeded by ten initally infected trees. }
+    \label{fig:my_label}
+\end{figure}
+
+\newpage
+
 \section{Contact-tracing $R_0$}
 \label{A:R0-contact-traced-mortality}
 
@@ -325,7 +332,7 @@ Surprisingly, for later generations the degree of inflexion for $R_0^{(4)}$-$R_0
 \newpage
 
 
-\chapter{Seasonal $SEIR$ model of Ash dieback}
+\chapter{Constructing $R_0$-maps}
 
 \label{section:ga-SEIR-variant}
 
@@ -409,11 +416,10 @@ We will now go on to explore how this has affected choosing the size of the syst
 
 % \subsection{CCA Computation cost}
 
-
 % Cluster multiple labelling techniques are computationally expensive to operate. The com- pletion time of this algorithm is commonly found to be critical in the feasibility of a given algorithm. The algorithm, discussed in more detail in Section 3.2.1, works by assigning a label to an occupied site and attempting to propagate the label to the site’s east and south neighbours [11]. The time taken to perform a full sweep varies dependent on the size of the system, denoted by L, number of clusters and the size of clusters found in the system. Note that the latter two directly depend on the value of p. To demonstrate the effect of changing these two factors (i.e. size and p), the time taken for the foundation code to run has been measured and recorded in Table 3.1. These measurements were obtained using the same machine, as the results are deterministic of the machine used. This provides a realistic representation of how the time scales as the system size, L, is increased. The foundation code consists of the following steps: assigning a matrix size, generating the matrix, and applying the occupation probability p, running the bwconncomp function, creating the labelled cluster matrix and extracting the cluster size information from the output.
 
 
-\chapter{Towards landscape-level control}
+\section{Towards landscape-level control}
 
 \blindtext
 
