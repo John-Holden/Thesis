@@ -326,13 +326,14 @@ and now the probability of $S_x$ becoming infected is:
 Generalising equation \ref{eq:pr-simp} to a system of $N$ infected trees and $M$ susceptible trees, over a single time-step we have:
 \begin{equation} \label{eq-full-pr}
 \begin{split}
-Pr(S_{x1} \rightarrow I_{x1}) & = 1 - \prod_{n=1}^{N}(1 - P_{yn})
-&\vdots\\
+Pr(S_{x1} \rightarrow I_{x1}) & = 1 - \prod_{n=1}^{N}(1 - P_{yn})\\
+&\vdots \\
 Pr(S_{xM} \rightarrow I_{xM}) & = 1 - \prod_{n=1}^{N}(1 - P_{yn})
 \end{split}
 \end{equation}
-where the repeated product is introduced for brevity, and multiples each transition probability $(1 - P_{yn})$. 
-In pseudo-code, equations \ref{eq-full-pr} can be implemented as:
+where the repeated product is introduced for brevity, and multiples each transition probability, i.e $(1 - P_{y1})(1 - P_{y2})  \hdots (1 - P_{yN})$. 
+
+In pseudo-code, equations \ref{eq-full-pr} follow:
 \begin{lstlisting}[style=pythoncode,
     caption = ,
     label = py:rand]
@@ -352,7 +353,7 @@ def run_algorithm(S_tree_arr, I_tree_arr, R_tree_arr, run_times):
                 end
 \end{lstlisting}
 However, upon simulation, it was noted that each individual probability ($P_{y1}...P_{yN}$) is small.
-Otherwise, the degree of epidemic spread becomes unphysical\textemdash consider the limit where one infected tree infects every susceptible in one time-step. 
+Otherwise, the degree of epidemic spread becomes unphysical\textemdash consider the limiting behaviour when one infected tree infects every susceptible in one time-step. 
 In this regime, it was noted that combining all probabilities with the inclusion-exclusion principle, as per the system of equations \ref{eq-full-pr}, was unnecessary
 because small-order corrections (unions $P_{y1} \cap ... \cap P_{yk}$) become trivially small. 
 
@@ -413,12 +414,41 @@ As $\beta^*$ is increased, the number of trees in $S$ decrease rapidly, and runt
 The situation is similar for implementation (B). 
 When $\beta^*$ is high, a larger number of infected trees entails a larger number of computations as we primarily iterate over the infected trees.
 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.425]{appendix/figures/runtime-comp.pdf}
+    \caption{A comparative look at the difference between simulation runtime (in seconds) between both probability implementations.
+    When the number of infected trees is small for low $\beta^*$, the approximated scheme (implementation B) is more efficient and runs quicker. 
+    In contrast, when the number of infected trees is high for large $\beta^*$, full inclusion-exclusion formula (implementation A) becomes more efficient.
+    Overall, the simulation runtime increases with the tree density.
+    }
+    \label{fig:imp-runtime}
+\end{figure}
+
 Given the virtually identical spread between both implementation methods (A) and (B), it is alluring to remark about the possibility of switching between implementation (A) and (B) 
 for lower and more severe epidemic regimes. 
 In this manor, we have the lowest overall runtime and highest computational efficiency. 
 Nevertheless, throughout the thesis, implementation (B) was chosen to be used on account of it being more intuitive to understand, and more efficient for the epidemic regime we are interested in, i.e. around the average density of trees in GB and $R_0 < 10$. 
 
-\newpage
+\subsection{Codebase}
+
+Throughout the course of this thesis, I gravitated heavily toward the software engineering side of the project. 
+As such, a single unified code base can by found at: \nolinkurl{https://github.com/John-Holden/tree_epi_dispersal.git}.
+In the repository, an epidemic simulator comprising both the NLM and the seasonal $SEIR$ model of ADB can be found and downloaded.
+I took the approach of developing a flexible, integrated codebase, where the user defines what model is run based on configuration option.
+In particular, the model configuration is defined by:
+\begin{itemize}
+    \item which compartments $S$, $E$, $I$, or $R$ are to be run
+    \item the domain size $(L_x, L_y)$
+    \item the type of dispersal function: Gaussian/exponential/Inverse power law
+    \item the type of sporulation function: $\phi_0(t) = 1 \ \forall t$ (Ch 5), $\phi_1(t)$, $\phi_2(t)$ (Ch 6,7)
+    \item epidemic parameters, density, infectivity and dispersal $(\rho, \beta, \ell)$
+    \item infection life-times: uniform/exponential dynamics, $T$ steps
+    \item which metrics are to be collected, e.g. time series, $R_0$, tree mortality, spread velocity
+    \item initial and boundary conditions, e.g. end simulation when all infectives die 
+    \item ensemble realisations: iterate a user-defined function $N$ times and store
+    \item whether or not simulations are run on a HPC (Leeds arc3) or the local machine
+\end{itemize}
 
 \section{Contact-tracing $R_0$}
 \label{A:R0-contact-traced-mortality}
