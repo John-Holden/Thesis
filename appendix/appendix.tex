@@ -3,7 +3,13 @@
 
 \section{Propagation algorithm}
 \label{a:propagation}
-Starting from simplicity, the model assumes local transmission between nearest neighbours. Local structure within the network is described by the von Neumann neighbourhood. To demonstrate the algorithm, take a $3 \times 3$  matrix $\mathbb{S}$ representing a small patch of forest, $1's$ represent trees in state $S$ while $0's$ represent insusceptible states $\emptyset$. An and infection matrix $\mathbb{I}$ is defined with an infected matrix element $I_{2,2}=2$. A removed matrix is also given by $\mathbb{R}$. At time $t=0$:
+In Chapter \ref{chapter:SLM}, a percolation-based epidemic model was outlined following previous work \cite{OROZCOFUENTES201912}.
+Starting from simplicity, the model assumes local transmission between nearest neighbours.
+Local structure within the network is described by the von Neumann neighbourhood \cite{toffoli1987cellular}. 
+Consider a small $3 \times 3$ matrix, denoted by $\mathbb{S}$, representing a small patch of forest.
+In the matrix, values of $1$ and $0$ represent susceptible ($S$) and insusceptible ($\emptyset$) states, respectively.
+Similarly, infection and removal matrices, $\mathbb{I}$ and $\mathbb{R}$, track infected and removed tree states.
+A hypothetical system at time $t=0$ is outlined below:
 \begin{equation}
 \mathbb{S}= \left( \begin{array}{ccc}
 0 & 1 & 0\\
@@ -20,12 +26,17 @@ Starting from simplicity, the model assumes local transmission between nearest n
 0 & 0 & 0\\
 0 & 0 & 0 \\
 \end{array} \right)\qquad
+\label{a:sys-matrix-eq}
 \end{equation}
 
-\subsection{Assessing the probability of transition}
+\subsection{Transition probabilities}
 \label{a:probablity-transition}
 
-A centrally infected state in $\mathbb{I}$ can be seen\textemdash when $\mathbb{I}_{i,j} = 2,\ \mathbb{S}_{i,j} = 0$. The algorithm singles out neighbours surrounding the infected tree and generates random numbers $\{ R_{0,1},R_{1,0},R_{3,2}\}$. From this a potential infection matrix $\mathbb{I}^{'}$ is formed:
+An infected tree $\mathbb{I}_{1,1} = 2$ occupies $\mathbb{I}$. 
+Whenever $\mathbb{I}_{i,j} \ge 2$, $\mathbb{S}_{i,j} = 0$, i.e. susceptible and infected states cannot occupy the same lattice location.
+The algorithm locates nearest neighbour (NN) susceptible trees about each infected tree, and then generates random numbers for each NN. 
+In the matrix equations outlined in system \ref{a:sys-matrix-eq}, we generated $\{ R_{0,1},R_{1,0},R_{3,2}\}$. 
+Hence, a `potential' infection matrix $\mathbb{I}^{'}$ is formed:
 
 \begin{equation}
     \mathbb{I}^{'} = \begin{pmatrix}
@@ -35,7 +46,9 @@ A centrally infected state in $\mathbb{I}$ can be seen\textemdash when $\mathbb{
      \end{pmatrix}
 \end{equation}
 
-Each random number is generated uniformly between $[0,1] $. If  $R_{i,j} \leqslant \beta$ the infection jumps to site $(i,j)$. For example, assume $R_{0,1}\leqslant \beta$ and $R_{1,0}, R_{2,1} \geq \beta $, then at time $t=1$ the matrices are updated:
+Each random number is generated between $[0, 1]$ according to a continuous uniform distribution. 
+For a system with infectivity $\beta$, a transition into the infected compartment occurs if $R_{i,j} \leqslant \beta$, following a Bernoulli trial. 
+For example, if $R_{0,1}\leqslant \beta$ and $R_{1,0}, R_{2,1} \geq \beta $, then at time $t=1$ the matrices are updated:
 
 \begin{equation}
     \mathbb{S} = \left( \begin{array}{ccc}
@@ -54,11 +67,29 @@ Each random number is generated uniformly between $[0,1] $. If  $R_{i,j} \leqsla
     0 & 0 & 0\\
     \end{array} \right)\qquad
 \end{equation}
-    
-When $\mathbb{I}_{i,j}=T+1, \mathbb{R}_{i,j} = 1$. The algorithm is repeated over a set time-horizon (typically $t=3000$) and eventually one of the three boundary conditions is met and the simulation ends. In python this is implemented by matrix operations:
+
+Note, for each time-step, the numerical values of infected trees increase by one, i.e $\mathbb{I}_{i,j} += 1$.
+Finally, when the number of time-steps reaches the infectious lifetime ($T$), transitions into the removal matrix occur.
+That is, when $\mathbb{I}_{i,j}=T+1 \rightarrow 0 $ and $ \mathbb{R}_{i,j}=1$. 
+
+Throughout the course of a simulation, the steps listed above are iteratively repeated over a set time-horizon, typically $t=3000$.
+Eventually, one of the three boundary conditions (BCs) is met and the simulation ends:
+\begin{itemize}
+    \item No infected trees are registered in the domain
+    \item Percolation to either lattice edges are detected
+    \item The number of time-steps reach the time-horizon 
+\end{itemize}
+Moreover, at $t=0$, initial conditions (ICs) in the model can vary as:
+\begin{itemize}
+    \item A centrally located `focal' source of infected trees
+    \item A randomly distributed set of infected trees
+    \item $N$ number of infected trees
+\end{itemize}
 
 \begin{lstlisting}[style=pythoncode,
-    caption = An alorithm written in python to compute matrix equations and simulate disease spread. Code can be found in: \textcolor{red}{cite github repo?}.,
+    caption = An algorithm written in Python to compute matrix equations and simulate disease spread. 
+    A GitHub repository contains all the computer code used to generate Chapters \ref{chapter:SLM} and \ref{chapter:SLM-applications}:
+    \nolinkurl{https://github.com/John-Holden/percolation_tree_model.git},
     label = py:rand]
 
 def run(S, I, R, beta, T=10, L=500):
@@ -105,7 +136,6 @@ An alternate method, requiring no ensemble-averaging, would be to formulate a se
 \begin{equation}
        S_i = p;\quad I_i = 0;\quad R_i = (1 - p) 
 \end{equation}{}
-
 Where $p$ is the probability of being occupied by a susceptible tree (\textit{equivalent to tree density}). Now a set of dynamical equations which govern the evolution of fields $S,I,R$ can be outlined by considering the dynamics of the simple lattice model; over a single time-step an infected tree at position $i$ has probability $\beta$ of infecting a healthy nearest neighbour, this is given by $\beta I(t)_i$ i.e. the probability of transmission multiplied by the probability being infected. Considering a healthy tree at position $i$ surrounded by 4 nearest neighbours $j$, where j denotes $j= \pm \Delta x $ or $ j=\pm \Delta y$, we can describe the probability of $S_i$ remaining healthy by: 
 \begin{equation}
     \prod_j (1 - \beta I(t)_{i+j})
@@ -115,7 +145,7 @@ where the repeated product gives us the chance of \textit{not being} infected it
 \begin{equation}
     S_i(t+\Delta t) - S_i(t) =  - S_i(t)\prod_j \Big [1 - \beta I(t)_{i+j} \Big ] 
     \label{eq:s-field-evol}
-\end{equation}{}
+\end{equation}
 From this, the field $S$ can be seen to monotonically decrease. From this point it is easiest to consider the evolution of field $R$. In the simple percolation model transition times where set to $n$ time-steps before an infected tree transitions into the removed compartment, therefore a tree infected at time-step $t-n\Delta t$ will during time-step $t \rightarrow t + \Delta t$. In original simulations in chapter \ref{ch3:two-param-model} the value was held constant at $n = 10$. The change in field $R$ can then be given in terms of field $S$ by:
 \begin{multline}
      R_i(t+\Delta t) - R_i(t)  = -\Big[S_i(t - n\Delta t) - S_i(t-(n+1)\Delta t\Big] = \\
@@ -139,7 +169,7 @@ In comparison to the mortality ratio (as discussed in section \ref{sec:slm-spati
 i.e. southerly regions are most effected and maximum distance increases with the effective density.
 
 Nevertheless, Figure \ref{fig:max-distance-metrix} paints a clearer picture of the extent of disease progression.
-Intuitively, epidemics beginning from effected edge locations in Figures \ref{fig:max-distance-metrix})(a-c) can
+Intuitively, epidemics beginning from effected edge locations in Figures \ref{fig:max-distance-metrix}(a-c) can
 travel further than centrally located epicentres, verified by the more yellow cluster edges.
 Moreover, the same high-variance regions are witnessed through Figure \ref{fig:max-distance-metrix}(d-f).
 Together, the pathogens maximum distance and mortality ratio complement one another, and 
@@ -147,7 +177,7 @@ as we see from their similarities, a clear correlation exists between them.
 
 \begin{figure}
     \centering
-    \includegraphics[scale=0.55]{appendix/figures/A-ch4figure1.pdf}
+    \includegraphics[scale=0.45]{appendix/figures/A-ch4figure1.pdf}
     \caption{Spatial plots showing the pathogens ensemble-averaged maximum distance $d_{max}$ for infectiviy $\beta=0.25$ and density parameters shown.}
     \label{fig:max-distance-metrix}
 \end{figure}
@@ -218,7 +248,7 @@ R_0 & = 2\pi\beta\ell^2\rho_0 \int ^T _0 \big(1 - 2\pi\beta\frac{\ell^2}{L^2} \b
 
 The standard $SIR$ model has no well-known analytic solution, which complicates model fitting.
 As such, a simplified scheme that reduced the $SIR$ model to one parameter was used as a comparative tool to access NLM simulations.
-Previously in chapter \ref{ch:dispersal-model}, details were omitted about the behaviour of equation \ref{eq:SIR-1param1}, i.e.
+Previously in chapter \ref{ch5:dispersal-model}, details were omitted about the behaviour of equation \ref{eq:SIR-1param1}, i.e.
 \[
 I(S) = -S +  N \Big( 1 + \alpha \ln(S / S_0) \Big)
 \]
@@ -233,74 +263,160 @@ Although equation \ref{eq:SIR-1param1} has clear limitations and descriptive pow
 
 \subsection{Exponentially distributed times}
 
-
 \label{a:exponentially-distributed-lt}
-In chapter 5 the NLM was constructed with uniform transitions into the removed compartment,
-where, `uniform' refers to a transition into the $R$ compartment exactly $T$ time-steps after a host becomes infected.
+In Chapter \ref{ch5:dispersal-model}, the NLM was constructed with uniform transitions into the removed compartment.
+Here, `uniform' refers to a transition into the $R$ compartment exactly $T$ time-steps after a host becomes infected.
 Arguably, uniform life-time transitions are simple and unrealistic.
 As such, the NLM constructed in Chapter \ref{ch5:dispersal-model} was re-run with exponentially-distributed life-times. 
 Figure \ref{fig:SIR-fitting-expontial} shows the SIR fitting procedure against the exponentially-distributed variant of the NLM. 
 Model behaviour in Figure \ref{fig:SIR-fitting-expontial} looks much the same, although fitting the exponentially-distributed NLM to the SIR model resulted in a closer fit for all panels except (b). 
-Figure \ref{fig:SIR-fitting-expontial}(b) shows a much larger disparity between the NLM and SIR model.
+Exponential life-time are implicit within the standard $SIR$ framework\textemdash discussed previously in section \ref{sec:SIR-vs-plank}.
+Therefore, it is unsurprising that Figure \ref{fig:SIR-fitting-expontial} generally agrees more with the $SIR$ model, as per equation \ref{eq:SIR-1param1}.
+What is surprising is Figure \ref{fig:SIR-fitting-expontial}(b), showing a much larger disparity. 
+An explanation of the disparity can be put forward by noting that simulations with fixed, uniform transitions with $T$ lifetimes are typically
+more infectious that exponentially-distributed lifetimes with mean $T$. Figure \ref{fig:SIR-fitting-expontial}(b) therefore depict simulations
+with lower epidemic severity than the equivalent panel shown in Chapter \ref{ch5:dispersal-model}, Figure \ref{fig:SIR-fitting}(b).
+As such, the lower-valued epidemic severity compounds the slowly-spreading wave-like regime (small $\ell$, large $L$) shown in Figure \ref{fig:SIR-fitting}(b).
+Consequently, the fitted $SIR$ model shown in red predicts a considerably higher rate of spread.
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.4]{chapter5/figures/fig2-sir-fitting-exp.pdf}
-    \caption{Caption}
+    \caption{Fitting the NLM with exponentially-distributed infectious lifetimes to equation \ref{eq:SIR-1param1}. 
+    The equivalent Figure with `uniform' infectious lifetimes was shown in Figure \ref{fig:SIR-fitting}.
+    }
     \label{fig:SIR-fitting-expontial}
 \end{figure}
 
 \newpage
 
-\section{Combining probabilities in the NLM}
+\section{NLM: probabilistic implementation}
 \label{A:combiniing-probabilities}
 
-As mentioned in section \ref{sec:contract-traced-R0}, probabilities in the NLM are simplistic.
-That is, we consider interactions between infected and susceptible hosts one by one at each time-step.
-In pseudo-code, the essential implementation follows:
-
-\begin{lstlisting}[style=pythoncode,
-    caption = ,
-    label = py:rand]
-
-def run_algorithm():
-    for time_step in range(run_times):  # iterate over time
-        for infected_tree in I_arr:  # iterate over I trees
-            for susceptible_tree in S_arr:  # iterate over S trees
-                Pr(S_x --> I_x ; I_y)
-                ...
-                ...
-                ...
-\end{lstlisting}
-
-although these singular between-tree interactions (handled sequentially) are sufficient to model the spread of disease, it would be interesting to compare against a `multi-interaction' implementation by combining probabilities of the form:
-\begin{equation}
-    Pr(S_x \rightarrow I_{x}; I_{y1}, I_{y2})
-\end{equation}
-where $I_{y1}$ and $I_{y2}$ are two distinct trees and $y1 \neq y2$.
-Now, suppose infection pressure from the two infected trees at location $y1$ and $y2$ simultaneously interact with one susceptible tree at location $x$.
-Over a single time-step the combined probability is then:
+Infection probabilities in the NLM are statistically independent events.
+Suppose that $I_{y1}$ and $I_{y2}$ are two distinct trees (where $y1 \neq y2$), and that one susceptible tree $S_x$ at location $x$ exists in the domain.
+In this case, $S_x$ will experience infection pressure from $I_{y1}$ and $I_{y2}$.
+Assuming that $I_{y1}$ and $I_{y2}$ survive over the time-step $t \rightarrow t + 1$, an infection probability follows the inclusion-exclusion principle:
 \begin{equation}
     Pr(S_x \rightarrow I_{x}; I_{y1}, I_{y2}) = P_{y1} + P_{y2} - \big[ P_{y1} \cap P_{yn} \big] 
 \end{equation}
 where $P_{y1}$ and $P_{y2}$ are the individual probabilities of transition due to $y1$ and $y2$ respectively.
-Now, suppose there are $yN$ infected trees, the combined probability is given by the inclusion-exclusion principle:
+In Chapters 5 and 6, the infection probabilities followed Gaussian and inverse power-law dispersal models.
+Now, suppose there are $yN$ infected trees, the inclusion-exclusion principle is generalised to give the well-known form:
 \begin{equation}
 \label{eq:combined-pr}
      Pr(S_x \rightarrow I_{x}; I_{y1}, I_{y2}...I_{yN}) = \sum_{k=1}^{N} \big(  -1 \big)^{k+1} \Big[ \sum _{1\leq y1 \leq y2 \leq....\leq P_{yk} \leq N} \big| P_{y1}\cap ...\cap P_{yk}  \big|   \Big]
 \end{equation}
+where each union $P_{y1} \cap ... \cap P_{yk}$ adds a small order correction to the individual transition probabilities $P_{y1}, P_{y2},..., P_{yN}$.
+Equation \ref{eq:combined-pr} is complicated, unsightly and computationally hard to simulate.
+Moreover, with equation \ref{eq:combined-pr}, the definition of $R_0$ becomes more obscure because secondary can in principle be induced under the influence of multiple sources.
 
-where each union $P_{y1} \cap ... \cap P_{yk}$ adds a small order correction to the original NLM formulation.
-It must be remarked how equation \ref{eq:combined-pr} would incur a significant computational cost.
-Moreover, because secondary can be induced under the influence of multiple sources the definition of $R_0$ becomes obscure.  
-Although implementing equation \ref{eq:combined-pr} would be an interesting\textemdash and potentially insightful\textemdash endeavour, the analysis was not undertaken.
+Nevertheless, equation \ref{eq:combined-pr} can be significantly simplified. 
+Consider once again the system of two infected trees ($I_{y1}$ and $I_{y2}$) and one susceptible ($S_x$).
+The probability of $S_x$ remaining unaffected is given by:
+\begin{equation}
+    Pr(S_x \rightarrow S_{x}; I_{y1}, I_{y2}) = (1 - P_{y1})(1 -P_{y2})
+\end{equation}
+and now the probability of $S_x$ becoming infected is:
+\begin{equation}
+\label{eq:pr-simp}
+    Pr(S_x \rightarrow S_{x}; I_{y1}, I_{y2}) = 1 - Pr(S_x \rightarrow I_{x}; I_{y1}, I_{y2})
+\end{equation}
+
+Generalising equation \ref{eq:pr-simp} to a system of $N$ infected trees and $M$ susceptible trees, over a single time-step we have:
+\begin{equation} \label{eq-full-pr}
+\begin{split}
+Pr(S_{x1} \rightarrow I_{x1}) & = 1 - \prod_{n=1}^{N}(1 - P_{yn})
+&\vdots\\
+Pr(S_{xM} \rightarrow I_{xM}) & = 1 - \prod_{n=1}^{N}(1 - P_{yn})
+\end{split}
+\end{equation}
+where the repeated product is introduced for brevity, and multiples each transition probability $(1 - P_{yn})$. 
+In pseudo-code, equations \ref{eq-full-pr} can be implemented as:
+\begin{lstlisting}[style=pythoncode,
+    caption = ,
+    label = py:rand]
+                # IMPLEMENTATION (A): Full inclusion-exclusion
+def run_algorithm(S_tree_arr, I_tree_arr, R_tree_arr, run_times):
+    
+    for time_step in range(run_times): # iterate over time-steps
+        for S_i in S_tree_arr:  # iterate over susceptible trees 
+            for I_j in I_tree_arr:
+                # iterate & store individual probabilities
+                Pr(S_i --> I_i; I_j) 
+            # combine all probabilities as in equation B.12
+            Pr(S_i --> I_i; I_1,I_2,..., I_N)
+            update I_tree_arr # updated infected tree arr
+            update R_tree_arr # update removed tree arr
+            if BCDs:
+                end
+\end{lstlisting}
+However, upon simulation, it was noted that each individual probability ($P_{y1}...P_{yN}$) is small.
+Otherwise, the degree of epidemic spread becomes unphysical\textemdash consider the limit where one infected tree infects every susceptible in one time-step. 
+In this regime, it was noted that combining all probabilities with the inclusion-exclusion principle, as per the system of equations \ref{eq-full-pr}, was unnecessary
+because small-order corrections (unions $P_{y1} \cap ... \cap P_{yk}$) become trivially small. 
+
+A simpler, more intuitive implementation that neglects the probability unions can be put forward as:
+\begin{lstlisting}[style=pythoncode,
+    caption = ,
+    label = py:rand]
+                # IMPLEMENTATION (B): Approx inclusion-exclusion
+def run_algorithm(S_tree_arr, I_tree_arr, R_tree_arr, run_times):
+    
+    for time_step in range(run_times): # iterate over time-steps
+        for I_i in I_tree_arr:  # iterate over infected trees 
+            for S_j in S_tree_arr:
+                # compute individual probabilities
+                Pr(S_j --> I_j; I_i) 
+                update I_tree_arr # updated infected tree arr
+                update R_tree_arr # update removed tree arr
+                if BCDs:
+                    end
+\end{lstlisting}
+here, we iterate over \textit{infected} trees rather than susceptible trees. 
+In this scheme, individual probabilities between infected and susceptible trees are computed sequentially.
+Henceforth, both schemes are denoted as `implementation' (A) and (B), i.e. full and approximated inclusion-exclusion formulas respectively.
+
+\subsection{Contrasting implementations: epidemic spread}
+
+Implementations (A) and (B) are compared in Figure \ref{fig:imp-comp}. 
+Plots in Figure \ref{fig:imp-comp} show the number of removed trees in $R$, or tree mortality, for two values of dispersal $\ell=25$ and $\ell=50$ and three values of infectivity.
+In each panel, $25$ ensemble realisations were computed, and both tree density and domain size are fixed to $\rho=0.01$, $L=350$, respectively.
+Overall, both implementations give rise to the same epidemic, illustrated by the similarity between orange and blue plots.
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.60]{chapter5/figures/appendix-implementation.pdf}
     \caption{Comparing both the approximated and full probability implementation methods reveals little to no differences in the tree mortality, or number of removed trees $R$, over time for different epidemic parameter combinations. All plots show $\rho=0.01$, $L=350$, and were seeded by ten initally infected trees. }
-    \label{fig:my_label}
+    \label{fig:imp-comp}
 \end{figure}
+
+Two values of dispersal were contrasted, motivated by the idea that for a larger dispersal value, the unions ($P_{y1}...P_{yN}$) might be larger as trees can interact further apart. 
+Although, no divergence can be seen between $\ell$ values in Figure \ref{fig:imp-comp}, except for a slightly more infectious system when $\ell=50$\textemdash consistent with the results shown in Figure \ref{fig:R0-analytic-vs-sims}(c).
+Indeed, even highly infectious epidemic systems with $\beta^*=25$ and $\beta^*=100$ ($10 \gtrapprox R_0 \gtrapprox 100$) the spread of disease remains the same. 
+Simulations therefore indicate that for physical epidemic regimes, both implementations are virtually identical. 
+At some parameter values, neglecting the unions $P_{y1} \cap ... \cap P_{yk}$ would undoubtedly deviate from the full inclusion-exclusion formula. 
+However, from the investigation of this thesis, we have not encountered a realistic epidemic regime were the approximation becomes inaccurate.
+
+\subsection{Contrasting implementations: computational cost}
+
+Despite epidemic simulations remaining the same, a large difference was noted in the computational cost (and runtime) between both implementations.
+Figure \ref{fig:imp-runtime} contrasts the computer runtime (in seconds) over a range of infectivity parameters and two tree densities.
+Both panels (a) and (b) depict a system with $\ell=50$ and $L=500$ over $10$ ensemble realisations. 
+Interestingly, the full inclusion-exclusion formula, as per implementation (A), is more efficient when $\beta^*$ is large and the number of infected trees is high.
+Whereas, the approximated inclusion-exclusion formula, as per implementation (B), is more efficient when $\beta^*$ is low and the number of infected trees is small.
+
+The trends in Figure \ref{fig:imp-runtime} can be understood by realising that when infectivity is high, the number of infected trees grows quickly. 
+A large number of computations arise in implementation (A) for lower values of $\beta^*$, as we iterate through a large number susceptible trees.
+Consequently, the runtime is large, particularly when the infection spreads slowly and the number of trees in $S$ remains relatively large throughout the simulation.
+As $\beta^*$ is increased, the number of trees in $S$ decrease rapidly, and runtime decreases accordingly. 
+The situation is similar for implementation (B). 
+When $\beta^*$ is high, a larger number of infected trees entails a larger number of computations as we primarily iterate over the infected trees.
+
+Given the virtually identical spread between both implementation methods (A) and (B), it is alluring to remark about the possibility of switching between implementation (A) and (B) 
+for lower and more severe epidemic regimes. 
+In this manor, we have the lowest overall runtime and highest computational efficiency. 
+Nevertheless, throughout the thesis, implementation (B) was chosen to be used on account of it being more intuitive to understand, and more efficient for the epidemic regime we are interested in, i.e. around the average density of trees in GB and $R_0 < 10$. 
 
 \newpage
 
@@ -315,19 +431,19 @@ Although implementing equation \ref{eq:combined-pr} would be an interesting\text
     \label{fig:R0-contact-vs-morality-A}
 \end{figure}
 
-In Figure \ref{fig:R0-contact-vs-morality-A}(a), we invert the plot (shown in chapter \ref{ch:dispersal-model} Figure \ref{fig:contact-trace-vs-mortality}) and show the range of first generation reproduction ratios $R_0^{(i1)}$ against the ensemble-averaged tree mortality.
+In Figure \ref{fig:R0-contact-vs-morality-A}(a), we invert the plot (shown in Figure \ref{fig:contact-trace-vs-mortality}) and show the range of first generation reproduction ratios $R_0^{(i1)}$ against the ensemble-averaged tree mortality.
 Inverting the plot gives information about the spread of $R_0^{(1)}$;
 as we can see, low values of infectiviy produce a skewed distribution which becomes more centered as infectivity increases.
 A threshold can be seen around $R_0^{(1)}=1$, although a number of simulations can produce a low-valued $R_0^{(1)}$ for any value of infectivity due to initial extinction events.
 
-In chapter \ref{ch:dispersal-model} both the contact and analytic values of $R_0$ were computed/observed for a single infectious tree at the domain center.
-As elaborated in chapter \ref{ch:dispersal-model}, initial stochastic forces had the tendency to reduce the chance of epidemic by causing early extinction events\textemdash thereby reducing the mean tree mortality.
+In Chapter \ref{ch5:dispersal-model} both the contact and analytic values of $R_0$ were computed/observed for a single infectious tree at the domain center.
+As elaborated in chapter \ref{ch5:dispersal-model}, initial stochastic forces had the tendency to reduce the chance of epidemic by causing early extinction events\textemdash thereby reducing the mean tree mortality.
 However, a number of initial conditions are possible.
 As such, the plot of Figure \ref{fig:contact-trace-vs-mortality} was re-run with $10$ infectious trees in the domain center at $t=0$ to test how initial stochasticity in the system changes, shown by Figure \ref{fig:R0-contact-vs-morality-A}(b).
 
 As expected, increasing the number of infected trees at $t=0$ reduces stochastic and early extinction events;
 this is demonstrated by noting that Figure \ref{fig:R0-contact-vs-morality-A}(b) has a smoother ensemble mean, and no instances of zero mortality for highly infectious epidemics (c.f. the bottom right hand side of Figure \ref{fig:contact-trace-vs-mortality} where multiple observations can be seen of zero tree mortality for high $\beta^*$).
-Surprisingly, for later generations the degree of inflexion for $R_0^{(4)}$-$R_0^{(5)}$ is reduced at high $\beta^*$ in comparison to Figure \ref{fig:contact-trace-vs-mortality},
+Surprisingly, for later generations the degree of inflexion for $R_0^{(4)}$-$R_0^{(5)}$ is reduced at high $\beta^*$ in comparison to Figure \ref{fig:contact-trace-vs-mortality}.
 
 \newpage
 
