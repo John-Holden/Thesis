@@ -111,7 +111,7 @@ where $\mathrm{max}\big(R_0(i, j)\big)$ is the highest value of $R_0$ in $\mathb
     \label{fig:R0-threshold-function}
 \end{figure}
 
-Figure \ref{fig:R0-threshold-function} shows the how the function $\Phi(\xi)$ allows the identification of high priority spatial locations.
+Figure \ref{fig:R0-threshold-function} shows how the function $\Phi(\xi)$ allows the identification of high priority spatial locations.
 In Figure \ref{fig:R0-threshold-function}(a) we begin with a target-cluster, $\mathbf{C}$, shown in blue;
 $\mathbf{C}$ is the largest cluster detected in an arbitrary $R_0$-map for the model $\phi_1$-ga and infectivity $\beta^*=450$ (as described previously in Chapter \ref{ch:6-adb}).
 Applying the threshold function $\Phi(\xi=1)$ recovers $\mathbf{C}$ entirely, as all patches in $\mathbf{C}$ are over the threshold.
@@ -126,7 +126,7 @@ these complexities are taken into account by the algorithm.}
  (e.g. $\mathbf{C_1}$ and $\mathbf{C_2}$) suddenly connect when certain critical links become non-zero\textemdash
 analogous to the formation of a spanning cluster opening up in a percolation. 
 Figure \ref{fig:R0-threshold-function}(d) depicts a scenario with a number of disconnected sub-clusters at $\xi=1.19$ that merge together at $\xi=1.15$.
-The well-known `binary dilation' operator \cite{liang1989erosion, 23111, nachtegael2001connections} was used to detect all patches that become non-zero and bridge sub-clusters, as elaborated in Appendix \ref{a:CCA}.
+The `binary dilation' operator \cite{liang1989erosion, 23111, nachtegael2001connections} was used to detect all the patches which become non-zero and bridge sub-clusters, as elaborated in Appendix \ref{sec:a-binary-dialator}.
 Henceforth, `connecting patches' refer to patches that connect sub-clusters in a discontinuity step.
 
 When $\mathbf{C_1}$ and $\mathbf{C_2}$ abruptly merge to form the basis of $\mathbf{C}$, a significant discontinuous jump in cluster size is detected. 
@@ -249,11 +249,11 @@ Figure \ref{fig:payoff-efficiency}(a) therefore indicates that this strategy of 
 
 For exceptionally high values of $\beta^*$, a small number of control scenarios record high-valued payoff ratios, plotted in the shaded region Figure \ref{fig:payoff-efficiency}(a);
 this arises on account of efficient edge-location control that saves vast swathes of the host population with a low number of host removals.
-Arguably, this represents a limitation of the payoff ratio, as we've defined in this Chapter, because in reality edge-location control is highly idealistic and unlikely to be realised in nature.
+Arguably, this represents a limitation of the payoff ratio, as we've defined in this Chapter, because in reality edge-location control is highly idealistic and unlikely to be realised.
 
-Interestingly, Figure \ref{fig:payoff-efficiency}(a) suggests that regional epidemic containment is most efficient over a specific parameter regime,
+Interestingly, Figure \ref{fig:payoff-efficiency}(a) indicates that regional epidemic containment is most efficient over a specific parameter regime,
 since the highest payoff scenarios occur in the interval $\beta^* \in [400, 600]$.
-Although, these are preliminary indications. 
+Nonetheless, these are preliminary indications. 
 As section \ref{sec:gaussian-r0-clustering} demonstrated, nearest-neighbour structuring elements do not scale with changes landscape-level resolution.
 Given that Figure \ref{fig:payoff-efficiency}(a) is based on $\phi_1$-ga at the resolution $5\mathrm{km} \times 5\mathrm{km}$, the results presented by Figure \ref{fig:payoff-efficiency}(a)
 are likely to change if containment scenarios are computed with smaller patch sizes.
@@ -356,7 +356,7 @@ in such a scheme, we may ultimately question the choice of CCA due to its binary
 \begin{figure}
     \centering
     \includegraphics[scale=0.35]{chapter7/figures/figure5-future-reserach.pdf}
-    \caption{A diagram illustrating potential research avenues to improve understanding of the framework and control strategy. 
+    \caption{A diagram illustrating potential research avenues to improve framework and better evaulate the control strategy. 
     (a) Examining the transmission probability between a source and target patch as a function of distance $r$ and infectivity $\beta$. 
     (b) Understanding the degree to which control of an intermediary patch ($\rho_{control}$) can disrupt dispersal between a source and target patch.}
     \label{fig:future-research}
@@ -375,7 +375,7 @@ A similar on-the-ground experiment was conducted by \cite{https://doi.org/10.111
 who accessed the prevalence of collar canker and rachis symptoms in neighbouring ash. 
 The authors found that the influence of ADB decayed exponentially up to $200-300\mathrm{m}$ away from a high-density source.
 
-Although inverse power laws are more likely to describe the spread of ADB, contrasting the transmission probability between Gaussian and power-law dispersal models for different levels of $\beta$ could prove insightful; in particular, this examination could provide two length-scales, above which transmission patch-to-patch is unlikely.  Such insights could help understand the disease spread between infected ash stands and help bolster the knowledge of forest managers, especially when constructing new stands.
+Although inverse power laws are more likely to describe the spread of ADB, contrasting the transmission probability between Gaussian and power-law dispersal models for different levels of $\beta$ could prove insightful. In particular, this examination could provide two length-scales, above which transmission patch-to-patch is unlikely.  Such insights could help understand the disease spread between infected ash stands and help bolster the knowledge of forest managers, especially when constructing new stands.
 
 If the source patch reflects on-the-ground observations of infected areas, we can speculate about constructing a `transmission probability' map in GB. In theory, an ensemble average calculating the transmission probability as a function of distance $r$, infectivity $\beta$ and target/source densities could be projected onto the map of predicted ash abundance.
 Then, we could aim to construct a probability map depicting which neighbouring regions are likely to become infected. An accurate and reliable probability map could provide immense value to rapid-response control initiatives by helping direct the allocation of resources in the early phases of an invasion. 

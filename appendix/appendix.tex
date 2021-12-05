@@ -294,22 +294,22 @@ Consequently, the fitted $SIR$ model shown in red predicts a considerably higher
 \label{A:combiniing-probabilities}
 
 Infection probabilities in the NLM are statistically independent events.
-Suppose that $I_{y1}$ and $I_{y2}$ are two distinct trees (where $y1 \neq y2$), and that one susceptible tree $S_x$ at location $x$ exists in the domain.
+Suppose that $I_{y1}$ and $I_{y2}$ are two distinct infected trees (where $y1 \neq y2$), and that one susceptible tree $S_x$ at location $x$ exists in the domain.
 In this case, $S_x$ will experience infection pressure from $I_{y1}$ and $I_{y2}$.
 Assuming that $I_{y1}$ and $I_{y2}$ survive over the time-step $t \rightarrow t + 1$, an infection probability follows the inclusion-exclusion principle:
 \begin{equation}
     Pr(S_x \rightarrow I_{x}; I_{y1}, I_{y2}) = P_{y1} + P_{y2} - \big[ P_{y1} \cap P_{yn} \big] 
 \end{equation}
-where $P_{y1}$ and $P_{y2}$ are the individual probabilities of transition due to $y1$ and $y2$ respectively.
-In Chapters 5 and 6, the infection probabilities followed Gaussian and inverse power-law dispersal models.
+where $P_{y1}$ and $P_{y2}$ are the individual probabilities of transition due to $I_{y1}$ and $I_{y2}$ respectively.
+In Chapters 5 and 6, these infection probabilities followed Gaussian and inverse power-law dispersal models.
 Now, suppose there are $yN$ infected trees, the inclusion-exclusion principle is generalised to give the well-known form:
 \begin{equation}
 \label{eq:combined-pr}
      Pr(S_x \rightarrow I_{x}; I_{y1}, I_{y2}...I_{yN}) = \sum_{k=1}^{N} \big(  -1 \big)^{k+1} \Big[ \sum _{1\leq y1 \leq y2 \leq....\leq P_{yk} \leq N} \big| P_{y1}\cap ...\cap P_{yk}  \big|   \Big]
 \end{equation}
-where each union $P_{y1} \cap ... \cap P_{yk}$ adds a small order correction to the individual transition probabilities $P_{y1}, P_{y2},..., P_{yN}$.
+where each intersection $P_{y1} \cap ... \cap P_{yk}$ adds a small order correction to the individual transition probabilities $P_{y1}, P_{y2},..., P_{yN}$.
 Equation \ref{eq:combined-pr} is complicated, unsightly and computationally hard to simulate.
-Moreover, with equation \ref{eq:combined-pr}, the definition of $R_0$ becomes more obscure because secondary can in principle be induced under the influence of multiple sources.
+Moreover, the definition of $R_0$ becomes more obscure with equation \ref{eq:combined-pr} because secondary can in principle be induced under the influence of multiple sources.
 
 Nevertheless, equation \ref{eq:combined-pr} can be significantly simplified. 
 Consider once again the system of two infected trees ($I_{y1}$ and $I_{y2}$) and one susceptible ($S_x$).
@@ -320,7 +320,7 @@ The probability of $S_x$ remaining unaffected is given by:
 and now the probability of $S_x$ becoming infected is:
 \begin{equation}
 \label{eq:pr-simp}
-    Pr(S_x \rightarrow S_{x}; I_{y1}, I_{y2}) = 1 - Pr(S_x \rightarrow I_{x}; I_{y1}, I_{y2})
+    Pr(S_x \rightarrow I_{x}; I_{y1}, I_{y2}) = 1 - Pr(S_x \rightarrow I_{x}; I_{y1}, I_{y2})
 \end{equation}
 
 Generalising equation \ref{eq:pr-simp} to a system of $N$ infected trees and $M$ susceptible trees, over a single time-step we have:
@@ -353,11 +353,11 @@ def run_algorithm(S_tree_arr, I_tree_arr, R_tree_arr, run_times):
                 end
 \end{lstlisting}
 However, upon simulation, it was noted that each individual probability ($P_{y1}...P_{yN}$) is small.
-Otherwise, the degree of epidemic spread becomes unphysical\textemdash consider the limiting behaviour when one infected tree infects every susceptible in one time-step. 
-In this regime, it was noted that combining all probabilities with the inclusion-exclusion principle, as per the system of equations \ref{eq-full-pr}, was unnecessary
-because small-order corrections (unions $P_{y1} \cap ... \cap P_{yk}$) become trivially small. 
+Otherwise, the degree of epidemic spread becomes unphysical\textemdash consider the limiting behaviour when a single infected tree infects every susceptible in one time-step. 
+For the epidemic parameters of interest, it was noted that combining all probabilities with the inclusion-exclusion principle (as per the system of equations \ref{eq-full-pr}) was unnecessary
+because small-order corrections (intersection $P_{y1} \cap ... \cap P_{yk}$) become trivially small. 
 
-A simpler, more intuitive implementation that neglects the probability unions can be put forward as:
+A simpler, more intuitive implementation that neglects the probability intersections can be put forward as:
 \begin{lstlisting}[style=pythoncode,
     caption = ,
     label = py:rand]
@@ -392,12 +392,13 @@ Overall, both implementations give rise to the same epidemic, illustrated by the
     \label{fig:imp-comp}
 \end{figure}
 
-Two values of dispersal were contrasted, motivated by the idea that for a larger dispersal value, the unions ($P_{y1}...P_{yN}$) might be larger as trees can interact further apart. 
+Two values of dispersal were contrasted, motivated by the idea that for a larger dispersal value, the intersections of ($P_{y1}...P_{yN}$) might be larger as trees can interact further apart.
 Although, no divergence can be seen between $\ell$ values in Figure \ref{fig:imp-comp}, except for a slightly more infectious system when $\ell=50$\textemdash consistent with the results shown in Figure \ref{fig:R0-analytic-vs-sims}(c).
-Indeed, even highly infectious epidemic systems with $\beta^*=25$ and $\beta^*=100$ ($10 \gtrapprox R_0 \gtrapprox 100$) the spread of disease remains the same. 
+Indeed, even highly infectious epidemic systems with $\beta^*=25$ and $\beta^*=100$ ($10 \lessapprox R_0 \lessapprox 100$) the spread of disease remains the same. 
 Simulations therefore indicate that for physical epidemic regimes, both implementations are virtually identical. 
-At some parameter values, neglecting the unions $P_{y1} \cap ... \cap P_{yk}$ would undoubtedly deviate from the full inclusion-exclusion formula. 
-However, from the investigation of this thesis, we have not encountered a realistic epidemic regime were the approximation becomes inaccurate.
+At some parameter values, neglecting the intersections $P_{y1} \cap ... \cap P_{yk}$ would undoubtedly deviate from the full inclusion-exclusion formula. 
+However, we have not encountered a realistic epidemic regime were the approximation becomes inaccurate 
+throughout this thesis.
 
 \subsection{Contrasting implementations: computational cost}
 
@@ -425,15 +426,13 @@ When $\beta^*$ is high, a larger number of infected trees entails a larger numbe
     \label{fig:imp-runtime}
 \end{figure}
 
-Given the virtually identical spread between both implementation methods (A) and (B), it is alluring to remark about the possibility of switching between implementation (A) and (B) 
-for lower and more severe epidemic regimes. 
-In this manor, we have the lowest overall runtime and highest computational efficiency. 
-Nevertheless, throughout the thesis, implementation (B) was chosen to be used on account of it being more intuitive to understand, and more efficient for the epidemic regime we are interested in, i.e. around the average density of trees in GB and $R_0 < 10$. 
+Given the virtually identical spread between both implementation methods (A) and (B), it is alluring to remark about the possibility of switching between implementation (A) for lower and (B) for severe epidemic regimes, as this has the lowest overall runtime and highest computational efficiency. 
+Nevertheless, implementation (B) was chosen throughout the thesis because it is more intuitive and efficient for the epidemic regime we are interested in, typically around the average density of trees in GB and $R_0 < 10$.
 
 \subsection{Codebase}
 
-Throughout the course of this thesis, I gravitated heavily toward the software engineering side of the project. 
-As such, a single unified code base can by found at: \nolinkurl{https://github.com/John-Holden/tree_epi_dispersal.git}.
+Throughout this thesis, I gravitated heavily toward the software engineering side of the project. 
+As such, a single unified codebase can by found at: \nolinkurl{https://github.com/John-Holden/tree_epi_dispersal.git}.
 In the repository, an epidemic simulator comprising both the NLM and the seasonal $SEIR$ model of ADB can be found and downloaded.
 I took the approach of developing a flexible, integrated codebase, where the user defines what model is run based on configuration option.
 In particular, the model configuration is defined by:
@@ -465,45 +464,29 @@ In Figure \ref{fig:R0-contact-vs-morality-A}(a), we invert the plot (shown in Fi
 Inverting the plot gives information about the spread of $R_0^{(1)}$;
 as we can see, low values of infectiviy produce a skewed distribution which becomes more centered as infectivity increases.
 A threshold can be seen around $R_0^{(1)}=1$, although a number of simulations can produce a low-valued $R_0^{(1)}$ for any value of infectivity due to initial extinction events.
-
 In Chapter \ref{ch5:dispersal-model} both the contact and analytic values of $R_0$ were computed/observed for a single infectious tree at the domain center.
 As elaborated in chapter \ref{ch5:dispersal-model}, initial stochastic forces had the tendency to reduce the chance of epidemic by causing early extinction events\textemdash thereby reducing the mean tree mortality.
 However, a number of initial conditions are possible.
 As such, the plot of Figure \ref{fig:contact-trace-vs-mortality} was re-run with $10$ infectious trees in the domain center at $t=0$ to test how initial stochasticity in the system changes, shown by Figure \ref{fig:R0-contact-vs-morality-A}(b).
-
 As expected, increasing the number of infected trees at $t=0$ reduces stochastic and early extinction events;
 this is demonstrated by noting that Figure \ref{fig:R0-contact-vs-morality-A}(b) has a smoother ensemble mean, and no instances of zero mortality for highly infectious epidemics (c.f. the bottom right hand side of Figure \ref{fig:contact-trace-vs-mortality} where multiple observations can be seen of zero tree mortality for high $\beta^*$).
 Surprisingly, for later generations the degree of inflexion for $R_0^{(4)}$-$R_0^{(5)}$ is reduced at high $\beta^*$ in comparison to Figure \ref{fig:contact-trace-vs-mortality}.
 
 \newpage
 
-
-\chapter{Constructing $R_0$-maps}
+\chapter{Constructing $R_0$-maps and landscape control}
 
 \label{section:ga-SEIR-variant}
 
 \section{Connected component analysis}
 \label{a:CCA}
 
-As discussed earlier, identifying the different clusters is a key part of the analysing the systems’ behaviour, 
-allowing further analysis of a variety of properties to take place. 
-In order to distinguish between different clusters, a cluster multiple labelling algorithm can be used. 
-Within Python this has been encapsulated by the in-built labelomp function. 
-The functionality of lable requires two main pieces of information, the object/image to be analysed and the type of connectivity used, which in this case is 4-connectedness
-The object/image to be analysed needs to be in the form of a binary matrix. 
-This requirement is immediately fulfilled here through the implementation of the occupation probability, p, which identifies which sites are occupied and unoccupied.
-However this is not always the case. 
-Through this, a binary matrix is produced with the occupied sites being represented by a 1 and unoccupied represented by a 0. 
-Having established this, the cluster multiple labelling algorithm can be performed.
-
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.55]{appendix/figures/CCA-Flow.pdf}
-    \caption{Flowchart describing the cluster labelling algorithm.}
-    \label{fig:my_label}
-\end{figure}
-
-\newpage
+A cluster labelling algorithm was employed to identify and distinguish different clusters of susceptible ($R_0 > 1$) patches in GB.
+In Python, the function `label' (in the SciPy library) can be used to identify and label different connected clusters.
+Label requires two pieces of information, the object/image to be analysed and the type of connectivity.
+Here, we use a 4-connectedness structuring element comprising either Von Neumann or Moore neighbourhoods.
+The object/image needs to be in the form of a binary matrix to be analysed;
+this requirement fulfilled through the (Bernoulli trial) tree density implementation, composed of either occupied (1) and unoccupied (0) tree states.
 
 The label function performs the following steps to find the connected sites within the binary matrix:
 \begin{enumerate}
@@ -512,48 +495,53 @@ The label function performs the following steps to find the connected sites with
     \item Repeat steps 1 and 2 until all sites are labelled.
 \end{enumerate}
 
-The algorithm then produces a structure which contains details on the type of connectivity used, 
-the size of the image that has been analysed, the number of clusters found within the object (i.e. system) and the size of each cluster. 
-Using this information, a new matrix can be assigned to be the matrix containing labelled clusters and a new variable can detail the cluster sizes. 
-The output of this is a symbolic image showing each cluster labelled with a unique integer number. 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.55]{appendix/figures/CCA-Flow.pdf}
+    \caption{Flowchart describing the cluster labelling algorithm.}
+    \label{fig:my_label}
+\end{figure}
+
+The algorithm returns a new structure reflecting the structuring element, 
+the image dimension, the number of distinct clusters found, and the size of each cluster. 
+Hence, a new matrix with labelled clusters is formed, along with a new variable detailing the cluster sizes. 
+The net result is a new image showing each cluster labelled by a unique integer. 
 Through this, all of the sites contained within this cluster have the same unique integer label.
 
-The algorithm is performed column by column and starts the sweep from the top left-most column. 
-There are two preliminary variables that are created to store the number of clusters in the system and the size of each cluster found. 
-Both of these are displayed in the structure that is outputted by label. 
-These variables are two one-dimensional arrays, denoted here by Cs and Cl which represent the cluster sizes and the cluster numbers respectively. 
+First, the algorithm starts the sweep from the top left-most column then iteratively repeats column-by-column. 
+Two preliminary variables are created to store: A) the number of clusters in the system and B) the size of each cluster found. 
+Both variables are displayed in the output, as separate one-dimensional arrays, denoted by $C_s$ and $C_l$ representing the cluster sizes and the cluster numbers respectively. 
 Using these two variables and the occupancy of sites, the methodology of the algorithm is described in the flowchart shown in Figure 3.1.
 
-$\mathbf{C_s}$ and $\mathbf{C_l}$ are an integral part of the labelling process but are used in fundamentally different ways.
-$\mathbf{C_l}$ is used to label each occupied site using the following method:
-
+Both $\mathbf{C_s}$ and $\mathbf{C_l}$ are an essential part of the process, though they are used in fundamentally different ways.
+That is, $\mathbf{C_l}$ is used to label each occupied site using the following method:
 \begin{itemize}
-    \item If both sites to the north and west of the occupied site i are unoccupied, 
-    i.e. it has an entry of 0, then site i is given the current index of $\mathbf{C_l}$ . 
-    This index is set to 1 at the beginning of the algorithm and is increased upon finding a new cluster.
-    \item If the site to the north OR the west of the occupied site i are occupied, i.e. 
-    it doesn’t have an entry of 0, the site i is assigned the label of the occupied site.
-    \item If both sites to the north and west of the occupied site i are occupied, then site i and the site to north of site 
-    i are both assigned the label of the site to the west of site i.
+    \item An index is set to $1$ at the beginning of the algorithm\textemdash and increases by 1 upon finding a new cluster.
+    \item If both sites north and west of an occupied site $i$ are unoccupied, site $i$ is given the current index of $\mathbf{C_l}$.
+    \item If the site to the north OR the west of the occupied site i are occupied, the site $i$ is assigned the label of the occupied site.
+    \item If both sites to the north and west of the occupied site i are occupied, then site $i$ and the site to north of site 
+    $i$ are both assigned the label of the site to the west of site $i$.
 \end{itemize}
 
-Through the use of $\mathbf{C_l}$ , the label $j$ $(j = 1,2,3,...)$ of each site can be found through satisfying $\mathbf{C_l}(j) = j$ 
-The label for each site i that will be stored in $\mathbf{C_l}$ is identified using the following argument. 
-First, let the original entry of site $(i - 1)$ be j1 and the label assigned to site $(i − 1)$ be $j_2$. 
-Then for site $i$, the following values can be assigned: $\mathbf{C_l}(j1) = j_2 and \mathbf{C_l}(j2) = j_2$.
-Hence, resulting in $j_2$ being stored as the label for site $i$. Having established the uses of $\mathbf{C_l}$, the uses of $\mathbf{C_s}$ will now be explored.
+From $\mathbf{C_l}$, the label $j$ $(j = 1,2,3,...)$ of each site can be found through satisfying $\mathbf{C_l}(j) = j$.
+The label for each site i that will be stored in $\mathbf{C_l}$ is identified using the following argument:
+first, let the original entry of site $(i - 1)$ be $j_1$ and the label assigned to site $(i − 1)$ be $j_2$. 
+Then, for site $i$, the following values can be assigned: $\mathbf{C_l}(j1) = j_2 and \mathbf{C_l}(j2) = j_2$, 
+resulting in $j_2$ being stored as the label for site $i$. 
+Having established the notion of  $\mathbf{C_l}$, the uses of $\mathbf{C_s}$ will now be explored.
 
-$\mathbf{C_s}$ is used to store the different cluster sizes. In order to do this, whenever an occupied site is assigned a label, 
-the corresponding entry of Cs is increased by one. In the case where both the sites to the north and west of site $i$ are occupied 
-but have different labels, it is necessary to merge the two clusters together and ensure all sites have identical labels. 
-To do this, the size of the cluster that has the same label as the entry of the site to the north of $i$, is
-added to the size of the cluster that has the same label as the site to the west of $i$. The size of the cluster corresponding to the site
-north of $i$ is then zeroed out. Repeating this method allows the algorithm to perform a complete sweep. 
+The parameter $\mathbf{C_s}$ is used to store the different cluster sizes. 
+Whenever an occupied site is assigned a label, 
+the corresponding entry of $C_s$ is increased by one. 
+When both the sites to the north and west of site $i$ are occupied but have different labels, 
+it is necessary to merge the two clusters together and ensure all sites have identical labels. 
+The cluster size that has the same label as the entry of the site to the north of $i$ is added to the size of the cluster that has the same label as the site to the west of $i$. 
+The size of the cluster corresponding to the site north of $i$ is then zeroed out. 
+Repeating this method allows the algorithm to perform a complete sweep. 
 This provides an accurate labelling of all occupied sites and the size of all the clusters too. Due to this, only one sweep of the
 algorithm is necessary \cite{hoshen1976percolation}.
 
-Using the label function creates an efficient way of labelling multiple clusters relatively quickly. 
-An example of the labelled cluster output for p = 0.5 is shown in \textcolor{red}{Figure 3.2}. 
+Using the label function creates an efficient way of labelling multiple clusters relatively quickly.
 The output of the algorithm produces easily distinguishable clusters whilst providing data that can be analysed further in a variety of ways. 
 This demonstrates the importance of a cluster multiple labelling algorithm (or connected component labelling technique) within many applications, 
 be this in percolation theory or other areas of research. 
@@ -564,20 +552,65 @@ We will now go on to explore how this has affected choosing the size of the syst
 
 % Cluster multiple labelling techniques are computationally expensive to operate. The com- pletion time of this algorithm is commonly found to be critical in the feasibility of a given algorithm. The algorithm, discussed in more detail in Section 3.2.1, works by assigning a label to an occupied site and attempting to propagate the label to the site’s east and south neighbours [11]. The time taken to perform a full sweep varies dependent on the size of the system, denoted by L, number of clusters and the size of clusters found in the system. Note that the latter two directly depend on the value of p. To demonstrate the effect of changing these two factors (i.e. size and p), the time taken for the foundation code to run has been measured and recorded in Table 3.1. These measurements were obtained using the same machine, as the results are deterministic of the machine used. This provides a realistic representation of how the time scales as the system size, L, is increased. The foundation code consists of the following steps: assigning a matrix size, generating the matrix, and applying the occupation probability p, running the bwconncomp function, creating the labelled cluster matrix and extracting the cluster size information from the output.
 
+\newpage
 
-\section{Towards landscape-level control}
+\subsection{Binary dilation}
+\label{sec:a-binary-dialator}
 
-\blindtext
-
-\blindtext
-
-\begin{figure}
+A binary dilator was used to help identify when two distinct clusters ($\mathbf{C_1}$ and $\mathbf{C_2}$) connect.
+Suppose a we have a binary image in Euclidean space, $\mathbb{R^2}$.
+For our purpose, $\mathbb{R^2}$ consists of susceptible and insusceptible patches, where $R_0 \ge 1$ and $R_0 < 1$ receptively. 
+The binary dilator operation is defined by:
+\begin{equation}
+    \label{eq:binary-dialation}
+    A \oplus B = \bigcup_{b \in B} A_b
+\end{equation}
+where $A_b$ has underdone a translation by the structuring element $b$.
+The meaning of equation \ref{eq:binary-dialation} is best described an example:
+\begin{figure}[h!]
     \centering
-    \includegraphics[scale=0.5]{appendix/Graphical_Abstract.pdf}
-    \caption{Caption}
+    \includegraphics[scale=0.3]{appendix/figures/binary-dialation.pdf}
     \label{fig:my_label}
 \end{figure}
 
+here, $A$ is the binary-valued input image and $B$ is the structuring element, in this case, a Moore neighbourhood. 
+Then, $B$ is super imposed onto every non-zero value in $A$, thereby forming the binary dilation shown in Figure (c).
+Binary dilation was implemented in Python, using the `binary dilation' function within the Scipy.ndimage module \cite{scipy}.
 
+In section \ref{sec:fragmentation-method}, I put forward the first steps toward an algorithm to optimise cluster fragmentation.
+In this method, distinct clusters ($\mathbf{C_1}$ and $\mathbf{C_2}$) connected for some value of $\xi$.
+Detecting cluster joins turned out to be non-trivial problem to solve.
+The naive approach would be to perform a brute-force search, and detect which connecting patches bridge the gap between $\mathbf{C_1}$ and $\mathbf{C_2}$
+for each step in $\xi$. 
+However, this approach quickly became computationally hard to solve, particularly when $\xi$ was low and the number of susceptible patches in the system was large. 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.4]{appendix/figures/bd-interface.pdf}
+    \caption{The binary dilator operator was used to help increase efficiency when identifying which susceptible patches bridge the gap between $\mathbf{C_1}$ and $\mathbf{C_2}$.
+            Here, connectivity is defined with the Moore neighbour, $b$.}
+    \label{fig:a-bd-interface}
+\end{figure}
+Below, the following steps detail a more efficient method:
+\begin{enumerate}
+    \item Prior to detecting a large rise in cluster size, label clusters $\mathbf{C_1}$ and $\mathbf{C_2}$, shown in Figure \ref{fig:a-bd-interface}(a).
+    \item Perform a binary dilation on each cluster individually, shown in Figure \ref{fig:a-bd-interface}(b, c).
+    \item Add both clusters arrays together in a pairwise fashion, shown in Figure \ref{fig:a-bd-interface}(d). 
+    The interface between $\mathbf{C_1}$ and $\mathbf{C_2}$ now has the numerical value of $2$, easily singled out in Python (e.g. $\mathrm{np.where(Arr==2)}$), illustrated in Figure \ref{fig:a-bd-interface}(e).
+    \item One or more of the interface patches must bridge the gap between $\mathbf{C_1}$ and $\mathbf{C_2}$. For each interface patch, test if a Moore neighbourhood
+    falls within both $\mathbf{C_1}$ and $\mathbf{C_2}$; if so, it is a `\textit{connecting}' patch.
+\end{enumerate}
+
+\newpage
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.45]{appendix/Graphical_Abstract.pdf}
+    \caption{A graphical abstract showing the end-to-end flow of 
+    A) constructing a local-scale spatially-explicit model of pathogen dispersal 
+    B) Scaling the small-scale epidemic model over a landscape 
+    C) Identifying large susceptible clusters 
+    D) Identifying areas for targeted landscape-level control.}
+    \label{fig:my_label}
+\end{figure}
 
 
