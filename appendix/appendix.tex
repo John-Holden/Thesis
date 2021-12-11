@@ -240,9 +240,10 @@ R_0 & = 2\pi\beta\ell^2\rho_0 \int ^T _0 \big(1 - 2\pi\beta\frac{\ell^2}{L^2} \b
 \begin{figure}
     \centering
     \includegraphics[scale=0.54]{chapter5/figures/fig2-sir-fitting-A.pdf}
-    \caption{Infected hosts are plotted as a function hosts, according to the $SIR$ model for various ratios of $\alpha=\gamma / \beta$.
-            Initial conditions began from one infected and 2500 susceptible hosts\textemdash equivalent to a $500\times500$ domain at tree density $0.01$.
-            Numerical solutions of the $SIR$ model are plotted against predictions from equation \ref{eq:SIR-1param1}, shown as crosses.}
+    \caption{Infectives are plotted as a function of susceptibles, according to the $SIR$ model for various ratios of $\alpha=\gamma / \beta$.
+            Numerical simulations of the $SIR$ model are plotted against predictions from equation \ref{eq:SIR-1param1}, shown as crosses.
+            In all simulations, initial conditions began from one infected host and 2500 susceptible hosts\textemdash the same number of hosts in a $500\times500$ domain at tree density $0.01$.
+            }
     \label{fig:sir-fitting-a}
 \end{figure}
 
@@ -578,9 +579,9 @@ Then, $B$ is super imposed onto every non-zero value in $A$, thereby forming the
 Binary dilation was implemented in Python, using the `binary dilation' function within the Scipy.ndimage module \cite{scipy}.
 
 In section \ref{sec:fragmentation-method}, I put forward the first steps toward an algorithm to optimise cluster fragmentation.
-In this method, distinct clusters ($\mathbf{C_1}$ and $\mathbf{C_2}$) connected for some value of $\xi$.
+In this method, distinct clusters ($\mathbf{C_1}$ and $\mathbf{C_2}$) connected over some value of $\xi$\textemdash the reader is referred back to section \ref{sec:fragmentation-method} for information on $\xi$.
 Detecting cluster joins turned out to be non-trivial problem to solve.
-The naive approach would be to perform a brute-force search, and detect which connecting patches bridge the gap between $\mathbf{C_1}$ and $\mathbf{C_2}$
+The naive approach would be a brute-force search to identify which \textit{connecting} patches bridge the gap between $\mathbf{C_1}$ and $\mathbf{C_2}$
 for each step in $\xi$. 
 However, this approach quickly became computationally hard to solve, particularly when $\xi$ was low and the number of susceptible patches in the system was large. 
 \begin{figure}

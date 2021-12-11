@@ -1,7 +1,7 @@
 \chapter{Including dispersal}
 
 \label{ch5:dispersal-model}
-Previously, we employed a simple lattice model with several limitations. 
+In the previous Chapter, we employed a simple lattice model with several limitations. 
 In particular, the percolation-based model relied on local, nearest-neighbour contacts and could not spread at lower, more realistic tree densities. 
 This Chapter will generalise the SLM to incorporate non-nearest neighbour interactions by introducing a generic Gaussian dispersal kernel.
 That is, we will combine dispersal-based interactions within a simplistic $SIR$ framework to construct a non-local model (NLM) of tree disease.
@@ -35,7 +35,7 @@ Equation \ref{eq:pr-dispersal-transition} generalises the SLM to include non-loc
 Each probability of transition is assessed against a sample drawn from a continuous uniform distribution $U(0, 1)$ following a Poisson construction \cite{cook2008constructing}. 
 Probabilities are then calculated for each times step while host $S_x$ 
 remains susceptible, and repeated for each susceptible tree in the domain (i.e. $\forall S_x \in [\mathcal{L}, \mathcal{L}]$).
-See Appendix \ref{a:probablity-transition} for further information on the computational implementation. A table of parameters for the NLM is shown below in Table \ref{tab:SIR-model}.
+See Appendix \ref{A:combiniing-probabilities} for further information on the computational implementation. A table of parameters for the NLM is shown below in Table \ref{tab:SIR-model}.
 
 The same uniform lifetime dynamics (used in the SLM) controls the period hosts remain infectious.
 A host transitioning into the $I$ compartment will remain infectious for $T$ time steps before uniformly transitioning into the $R$ compartment.
@@ -237,7 +237,7 @@ Although, to recap, $R_0$ is fundamental to understand epidemic thresholds in hu
 Crop-based reproduction ratios have been examined extensively
 \cite{gubbins2000population, park2001invasion, doi:10.1146/annurev.phyto.011108.135838, van2011periodic},
 but in the context of tree-based diseases the concept remains less explored. 
-In general, $R_0$ is complicated, and it may vary in response to various abiotic factors, such as temperature, humidity and wind speed.
+In general, $R_0$ is complicated, and may vary in response to abiotic factors, such as temperature, humidity and wind speed.
 Furthermore, when defining an $R_0$ value for tree-disease, the importance of spatial structure cannot be
 ignored \cite{park2001invasion}.
 Importantly, any measure of $R_0$ should separate the regime of epidemic and confinement with a simple threshold condition, i.e. defined by $R_0=1$.
