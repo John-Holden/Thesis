@@ -77,24 +77,23 @@ In practice, a channel of size $(L_x, L_y) = (350, 50)$, was sufficient, as show
 
 \subsection{Centre of infectious mass}
 
-The channel domain provides an advantageous setting to capture early warning signals, avoiding two-dimensional geometrical effects.
+The channel domain provides an advantageous setting to capture EWS by avoiding two-dimensional geometrical effects.
 Moreover, the channel permits an improved (more intuitive) metric, based on the mean infective displacement from the origin:
 \begin{equation}
    v_{cm}(t) = \frac{\sum^i x_i(t)}{N_I(t)} - \frac{\sum^i x_i(t-1)}{N_I(t-1)}
    \label{eq:COM}
 \end{equation}
-where $x_i(t)$ is the spatial location along the $x$ axis of the $i^{th}$ infected tree at 
-time $t$ and $N_I(t)$ is the total number of infected trees at time-step $t$. 
+where $x_i(t)$ is the spatial location of the $i^{th}$ infected tree along the $x$ axis at time $t$ and $N_I(t)$ is the total number of infected trees. 
 The form of Equation \ref{eq:COM} displays intrinsic similarities to the Newtonian center of mass:
  \[x_{cm} = \frac{\sum^i x_i\times m_i}{\sum_i m_i}\]
-where the analogous quantities in Equation \ref{eq:COM} are $m_i=1$ and $\sum^im_i= N_I$.
-As such, the metric outlined in Equation \ref{eq:COM} will constitute a `centre of infective mass' (\acrshort{com}) velocity. 
-Figure \ref{fig:ews-primer}(b) depicts the COM time-series corresponding to the simulation of Figure \ref{fig:ews-primer}(a). 
-The time-series now looks different to those shown previously in Figure \ref{fig:vel_eff_rad_metric}(a) and allows for negative values.
+(where the analogous quantities in Equation \ref{eq:COM} are $m_i=1$ and $\sum^im_i= N_I$).
+As such, the metric outlined in Equation \ref{eq:COM} will constitute a `centre of infective mass' (\acrshort{com}) velocity.
+The COM time-series of Figure \ref{fig:ews-primer}(a) is shown in Figure \ref{fig:ews-primer}(b).
+As opposed to the time series shown previously in Figure \ref{fig:vel_eff_rad_metric}(a), the COM metric looks different and allows for negative values.
 
-Figure \ref{fig:ews-primer}(c) illustrates COM ensemble-averaged time-series $\langle v_{cm}\rangle$ for the three values of tree density.
-The blue time-series begins to decrease around $t \in [800, 900]$, coinciding with the pathogen propagating to the domain edge.
-Whereas, the green time series lies slightly above the percolation threshold and decays more gradually from $t=0$, due to a higher extinction probability. 
+Ensemble-averaged COM time-series $\langle v_{cm}\rangle$ are shown in Figure \ref{fig:ews-primer}(c) for the three values of tree density.
+The blue time-series has epidemic parameters well beyond the threshold and begins to decrease around $t \in [800, 900]$, coinciding with percolation to the domain edge.
+Contrarily, the green time series lies slightly above the percolation threshold and decays more gradually from $t=0$ due to a higher extinction probability. 
 A small number of long-lasting simulations (exceeding $t>1000$ steps) occurred in the green time-series, indicating criticality in the system\textemdash 
 previously likened to a regime of persistence in section \ref{sec:SLM-epidemic-threshold}.
 The inset of Figure \ref{fig:ews-primer}(c) shows the ensemble-averages between $t\in [100, 200]$, including the standard error for each time-step.
@@ -103,51 +102,48 @@ Error bars are most significant for the lowest-valued density shown in green, re
 \subsection{Ensemble averaging method}
 
 The findings of \cite{OROZCOFUENTES201912} were gathered by first producing a distribution of mean time-series velocities $\overline{v}_t$.
-In this scheme, an early warning signal is detected from the statistical moment-generation functions over the mean velocity: e.g. $var\big\langle \overline{v}_t \big\rangle$,
-analogous to calculating variance, skewness and autocorrelation over the distributions of Figures \ref{fig:vel_eff_rad_metric}(b-d).
-However, calculations based on the mean simulation variance, $ \big\langle \overline{var}({v}_t) \big\rangle $ were found to reveal a clearer EWS.
+In this scheme, an EWS were detected from statistical moment-generation functions over the mean velocity, e.g. $\big\langle var(\overline{v_t}) \big\rangle $.
+However, altering EWS detection by computing the mean simulation variance $ \big\langle \overline{var}({v}_t) \big\rangle $ was found to reveal a clearer signal.
 Consequently, we proceed by detailing an ensemble method that permits the capture of within-simulation variance. 
 
-Before the ensemble averaging method is elaborated, it makes sense to define the relevant notation.
+Before the ensemble averaging method is elaborated, it makes sense to first define the relevant mathematical notation.
 Suppose a simulation with parameters $\rho, \beta$ propagates for $f$ time-steps, Equation \ref{eq:COM} describes the time series as: $v_{cm}^{t=1}, v_{cm}^{t=2},..., v_{cm}^{t=f} \in V^{\rho\beta}$. 
-Then, a set of independent time series are generated by repeating $N$ simulations. 
-A set of $N$ repeated simulations for an arbritrary point in the parameter-space ($\rho, \beta$) 
-can be labelled as: \{$V_1^{\rho\beta}, V_2^{\rho \beta},..., V_N^{\rho\beta}\} \in \mathcal{V}_{\rho\beta}$, 
+Then, a set of $N$ independent time series are generated by repeating  ensemble realisations. 
+For an arbitrary point in the parameter-space ($\rho, \beta$),
+the set of $N$ replicate simulations can be described by the set: \{$V_1^{\rho\beta}, V_2^{\rho \beta},..., V_N^{\rho\beta}\} \in \mathcal{V}_{\rho\beta}$, 
 where each $V_i^{\rho\beta}$ describes an individual simulation time series and $\mathcal{V}_{\rho\beta}$ describes the entire ensemble for parameters $(\rho, \beta)$. 
-Thus, an early warning signal (EWS) is detected by calculating the mean time-series variance,
+Thus, an EWS is detected by calculating the mean time-series variance,
 defined by:
 \begin{equation}
 \label{eq:ews_eq}
     \big\langle \overline{var}(v^{\rho\beta}_{cm}) \big\rangle = \frac{1}{N}\sum\limits_{i=1}^{N} var(V_i^{\rho\beta})
 \end{equation}
-
-We require the same number of observations within each ensemble to properly analyse the mean time-series variances.
-Otherwise, the classification of an early warning signal might be confused with statistical fluctuations and errors.
+A proper time-series analysis requires the same number of observations within each ensemble.
+If not, we risk mistaking statistical fluctuations/errors for an EWS.
 There are two observations to consider: 
-(A) the number of time steps within simulations, i.e. $v_{cm}^{t}$ 
+(A) the number of time steps within simulations 
 (B) the number of repeated simulations, $N$.
+
 In general, stochasticity will prevent two simulations from having the same number of time steps, 
 $|V_i^{\rho\beta}| \neq |V_j^{\rho\beta}|$.
-Therefore, short-lived simulations with a small number of time steps might be more error-prone than long-lived simulations;
-we introduce a fixed window of time-steps ($t_O\leq t \leq t_F$) to remedy this.
+Thus, calculating time-series variance for simulations with a small number of time steps might be more error-prone than long-lived simulations.
+As such, we introduce a fixed window of time-steps ($t_O\leq t \leq t_F$) in a bid to fix the number of observations.
 Provided the window length $t_F-t_O$ captures a sufficient number of time-steps, we avoid significant fluctuations in $V_i^{\rho\beta}$. 
 Variance inside this window is defined by:
-
 \begin{equation}
 \label{eq:ews_eq1}
     \big\langle \overline{var}(v^{\rho\beta}_{cm}) \big\rangle = \frac{1}{N}\sum\limits_{i=1}^{N} var(V_i^{\rho\beta}\Big|^{t_F}_{t_O})
 \end{equation}
+Initial transience constrains the particular choice of $t_O$ in the channel, 
+which distort calculations of the time-series variance. 
+The lower bound is set to $t_0=100$, because initial instability occurred most over the first $100$ time-steps. 
+Moreover, the window upper-bound is to $t_F = 200$ (a two-fold increase of $t_O$) so that simulation variance is measured over a sufficient number of steps.
+Lastly, the simulation boundary conditions required a slight alteration to fix the number of variance measures to $N$.
+Previously, runtime terminated occurred upon one of three events, either: percolation, pathogen extinction, or when the number of time-steps exceeded the time horizon.
+Here, we relax the condition that terminates simulations when the pathogen dies off;
+otherwise, short-lived simulations ($t<t_O$) would be omitted from the ensemble and reduce the number of $N$ variance measures. 
+Additionally, the time horizon is fixed to $t_F$, thereby mitigating the cost of simulating unnecessary steps.
 
-Initial transience constrains the particular choice of $t_O$ in the channel domain, 
-which indeed distorts calculations of the time-series variance\textemdash 
-presenting an analogy to the discussion that followed from Figure \ref{fig:vel_eff_rad_metric}(a). 
-We set $t_0=100$, as initial instability occurred most over the first $100$ time-steps 
-(as shown in Figure \ref{fig:ews-primer}(e), particularly by the blue time series). 
-The window upper-bound is to $t_F = 200$ (a two-fold increase of $t_O$) so that simulation variance is measured over a sufficient number of steps.
-The variance window of $t_O=100,\ t_F=200$ is justified by noting that an early warning signal is only detectable immediately before 
-and after the epidemic threshold; other parameter space regions are less important.
-Thus, if the relevant regions in parameter space survive long enough to measure variance in the window $t \in [t_O, t_F]$, 
-we may confidently detect an early warning signal.
 
 \subsection{EWS parameter-sweeps}
 \label{section:ews_slm}
@@ -198,12 +194,11 @@ although fundamentally, an EWS is detectable for all parameter combinations
 \section{A toy landscape-level SLM}
 
 So far, this work has focused on a homogeneous distribution of hosts randomly populating an ideal domain. 
-In this section, a toy landscape-level SLM is constructed and simulated on the map of Great Britain.
-Modelling the spread of disease over GB entails a large change of scale within the SLM.
-Specifically, host units now comprise $\mathrm{1km \times 1km}$ `patches' of land. 
-As reviewed in section \ref{ch2:hostdata}, 
-collecting high-quality abundance data over large areas is challenging and expensive; 
-as such, the SLM is combined with the modelled oak (\textit{Quercus robur}) canopy cover dataset produced by \cite{hill.data}.
+In this section, a toy landscape-level SLM is constructed and simulated on the map of Great Britain (GB).
+Modelling the spread of disease over GB entails a large change of scale within the SLM. 
+Specifically, host units now comprise $\mathrm{1km \times 1km}$ `\textit{patches}' of land. 
+Collecting high-quality abundance data over large areas is challenging and expensive\textemdash reviewed in section \ref{ch2:hostdata}.
+Therefore, the SLM is combined with a map of predicted oak abundance, produced by \cite{hill.data}.
 
 \subsection{Realistic boundaries}
 
@@ -214,18 +209,16 @@ Moreover, the initial conditions (ICs) have been limited to a small number of in
 located at a single epicentre at the centre of a square domain.
 However, an epidemic propagating from the centre of a square lattice might look very different
 from an epidemic emerging from an arbitrarily located epicentre inside a domain with complicated irregular boundaries.
-As a consequence, we examine the interplay of initial and boundary conditions in the SLM\textemdash
-compelled further by articles highlighting the importance of domain shape \cite{mikaberidze2016invasiveness},
-and critical domain size \cite{abad2020reaction, reimer2017critical}.
+As a consequence, we examine the interplay of initial and boundary conditions in the SLM,
+compelled further by articles highlighting the importance of domain shape \cite{mikaberidze2016invasiveness} and critical domain size \cite{abad2020reaction, reimer2017critical}.
 
 As a first step toward modelling with realistic host distribution,
-SLM domain edge effects were examined inside the shape of Great Britain.
-Figure \ref{fig:uk-spread-primer}(a) shows an outline of Great Britain (GB) filled 
-with a random homogeneous distribution of land `patches' at resolution $1\mathrm{km^2}$. 
+SLM domain edge effects were examined inside the shape of GB.
+Figure \ref{fig:uk-spread-primer}(a) shows the map populated 
+with a random homogeneous distribution `patches' at resolution $1\mathrm{km^2}$. 
 Here, we change the scale, so host units represent patches of land, 
 as opposed to individual trees in Chapter \ref{chapter:SLM}.
-The green and black pixels represent susceptible and insusceptible patches, 
-respectively, as the previous Chapter explains.
+The green and black pixels represent susceptible and insusceptible patches of land, respectively.
 
 \begin{figure}
     \centering
@@ -255,24 +248,23 @@ Here, the mortality ratio captures the total epidemic impact, defined by:
 \label{eq:epi_impact}
     \chi=\frac{R_f}{S_0}
 \end{equation}
-where $R_f$ is the final number of patches in the removed state at $T_f$ and $S_0$ is the number of susceptible %
+where $R_f$ is the final number of patches in the removed state at $T_f$ and $S_0$ is the number of susceptible 
 patches at time $T=0$.
-Given the system stochasticity, it is necessary to repeat simulations for each epicentre %
+Given the stochasticity, it is necessary to repeat simulations for each epicentre 
 and calculate $\overline{\chi}$. Iterating over the whole of the GB in this way permits visualisation
 of the spatial-susceptibility of the pathogen $\beta$, depicted by colour in Figure \ref{fig:uk-spread-primer}(b).
 
 Figure \ref{fig:uk-spread-primer}(b) shows the result of the ensemble averaging $\chi$ for each
-patch of land\footnote{Ensemble averaging each patch of land was computationally intensive, 
-to account for this, the domain resolution was coarse-grained to $\mathrm{5km \times 5km}$ sized-patches.
-Simulations were conducted on the Leeds high-performance computing facility, the ARC-HPC system using a task %
-array, the ensemble took approximately two hours on $25$ cores.).} 
+patch of land\footnote{Ensemble averages for each patch ($\approx 2 \times 10^5$ in total) was computationally costly. 
+Hence, the domain resolution was coarse-grained to $\mathrm{5km \times 5km}$ sized-patches to reduce the number of simulations.
+Even so, simulations were ensemble-averaged on the Leeds high-performance computing facility (ARC) using a task array.
+The ensemble took approximately two hours on $25$ cores.}.
 As expected, the domain BCs and map geometry change the resulting epidemic scale, 
-mainly Scotland north of the Anglo-Scottish border and the south Eastern leg of GB towards Exeter and Plymouth;
-meanwhile, centralised regions show a roughly constant susceptibility. 
-Interestingly, higher epidemic parameters increased the mean mortality ratio and reduced spatial variations
-in the mortality ratio, whilst lowering epidemic parameters had the opposite effect.
+mainly in Scotland and the south Eastern leg of GB towards Exeter and Plymouth.
+Regardless, centralised regions show a roughly constant susceptibility. 
+Higher epidemic parameters increased the mean mortality ratio and reduced spatial variations in the mortality ratio, whereas lowering epidemic parameters had the opposite effect.
 Although Figure \ref{fig:uk-spread-primer}(b) paints an ideal epidemic scenario involving one infected patch at $t=0$,
-we can assume an emerging epidemic within the SLM model depends strongly on the interplay of epicentre location and domain boundary.
+we can assume an emerging epidemic within the SLM model depends non-trivially on the interplay of epicentre location and domain boundary.
  
  \newpage
 
@@ -402,7 +394,7 @@ colour bars in Figures \ref{fig:oak-spatial-ensemble}(a-c). Alongside a more sev
 value permits disease propagation over more extensive regions, witnessed by comparing Figures \ref{fig:oak-spatial-ensemble}(a) and (c).
 
 In Figures \ref{fig:oak-spatial-ensemble}(a-c), yellow regions highlight where the pathogen is most 
-likely to spread through susceptible hosts. In this toy model, mortality is approximately independent of epicentre location, 
+likely to spread through susceptible hosts. In the toy model, mortality is approximately independent of epicentre location, 
 provided sufficient (Von Neumann) connectivity between patches, supported by uniform yellow contours within susceptible regions.
 In panel (a), the spatial locations encircled in dashed red highlight a region of instability that appears to separate two susceptible regions.
 In these regions, the epidemic impact could vary significantly, 
@@ -414,10 +406,10 @@ consequently prompting the corresponding plots of mortality variance in Figures 
     \caption{Spatial phase showing ensemble statistics over the oak data-set for three variations of density threshold $\phi(\rho): \rho \in [0.37, 0.43, 0.50]$ and fixed infectivity $\beta=0.25$. (a-c) The ensemble mean of mortality ratio $\chi$ measured for each pixel epicenter. The dotted red circle in Fig (a) shows two neighbouring susceptible regions. (d-f) Ensemble variance over $\chi$. The dotted shape in (d) highlights an unstable region of high variance and uncertainty separating two susceptible areas of the population in Fig (a).}
     \label{fig:oak-spatial-ensemble}
 \end{figure}
-Plotting the mortality ensemble variance illustrates where epidemic outcomes can go either direction, 
-where the possibility of large-scale epidemic and pathogen extinction exists simultaneously in the parameter regime.
-Figure \ref{fig:oak-spatial-ensemble}(d) captures a centrally-located region of uncertainty, highlighted in red; 
-in these regions, the toy model may or may not give rise to a large scale epidemic, as opposed to the most southerly, 
+
+Mapping the ensemble averaged mortality variance reveals uncertainty, where regions support the possibility of both epidemic and extinction.
+Figure \ref{fig:oak-spatial-ensemble}(d) captures a region of uncertainty, highlighted in red.
+In this region, the toy model may or may not give rise to a large scale epidemic, as opposed to the most southerly, 
 high-mortality region beneath the dashed red lines. Panels (e) and (f) show a variance only in the edges of the centrally
 located susceptible region. It is alluring to consider the implications of high variance regions in Figures \ref{fig:oak-spatial-ensemble}(d-f)
 in the context of epidemic control. Namely, we may suppose that epidemic control through high variance regions could be an effective strategy

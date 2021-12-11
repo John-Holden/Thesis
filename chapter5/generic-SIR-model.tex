@@ -108,15 +108,14 @@ A $95\%$ confidence interval is shown about the mean\textemdash shown as a solid
 The time series indicates that if the pathogen becomes extinct or propagates to the lattice boundary and survives\textemdash marked by dots in the upper marginal plot for each infectivity parameter.
 Survival to the boundary approximate defines a cluster of infectious-removed trees spanning the domain, representing an epidemic.
 On average, the higher infectivities propagate to the domain boundary first, as demonstrated by comparing the red and green line plots.
-In contrast, the pathogen fails to reach the domain boundary in the vast majority of simulation time series shown in orange and blue
-\textemdash barring the small number of rare samples shown in the upper marginal plot in orange.
+In contrast, the pathogen fails to reach the domain boundary in the vast majority of simulation time series shown in orange and blue, barring a small number of samples in the upper marginal plot in orange.
 
-Modelling the spread of disease for small $\frac{\ell}{\mathcal{L}}$ is helpful to understand the NLM, and presents a clear connection to the percolation-based SLM.
-However, realistic dispersal-based tree disease is unlikely to exhibit slow marching travelling waves at small spatial-scales\footnote{reference landscape-level fronts ~tenskm}.
-In particular, as $\frac{\ell}{\mathcal{L}}$ becomes larger, tracking the maximum distance inside a finite domain of size $L$ becomes ill-defined 
-because of longer-range dispersal\textemdash no doubt, these effects would become more pronounced with fatter-tailed dispersal kernels.
-Therefore, the time-series of $D_{max}(t)$ can dynamically capture the pathogen progressing through the domain when the scale of dispersal is small in comparison to the domain, but as we look to increase the scale of dispersal (ultimately to model wind-dispersal in chapter 6), an alternative metric is required to understand epidemic progression\textemdash
-thus motivating a thorough examination of the reproductive ratio $R_0$ in section \ref{sec:spatially-explicit-reproduction-ration}.
+Modelling the spread of disease for small $\frac{\ell}{\mathcal{L}}$ is helpful to understand the NLM and presents a clear connection to the percolation-based SLM.
+However, realistic dispersal-based tree disease is unlikely to exhibit slow marching travelling waves at small spatial-scales.
+In particular, as $\frac{\ell}{\mathcal{L}}$ becomes larger, tracking the maximum distance inside a finite domain of size $L$ becomes ill-defined; undoubtedly this becomes even more relevant with fat-tailed dispersal kernels.
+Therefore, although the time-series $D_{max}(t)$ dynamically captures pathogen progression when $\frac{\ell}{\mathcal{L}}$ is small, an alternative metric is required to understand epidemic progression as we look to increase the scale of dispersal.
+Consequently, the reproductive ratio $R_0$ is introduced in section \ref{sec:spatially-explicit-reproduction-ration}.
+
 \newpage 
 
 \subsection{Normalising infectivity $\beta$}
