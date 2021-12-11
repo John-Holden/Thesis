@@ -13,7 +13,9 @@ The SLM provides a flexible foundation for generalising as we look to model the 
 This Chapter aims to examine some applications of the SLM.
 In particular, two applications divide the Chapter, beginning with the early warning systems (EWS) for forest management and ending with a toy model of landscape-level spread.
 
-Firstly, the system for EWS detection put forward by \cite{OROZCOFUENTES201912} is extended; the original publication considered one fixed parameter of $\beta$, here we generalise the analysis to the entire $\beta$ parameter space. In addition, we employ an alternative metric that permits a more precise EWS detection.
+Firstly, the system for EWS detection put forward by \cite{OROZCOFUENTES201912} is extended. 
+The original publication considered a fixed infectivity parameter ($\beta = 0.50$), here we generalise the analysis to the entire $\beta$ parameter space. 
+In addition, we employ an alternative metric that permits a more precise EWS detection.
 Secondly, the SLM will be adapted to construct a toy model of landscape-level epidemics in Great Britain.
 More specifically, units of individual trees in the SLM are re-scaled to $\mathrm{1km \times 1km}$ patches 
 and projected onto a predicted oak abundance data set given by \cite{hill.data}.
@@ -22,79 +24,81 @@ The toy model denotes the first step towards a more representative framework ove
 \section{Early warning signals}
 \label{sec:EWS}
 
-Applications of early warning signals have been investigated by \cite{OROZCOFUENTES201912} for forest management and ecosystems services.
+Applications of EWS have been investigated by \cite{OROZCOFUENTES201912} for forest management and ecosystems services.
 The results focused on a one-dimensional parameter space of tree density $\rho$ over a square lattice with fixed infectivity $\beta$.
 The study observed statistically significant changes (or signals) in the
 moment-generating functions (of variance, skew and auto-correlation) for the radial velocity.
 Changes in variance, skew or auto-correlation can preempt epidemic phase transitions, 
 thus providing helpful information that could aid forest and plantation managers to maintain tree health. 
-Here, we offer a small extension to some of the concepts presented by \cite{OROZCOFUENTES201912}.
-In particular, a new domain and metric are used to detect more precise, early warning signals.  
+Here, we offer a small extension to work presented by \cite{OROZCOFUENTES201912}.
+In particular, a new domain and metric are used to detect EWS more precisely.  
 The analysis is generalised to two dimensions in the parameter-space of $\rho$ and $\beta$. 
 After introducing these alternative concepts, we discuss some of the problems and complexities encountered with ensemble-averaging. 
 
 \subsection{Cylindrical geometry}
 
-The metric used by \cite{OROZCOFUENTES201912} to quantify early warning signals had a similar form as Equation \ref{eq:vel_eff_r}, albeit with the inclusion of $N_R$.
-That is, the results included both the infected and removed ($N_{I+R}$), whereas Equation \ref{eq:vel_eff_r} is based on just the infected ($N_I$). 
-Unfortunately, the radial velocity (based on the number of infected and removed trees) can lead to confusing results, as geometrical effects alter the a rate of increase as the wave spreads outward; this is particularly visible for later times when the wavefront extent is considerable.\footnote{See Figure 4d in \cite{OROZCOFUENTES201912}, the apparent rate of increase in the velocity metric is purely due to geometry artefacts and the metric definition.}.
-We will use an alternate lattice geometry to mitigate geometric effects.
-
-Consider a rectangular domain of size $[L_x, L_y]$ where $L_x>L_y$ and $(x, y)$ represent dimensions of width and height respectively.
-Figures \ref{fig:ews-primer}(a-c) shows the domain, henceforth referred to as the `channel' domain, over three time-steps for parameters above the threshold, $\rho=0.65$ and $\beta=0.50$.
-The initial conditions are adjusted, so the first column (denoted by $x_0$, taken as the origin) is infected.
-In addition, the boundary conditions permit the disease to propagate freely in the $+x$ and $\pm y$ directions, thus realising a cylindrical geometry with periodic boundary conditions in $y$ direction and fixed boundary conditions in $x$.
-
-We register a percolation event in the channel domain if an infected tree reaches the last column, denoted by $x_m$
-The percolation threshold shifts toward higher densities if the domain is sufficiently narrow (having a high aspect ratio), as the dimensionality of the travelling wave to somewhere between one and two dimensions\footnote{Additionally less space in computer memory is occupied and simulation time is lowered}. 
-The higher percolation threshold can be explained by gradually increasing the domains aspect ratio;
-in the limit $L_y = 1$ and $L_x  \gg 1$, a one-dimensional domain is realised, and the critical host density increases to $\rho_c=1$, i.e. the well-known one-dimensional percolation threshold.
-
-As expected, studies have confirmed that site and bond percolation in two and three dimensions depend critically on a cylinders aspect ratio \cite{sangare2009continuum}.
-Therefore, we choose an aspect ratio that approaches the percolation threshold for a two-dimensional square to keep consistent with the numerical results of Chapter \ref{chapter:SLM}. 
-In practice, a channel of size $(L_x, L_y) = (350, 50)$, was sufficient, as shown through Figures \ref{fig:ews-primer}(a-c). 
-
-\newpage
+The metric \cite{OROZCOFUENTES201912} employed to quantify EWS had a similar form as Equation \ref{eq:vel_eff_r}, 
+though it included both the infected \textit{and} removed ($N_{I+R}$). In contrast, Equation \ref{eq:vel_eff_r} rests solely on $N_I$. 
+Unfortunately, a radial velocity based on $N_{I+R}$ can lead to unintuitive metric observations when geometrical effects seemingly cause the rate to in as the wave spreads outward; 
+this becomes particularly for later times when the wavefront extent is considerable\footnote{
+See Figure 4d in \cite{OROZCOFUENTES201912}, the apparent rate of increase in the velocity metric is purely due to geometry artefacts and the metric definition.}.
+Thus, we will use an alternate lattice geometry to mitigate geometric effects.
 
 \begin{figure}
     \centering
     \includegraphics[scale=0.30]{chapter4/figures/figure1-channel-domain.pdf}
     \caption{
     (a-c) A channel domain of size $50\times350$ is shown over three time-steps for model parameters $\rho=0.65$ and $\beta=0.50$. 
-    The center of infectious mass is recorded for each time-step. 
-    (d) Plots of the center of mass time-series for the simulation illustrated in panels (a-c). 
-    (e) The mean center of mass time-series (of $10^4$ repeats) for three variations in density and $\beta=0.50$. 
-    Time-series begin to decay around the mean simulation run-time.  
+    The centre of infectious mass is recorded for each time-step. 
+    (d) Plots of the centre of mass time-series for the simulation illustrated in panels (a-c). 
+    (e) The mean centre of mass time-series (of $10^4$ repeats) for three variations in density and $\beta=0.50$. 
+    Time-series begins to decay around the mean simulation run-time.  
     The zoomed inset shows the ensemble averaged time-series for $t\in[100, 200]$ and reveals increases in error bars lower density parameters.
     }
     \label{fig:ews-primer}
 \end{figure}
 
+Consider a rectangular domain of size $[L_x, L_y]$ where $L_x>L_y$ and $(x, y)$ represent dimensions of width and height respectively.
+Figures \ref{fig:ews-primer}(a-c) shows spatio-temporal spread in the domain, henceforth referred to as the `channel' domain, over three time-steps.
+Epidemic parameters in the channel were arbitrarily chosen, yet lie above the threshold ($\rho=0.65$ and $\beta=0.50$).
+The initial conditions required an adjustment from the square domain in Chapter \ref{chapter:SLM}, namely, the first column is infected and taken as the origin (denoted by $x_0$).
+Additionally, the boundary conditions permit the disease to propagate freely in the $+x$ and $\pm y$ directions, thus realising a cylindrical geometry with periodic boundary conditions in $y$ direction and fixed boundary conditions in $x$.
+
+We register a percolation event in the channel domain if an infected tree reaches the last column, denoted by $x_m$.
+The percolation threshold shifts toward higher densities if the domain is sufficiently narrow (having a high aspect ratio), as the dimensionality of the travelling wave to somewhere between one and two dimensions\footnote{Additionally less space in computer memory is occupied and simulation time is lowered}. 
+The higher percolation threshold can be understood by considering gradual increases in the domain aspect ratio, 
+where in the limit $L_y = 1$ and $L_x \gg 1$, a one-dimensional domain is realised and the critical host density increases to $\rho_c=1$.
+In other words, increasing the aspect ratio eventually leads to the (higher-valued) one-dimensional percolation threshold.
+
+Unsurprisingly, studies have confirmed that site and bond percolation (in $\mathbb{R}^2$ and  $\mathbb{R}^3$) depend non-trivially on a cylinders aspect ratio \cite{sangare2009continuum}.
+Therefore, we choose an aspect ratio that approaches the percolation threshold for a two-dimensional square to keep consistent with the numerical results of Chapter \ref{chapter:SLM}. 
+In practice, a channel of size $(L_x, L_y) = (350, 50)$, was sufficient, as shown through Figures \ref{fig:ews-primer}(a-c). 
+
+
 \subsection{Centre of infectious mass}
 
 The channel domain provides an advantageous setting to capture early warning signals, avoiding two-dimensional geometrical effects.
-Moreover, the channel permits an improved (more intuitive) `centre of mass' metric (\acrshort{com}), based on the mean infectious tree displacement from the origin:
+Moreover, the channel permits an improved (more intuitive) metric, based on the mean infective displacement from the origin:
 \begin{equation}
    v_{cm}(t) = \frac{\sum^i x_i(t)}{N_I(t)} - \frac{\sum^i x_i(t-1)}{N_I(t-1)}
    \label{eq:COM}
 \end{equation}
-where $x_i(t)$ is the spatial location along the $x$ axis of the $ith$ infected tree at 
+where $x_i(t)$ is the spatial location along the $x$ axis of the $i^{th}$ infected tree at 
 time $t$ and $N_I(t)$ is the total number of infected trees at time-step $t$. 
- The form of Equation \ref{eq:COM} displays intrinsic similarities to the Newtonian center of mass:
+The form of Equation \ref{eq:COM} displays intrinsic similarities to the Newtonian center of mass:
  \[x_{cm} = \frac{\sum^i x_i\times m_i}{\sum_i m_i}\]
-(where $m_i=1$ and $\sum^im_i= N_I$ in Equation \ref{eq:COM}).
-Subsequently, the COM velocity will denote the metric defined by Equation \ref{eq:COM}. 
-Figure \ref{fig:ews-primer}(b) depicts the COM time-series corresponding to the simulation shown in Figure \ref{fig:ews-primer}(a). 
-The COM time-series allows for negative values and looks different to those shown previously in Figure \ref{fig:vel_eff_rad_metric}(a).
+where the analogous quantities in Equation \ref{eq:COM} are $m_i=1$ and $\sum^im_i= N_I$.
+As such, the metric outlined in Equation \ref{eq:COM} will constitute a `centre of infective mass' (\acrshort{com}) velocity. 
+Figure \ref{fig:ews-primer}(b) depicts the COM time-series corresponding to the simulation of Figure \ref{fig:ews-primer}(a). 
+The time-series now looks different to those shown previously in Figure \ref{fig:vel_eff_rad_metric}(a) and allows for negative values.
 
-Figure \ref{fig:ews-primer}(c) illustrates the COM ensemble-average, denoted by $\langle v_{cm}\rangle$, for the three values of tree density.
-On average, the mean time series begins to decay after the mean lifetime of the simulation; the blue time-series shows a drastic decrease around $t \in [800, 900]$, which coincides with the pathogen reaching the domain boundary\textemdash also reflected in Figure \ref{fig:ews-primer}(c).
-The green time series lies just above the threshold for percolation, and it decays more gradually $t=0$ because of the higher pathogen extinction probability. 
-A small number of long-lasting simulations with run times (exceeding $t>1000$ steps) occurred in the green time-series, indicating criticality in the system\textemdash 
+Figure \ref{fig:ews-primer}(c) illustrates COM ensemble-averaged time-series $\langle v_{cm}\rangle$ for the three values of tree density.
+The blue time-series begins to decrease around $t \in [800, 900]$, coinciding with the pathogen propagating to the domain edge.
+Whereas, the green time series lies slightly above the percolation threshold and decays more gradually from $t=0$, due to a higher extinction probability. 
+A small number of long-lasting simulations (exceeding $t>1000$ steps) occurred in the green time-series, indicating criticality in the system\textemdash 
 previously likened to a regime of persistence in section \ref{sec:SLM-epidemic-threshold}.
-The inset of Figure \ref{fig:ews-primer}(c) shows the ensemble-averages between $t\in [100, 200]$, plotted beside the standard error for each time-step.
-Error bars are most significant for the lowest-valued density shown in green, capturing a more chaotic spread.
-In principle, if the variance signature looks different before and after the epidemic regime, an early warning signal can be detected. 
+The inset of Figure \ref{fig:ews-primer}(c) shows the ensemble-averages between $t\in [100, 200]$, including the standard error for each time-step.
+Error bars are most significant for the lowest-valued density shown in green, reflecting a more chaotic spread.
 
 \subsection{Ensemble averaging method}
 

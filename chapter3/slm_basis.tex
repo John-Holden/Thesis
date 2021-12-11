@@ -331,22 +331,19 @@ In Figure \ref{fig:slm_pspace}(b), we witness a significant increase in the prop
 notably for $\beta=0.75$ and $\beta=0.50$ shown in blue and orange. 
 In addition, a higher $\beta$-value predictably yields a higher radial velocity, both before and after the epidemic transition.
 
-Interesting behaviour is discerned by the contrasting the green curves (when $\beta=0.25$) in Figures \ref{fig:slm_pspace}(a-b);
-the vertical dashed green line in Figures \ref{fig:slm_pspace}(a-b) highlight when epidemics begin to propagate to the domain edge reliably.
-Therefore, when $\beta=0.25$ the velocity remains close to zero, yet the percolation probability is high. 
-This observation indicates a regime of persistence in the model, where epidemics can survive for long periods, barely above the threshold \cite{gilligan2008epidemiological}.
+The green curve ($\beta=0.25$) in Figure \ref{fig:slm_pspace}(b) alludes to an important regime in the model.
+Namely, a regime of `persistence' \cite{gilligan2008epidemiological}.
+The vertical dashed green line highlight when epidemics begin to propagate to the domain edge reliably ($95\%$ percolation).
+Thus, the chance of percolation in Figures \ref{fig:slm_pspace}(b) is high, yet the velocity remains close to zero.
+Together, these observations reveal a region in parameter space where epidemics can survive for long periods, barely above the threshold.
+Nonetheless, host population growth is omitted from the model so persistence is only approximate.
 
-The equivalent two-dimensional plots over the full parameter-space of $\rho$ and $\beta$ are shown in Figures \ref{fig:slm_pspace}(c-d) for percolation and radial-velocity respectively. 
-The two-dimensional percolation probability depicts an abrupt transition between two stable regimes of extinction and epidemic, where
-a narrow range of critical parameters $\rho_c$ and $\beta_c$ separate epidemic and extinction.
-In contrast, Figure \ref{fig:slm_pspace}(d) shows the ensemble-averaged velocity that describes a smoother transition between states.
-Therefore, one might argue that percolation captures the threshold with greater clarity as the distinction between epidemic states is more apparent.
-
-One significant difference between the percolation and velocity-based metrics is that percolation depends trivially on infectivity beyond $\beta \approx 0.40$.
-Meanwhile, the radial velocity tends to increases for higher infectivities.
-Between $0.15 <\beta<0.30$, a higher value of $\rho$ is needed for percolation to occur, and
-we see the equivalent velocity-based behaviour\textemdash albeit with a more continuous transition.
-A higher infectious lifetime $T$ lowers $\beta_c$, as more infectious time-steps increase the chance of secondary infections, thus lowering the threshold.
+The equivalent two-dimensional plots over the full parameter-space of $\rho$ and $\beta$ are shown in Figures \ref{fig:slm_pspace}(c-d) for percolation and radial-velocity, respectively. 
+Percolation in Figure \ref{fig:slm_pspace}(c) reveals an abrupt transition between two stable regimes of extinction and epidemic, separated by a narrow range of critical parameters $\rho_c$ and $\beta_c$.
+In Figure \ref{fig:slm_pspace}(d), the ensemble-averaged velocity reveals a smoother transition between states.
+As the distinction between epidemic states is more apparent in Figure \ref{fig:slm_pspace}(c), one might argue that percolation captures the threshold with greater clarity.
+When infectivity is lower ($0.15 <\beta<0.30$), the percolation threshold can be crossed by raising the density, reflected in both velocity and percolation metrics.
+However, percolation has no dependence on infectivity beyond $\beta \approx 0.40$, in contrast to the radial velocity that tends to increase for higher infectivities, revealing a subtle difference between metrics.
 Here, the parameter-sweeps can be understood to portray an `\textit{epidemic phase diagram}'.
 
 \begin{figure}
@@ -386,10 +383,8 @@ Conclusively, the percolation probability proves more accurate to classify epide
 Nevertheless, the radial velocity captured a similar threshold-like behaviour besides additional dynamic information in the form of a time series.
 Subsequently, the time series velocity was ensemble-averaged and examined over a sweep of $\rho$ and $\beta$ values. 
 
-Interestingly, comparing the percolation probability to radial velocity revealed a parameter region above the threshold where the pathogen survives but slowly propagates to the domain boundary; this behaviour approximates persistence.
-However, neglected host population dynamics in the SLM prevents long-term coexistence between host and pathogen, 
-an essential requirement of persistence \cite{gilligan2008epidemiological}. 
-Accordingly, the SLM only approximates invasion and persistence, which therefore signifies a limitation in the framework. 
+Interestingly, comparing the percolation probability to radial velocity revealed a parameter region above the threshold where the pathogen survives but slowly propagates to the domain boundary.
+However, as host population growth is neglected in the SLM, long-term host-pathogen coexistence between is prevented and persistence is merely approximate \cite{gilligan2008epidemiological}. 
 
 As we look to construct a more representative model, it is worth remarking on the most significant assumptions that underpin the SLM so far:
 \begin{enumerate}
