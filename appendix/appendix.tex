@@ -312,7 +312,7 @@ where each intersection $P_{y1} \cap ... \cap P_{yk}$ adds a small order correct
 Equation \ref{eq:combined-pr} is complicated, unsightly and computationally hard to simulate.
 Moreover, the definition of $R_0$ becomes more obscure with equation \ref{eq:combined-pr} because secondary can in principle be induced under the influence of multiple sources.
 
-Nevertheless, equation \ref{eq:combined-pr} can be significantly simplified. 
+Nevertheless, equation \ref{eq:combined-pr} can be significantly simplified by considering the probability of remaining susceptible (used also in Appendix \ref{a:slm-mean-field-theory}). 
 Consider once again the system of two infected trees ($I_{y1}$ and $I_{y2}$) and one susceptible ($S_x$).
 The probability of $S_x$ remaining unaffected is given by:
 \begin{equation}
@@ -332,7 +332,7 @@ Pr(S_{x1} \rightarrow I_{x1}) & = 1 - \prod_{n=1}^{N}(1 - P_{yn})\\
 Pr(S_{xM} \rightarrow I_{xM}) & = 1 - \prod_{n=1}^{N}(1 - P_{yn})
 \end{split}
 \end{equation}
-where the repeated product is introduced for brevity, and multiples each transition probability, i.e $(1 - P_{y1})(1 - P_{y2})  \hdots (1 - P_{yN})$. 
+where the repeated product is introduced for brevity, which combines and multiplies each transition probability, i.e $(1 - P_{y1})(1 - P_{y2})  \hdots (1 - P_{yN})$. 
 
 In pseudo-code, equations \ref{eq-full-pr} follow:
 \begin{lstlisting}[style=pythoncode,
