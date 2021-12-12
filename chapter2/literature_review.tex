@@ -274,7 +274,7 @@ behaviour witnessed in the $SIR$ model. Although, here, the authors considered t
 \section{Spatially-explicit epidemic models}
 \label{ch2:lit-rev-compartmentalised-models}
 
-Emergent infectious diseases (EIDs) in tree populations are multi-scale,
+Emergent infectious diseases (\acrshort{eid}s) in tree populations are multi-scale,
 they can span regional, country or continental spatial scales. Considerable variations in landscape composition,
 tree densities, population aggregation, and the climatic factors give rise to diverse spatio-temporal
 patterns of disease spread \cite{he2019integrating, suzuki2003spatial}. Incorporating spatial structure
@@ -538,12 +538,12 @@ e.g. \cite{beninca2020trade, soubeyrand2009spatiotemporal, doi:10.1046/j.1461-02
 Through the years, numerous researchers have conceptualised the spread of disease, or more broadly, biological invasions, 
 through the lens of diffusion, random walks, or localised dispersal. As a consequence of such ideas, we see the prediction
 of constant travelling waves \cite{skellam1951random, mollison1977spatial, GRASSBERGER1983157, ferrandino1993dispersive}.
-A classic example can be found in the Fisher Kolmogorov–Petrovsky–Piskunov (FKPP) equation \cite{fisher1937wave}.
+A classic example can be found in the Fisher Kolmogorov–Petrovsky–Piskunov (\acrshort{fkpp}) equation \cite{fisher1937wave}.
 
 Although recent work has called travelling waves into question for plant-based (LDD) epidemics, as we discuss more below, 
 the FKPP model is important from a historical and contextual perspective;
 the model comprises some fundamental `reaction diffusion' properties that emerge from the interplay of a populations growth and spread.
-In two spatial dimensions, the FKKP model is given by a partial differential equation of the form:
+In two spatial dimensions, the FKKP model is given by a partial differential equation (\acrshort{pde}) of the form:
 \begin{equation}
 \label{eq:fkpp}
     \frac{\partial u}{\partial t} = \mathcal{D}\nabla u + ru(1 - u/K)
@@ -618,7 +618,7 @@ with the same scale parameter. Although, both kernels are still fundamentally th
 between individuals\textemdash as proved theoretically by \cite{mollison1977spatial} who compared the FKPP model against 
 exponentially-bounded `contact' models.
 
-At first glance, the reaction diffusion (RD) FKPP travelling wave presents a simple, 
+At first glance, the reaction diffusion (\acrshort{rd}) FKPP travelling wave presents a simple, 
 intuitive place to begin modelling the spread of disease through a population of trees.
 However, following earlier work on turbulent diffusion \cite{scherm1996velocity},
 epidemic systems that spread through fat-tailed LDD are now thought to exhibit an accelerating `dispersive' 
@@ -678,7 +678,7 @@ Abundance captures significantly more information than presence-only data, yet u
 
 \subsubsection{Countryside Survey}
 
-The countryside survey (CS) is a long-running, national survey of diversity and species abundance in GB \cite{wood2017long}.
+The countryside survey (\acrshort{cs}) is a long-running, national survey of diversity and species abundance in GB \cite{wood2017long}.
 The UK Centre of Ecology and Hydrology (UKCEH) undertakes the surveys, primarily funded by the Natural Environmental Research Council alongside other government agencies.
 Individual surveys have been undertaken in: $1978$, $1990$, $1998$, $2007$, and $2019$. 
 Random stratified sampling captures a representative species abundance\footnote{
@@ -703,7 +703,7 @@ The dataset constitutes the first of five planned surveys, part of a rolling mon
     \label{fig:NFI-data}
 \end{figure}
 
-The National Forest Inventory (NFI) collects and maintains forest and woodlands data in GB.
+The National Forest Inventory (\acrshort{nfi}) collects and maintains forest and woodlands data in GB.
 Originally, the NFI was established to help restore and expand Britain's woodlands following the First World War \cite{james1990history}.
 Regular programs ($10$-$15\mathrm{year}$ intervals) implement surveys of woodland and forest size, distribution, composition and condition across GB.
 Records cover areas over $0.5\ \mathrm{ha}$ and $20\%$ coverage.
@@ -729,7 +729,7 @@ Although, additional datasets are available to purchase, including:
     \label{fig:bsbi-data}
 \end{figure}
 
-The Botanical Society of Britain and Ireland (BSBI) has recorded species presence-only data since $1950$.
+The Botanical Society of Britain and Ireland (\acrshort{bsbi}) has recorded species presence-only data since $1950$.
 BSBI datasets are publicly available\footnote{BSBI data can be downloaded from: \nolinkurl{https://database.bsbi.org}.} upto a
 resolution of $\mathrm{2 km \times 2km}$, though records upto $\mathrm{100 m \times 100 m}$ are available to registered members.
 As of $2020$, BSBI records are collected at $\mathrm{1 km \times 1km}$ square resolution or better\textemdash making the datasets among the 
@@ -741,7 +741,7 @@ As such, BSIBI data is helpful to reconstruct several baseline tree distribution
 
 \subsection{Species distribution models}
 
-In the absence of extensive host data, species distribution models (SDMs) aim to generate synthetic data, typically from less-extensive surveys.
+In the absence of extensive host data, species distribution models (\acrshort{sdm}s) aim to generate synthetic data, typically from less-extensive surveys.
 SDMs were first developed in the $1990$s, and have subsequently become fundamental to ecological and biogeographical inference studies.
 Synthetic distributions have been used to examine biodiversity, conservation, resource management, 
 ecology and climate change \cite{franklin2013species, skov2016real, wittmann2016confronting, 10.3958/059.037.0110, zhang2019using}.
@@ -795,9 +795,9 @@ including, linking the abundance-occupancy relationship \cite{gaston2000abundanc
 the scaling pattern of species occupancy over progressively smaller spatial scales \cite{hui2009extrapolating}.
 
 An interesting, and highly relevant, approach to predict the abundance of common tree species in Great Britain was put forward by \cite{hill.data}.
-At a high level, (BSBI) presence-only data were combined with a series of environmental covariates using a species distribution model to 
+At a high level, BSBI presence-only data were combined with a series of environmental covariates using a species distribution model to 
 produce a map of predicted occurrence data. Then, random forest regression was employed with a training sample ($70\%$) of less extensive abundance 
-data\textemdash consisting of Countryside survey, myForest and Bluesky's National Canopy Map. 
+data\textemdash consisting of CS, myForest and Bluesky's National Canopy Map. 
 Results were then cross-validated with the remaining ($30\%$) abundance data; Figure \ref{fig:hill-method} displays a
 flow-diagram of the method presented by \cite{hill.data}. 
 
@@ -817,17 +817,17 @@ A more detailed explanation of the treatment proposed by \cite{hill.data} follow
     resolution.
     \item For each species, predictions from a suit of models\textemdash GLM, GAM, CTA, GBM, RF\textemdash were
     repeated and combined into an ensemble distribution model. Each model was cross-validated against
-    $30\%$ of the well-survyed BSBI presence-absence data using the receiver operator curve (ROC) and the true skill statistic (TSS).
+    $30\%$ of the well-survyed BSBI presence-absence data using the receiver operator curve (\acrshort{roc}) and the true skill statistic (\acrshort{tss}).
     \cite{hill.data} then selected the best performing predicted occurrence for each species.
 \end{itemize}
 }
 \textbf{Stage 2)}
 \textit{
 \begin{itemize}
-    \item Abundance data from Countryside survey (CS) and myForest were both expressed as hectares covered per kilometer 
-    squared ($\mathrm{ha/km^2}$). This entailed using woodland cover data from the National Forest Inventory (NFI) to multiply
+    \item Abundance data from CS and myForest were both expressed as hectares covered per kilometer 
+    squared ($\mathrm{ha/km^2}$). This entailed using woodland cover from the NFI dataset to multiply
     the percentage cover of each species within a woodland patch, with a proportion of woodland cover per kilometer.
-    \item Random forest (RF) regression then modelled the relationships between (CS and myForest) abundance data with
+    \item Random forest (\acrshort{rf}) regression then modelled the relationships between (CS and myForest) abundance data with
     the SDM-generated map of predicted occupancy. In addition, RF regression used four covariates, 
     three of which consisted of Bluesky's National Canopy data (i.e. total tree cover, woodland tree cover, non-woodland tree cover)
     and NFI edge broadleaved woodland (i.e. within $50\mathrm{m}$ of non woodland) data.
@@ -836,7 +836,7 @@ A more detailed explanation of the treatment proposed by \cite{hill.data} follow
 
 The abundance datasets produced by \cite{hill.data} combine several mainstream tree datasets in GB; moreover, 
 constructing the ensemble model involved a variety of statistical models.
-The predicted occurrence data was examined against the Receiver operating characteristic (ROC) \cite{jimenez2012insights}.
+The predicted occurrence data was examined against the ROC \cite{jimenez2012insights}.
 Most species demonstrated functional ROC scores between $0.71$ and $0.96$ and performed exceptionally
 well for ash ($0.96$) and oak ($0.90$).  
 
@@ -861,7 +861,7 @@ The RF regression used by \cite{hill.data} marked a novel approach to modelling 
 The authors chose to argue in favour of RF regression because of its insensitivity toward the data distribution,
 which worked well with the less comprehensive abundance data sources (as the map of abundance had a high percentage of zeros from missing records).
 The abundance model quality was examined against $10$-fold validation (explained in \cite{refaeilzadeh2009cross}).
-The root-mean-square error (RMSE), between predicted and observed abundance, generally ranged between $5$ and $10$,
+The root-mean-square error (\acrshort{rmse}), between predicted and observed abundance, generally ranged between $5$ and $10$,
 where the RMSE scale reflects the response variable units ($\mathrm{ha/km^2}$), i.e. $5\%$ and $10\%$ respectively.
 The result was country-wide predicted abundance.
 
@@ -888,7 +888,7 @@ country-wide maps of abundance in GB, despite their limitations.
 % - multi-scale approaches have been outlined \cite{hart2020theoretical}
 
 \label{ch2:ash-dieback}
-Ash dieback (ADB) presents an interesting case study of an emerging epidemic currently devastating ash
+Ash dieback presents an interesting case study of an emerging epidemic currently devastating ash
 populations throughout Europe \cite{enderle2019overview}. The history and predicted evolution of ash dieback
 demonstrate how an invasive, non-indigenous pathogen can spread rapidly through a foreign ecosystem that 
 lacks evolutionary defences. Among the many factors driving the spread of ash dieback, long-distance 
@@ -959,7 +959,7 @@ as noted by \cite{marciulyniene2017can} and losing its canopy.
     \label{fig:ash-deiback-symptoms}
 \end{figure}
 
-The pathogen HF is lethal to European ash (\textit{Fraxinus excelsior}) of all ages. 
+The pathogen HF is lethal to European ash of all ages. 
 Nevertheless, research has established that small young ash trees are more at risk,
 and susceptibility declines with maturity. Surveys of ash stands conducted by \cite{marccais2017estimation} 
 in Belgium recorded that after six years of infection, small young saplings died with $35\%$ mortality, 
@@ -1048,7 +1048,7 @@ as we cannot guarantee the availability of susceptible host material.
 Even supposing available hosts, we cannot guarantee invasive spore colonisation.
 However, studies on spore dispersal shed essential light on the spatial scale of ADB dispersal. 
 
-Modern methods typically rely on `spore trapping' and real-time polymerase chain reaction (PRC) to study spores dispersal.
+Modern methods typically rely on `spore trapping' and real-time polymerase chain reaction (\acrshort{pcr}) to study spores dispersal.
 Data collected by \cite{chandelier2014detection} over three years using a (rotating arm) trapping system
 and PRC amplification. The authors reported a $10\%$ spore trapping efficiency, and that most
 dispersed ascospores remained within $50\mathrm{m}$ from the infectious source, with only a small number of spores exceeding 

@@ -2,12 +2,12 @@
 
 \label{ch5:dispersal-model}
 In the previous Chapter, we employed a simple lattice model with several limitations. 
-In particular, the percolation-based model relied on local, nearest-neighbour contacts and could not spread at lower, more realistic tree densities. 
-This Chapter will generalise the SLM to incorporate non-nearest neighbour interactions by introducing a generic Gaussian dispersal kernel.
+Primarily, the percolation model relied on local, nearest-neighbour (NN) contacts and could not spread at lower, more realistic tree densities. 
+This Chapter will generalise the SLM and incorporate non-local NN interactions by introducing a generic Gaussian dispersal kernel.
 That is, we will combine dispersal-based interactions within a simplistic $SIR$ framework to construct a non-local model (NLM) of tree disease.
-Following this, model behaviour is examined under various dispersal length scales and fitted against the standard $SIR$ model.
+Following this, the model behaviour is examined under various dispersal length scales and fitted against the standard $SIR$ model.
 
-After establishing the non-local dispersal model, a spatially explicit (analytic) expression for the basic reproduction number will be derived for the model, denoted by $R_0$.
+Having established the non-local dispersal model, a spatially explicit (analytic) expression for the basic reproduction number will be derived for the model, denoted by $R_0$.
 Analytical predictions of $R_0$ are compared against the total tree mortality\textemdash equivalent to the final-sized epidemic.
 Lastly, the expression of $R_0$ is scrutinised against the `actual' number of secondary infections, computed by contact-traced individual tree-to-tree infections.
 The analytic and contact-traced methods of calculating $R_0$ are shown to define a threshold at $R_0=1$.
@@ -104,17 +104,17 @@ c) An infected tree $I_{x}$ falls within a distance $\mathcal{L} - 3\sigma_{ga} 
 
 After $t$ time steps, the maximum distance reached by the pathogen is $D_{max}(t)$.
 Figure \ref{fig:sgm-evol}(d) shows the ensemble-averaged maximum infectious distance for four infectivity parameters.
-A $95\%$ confidence interval is shown about the mean\textemdash shown as a solid line\textemdash for each time step. 
-The time series indicates that if the pathogen becomes extinct or propagates to the lattice boundary and survives\textemdash marked by dots in the upper marginal plot for each infectivity parameter.
-Survival to the boundary approximate defines a cluster of infectious-removed trees spanning the domain, representing an epidemic.
-On average, the higher infectivities propagate to the domain boundary first, as demonstrated by comparing the red and green line plots.
+A $95\%$ confidence interval is shown about the mean for each time step. 
+The time series indicates that if the pathogen becomes extinct or propagates to the lattice boundary and survives, also marked by dots in the upper marginal plot for each infectivity parameter.
+Survival to the boundary approximately outlines a cluster of infectious-removed trees spanning the domain, representing an epidemic.
+On average, pathogens with higher infectivities propagate to the domain boundary first, demonstrated by comparing the red and green line plots.
 In contrast, the pathogen fails to reach the domain boundary in the vast majority of simulation time series shown in orange and blue, barring a small number of samples in the upper marginal plot in orange.
 
 Modelling the spread of disease for small $\frac{\ell}{\mathcal{L}}$ is helpful to understand the NLM and presents a clear connection to the percolation-based SLM.
 However, realistic dispersal-based tree disease is unlikely to exhibit slow marching travelling waves at small spatial-scales.
 In particular, as $\frac{\ell}{\mathcal{L}}$ becomes larger, tracking the maximum distance inside a finite domain of size $L$ becomes ill-defined; undoubtedly this becomes even more relevant with fat-tailed dispersal kernels.
-Therefore, although the time-series $D_{max}(t)$ dynamically captures pathogen progression when $\frac{\ell}{\mathcal{L}}$ is small, an alternative metric is required to understand epidemic progression as we look to increase the scale of dispersal.
-Consequently, the reproductive ratio $R_0$ is introduced in section \ref{sec:spatially-explicit-reproduction-ration}.
+Therefore, although the time-series $D_{max}(t)$ is justified for pathogen progression when $\frac{\ell}{\mathcal{L}}$ is small, an alternative metric is required to understand epidemic progression as we look to increase the scale of dispersal.
+Consequently, the reproductive ratio $R_0$ is introduced later in section \ref{sec:spatially-explicit-reproduction-ration}.
 
 \newpage 
 
@@ -431,6 +431,7 @@ Equation \ref{eq:Appendix_final_expression1} provides a computationally efficien
 The following section assesses how the total tree mortality, or final-sized epidemic, relates to threshold $R_0>1$  predicted by \ref{eq:Appendix_final_expression1}.
 
 \subsection{Tree mortality versus $R_0$}
+\label{sec:tree-mortality-analytic}
 
 Desirably, predictions about the final epidemic outcome should be possible given observations of the first few infections. 
 For a well-mixed homogeneous population, the reproduction number can be used to estimate the number of expected cases as a fraction of the population.
@@ -541,7 +542,7 @@ When epidemic parameters are around the threshold, as in Figure \ref{fig:contact
 whereas Figures \ref{fig:contact-trace}(d-e) show that if infectivity is increased, the network proliferates rapidly. 
 Indeed for $\beta^*=2$ and $\beta^*=2$ the network became large if plotted for all generations\textemdash consequently $R_0^{(5)}$ was truncated to permit visualisation.
 
-From Figures \ref{fig:contact-trace}(d-e), one can discern assumptions implicit within the NLM and visualise how targeted\textemdash patch-level\textemdash epidemic control might be optimised.
+From Figures \ref{fig:contact-trace}(d-e), one can discern assumptions implicit within the NLM and visualise how targeted epidemic control might be optimised.
 In the NLM, tree-to-tree interactions are particle-like, meaning that infections spread unidirectionally between two trees at any one time.
 In real life, interactions are more complex.
 Consider two infected trees $(A, B)$ in the vicinity of one healthy susceptible neighbour $C$. In this scenario, infection pressure on $C$ is likely a continuous function of $A$ and $B$.
@@ -563,14 +564,15 @@ this reflects various methods that aim to optimise control by identifying high-r
 
 \subsection{Contact-traced $R_0$ and tree mortality}
 
-In Figure \ref{fig:contact-trace-vs-mortality}, the contact-traced value of $R_0$ is compared against the tree mortality\textemdash similar to the previous analysis.
-More specifically, an ensemble-averaged reproductive ratio (up to $R_0^{(i=5)}$) is plotted against the mean tree mortality, indicated by the dashed curves, and overlaid by a coloured scatter plot depicting a small sample of the data.
+In Figure \ref{fig:contact-trace-vs-mortality}, the contact-traced value of $R_0$ is compared against the tree mortality, similar to the previous analysis in section \ref{sec:tree-mortality-analytic}.
+Figure \ref{fig:contact-trace-vs-mortality} shows an ensemble-averaged reproductive ratio (up to $R_0^{(i=5)}$) plotted against the mean tree mortality, indicated by the dashed curves.
+The ensemble mean is then overlaid with a coloured scatter plot depicting a small sample of the data.
 Each simulation in Figure \ref{fig:contact-trace-vs-mortality} was repeated $10^3$ times for fixed density $\rho=0.01$, dispersal $\ell=50$ and $\mathcal{L}=500$ over $2500$ time-steps.
 As before, a threshold can be witnessed at $R_0^{(i)}=1$, above which tree mortality rises steeply.
 For $R_0^{(1)}$, the threshold phenomena witnessed in Figure \ref{fig:contact-trace-vs-mortality} (shown in dashed blue) appears similar to the previous analytic $R_0$ examination.
 However, each successive generation appears to define a sharper threshold, especially when $\beta^*$ is high, suggested by the steeper coloured dashed curves.
 
-Light can be shed on the steeper thresholds witnessed in Figure \ref{fig:contact-trace-vs-mortality} 
+The steeper thresholds witnessed in Figure \ref{fig:contact-trace-vs-mortality} can be understood
 by considering initial stochasticity.
 If an outbreak (with high $\beta^*$) does not become extinct at early times, the epidemic is likely to continue to spread until no susceptible trees are left to infect.
 Hence, epidemic impact is high and the threshold is sharp for $R_0^{(i)}$, where $i > 1$. 
