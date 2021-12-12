@@ -4,7 +4,6 @@
 Understanding modern-day tree disease epidemics requires a holistic, interdisciplinary
 approach, made possible only by the convergence of numerous scientific fields. 
 Consequently, this Chapter reviews several key modelling themes.
-
 Models of tree disease aim to help design effective control policies and inform policymakers.
 Well-informed policymakers can then help to maintain tree health in rural, urban and commercial environments. 
 Although myriad environmental, biological and anthropomorphic factors complicate the scientific understanding 
@@ -14,6 +13,8 @@ Here, the review begins by narrating some early historical developments in human
 a variety of present-day modelling frameworks. After introducing the mainstream paradigm of plant-based epidemic models,
 an inspection of dispersal, thresholds, and epidemic control follow naturally. Then, several tree distribution datasets in Great Britain are presented and compared. Finally, the Chapter ends with a case study of ash dieback, reflecting the multi-faceted 
 difficulties posed by a recent emergent epidemic.
+
+\newpage
 
 \section{Historical perspectives}
 
@@ -611,7 +612,7 @@ where $dx$ and $dt$ represent the discretized domain and time-steps respectively
 The travelling-wave behaviour of Equation \ref{eq:fkpp} has been used in various epidemiological applications
 \cite{britton1986reaction, murray2002mathematicalbiology, klein2010reaction,bianco2013reaction, yano2017kinetic}.
 Indeed, the FKKP model has close connections to alternative travelling-wave models examined in the context of
-plant disease epidemics \cite{heesterbeek1987modelling, van1988focus}. In the context of plant disease models, 
+plant epidemics \cite{heesterbeek1987modelling, van1988focus}. In the context of plant disease models, 
 these travelling waves generally emerge from the inclusion of short-range exponentially-bounded\footnote{
 Here, the choice of exponential distribution can be considered as slightly longer-range than a Gaussian dispersal kernel 
 with the same scale parameter. Although, both kernels are still fundamentally thin-tailed.} dispersal contacts
@@ -626,11 +627,6 @@ wavefront \cite{pybus2012unifying, cowger2005velocity},
 in contrast to the constancy predicted by Equation \ref{eq:fkpp_vel}. In this case,
 dispersal becomes evermore efficient as the disease front extends over larger areas.
 
-Inverse power law dispersal kernels are thought to be of significant importance with accelerating disease
-fronts, following from their fat-tailed leptokurtic nature and subsequent scale-invariance. In particular,
-they have been successfully used to fit spore dispersal data over five orders of magnitude \cite{mundt2009long}, 
-from $20\mathrm{m}$ to continental spatial scales. 
-
 \begin{figure}
     \centering
     \includegraphics[scale=0.3]{chapter2/figures/multi-spread.pdf}
@@ -641,6 +637,10 @@ from $20\mathrm{m}$ to continental spatial scales.
     \label{fig:WSR-prevelance}
 \end{figure}
 
+Inverse power law dispersal kernels are thought to be of significant importance with accelerating disease
+fronts, following from their fat-tailed leptokurtic nature and subsequent scale-invariance. In particular,
+they have been successfully used to fit spore dispersal data over five orders of magnitude \cite{mundt2009long}, 
+from $20\mathrm{m}$ to continental spatial scales.
 Power law scale invariance was examined by \cite{severns2019consequences} for wheat strip rust (\acrshort{wsr}) epidemics. 
 In particular, the authors constructed wheat plantations and artificially introduced WSR to measure its prevalence over time. 
 Consequently, the spatio-temporal WSR incidence rates strongly supported
@@ -652,8 +652,6 @@ Generally, we see that WSR induces less lesions with distance, and that infectio
 illustrated by triangles in the lower right hand corner.
 An exponent of $b=2.39$ provided a good fit for all scales, suggesting that inverse \textit{square} power laws may 
 prove a useful rule of thumb to predict disease prevalence over different scales.
-
-\newpage
 
 \section{Tree distribution datasets in Great Britain}
 \label{ch2:hostdata}
@@ -693,16 +691,6 @@ The dataset constitutes the first of five planned surveys, part of a rolling mon
 
 \subsubsection{National Forest Inventory}
 
-\begin{figure}
-    \centering
-    \includegraphics[scale=0.2]{chapter2/figures/NFI-figure.pdf}
-    \caption{NFI data super imposed onto a Google earth image, taken from a report (unpublished) by S. Orozco-Fuentes et al.
-             NFI data covering Thetford Forest Park ($16.684 \mathrm{km}^2$) is shown as a polygon in the NFI `woodland' category.
-             Data is interpreted as the conifer forest type. Here, surveys comprises presence-only data, and no tree species percentage cover
-             is reported. NFI data extends throughout $\sim 13\%$ of land coverage in GB and large non-woodland areas remain un-surveyed.}
-    \label{fig:NFI-data}
-\end{figure}
-
 The National Forest Inventory (\acrshort{nfi}) collects and maintains forest and woodlands data in GB.
 Originally, the NFI was established to help restore and expand Britain's woodlands following the First World War \cite{james1990history}.
 Regular programs ($10$-$15\mathrm{year}$ intervals) implement surveys of woodland and forest size, distribution, composition and condition across GB.
@@ -716,7 +704,15 @@ Although, additional datasets are available to purchase, including:
 1) Tree species percentage per region by woodland type
 2) Tree species proportions within the upper canopy of each NFI sample plot, without supplying the exact location of the individual sample plot.
 
-\subsubsection{Botanical Society of Britain and Ireland}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.2]{chapter2/figures/NFI-figure.pdf}
+    \caption{NFI data super imposed onto a Google earth image, taken from a report (unpublished) by S. Orozco-Fuentes et al.
+             NFI data covering Thetford Forest Park ($16.684 \mathrm{km}^2$) is shown as a polygon in the NFI `woodland' category.
+             Data is interpreted as the conifer forest type. Here, surveys comprises presence-only data, and no tree species percentage cover
+             is reported. NFI data extends throughout $\sim 13\%$ of land coverage in GB and large non-woodland areas remain un-surveyed.}
+    \label{fig:NFI-data}
+\end{figure}
 
 \begin{figure}
     \centering
@@ -728,6 +724,8 @@ Although, additional datasets are available to purchase, including:
     }
     \label{fig:bsbi-data}
 \end{figure}
+
+\subsubsection{Botanical Society of Britain and Ireland}
 
 The Botanical Society of Britain and Ireland (\acrshort{bsbi}) has recorded species presence-only data since $1950$.
 BSBI datasets are publicly available\footnote{BSBI data can be downloaded from: \nolinkurl{https://database.bsbi.org}.} upto a
@@ -785,10 +783,10 @@ A number of publications have applied SDMs livestock diseases \cite{hollings2017
 distribution of Dengue Fervour \cite{bhatt2013global} and Zika virus \cite{messina2016mapping}, and Anthrax in Kenya \cite{otieno2021modeling}.
 However, SDM applications for tree disease epidemics appear absent from the literature.
 
-\subsubsection{Modelling tree abundance}
+\subsubsection{Predicting tree abundance}
 
 SDM-generated tree occurrence data have limited applications to ecologists and forest managers.
-This motivates a statistically-generated abundance data that includes significantly 
+This motivates statistically-generated abundance data that includes significantly 
 more information about the population occupation/density and ecosystem.
 Modellers have examined numerous approaches to predict species abundance;
 including, linking the abundance-occupancy relationship \cite{gaston2000abundance} and
@@ -797,7 +795,7 @@ the scaling pattern of species occupancy over progressively smaller spatial scal
 An interesting, and highly relevant, approach to predict the abundance of common tree species in Great Britain was put forward by \cite{hill.data}.
 At a high level, BSBI presence-only data were combined with a series of environmental covariates using a species distribution model to 
 produce a map of predicted occurrence data. Then, random forest regression was employed with a training sample ($70\%$) of less extensive abundance 
-data\textemdash consisting of CS, myForest and Bluesky's National Canopy Map. 
+data (consisting of CS, myForest and Bluesky's National Canopy Map). 
 Results were then cross-validated with the remaining ($30\%$) abundance data; Figure \ref{fig:hill-method} displays a
 flow-diagram of the method presented by \cite{hill.data}. 
 
@@ -827,7 +825,7 @@ A more detailed explanation of the treatment proposed by \cite{hill.data} follow
     \item Abundance data from CS and myForest were both expressed as hectares covered per kilometer 
     squared ($\mathrm{ha/km^2}$). This entailed using woodland cover from the NFI dataset to multiply
     the percentage cover of each species within a woodland patch, with a proportion of woodland cover per kilometer.
-    \item Random forest (\acrshort{rf}) regression then modelled the relationships between (CS and myForest) abundance data with
+    \item Random forest (RF) regression then modelled the relationships between (CS and myForest) abundance data with
     the SDM-generated map of predicted occupancy. In addition, RF regression used four covariates, 
     three of which consisted of Bluesky's National Canopy data (i.e. total tree cover, woodland tree cover, non-woodland tree cover)
     and NFI edge broadleaved woodland (i.e. within $50\mathrm{m}$ of non woodland) data.
@@ -1048,7 +1046,7 @@ as we cannot guarantee the availability of susceptible host material.
 Even supposing available hosts, we cannot guarantee invasive spore colonisation.
 However, studies on spore dispersal shed essential light on the spatial scale of ADB dispersal. 
 
-Modern methods typically rely on `spore trapping' and real-time polymerase chain reaction (\acrshort{pcr}) to study spores dispersal.
+Modern methods typically rely on `spore trapping' and real-time polymerase chain reaction (PCR) to study spores dispersal.
 Data collected by \cite{chandelier2014detection} over three years using a (rotating arm) trapping system
 and PRC amplification. The authors reported a $10\%$ spore trapping efficiency, and that most
 dispersed ascospores remained within $50\mathrm{m}$ from the infectious source, with only a small number of spores exceeding 

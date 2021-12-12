@@ -24,19 +24,16 @@
 % \end{itemize}
 
 Currently, pests and pathogens threaten the survival of numerous tree species around the globe. 
-Drastic increases in international trade, climate change, and the widespread
-adoption of monoculture plantations have increased the risk of large-scale outbreaks in native tree populations. 
-However, scientists, policymakers and stakeholders can cooperate to prevent the spread of tree disease. 
-In particular, mathematical models can help inform effective control strategies to prevent epidemics through rural and urban tree populations. 
+An upsurge in the trade and transport of non-native plants, climatic change, and the widespread adoption of monoculture plantations have increased the risk of large-scale outbreaks in native tree populations. 
+However, scientists, policymakers and stakeholders can cooperate, thus preventing emergent infectious tree diseases within a country. 
+In particular, the output from mathematical models can help advise practical management strategies that help control epidemics through rural and urban tree populations.
 
-Numerous challenges complicate an effective on-the-ground response, as epidemic drivers are multifaceted, hard to quantify, and often unknown. 
-Subsequently, epidemic models are significantly challenging to parameterise. Moreover, communicating
-highly technical research insights to policymakers and stakeholders pose a considerable challenge
-for modellers even with accurate parameterisation. 
-
+Numerous challenges complicate an effective on-the-ground response. Epidemic drivers are multifaceted, hard to quantify, and often unknown. 
+Consequently, epidemic models are significantly challenging to parameterise. 
+Further still, communicating research insight to policymakers and stakeholders pose a significant challenge for modellers even with accurate parameterisation.
 This Chapter introduces the reasons, challenges and value of modelling tree disease epidemics.
-First, the motivation for studying tree disease epidemics is highlighted, followed by a review of the major disease drivers.
-Then, the vital interaction between policymakers, modellers and stakeholders are summarised alongside the challenge of implementing epidemic control.
+First, the motivation for studying tree disease epidemics is highlighted, followed by a review of the most pressing disease drivers.
+Second, the socioeconomic interactions between modellers, policymakers and stakeholders are summarised, along with the challenge of implementing epidemic control.
 Lastly, we conclude by outlining the topics covered in this thesis.
 
 \newpage
@@ -104,10 +101,9 @@ The terms `pest' and `pathogen' describe a broad spectrum of taxonomically diver
 Pests denote any organism that harms humans or human interests such as crops or livestock
 \cite{buckle2015rodent, oerke2006crop, de1964biological}. Overwhelmingly, insects constitute the main
 pest threats to tree species \cite{metcalf1994introduction}. In Great Britain (\acrshort{gb}), the Asian longhorn beetle
-(\acrshort{alb}) \cite{haack2010managing}, and oak processionary moth \acrshort{opm} \cite{tomlinson2015managing} are two pests that currently threaten tree health.
-
-In contrast, the term `pathogen' describes any organism that induces disease. 
-In the context of trees populations, diseases include fungi, bacteria, viruses, and oomycetes \cite{balloux2017q, Boyd1235773}. 
+(\acrshort{alb}) \cite{haack2010managing}, and oak processionary moth (\acrshort{opm}) \cite{tomlinson2015managing} are two pests that currently threaten tree health.
+In a slightly different vein, the term `pathogen' describes any organism that induces disease. 
+In the context of trees populations, diseases include fungi, bacteria, viruses, and oomycetes \cite{balloux2017q, Boyd1235773}.
 Presently, the oomycete \textit{P. ramorum} \cite{brasier2005phytophthora}, and ADB
 caused by the fungus \textit{H. fraxineus} (\acrshort{hf}) \cite{ash-dieback-costs, mitchell2014ash} are two pathogens
 that threaten tree-health in GB.
@@ -133,7 +129,7 @@ genetically resistant cultivars \cite{pal2006biological, baker1974biological}.
 
 In this work, we aim to construct epidemic models and investigate eradication strategies, 
 where `eradication' generally entails the removal of infected symptomatic trees through sanitation felling. 
-In this pursuit, three vital questions to consider are: 
+In this pursuit, three questions are vital to consider: 
 (A) How do we effectively identify an infected tree? 
 (B) Given limited resources, which infected trees are the best choices to fell? 
 (C) What is the risk that a large-scale epidemic will result from the initial observations of diseased trees?
@@ -162,10 +158,10 @@ Conventional eradication strategies involve detecting symptomatic trees and cull
 A naive strategy that indiscriminately culls hosts can be fine-tuned and optimised to maximally reduce the epidemic impact. 
 For example, one strategy prioritises targets by ranking hosts according to expected number of secondary infections \cite{risk-potential-control}.
 Over large scales, models of sudden oak death (\acrshort{sod}) in California indicate that epidemics are most effectively controlled by targeting infected trees either at or ahead of the infectious wave-front \cite{large-scale-control}.
-Regardless of spatial scale, various factors complicate eradication, such as the cryptic nature of tree diseases and fluctuating government budgets eradication \cite{control-theory, control-theory-application}.
+Regardless of spatial scale, various factors complicate eradication, such as the cryptic nature of tree diseases and fluctuating government budgets \cite{control-theory, control-theory-application}.
 
 Enhanced surveillance and monitoring strategies also seek to optimise resource allocations. 
-Surveillance aims to detect infected individuals and disease incidence, generally requiring the collection and analysis of data on botanical epidemics \cite{surveillance-review}.
+Surveillance aims to detect infected individuals and disease incidence, generally requiring the collection and analysis of epidemic data \cite{surveillance-review}.
 Ultimately, surveillance and monitoring comprise the last line of defence after preemptive border checks and inspections have failed to prevent the introduction of disease. 
 Statistical approaches have been adopted to optimise the number of samples/surveys required to infer disease incidence accurately \cite{yamamura2016sampling}.
 Moreover, optimal surveillance strategies have been examined with logistic \cite{parnell2012estimating} 
@@ -185,8 +181,8 @@ Even supposing an accurate and well-informed control strategy,
 a response on-the-ground only ensues when stakeholders adopt policies or join control initiatives \cite{reed2018theory}.
 Figure \ref{fig:modelling-and-policies} presents a simplified view of the interactions which dictate research output, public awareness, 
 policy-making and the eventual epidemic control in the UK\footnote{
-In part, Figure \ref{fig:modelling-and-policies} was informed by interviewing civil servants, researchers and policymakers at DEFRA/Fera (San hutton, York).}. Scientists in several disciplines\textemdash
-from molecular biology to mathematics\textemdash receive funding from and collaborate with governmental
+In part, Figure \ref{fig:modelling-and-policies} was informed by interviewing civil servants, researchers and policymakers at DEFRA/Fera (San hutton, York).}. Scientists in several disciplines,
+from molecular biology to mathematics, receive funding from and collaborate with governmental
 bodies, e.g. the Department for Environment Food \& Rural Affairs (\acrshort{defra}). Government-led control initiatives, resource
 allocation and recommendations can then direct on-the-ground stakeholder\footnote{Here, `stakeholder' is a broad
 term that reflects any interested individual, collective, or organisation 
@@ -194,7 +190,7 @@ term that reflects any interested individual, collective, or organisation
 \cite{brugha2000stakeholder}; this contrasts with the `public' that is not directly affected by control policies and have no vested interest in the policy direction.} 
 responses. 
 
-Additionally, scientists can engage stakeholders directly (discussed more below) or influence public opinion through outreach and
+Alternatively, scientists can engage stakeholders directly (discussed more below) or influence public opinion through outreach and
 scientific communication. In turn, the public can influence the decisions of policymakers by
 mounting sufficient political pressure \cite{fuller2016public}.
 Unfortunately, several obstacles inhibit a well-informed, timely and effective response. 
@@ -220,6 +216,8 @@ an epidemic model of citrus huanglongbing disease (HLB) and stakeholder opinion 
 opinions depended on research, other citrus growers, consultants, and the media. The perception of risks and trust in
 area-wide control led the stakeholders to join an area-wide control initiative. Subsequently, the analysis of 
 \cite{milne2020makes} suggests that the efficiency of epidemic control led to more stakeholder-engagement than the perceived risks, and that frequent contact between stakeholders and advisors increases the probability of successful control.
+
+\newpage
 
 \section{Chapter summary}
 
