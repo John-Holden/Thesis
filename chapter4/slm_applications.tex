@@ -136,14 +136,12 @@ Variance inside this window is defined by:
 \end{equation}
 Initial transience constrains the particular choice of $t_O$ in the channel, 
 which distort calculations of the time-series variance. 
-The lower bound is set to $t_0=100$, because initial instability occurred most over the first $100$ time-steps. 
-Moreover, the window upper-bound is to $t_F = 200$ (a two-fold increase of $t_O$) so that simulation variance is measured over a sufficient number of steps.
+The lower bound is set to $t_0=100$ because initial instability occurred most over the first $100$ time-steps, and the window upper-bound is to $t_F = 200$ (a two-fold increase of $t_O$) so that simulation variance is measured over a sufficient number of steps.
 Lastly, the simulation boundary conditions required a slight alteration to fix the number of variance measures to $N$.
-Previously, runtime terminated occurred upon one of three events, either: percolation, pathogen extinction, or when the number of time-steps exceeded the time horizon.
+Previously, one of three events terminated a simulation, either: percolation, pathogen extinction, or when the number of time-steps exceeded the time horizon.
 Here, we relax the condition that terminates simulations when the pathogen dies off;
-otherwise, short-lived simulations ($t<t_O$) would be omitted from the ensemble and reduce the number of $N$ variance measures. 
+otherwise, short-lived simulations ($t<t_O$) would be omitted from the ensemble and reduce the number of variance measures below $N$. 
 Additionally, the time horizon is fixed to $t_F$, thereby mitigating the cost of simulating unnecessary steps.
-
 
 \subsection{EWS parameter-sweeps}
 \label{section:ews_slm}

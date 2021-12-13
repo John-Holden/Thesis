@@ -822,7 +822,7 @@ To date, FC surveys of ADB are the most extensive throughout the UK, composed ye
 Figures \ref{fig:adb-comparison}(a-d) contrasts the FC data, collected from 2012 (green) to 2020 (purple), against three example $R_0$-maps from low to high infectivity parameters.
 The $R_0$-maps are based on the the model $\phi_1$-ga, subsequently all $1\mathrm{km \times 1 km}$ susceptible patches were grouped into clusters.
 
-The low-valued infectivity map ($\beta^*=250$) shown in Figure \ref{fig:adb-comparison}(b) looks significantly different from the ADB observations in (a).
+The low-valued infectivity map ($\beta^*=250$) shown in Figure \ref{fig:adb-comparison}(b) looks significantly different from the ADB observations in panel (a).
 Figure \ref{fig:adb-comparison}(b) is more fragmented and sparsely-populated with susceptible patches.
 As such, reported cases of ADB contradict large below-threshold regions of Figure \ref{fig:adb-comparison}(b).
 Visual deviations become particularly apparent in Scotland, where according to Figure \ref{fig:adb-comparison}(b), a trivially small distribution of patches could support an epidemic. 
@@ -890,12 +890,11 @@ Moreover, nearest neighbour CCA proved difficult when constructing $R_0$-maps fo
 That is, $R_0$ cannot reliably define pathogen invasiveness inside a small domain when dispersal is longer-ranged.
 Thus, inverse power law dispersal required a larger patch size to measure $R_0$ from a single focus. 
 In turn, a larger patch-level domain size produced a coarse-grained host distribution that omitted important finer-scale epidemic information.
-However, future research could examine non-local interactions between $R_0$-valued patches, in principle, this
-could permit the construction of a higher resolution $R_0$-map composed of `within' and `between' patch interactions\textemdash echoing 
+However, future research could examine non-local interactions between $R_0$-valued patches, which could permit the construction of a higher resolution $R_0$-map composed of `within' and `between' patch interactions\textemdash echoing 
 the short and long ranged interactions inside a metapopulation \cite{beninca2020trade}.
 
 Despite the limitations of CCA, clusters grew up to four orders of magnitude over the initial interval of infectivity, $\beta^*\in [100, 400]$.
-Rapid cluster growth between $\beta^*\in [100, 400]$ occurred for all $SEIR$ model-variants and domain resolutions considered.
+Rapid cluster growth between $\beta^*\in [100, 400]$ occurred for all $SEIR$ model-variants and domain resolutions.
 Landscape-level spread within our framework, therefore, demonstrates a threshold-like behaviour, below witch ($\beta^* \lessapprox 100$), no models would be able to invade Great Britain.
 The next valuable step would be to fit a value of $\beta$ to data on ADB spread\footnote{Given the high availability of ADB mortality data in different European countries, fitting the $SEIR$ model to mortality curves would be most accessible.}, 
 and construct the resulting $R_0$-map. Although, a simplified comparison can be achieved by visual inspection alongside Forestry Commission (FC) survey data, as shown in Figure \ref{fig:adb-comparison}.
