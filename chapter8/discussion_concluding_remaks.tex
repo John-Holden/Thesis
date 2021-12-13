@@ -14,7 +14,7 @@ Fortunately, Chapter \ref{ch5:dispersal-model} resolved the issue by constructin
 Nonetheless, Chapter \ref{ch5:dispersal-model} also demonstrated that a small dispersal length scale can still gives rise to an unnatural, wave/percolation-like epidemic. 
 At the very least, these results bolster the growing body of research highlighting the importance of dispersal and help guide modellers to construct more representative models in botanical epidemiology.
 
-Additionally, Chapter \ref{ch5:dispersal-model} examined two methods of calculating $R_0$ for a non-local dispersal model (NLM) over a range of epidemic parameters. Results from Chapter \ref{ch5:dispersal-model} indicate that when the scale of dispersal is comparable to the domain, the model approximates a mass-action well-mixed system described by the standard $SIR$ model. However, comparisons to the $SIR$ model were simplified and limited to one parameter (i.e. the ratio $\beta/\gamma$). Subsequently, the analysis constitutes a preliminary result, and a more sophisticated comparison method is required to glean further insight.
+Additionally, Chapter \ref{ch5:dispersal-model} examined two methods of calculating $R_0$ for a non-local dispersal model (NLM) over a range of epidemic parameters. Results from Chapter \ref{ch5:dispersal-model} indicate that when the scale of dispersal is comparable to the domain, the model approximates a mass-action well-mixed system described by the standard SIR model. However, comparisons to the SIR model were simplified and limited to one parameter (i.e. the ratio $\beta/\gamma$). Subsequently, the analysis constitutes a preliminary result, and a more sophisticated comparison method is required to glean further insight.
 
 Most intriguingly, the spatially-explicit derivation of $R_0$ led to an `entire function' in Equation \ref{eq:ein}, a well-known function in complex analysis  \cite{abramowitz1948handbook}. 
 Equation \ref{eq:ein} contrasts with the majority of approaches to calculate $R_0$, which generally rest on infectivity/removal rates without including spatial structure or dispersal. Instead, Equation \ref{eq:ein} was a function of infectivity, removal, dispersal, and tree density parameters. Further theoretical studies could explore a more rigorous analysis of Equation \ref{eq:ein}, and perhaps examine an alternate derivation incorporating inverse power law dispersal with exponentially-distributed removal lifetime dynamics.
@@ -35,7 +35,7 @@ Thus, unfortunately, attempting eradication at this stage of pathogen developmen
 Still, Chapter \ref{ch:6-adb} marks a step towards a general framework that can help policymakers reach informed decisions about \textit{where} to focus epidemic control.
 In particular, the framework could provide value as an approach to threat assessment and rapid response modelling during the early phase of an epidemic.
 
-In addition, Chapter \ref{ch:6-adb} developed a simplified spatially-explicit $SEIR$ model that described the seasonal spread of ash dieback (ADB) over local spatial scales.
+In addition, Chapter \ref{ch:6-adb} developed a simplified spatially-explicit SEIR model that described the seasonal spread of ash dieback (ADB) over local spatial scales.
 Subsequently, the ADB model was coupled with the map of predicted ash abundance given by \cite{hill.data}, thus producing an $R_0$-map that covered GB.  
 Surprisingly, no compartmentalised model of ADB could be found in the literature. Therefore, to my knowledge, the ADB model presented in this thesis 
 is the first mechanistic (compartmentalised) attempt at modelling the epidemic spread of ADB.
@@ -75,42 +75,3 @@ In conclusion, the research narrative developed in this thesis aims to help info
 The approach constitutes an epidemic mapping framework for tree disease with parallels to the emerging field of Infectious Disease Cartography in human epidemiology. 
 The framework is computationally efficient, flexible, and adaptable to other pathosystems.
 Several theoretical insights were ascertained from deriving a spatially-explicit expression for $R_0$ and comparing it against a stochastic non-local dispersal model. Lastly, a novel epidemic control strategy was outlined, though more work is needed to progress the framework and rigorously validate results.
-
-% The framework produced epidemic maps  differs from other large-scale approaches to model the spread of tree disease 
-% Infectious Disease Cartography, one seeks to map the likelihood, or risk, of infectious disease outbreaks and produce risk-maps.
-% Infectious Disease Cartography
-% Disease cartography using 
-
-% \begin{itemize
-%     \item We have...Disease cartography using liking species abundance with spatially-explicit epidemic model. A notable challenge posed by a dispersal-based system
-%     is that regions of land couple together non-locally. Throughout this thesis, CCA assessed clustering based on neighbour links. 
-%     Going forward, a more sophisticated notion of connectivity could permit higher resolution maps for Inverse power law... method could add significant value... 
-%     \item focus on a small study area, as in \cite{he2019integrating}
-% \end{itemize}
-
-%---------------------------------------------------------
-% relation of work to more commonplace Metapopulation models
-% In the process of computing a value for $R_0$, several insights into dispersal-based epidemic progression and spatial-scale came to light.
-% Namely, computing $R_0$ for a fat-tailed inverse power law dispersal kernel required a larger to domain-size in comparison to the thin-tailed Gaussian variants.
-% A larger domain-size necessitated a lower landscape-level resolution (or equivalently larger patch-size) when forming the $R_0$-map.
-% Thus to define an $R_0$-value in the framework, landscape-level patch-size needs to reflect the nature of dispersal;
-% metapopulation-type models do not have this limitation. 
-% Yet, at the same time typical metapopulation models are not predicated on small-scale epidemiological properties, 
-% but tend to model patch-sizes on the order of $100\mathrm{m}-1\mathrm{km}$ \cite{large-scale-control, doi:10.1111/j.1365-3059.2010.02391.x}.
-
-%---------------------------------------------------------
-% generalisation to the approach
-% In favour of parsimony, infectivity $\beta$ was kept constant over the entire landscape of Great Britain.
-% However, epidemic severity of ADB is known to vary in response to either urban or rural environments \cite{marciulyniene2017can}.
-% So in reality, $\beta$ may very well exhibit a spatial dependence.
-% Likewise, including an index on, $\beta_i$, could reflect yearly changes due to climate change or habitat suitability\textemdash thus generalising the yearly infection cycles according to Figure \ref{fig:SEIR-transitions}.
-% An attractive feature of the $SEIR$ model therefore includes the scope of its adaptability 
-% and generalisations to our notion of $\beta$ could support more in-depth studies on spatio-temporal epidemic heterogeneity.
-
-%-------------------------------------------------------
-% - Crucially, future work will involve integrating LDD mechanisms into the model in order to understand the relative importance long vs local distance dispersal. We may speculate about the relative importance looking at figure x, whereby the maximum distance spread in season due to local-scale spread is xm/year, in stark contrast from the observed spread of 40-60km/yr.
-% - We cannot overstate the importance of LDD, and it is hard to say the degree to which targeting the local dispersal mechanism alone will inhibit the spread. We will revisit this question in future work, however, we contend that preferentially targeting diseased trees based on spatial location.....could help control epidemics with greater efficacy. 
-% - We may speculate how our result could aid the effort of choosing where to re-plant ash stands genetically engineered to be less susceptible; if re-planting efforts were undertaken in certain location.... <- speculative
-% - We may speculate about how persistent ash dieback would be, even if a large-scale control effort was undertaken
-% - There is evidence to suggest regional variation in mortality due to ash dieback \cite{stocks2017first}, this could be incorporated into the model...
-% - Recently, it has been suggested that the dispersal-kernel of wind-borne pathogens might follow a scaling law \cite{https://doi.org/10.1111/jbi.13642}

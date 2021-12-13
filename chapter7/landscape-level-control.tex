@@ -1,19 +1,5 @@
-% ------------------------------------------------------------------------------
-% A primer on continuum models and how this relates to the work we have done
-% 1) Introduce logistic growth and diffusion
-% 2) Introduce FKPP in all its glory .
-% 3) Show one and two d spread
-% 4) Couple to the sub-grid, what this says about the sub-grid...
-% 5) Talk about growth rate-xi and growth rate of sub-grid... an assumption about mixing and SIR <--         appendix territory
-% 6) Show `toy model properties in xi and d' get realistic looking spread...
-% 7) Show realistic spread and give a primer to things which could be done.
-% 8) Talk about alternate more, non-linear models and consult Rammile...
-% ------------------------------------------------------------------------------
 
 \chapter{Towards landscape-level control}
-
-% In reality, connectivity between patches depend on the dispersal kernel, and not on an arbitrarily defined nearest-neighbour structuring element.
-% Connectivity between patches can extend radially non-locally over a number of surrounding patches.
 
 \label{ch7:landscape-level-control}
 
@@ -33,32 +19,6 @@ Section \ref{sec:fragmentation-method} presents a novel method to disrupt epidem
 Following on, the method is analysed in section \ref{sec:towards-regional-control}. However, the analysis constitutes unfinished work and sets the scene for future research questions.
 The work conducted in this Chapter rests on the $SEIR$ model of ADB, although the outlook is less specific to ADB and more general-purpose, suitable to any class of wind-dispersed tree pathogens with comparable dispersal parameters. 
 
-
-% - The challenge of controlling ADB reflects the challenge of containing a pathogen that spreads via long-distance dispersal (LDD). 
-% Moreover, HP can infect ash through diverse mechanisms such as water-course and contaminated soil and LDD means that new and distant foci can emerge over large distances without the need for nearby ash\textemdash for a more detailed review of ADB, including the challenges of control and biology, see chapter \ref{chapter2:litrevieiw}.
-% Subsequently, we found connectedness inside a given cluster could depend on just a small number of `connecting points' which if removed, thinned below $\rho_c$, would lead to significant fragmentation and divide the cluster
-
-% - This leads us to develop a heuristically-based fragmentation algorithm
-% - In section X map connectivity will be examined under a threshold function \Phi(\xi). 
-% -As we define it, fragmentation considers which locations in the population, if artificially taken below $R_0 = 1$ through felling, would disrupt epidemiological connectivity\textemdash, thus leading to containment. 
-% -Epidemic containment in the largest $R_0$-cluster is then analysed and shown to be most applicable over a specific range of infectivity parameters.
-% -Although the strategy of control presented in this chapter is demonstrated on a simplified model of ADB, the results are generic and could be applied to any wind-dispersed pathogen.
-% - Developing a landscape-level control strategy when there is LDD (and epidemic uncertainty) present several obstacles, 
-% - The emergent epidemic caused by the pathosystem ash dieback (ADB) is predicted to wipe out the vast majority of ash in Great Britain over the next few decades \cite{ash-dieback-costs}. 
-% - Currently, large-scale control efforts aim to slow the spread, in contrast, to complete containment. % Find references of current efforts/guidelines 
-% - A slower rate of spread benefits ash populations allowing them to recover alongside artificial replanting. % reference 
-
-
-% Classical percolation theory requires lattice points to be independently open or closed, with no dependence on the state of nearest neighbours. So, strictly speaking, the analogy to percolation breaks down because the susceptibility of a given patch of ash is likely dependent on its neighbours $R_0$-value; as can be seen in Figures \ref{fig:uk-mapping}(d-e), particularly in the south of England where ash densities are high. 
-% Heterogeneity in the $R_0$-map becomes particularly useful in the the next chapter, where we investigate a potential strategy of landscape-level control based on disrupting epidemic connectivity and fragmentation.
-% Before we can move towards epidemic control, it is desirable to understand $R_0$-clustering more fully.
-%-----------------------------------
-% Assuming connectivity
-% Patches below the threshold present a natural barrier to ADB spore dispersal between clusters, for two reasons: 
-% 1) Below-threshold patches do not support high levels of infected biomass, spore dispersal emanating from these patches will therefore be lessened.
-% 2) The domain resolution, configured in section \ref{ch6:re-scaling-host-data}, ensures that no secondary infections will result for the parameter values and spatial scale under consideration in the seasonal $SEIR$ model of ADB.
-% Likewise, 
-
 \section{Method: cluster fragmentation}
 \label{sec:fragmentation-method}
 
@@ -77,8 +37,6 @@ Cluster fragments then define disconnected `sub-clusters' (e.g. $\mathbf{C_1}$ a
 Host patches inside the confining cluster are assumed to be removed (or put at risk) by the pathogen, while hosts inside the remaining sub-cluster are saved and remain susceptible.
 Efficient control is achieved if the control effort is small compared to the reduction of epidemic impact.
 
-% - The modelled distribution of ash depicts a continuum of connectivity throughout Great Britain.
-% - The shape of each cluster is constrained by landscape topography and geography. 
 \subsection{Identifying high-priority patches}
 \label{sec:fragmentation-method-1}
 
@@ -302,10 +260,6 @@ The inset highlights where pathogen dispersal might jump between clusters, indic
 Although wind-dispersed secondary infections are likely rare over these spatial scales ($5$-$20\mathrm{km}$), they are nevertheless thought possible for fungal spores \cite{grosdidier2018tracking};
 the analysis presented here neglect these complexities, which requires further investigation.
 
-% The last spatial plot, Figure \ref{fig:payoff-efficiency}(c), depicts a more likely scenario with a centrally located focus.
-% Most of GB remains at risk, yet some Northern and Southern regions surrounding the target cluster remain protected from the pathogen.
-% If the disease has not yet reached the connecting patches (identified by the red crosses), Figure \ref{fig:payoff-efficiency}(c) indicates that regional containment might be attempted alongside targeting a disease wave-front \cite{large-scale-control}, or more local-scale pathogen eradication \cite{WEBIDEMICS}. 
-% Although, ultimately, more work is needed to assess the efficacy and possibility of halting/slowing the spread.
 
 \newpage 
 

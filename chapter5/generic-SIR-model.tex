@@ -4,8 +4,8 @@
 In the previous Chapter, we employed a simple lattice model with several limitations. 
 Primarily, the percolation model relied on local, nearest-neighbour (NN) contacts and could not spread at lower, more realistic tree densities. 
 This Chapter will generalise the SLM and incorporate non-local NN interactions by introducing a generic Gaussian dispersal kernel.
-That is, we will combine dispersal-based interactions within a simplistic $SIR$ framework to construct a non-local model (NLM) of tree disease.
-Following this, the model behaviour is examined under various dispersal length scales and fitted against the standard $SIR$ model.
+That is, we will combine dispersal-based interactions within a simplistic SIR framework to construct a non-local model (NLM) of tree disease.
+Following this, the model behaviour is examined under various dispersal length scales and fitted against the standard SIR model.
 
 Having established the non-local dispersal model, a spatially explicit (analytic) expression for the basic reproduction number will be derived for the model, denoted by $R_0$.
 Analytical predictions of $R_0$ are compared against the total tree mortality\textemdash equivalent to the final-sized epidemic.
@@ -13,13 +13,13 @@ Lastly, the expression of $R_0$ is scrutinised against the `actual' number of se
 The analytic and contact-traced methods of calculating $R_0$ are shown to define a threshold at $R_0=1$.
 The analysis is kept generic, with arbitrary units of time and distance, before incorporating more biological realism in the next Chapter. 
 
-\section{A small-scale non-local $SIR$ model}
+\section{A small-scale non-local SIR model}
 \label{section:sgm-expo}
 
 As before, we begin with a model fixed inside a square lattice of size $\mathcal{L}$ and host units refer to individual trees.
 Host distributions are initialised by a Bernoulli trial with probability $\rho$ according to a binomial distribution.
 Thus, the probability of host occupation ($\rho$) can be seen as a tree-density parameter and interactions between hosts are modelled over a flat and randomly distributed population.
-The state of a tree can be in one of three conditions: susceptible, infected, or removed\textemdash $SIR$.
+The state of a tree can be in one of three conditions: susceptible, infected, or removed (SIR).
 We assume all trees are equally susceptible, and trees that become infected transition through the states $S\rightarrow I\rightarrow R$ without the possibility of recovery.
 
 From first principles, the probability of infection at a distance $r$ can be described by an unnormalised Gaussian function $g(r; \ell)$,
@@ -76,7 +76,7 @@ Spatio-temporal epidemic progression within the NLM is depicted in Figure \ref{f
 Figures \ref{fig:sgm-evol}(a-b) depict a typical simulation above the epidemic threshold spreading through the domain at two time steps;
 simulation parameters are given by $\rho=0.01,\ \ell = 25,\ \beta = 1.0 \times 10^{-3}$ on a domain of size $500 \times 500$.
 All panels in Figure \ref{fig:sgm-evol} begin from a small number of infected hosts at the domain centre at $t=0$.
-A tree density of $0.01$ approximately mirrors the median canopy coverage of a large deciduous tree distributed throughout the GB\textemdash verified by assessing the predicted oak abundance presented previously in Figure \ref{fig:uk-oak-l.hill}.
+A tree density of $\rho = 0.01$ approximately mirrors the median canopy coverage of a large deciduous tree distributed throughout the GB\textemdash verified by assessing the predicted oak abundance presented previously in Figure \ref{fig:uk-oak-l.hill}.
 Unsurprisingly, extending the neighbourhood of interaction to non-nearest neighbours permits an epidemic for much lower tree densities in comparison to the SLM percolation threshold studied in Chapter \ref{chapter:SLM}.
 
 Figures \ref{fig:sgm-evol}(a-b) suggest an approximate wave-front-like behaviour, as infections spread out radially from the epicentre.
@@ -90,14 +90,14 @@ For a dispersal parameter $\ell=25$, shown in Figure \ref{fig:sgm-evol}, the Gau
 Hence, provided that the ratio $\frac{\ell}{\mathcal{L}}$ is small, we can present an analogy to percolation.
 Figure \ref{fig:sgm-evol}(d) shows the maximum distance from the epicentre an infected host is likely to be over 500 time steps.
 Boundary conditions in Figure \ref{fig:sgm-evol}(d) terminate simulations upon three conditions: 
-a) The simulation time step exceed 500 steps 
-b) No infected trees remain in the domain 
-c) An infected tree $I_{x}$ falls within a distance $\mathcal{L} - 3\sigma_{ga} \leq I_{x} \leq \mathcal{L}$ away from the epicentre.
+(A) The simulation time step exceed 500 steps 
+(B) No infected trees remain in the domain 
+(C) An infected tree $I_{x}$ falls within a distance $\mathcal{L} - 3\sigma_{ga} \leq I_{x} \leq \mathcal{L}$ away from the epicentre.
     
 \begin{figure}
     \centering
     \includegraphics[scale=0.48]{chapter5/figures/fig1-sir-spatio-temporal.pdf}
-    \caption{Percolation-like disease progression of the dispersal-based $SIR$ model with a small dispersal length scale of $\ell = 25$. 
+    \caption{Percolation-like disease progression of the dispersal-based SIR model with a small dispersal length scale of $\ell = 25$. 
     All figures were accessed in a domain of size $\mathcal{L} \times \mathcal{L} = 500 \times 500$ and fixed host density $\rho=0.01$. (a-b) An evolving epidemic with infectivity $\beta=1.0\times 10^{-3}$ is shown through two time-steps. Green pixels represent susceptible trees in $S$, while red pixels represent infected trees at different steps in the $I$ category. Infected trees uniformly transition into the removed compartment at $t=100$, shown in black. (c-d) An ensemble-averaged spatio-temporal frequency distribution (of 200 repeats) representing the number of trees in the infected compartment. The probability of an infected tree located at row $x$ and column $y$ is represented by a KDE estimate in the upper and horizontal marginals. (d) The maximum infectious distance ensemble-averaged over 100 repeats for four infectivity parameters shown by colour.}
 \label{fig:sgm-evol}
 \end{figure}
@@ -188,7 +188,7 @@ In all panels, the arrow of time is from right to left, i.e. initially, the numb
  \begin{figure}
     \centering
     \includegraphics[scale=0.425]{chapter5/figures/fig2-sir-fitting-step.pdf}
-    \caption{Fitting the non-local dispersal model (NLM) to the traditional $SIR$ model given by \cite{kermack-model}. All simulations evolved with parameters $\beta^{*}=4$ and $\rho=0.01$ above the threshold for spread. (a) A small localised dispersal kernel of $\ell=25$ fitted against the canonical $SIR$. On a small domain of size $200\times 200$, the NLM spreads faster than the fitted $SIR$ model. (b) On a larger patch of size $600\times 600$, the SIR model predicts a faster rate of spread in comparison to the NLM, illustrated by the disparity between red and black lines. (c) On $200\times 200$ sized domain, increasing the dispersal parameter to $\ell=50$ results in a similar trend to panel (b), albeit with slightly less agreement between NLM and SIR models. (d) Increasing the dispersal parameter to $\ell=50$ reduces the large disparity between SIR and NLM, shown in Figure (b).}
+    \caption{Fitting the non-local dispersal model (NLM) to the traditional SIR model given by \cite{kermack-model}. All simulations evolved with parameters $\beta^{*}=4$ and $\rho=0.01$ above the threshold for spread. (a) A small localised dispersal kernel of $\ell=25$ fitted against the canonical SIR. On a small domain of size $200\times 200$, the NLM spreads faster than the fitted SIR model. (b) On a larger patch of size $600\times 600$, the SIR model predicts a faster rate of spread in comparison to the NLM, illustrated by the disparity between red and black lines. (c) On $200\times 200$ sized domain, increasing the dispersal parameter to $\ell=50$ results in a similar trend to panel (b), albeit with slightly less agreement between NLM and SIR models. (d) Increasing the dispersal parameter to $\ell=50$ reduces the large disparity between SIR and NLM, shown in Figure (b).}
     \label{fig:SIR-fitting}
 \end{figure}
 
@@ -209,26 +209,17 @@ In this regime, $\frac{\ell}{\mathcal{L}}$ in the NLM is small, and contact-mixi
 Moreover, the disparity between models is reduced by increasing the dispersal parameter to $\ell=50$, illustrated in Figure \ref{fig:SIR-fitting}(d).
 Figure \ref{fig:SIR-fitting} therefore indicates that if the system is approximately well-mixed, the NLM spreads comparatively to the SIR, albeit slightly skewed because of uniform lifetime dynamics.
 Whereas, if the system is not well-mixed, a slower epidemic marches across the domain in a wave-like behaviour that deviates significantly from the SIR model.
-Altogether, these results point toward the inability of non-spatial models, such as the $SIR$ model, to describe a spatially structured model of tree disease. Although, in a parameter regime where the ratio $\ell / \mathcal{L}$ is sufficient for population mixing, the $SIR$ model can describe the system with some accuracy\footnote{
+Altogether, these results point toward the inability of non-spatial models, such as the SIR model, to describe a spatially structured model of tree disease. Although, in a parameter regime where the ratio $\ell / \mathcal{L}$ is sufficient for population mixing, the SIR model can describe the system with some accuracy\footnote{
 Well-known results from percolation theory present a simple model analogy to the observations from Figure \ref{fig:SIR-fitting}.
 Consider a large domain (of size $L$) below the percolation threshold, and sub-dividing the domain into boxes of size $\xi$, where $\xi / L$ is small.
 Percolating clusters could be observed in each box i.e. at length scales comparable to $\xi$, but not $L$ see \cite{stauffer2018introduction} pages 64-65.} 
 
 
-% \item Link to literature on $SIR$ models, (spatial $SIR$?)... an investigation was undertaken to understand how the non-localised $SIR$ maps to traditional $SIR$ \cite{kermack-model}.
-% \item Explain the simplified $SIR$-fitting method, of one parameter
-% \item Figure \ref{fig:SIR-fitting} shows the simulated dispersal model fitted against the non-spatial $SIR$ model.
-% \item For simulations with $\ell$ comparable to the domain size $L$, sufficient fitting was found to result. As $\ell$ is made smaller, localised spread results and the $SIR$ model predicts a much greater spread.
-% \item when ell is small small compared to the domain, contact-mixing assumptions become invalid.
-% \item Suggesting that for specific parameter/domain configurations non-spatial $SIR$-like methods can be employed. This has analogies to the metal-population model. 
-% \item Although, when non-spatial models are employed locally in conjunction to 'between-patch' dispersal information is lost... link to research and here we are concentrating on small-scale epidemiology. 
-
 \section{A spatially-explicit reproduction number}
 \label{sec:spatially-explicit-reproduction-ration}
 
-As remarked earlier, percolation-based distance metrics become ill-defined when the pathogen can jump on long distances.
-Consequently, a more robust metric is required to examine the model going forward.
-To this aim, a basic reproduction number will be outlined for the NLM.
+As remarked earlier, percolation-based distance metrics become ill-defined when the pathogen can jump on long distances and a more robust metric is required to examine the model going forward.
+As such, a basic reproduction number will be outlined for the NLM.
 The concept of $R_0$ is widely used (and widely misinterpreted \cite{delamater2019complexity}),
 and multiple methods of calculation exist in the literature \cite{perspectives-on-r0}.
 Although, to recap, $R_0$ is fundamental to understand epidemic thresholds in human and animal populations. 
@@ -243,8 +234,6 @@ Importantly, any measure of $R_0$ should separate the regime of epidemic and con
 
 
 \subsection{Analytically approximating $R_0$}
-
-% On average, tree populations are more sparsely distributed than Crop-based pathogens, which motivates an assumption that $R_0$ is likely lower than crop based diseases...
 
 In this section, an idealised, spatially explicit expression of $R_0$ is derived for the NLM. Defining an informative $R_0$-value for tree-based pathosystems is not simple, and care is needed when defining an $R_0$ value.  
 The following thought experiment outlines an approach to approximate reproduction number:
@@ -598,12 +587,12 @@ In addition, raising the number of initially infected trees reduced stochasticit
 \section{Discussion and future work}
 
 The main aim of this chapter was to construct a more realistic, dispersal-based model of tree disease.
-Hence, a non-local dispersal model (NLM) of tree disease was constructed with $SIR$ compartments and a Gaussian kernel.
+Hence, a non-local dispersal model (NLM) of tree disease was constructed with SIR compartments and a Gaussian kernel.
 Notwithstanding its generic construction, the NLM provides a foundation for the remaining chapters in this thesis.
-After describing the NLM, it was compared to the standard $SIR$ framework for a number of dispersal length scales and domain sizes.
-Despite some differences, the NLM compared more favourable with the $SIR$ model when the dispersal scale parameter was comparable to the domain size.
+After describing the NLM, it was compared to the standard SIR framework for a number of dispersal length scales and domain sizes.
+Despite some differences, the NLM compared more favourable with the SIR model when the dispersal scale parameter was comparable to the domain size.
 Comparisons, therefore, provide compelling indications that spatially-explicit contact-mixing in the tree population may arise with sufficient dispersal.
-From this observation, we may question the utility of spatial models for systems where the dispersal length scale is comparable to the size of domain\textemdash e.g. modelling the spread of disease in small fields or plantations. However, comparisons to the $SIR$ model were simplified and limited to one parameter (i.e. the ratio $\beta/\gamma$). As such, the analysis constitutes a preliminary result, and a more sophisticated comparison method is required to glean further insight.
+From this observation, we may question the utility of spatial models for systems where the dispersal length scale is comparable to the size of domain\textemdash e.g. modelling the spread of disease in small fields or plantations. However, comparisons to the SIR model were simplified and limited to one parameter (i.e. the ratio $\beta/\gamma$). As such, the analysis constitutes a preliminary result, and a more sophisticated comparison method is required to glean further insight.
 
 Two methods of calculating a reproduction ratio, one analytic ($R_0$) and one numerically contact-traced ($R_0^{(i)}$), were outlined to categorize the NLM.
 The analytic threshold predicted by equation \ref{eq:Appendix_final_expression1} agreed well with the `actual' contact-traced reproduction ratio computed through NLM simulations,
@@ -626,7 +615,7 @@ However, given sufficient data, one might fit a value of $\beta$ and reverse-eng
 which leads us to a discussion around the infectivity parameter $\beta$.
 
 A probability of state-change represents infectivity in the NLM, which followed naturally from the percolation model outlined in section \ref{ch3:two-param-model} \cite{OROZCOFUENTES201912}.
-However, growth rates are usually employed to describe infectivity\textemdash going back to the original $SIR$ framework \cite{kermack-model} and the logistic growth model of \cite{van2013plant}.
+However, growth rates are usually employed to describe infectivity\textemdash going back to the original SIR framework \cite{kermack-model} and the logistic growth model of \cite{van2013plant}.
 The approach adopted in this chapter is, therefore, a-typical of contemporary dispersal models based on rates, e.g. \cite{fabre2021optimising, control-theory, white2017modelling, large-scale-control}.
 Given that growth rates parameterize most diseases in the literature, the NLM might arguably require a modification towards a rate-based implementation;
 however, it must be remarked that sometimes this may not be needed, given that measuring growth rates\textemdash particularly for time-varying infectivities\textemdash is extremely difficult \cite{13-challenges}.

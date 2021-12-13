@@ -1,16 +1,16 @@
 \chapter{Constructing $R_0$-maps over Great Britain}
 \label{ch:6-adb}
 
-In the last Chapter, we considered a generic $SIR$-based non-local dispersal model (NLM) that spread via a Gaussian dispersal. 
+In the last Chapter, we considered a generic SIR-based non-local dispersal model (NLM) that spread via a Gaussian dispersal. 
 The NLM resolved the major problem witnessed in section \ref{fig:ch4_uk_spread}, 
 namely, the failure of the percolation-based model to spread on a realistic host density. 
 However, Chapter \ref{ch5:dispersal-model} and the NLM lacked biological specificity. 
-Therefore, the present Chapter presents a simplified $SEIR$ model of ash dieback capturing only the essential dynamics of wind-borne dispersal.
+Therefore, the present Chapter presents a simplified SEIR model of ash dieback capturing only the essential dynamics of wind-borne dispersal.
 Ash dieback (ADB), caused by the fungus \textit{Hymenoscyphus fraxineus}, poses a threat to the survival of European ash (\textit{F. excelsior})\textemdash
 the reader is referred to section \ref{ch2:ash-dieback} for a more in-depth discussion of ADB symptoms, life-cycle and management.
 
-In section \ref{sec:seir-model}, a seasonal-based $SEIR$-like model is developed to simulate the natural wind-dispersal mechanism of ADB at local-spatial scales. 
-Next, section \ref{sec:seir-behaviour} examines the general pattern of epidemic spread in the $SEIR$ model before section \ref{sec:SEIR-R0-definition} 
+In section \ref{sec:seir-model}, a seasonal-based SEIR-like model is developed to simulate the natural wind-dispersal mechanism of ADB at local-spatial scales. 
+Next, section \ref{sec:seir-behaviour} examines the general pattern of epidemic spread in the SEIR model before section \ref{sec:SEIR-R0-definition} 
 outlines a formal definition of an effective reproduction number to measure pathogen invasiveness. 
 The effective reproduction number is spatially explicit and based on the same contact-traced method presented in Chapter \ref{ch5:dispersal-model}.
 Critically, the wind-dispersal model of ADB rests on $R_0$ measured over an appropriate spatio-temporal scale.
@@ -30,14 +30,14 @@ presenting behaviour akin to a global epidemic phase transition. % \cite{colizza
 Finally, the method developed in this Chapter demonstrates how the epidemic scale can vary significantly, 
 albeit with minor epidemic parameter variations. Together, these observations support the call for a risk-based approach to modelling the spread of epidemics in tree populations.
 
-\section{A spatially-explicit seasonal $SEIR$ model}
+\section{A spatially-explicit seasonal SEIR model}
 \label{sec:seir-model}
 
 \textit{H. fraxineus} has two modes of reproduction, sexual and asexual (teleomorphic and anamorphic, respectively).
 As some research suggests, the asexual element has contributed to the European epidemic \cite{fones2016role}. 
 Although the sexual reproductive mode of ADB is widely acknowledged to be the dominant driver of disease-spread 
 \cite{https://doi.org/10.1111/ppa.12844, havnavckova2017direct, gross2012reproductive, Timmermann2011elal}.
-Subsequently, only the sexual reproduction of \textit{H. fraxineus} is reflected in the $SEIR$ model.
+Subsequently, only the sexual reproduction of \textit{H. fraxineus} is reflected in the SEIR model.
 
 The entire sexual reproductive cycle occurs on ash leaves, yet the fungus will spread through ash hosts once infected. 
 As such, the precise sexual reproductive mode presents a peculiar modelling scenario where both leaves and trees can be argued
@@ -64,7 +64,7 @@ the same flat randomly distributed population of trees used previously in Chapte
 \begin{figure}
     \centering
     \includegraphics[scale=0.40]{chapter6/figures/fig1-seir-transitions.pdf}
-    \caption{The seasonal $SEIR$ model of ADB. (a) In year $n$ of an outbreak, an infectious tree may cause a transition $S\rightarrow E_n$ during summer, 
+    \caption{The seasonal SEIR model of ADB. (a) In year $n$ of an outbreak, an infectious tree may cause a transition $S\rightarrow E_n$ during summer, 
              depicted by the bottom dashed grey arrow. A tree that becomes latently infected in year $n$ will lead to an infectious tree in year $n+1$. 
              Eventually, all infected ash are removed without the possibility of recovery. 
              (b) The yearly cycle of the pathosystem ADB. Leaf-flush coincides with the sporulation season. 
@@ -167,7 +167,7 @@ $\lambda$ & Mean infectious life-time & $5\ \mathrm{years}$ \\
 $R_0$ & Mean reproduction number & $0-20$ \\
 \hline
 \end{tabular}
-\caption{Parameters used in the $SEIR$ model of ash dieback. The dispersal parameters are taken from \cite{grosdidier2018tracking} and the typical tree densities of ash are informed from by \cite{hill.data}.}
+\caption{Parameters used in the SEIR model of ash dieback. The dispersal parameters are taken from \cite{grosdidier2018tracking} and the typical tree densities of ash are informed from by \cite{hill.data}.}
 \label{tab:SEIR-model}
 \end{table}
 
@@ -211,7 +211,7 @@ Nevertheless, selecting a normal distribution is supported by observations of le
 forest \cite{zhang2014seasonal, dixon1976analysis}, which typically follow peaked distributions that repeat yearly\footnote{
     For example, research conducted on wetland forests in South Carolina demonstrates that the temporal pattern of litter-fall
     peaks yearly between August and November, albeit with some variation \cite{shure1985litter}.}.
-That said, within the $SEIR$ model, a time delay exists between the transition $E_n \rightarrow I_{n+1}$ in autumn/winter and the 
+That said, within the SEIR model, a time delay exists between the transition $E_n \rightarrow I_{n+1}$ in autumn/winter and the 
 sporulation function $\phi(t)$ becoming sufficiently large in summer; so we can afford some degree of flexibility in the exact time scale.
 From a mathematical standpoint, provided that latently infected ash transitions into the infected compartment before the sporulation season,
 the epidemic spread in this model will remain the same.
@@ -253,7 +253,7 @@ and
 
 where parameters $\ell_{ga}$ and ($\ell_{pl},\ b$) are given in table \ref{tab:SEIR-model}.
 Notably, the researchers measured dispersal parameters at local and regional spatial scales, over two orders of magnitude between $[0 \sim 1\mathrm{km}]$ and $[10 \sim 100 \mathrm{km}]$ respectively.
-Since the $SEIR$ model is small-scale, dispersal in the $SEIR$ model only incorporates the local-scale values.
+Since the SEIR model is small-scale, dispersal in the SEIR model only incorporates the local-scale values.
 
 Dispersal data collected by \cite{grosdidier2018tracking} relate to a French landscape and environmental conditions.
 Therefore, parameterising dispersal with these parameters assumes that the spread of ADB in GB is comparable to ADB spread in France. 
@@ -282,9 +282,9 @@ On account of the sporulation function and longer range kernel, $\beta^*$ in equ
 \begin{figure}
     \centering
     \includegraphics[scale=0.45]{chapter6/figures/fig4-seir.pdf} % SHOW 5 YEAR simulations instead, 10 years is too long...
-     \caption{Simulating the $SEIR$ model over the median ash density, i.e. $\rho_{\mathrm{med}} = 0.011$. 
+     \caption{Simulating the SEIR model over the median ash density, i.e. $\rho_{\mathrm{med}} = 0.011$. 
      In all panels, a small clump of $20$ infected hosts seeds the domain centre at time $t=0$.
-     (a-b) The number of ash in each $SEIR$ compartment is plotted over five years for the model $\phi_1$-ga.
+     (a-b) The number of ash in each SEIR compartment is plotted over five years for the model $\phi_1$-ga.
      Panels (a) and (b) depict simulations above ($\beta^*=2000$) and below ($\beta^*=500$) the epidemic threshold, respectively. 
      (c-f) The spatial progression of disease in a $2\mathrm{km} \times 2\mathrm{km}$ domain over a full year for model $\phi_1$-pl; 
      infectivity is fixed to  $\beta^*=3000$, well above the threshold.
@@ -294,14 +294,14 @@ On account of the sporulation function and longer range kernel, $\beta^*$ in equ
 \end{landscape}
 
 
-\section{Seasonal $SEIR$ model behaviour}
+\section{Seasonal SEIR model behaviour}
 \label{sec:seir-behaviour}
 
-The essential $SEIR$ model behaviour is shown in Figure \ref{fig:SEIR-spread}, simulated with the median ash density in Great Britain\textemdash according to \cite{hill.data}.
+The essential SEIR model behaviour is shown in Figure \ref{fig:SEIR-spread}, simulated with the median ash density in Great Britain\textemdash according to \cite{hill.data}.
 For each year after the outbreak, a rise in the number of latently infected ash in $E$ can be seen during summertime sporulation, June-September, followed by a rise in the number of infectious ash in the autumn-winter. 
 All model variants display the same pattern of seasonal behaviour. 
 
-The number of ash in the $SEIR$ compartments is shown in Figure \ref{fig:SEIR-spread}(a-b) for two infectivity parameters in a $1\mathrm{km}\times1\mathrm{km}$ domain.
+The number of ash in the SEIR compartments is shown in Figure \ref{fig:SEIR-spread}(a-b) for two infectivity parameters in a $1\mathrm{km}\times1\mathrm{km}$ domain.
 Figures \ref{fig:SEIR-spread}(a-b) depict two scenarios above and below the epidemic threshold for model $\phi_1$-ga;
 the compartments are plotted over $5$ years with infectivity ($\beta^*$) parameters shown. 
 In Figure \ref{fig:SEIR-spread}(a), the number of ash in $S$ decline, shown by the green line,
@@ -312,7 +312,7 @@ Interestingly, Figure \ref{fig:SEIR-spread}(b) demonstrates persistence in model
 whereby, even if the epidemic parameters are below the threshold, the fungus may survive for long periods. 
 In general, persistence in plant-based pathogens is one aspect that complicates epidemic control\textemdash see Chapter \ref{ch3:invasions_and_persistence} for a review of invasion and persistence in the spread of plant-based diseases.
 
-The spatial progression of ADB in the $SEIR$ model is shown in Figures \ref{fig:SEIR-spread}(c-f) over a full year. 
+The spatial progression of ADB in the SEIR model is shown in Figures \ref{fig:SEIR-spread}(c-f) over a full year. 
 The simulation in Figure \ref{fig:SEIR-spread}(c) begins with an initial condition of $20$ infected ash centrally distributed in the host landscape during March (not shown). 
 At this point in the year, fungal fruiting bodies on infected leaf litter will be preparing to release ascospores.
 During sporulation, secondary infections are produced, and latently infected ash spread throughout the domain, depicted by the orange dots in Figure \ref{fig:SEIR-spread}(c-d). 
@@ -368,7 +368,7 @@ The infectivity rate for function $\phi_2$ can be seen to vary, in contrast $\ph
 Although infectivity rates differed, the normalised infectivity $\beta^*$ ensured the same approximate area under each curve and, therefore, epidemic impact.
 
 Both $\phi_1(t)$ and $\phi_2(t)$ aim to mirror the seasonal time-dependence of \textit{H. fraxineus} sexual reproduction.
-In the seasonal $SEIR$ model, time-varying infectivity is achieved by multiplying the infectivity parameter with a sporulation function $\beta\phi(t)$.
+In the seasonal SEIR model, time-varying infectivity is achieved by multiplying the infectivity parameter with a sporulation function $\beta\phi(t)$.
 In line with the parsimonious approach undertaken thus far, $\phi_1(t)$ and $\phi_2(t)$ are generic and aim to capture the essential dynamics of ADB spread.
 However, a more complex model could aim to fit $\phi(t)$ to spore-trapping data, which could resemble a Gaussian-k function (e.g. see Figure 2. in \cite{grosdidier2018tracking}).
 Although different sporulation models lead to the same effective behaviour (as discussed more below in section \ref{sec:tree-mortality}), 
@@ -386,7 +386,7 @@ Therefore, the long-running simulations presented in this section approximate th
 \begin{figure}
     \centering
     \includegraphics[scale=0.46]{chapter6/figures/fig6-mortality.pdf}
-    \caption{Epidemic-scale in the $SEIR$ model, as measured by the proportion of ash in $S$, $I$ and $R$ (a-b) 
+    \caption{Epidemic-scale in the SEIR model, as measured by the proportion of ash in $S$, $I$ and $R$ (a-b) 
     The proportion of ash in $S$, $I$ and $R$ is shown over $30$ years of ADB exposure for $\phi_1$-ga. 
     Two different values of infectivity, $\beta^*=1000$ and $\beta^*=1500$, increase the proportion of trees in $I$ and $R$. 
     (c-d) The proportion of ash removed in all models after years of exposure with infectivity $\beta^*=1000$. 
@@ -401,13 +401,13 @@ Initially, all simulations begin with a small number of infected ash at the doma
 As expected, the higher infectivity in Figure \ref{fig:ash-mortalty}(b) produces an outbreak that spreads through the domain much quicker.
 Although, all systems in this framework above the epidemic threshold will, on average, reach $100\%$ mortality eventually.
 
-The seasonal $SEIR$ model produced a characteristic sigmoidal s-shaped mortality curve for high mortality proportions 
+The seasonal SEIR model produced a characteristic sigmoidal s-shaped mortality curve for high mortality proportions 
 (i.e. approaching $100\%$), shown in Figures \ref{fig:ash-mortalty}(b), this contrasts with the logistic ADB mortality 
 curves presented by \cite{https://doi.org/10.1002/ppp3.11} that, on average, saturate to $\sim 60 \%$.
 Other authors have witnessed similar s-shaped mortality curves, e.g. \cite{lohmus2014ash}.
-Here, not including host demography precludes host-pathogen coexistence and prevents the $SEIR$ model from saturating below
+Here, not including host demography precludes host-pathogen coexistence and prevents the SEIR model from saturating below
 $100\%$ mortality\textemdash as explained in more depth by \cite{time-varying-infectivity} in their manuscript.
-Therefore, failing to reach a steady-state for long running simulations represents a limitation in the seasonal $SEIR$ model of ADB.
+Therefore, failing to reach a steady-state for long running simulations represents a limitation in the seasonal SEIR model of ADB.
 
 Figures \ref{fig:ash-mortalty}(c-d) show the mortality percentage on two different domain sizes for each model with a single infectivity parameter $\beta^*=2000$, well beyond the epidemic threshold.
 For all models, the larger domain size effectively reduced the proportion of removed ash over the $30$ period because more trees populate the domain, shown in Figure \ref{fig:ash-mortalty}(c).
@@ -421,16 +421,16 @@ Domain size is known to play an integral role in shaping the evolution in spatia
 A related topic, `plant-pathogen invasiveness and field-size', was investigated by \cite{mikaberidze2016invasiveness} in the context of crop disease.
 In particular, \cite{mikaberidze2016invasiveness} demonstrated that $R_0$ saturates to a maximum for a suitably large domain size, beyond which increasing the domain size had no effect on $R_0$.
 Therefore, choosing a suitable domain size for each dispersal mode remains critical to capture the epidemic scale accurately.
-In the next section, a definition of $R_0$ is outlined for the seasonal $SEIR$ model, and we revisit the topic domain size.
+In the next section, a definition of $R_0$ is outlined for the seasonal SEIR model, and we revisit the topic domain size.
 
 \section{Defining an $R_0$}
 \label{sec:SEIR-R0-definition}
 % Although it is hard to enforce a true $R_0$ value, the most important feature introduced from the definition is a threshold from which we can see if a local invasion is likely to take place.
 
-Before properly investigating the $SEIR$ model, the pathogens' ability to invade must be defined. 
+Before properly investigating the SEIR model, the pathogens' ability to invade must be defined. 
 Tree mortality, shown in Figure \ref{fig:ash-mortalty}, gives insight into the final-size epidemic and the time-scale of spread.
 However, computing tree mortality requires long simulation run-times spanning years which is problematic given that host-demography is not included in the model.
-Moreover, as we look to scale up the $SEIR$ model over large areas within GB, running tree mortality simulations over long periods
+Moreover, as we look to scale up the SEIR model over large areas within GB, running tree mortality simulations over long periods
 becomes increasingly computationally expensive. 
 
 Consequently, the basic reproduction number will be employed to navigate these computational challenges. 
@@ -506,7 +506,7 @@ This points more towards a difference in model behaviour rather than artefacts o
 \subsection{Domain size $L$ and $R_0$}
 \label{sec:r0-vs-L}
 
-Before the small-scale $SEIR$ model of ADB can be spatially scaled up over GB, a suitable spatial and temporal 
+Before the small-scale SEIR model of ADB can be spatially scaled up over GB, a suitable spatial and temporal 
 scale must be chosen to measure $R_0$. The purpose of this section is to compute $R_0$ over different sized 
 domains from IC1, i.e. a small number of infected trees located at the domain centre at $t=0$.
 Choosing a sufficient domain length ($L$) is desirable to accurately capture pathogen invasiveness within each model.
@@ -562,7 +562,7 @@ before we determine $R_0$ as a function of host density in section \ref{section:
 \section{Constructing $R_0$-maps over Great Britain}
 
 \label{sec:r0-map-construct}
-In this section, $R_0$ values of the small-scale $SEIR$ model of ADB will be projected onto the host distribution of ash, 
+In this section, $R_0$ values of the small-scale SEIR model of ADB will be projected onto the host distribution of ash, 
 given by \cite{hill.data}, to create landscape-level $R_0$-maps over Great Britain. 
 Doing so will permit the investigation of a novel control strategy in Chapter \ref{ch7:landscape-level-control} 
 and allow the local-scale epidemic severity, based on tree-to-tree interactions, to be efficiently scaled over large areas.
@@ -583,7 +583,7 @@ several data sources that partly cover Great Britain, regression methods then ex
 Conveniently, ash happened to be among the most accurate data sets given by \cite{hill.data}. 
 For a more in-depth description of the methods used by \cite{hill.data} and a review of host data in general, see Chapter \ref{ch2:hostdata}.
 
-The modelled ash canopy cover data had to undergo minor modifications to complement the $SEIR$ model. 
+The modelled ash canopy cover data had to undergo minor modifications to complement the SEIR model. 
 Firstly, the raw abundance values were re-scaled into a dimensionless tree density $\rho$. 
 The exact process was outlined in Chapter \ref{ch5:dispersal-model}, i.e. by converting the units $\mathrm{ha/km^2}$ to kilometre-squared
 of ash cover per kilometre-squared of land. Secondly, the domain resolution has to be re-scaled to reflect the spatial scale of local 
@@ -593,7 +593,7 @@ Lastly, the small number of patches with exceedingly high densities were capped 
 Figure \ref{fig:ash-host-data}(a) shows a density map of ash, at the original resolution of
 $\mathrm{1km}\times \mathrm{1km}$, produced from abundance data given by \cite{hill.data}.
 The inset shows a block of $10\times10$ pixels, each of size $1\mathrm{km} \times 1 \mathrm{km}$.
-In the small-scale Gaussian dispersal-based $SEIR$ model, a domain size of $\mathrm{1km}\times \mathrm{1km}$ was shown sufficient
+In the small-scale Gaussian dispersal-based SEIR model, a domain size of $\mathrm{1km}\times \mathrm{1km}$ was shown sufficient
 to measure the average $R_0$ over a five-year period\textemdash demonstrated by Figures \ref{fig:r0-domain-size}(c-d).
 However, the inverse power law models required a larger domain size of $\mathrm{5km}\times \mathrm{5km}$ to prevent underestimating epidemic severity.
 Figure \ref{fig:ash-host-data}(b) shows the host distribution coarse-grained to a resolution of $\mathrm{5km}\times \mathrm{5km}$ pixels.
@@ -616,7 +616,7 @@ Figure \ref{fig:R0-map-generation}(a) shows a PDF (probability density function)
 As noted above, few locations support densities of $\rho=0.10$ and over\footnote{
 The original $\mathrm{1km \times 1km}$ map resolution contained $2.2\times 10^4$ $1\mathrm{km^2}$ data points, 
 with some outlier pixels having densities in the interval $\rho \in [0.10, 0.30]$ which were excluded from the analysis due to 
-A) the increased computational run-time required to simulate the $SEIR$ model of ADB  
+A) the increased computational run-time required to simulate the SEIR model of ADB  
 and B) densities beyond $0.10$ account for a negligible portion of the overall population.}. 
 Between the limits of $\rho \in [10^{-2}, 10^{-1}]$, the PDF follows a power law of the form $\sim \rho ^{-k}$, as evident from linearity in the logarithmic inset axes.
 The distribution had a fitted exponent of $k=1.90$, shown by the black line.
@@ -640,14 +640,14 @@ Negating below-threshold patches is a vital assumption\textemdash discussed more
 \begin{figure}
     \centering
     \includegraphics[scale=0.38]{chapter6/figures/fig6-R0-map-generation.pdf}
-    \caption{Generating $R_0$ maps for ADB over Great Britain. (a) Ensemble-averaged results of $R_0$ are plotted against the tree densities informed by \cite{hill.data}, revealing a linear relation between $R_0$ and $\rho$. (b-c) Projecting $SEIR$ inverse power law $R_0$ values onto the re-scaled $5\mathrm{km} \times 5 \mathrm{km}$ ash host-distribution for two values of $\beta_{pl}$. Patches of land below $R_0 = 1$ are shown as white space. (d-e) The top $10$ largest connected, and susceptible, $R_0$-clusters that are present in maps (b-c).}
+    \caption{Generating $R_0$ maps for ADB over Great Britain. (a) Ensemble-averaged results of $R_0$ are plotted against the tree densities informed by \cite{hill.data}, revealing a linear relation between $R_0$ and $\rho$. (b-c) Projecting SEIR inverse power law $R_0$ values onto the re-scaled $5\mathrm{km} \times 5 \mathrm{km}$ ash host-distribution for two values of $\beta_{pl}$. Patches of land below $R_0 = 1$ are shown as white space. (d-e) The top $10$ largest connected, and susceptible, $R_0$-clusters that are present in maps (b-c).}
     \label{fig:R0-map-generation}
 \end{figure}
 \end{landscape}
 
-Figures \ref{fig:R0-map-generation}(d-e) and (h-i) present $R_0$-values of the small-scale $\phi_1$-ga and $\phi_1$-pl $SEIR$ models projected onto the host distribution of ash.
+Figures \ref{fig:R0-map-generation}(d-e) and (h-i) present $R_0$-values of the small-scale $\phi_1$-ga and $\phi_1$-pl SEIR models projected onto the host distribution of ash.
 Both sets of $R_0$-maps are projected onto the same coarse-grained $5\mathrm{km} \times 5\mathrm{km}$ re-scaled host distribution.
-For all variants of the $SEIR$ model, $R_0$-maps compared similarly\textemdash shown for the two values of infectivity, $\beta^* \in [600, 900]$.
+For all variants of the SEIR model, $R_0$-maps compared similarly\textemdash shown for the two values of infectivity, $\beta^* \in [600, 900]$.
 All locations below the transmission threshold $R_0=1$ were given numerical values of zero and are depicted by inland white space.
 Under the influence of a more infectious pathogen, larger areas of the ash population become susceptible by supporting the growth and reproduction of the pathogen, illustrated by the difference in patch density in Figures \ref{fig:R0-map-generation}(b-c). 
 Importantly, each $R_0$-valued pixel portrays the local-scale epidemic impact experienced at that location, predicted from a five-year ensemble-averaged value of $R_0$.
@@ -677,7 +677,7 @@ For both dispersal models, increasing the infectivity parameter $\beta$ leads to
 There are little to no differences between how Gaussian and inverse power law models spatially scale, according to the raw $R_0$-maps of Figures \ref{fig:R0-map-generation}(d-i).
 However, CCA reveals some subtle differences in the projection of $\phi_1$-ga and $\phi_1$-pl under the same normalised infectivity parameter $\beta^*$.
 Although, given similar gradients in the graph of $R_0$ versus $\rho$ for lower infectivity values
-\textemdash demonstrated by the convergence of solid orange and blue lines in Figures \ref{fig:R0-map-generation}(b-c)\textemdash 
+(demonstrated by the convergence of solid orange and blue lines in Figures \ref{fig:R0-map-generation}(b-c)), 
 Gaussian and inverse power law models should produce the exact $R_0$-map.
 In contrast, for higher infectivity parameters, we might expect the inverse power law model to yield a more susceptible map, as per Figures \ref{fig:R0-map-generation}(b-c) when the Gaussian model deviate below linearity.
 
@@ -695,7 +695,7 @@ Alongside jumping directly over below-threshold patches, the pathogen may use in
 Conceptually, this has been described for pathogens jumping between crop fields \cite{Gilligan-disease-management} and more abstract modelling work \cite{wingen2013long}.
 In a simplified interpretation, the model presents two distinct types of spread, within-cluster and between-cluster spread. 
 
-Here, within-cluster connectivity is sufficient for uninhibited spore-dispersal between nearest-neighbour patches in the $SEIR$ model of ADB.
+Here, within-cluster connectivity is sufficient for uninhibited spore-dispersal between nearest-neighbour patches in the SEIR model of ADB.
 Moreover, the disease may spread over large spatial scales even without the need for LDD\textemdash without directly or indirectly, jump between nearest-neighbours.
 Thus, high-risk areas can be simplistically identified in the $R_0$-map.
 Next, a closer look at $R_0$-clustering is conducted.
@@ -704,8 +704,8 @@ Next, a closer look at $R_0$-clustering is conducted.
 \label{sec:inverse-power-law-r0-clustering}
 % explain basic behaviour, 5km spatial structure
 
-In the small-scale $SEIR$-model of ADB, inverse power law dispersal required a domain size of $\mathrm{5km \times 5km}$ to accurately gauge $R_0$ over the mean infectious lifetime of ADB.
-Domain size, $L$, in the inverse power law $SEIR$ models, therefore, motivate a coarse-grained host distribution.
+In the small-scale SEIR-model of ADB, inverse power law dispersal required a domain size of $\mathrm{5km \times 5km}$ to accurately gauge $R_0$ over the mean infectious lifetime of ADB.
+Domain size, $L$, in the inverse power law SEIR models, therefore, motivate a coarse-grained host distribution.
 Consequently, when spatially scaling the inverse power law model over Great Britain, each pixel reflects a $\mathrm{5km \times 5km}$ patch of land at minimum.
 It would be possible to possible to coarse-grain to lower resolutions, e.g. $\mathrm{10km \times 10km}$.
 Although as Figure \ref{fig:ash-host-data}(b) eludes to, landscape-level spatial structure is lost in the process.
@@ -732,7 +732,7 @@ Both sporulation models display the same fundamental relationship.
     \label{fig:inverse-power-law-clustering}
 \end{figure}
 
-In the $SEIR$ model, a value of $\beta$ has not been determined experimentally or statistical fitted.
+In the SEIR model, a value of $\beta$ has not been determined experimentally or statistical fitted.
 Therefore, we are compelled to study behaviour over the entire space of $\beta$.
 Figures \ref{fig:inverse-power-law-clustering}(b) and (d) describe how $R_0$-clusters scale over different values of infectivity and structuring elements for models $\phi_1$-pl and $\phi_2$-pl respectively.
 As infectivity is increased to a maximum of $\beta^*=1000$, the largest $R_0$-cluster (shown in blue) rises most rapidly over a narrow range of infectivity values in the interval $\beta^*\in [100, 400]$.
@@ -865,14 +865,14 @@ In the face of low budgets, limited resources and short decision windows, an eff
 Given the sessile nature of trees, the spatial distribution of hosts remains of paramount importance for epidemic modelling.
 As such, a modelled distribution of ash covering Great Britain was used to parameterise host densities.
 This choice was motivated by the non-existence of freely available, high-quality ash abundance data that spans Great Britain.
-Consequently, combining our small-scale $SEIR$ model with data given by \cite{hill.data} demonstrates a novel use of predicted abundance data\textemdash
+Consequently, combining our small-scale SEIR model with data given by \cite{hill.data} demonstrates a novel use of predicted abundance data\textemdash
 as remarked when summarising the toy SLM model of Chapter \ref{chapter:SLM-applications}.
 
-Due to the complexity of ADB, some important assumptions had to be employed in the $SEIR$ model.
+Due to the complexity of ADB, some important assumptions had to be employed in the SEIR model.
 In particular, leaf-shed was assumed to fall close to ash hosts; 
 this permitted fungal ascospore dispersal to originate from the same location as infected ash.
 Still, this assumption is supported by the dispersal parameterisation given by \cite{grosdidier2018tracking} that measured dispersal directly between a source of infected trees and spore-traps, thereby omitting the dynamics of intermediary leaf-shed dispersal.
-One possible improvement to the $SEIR$ model might include host demography, as host-pathogen coexistence is not supported.
+One possible improvement to the SEIR model might include host demography, as host-pathogen coexistence is not supported.
 
 Performing CCA proved a beneficial yet problematic exercise.
 Multi-scale CCA demonstrated how failing to include relevant epidemiological information, in the form of coarse-grained host data, can lead to significant disparities in cluster size\textemdash sentiments echoed in the third challenge posed by \cite{13-challenges}.
@@ -894,9 +894,9 @@ However, future research could examine non-local interactions between $R_0$-valu
 the short and long ranged interactions inside a metapopulation \cite{beninca2020trade}.
 
 Despite the limitations of CCA, clusters grew up to four orders of magnitude over the initial interval of infectivity, $\beta^*\in [100, 400]$.
-Rapid cluster growth between $\beta^*\in [100, 400]$ occurred for all $SEIR$ model-variants and domain resolutions.
+Rapid cluster growth between $\beta^*\in [100, 400]$ occurred for all SEIR model-variants and domain resolutions.
 Landscape-level spread within our framework, therefore, demonstrates a threshold-like behaviour, below witch ($\beta^* \lessapprox 100$), no models would be able to invade Great Britain.
-The next valuable step would be to fit a value of $\beta$ to data on ADB spread\footnote{Given the high availability of ADB mortality data in different European countries, fitting the $SEIR$ model to mortality curves would be most accessible.}, 
+The next valuable step would be to fit a value of $\beta$ to data on ADB spread\footnote{Given the high availability of ADB mortality data in different European countries, fitting the SEIR model to mortality curves would be most accessible.}, 
 and construct the resulting $R_0$-map. Although, a simplified comparison can be achieved by visual inspection alongside Forestry Commission (FC) survey data, as shown in Figure \ref{fig:adb-comparison}.
 
 Unfortunately, visually comparing the $R_0$-maps with FC ADB data proved challenging, owing to the limited presence-only survey that contained no estimates for the number of ADB cases within each grid.
@@ -904,115 +904,3 @@ As such, raw $R_0$ values/pixels in the map could not be correlated to a number 
 Therefore, an improved method to corroborate the model against observational data is required to progress the framework.
 
 The next Chapter builds on the $R_0$-map and outlines steps toward a novel landscape-level control strategy.
-
-
-% \section{Chapter summary}
-
-% Where we consider spatial structure and others have not
-% - In this chapter, we focused on disrupting local-level dispersal by implementing control at landscape-level.
-% -  In this chapter we undertook the ambitious task of scaling up a small-scale model, to large spatial distances covering GB, and developed a new approach to controlling the spread of disease.
-% - introduce the regime of pathogen spread we are interested in, we are not modelling continental long-range spread via upper atmosphere, nor are we interested in long-range human trade networks. We are interested in dispersal at the local level whereby passive means of wind, soil and or insects/animals. 
-
-% link to 13 challenges: -- it is your friend...
-% 1 - host data is hard to integrate into models \cite(13 challenges), we demonstrate how how this can be achieved
-% 2. primed a model of multi scale, although we have not included LDD spore transport, the framework serves to include this via a more complete treatment of the structuring element
-% 3. capturing time-varying infectivity is hard \cite{13 challenges},
-% 4. constructing a spatial model of disease severity could help to deploy resources to known locations e.g. monitoring
-%5. web api to help policy makers
-
-% The work conducted in this chapter are focused toward help policy makers implement informed decisions, about \textit{where} to control the spread of disease, based on spatial arguments.
-% The framework we implemented was constructed using a simplified model of ADB, although the method is flexible and can be generalised for other compartmentalised models, provided sufficient host data and fitted epidemiological parameters. 
-% In the face of low Identifying which locations are likely to support the highest epidemic severity is key for targeted control when budgets are low\textemdash as noted by \cite{time-varying-infectivity}. Our approach of spatially scaling small-scale epidemiological principles was conducted through computational, opposed to analytical, means. 
-
-% % The scaling up of our model
-% The scaling up of our model resembles a metapopulation model, now commonplace when modelling plant-based epidemics, but crucially our large-scale model is not dynamic. A dynamic large-scale model is indeed useful for the prediction of time-scales and the movement of disease-fronts movement; however, we suggest they might be at best less useful for optimised large-scale control, and at worse, nicely complemented by the approach we develop.
-
-% If early data through a particular region, with known data, was collected, it would be a relatively short step to fit the dispersal model and scale up the model over large distances given the seemingly simple relation to host density $\rho$.
-% % At the small scale we have a uniform population. However for larger scales we have considerable spatial heterogeneity.
-% % spatial-scale and control, over a multi-seasonal pathosystem, have been investigated for sugar beet in the UK, see \cite{doi:10.1146/annurev.phyto.45.062806.094357} for a review.
-
-
-% % On the SEIR model
-
-% The cyclic nature of the $SEIR$-type model constructed in this article can also find resemblance in the, well established body of literature, of crop-based epidemics. It is common-place for a field of crops to become infested, then at the end of the growing season be totally eradicated by virtue of harvesting 
-% % there is a surprising lack of, simplified, ash dieback models in the literature...\ciations... <-- double, triple and quadruple check!
-% % without host demography 
-% % landscape level control strategy
-% % Therefore, not modelling the asexual component of ADB represents an important assumption in the model.
-% % , both spatial and genetic variations are known to influence the epidemic progression of ADB \cite{stocks2017first, mckinney2014ash}. 
-% % Observations of ADB invasions suggest a strong on the surrounding landscape features \cite{https://doi.org/10.1111/1365-2745.13383}.
-% % Here, the function $\phi_2(t)$ is a special case of the Gamma(k) presented in \cite{time-varying-infectivity}.
-
-% % Adopting a compartmentalised $SEIR$-like structure to model the spread of ADB at local spatial-scales is both novel and ambitious
-% % \footnote{Models of plant-based fungal pathogens with comparable life-cycles have typically opted for different approaches e.g. the ascomycete `apple scab' \cite{rossi2007scab}}.
-
-% % Fitting the seasonal $SEIR$ model of ADB to ash mortality data would therefore be most tenable. In practice, fitting could be explored by varying $\beta$ until the mortality curve resembles experimental data
-
-% % multi-scale approaches have been outlined \cite{hart2020theoretical}
-% % multi-seasonal frameworks comprise a common theme in the spread of crop-based epidemics see  x, y, and typically involve soil-borne nematodes-based outbreaks \cite{tankam2020modelling} <- see references inside.
-
-% % \cite{time-varying-infectivity} has 
-% % we contend the SnIEmR model, considered over one sporulation peak, is a simplistic implementation of the SEIR-based model needed to compute an invasion threshold that represent the infection dynamics ash dieback. 
-% % The SEIR-based model is made more flexible, and can be readily extended or adapted to incorporate more biological realism, by virtue of splitting the E and I into multiple compartments\textemdash this is frequently done in human and animal-based models \citations..
-
-% % - time varying infectivity parameter for ADB \beta could be subject to increase in response to the warmer conditions presented by climate change \cite{magarey2005simple}
-% % - Interestingly, ash dieback could be adversely effected be climate change \cite{goberville2016climate}
-
-
-% %- Although the main result of our work was conduced over one sporulation peak, or life-cycle of ash dieback, splitting the model into various compartments was a useful and necessary step towards developing accurate large-tree species. reference  \cite{https://doi.org/10.1111/ppa.12894} alludes to multiple exposed periods being useful
-
-% %- A quantity of interest that appears frequently in the literature is the initial growth rate $r$, that is the density-independent growth at the start of any epidemic.
-% % See \cite{ferrandino2012time} for a review on the time-scales and sporulation of plant-based diseases.
-
-% % Fitting data to the early phases of an epidemic has been shown to give large differences in the final-size epidemic, or severity \cite{time-varying-infectivity}. However, we are only interested in a pathogens ability to invade and this can be closely approximated by measuring R0 over the fist observation (\see appendix)
-% % fitting....- Although, various data regarding ash mortality after years of infection have been published in various countries, as reviewed in chapter \ref{ch2:ash-dieback}.
-% % The variability between the particular life-cycle history followed by hosts is thought to be an important factor to consider\cite{ferrandino2012time}, and we intentionally neglected this for the purpose of simplicity...
-
-% % subdividing compartments in this manner could also provide an easier implementation to hosts which become more infectious, through a greater production of spores, as the infectious cycle continues not to mention particular periods of environmental unsuitability.
-% %
-
-% % Accurately modelling time-varying infectivity is difficult \cite{13-challenges}, and as such, we opted for parsimony.
-
-% % Main assumptions in the method: 
-% % 1) Assumptions about dispersal
-% Dispersal over small spatial-scale is thought to predominately occur passively through wind, however other means of dispersal exist such as soil and or insects. There are many pathways a pathogen can use to spread through a landscape, including long-range dispersal, mediated through either human-trade networks %
-% \cite{hulme2009trade, banks2015role, chapman2017global} or dispersal in the upper atmosphere \cite{westbrook1999atmospheric, isard2005principles}.  
-
-% % \textcolor{red}{The last insightful observation from Figure \ref{fig:max_dist_vs_R0} relates to the averaging spreading velocity of ADB...}
-% % We assumed some regions can sustain an epidemic and some cannot, we assume that $R_0>1$ is the threshold separating these regimes.
-
-% % 2) Assumptions about R0
-% To our knowledge, $R_0$ has not been estimated for Ash dieback, or indeed for any large deciduous tree species, unlike for some crop-based pathogens \cite{segarra2001epidemic}. The lack of $R_0$-estimates made it hard to scrutinize which $\beta$-valued $R_0$-map would be likely to reflect reality. This gap in the body of literature is hardly surprising given the complexity of measuring time-varying infectivity rates \cite{13-challenges}. Thus, as it stands, our results hint-towards the utility of landscape-level control but come short of definitive proof.
-
-% % Looking at \cite{R0-perc-ref}, it makes me think our notion of $R_0$ is pretty simplistic. We only measure the local-level $R_0$. We do not consider $R_0$ from patch to patch. What scale we measure $R_0$ has a huge impact on what the result is. Could we rank land-patches not only on there local $R_0$ level, but also on the impact they have on there immediate neighbours ? This would, in theory be an improvement to the clustering algorithm.
-
-% % A map of $R_0$ values is useful to policy makers and plant modelers alike.
-
-% % Improvements to the model:
-% % 1) The algorithm
-% % The algorithm to target not only the critically connecting patches, but also find fragmenting lines which minimise risk at the landscape-level ? Incorporating the local impact a particular patch may have on its neighbours.
-% % 2) Multi-year R0 analysis
-% % However, we .... xyz cover all basis of using a one-season approximation. <- this leads to a risk-based argument in which we could capture a 2nd-order R0 which does, xyz. We mainly interested in a pathogens ability to invade. 
-
-% % Analysis was aired towards simplicity, a more expansive study with e.g. more sophisticated sporulation functions could be the subject of future work.
-
-% % The most important message of our work was...
-% % The spatial and temporal scale of the control-strategy should match intrinsic spatial and temporal scale of the invasion. <- Hence R0 measured over one season. 
-
-% \textbf{Assumptions}
-% \begin{itemize}
-%     \item Infectious, dead leaf litter was assumed to fall close to infected ash, and ash were taken as the site of fungal dispersal. In reality dead leaves could themselves disperse. 
-%     However, the dispersal parameterisation from \cite{grosdidier2018tracking}
-%     Omitting leaf dispersal simplified the model and given informed parameterisation by from \cite{grosdidier2018tracking} bared no influence the scale of dispersal
-%     \item leaf dispersal has been studied by \cite{https://doi.org/10.1890/0012-9658(2006)87[2306:MLDIMH]2.0.CO;2, staelens2003model}
-%     \item no host demography link to $R_0$
-%     \item The transition probability $\beta$ is constant throughout the life-time of infected ash. 
-% \end{itemize}
-
-% % our modelling approach and results are in their infancy,  
-
-% % Last remarks and future modelling work:
-% To our knowledge, there is a surprising lack of spatio-temporal ADB models exist in the literature, probably because of the significant challenges involved in containment. Although our findings are far from complete, it suggests the spread of ash dieback, between spatial locations, could be reduced by preferentially targeting sites to minimise epidemiological connectivity. Not surprisingly, more work will need to be done to ascertain the degree to which this strategy could impede the spread. 
-
-
-

@@ -25,7 +25,7 @@
 
 Currently, pests and pathogens threaten the survival of numerous tree species around the globe. 
 An upsurge in the trade and transport of non-native plants, climatic change, and the widespread adoption of monoculture plantations have increased the risk of large-scale outbreaks in native tree populations. 
-However, scientists, policymakers and stakeholders can cooperate, thus preventing emergent infectious tree diseases within a country. 
+However, scientists, policymakers and stakeholders can cooperate to prevent emergent infectious tree diseases within a country. 
 In particular, the output from mathematical models can help advise practical management strategies that help control epidemics through rural and urban tree populations.
 
 Numerous challenges complicate an effective on-the-ground response. Epidemic drivers are multifaceted, hard to quantify, and often unknown. 
@@ -181,7 +181,7 @@ Even supposing an accurate and well-informed control strategy,
 a response on-the-ground only ensues when stakeholders adopt policies or join control initiatives \cite{reed2018theory}.
 Figure \ref{fig:modelling-and-policies} presents a simplified view of the interactions which dictate research output, public awareness, 
 policy-making and the eventual epidemic control in the UK\footnote{
-In part, Figure \ref{fig:modelling-and-policies} was informed by interviewing civil servants, researchers and policymakers at DEFRA/Fera (San hutton, York).}. Scientists in several disciplines,
+In part, Figure \ref{fig:modelling-and-policies} was informed by interviewing civil servants, researchers and policymakers at DEFRA and FERA as part of this thesis.}. Scientists in several disciplines,
 from molecular biology to mathematics, receive funding from and collaborate with governmental
 bodies, e.g. the Department for Environment Food \& Rural Affairs (\acrshort{defra}). Government-led control initiatives, resource
 allocation and recommendations can then direct on-the-ground stakeholder\footnote{Here, `stakeholder' is a broad
@@ -239,7 +239,7 @@ ash dieback epidemic is presented.
 
 Chapter \ref{chapter:SLM} sets the scene with a percolation-based simple lattice model (\acrshort{slm}) of tree
 disease spreading through a dense forest \cite{OROZCOFUENTES201912}. The model is compartmentalised
-into an $SIR$ framework and demonstrates a sharp transition threshold above which an epidemic will propagate. 
+into a susceptible infected removed (\acrshort{sir}) framework and demonstrates a sharp transition threshold above which an epidemic will propagate. 
 Above the threshold of transition, a travelling wave-like behaviour is demonstrated.
 
 Chapter \ref{chapter:SLM-applications} builds on the percolation model constructed in Chapter \ref{chapter:SLM}.
@@ -251,11 +251,11 @@ for realistic tree densities, which motivates an improved dispersal model.
 
 Chapter \ref{ch5:dispersal-model} introduces a generic Gaussian dispersal kernel into the epidemic model, denoted as the non-local model (\acrshort{nlm}). 
 Tree disease epidemics are demonstrated to spread at lower, more realistic tree densities across GB; thus, dispersal is shown to overcome 
-the inherent nearest-neighbour limitations witnessed in Chapters \ref{chapter:SLM}-\ref{chapter:SLM-applications}. Disease spread is then examined over a range of dispersal scale parameters and compared to the standard $SIR$ model. Next, a spatially-explicit analytic expression for $R_0$ is derived and compared to a `\textit{contact tracing}' method of calculating $R_0$.
+the inherent nearest-neighbour limitations witnessed in Chapters \ref{chapter:SLM}-\ref{chapter:SLM-applications}. Disease spread is then examined over a range of dispersal scale parameters and compared to the standard SIR model. Next, a spatially-explicit analytic expression for $R_0$ is derived and compared to a `\textit{contact tracing}' method of calculating $R_0$.
 Both methods of determining the reproductive ratio are shown to demonstrate a threshold at $R_0=1$.
 
 Chapter \ref{ch:6-adb} develops the generic dispersal model towards a simplified mechanistic
-model reflecting the life cycle of ash dieback. The model involves four compartments, $SEIR$, that repeat
+model reflecting the life cycle of ash dieback. The model involves four compartments, `susceptible exposed infected removed' (\acrshort{seir}), that repeat
 annually according to the sexual reproduction of ash dieback. Consequently, a method is presented to compose $R_0$-maps
 across GB using a map of predicted ash abundance given by \cite{hill.data}. Lastly, a connected-component-analysis
 (\acrshort{cca}) algorithm is used to visualise  clustering and risk in the $R_0$-map. Examining the clustering as a function

@@ -21,10 +21,10 @@ difficulties posed by a recent emergent epidemic.
 Historically, the fields of plant pathology and mathematical epidemiology existed in different spheres.
 Plant pathology researchers furthered biological understanding of pathogen growth (e.g. \cite{doi:10.1146/annurev.py.01.090163.000245}), not predictive mathematical theories.
 Although, pioneering discoveries in mathematical epidemiology permitted a more quantitative treatment of botanical diseases. 
-In particular, the seminal $SIR$ model of \cite{kermack-model} 
+In particular, the seminal SIR model of \cite{kermack-model} 
 provided a foundation to examine plant-based epidemics mathematically.
 
-\subsection{Standard $SIR$}
+\subsection{Standard SIR}
 
 The \cite{kermack-model} (K \& M) model involves three compartmentalised fields, 
 susceptible $S(t)$, infected $I(t)$ and removed $R(t)$.
@@ -39,16 +39,16 @@ A coupled system of ODEs then follow:
 \end{align}
 where the term $\beta S I$ dictates the flow of susceptible hosts into the infected compartment according 
 to the rate $\beta$. Likewise, $\mu I$ controls the transition of infected hosts into the removed compartment
-through a removal rate $\mu$. Figure \ref{fig:SIR-vs-plank}(a) illustrates the coupled $SIR$ system for 
+through a removal rate $\mu$. Figure \ref{fig:SIR-vs-plank}(a) illustrates the coupled SIR system for 
 fixed $\mu$ and four values of $\beta$.
 
 The coupled differential system of Equations (\ref{eq:SIR-model1}-\ref{eq:SIR-model3}) rely on several assumptions, including:
-1) a closed population with no births or deaths 2) no exposed/incubation period 3) lifetime immunity following recovery
-4) mass action population mixing, where contact mixing rates between individuals in $S$ and $I$ are proportional 
+(1) a closed population with no births or deaths(2) no exposed/incubation period (3) lifetime immunity following recovery
+(4) mass action population mixing, where contact mixing rates between individuals in $S$ and $I$ are proportional 
 to the number of individuals in either field.
 
-Today, countless articles have relaxed these assumptions to extend the standard $SIR$ framework\footnote{
-Indeed, following the COVID-19 pandemic, $SIR$-type models remain an active field of research 
+Today, countless articles have relaxed these assumptions and extended the standard SIR framework\footnote{
+Indeed, following the COVID-19 pandemic, SIR-type models remain an active field of research 
 and dominate present-day epidemic literature \cite{atkeson2020using}.}.
 Nevertheless, a keystone result emerged from Equations (\ref{eq:SIR-model1}-\ref{eq:SIR-model3}), namely 
 the existence of a critical epidemic threshold, captured through either:
@@ -64,13 +64,13 @@ we have $R_e=\big((N-1)/N\big) \beta / \mu$. Therefore, in the limit of a large 
 $\big((N-1)/N\big)$ approximates unity and $R_e = R_0$, otherwise $R_e=\big(S(t)/N\big) R_0$.
 
 Both quantities $R_0$ and $R_e$ describe an epidemic threshold, though $R_e$ captures a threshold in the face
-of a declining susceptible population by including the ratio $S(t)/N$.
+of a (finite) declining susceptible population by including the ratio $S(t)/N$.
 Equation \ref{eq:R0-effective} defines a critical threshold by the simple criterion\footnote{
-For a more comprehensive mathematical proof of $SIR$
+For a more comprehensive mathematical proof of SIR
 model thresholds, the reader is directed towards \cite{weiss2013sir}}:
-1) when $R_e > 1$, then $I(t)$ rises sharply, culminating in an epidemic before declining in the absence of newly
+(1) when $R_e > 1$, then $I(t)$ rises sharply, culminating in an epidemic before declining in the absence of newly
 infected hosts
-2) if $R_e \leq 1$, then $I(t)$ quickly declines to zero as $t\rightarrow 0$ and the outbreak subsides.
+(2) if $R_e \leq 1$, then $I(t)$ quickly declines to zero as $t\rightarrow 0$ and the outbreak subsides.
 
 
 \subsection{Logistic growth}
@@ -112,7 +112,7 @@ growth at step $t-p$, as opposed to $r$ that describes the spread of disease at 
 \begin{figure}
      \centering
      \includegraphics[scale=0.55]{chapter2/figures/SIR-vs-Plank.pdf}
-     \caption{(a) The $SIR$ model as presented by \cite{kermack-model} is shown for fixed removal rate $\mu = 0.20$ and variations of $\beta$. 
+     \caption{(a) The SIR model as presented by \cite{kermack-model} is shown for fixed removal rate $\mu = 0.20$ and variations of $\beta$. 
                   The coupled system of ODEs can be solved numerically with Euler's method. Here, simulations begin with 
                   $2500$ susceptible and one infected individuals, and evolve for $t=200$ steps.
                   (b) The logistic growth model \cite{van2013plant} used to describe the growth of infected plant material.
@@ -121,7 +121,7 @@ growth at step $t-p$, as opposed to $r$ that describes the spread of disease at 
      \label{fig:SIR-vs-plank}
  \end{figure}
 where $r$ represents an `apparent' infection rate (measurable in laboratories from Equation \ref{eq:van-plank-r}),
-and $R$ denotes the `basic' infection rate. As Plank explained, one usually seeks
+and $R$ denotes the `basic' infection rate. As Van der Plank explained, one usually seeks
 to determine $R$ from the constant $r$. Assuming that $r$ indeed stays constant over the epidemic:
 the basic infection rate $R$ must decrease as $x_t/x_{t-p}$ gets progressively smaller as $x_{t-p}\rightarrow x_t $.
 At this point, the basic infection rate $R$ begins to resemble the effective reproduction ratio $R_e$
@@ -130,7 +130,7 @@ from Equation \ref{eq:R0-effective}.
 Equation \ref{van-plank-incubation} describes a system where
 infections incubate for a period $p$ before inducing the growth of more infectious plant tissue.
 However, it does not describe the infectious period (where infected tissue remains before becoming epidemiologically inert),
-which lead Plank to extend Equation \ref{van-plank-incubation} to:
+which lead Van der Plank to extend Equation \ref{van-plank-incubation} to:
 \begin{equation}
 \label{van-plank-infectious-p}
     \frac{dI_t}{dt} = R_c(I_{t-p} - I_{t-i-p})(1 - I_{t})
@@ -142,9 +142,9 @@ More formally, as $I_{t-i-p} \rightarrow I_{t-p}$, the rate of infectious tissue
 \subsection{Contrasting approaches}
 \label{sec:SIR-vs-plank}
 
-The $SIR$ model does not include an incubation period, and therefore differs from the delayed differential formulation 
+The SIR model does not include an incubation period, and therefore differs from the delayed differential formulation 
 of Equation \ref{van-plank-infectious-p}. Nonetheless, the compartmentalised approach is easy to extend, leading to an 
-$SEIR$ system:
+SEIR system:
 \begin{align}
 \label{eq:SEIR-model1}
     &\frac{dS}{dt} = -\beta SI \\
@@ -161,20 +161,20 @@ exponentially distributed latency period of $\gamma^{-1}$ before transitioning i
 Both Equations \ref{eq:SEIR-model1}-\ref{eq:SEIR-model3} and Equation \ref{van-plank-infectious-p} outline similar systems,
 though infected tissue in Equation \ref{van-plank-infectious-p} remains infectious for precisely $i$ units.
 This contrasts with the exponentially distributed exposed lifetime implicit within Equation \ref{eq:SEIR-model2}.
-Nevertheless, \cite{segarra2001epidemic} illustrated how Plank's DDE and the $SEIR$ system are both special cases of
-the $SIR$ model proposed by \cite{kermack-model}, when the $SIR$ model incorporates a sporulation function, $\phi(\tau)$. 
+Nevertheless, \cite{segarra2001epidemic} illustrated how Plank's DDE and the SEIR system are both special cases of
+the SIR model proposed by \cite{kermack-model}, when the SIR model incorporates a sporulation function, $\phi(\tau)$. 
 The sporulation function appropriately models spore production in plant pathogens. 
 In particular, if $\phi(\tau) = 0$ for small $t$, $\phi(\tau)$ can model incubation periods. 
 Similarly, if $\phi(\tau) = 0$  for large $t$, we recover an infectious period. 
 More recently, \cite{time-varying-infectivity} simplified the analysis of \cite{segarra2001epidemic}, showing that 
-both Plank's DDE and the $SEIR$ model can be recovered with an $SE_nI_mR$ model.
+both Plank's DDE and the SEIR model can be recovered with an $SE_nI_mR$ model.
 In an $SE_nI_mR$ framework, both $n$ and $m$ represent an arbitrary number of distinct exposed and infectious compartments:
 \[
-    S\rightarrow E_1 \rightarrow E_2 \rightarrow ... \rightarrow E_n \rightarrow I_1 \rightarrow I_2 \rightarrow ... I_m
+    S\rightarrow E_1 \rightarrow E_2 \rightarrow ... \rightarrow E_n \rightarrow I_1 \rightarrow I_2 \rightarrow \hdots I_m
 \]
-Trivially, the $SEIR$ model is recovered when $n=1$ and $m=1$. However, when $n,m \rightarrow \infty$,
+Trivially, the SEIR model is recovered when $n=1$ and $m=1$. However, when $n,m \rightarrow \infty$,
 \cite{time-varying-infectivity} demonstrated that we recover an expression equivalent to the DDE in Equation \ref{van-plank-infectious-p}.
-Despite the sameness of both DDE and $SEIR$ formulations, the overarching theme of modern epidemiology is overwhelmingly compartmentalised,
+Despite the sameness of both DDE and SEIR formulations, the overarching theme of modern epidemiology is overwhelmingly compartmentalised,
 owing to the increased flexibility and easier analysis of compartmental models.
 
 
@@ -202,7 +202,7 @@ In their analysis, \cite{zadoks1977role} alluded to the problem of scale in plan
 were conceptualised as `microscales' ($\leq 1\mathrm{m}$), `mesoscales' ($10^2\mathrm{m}$) and `macroscales' ($10^6\mathrm{m}$).
 In this picture, microscales ranged from plant leaves to individual plants, mesoscales reflected crop fields, and macroscales
 described large regional expanses over an entire country. Moreover, the probability of dispersal between infected hosts assumed a
-Gaussian distribution\textemdash in contrast to \cite{doi:10.1146/annurev.py.06.090168.001201}.
+Gaussian distribution, in contrast to \cite{doi:10.1146/annurev.py.06.090168.001201}.
 
 In general, the ability to simulate more intricate models grew in proportion to the amount of computer memory available.
 For a review of early plant disease simulators, see \cite{doi:10.1146/annurev.py.23.090185.002031}.
@@ -229,7 +229,7 @@ magnetism and telecommunications were described \cite{trove.nla.gov.au/work/2649
 With only a short conceptual jump from time-dependent percolation used to study the growth of crystals \cite{Family_1985},
 forest fire models were subsequently related to percolation \cite{MacKay_1984}.
 
-Beginning with the $SIR$ framework, mathematical epidemiology was already well-established
+Beginning with the SIR framework, mathematical epidemiology was already well-established
 around the time percolation theory was conceived \cite{baily1975mathematical}. 
 A fire spreading through a population of trees is not too different to a disease spreading through 
 a population. Hence, a general percolation-based epidemic-formalisation framework was put forward by
@@ -265,9 +265,9 @@ models were studied together in \cite{pub.1052857560}, highlighting their simila
 An early ecological applications of percolation was put forward by \cite{pub.1031591030}, 
 who studied the effects of landscape distributions and percolation models 
 (reflecting both forest fire and tree disease epidemics). In their study, \cite{pub.1031591030} 
-combined $SIR$-like mechanics inside a percolation-based distribution of hosts and subsequently 
+combined SIR-like mechanics inside a percolation-based distribution of hosts and subsequently 
 found a narrow regime where disease epidemics would spread, thus mirroring the threshold-like 
-behaviour witnessed in the $SIR$ model. Although, here, the authors considered the possibility of host recovery.
+behaviour witnessed in the SIR model. Although, here, the authors considered the possibility of host recovery.
 % \textemdash \cite{GRASSBERGER1983157} <- reference for early considerations towards percolation as a model for tree diseases and percolation
 % \textemdash \cite{SANDER2002293}, read and get more info + research links
 \newpage
@@ -341,11 +341,10 @@ is the dispersal function. This time, Equation \ref{eq: webidemics} presents a r
 susceptible tree (from $S_i \rightarrow E_i$) under the influence of all infected neighbours (represented by the $j^{th}$ index),
 as opposed to the probability of Equation \ref{eq:prob-trans}.
 
-Cunniffe et al. examined the effects of a cull radius, similar to \cite{parnell2010effect}. 
-However, this time, results were aimed towards assessing control when there is epidemic uncertainty.
+Cunniffe et al. examined the effects of a cull radius similar to \cite{parnell2010effect}. 
+Yet this time, the results were aimed towards assessing control when `there is epidemic uncertainty'.
 Consequently, \cite{WEBIDEMICS} assessed different epidemic serveries by varying $\beta$, alongside
 numerous control parameters, e.g. eradication response time, detection probabilities and revisit/survey intervals. 
-
 All in all, \cite{WEBIDEMICS} highlighted an intuitive result, namely, that the scale of control should
 reflect the "intrinsic epidemic scale". More succinctly, \textit{aggressive pathogens should be met with 
 an aggressive control strategy}. Moreover, Cunniffe et al. suggested that thick-tailed dispersal kernels
@@ -395,19 +394,7 @@ and their non-spatial analytic counterparts. Linear stability analysis was perfo
 of Equations \ref{eq:PWD-model1}-\ref{eq:PWD-model-H}. Whereas the stochastic spatio-temporal framework of Equations
 \ref{eq:prob-trans} and \ref{eq: webidemics} were analysed by repeating simulations inside an ensemble.
 
-% \begin{itemize}
-%     \item The importance of dispersal
-%     \item How is dispersal treated mathematically ?
-%     \item What type of dispersal kernels have been studied?
-%     \item What parameter-values have been inferred ?
-%     \item How long-range can dispersal be ? Talk about long-range inter-Continental dispersal
-%     \item see \cite{nathan2012dispersal} for a review of dispersal kernels
-% \end{itemize}
-
-
 \subsection{Large-scale: landscape spread}
-% -\cite{doi:10.1098/rstb.1986.0072}
-% -item \cite{large-scale-control}
 
 Ultimately, microscopic (host-pathogen) interactions propagate the spread of disease. 
 Although once disease-establishment has taken place, large-scale outbreaks can spread through vast
@@ -507,20 +494,19 @@ outbreak; these included, host data, dispersal, and climate.
 to assess the large-scale effects of epidemic control. 
 In particular, \cite{large-scale-control} examined how to optimise eradication of SOD with 
 limited resources. 
-
 When resources are low, the authors suggested that small localised 
 eradication zones around \textit{known} foci optimise control; justified by the fact that
 small, but more numerous, control areas about diseased areas reduces the risk of failing 
 to treat a high-risk site that causes many secondary infections. 
 
-\cite{large-scale-control} also tested management strategies based on targeting:
-1) hosts irrespective of disease 
+Furthermore, \cite{large-scale-control} examined management strategies that target:
+(1) hosts irrespective of disease 
 status (the "host" strategy)
-2) local areas with high prevalence ("hazard" strategy)
-3) areas with high basic reproduction numbers ("susceptible" strategy)
-4) regions ahead of the wavefront ('wavefront" strategy).
+(2) local areas with high prevalence ("hazard" strategy)
+(3) areas with high basic reproduction numbers ("susceptible" strategy)
+(4) regions ahead of the wavefront ('wavefront" strategy).
 Of all the management scenarios tested, \cite{large-scale-control} found
-that 4), treating areas ahead of the wavefront, reduced epidemic spread the most.
+that (4), treating areas ahead of the wavefront, reduced epidemic spread the most.
 In this scenario, the affected area was reduced by $\sim 2400\mathrm{km^2}$ and 
 the optimal culling radius was determined to be $362.5\mathrm{m}$.
 
@@ -531,8 +517,7 @@ contained within a `patch'. Then, between-patch interactions aim to model popula
 connectedness and fragmentation, while within-patch dynamics aims to model colonisation, persistence,
 competition, coexistence, and habitat suitability.} commonly used by ecologists studying spatially-structured
 animal and plant populations \cite{hanski1998metapopulation}. However, plant-disease modellers increasingly
-utilise metapopulation settings to study the effects of landscape features on disease progression,
-e.g. \cite{beninca2020trade, soubeyrand2009spatiotemporal, doi:10.1046/j.1461-0248.2002.00378.x}.
+utilise metapopulation settings to study the effects of landscape features on disease progression  \cite{beninca2020trade, soubeyrand2009spatiotemporal, doi:10.1046/j.1461-0248.2002.00378.x}.
 
 \subsection{Multi-scale: disease fronts}
 
@@ -578,12 +563,12 @@ Figures \ref{fig:fkpp}(d-f) show the equivalent two-dimensional behaviour.
     In all panels, a non-zero field value is initialised at the domains mid-point (i.e. $u(0.50)=0.10$) at time $t=0$.
     Then, simulations evolve according to a forward time centered difference (FTCD) finite difference scheme and
     follow dirichlet boundary conditions. 
-    (a) Symmetric growth and diffusion in $1D$.
-    (b) An asymmetric diffusion-gradient increasing from left to right in $1D$.
-    (c) An asymmetric growth-gradient increasing from left to right in $1D$.
-    (d) Symmetric growth and diffusion in $2D$.
-    (e) An asymmetric diffusion-gradient increasing from left to right in $2D$.
-    (f) An asymmetric growth-gradient increasing from left to right in $2D$.}
+    (a) Symmetric growth and diffusion in 1D.
+    (b) An asymmetric diffusion-gradient increasing from left to right in 1D.
+    (c) An asymmetric growth-gradient increasing from left to right in 1D.
+    (d) Symmetric growth and diffusion in 2D.
+    (e) An asymmetric diffusion-gradient increasing from left to right in 2D.
+    (f) An asymmetric growth-gradient increasing from left to right in 2D.}
     \label{fig:fkpp}
 \end{figure}
 
@@ -594,7 +579,7 @@ For a large $\mathcal{D}$ and small $r$, the wave-front extends over a larger re
 demonstrated in Figures \ref{fig:fkpp}(b) and (e). Conversely, for
 small $\mathcal{D}$ and large $r$, we have a thin wavefront, shown in Figures \ref{fig:fkpp}(c) and (f).
 For all panels shown in Figure \ref{fig:fkpp}, the travelling front speed remains
-approximately constant that can be understood through the predicted front velocity:
+approximately constant, reflected through the predicted front velocity:
 \begin{equation}
     \label{eq:fkpp_vel}
     v \geq v_{min} = 2\sqrt{r\mathcal{D}}
@@ -602,7 +587,7 @@ approximately constant that can be understood through the predicted front veloci
 where $v_{min}$ is the minimum wave-speed admitted by the front\footnote{
 The reader can find comprehensive derivation in \cite{murray2002mathematicalbiology}, 
 in Chapter 11 "Biological Waves". In there, we see that strictly speaking Equation \ref{eq:fkpp_vel} 
-is incorrect in two spatial dimensions on account of wavefront curvature. However, it still provides
+is incorrect in two spatial dimensions on account of wavefront curvature, though it still provides
 a reasonable estimate.}.
 The numerical stability of simulations is ensured provided that the Courant–Friedrichs–Lewy (CFL) condition
 is met \cite{cfl-condition}.
@@ -619,7 +604,7 @@ with the same scale parameter. Although, both kernels are still fundamentally th
 between individuals\textemdash as proved theoretically by \cite{mollison1977spatial} who compared the FKPP model against 
 exponentially-bounded `contact' models.
 
-At first glance, the reaction diffusion (\acrshort{rd}) FKPP travelling wave presents a simple, 
+At first glance, the reaction diffusion (RD) FKPP travelling wave presents a simple, 
 intuitive place to begin modelling the spread of disease through a population of trees.
 However, following earlier work on turbulent diffusion \cite{scherm1996velocity},
 epidemic systems that spread through fat-tailed LDD are now thought to exhibit an accelerating `dispersive' 
@@ -693,7 +678,7 @@ The dataset constitutes the first of five planned surveys, part of a rolling mon
 
 The National Forest Inventory (\acrshort{nfi}) collects and maintains forest and woodlands data in GB.
 Originally, the NFI was established to help restore and expand Britain's woodlands following the First World War \cite{james1990history}.
-Regular programs ($10$-$15\mathrm{year}$ intervals) implement surveys of woodland and forest size, distribution, composition and condition across GB.
+Regular programs ($10$-$15$ year intervals) implement surveys of woodland and forest size, distribution, composition and condition across GB.
 Records cover areas over $0.5\ \mathrm{ha}$ and $20\%$ coverage.
 As of $2019$, $622,381$ individual records exist, spanning $2.9 \times 10^6\ \mathrm{ha}$ over $13\%$ of the total land cover within GB.
 NFI data comprise ESRI shape files\footnote{
@@ -701,8 +686,8 @@ Free to download at: \nolinkurl{https://data-forestry.opendata.arcgis.com}},
 that outline numerous forest types, e.g. broadleaved, conifer, mixed-predominantly broadleaved or mixed predominantly conifer.
 Despite an extensive coverage, publicly available NFI surveys describes presence-only data\textemdash with no proportion or species coverage.
 Although, additional datasets are available to purchase, including: 
-1) Tree species percentage per region by woodland type
-2) Tree species proportions within the upper canopy of each NFI sample plot, without supplying the exact location of the individual sample plot.
+(1) Tree species percentage per region by woodland type
+(2) Tree species proportions within the upper canopy of each NFI sample plot, without supplying the exact location of the individual sample plot.
 
 \begin{figure}
     \centering
@@ -769,12 +754,12 @@ computational challenges, as it typically relies on vast, multi-variable time-se
 
 A review paper by \cite{guillera2015my}, revealed a diverse use of SDMs.
 Out of $100$ publications reviewed by \cite{guillera2015my}, SDMs were applied to: 
-1) managing threatened species ($16\% $ of articles) 
-2) predicting climate change impacts ($13\%$) 
-3) understanding phylogeographic patterns ($9\%$) 
-4) controlling threatening processes ($8\%$) 
-5) landscape management ($8\%$) 
-6) biological invasions ($7\%$). However, no epidemic applications were reported.
+(1) managing threatened species ($16\% $ of articles) 
+(2) predicting climate change impacts ($13\%$) 
+(3) understanding phylogeographic patterns ($9\%$) 
+(4) controlling threatening processes ($8\%$) 
+(5) landscape management ($8\%$) 
+(6) biological invasions ($7\%$). However, no epidemic applications were reported.
 
 Nevertheless, a thorough literature search revealed a variety of epidemiological SDM applications.
 The crossover between ecological SDM methods and epidemiology has been referred to as `Infectious Disease Cartography' \cite{KRAEMER201619}.
@@ -800,7 +785,7 @@ Results were then cross-validated with the remaining ($30\%$) abundance data; Fi
 flow-diagram of the method presented by \cite{hill.data}. 
 
 A more detailed explanation of the treatment proposed by \cite{hill.data} follows:
-\textbf{Stage 1)}
+\textbf{Stage (1)}
 \textit{
 \begin{itemize}
     \item Presence-only BSBI data was downloaded for $25$ common species of trees in GB, 
@@ -815,11 +800,11 @@ A more detailed explanation of the treatment proposed by \cite{hill.data} follow
     resolution.
     \item For each species, predictions from a suit of models\textemdash GLM, GAM, CTA, GBM, RF\textemdash were
     repeated and combined into an ensemble distribution model. Each model was cross-validated against
-    $30\%$ of the well-survyed BSBI presence-absence data using the receiver operator curve (\acrshort{roc}) and the true skill statistic (\acrshort{tss}).
+    $30\%$ of the well-survyed BSBI presence-absence data using the receiver operator curve (ROC) \cite{jimenez2012insights} and the true skill statistic (TSS).
     \cite{hill.data} then selected the best performing predicted occurrence for each species.
 \end{itemize}
 }
-\textbf{Stage 2)}
+\textbf{Stage (2)}
 \textit{
 \begin{itemize}
     \item Abundance data from CS and myForest were both expressed as hectares covered per kilometer 
@@ -834,7 +819,7 @@ A more detailed explanation of the treatment proposed by \cite{hill.data} follow
 
 The abundance datasets produced by \cite{hill.data} combine several mainstream tree datasets in GB; moreover, 
 constructing the ensemble model involved a variety of statistical models.
-The predicted occurrence data was examined against the ROC \cite{jimenez2012insights}.
+The predicted occurrence data was examined against the ROC.
 Most species demonstrated functional ROC scores between $0.71$ and $0.96$ and performed exceptionally
 well for ash ($0.96$) and oak ($0.90$).  
 
@@ -964,8 +949,8 @@ in Belgium recorded that after six years of infection, small young saplings died
 whilst slightly larger ash ($<25 \mathrm{cm}$ in diameter) displayed mortality of $11\%$. 
 In contrast only $3.2\%$ of large mature ash ($>25\mathrm{cm}$ in diameter) died.
 
-Various sources of ash mortality data have been collected in different European countries;
-in Germany, a forest stand of planted ash trees showed a $73\%$
+Various sources of ash mortality data have been collected in different European countries.
+In Germany, a forest stand of planted ash trees showed a $73\%$
 mortality rate after five years \cite{langer2015ash} (as cited in a review
 \cite{enderle2017ash}), while observations of ADB progression in Austria
 suggest a low mortality rate of $5\%$ measured over a two-year window \cite{kessler2012dieback}. 
@@ -1003,19 +988,19 @@ through the soil-borne mechanisms \cite{fones2016role}, albeit with low frequenc
     \centering
     \includegraphics[scale=0.425]{chapter2/figures/ash-dieback-illustration.pdf}
     \caption{A life-cycle illustration of ADB: 
-    1) HF ascospores disperse through wind during summertime sporulation, generally between June-September.
+    (1) HF ascospores disperse through wind during summertime sporulation, generally between June-September.
     Ascospore production constitutes HF's sexual (or `teleomorphic') reproduction mechanism.
-    2) Ascospores penetrate the leaves of susceptible ash, causing the leaves to wilt.
+    (2) Ascospores penetrate the leaves of susceptible ash, causing the leaves to wilt.
        After spores infect leaves, the fungus proceeds to spread through twigs, branches and eventually the xylem.
        Infected leaves are shed in autumn, or from disease induced death.
-    3a) Over winter, a mushroom-like fruiting body grows on infected leaf-fall (usually the petiole).
-    3b) A proposed soil-borne infection mechanism has been proposed \cite{fones2016role}.
+    (3a) Over winter, a mushroom-like fruiting body grows on infected leaf-fall (usually the petiole).
+    (3b) A proposed soil-borne infection mechanism has been proposed \cite{fones2016role}.
         Here, asexually reproducing HF mycelium are thought to infect the roots of ash trees.
-    Through both steps 3a) and 3b), asexual condia disperse from the infected litterfall, shown in blue.
+    Through both steps (3a) and (3b), asexual condia disperse from the infected litterfall, shown in blue.
     Condia are proposed to act as spermatia, increasing the genetic diversity of HF.
-    4) During the next summer period, immense numbers of ascospores are release from the fruiting body
+    (4) During the next summer period, immense numbers of ascospores are release from the fruiting body
     and disperse through wind.
-    5) Ascospore dispersal induces ADB infections in distant susceptible ash. Fungal spores in particular 
+    (5) Ascospore dispersal induces ADB infections in distant susceptible ash. Fungal spores in particular 
     are known to travel large distances.
     }
     \label{fig:my_label}
@@ -1038,13 +1023,13 @@ it has gained seemingly little traction, and the role of asexual reproduction is
 
 \subsection{Dispersal}
 
-In general, fungal spores have an efficient multi-scale wind-dispersal mechanism,
-known to travel large distances \cite{golan2017long, wingen2013long, mundt2009aerial}
+In general, fungal spores have an efficient multi-scale wind-dispersal mechanism
+known to travel large distances \cite{golan2017long, wingen2013long, mundt2009aerial},
 often described by power-law kernels, e.g. \cite{shaw2006assembling}.
-From an epidemiological perspective, data on spore dispersal does not necessarily reflect the dynamics of new infections, 
-as we cannot guarantee the availability of susceptible host material.
-Even supposing available hosts, we cannot guarantee invasive spore colonisation.
-However, studies on spore dispersal shed essential light on the spatial scale of ADB dispersal. 
+However, from an epidemiological perspective, data on spore dispersal does not necessarily reflect the dynamics of new infections, 
+because we cannot guarantee the availability of susceptible host material.
+More explicitly stated, invasive spore colonisation is not guaranteed even if hosts are available to infect.
+Still, studies on spore dispersal shed essential light on the spatial scale of ADB dispersal. 
 
 Modern methods typically rely on `spore trapping' and real-time polymerase chain reaction (PCR) to study spores dispersal.
 Data collected by \cite{chandelier2014detection} over three years using a (rotating arm) trapping system
