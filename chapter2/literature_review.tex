@@ -544,8 +544,8 @@ regions are not fully occupied as well).
 Hence, the two terms in Equation \ref{eq:fkpp} describe a populations logistic growth and spread, $ru(1 - u/K)$ and $\mathcal{D}\nabla u$ respectively.
 The essential travelling-wave behaviour of Equation \ref{eq:fkpp} is displayed in Figure \ref{fig:fkpp} 
 in both one and two spatial dimensions. In all panels, travelling waves are simulated 
-with parameters $r=0.10$, $\mathcal{D}=0.10$, and $K=0.00$; at $t=0$, a field is set to $u(0.50)=0.10$ at the domains mid-point.
-All simulations evolve according to a forward-time centered-different finite scheme and admit dirichlet boundary conditions.
+with parameters $r=0.10$, $\mathcal{D}=0.10$, and $K=0.00$, and at $t=0$, the field is set to $u(x)=0.10$ at the domains mid-point.
+All simulations shown in Figure \ref{fig:fkpp} evolve according to a forward-time centered-different (FTCD) finite scheme to second order and admit dirichlet boundary conditions.
 
 Figures \ref{fig:fkpp}(a-c) show a one-dimensional wave propagating under different conditions:
 (a) symmetric growth and diffusion
@@ -560,9 +560,8 @@ Figures \ref{fig:fkpp}(d-f) show the equivalent two-dimensional behaviour.
     \includegraphics[scale=0.325]{chapter2/figures/FKPP.pdf}
     \caption{
     Simulating the FKPP model in one and two spatial dimensions with parameters $r=0.10$, $\mathcal{D}=0.10$, and $K=0.00$. 
-    In all panels, a non-zero field value is initialised at the domains mid-point (i.e. $u(0.50)=0.10$) at time $t=0$.
-    Then, simulations evolve according to a forward time centered difference (FTCD) finite difference scheme and
-    follow dirichlet boundary conditions. 
+    In all panels, a non-zero field value is initialised at the domains mid-point (i.e. $u(x=0.50) = 0.10$) at time $t=0$.
+    Then, simulations evolve according to a FTCD finite difference scheme to second order observing dirichlet boundary conditions. 
     (a) Symmetric growth and diffusion in 1D.
     (b) An asymmetric diffusion-gradient increasing from left to right in 1D.
     (c) An asymmetric growth-gradient increasing from left to right in 1D.
@@ -768,12 +767,12 @@ A number of publications have applied SDMs livestock diseases \cite{hollings2017
 distribution of Dengue Fervour \cite{bhatt2013global} and Zika virus \cite{messina2016mapping}, and Anthrax in Kenya \cite{otieno2021modeling}.
 However, SDM applications for tree disease epidemics appear absent from the literature.
 
-\subsubsection{Predicting tree abundance}
+\subsubsection{Predicting species abundance}
 
 SDM-generated tree occurrence data have limited applications to ecologists and forest managers.
 This motivates statistically-generated abundance data that includes significantly 
 more information about the population occupation/density and ecosystem.
-Modellers have examined numerous approaches to predict species abundance;
+Modellers have examined numerous approaches to predict tree species abundance;
 including, linking the abundance-occupancy relationship \cite{gaston2000abundance} and
 the scaling pattern of species occupancy over progressively smaller spatial scales \cite{hui2009extrapolating}.
 

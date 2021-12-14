@@ -185,8 +185,9 @@ as indicated by a lighter colour before the transition in the top left quadrant 
 Although the variance spike is not as significant, 
 it preempts the epidemic transition by a more considerable degree\textemdash
 indicated by the larger arrows in Figure \ref{fig:ews-results}.
-Altogether, Figure \ref{fig:ews-results} suggests that the strength of an EWS depends on the particular combination of epidemic parameters; 
-although fundamentally, an EWS is detectable for all parameter combinations
+Altogether, Figure \ref{fig:ews-results} indicates that the strength of an EWS depends on the particular combination of epidemic parameters, 
+though fundamentally, an EWS is detectable for all parameter combinations.
+
 \newpage
 
 \section{A toy landscape-level SLM}
@@ -196,15 +197,15 @@ In this section, a toy landscape-level SLM is constructed and simulated on the m
 Modelling the spread of disease over GB entails a large change of scale within the SLM. 
 Specifically, host units now comprise $\mathrm{1km \times 1km}$ `\textit{patches}' of land. 
 Collecting high-quality abundance data over large areas is challenging and expensive\textemdash reviewed in section \ref{ch2:hostdata}.
-Therefore, the SLM is combined with a map of predicted oak abundance, produced by \cite{hill.data}.
+Therefore, the SLM is combined with a map of predicted oak abundance produced by \cite{hill.data}.
 
 \subsection{Realistic boundaries}
 
-Realistic host distributions describe complicated, irregular and heterogeneous domains
+Realistic host distributions describe complicated, irregular and heterogeneous domain boundaries
 known to influence the spread of disease \cite{madden1995plant}.
 In contrast, the SLM spreads through a square lattice with regular domain boundaries and homogeneously distributed hosts.
-Moreover, the initial conditions (ICs) have been limited to a small number of infected hosts
-located at a single epicentre at the centre of a square domain.
+Moreover, the initial conditions (ICs) in the SLM have been limited to a small \textit{focus} of infected hosts
+located at the domain centre.
 However, an epidemic propagating from the centre of a square lattice might look very different
 from an epidemic emerging from an arbitrarily located epicentre inside a domain with complicated irregular boundaries.
 As a consequence, we examine the interplay of initial and boundary conditions in the SLM,
@@ -239,8 +240,8 @@ tree mortality from every possible epicentre, as shown in Figure \ref{fig:uk-spr
 
 Figure \ref{fig:uk-spread-primer}(b) reveals the ensemble-averaged mortality 
 ratio, denoted by $\chi$.
-The toy landscape-level SLM assumed parameter values just above threshold in a $2D$ square lattice. 
-Each simulation began from a single patch epicentre, located at position $(i, j)$).
+The toy landscape-level SLM assumed parameter values just above threshold in a 2D square lattice,
+where each simulation began from a single epicentre located at patch $(i, j)$.
 Here, the mortality ratio captures the total epidemic impact, defined by: 
 \begin{equation}
 \label{eq:epi_impact}
@@ -268,22 +269,21 @@ we can assume an emerging epidemic within the SLM model depends non-trivially on
 
 \subsection{Realistic abundance data}
 
-In Figure \ref{fig:uk-oak-l.hill}(a), the distribution of oak is given by \cite{hill.data} is
-plotted over a map of Great Britain, alongside with its corresponding 
-probability density function (\acrshort{pdf}) in  Figure \ref{fig:uk-oak-l.hill}(b).
+Figure \ref{fig:uk-oak-l.hill}(a) shows the distribution of oak in GB given by \cite{hill.data}.
+The corresponding probability density function (\acrshort{pdf}) of canopy cover is shown in Figure \ref{fig:uk-oak-l.hill}(b).
 Each pixel in Figure \ref{fig:uk-oak-l.hill}(a) depicts the predicted hectares
 of oak canopy cover per kilometre squared of land, $\mathrm{ha/km^{2}}$, represented by colour. 
-Therefore, each measure of abundance correlates to host density\textemdash
-justified by the fact that $100\mathrm{ha} = 1 \mathrm{km^2}$\textemdash expressed as $\rho$.
+Therefore, each measure of abundance correlates to host density
+(justified by the fact that $100\mathrm{ha} = 1 \mathrm{km^2}$), denoted by $\rho$.
 The spatial map displays visual irregularities and population heterogeneity.
 
-The PDF, $f(\rho)$, displayed in Figure \ref{fig:uk-oak-l.hill}(b) 
+The PDF displayed in Figure \ref{fig:uk-oak-l.hill}(b) 
 reveals that most land patches occupy lower canopy cover values.
-Although, a small number ($\sim 5\%$) of high abundance values in the range
-$10<\rho<35\ \mathrm{ha/km^2}$ that skewed the distribution were reduced to $10\mathrm{ha/km^2}$, 
-thus capping the highest value to $10\%$ of oak canopy cover. 
-The PDF describes a continuous distribution in opposition to the binary-valued distribution of hosts 
-within the SLM. To navigate this problem, we introduce a threshold function:  
+Moreover, a small number ($\sim 5\%$) of high abundance values in the interval
+$\rho \in [10, 35]\ \mathrm{ha/km^2}$ skewed the distribution; these high-valued density patches were reduced to $10\mathrm{ha/km^2}$, 
+thereby capping the highest value to $10\%$ of oak canopy cover. 
+The PDF describes a continuous distribution, which lies in contrast to the required binary-valued distribution of hosts 
+within the SLM. Accordingly, we introduce a threshold function to navigate the problem:  
 \begin{equation}
   \phi(\rho) =
   \begin{cases}
@@ -292,7 +292,7 @@ within the SLM. To navigate this problem, we introduce a threshold function:
   \end{cases}
 \end{equation}
 where the canopy cover $\rho\in[0, 10]\ \mathrm{ha/km^{2}}$ acts as a threshold value, 
-above which all patches become susceptible and assumes the numerical value of unity, i.e. $\rho < \rho_{i,j} = 1$.
+above which, all patches become susceptible and assumes the numerical value of unity (i.e. $\rho < \rho_{i,j} = 1$).
 Conversely, insusceptible states are described when $\rho \geq \rho_{i,j}= 0$.
 The inset of Figure \ref{fig:uk-oak-l.hill}(b) visually depicts the abundance threshold function; 
 the vertical black line is an arbitrary threshold $\rho$, and all canopy cover values less and greater than
@@ -306,8 +306,8 @@ Patches of land below the abundance threshold are presumed insusceptible on acco
     \centering
     \includegraphics[scale=0.32]{chapter4/figures/figure3.pdf}
     \caption{
-    (a) The modelled abundance distribution of common oak (\textit{Quercus robur}), inferred by \cite{hill.data}; each pixel holds a predicted value of abundance having units hectares of canopy cover per kilometer squared of land. 
-    (b) The probability density function of abundance $f(\rho) \mathrm{ha/km^2}$. 
+    (a) The abundance distribution of common oak (\textit{Quercus robur}) given by \cite{hill.data}. Each pixel describes a predicted value of abundance with units hectares of canopy cover per kilometer squared of land ($\mathrm{ha/km^2}$). 
+    (b) The probability density function of oak abundance in GB, $f(\rho)\ \mathrm{ha/km^2}$. 
     The zoomed inset illustrates the process of generating threshold function $\phi$.}
     \label{fig:uk-oak-l.hill}
 \end{figure}
@@ -355,12 +355,13 @@ in contrast, $\rho^*=0.50$ and $\rho^*=0.60$ spread above the threshold for all 
 
 In Figure \ref{fig:ch4_uk_spread} we can observe a spatial dependence in the SLM threshold,
 where above-threshold regions (e.g. the in south) depend on the host density $\rho^*$ parameter.
-In particular, Figure \ref{fig:ch4_uk_spread} demonstrates that increasing $\rho^*$ can lead to channels opening between different above-threshold regions, thus permitting disease to invade new regions, c.f. Figure \ref{fig:ch4_uk_spread}(d), (h), and (l) where higher density simulations spread progressively further northwards.
-Undesirably, percolation is hard to define in the domain configuration shown in 
-Figure \ref{fig:oak-spatial-ensemble} because the extent between borders is now non-uniform
+In particular, Figure \ref{fig:ch4_uk_spread} demonstrates that increasing $\rho^*$ can lead to channels opening between different above-threshold regions, thus permitting disease to invade new regions\textemdash i.e. compare Figure \ref{fig:ch4_uk_spread}(d), (h), and (l), where only higher density simulations spread progressively further North.
+
+Unfortunately, the definition of percolation (as per Equation \ref{eq:critical_threshold_1d}) becomes obscure in light of the irregular domain configuration shown in 
+Figure \ref{fig:oak-spatial-ensemble}, primarily because the extent between borders is now non-uniform
 and dependant on epicentre location.
 Furthermore, simulation time series are subject to additional noise on account of heterogeneity, 
-making velocity-based metrics such as Equation \ref{eq:vel_eff_r} hard to use. 
+making velocity-based metrics (as shown in Equation \ref{eq:vel_eff_r}) hard to use. 
 Subsequently, the examination of disease progression will focus on the mortality ratio $\chi$, 
 as its measurement depends only on the final value of removed trees.
 
@@ -374,22 +375,22 @@ as its measurement depends only on the final value of removed trees.
 \subsection{Spatially dependent ensembles}
 \label{sec:slm-spatial-ensembles}
 
-The observations of spatially varying thresholds, as suggested by Figure \ref{fig:ch4_uk_spread}, 
+The observations of spatially varying thresholds, as revealed by Figure \ref{fig:ch4_uk_spread}, 
 motivates an examination of epidemic impact as a function of epicentre location.
 As such, we apply the same ensemble averaging method discussed previously (in Figure \ref{fig:uk-spread-primer})
 to the oak abundance data set. That is, treating each location $(i,j)$ in GB as a potential
-epicentre and ensemble averaging host mortality over many simulations.
+epicentre and ensemble averaging host mortality over replicate simulations.
 Here, the mortality ratio $\big\langle \overline{\chi} \big\rangle \in [0, 1]$ describes the ratio 
 of removed host patches to the total number of susceptible patches at $t=0$ and 
 expresses the final sized epidemic in the SLM. 
 
-The results of spatial ensemble averaging simulations are shown in Figure \ref{fig:oak-spatial-ensemble},
+The result of spatial ensemble averages are shown in Figure \ref{fig:oak-spatial-ensemble}
 for three different effective densities and one value of infectivity $\beta=0.25$. 
-The values of effective density in Figure \ref{fig:oak-spatial-ensemble} are arbitrary
+The values of effective density in Figure \ref{fig:oak-spatial-ensemble} are arbitrary,
 but crucially exhibit the heterogeneous SLM behaviour. Unsurprisingly, increasing the effective density yields a 
-higher mortality ratio (as defined by Equation \ref{eq:epi_impact}), thus increasing the magnitude of successive 
-colour bars in Figures \ref{fig:oak-spatial-ensemble}(a-c). Alongside a more severe mortality ratio, a higher $\rho^*$
-value permits disease propagation over more extensive regions, witnessed by comparing Figures \ref{fig:oak-spatial-ensemble}(a) and (c).
+higher mortality ratio (as defined by Equation \ref{eq:epi_impact}).
+In turn, a higher mortality increases the magnitude of colour bars in Figures \ref{fig:oak-spatial-ensemble}(a-c). Alongside a more severe mortality ratio, a higher $\rho^*$
+value also permits disease propagation over more extensive regions, witnessed by comparing Figures \ref{fig:oak-spatial-ensemble}(a) and (c).
 
 In Figures \ref{fig:oak-spatial-ensemble}(a-c), yellow regions highlight where the pathogen is most 
 likely to spread through susceptible hosts. In the toy model, mortality is approximately independent of epicentre location, 
@@ -420,13 +421,13 @@ maps of `maximum distance' are displayed in appendix \ref{a:landscape-toy-model}
 
 \subsection{Heterogeneous parameter sweeps}
 
-Ensemble analysis has so far fixed infectivity to $\beta=0.25$
-and instead concentrated on mapping mortality with a varying effective density parameter $\rho^*$.
+Thus far, spatial ensemble analysis rests on a fixed infectivity ($\beta=0.25$)
+and has focused on mapping mortality with a varying effective density parameter $\rho^*$.
 In this section, we investigate the entire parameter space of $\rho^*$ and $\beta$.
 Figure \ref{fig:heterogeneous-phase-space} depicts a full parameter sweep of the toy landscape SLM.
 Due to more host units in computer memory, simulating the spread of disease in the toy landscape SLM is more 
 computationally challenging when compared to the ideal square SLM in Chapter \ref{ch3:two-param-model}.
-Even though epidemic progression in the SLM is conditioned on epicentre location (as confirmed by the findings of section \ref{sec:slm-spatial-ensembles}),
+Even though epidemics in the toy SLM are conditioned on epicentre location (confirmed in section \ref{sec:slm-spatial-ensembles}),
 analysing a single epicentre is sufficient to capture the essential toy model behaviour.
 Ergo, we present an analysis through a single epicentre.
 
@@ -442,13 +443,13 @@ $\rho^*$ and $\beta$ axes, as opposed to the (approximately) symmetric ensembles
 Figures \ref{fig:heterogeneous-phase-space}(c-d) contrast behavioural differences between 
 $\rho^*$ and $\beta$ axes. Specifically, we compare one-dimensional slices through both parameters $\rho^*$ and $\beta$.
 Figure \ref{fig:heterogeneous-phase-space}(d) details how variations of $\rho^*$ effect the model behaviour through $\beta$-space. 
-Interestingly, Figure \ref{fig:heterogeneous-phase-space}(d) depicts the same infectivity threshold of $\beta\sim0.10$, 
+Interestingly, Figure \ref{fig:heterogeneous-phase-space}(d) depicts the same infectivity threshold of $\beta\sim 0.10$, 
 identical to the SLM evolving on a uniform square domain. When $\beta$ increases, fewer discontinuities arise when
 compared to $\rho^*$, as evidenced by smoother curves. 
 
 For each value of density in Figure \ref{fig:heterogeneous-phase-space}(d), 
-the mortality remains fixed beyond $0.30 \lessapprox \beta$.
-We may understand the independence between $\chi$ and infectivity through a numerical example:
+the mortality remains fixed beyond $\beta \sim 0.30$.
+We can understand the independence between $\chi$ and infectivity through a numerical example:
 the probability of a susceptible patch remaining susceptible when it encounters 
 an infected neighbour is given by Equation \ref{eq:pr_s_s} as $Pr(S \rightarrow S) = (1 - 0.30)^{10} = 0.03$. 
 Therefore, on average the pathogen transmits successfully to susceptible neighbours with probability $Pr(S\rightarrow I)=0.97$, 
@@ -458,7 +459,7 @@ mortality\footnote{
 Increasing the infectivity to $\beta=0.40$ yields a $Pr(S \rightarrow S) = 0.006$, 
 leading to negligible changes in the final epidemic size\textemdash however, the rate of progression is still faster.
 }. 
-When $0.30 \sim \beta$, only increases to the domain density have the potential to raise the final epidemic size, 
+When $\beta \sim 0.30 $, only increases to the domain density have the potential to raise the final epidemic size, 
 indicated by the increases in the height of the curves in Figure \ref{fig:heterogeneous-phase-space}(d). 
 
 \begin{figure}
@@ -525,13 +526,13 @@ dataset provided by \cite{hill.data};
 the modelled data is partly generated but combines various data sets\footnote{
 Including ancient woodland shapefiles, BSBI distribution database, Countryside Survey data, myForest and the National Forest Inventory Great Britain 2014},
 as we reviewed in section \ref{ch2:hostdata}.
-However, statistically regressed (modelled) abundance data contains uncertainties and 
+However, predicted (statistically regressed) abundance data contains uncertainties and 
 inaccuracies alongside the loss of small-scale host spatial structure $<1\mathrm{km^2}$.
 As argued by \cite{13-challenges}, capturing host spatial structure, even when data are limited, 
 is essential, and methods are required to assess the impact of incomplete or inaccurate host data.
 
 Following this argument, host data accuracy presents a notable assumption in the toy model.
-Be that as it may, density parameter sweeps over GB (as shown in Figure \ref{fig:heterogeneous-phase-space}) could 
+That being said, density parameter sweeps over GB (as shown in Figure \ref{fig:heterogeneous-phase-space}) could 
 form a simple procedure to assess the effect of host error, i.e. contrasting epidemic outcomes between two upper
 and lower density error bounds. Evaluating landscape-level parameter-sweeps are uncommon, 
 and most large-scale models repeat simulations over numerous control scenarios and rest on 
