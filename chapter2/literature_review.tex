@@ -161,18 +161,18 @@ exponentially distributed latency period of $\gamma^{-1}$ before transitioning i
 Both Equations \ref{eq:SEIR-model1}-\ref{eq:SEIR-model3} and Equation \ref{van-plank-infectious-p} outline similar systems,
 though infected tissue in Equation \ref{van-plank-infectious-p} remains infectious for precisely $i$ units.
 This contrasts with the exponentially distributed exposed lifetime implicit within Equation \ref{eq:SEIR-model2}.
-Nevertheless, \cite{segarra2001epidemic} illustrated how Plank's DDE and the SEIR system are both special cases of
+Nevertheless, \cite{segarra2001epidemic} illustrated how Van der Plank's DDE and the SEIR system are both special cases of
 the SIR model proposed by \cite{kermack-model}, when the SIR model incorporates a sporulation function, $\phi(\tau)$. 
 The sporulation function appropriately models spore production in plant pathogens. 
 In particular, if $\phi(\tau) = 0$ for small $t$, $\phi(\tau)$ can model incubation periods. 
 Similarly, if $\phi(\tau) = 0$  for large $t$, we recover an infectious period. 
 More recently, \cite{time-varying-infectivity} simplified the analysis of \cite{segarra2001epidemic}, showing that 
-both Plank's DDE and the SEIR model can be recovered with an $SE_nI_mR$ model.
+both Van der Plank's DDE and the SEIR model can be recovered with an $SE_nI_mR$ model.
 In an $SE_nI_mR$ framework, both $n$ and $m$ represent an arbitrary number of distinct exposed and infectious compartments:
 \[
-    S\rightarrow E_1 \rightarrow E_2 \rightarrow ... \rightarrow E_n \rightarrow I_1 \rightarrow I_2 \rightarrow \hdots I_m
+    S\rightarrow E_1 \rightarrow E_2 \rightarrow \hdots \rightarrow E_n \rightarrow I_1 \rightarrow I_2 \rightarrow \hdots I_m
 \]
-Trivially, the SEIR model is recovered when $n=1$ and $m=1$. However, when $n,m \rightarrow \infty$,
+Here, the SEIR model is recovered when $n=1$ and $m=1$. However, when $n,m \rightarrow \infty$,
 \cite{time-varying-infectivity} demonstrated that we recover an expression equivalent to the DDE in Equation \ref{van-plank-infectious-p}.
 Despite the sameness of both DDE and SEIR formulations, the overarching theme of modern epidemiology is overwhelmingly compartmentalised,
 owing to the increased flexibility and easier analysis of compartmental models.
@@ -182,8 +182,8 @@ owing to the increased flexibility and easier analysis of compartmental models.
 \label{sec:prog-epi}
 After \cite{van2013plant} moved the field of botanical diseases into a more quantitative discipline,
 theoretical investigations (alongside the adoption of computer simulations) characterised the next few decades.
-Plank's DDE was applied to numerous pathosystems, halo blight in beans \cite{doi:10.1111/j.1744-7348.1979.tb06527.x} 
-and grape powdery mildew \cite{sall1980epidemiology} to name a few. In particuar, \cite{sall1980epidemiology} adapted Plank's
+Van der Plank's DDE was applied to numerous pathosystems, halo blight in beans \cite{doi:10.1111/j.1744-7348.1979.tb06527.x} 
+and grape powdery mildew \cite{sall1980epidemiology} to name a few. In particular, \cite{sall1980epidemiology} adapted the
 logistic approach to include a time-varying infection rate $r(t)$. Moreover, diverse mathematical techniques, 
 including multiple  regression analysis, were incorporated into mainstream plant epidemiology \cite{butt1974multiple}. 
 Subsequently, \cite{zadoks1979epidemiology} consolidated various early mathematical models of plant disease 

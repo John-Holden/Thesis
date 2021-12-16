@@ -14,12 +14,11 @@ Consequently, the compartmentalised SIR, percolation-based, model used by \cite{
 From first principles, the percolation model is analysed over a single tree density parameter ($\rho$), leading to a mathematical and conceptual definition of percolation in the context of tree-based epidemics. 
 Then, a discussion of critical phenomena, universal behaviour, and self-similarity in the system will follow. Crucially, this Chapter demonstrates the importance of thresholds in the spread of tree-based diseases.
 
-Having established a simple one-parameter model, a more involved two-parameter `stochastic percolation' model will be developed and examined. 
-Stochastic percolation will include an extra parameter representing the degree of pathogen infectivity. 
-In general, measuring infectivity is challenging and subject to much spatial and temporal variation, such as changing climatic/environment conditions or species-level genetic variations in susceptibilities.  
-However, including a stochastic infectivity parameter is essential to construct representative models of tree-based epidemics, as infectivity (or susceptibility) can vary widely over a landscape.
+The one-parameter model will give way to a more involved two-parameter stochastic percolation, incorporating an additional infectivity parameter ($\beta$) representing pathogen virulence.
+In general, measuring infectivity is challenging and subject to much spatial and temporal variation, such as changing climatic/environment conditions or species-level genetic variations in susceptibilities.
+Accordingly, including infectivity is vital to construct representative models of tree-based epidemics.
 The two-parameter model will constitute a simple lattice model (SLM) of disease dynamics. 
-In addition, this Chapter will introduce ensemble-averaging parameter sweeps, used throughout the thesis to categorize the SLM behaviour.
+In addition, this Chapter will introduce ensemble-averaging parameter sweeps used throughout the thesis to categorize the SLM behaviour.
 
 \section{Percolation formalism}
 \label{sec:perc-form}
@@ -88,12 +87,12 @@ see appendix \ref{a:propagation} for more information on the numerical implement
 For simplicity, the infectious lifetime will not be considered as a parameter but will remain fixed at $T=1.0$\textemdash revisited below in section \ref{ch3:two-param-model}.
 
 The initial conditions begin with a small patch of infected hosts (of size $5\times5$) located at the origin ($L_O$) at $t=0$, and percolation events describe the boundary conditions. 
-Percolation occurs when the infection spreads from $L_O$ to any of the four lattice boundaries;  thus defining a connected cluster of infectious-removed that spans the domain from $L_O$.
+Percolation occurs when the infection spreads from $L_O$ to any of the four lattice boundaries, thereby defining a connected cluster of infectious-removed that spans the domain from $L_O$.
 Each time-step through the simulation represents an arbitrary unit of time, and simulation termination occurs on one of three boundary conditions: 
-1) a percolation is observed 
-2) the pathogen becomes extinction 
-3) a time-horizon of $N$ steps is reached. 
-Typical simulations on a domain of size $500 \times 500$ are shown in Figure \ref{fig:ch3-perc-spread} through three time-steps. 
+(1) percolation is observed 
+(2) the pathogen becomes extinct
+(3) the time-horizon of $N$ steps is reached.
+Typical simulations on a domain of size $500 \times 500$ are shown in Figure \ref{fig:ch3-perc-spread} for three successive time-steps. 
 
 \begin{figure}
     \centering
@@ -110,8 +109,9 @@ Typical simulations on a domain of size $500 \times 500$ are shown in Figure \re
 \end{figure}
 
 Figure \ref{fig:ch3-perc-spread} illustrates dynamic simulations of disease spread through a series of $500 \times 500 $ domain. At density $\rho=0.70$, Figures \ref{fig:ch3-perc-spread} (a-c) reveal an unnatural diamond-like pattern of spread reflecting artefacts of the lattice geometry.
-The diamond-like spread begins to disappear in Figure \ref{fig:ch3-perc-spread}(d-f), when simulations have density $\rho=0.65$. At this density, a wave-like propagation of infected trees spreads radially from the epicentre outward toward the lattice boundary. Interestingly, these observations can be understood through the lens of stochasticity. At a lower tree density, the probability of spread between neighbours is lower, and the spread is more chaotic, thereby disrupting the highly ordered wavefront shown through panels (a-c) into a circular travelling wavefront.
-However, it is worth remarking that an alternate triangular or honeycomb lattice geometry would change the diamond-like pattern altogether.
+The diamond-like spread begins to disappear in Figure \ref{fig:ch3-perc-spread}(d-f), when simulations have density $\rho=0.65$. At this density, a wave-like propagation of infected trees spreads radially from the epicentre outward toward the lattice boundary. Interestingly, these observations can be understood through the lens of stochasticity:
+a low tree density reduces the chance of spread between nearest neighbours, producing a more chaotic epidemic and disrupting the highly ordered wavefront (panels (a-c)) into a circular travelling wavefront (panels (d-f)).
+Although, it is worth remarking that an alternate triangular or honeycomb lattice geometry would change the diamond-like pattern altogether.
 
 Figures \ref{fig:ch3-perc-spread}(g-i), show the spread of disease for a lower host density of $\rho = 0.60$.
 As the disease spreads outward, a more fractal-like pattern begins to emerge.
@@ -125,7 +125,7 @@ In this regime of spread, `persisting' simulations result from the slowly evolvi
 Consider a simulation with tree density below the epidemic threshold. In this case, an evolving epidemic is unlikely to percolate to the domain boundary, and the pathogen will become extinct. If the host density increases, we can imagine that epidemics begin percolating to the boundary for some specific value.
 Consequently, the probability of percolation was examined over a sweep of density parameters, shown in Figure \ref{fig:ch3-perc}(a).
 Unsurprisingly, a threshold-like behaviour is revealed. All the simulations that form Figure \ref{fig:ch3-perc}(a) evolved inside a $500\times 500$ sized domain.
-The probability of percolation ($Pr(\rho)$) defines a critical region, highlighted in orange (where $ \rho \in [0.57, 0.62$]), that separates regimes of pathogen extinction and percolation/epidemic. The threshold depicted by Figure \ref{fig:ch3-perc}(a) is consistent with the accepted percolation threshold for a two-dimensional square $\rho_c \approx 0.592$.
+The probability of percolation ($Pr(\rho)$) defines a critical region, highlighted in orange (where $ \rho \in [0.57, 0.62$]), which separates regimes of pathogen extinction and percolation/epidemic. The threshold depicted by Figure \ref{fig:ch3-perc}(a) is consistent with the accepted percolation threshold for a two-dimensional square $\rho_c \approx 0.592$.
 
 The value of $Pr(\rho)$ depends non-trivially on stochasticity, which motivated an ensemble-averaged approach\textemdash 
 further reading on the underlying theory of ensemble-averaging can be found in \cite{gibbs1902elementary}.

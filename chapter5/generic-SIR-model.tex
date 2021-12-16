@@ -8,7 +8,7 @@ That is, we will combine dispersal-based interactions within a simplistic SIR fr
 Following this, the model behaviour is examined under various dispersal length scales and fitted against the standard SIR model.
 
 Having established the non-local dispersal model, a spatially explicit (analytic) expression for the basic reproduction number will be derived for the model, denoted by $R_0$.
-Analytical predictions of $R_0$ are compared against the total tree mortality (equivalent to the final-sized epidemic).
+Analytical predictions of $R_0$ are compared against the total tree mortality equivalent to the final-sized epidemic.
 Lastly, the expression of $R_0$ is scrutinised against the `actual' number of secondary infections, computed by contact-traced individual tree-to-tree infections.
 The analytic and contact-traced methods of calculating $R_0$ are shown to define a threshold at $R_0=1$.
 The analysis is kept generic, with arbitrary units of time and distance, before incorporating more biological realism in the next Chapter. 
@@ -24,8 +24,7 @@ We assume all trees are equally susceptible, and trees that become infected tran
 
 From first principles, the probability of infection at a distance $r$ can be described by an unnormalised Gaussian function $g(r; \ell)$,
 where $\ell$ is a distance that sets the scale of dispersal. 
-Suppose two trees, one susceptible ($S_x$) and one infected ($I_{x^\prime}$), are separated by a distance $r=|x - x^\prime|$;
-a transition probability between the states $S_x \rightarrow I_x$ can therefore be governed by the `dispersal function' $g(r; \ell)$, multiplied by an infectivity parameter:
+If two trees\textemdash one susceptible ($S_x$) and one infected ($I_{x^\prime}$)\textemdash are separated by a distance $r=|x - x^\prime|$, then a transition probability between the states $S_x \rightarrow I_x$ can be defined by the $g(r; \ell)$ multiplied by infectivity $\beta$:
 \begin{equation}
 \label{eq:pr-dispersal-transition}
     Pr(S_{x} \rightarrow I_{x} ;\ I_{x^{\prime}} ) = \beta \exp\Big[\frac{-r^2}{2\ell^2}\Big]
@@ -37,11 +36,11 @@ Probabilities are then calculated for each times step while host $S_x$
 remains susceptible, and repeated for each susceptible tree in the domain (i.e. $\forall S_x \in [\mathcal{L}, \mathcal{L}]$).
 See Appendix \ref{A:combiniing-probabilities} for more information on the computational implementation. A table of parameters for the NLM is shown below in Table \ref{tab:SIR-model}.
 
-The same uniform lifetime dynamics (used in the SLM) controls the period hosts remain infectious.
-A host transitioning into the $I$ compartment will remain infectious for $T$ time steps before uniformly transitioning into the $R$ compartment.
+The same uniform lifetime dynamic (used previously in the SLM) controls the period hosts remain infectious.
+That is, a host transitioning into the $I$ compartment will remain infectious for $T$ time steps before uniformly transitioning into the $R$ compartment.
 In section \ref{ch3:two-param-model}, the infection period was shown to alter the wave-front thickness and the threshold value of infectivity $\beta$ required for an epidemic. 
 However, an arbitrary number of $T=100$ infectious time steps remains fixed throughout this Chapter.
-Uniform transitions into the $R$ compartment help to keep the model simple but present an assumption that is abnormal when compared to more common exponential lifetime dynamics\textemdash discussed more below in section \ref{sec:SIR-fitting}.
+Uniform transitions into the $R$ compartment help to keep the model simple but present an assumption that goes against the grain of more common exponential lifetime dynamics\textemdash discussed more below in section \ref{sec:SIR-fitting}.
 
 \begin{table}
 \centering
@@ -65,9 +64,9 @@ $R_0^{(i)}$ & Generational reproduction number & $0-20$ \\
 \label{tab:SIR-model}
 \end{table}
 
-The work presented in this Chapter is intentionally kept generic, with no specific pathogen in mind.
-As such, each Monte Carlo step through the simulation has arbitrary units of time and distance.
-However, to reflect the approximate spatio-temporal scale of general tree disease, the units of time and distance can be envisioned to be on the order of days and meters, respectively.
+The work presented in this Chapter is purposefully kept generic, with no specific pathogen in mind.
+Therefore, each Monte Carlo step through the simulation has arbitrary units of time and distance.
+Nevertheless, the units of time and distance can be envisioned to be on the order of days and meters to reflect the approximate spatio-temporal scale of general tree disease.
 As demonstrated later in Chapter \ref{ch:6-adb}, spatial scale within the model can be calibrated by choosing a suitable lattice constant, denoted by $\alpha$, that reflects the size of host units.
 
 \section{Model behaviour}
@@ -149,8 +148,8 @@ It is of practical interest to contrast the NLM against another, more well-estab
 Subsequently, the SIR model given by \cite{kermack-model} will be fitted to simulated data from the NLM.
 Despite a static and spatially-structured host distribution, it makes sense to compare the NLM with predictions from the canonical SIR framework given the same compartmental transitions $S \rightarrow I \rightarrow R$.
 
-The SIR model's two parameters control epidemic evolution: an infectivity rate $\beta$ and removal rate $\gamma$. 
-Both rates $\beta$ and $\gamma$ could be varied to see if the SIR equations yield similar results to an NLM simulation. Nevertheless, the task can be simplified significantly by considering $I$ as a function of $S$; this can be accomplished as follows:
+Two parameters control the epidemic evolution in the SIR model, an infectivity rate $\beta$ and a removal rate $\gamma$. 
+Both rates $\beta$ and $\gamma$ could be manually varied to match data from NLM simulations, though the task can be simplified significantly by considering $I$ as a function of $S$, accomplished as follows:
 \[
 \frac{dI}{dS}=\frac{dI / dt}{dS /dt}= \frac{\beta IS/N - \gamma I}{-\beta IS/N} = -1 + \frac{\gamma}{\beta} \frac{N}{S} \]
 Letting $\alpha = \frac{\gamma}{\beta}$ we have:
@@ -191,7 +190,7 @@ In all panels, the arrow of time is from right to left, i.e. initially, the numb
     \label{fig:SIR-fitting}
 \end{figure}
 
-Interestingly, for all but one panel in Figure \ref{fig:SIR-fitting}, epidemics progress faster in the NLM than predicted by the SIR model\textemdash suggested by the NLM having a steeper gradient beginning from $S_0=\rho\mathcal{L}^2$. 
+Interestingly, for all but one panel in Figure \ref{fig:SIR-fitting}, epidemics progress faster in the NLM than predicted by the SIR model\textemdash indicated by the NLM having a steeper gradient beginning from $S_0=\rho\mathcal{L}^2$. 
 One possible cause of disparity between models is due to infectious lifetime dynamics. 
 Exponentially distributed lifetimes are implicit within the SIR model.
 Whereas, the NLM relies on uniform transitions into the $R$ compartment that understood by examining Figure \ref{fig:SIR-fitting}(a), i.e. 400 hosts are present in the domain at time $t=0$ and it takes precisely $t=100$ steps to elapse before the first transition into $R$.
@@ -254,7 +253,7 @@ The following thought experiment outlines an approach to approximate reproductio
 \end{figure}
 
 The thought experiment simplifies the epidemic branching process by neglecting tertiary (quaternary, and so on) infections,
-illustrated by comparing Figures \ref{fig:R0-approx}(a-b). In turn, simplifying the system will help keep the mathematics tractable and permit an analytic derivation of $R_0$ without advanced mathematics. However, the derivation will be idealised and likely to overestimate the actual reproduction ratio in specific epidemic regimes\textemdash illustrated in Figure \ref{fig:R0-approx}.
+illustrated by comparing Figures \ref{fig:R0-approx}(a-b). In turn, simplifying the system will help keep the mathematics tractable and permit an analytic derivation of $R_0$ without advanced mathematics. However, the derivation will be idealised and likely to overestimate the actual reproduction ratio in specific epidemic regimes.
 
 Figures \ref{fig:R0-approx}(c-d) illustrate two hypothetical epidemic systems, with higher and lower $R_0$ values.
 When the scale of dispersal is smaller (but still larger than the average distance between trees) and infectivity is high, as in Figure \ref{fig:R0-approx}(c), we expect a coupled system with a large number of secondary infectious induced inside a smaller area. In this case, the $R_0$ approximation would deviate from model simulations because secondary/tertiary infections would reduce the host density about the primary infection.
