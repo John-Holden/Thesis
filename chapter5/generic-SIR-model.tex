@@ -206,11 +206,11 @@ demonstrated the divergence between red and black lines.
 In this regime, $\frac{\ell}{\mathcal{L}}$ in the NLM is small, and contact-mixing in the host distribution can be assumed low \textemdash supported by Figure \ref{fig:sgm-evol} that demonstrated a wave-like spread. 
 Moreover, the disparity between models is reduced by increasing the dispersal parameter to $\ell=50$, illustrated in Figure \ref{fig:SIR-fitting}(d).
 Figure \ref{fig:SIR-fitting} therefore indicates that if the system is approximately well-mixed, the NLM spreads comparatively to the SIR, albeit slightly skewed because of uniform lifetime dynamics.
-Whereas, if the system is not well-mixed, a slower epidemic marches across the domain in a wave-like behaviour that deviates significantly from the SIR model.
-Altogether, these results point toward the inability of non-spatial models, such as the SIR model, to describe a spatially structured model of tree disease. Although, in a parameter regime where the ratio $\ell / \mathcal{L}$ is sufficient for population mixing, the SIR model can describe the system with some accuracy\footnote{
+Whereas, if the system is not well-mixed, a slower epidemic marches across the domain in a wave-like manner that deviates significantly from the SIR model.
+Altogether, these results point toward the inability of non-spatial models, such as the SIR model, to describe a spatially structured model of tree disease. That being said, in a parameter regime where the ratio $\ell / \mathcal{L}$ is sufficient for population mixing, the SIR model can describe the system with some accuracy\footnote{
 Well-known results from percolation theory present a simple model analogy to the observations from Figure \ref{fig:SIR-fitting}.
 Consider a large domain (of size $L$) below the percolation threshold, and sub-dividing the domain into boxes of size $\xi$, where $\xi / L$ is small.
-Percolating clusters could be observed in each box i.e. at length scales comparable to $\xi$, but not $L$ see \cite{stauffer2018introduction} pages 64-65.} 
+Percolating clusters could be observed in each box i.e. at length scales comparable to $\xi$, but not $L$ see \cite{stauffer2018introduction} pages 64-65.}.
 
 
 \section{A spatially-explicit reproduction number}
@@ -231,7 +231,7 @@ Furthermore, when defining an $R_0$ value for tree-disease, the importance of sp
 ignored \cite{park2001invasion}.
 
 
-\subsection{Analytically approximating $R_0$}
+\subsection{Approximating $R_0$ analytically}
 
 In this section, an idealised, spatially explicit expression of $R_0$ is derived for the NLM. Defining an informative $R_0$-value for tree-based pathosystems is not simple, and care is needed when defining an $R_0$ value.  
 The following thought experiment outlines an approach to approximate reproduction number:
@@ -264,7 +264,7 @@ However, even with a larger dispersal kernel, the approximation illustrated by F
 
 For example, incredibly high values $R_0\in [30, 70]$ have been estimated for wheat stripe rust (WSR) epidemics \cite{severns2019consequences, mikaberidze2016invasiveness}. Nevertheless, 
 a field of crops is significantly dense in comparison to an average tree population distributed over the landscape\textemdash discussed extensively in section \ref{sec:ch4-discussion} concerning oak. Consequently, we argue that, in general, the reproduction ratio of a tree pathogen is unlikely to reach super epidemic regimes that parallel WSR epidemics;
-supported further by estimates of $1 \lessapprox R_0 \lessapprox 6$ for the Dutch elm disease epidemic in GB \cite{swinton1996dutch} and $1 \lessapprox R_0 \lessapprox 4$ for oak processionary moth epidemics in London [private correspondence with Dr Laura Wadkin, Newcastle University].
+supported further by estimates of $1 \lessapprox R_0 \lessapprox 6$ for the Dutch elm disease epidemic in GB \cite{swinton1996dutch} and $1 \lessapprox R_0 \lessapprox 4$ for oak processionary moth epidemics in London [private correspondence with Dr Laura Wadkin, Newcastle University\footnote{Pre-prints of the publication can be found at https://www.biorxiv.org/content/10.1101/2021.12.09.471950v2} ].
 
 \subsection{Derivation}
 
@@ -590,7 +590,7 @@ Notwithstanding its generic construction, the NLM provides a foundation for the 
 After describing the NLM, it was compared to the standard SIR framework for a number of dispersal length scales and domain sizes.
 Despite some differences, the NLM compared more favourable with the SIR model when the dispersal scale parameter was comparable to the domain size.
 Comparisons, therefore, provide compelling indications that spatially-explicit contact-mixing in the tree population may arise with sufficient dispersal.
-From this observation, we may question the utility of spatial models for systems where the dispersal length scale is comparable to the size of domain\textemdash e.g. modelling the spread of disease in small fields or plantations. However, comparisons to the SIR model were simplified and limited to one parameter (i.e. the ratio $\beta/\gamma$). As such, the analysis constitutes a preliminary result, and a more sophisticated comparison method is required to glean further insight.
+From this observation, we may question the utility of spatial models for systems where the dispersal length scale is comparable to the size of domain, e.g. when modelling the spread of disease in small fields or plantations. However, comparisons to the SIR model were simplified and limited to one parameter (i.e. the ratio $\beta/\gamma$). As such, the analysis constitutes a preliminary result, and a more sophisticated comparison method is required to glean further insight. For example, a better method of might involve using inference (MCMC methods) to fit the NLM against the standard SIR model.
 
 Two methods of calculating a reproduction ratio, one analytic ($R_0$) and one numerically contact-traced ($R_0^{(i)}$), were outlined to categorize the NLM.
 The analytic threshold predicted by equation \ref{eq:Appendix_final_expression1} agreed well with the `actual' contact-traced reproduction ratio computed through NLM simulations,

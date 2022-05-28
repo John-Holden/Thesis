@@ -15,18 +15,17 @@ outlines a formal definition of an effective reproduction number to measure path
 The effective reproduction number is spatially explicit and based on the same contact-traced method presented in Chapter \ref{ch5:dispersal-model}.
 Critically, the wind-dispersal model of ADB rests on $R_0$ measured over an appropriate spatio-temporal scale.
 
-Lastly, in section \ref{sec:r0-map-construct} a framework is developed to spatially-scale $R_0$ values over Great Britain (GB) using a modelled ash canopy cover data-set \cite{hill.data}. 
+Lastly, in section \ref{sec:r0-map-construct} a framework is developed to spatially-scale $R_0$ values over Great Britain (GB) using a map of predicted ash abundance \cite{hill.data}. 
 In effect, this means embedding $R_0$ values from a small-scale epidemic model inside each pixel of an extensive host data set spanning GB, 
-thus coupling two models at different spatial scales.\footnote{In general, combining two models at different spatial scales has clear analogies to a 
+thus linking two models at different spatial scales.\footnote{In general, combining two models at different spatial scales has clear analogies to a 
 sub-grid model \cite{sub-grid}, or more recently, a metapopulation-like model \cite{GRENFELL1997395}.} 
 Fundamentally, projecting $R_0$ values onto a map of ash densities permits the visualisation of epidemic impact over GB.
 The framework is generic and adaptable to any dispersal-based pathosystem, provided a sufficient host density data-set.
 
-
-The local-scale epidemic model demonstrates that long-distance dispersal (LDD) and long-term survival 
+The local-scale epidemic model demonstrates that long-distance dispersal (LDD) and long-term pathogen survival 
 can occur even below the threshold $R_0=1.0$. In addition, analysis at the landscape-level covering GB reveals 
 that susceptible clusters of ash grow most rapidly over a narrow range of infectivity parameters, 
-presenting behaviour akin to a global epidemic phase transition. % \cite{colizza2008epidemic} can be used as a comparison
+presenting behaviour akin to a global epidemic phase transition.
 Finally, the method developed in this Chapter demonstrates how the epidemic scale can vary significantly, 
 albeit with minor epidemic parameter variations. Together, these observations support the call for a risk-based approach to modelling the spread of epidemics in tree populations.
 
@@ -141,7 +140,7 @@ transition probabilities are calculated at each time-step, taken to be days, whi
  \hline
  \end{tabular}
   \caption{Four infection models are considered, composed of either: Gaussian (ga) or inverse power law (pl) dispersal, and step function ($\phi_1$) or peaked ($\phi_2$) sporulation. All component functions yield values in the interval $[0, 1]$ and are normalisable. The corresponding model parameters are shown below in Table \ref{tab:SEIR-model}. 
-  The right-hand column shows the normalisation factor used to construct $\beta^*$, i.e. to fix epidemic-impact between models.}
+  The right-hand column shows the normalisation factor used to construct $\beta^*$, used to fix the infectivity and epidemic-impact between models.}
 \label{tab:model-variants}
 \end{table}
 
@@ -308,9 +307,9 @@ In Figure \ref{fig:SEIR-spread}(a), the number of ash in $S$ decline, shown by t
 and during seasonal sporulation, large spikes in the number of latently infected ash can be seen in orange. 
 Then, latently infected ash transition into $I$ during autumn and winter, as shown by the seasonal rise of $I$ in green.
 For infectivity parameters below the epidemic threshold, Figure \ref{fig:SEIR-spread}(b), $S$ remains approximately constant as $I$ slowly declines. 
-Interestingly, Figure \ref{fig:SEIR-spread}(b) demonstrates persistence in model of ADB; 
+Interestingly, Figure \ref{fig:SEIR-spread}(b) demonstrates persistence-like behaviour in model of ADB; 
 whereby, even if the epidemic parameters are below the threshold, the fungus may survive for long periods. 
-In general, persistence in plant-based pathogens is one aspect that complicates epidemic control\textemdash see Chapter \ref{ch3:invasions_and_persistence} for a review of invasion and persistence in the spread of plant-based diseases.
+In general, persistence in plant-based pathogens is one aspect that complicates epidemic control\textemdash also discussed in Chapters \ref{chapter:SLM}-\ref{ch5:dispersal-model}.
 
 The spatial progression of ADB in the SEIR model is shown in Figures \ref{fig:SEIR-spread}(c-f) over a full year. 
 The simulation in Figure \ref{fig:SEIR-spread}(c) begins with an initial condition of $20$ infected ash centrally distributed in the host landscape during March (not shown). 
@@ -402,7 +401,7 @@ As expected, the higher infectivity in Figure \ref{fig:ash-mortalty}(b) produces
 Although, all systems in this framework above the epidemic threshold will, on average, reach $100\%$ mortality eventually.
 
 The seasonal SEIR model produced a characteristic sigmoidal s-shaped mortality curve for high mortality proportions 
-(i.e. approaching $100\%$), shown in Figures \ref{fig:ash-mortalty}(b), this contrasts with the logistic ADB mortality 
+(asymptotically approaching $100\%$), shown in Figures \ref{fig:ash-mortalty}(b), this contrasts with the logistic ADB mortality 
 curves presented by \cite{https://doi.org/10.1002/ppp3.11} that, on average, saturate to $\sim 60 \%$.
 Other authors have witnessed similar s-shaped mortality curves, e.g. \cite{lohmus2014ash}.
 Here, not including host demography precludes host-pathogen coexistence and prevents the SEIR model from saturating below
@@ -577,7 +576,7 @@ and allow the local-scale epidemic severity, based on tree-to-tree interactions,
 \end{figure}
 
 Ash densities were parameterised by ash the abundance data provided by \cite{hill.data}. 
-Previously, the oak canopy cover dataset given by \cite{hill.data} was used previously in Chapter \ref{fig:ch4_uk_spread} 
+Previously, the oak canopy cover dataset given by \cite{hill.data} was used in Chapter \ref{fig:ch4_uk_spread} 
 alongside a toy model of landscape-level tree disease. The canopy cover datasets produced by \cite{hill.data} combine
 several data sources that partly cover Great Britain, regression methods then extrapolate canopy cover over the whole of Great Britain.
 Conveniently, ash happened to be among the most accurate data sets given by \cite{hill.data}. 

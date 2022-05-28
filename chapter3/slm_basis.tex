@@ -50,9 +50,9 @@ The critical value then satisfies: %
     \rho _{c}=sup \lbrace \rho : \theta (\rho ) = 0 \rbrace
 \end{equation}
 At this point, the spanning cluster has been described conceptually, although many nuances and technicalities complicate the definition. %
-For example, the probability of percolation has a non-trivial dependence on the size of the lattice;
-if the mean cluster size, defined by a `characteristic' cluster length $C_r$, is above or comparable to $L$, 
-percolation could occur despite the density residing in the sub-critical regime. %
+For example, the probability of percolation has a non-trivial dependence on the size of the lattice.
+That is, if the mean cluster size, defined by a `characteristic' cluster length $C_r$, is larger or comparable to $L$, 
+percolation can occur despite the density residing in the sub-critical regime. %
 The size of the lattice is therefore required to be sufficiently large compared to individual lattice positions (or microscopic interactions) 
 in order to approximate the threshold ($\rho_c$) reliably and produce a spanning cluster ($C_{\infty}$). 
 
@@ -86,7 +86,7 @@ After an arbitrary number of time-steps $T$, an infected tree will transition in
 see appendix \ref{a:propagation} for more information on the numerical implementation. %
 For simplicity, the infectious lifetime will not be considered as a parameter but will remain fixed at $T=1.0$\textemdash revisited below in section \ref{ch3:two-param-model}.
 
-The initial conditions begin with a small patch of infected hosts (of size $5\times5$) located at the origin ($L_O$) at $t=0$, and percolation events describe the boundary conditions. 
+The initial conditions begin with a small patch of infected hosts (of size $5\times5$ for example) located at the origin ($L_O$) at $t=0$, and percolation events describe the boundary conditions. 
 Percolation occurs when the infection spreads from $L_O$ to any of the four lattice boundaries, thereby defining a connected cluster of infectious-removed that spans the domain from $L_O$.
 Each time-step through the simulation represents an arbitrary unit of time, and simulation termination occurs on one of three boundary conditions: 
 (1) percolation is observed 
@@ -344,7 +344,7 @@ In Figure \ref{fig:slm_pspace}(d), the ensemble-averaged velocity reveals a smoo
 As the distinction between epidemic states is more apparent in Figure \ref{fig:slm_pspace}(c), one might argue that percolation captures the threshold with greater clarity.
 When infectivity is lower ($0.15 <\beta<0.30$), the percolation threshold can be crossed by raising the density, reflected in both velocity and percolation metrics.
 However, percolation has no dependence on infectivity beyond $\beta \approx 0.40$, in contrast to the radial velocity that tends to increase for higher infectivities, revealing a subtle difference between metrics.
-Here, the parameter-sweeps can be understood to portray an `\textit{epidemic phase diagram}'.
+Here, the parameter-sweeps can be used to portray an `\textit{epidemic phase diagram}', which details regions in parameter space where epidemics are possible or not.
 
 \begin{figure}
     \centering

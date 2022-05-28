@@ -1,19 +1,22 @@
 \chapter{Introduction}
 
 Currently, pests and pathogens threaten the survival of numerous tree species around the globe. 
-An upsurge in the trade and transport of non-native plants, climatic change, and the widespread adoption of monoculture plantations have increased the risk of large-scale outbreaks in native tree populations. 
-However, scientists, policymakers and stakeholders can cooperate to prevent emergent infectious tree diseases within a country. 
-In particular, the output from mathematical models can help advise practical management strategies to help control epidemics through rural and urban tree populations.
+An upsurge in the trade and transport of non-native plants and the widespread adoption of monoculture plantations have drastically increased the risk of large-scale outbreaks in native tree populations.
+Moreover, following the effects of climate change and increased temperatures, the threats posed by invasive non-indigenous pathogens are only set to increase. Accordingly, efforts to understand the precise mechanisms that underpin epidemics in tree populations are essential for human wellbeing and ecosystem stability.
 
-Numerous challenges complicate an effective on-the-ground response. Epidemic drivers are multifaceted, hard to quantify, and often unknown. 
+When an epidemic takes hold, numerous challenges complicate an effective on-the-ground response. In addition, epidemic drivers are multifaceted, hard to quantify, and often unknown. 
 Consequently, epidemic models are significantly challenging to parameterise. 
-Further still, communicating research insight to policymakers and stakeholders pose a significant challenge for modellers even with accurate parameterisation.
-This Chapter introduces the reasons, challenges and value of modelling tree disease epidemics.
-First, the motivation for studying tree disease epidemics is highlighted, followed by a review of the most pressing disease drivers.
-Second, the socioeconomic interactions between modellers, policymakers and stakeholders are summarised, along with the challenge of implementing epidemic control.
-Lastly, we conclude by outlining the topics covered in this thesis.
+Further still, communicating research insight to policymakers and stakeholders poses a significant challenge for modellers even with accurate parameterisation.
 
-\newpage
+Despite the complex challenges that threaten tree health, scientists, policymakers, and stakeholders can cooperate to prevent the spread of emergent infectious tree diseases within a country.
+Notably, the output from mathematical models can help advise practical management strategies to control epidemics through rural and urban tree populations.
+Accurate epidemic models can also help forest and woodland managers structure plantations to minimise epidemic impact. 
+Aiding forest managers with mathematical models has become particularly vital given the UK government's recent measures to sequester carbon from the atmosphere with land-use change and afforestation, thereby increasing tree coverage throughout Great Britain.
+
+This Chapter introduces the reasons, challenges, and value in modelling tree disease epidemics.
+First, the overarching rationale behind researching tree disease models is highlighted, followed closely by reviewing the most pressing epidemic drivers.
+Second, the challenge of implementing epidemic control is summarised, along with the principal socioeconomic relationships between modellers, policymakers and stakeholders. Finally, the Chapter concludes by outlining the topics covered in this thesis.
+
 
 \section{Invasive tree diseases}
 
@@ -37,16 +40,16 @@ Frequently, control strategies include reducing tree densities \cite{pietzsch202
 
 \subsection{Epidemic drivers}
 
-The terms `pest' and `pathogen' describe a broad spectrum of taxonomically diverse organisms. 
-Pests denote any organism that harms humans or human interests such as crops or livestock
-\cite{buckle2015rodent, oerke2006crop, de1964biological}. Overwhelmingly, insects constitute the main
-pest threats to tree species \cite{metcalf1994introduction}. In Great Britain (\acrshort{gb}), the Asian longhorn beetle
-(\acrshort{alb}) \cite{haack2010managing}, and oak processionary moth (\acrshort{opm}) \cite{tomlinson2015managing} are two pests that currently threaten tree health.
-In a slightly different vein, the term `pathogen' describes any organism that induces disease. 
-In the context of trees populations, diseases include fungi, bacteria, viruses, and oomycetes \cite{balloux2017q, Boyd1235773}.
-Presently, the oomycete \textit{P. ramorum} \cite{brasier2005phytophthora}, and ADB
-caused by the fungus \textit{H. fraxineus} (\acrshort{hf}) \cite{ash-dieback-costs, mitchell2014ash} are two pathogens
-that threaten tree-health in GB.
+The terms `pest' and `pathogen' describe a broad spectrum of taxonomically diverse organisms. Pests denote any organism that harms humans or human interests, such as crops or livestock \cite{buckle2015rodent, oerke2006crop, de1964biological}. Overwhelmingly, insects constitute the main
+pest threats to tree species \cite{metcalf1994introduction}. In Great Britain (\acrshort{gb}), the Asian longhorn beetle (\acrshort{alb}) \cite{haack2010managing}, and oak processionary moth (\acrshort{opm}) \cite{tomlinson2015managing} are two such pests that currently threaten tree health.
+In contrast, the term `pathogen' describes any organism that induces disease. In the context of tree populations, diseases include fungi, bacteria, viruses, and oomycetes \cite{balloux2017q, Boyd1235773}. Presently, the oomycete \textit{P. ramorum} \cite{brasier2005phytophthora}, and ADB
+caused by the fungus \textit{H. fraxineus} (\acrshort{hf}) \cite{ash-dieback-costs, mitchell2014ash} are two pathogens that threaten tree-health in GB.
+
+Tree pathogens have evolved diverse reproductive modes and epidemiologies,  characterising a distinctive challenge when controlling tree-based pathogens. Two contrasting examples include chestnut blight caused by the bark pathogen fungus \textit{ Cryphonectria parasitica} and the xylem inhibiting bacterium \textit{Xylella fastidiosa}\footnote{Several diseases are symptomatic expressions of \textit{X. fastidiosa}, including phoney peach disease, quick olive decline, coffee leaf scorch, and most notably, Pierce's disease affecting Grapes and citrus variegated chlorosis \cite{hopkins2002xylella}.}. 
+Chestnut blight devastated American chestnut populations in the 1930s \cite{doi:10.1002/9780470535486.ch7}, and more recently, infections have been spreading through European chestnuts, albeit to a lesser extent \cite{heiniger1994biological}.
+The principal infection mechanism of \textit{ C. parasitica} occurs through windborne spore dispersal into wounds or openings in bark. 
+In contrast, transmission of the bacterium \textit{X. fastidiosa} is thought to occur exclusively through sap-sucking insect vectors, e.g leafhoppers of the genus \textit{Homoptera} \cite{redak2004biology}. 
+One remarkable facet of \textit{X. fastidiosa} is its ability to infect numerous tree species. Current estimates indicate the host range of \textit{X. fastidiosa} is upwards of 611 different plant species \cite{european2022update}, whereas \textit{C. parasitica} predominantly infects chestnut species and occasionally nearby oak \cite{rigling2018cryphonectria}. 
 
 The trade and transport of non-native plant material are widely recognised to risk introducing invasive pests and pathogens into native landscapes \cite{POTTER201761, lovett2016nonnative, roy2014increasing}.
 Ensuing epidemics can overwhelm botanical species lacking genetic resistance to the invasive species \cite{desprez2016evolutionary}, better understood from an evolutionary perspective: in a natural environment unaltered by human transportation, tree species co-evolve with invasive pathogens in a `gene-for-gene' arms race \cite{Thrall1735, dangl2001plant, flor1971current}.
@@ -80,11 +83,11 @@ Plant disease modellers can help infer well-designed control policies that maxim
 of resources\textemdash both natural and economic. However, achieving this in practice is problematic due to various unknowns \cite{13-challenges}, and history gives examples of insufficient control policies that fail to halt pathogen spread. 
 Prominent examples include the mismanagement of Dutch elm disease in the late 1960s and early 1970s \cite{dutch-elm-mismanage}, and more recently citrus canker in Florida \cite{schubert2001meeting}.
 
-With mathematical models we can attempt to understand what dictates the optimal control of tree diseases epidemics. 
-Control strategies have been explored on both smaller \cite{risk-potential-control} 
-and larger landscapes \cite{large-scale-control2}. Current consensus on all spatial scales
-agree that the scale of response must equal the scale of epidemic \cite{control-scale-matching}. In any scenario, 
-an on-the-ground response must be carried out swiftly, otherwise the likelihood of successful management decreases rapidly and the cost of inaction soars.
+We can attempt to understand what dictates the optimal control of tree disease epidemics with mathematical models. 
+Control strategies have been explored on both smaller \cite{risk-potential-control} and larger landscapes \cite{large-scale-control2}. 
+On all spatial scales, consensus agrees that the effort and resources required to control an epidemic depend significantly on the scale of the epidemic at hand. That is, \textit{'aggressive pathogens should be met with aggressive control'}, as confirmed by modelling studies \cite{control-scale-matching, WEBIDEMICS}. 
+In any scenario, an on-the-ground response must be carried out swiftly. Otherwise, the likelihood of successful management decreases rapidly, and the cost of inaction soars.
+% 1. Examples of where modelling work has been used to inform control...
 
 Conventional eradication strategies involve detecting symptomatic trees and culling neighbours within a radius, e.g. \cite{WEBIDEMICS}.
 A naive strategy that indiscriminately culls hosts can be fine-tuned and optimised to maximally reduce the epidemic impact. 
@@ -96,8 +99,18 @@ Enhanced surveillance and monitoring strategies also seek to optimise resource a
 Surveillance aims to detect infected individuals and disease incidence, generally requiring the collection and analysis of epidemic data \cite{surveillance-review}.
 Ultimately, surveillance and monitoring comprise the last line of defence after preemptive border checks and inspections have failed to prevent the introduction of disease. 
 Statistical approaches have been adopted to optimise the number of samples/surveys required to infer disease incidence accurately \cite{yamamura2016sampling}.
-Moreover, optimal surveillance strategies have been examined with logistic \cite{parnell2012estimating} 
-and mechanistic \cite{WEBIDEMICS} epidemic models\textemdash the next Chapter offers a more in depth review on these modelling paradigms.
+Moreover, optimal surveillance strategies have been examined with logistic \cite{parnell2012estimating} and mechanistic \cite{WEBIDEMICS} epidemic models\textemdash the next Chapter offers a more in-depth review of these modelling paradigms. 
+
+Several governmental bodies have a stake in the surveillance and monitoring of tree health in the UK, often collaborating their efforts. For example, the National Forest Inventory (NFI) conduct general surveys to determine tree distributions and woodland composition\textemdash discussed more in section \ref{ch2:hostdata}. Subsequently, output from NFI surveys is utilised by  'Forestry Research' (FR), the research agency of the Forestry Commission (FC). In addition, the FC plays a vital role in surveying landscapes for infectious tree diseases in the UK \cite{ryle1969forest, james1990history}, often responding to high-risk invasions in a more targeted capacity. Historically, the UK government has tasked the FC to undertake comprehensive large-scale surveys in response to Dutch elm disease in the 1960s-1970s \cite{potter2011learning} and ash dieback in 2012 \cite{tomlinson2016discovery}. 
+However, citizen science-based approaches have become increasingly utilised to monitor tree health \cite{brown2020role}, exemplified by the monitoring tool 'TreeAlert', a website owned by FR designed to collect information about tree health in woodlands and forests through user reports.
+
+Even supposing an accurate and well-informed control strategy,
+a response on the ground only ensues when stakeholders implement control initiatives \cite{reed2018theory}. Here, the term `stakeholder' is extensive, reflecting any interested individual, collective, or organisation with a stake in tree health that has the potential to influence or affect a policy direction or control decision \cite{brugha2000stakeholder}. The UK's stakeholder landscape for tree health is equally broad, encompassing diverse governmental and private sector organisations and individuals. A conceptual framework for stakeholder categorisation was put forward by \cite{dandy2017has}, alongside a case study of who had a stake in ash dieback in the UK. In their analysis, \cite{dandy2017has} listed various affected stakeholders:
+\begin{itemize}
+    \item \textbf{governmental}: DEFRA, FERA, FC, FR and various local authorities
+    \item \textbf{civil society/third sector}: National Trust, Wildlife Trust, Woodland Trust
+    \item \textbf{private sector}: private land managers, outdoor recreationists, forest owners, citizen scientists, and the general public
+\end{itemize}
 
 \begin{figure}
     \centering
@@ -109,17 +122,13 @@ and mechanistic \cite{WEBIDEMICS} epidemic models\textemdash the next Chapter of
     \label{fig:modelling-and-policies}
 \end{figure}
 
-Even supposing an accurate and well-informed control strategy,
-a response on-the-ground only ensues when stakeholders adopt policies or join control initiatives \cite{reed2018theory}.
+
 Figure \ref{fig:modelling-and-policies} presents a simplified view of the interactions which dictate research output, public awareness, 
 policy-making and the eventual epidemic control in the UK\footnote{
 In part, Figure \ref{fig:modelling-and-policies} was informed by interviewing civil servants, researchers and policymakers at DEFRA and FERA as part of this thesis.}. Scientists in several disciplines,
 from molecular biology to mathematics, receive funding from and collaborate with governmental
 bodies, e.g. the Department for Environment Food \& Rural Affairs (\acrshort{defra}). Government-led control initiatives, resource
-allocation and recommendations can then direct on-the-ground stakeholder\footnote{Here, `stakeholder' is a broad
-term that reflects any interested individual, collective, or organisation 
-(with a stake) that have the potential to influence a policy direction or control decision
-\cite{brugha2000stakeholder}; this contrasts with the `public' that is not directly affected by control policies and have no vested interest in the policy direction.} 
+allocation and recommendations can then direct on-the-ground stakeholder
 responses. 
 
 Alternatively, scientists can engage stakeholders directly (discussed more below) or influence public opinion through outreach and
@@ -182,8 +191,8 @@ Primarily, Chapter \ref{chapter:SLM-applications} demonstrates that nearest-neig
 for realistic tree densities, which motivates an improved dispersal model. 
 
 Chapter \ref{ch5:dispersal-model} introduces a generic Gaussian dispersal kernel into the epidemic model, denoted as the non-local model (\acrshort{nlm}). 
-Tree disease epidemics are demonstrated to spread at lower, more realistic tree densities across GB; thus, dispersal is shown to overcome 
-the inherent nearest-neighbour limitations witnessed in Chapters \ref{chapter:SLM}-\ref{chapter:SLM-applications}. Disease spread is then examined over a range of dispersal scale parameters and compared to the standard SIR model. Next, a spatially-explicit analytic expression for $R_0$ is derived and compared to a `\textit{contact tracing}' method of calculating $R_0$.
+Ensuing epidemics in the NLM are demonstrated to spread at lower tree densities, frequent across GB, thereby overcoming the inherent nearest-neighbour limitations witnessed in Chapters \ref{chapter:SLM}-\ref{chapter:SLM-applications}.
+Disease spread is then examined over a range of dispersal scale parameters and compared to the standard SIR model. Next, a spatially-explicit analytic expression for $R_0$ is derived and compared to a `\textit{contact tracing}' method of calculating $R_0$.
 Both methods of determining the reproductive ratio are shown to demonstrate a threshold at $R_0=1$.
 
 Chapter \ref{ch:6-adb} develops the generic dispersal model towards a simplified mechanistic

@@ -1,12 +1,12 @@
 \chapter{Interdisciplinary tree disease epidemics}
 \label{chapter2:litreview} 
 
-Understanding modern-day tree disease epidemics requires a holistic, interdisciplinary
+Understanding modern-day tree disease epidemics requires an holistic, interdisciplinary
 approach, made possible only by the convergence of numerous scientific fields. 
 Consequently, this Chapter reviews several key modelling themes.
 Models of tree disease aim to help design effective control policies and inform policymakers.
 Well-informed policymakers can then help to maintain tree health in rural, urban and commercial environments. 
-Although myriad environmental, biological and anthropomorphic factors complicate the scientific understanding 
+Although a myriad of environmental, biological and anthropomorphic factors complicate the scientific understanding 
 and thus effective disease control. 
 
 Here, the review begins by narrating some early historical developments in human and botanical epidemiology before presenting
@@ -20,7 +20,7 @@ difficulties posed by a recent emergent epidemic.
 
 Historically, the fields of plant pathology and mathematical epidemiology existed in different spheres.
 Plant pathology researchers furthered biological understanding of pathogen growth (e.g. \cite{doi:10.1146/annurev.py.01.090163.000245}), not predictive mathematical theories.
-Although, pioneering discoveries in mathematical epidemiology permitted a more quantitative treatment of botanical diseases. 
+Pioneering discoveries in mathematical epidemiology permitted a more quantitative treatment of botanical diseases. 
 In particular, the seminal SIR model of \cite{kermack-model} 
 provided a foundation to examine plant-based epidemics mathematically.
 
@@ -60,10 +60,10 @@ the existence of a critical epidemic threshold, captured through either:
 \end{align}
 where $R_0$ and $R_c$ are referred to as the basic and effective reproduction numbers, respectively.
 Following the introduction of one infected host at $t=0$, $N\sim S(0)$ and 
-we have $R_e=\big((N-1)/N\big) \beta / \mu$. Therefore, in the limit of a large population at $t=0$, 
-$\big((N-1)/N\big)$ approximates unity and $R_e = R_0$, otherwise $R_e=\big(S(t)/N\big) R_0$.
+we have $R_e=\big((N-1)/N\big) \beta / \mu$. Therefore, in the limit of a large population at $t=0$, the term
+$(N-1)/N$ approximates unity and $R_e = R_0$, otherwise $R_e=\big(S(t)/N\big) R_0$.
 
-Both quantities $R_0$ and $R_e$ describe an epidemic threshold, though $R_e$ captures a threshold in the face
+Both quantities $R_0$ and $R_e$ describe an epidemic threshold, though $R_e$ captures the threshold in the face
 of a (finite) declining susceptible population by including the ratio $S(t)/N$.
 Equation \ref{eq:R0-effective} defines a critical threshold by the simple criterion\footnote{
 For a more comprehensive mathematical proof of SIR
@@ -174,7 +174,7 @@ In an $SE_nI_mR$ framework, both $n$ and $m$ represent an arbitrary number of di
 \]
 Here, the SEIR model is recovered when $n=1$ and $m=1$. However, when $n,m \rightarrow \infty$,
 \cite{time-varying-infectivity} demonstrated that we recover an expression equivalent to the DDE in Equation \ref{van-plank-infectious-p}.
-Despite the sameness of both DDE and SEIR formulations, the overarching theme of modern epidemiology is overwhelmingly compartmentalised,
+Despite the equivalence of both DDE and SEIR formulations, the overarching theme of modern epidemiology is overwhelmingly compartmentalised,
 owing to the increased flexibility and easier analysis of compartmental models.
 
 
@@ -192,7 +192,7 @@ alongside \cite{jeger1984use}.
 Developments in computing compounded advances in plant epidemiology through this period. 
 Improved accessibility and computer architectures permitted faster calculations and more intensive models. 
 The first epidemic simulator (EPIDEM) written in FORTRAN IV came by \cite{waggoner1969epidem}. 
-EPIDEM modelled the fungi `Alternaria solani' spreading through infected potato and tomato leaf tissue under different environmental conditions. 
+EPIDEM modelled the fungi \textit{Alternaria solani} spreading through infected potato and tomato leaf tissue under different environmental conditions. 
     
 An interesting early simulator (EPIMUL76) developed by \cite{zadoks1977role} adapted Van der Plank's logistic growth model into a spatio-temporal framework of two spatial dimensions. 
 EPIMUL76 simulated the spread of disease on a two-dimensional domain, subdivided into $20\times 20$ host units referred to as `compartments', that took place inside a computer with $128\mathrm{K}$ of memory.
@@ -233,7 +233,7 @@ Beginning with the SIR framework, mathematical epidemiology was already well-est
 around the time percolation theory was conceived \cite{baily1975mathematical}. 
 A fire spreading through a population of trees is not too different to a disease spreading through 
 a population. Hence, a general percolation-based epidemic-formalisation framework was put forward by
-\cite{pub.1059067807}. The researchers proposed that epidemics might be in the same universality class
+\cite{pub.1059067807} who proposed that epidemics might be in the same universality class
 as percolation.
 
 A fractal-like pattern of epidemics was observed by \cite{GRASSBERGER1986273}, shown in Figure \ref{fig:1d_perc_basis}. 
@@ -262,7 +262,7 @@ transition graph that characterised an epidemic (super-critical) or extinction (
 regimes \cite{GRASSBERGER1986273}. The properties of both epidemics and forest fire percolation 
 models were studied together in \cite{pub.1052857560}, highlighting their similarity.
 
-An early ecological applications of percolation was put forward by \cite{pub.1031591030}, 
+Early ecological applications of percolation were put forward by \cite{pub.1031591030}, 
 who studied the effects of landscape distributions and percolation models 
 (reflecting both forest fire and tree disease epidemics). In their study, \cite{pub.1031591030} 
 combined SIR-like mechanics inside a percolation-based distribution of hosts and subsequently 
@@ -275,8 +275,7 @@ behaviour witnessed in the SIR model. Although, here, the authors considered the
 \section{Spatially-explicit epidemic models}
 \label{ch2:lit-rev-compartmentalised-models}
 
-Emergent infectious diseases (\acrshort{eid}s) in tree populations are multi-scale,
-they can span regional, country or continental spatial scales. Considerable variations in landscape composition,
+Emergent infectious diseases (\acrshort{eid}s) in tree populations are multi-scale, spanning regional, country or continental spatial scales. Considerable variations in landscape composition,
 tree densities, population aggregation, and the climatic factors give rise to diverse spatio-temporal
 patterns of disease spread \cite{he2019integrating, suzuki2003spatial}. Incorporating spatial structure
 into tree disease models is therefore vital to accurately capture environmental influences, host-pathogen 
@@ -317,8 +316,8 @@ the immediate system, i.e. at time $t=0$, distant infected populations external 
 closed host population under consideration.
 
 The outside exponential term of Equation \ref{eq:prob-trans} depicts a cumulative exponential threshold above which 
-trees become infected. Interestingly, this threshold is based on the `Skelle construction' \cite{sellke1983asymptotic}. 
-More specifically, Skelle assumed that susceptive hosts need an arbitrary (cumulative) degree of infection
+trees become infected. Interestingly, this threshold is based on the `Sellke construction'  \cite{sellke1983asymptotic}. 
+More specifically, the Sellke construction assumes that susceptives need an arbitrary (cumulative) degree of infection
 exposure before becoming infectious. Using Equation \ref{eq:prob-trans}, \cite{parnell2010effect} proceeded to define 
 a control radius and found that both landscape aggregation and (randomly distributed) high host densities increase the
 optimal control radius. 
@@ -343,7 +342,7 @@ as opposed to the probability of Equation \ref{eq:prob-trans}.
 
 Cunniffe et al. examined the effects of a cull radius similar to \cite{parnell2010effect}. 
 Yet this time, the results were aimed towards assessing control when `there is epidemic uncertainty'.
-Consequently, \cite{WEBIDEMICS} assessed different epidemic serveries by varying $\beta$, alongside
+Consequently, \cite{WEBIDEMICS} assessed different epidemic severity by varying $\beta$, alongside
 numerous control parameters, e.g. eradication response time, detection probabilities and revisit/survey intervals. 
 All in all, \cite{WEBIDEMICS} highlighted an intuitive result, namely, that the scale of control should
 reflect the "intrinsic epidemic scale". More succinctly, \textit{aggressive pathogens should be met with 
@@ -487,12 +486,12 @@ observed that $93\%$ of short-range dispersal occurred within the range of a sin
 $95\%$ of infrequent long-range spread remain within $100\mathrm{km}$ in their model.
 Although, most dispersal remained localised $<1\mathrm{km}$.
 
-The manuscript authored by \cite{meentemeyer2011epidemiological} emphasises the multi-faceted 
+\cite{meentemeyer2011epidemiological} emphasised the multi-faceted 
 parameters and processes that one needs to consider before modelling a large-scale epidemic
 outbreak; these included, host data, dispersal, and climate.
 \cite{large-scale-control} subsequently extended the analysis of \cite{meentemeyer2011epidemiological}
-to assess the large-scale effects of epidemic control. 
-In particular, \cite{large-scale-control} examined how to optimise eradication of SOD with 
+to assess the large-scale effects of epidemic control,
+and particular examined how to optimise eradication of SOD with 
 limited resources. 
 When resources are low, the authors suggested that small localised 
 eradication zones around \textit{known} foci optimise control; justified by the fact that
@@ -822,9 +821,9 @@ The predicted occurrence data was examined against the ROC.
 Most species demonstrated functional ROC scores between $0.71$ and $0.96$ and performed exceptionally
 well for ash ($0.96$) and oak ($0.90$).  
 
-Although, numerous assumptions underpinned the methodology.
+Although there were numerous assumptions that underpinned the methodology.
 Primarily, the BSBI dataset used by \cite{hill.data} exists through ad-hoc user and volunteer self-reports.
-Thus, some regions are more surveyed than others over the years, this led Hill et al. to make the 
+Thus, some regions are more surveyed than others over time, which led Hill et al. to make the 
 `well surveyed' recorded assumption (i.e. only considering records surveyed twice since $1950$ containing a minimum of $50$ species).
 The assumption permitted the conversion of raw presence-only to presence-absence, 
 at the cost of overestimated absence in these regions. That is, even supposing $50$ species
@@ -848,8 +847,8 @@ where the RMSE scale reflects the response variable units ($\mathrm{ha/km^2}$), 
 The result was country-wide predicted abundance.
 
 The low amount of available abundance data in GB significantly impoverished the abundance maps produced by \cite{hill.data}. 
-Consequently, datasets for the $25$ species considered will contain numerous (small-scale) errors and uncertainties. 
-Nonetheless, the modelled abundance maps captured more large-scale spatial structures than the original BSBI and CS distributions.
+Consequently, of the $25$ species datasets considered, all will contain numerous (small-scale) errors and uncertainties. 
+Nonetheless, the modelled abundance maps captured more large-scale spatial structures than both the BSBI and CS distributions.
 
 More recently, \cite{ray2021multi} produced a similar SDM as Hill et al. for oak in GB using biomod2 \cite{thuiller2016package}.
 The authors focused on mapping high-density oak woodlands (with 60$\%$ canopy cover or above) 
@@ -958,8 +957,8 @@ $3-15$ years of infected tree growth before death \cite{wylder2018evidence}.
 
 In addition to age, ash survival also depends on the landscape. 
 Landscape features and ADB progression were studied by \cite{https://doi.org/10.1111/1365-2745.13383} 
-over a sample plot of size  $\mathrm{3.5km \times 6.5 km}$ in France; observations over two years
-suggest that the surrounding landscape has little impact initially in $2012$. However, after pathogen establishment, 
+over a sample plot of size  $\mathrm{3.5km \times 6.5 km}$ in France, where observations over two years
+indicated that the surrounding landscape has little impact initially in $2012$. However, after pathogen establishment, 
 later surveys in $2016$-$2018$ showed that landscape features play an essential role.
 Among the results put forward by \cite{https://doi.org/10.1111/1365-2745.13383}, 
 a highly abundant ash region increased the prevalence of collar canker and rachis symptoms in neighbouring ash.
@@ -975,8 +974,7 @@ is an important predictor of pathogen growth, which also support the strong nega
 % WIKI: Hymenoscyphus fraxineus has two phases to its life-cycle: sexual and asexual.[9] The asexual stage (anamorph) grows in affected trees attacking the bark and encircling twigs and branches.[9] The sexual, reproductive stage, (teleomorph) grows during summer on ash petioles in the previous year's fallen leaves.[7] The ascospores are produced in asci and are transmitted by wind; this might explain the rapid spread of the fungus.[
 
 The reproductive mode is intricate, and HF can infect hosts through the soil,
-water, and air \cite{gross2012reproductive}; 
-although, the primary natural driver of disease propagation is through wind-dispersal
+water, and air \cite{gross2012reproductive}, though the primary natural driver of disease propagation is through wind-dispersal
 during summertime sporulation. Sporulation typically occurs from June-September when 
 fungal fruiting bodies on the previous litter-fall release ascospores \cite{grosdidier2018tracking, hietala2013invasive}.
 Multiple ascospores sources can infect the same leaf \cite{gross2012reproductive}. 
@@ -1047,7 +1045,7 @@ the accepted idea that sexual dispersal in ADB is the dominant driver of disease
 Arguably the most comprehensive multi-scale study of ADB spore dispersal was performed by \cite{grosdidier2018tracking}.
 In their paper, \cite{grosdidier2018tracking} tracked the local and landscape-level dispersal of ascospores
 produced by \textit{H. fraxineus} in France.
-The data collected relied on spore trapping and PRC; the reported trapping efficiency was $30–47\%$, marking an improvement over previous studies
+The data collected relied on spore trapping and PRC, where the reported trapping efficiency was $30–47\%$, thus marking an improvement over previous studies
 e.g \cite{chandelier2014detection}. Most spores dispersal remained localised up to $50\mathrm{m}$ away from the inoculum source,
 consistent with the results mentioned above put forward by \cite{chandelier2014detection}.
 Nevertheless \cite{grosdidier2018tracking} set spore traps over much larger spatial scales ($\sim 100\mathrm{km}$),
