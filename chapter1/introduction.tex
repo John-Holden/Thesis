@@ -86,8 +86,10 @@ Prominent examples include the mismanagement of Dutch elm disease in the late 19
 We can attempt to understand what dictates the optimal control of tree disease epidemics with mathematical models. 
 Control strategies have been explored on both smaller \cite{risk-potential-control} and larger landscapes \cite{large-scale-control2}. 
 On all spatial scales, consensus agrees that the effort and resources required to control an epidemic depend significantly on the scale of the epidemic at hand. That is, \textit{'aggressive pathogens should be met with aggressive control'}, as confirmed by modelling studies \cite{control-scale-matching, WEBIDEMICS}. 
-In any scenario, an on-the-ground response must be carried out swiftly. Otherwise, the likelihood of successful management decreases rapidly, and the cost of inaction soars.
-% 1. Examples of where modelling work has been used to inform control...
+In any scenario, an on-the-ground response must be carried out swiftly. Otherwise, the likelihood of successful management decreases rapidly, and the cost of inaction  soars.
+
+The management of citrus huanglongbing (HLB) disease epidemics in California provides an insightful example of how mathematical models can be used to determine practical regulations to suppress the spread of disease, see \cite{mcroberts2019using}. Another relevant example comes from sudden oak death (SOD) management in California.
+In particular, modelling SOD epidemics in California indicates that culling infested trees on the disease front's leading-edge is more effective \cite{large-scale-control}\textemdash see section \ref{sec:lr-large-scale-spread} for a more in-depth discussion of the manuscript. Subsequently, this finding helped inform targeting control in the work plan put forward by the California Oak Mortality Task Force\footnote{The reader can find further information on the California Oak Mortaility Task Force here \cite{palmieri2006california}, and download the work plan by visiting https://www.suddenoakdeath.org/} for 2017-2022.
 
 Conventional eradication strategies involve detecting symptomatic trees and culling neighbours within a radius, e.g. \cite{WEBIDEMICS}.
 A naive strategy that indiscriminately culls hosts can be fine-tuned and optimised to maximally reduce the epidemic impact. 
@@ -112,24 +114,20 @@ a response on the ground only ensues when stakeholders implement control initiat
     \item \textbf{private sector}: private land managers, outdoor recreationists, forest owners, citizen scientists, and the general public
 \end{itemize}
 
+
+%Todo:tidy up below paragraph in relation to updated diagram
+Figure \ref{fig:modelling-and-policies} presents a simplified view of the interactions which dictate research output, public awareness, 
+policymaking and the eventual epidemic control in the UK\footnote{
+In part, Figure \ref{fig:modelling-and-policies} was informed by interviewing civil servants, researchers and policymakers at DEFRA and FERA as part of this thesis.}. Scientists in several disciplines,
+from molecular biology to mathematics, receive funding from and collaborate with policymakers and other research bodies, e.g. the Department for Environment Food \& Rural Affairs (\acrshort{defra}). Policymaker-led control initiatives, resource allocation and recommendations then help to direct on-the-ground stakeholder
+responses. However, it is worthwhile to remark that stakeholder participation can be either voluntary or compelled by law in the UK. Typically, if the pest or pathogen possesses a significant risk, plant health authorities (e.g. FC and DEFRA) may serve a statutory plant Health notice (SPHN) to the landowner, thus mandating action.
+
 \begin{figure}
     \centering
     \includegraphics[scale=0.35]{chapter1/figures/modelling-and-policy.pdf}
-    \caption{A simplified model representing the major socioeconomic interactions between the general public, scientists, 
-    policymakers and stakeholders in the UK. Scientists receive funding from and collaborate with Governmental bodies/policymakers. 
-    Policymakers allocate resources and lead control initiatives to protect tree health. 
-    Affected stakeholders can then join control initiatives and offer an on-the-ground response to pests and pathogens.}
+    \caption{A simplified model representing the major socioeconomic interactions between the general public, scientists, policymakers and stakeholders in the UK. Scientists receive funding from and collaborate with Governmental bodies/policymakers. Policymakers make decisions and allocate resources to lead control initiatives to protect tree health. Affected stakeholders in the UK can choose to join voluntary control initiatives or be legally obliged to take action if served a statutory plant health notice. }
     \label{fig:modelling-and-policies}
 \end{figure}
-
-
-Figure \ref{fig:modelling-and-policies} presents a simplified view of the interactions which dictate research output, public awareness, 
-policy-making and the eventual epidemic control in the UK\footnote{
-In part, Figure \ref{fig:modelling-and-policies} was informed by interviewing civil servants, researchers and policymakers at DEFRA and FERA as part of this thesis.}. Scientists in several disciplines,
-from molecular biology to mathematics, receive funding from and collaborate with governmental
-bodies, e.g. the Department for Environment Food \& Rural Affairs (\acrshort{defra}). Government-led control initiatives, resource
-allocation and recommendations can then direct on-the-ground stakeholder
-responses. 
 
 Alternatively, scientists can engage stakeholders directly (discussed more below) or influence public opinion through outreach and
 scientific communication. In turn, the public can influence the decisions of policymakers by
@@ -141,36 +139,22 @@ In a bid to make their work more accessible to policymakers and stakeholders, mo
 The reader can find the user-friendly modelling interface constructed by \cite{WEBIDEMICS} at \nolinkurl{http://www.webidemics.com}} \cite{WEBIDEMICS}.
 Other strategies to leverage scientific output involve directly facilitating discourse between modellers and stakeholders, categorised as `participatory modelling' (\acrshort{pm}).
 
-Recently, PM has become popular in `risk and natural disaster' modelling research \cite{hamalainen2020leadership, ravera2020participatory, hedelin2017participatory}.
-Nonetheless, PM approaches are rare in the context of plant disease, as reviewed by \cite{gaydos2019forecasting}.
-In addition to a literature review, \cite{gaydos2019forecasting} held an interactive workshop with stakeholders
-regarding the spread of \textit{P. ramorum} in the United States. The workshop facilitated stakeholder engagement
-with an epidemic model \cite{tonini2017tangible}\textemdash reviewed in Chapter \ref{chapter2:litreview}. In particular, the authors reported
-that the stakeholders engaged well with the model and confirmed that the results were consistent with observations in the field. However, and most interestingly, stakeholders with expert knowledge of the landscape remained sceptical of the host distributions accuracy. 
-Such insights are hard to deduce for modellers who generally remain less connected to the actual landscape. 
-As such, \cite{tonini2017tangible} demonstrated a positive motivation to facilitate the collaboration 
+Recently, PM has become popular in `risk and natural disaster' modelling research \cite{hamalainen2020leadership, ravera2020participatory, hedelin2017participatory}. Nonetheless, PM approaches are rare in the context of plant disease, as reviewed by \cite{gaydos2019forecasting}.
+In addition to a literature review, \cite{gaydos2019forecasting} held an interactive workshop with stakeholders regarding the spread of \textit{P. ramorum} in the United States. The workshop facilitated stakeholder engagement with an epidemic model \cite{tonini2017tangible}\textemdash reviewed in Chapter \ref{chapter2:litreview}. In particular, the authors reported that the stakeholders engaged well with the model and confirmed that the results were broadly consistent with observations in the field. However, and most interestingly, stakeholders with expert knowledge of the landscape remained sceptical of the host distributions' accuracy and resolution. In particular, stakeholders with domain knowledge on the ground thought that these inaccuracies could influence spatial dynamics in the simulation. Such insights are hard to deduce for modellers who generally remain less connected to the actual landscape. As such, \cite{tonini2017tangible} demonstrated a positive motivation to facilitate the collaboration 
 between plant-health modellers and stakeholders through PM.
 
-An effective response generally relies on widespread adoption of policies among multiple 
-stakeholders, which is thought to depend on several additional factors. As an example, \cite{milne2020makes} coupled
-an epidemic model of citrus huanglongbing disease (HLB) and stakeholder opinion dynamics. In the behaviour model, stakeholder
-opinions depended on research, other citrus growers, consultants, and the media. The perception of risks and trust in
-area-wide control led the stakeholders to join an area-wide control initiative. Subsequently, the analysis of 
-\cite{milne2020makes} suggests that the efficiency of epidemic control led to more stakeholder-engagement than the perceived risks, and that frequent contact between stakeholders and advisors increases the probability of successful control.
+An effective response generally relies on widespread adoption of policies among multiple stakeholders, which is thought to depend on several additional factors. As an example, \cite{milne2020makes} coupled an epidemic model of citrus huanglongbing disease (HLB) and stakeholder opinion dynamics. In the behaviour model, stakeholder
+opinions depended on research, other citrus growers, consultants, and the media. The perception of risks and trust in area-wide control led the stakeholders to join an area-wide control initiative. Subsequently, the analysis of \cite{milne2020makes} suggests that the efficiency of epidemic control led to more stakeholder-engagement than the perceived risks, and that frequent contact between stakeholders and advisors increases the probability of successful control.
+% In the UK, stakeholders can either join control initiatives on a voluntary basis, or for certain pathogens be required by law to remove infected trees 
+% as noted by \cite{tomlinson2015managing} in reference to oak processionary moth in London.
 
 \newpage
 
 \section{Chapter summary}
 
-In this thesis, our motivation is to develop robust epidemic models of infectious tree disease
-epidemics from first principles. Then, more realistic and elaborate models can be constructed to
-predict epidemic severity over GB and help guide policymakers. 
-In particular, previous large-scale investigations
-have focused on specific pathosystems in a dynamic metapopulation-like setting
-\cite{large-scale-control, meentemeyer2011epidemiological, harwood2009epidemiological}. We take
-an alternative approach and develop a general-purpose framework to spatially scale-up a small-scale epidemic
-model (between individual trees) over large areas. The result is an $R_0$-map across GB with closer parallels
-to the emerging field of Infectious Disease Cartography \cite{otieno2021modeling, KRAEMER201619, messina2016mapping}.
+In this thesis, our motivation is to develop robust epidemic models of infectious tree disease epidemics to predict epidemic severity over GB and help guide policymakers. Firstly, we begin with a simple two-parameter percolation, from which more realistic and elaborate dispersal models follow. 
+In particular, previous large-scale investigations have focused on specific pathosystems in a dynamic metapopulation-like setting
+\cite{large-scale-control, meentemeyer2011epidemiological, harwood2009epidemiological}. We take an alternative approach and develop a general-purpose framework to spatially scale up a small-scale epidemic model (between individual trees) over large areas. The result is an $R_0$-map across GB with closer parallels to the emerging field of Infectious Disease Cartography in human and livestock diseases \cite{otieno2021modeling, KRAEMER201619, messina2016mapping}.
 
 Chapter \ref{chapter2:litreview} begins by outlining several requisite modelling themes. First, the review examines
 several seminal works that founded the field of quantitative botanical epidemiology. Following this,
@@ -195,8 +179,7 @@ Ensuing epidemics in the NLM are demonstrated to spread at lower tree densities,
 Disease spread is then examined over a range of dispersal scale parameters and compared to the standard SIR model. Next, a spatially-explicit analytic expression for $R_0$ is derived and compared to a `\textit{contact tracing}' method of calculating $R_0$.
 Both methods of determining the reproductive ratio are shown to demonstrate a threshold at $R_0=1$.
 
-Chapter \ref{ch:6-adb} develops the generic dispersal model towards a simplified mechanistic
-model reflecting the life cycle of ash dieback. The model involves susceptible-exposed-infected-removed (\acrshort{seir}) compartments that repeat annually according to the sexual reproduction of ash dieback. Consequently, a method is presented to compose $R_0$-maps
+Chapter \ref{ch:6-adb} develops the dispersal model of Chapter \ref{ch5:dispersal-model} towards a mechanistic model reflecting the life cycle of ash dieback. The model involves susceptible-exposed-infected-removed (\acrshort{seir}) compartments that repeat annually according to the sexual reproduction of ash dieback. Consequently, a method is presented to compose $R_0$-maps
 across GB using the map of predicted ash abundance given by \cite{hill.data}. Lastly, a connected-component-analysis
 (\acrshort{cca}) algorithm is used to visualise  clustering and risk in the $R_0$-map. Examining the clustering as a function
 of infectivity reveals behaviour akin to a global epidemic phase transition across the map. That is, below a certain infectivity threshold, 
