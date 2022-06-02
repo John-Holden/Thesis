@@ -58,7 +58,7 @@ the existence of a critical epidemic threshold, captured through either:
     \label{eq:R0-effective}
     & R_e = \frac{S(t)}{N} \frac{\beta}{\mu}
 \end{align}
-where $R_0$ and $R_c$ are referred to as the basic and effective reproduction numbers, respectively.
+where $R_0$ and $R_e$ are referred to as the basic and effective reproduction numbers, respectively.
 Following the introduction of one infected host at $t=0$, $N\sim S(0)$ and 
 we have $R_e=\big((N-1)/N\big) \beta / \mu$. Therefore, in the limit of a large population at $t=0$, the term
 $(N-1)/N$ approximates unity and $R_e = R_0$, otherwise $R_e=\big(S(t)/N\big) R_0$.
@@ -75,9 +75,9 @@ infected hosts
 
 \subsection{Logistic growth}
 \label{sec:logistic-growth}
-The seminal work of \cite{van2013plant} firmly established ties between plant pathology and 
-mathematical epidemiology.
-Fundamentally, Van der Plank equated the growth of plant pathogens (or `inoculum') to logistic growth of the form:
+
+Numerous growth models have been used to describe plant disease, primarily based on the Gompertz \cite{berger1981comparison}, monomolecular \cite{neher1992underestimation} and logistc \cite{kushalappa1982calculation} growth equations. However, \cite{van2013plant} was the first to firmly establish ties between plant pathology and mathematical epidemiology using logistic growth.
+Fundamentally, Van der Plank modelled the growth of plant pathogens (or `inoculum') by:
 \begin{equation}
     \label{van-plank}
     \frac{dI}{dt} = rI(1 - I)
@@ -90,10 +90,9 @@ The essential model behaviour is shown in Figure \ref{fig:SIR-vs-plank}(b) over 
 From Equation \ref{van-plank}, a simple method to determine the rate $r$ follows:
 \begin{equation}
     \label{eq:van-plank-r}
-    r =\frac{1}{t_2 - t_1} \log \Big(\frac{I_2}{1 - I_2} - \frac{I_1}{1 - I_1}\Big)
+    r =\frac{1}{t_2 - t_1} \big[ \log_{e}(\frac{I_2}{1 - I_2}) - \log_e( - \frac{I_1}{1 - I_1}) \big]
 \end{equation}
-where $I_1$ and $I_2$ are the proportions of infected tissue at times $t_1$ and $t_2$ respectively\textemdash 
-see \cite{van2013plant} Chapter 3. Importantly, both $I_1$ and $I_2$, and by extension the infection rate $r$,
+where $I_1$ and $I_2$ $\in [0, 1]$ are the proportions of infected tissue at times $t_1$ and $t_2$ respectively. Equation \ref{eq:van-plank-r} is valid for all values of $t$, expect when $t_1 = t_2$ (see \cite{van2013plant} Chapter 3 page). Importantly, both $I_1$ and $I_2$, and by extension the infection rate $r$,
 are measurable in laboratory conditions. 
 In Equation \ref{van-plank}, newly infected tissue becomes infectious immediately following infection.
 Realistically, infectious tissue (and symptom expression) takes time to develop, described by an `incubation period'.
@@ -120,9 +119,10 @@ growth at step $t-p$, as opposed to $r$ that describes the spread of disease at 
        } 
      \label{fig:SIR-vs-plank}
  \end{figure}
-where $r$ represents an `apparent' infection rate (measurable in laboratories from Equation \ref{eq:van-plank-r}),
-and $R$ denotes the `basic' infection rate. As Van der Plank explained, one usually seeks
-to determine $R$ from the constant $r$. Assuming that $r$ indeed stays constant over the epidemic:
+where $x_t$ represents the amount of inoculum at time $t$, and $r$ and $R$ represent the `apparent' infection rate (measurable in laboratories from Equation \ref{eq:van-plank-r})
+and the `basic' infection rate, respectively. 
+As Van der Plank explained, one usually seeks
+to determine $R$ from the constant $r$. If $r$ indeed stays constant over the epidemic:
 the basic infection rate $R$ must decrease as $x_t/x_{t-p}$ gets progressively smaller as $x_{t-p}\rightarrow x_t $.
 At this point, the basic infection rate $R$ begins to resemble the effective reproduction ratio $R_e$
 from Equation \ref{eq:R0-effective}. 
@@ -158,9 +158,7 @@ where Equation \ref{eq:SEIR-model2} describes the population of latently (or exp
 Susceptible hosts transition into the exposed compartment at the same rate as before, namely $\beta SI$, but now have an
 exponentially distributed latency period of $\gamma^{-1}$ before transitioning into $I$.
 
-Both Equations \ref{eq:SEIR-model1}-\ref{eq:SEIR-model3} and Equation \ref{van-plank-infectious-p} outline similar systems,
-though infected tissue in Equation \ref{van-plank-infectious-p} remains infectious for precisely $i$ units.
-This contrasts with the exponentially distributed exposed lifetime implicit within Equation \ref{eq:SEIR-model2}.
+Both equations \ref{eq:SEIR-model1}-\ref{eq:SEIR-model3} and \ref{van-plank-infectious-p} outline similar behaviour, namely an incubatory period following infection. However, infected tissue in Equation \ref{van-plank-infectious-p} remains infectious for precisely $i$ units, which contrasts with the exponentially distributed exposed lifetime implicit within Equation \ref{eq:SEIR-model2}.
 Nevertheless, \cite{segarra2001epidemic} illustrated how Van der Plank's DDE and the SEIR system are both special cases of
 the SIR model proposed by \cite{kermack-model}, when the SIR model incorporates a sporulation function, $\phi(\tau)$. 
 The sporulation function appropriately models spore production in plant pathogens. 
@@ -210,18 +208,10 @@ For a review of early plant disease simulators, see \cite{doi:10.1146/annurev.py
 \subsection{Percolation: from forest fires to epidemics}
 \label{section:lit-rev-perc}
 
-Research on percolation occurred alongside the developing field of plant disease modelling.
-The development of percolation theory marked an early approach to modelling epidemic systems that are
-both spatially-explicit and stochastic.
-The original formulation of percolation theory was first used to describe properties of a fluid and the 
-bonds that form between molecules \cite{perco_origin} (a more formal description of 
-percolation is undertaken later in section \ref{sec:perc-form}). The problem was posed on a 
-graph\textemdash illustrated in terms of vertices and edges. However re-interpretations were subsequently 
-put forward by physicists studying material sciences, naturally on a lattice. \cite{Essam_1980}. 
-An attractive feature outlined by this new approach was a phase-transition that could be treated with scaling theory\textemdash
-used in the study of critical-phenomena. 
-Accordingly, early work rigorously ensued to map out the behaviour of percolation around criticality in 
-terms of critical exponents \cite{STAUFFER19791}. 
+Research on percolation occurred alongside the developing field of plant disease modelling. The development of percolation theory marked an early approach to modelling epidemic systems that are
+both spatially explicit and stochastic. The original formulation of percolation described the gelation of a fluid by modelling the bonds that form between molecules \cite{perco_origin}. Moreover, these early formulations of percolation relied on a graph\textemdash illustrated in terms of vertices and edges. However, physicists studying material sciences put forward re-interpretations, naturally on a lattice \cite{Essam_1980}. 
+
+An essential characteristic of percolation is its ability to describe a phase transition. More specifically, an abrupt change in the state of a system occurs when the system reaches a percolation threshold. Interestingly, percolation thresholds are treatable with scaling theory, used to study critical phenomena. In particular, when percolation is around the threshold, specific characteristics (e.g. cluster size and cluster numbers) were found to scale according to a 'critical exponent.' Amazingly, critical exponents remain fixed, regardless of the spatial dimension or the type of lattice geometry. Accordingly, early work continued study percolation around criticality in terms of critical exponents \cite{STAUFFER19791}. An expanded discussion of percolation theory continues in Chapter 3.
 
 Different flavours of percolation models, such as site or bond percolation, were described
 to model different processes. Nevertheless, percolation proved a convenient theory and various phenomena including gelation, 
@@ -268,6 +258,12 @@ who studied the effects of landscape distributions and percolation models
 combined SIR-like mechanics inside a percolation-based distribution of hosts and subsequently 
 found a narrow regime where disease epidemics would spread, thus mirroring the threshold-like 
 behaviour witnessed in the SIR model. Although, here, the authors considered the possibility of host recovery.
+
+A body of work applied percolation to model the economically damaging plant pathogen \textit{Rhizoctonia Solani}. \textit{R. Solani} affects numerous botanical hosts, including potatoes, soybean, and rice \cite{carling1990effect, chela2002characterization, kazempour2004biological, tsror2010biology}. Primarily, the saprotrophic fungus spreads between infected and susceptible host roots through mycelial growth \cite{papavizas1970colonization}. The first article put forward by \cite{bailey2000saprotrophic} related the fungal growth dynamics of \textit{R. Solani} to percolation.  In their research, \cite{bailey2000saprotrophic} assembled a matrix of interspaced nutrient sources which together formed a triangular lattice. Experiments then sought to monitor how the spread of \textit{R. Solani} depends on the distance between nutrient sites. Subsequently, using the conceptual percolation threshold,  \cite{bailey2000saprotrophic} demonstrated the existence of a minimum distance between sites; this intuitively places a constrain on the optimal proximity between hosts planted in a field.
+
+Subsequent work on \textit{R. Solani} continued to assess how random removals of nutrient sites below the percolation threshold could prevent the spread of disease \cite{otten2004empirical}. In the following years, Markov chain Monte Carlo (MCMC) methods were developed by \cite{gibson2006bayesian} to estimate parameters for another percolation model applied to \textit{R. Solani} \cite{filipe2004inferring}. \cite{PhysRevLett.106.218701} went on to put forward further generalisations of the percolation paradigm by incorporating synergistic interactions between hosts. Here, `synergy' refers to the increased susceptibility of hosts surrounded by multiple infected neighbours\textemdash similarly, a reduced infection pressure results when multiple susceptibles surround an infected host. Then, additional work by \cite{ludlam2012applications} formulated statistical approaches to find parameter estimates for the generalised percolation model incorporating synergistic interactions.     
+
+
 % \textemdash \cite{GRASSBERGER1983157} <- reference for early considerations towards percolation as a model for tree diseases and percolation
 % \textemdash \cite{SANDER2002293}, read and get more info + research links
 \newpage
@@ -336,9 +332,7 @@ The general model followed:
 \end{equation}
 where $w(t)$ is a time-dependent infectivity function, $\epsilon$ is the primary infection 
 (set to zero in the manuscript), $\beta$ is the rate of secondary infection, and $K(d_{ij}; \alpha)$
-is the dispersal function. This time, Equation \ref{eq: webidemics} presents a rate of transition for a single
-susceptible tree (from $S_i \rightarrow E_i$) under the influence of all infected neighbours (represented by the $j^{th}$ index),
-as opposed to the probability of Equation \ref{eq:prob-trans}.
+is the dispersal function. However, this time, $\phi_i(t)$ in Equation \ref{eq: webidemics} presents a \textit{rate} of transition for a single susceptible tree (from $S_i \rightarrow E_i$) under the influence of all infected neighbours (represented by the $j^{th}$ index), as opposed to the probability of Equation \ref{eq:prob-trans}.
 
 Cunniffe et al. examined the effects of a cull radius similar to \cite{parnell2010effect}. 
 Yet this time, the results were aimed towards assessing control when `there is epidemic uncertainty'.
@@ -418,8 +412,8 @@ Following earlier earlier work \cite{madden2007study}, the population inside eac
 to an $SEIS$ model:
 \begin{align}
     \label{eq:phyt-model1}
-    &\frac{dS}{dt} = \mu E + \mu I - \beta S i\\
-    &\frac{dE}{dt} =  \beta S i - k E - \mu E   \\
+    &\frac{dS}{dt} = \mu E + \mu I - \beta S I\\
+    &\frac{dE}{dt} =  \beta S I - k E - \mu E   \\
     \label{eq:phyt-model3}
     &\frac{dI}{dt} = k E - \mu I
 \end{align}
