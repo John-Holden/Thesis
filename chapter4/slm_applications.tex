@@ -16,10 +16,9 @@ In particular, two applications divide the Chapter, beginning with the early war
 Firstly, the system for EWS detection put forward by \cite{OROZCOFUENTES201912} is extended. 
 The original publication considered a fixed infectivity parameter ($\beta = 0.50$), here we generalise the analysis to the entire $\beta$ parameter space. 
 In addition, we employ an alternative metric that permits a more precise EWS detection.
+
 Secondly, the SLM will be adapted to construct a toy model of landscape-level epidemics in Great Britain.
-More specifically, units of individual trees in the SLM are re-scaled to $\mathrm{1km \times 1km}$ patches 
-and projected onto a predicted oak abundance data set given by \cite{hill.data}.
-The toy model denotes the first step towards a more representative framework over realistic landscapes.
+Several tree distribution datasets in Great Britain are presented and compared, before coupling the SLM with predicted abundance data given by \cite{hill.data}. More specifically, units of individual trees in the SLM are re-scaled to $\mathrm{1km \times 1km}$ patches and projected onto a predicted oak abundance. The toy model denotes the first step towards a more representative framework over realistic landscapes.
 
 \section{Early warning signals}
 \label{sec:EWS}
@@ -189,6 +188,232 @@ Altogether, Figure \ref{fig:ews-results} indicates that the strength of an EWS d
 though fundamentally, an EWS is detectable for all parameter combinations.
 
 \newpage
+
+\section{Tree distribution datasets in Great Britain}
+\label{ch2:hostdata}
+
+Large-scale epidemic models of tree disease rest on robust, high-quality host data.
+Data-driven approaches are crucial for predicting disease spread over country-wide scales, 
+though collecting high-quality host data involves myriad challenges. 
+Most notably, large-scale species distributions require vast datasets that demand significant economic resources
+and person-hours to assemble and maintain over time. 
+However, satellite-based remote sensing technologies pose an attractive solution\textemdash see \cite{camarretta2020monitoring} for a recent review of remote sensing technologies.
+Despite the significant advances of remote sensing technologies, most freely available data sets still rely on traditional surveying methods to collect data throughout Great Britain (GB).
+Consequently, the most widely known and widely used datasets are reviewed below.
+Following this, statistically-generated species distribution models, typically based on surveyed data, are reviewed.
+
+\subsection{National Surveys}
+\label{sec:nationa-surveyes}
+
+Surveyed data predominantly describes either: abundance, presence-only, presence-absence data. 
+Generally, abundance data describes percentage canopy cover per $\mathrm{km^2}$.
+In contrast, binary-valued presence-only and presence-absence data simply record if a species is present or present and absent, respectively.
+Abundance captures significantly more information than presence-only data, yet unfortunately, they are in short supply.
+
+\subsubsection{Countryside Survey}
+
+The countryside survey (\acrshort{cs}) is a long-running, national survey of diversity and species abundance in GB \cite{wood2017long}.
+The UK Centre of Ecology and Hydrology (UKCEH) undertakes the surveys, primarily funded by the Natural Environmental Research Council alongside other government agencies.
+Individual surveys have been undertaken in: $1978$, $1990$, $1998$, $2007$, and $2019$. 
+Random stratified sampling captures a representative species abundance\footnote{
+A useful (unpublished) project merged abundance data from CS with myForest. The abundance data can be found at the Oxford University research archive: \nolinkurl{https://ora.ox.ac.uk}.} 
+over of all land cover compositions, e.g. lowland acid grassland, freshwater, and broad-leaf forest.
+
+Abundance data is collected for numerous dominant species, including trees, shrubs, ground flora and soil type, 
+making the scope of CS data vast. Moreover, long-running records spanning decades reveal ecosystem trends imperative for ecological monitoring.
+More recently, $100$ $1\mathrm{km^2}$ plots of vegetation and soil data were collected\footnote{
+The data is free to download on the UKCEH website: \nolinkurl{https://catalogue.ceh.ac.uk}} \cite{10.5285/fd6ae272-aeb5-4573-8e8a-7ccfae64f506}.
+The dataset constitutes the first of five planned surveys, part of a rolling monitoring strategy collected every five years.
+
+\subsubsection{National Forest Inventory}
+
+The National Forest Inventory (\acrshort{nfi}) collects and maintains forest and woodlands data in GB.
+Originally, the NFI was established to help restore and expand Britain's woodlands following the First World War \cite{james1990history}.
+Regular programs ($10$-$15$ year intervals) implement surveys of woodland and forest size, distribution, composition and condition across GB.
+Records cover areas over $0.5\ \mathrm{ha}$ and $20\%$ coverage.
+As of $2019$, $622,381$ individual records exist, spanning $2.9 \times 10^6\ \mathrm{ha}$ over $13\%$ of the total land cover within GB.
+NFI data comprise ESRI shape files\footnote{
+Free to download at: \nolinkurl{https://data-forestry.opendata.arcgis.com}},
+that outline numerous forest types, e.g. broadleaved, conifer, mixed-predominantly broadleaved or mixed predominantly conifer.
+Despite an extensive coverage, publicly available NFI surveys describes presence-only data\textemdash with no proportion or species coverage.
+Although, additional datasets are available to purchase, including: 
+(1) Tree species percentage per region by woodland type
+(2) Tree species proportions within the upper canopy of each NFI sample plot, without supplying the exact location of the individual sample plot.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.2]{chapter2/figures/NFI-figure.pdf}
+    \caption{NFI data super imposed onto a Google earth image, taken from a report (unpublished) by S. Orozco-Fuentes et al.
+             NFI data covering Thetford Forest Park ($16.684 \mathrm{km}^2$) is shown as a polygon in the NFI `woodland' category.
+             Data is interpreted as the conifer forest type. Here, surveys comprises presence-only data, and no tree species percentage cover
+             is reported. NFI data extends throughout $\sim 13\%$ of land coverage in GB and large non-woodland areas remain un-surveyed.}
+    \label{fig:NFI-data}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.25]{chapter2/figures/bsbi-data.pdf}
+    \caption{BSBI presence-only datasets\textemdash as reconstructed by S. Orozco-Fuentes et al. (unpublished).
+    Three important large deciduous tree species, European ash (\textit{Fraxinus excelsior}), 
+    Oak (\textit{Quercus spp.}), and sweet chestnut (Castanea sativa), are overlaid onto the same map at $\mathrm{2km \times 2km}$ resolution.
+    The BSBI datasets are extensive and report presence-only data over a country-wide scale.
+    }
+    \label{fig:bsbi-data}
+\end{figure}
+
+\subsubsection{Botanical Society of Britain and Ireland}
+
+The Botanical Society of Britain and Ireland (\acrshort{bsbi}) has recorded species presence-only data since $1950$.
+BSBI datasets are publicly available\footnote{BSBI data can be downloaded from: \nolinkurl{https://database.bsbi.org}.} upto a
+resolution of $\mathrm{2 km \times 2km}$, though records upto $\mathrm{100 m \times 100 m}$ are available to registered members.
+As of $2020$, BSBI records are collected at $\mathrm{1 km \times 1km}$ square resolution or better\textemdash making the datasets among the 
+highest-resolution surveys collected by traditional methods. The BSBI distribution database contains records of plants and charophytes
+as reported by users and conservationists with MapMate\footnote{MapMate is software designed to aid users to share ecological data: \nolinkurl{https://www.mapmate.co.uk}}.
+Despite the availability of high-resolution data, observations are collected ad hoc by users and not curated scientifically.
+Moreover, the distributions contain both well-surveyed and poorly-surveyed plots of land likely to carry uncertainties.
+As such, BSIBI data is helpful to reconstruct several baseline tree distributions across GB, as demonstrated by \cite{hill.data}.
+
+\subsection{Species distribution models}
+
+In the absence of extensive host data, species distribution models (\acrshort{sdm}s) aim to generate synthetic data, typically from less-extensive surveys.
+SDMs were first developed in the $1990$s, and have subsequently become fundamental to ecological and biogeographical inference studies.
+Synthetic distributions have been used to examine biodiversity, conservation, resource management, 
+ecology and climate change \cite{franklin2013species, skov2016real, wittmann2016confronting, 10.3958/059.037.0110, zhang2019using}.
+The vast majority of SDMs fall into two categories: correlative \cite{srivastava2019species}, and mechanistic \cite{shabani2016comparison}.
+
+Correlative SDMs relate (widely available) presence-only, or presence-absence, data to several environmental predictor variable datasets.
+For tree species, predictor variables include temperature, precipitation, altitude, and soil type \cite{ray2021multi, hill.data}.
+Following this, a species distribution map can be predicted, albeit with  uncertainties and errors.
+Commonly used statistical methods include Regression 
+(i.e. General Linear Models, General Additive Models, Multivariate Adaptive Regression Splines) and Machine Learning
+(i.e. Artificial Neural Networks, Classification And Regression Tree, Random Forest). 
+The general correlative approach is reflected in Figure \ref{fig:sdm}; for a more in-depth review of correlative SDMs, see \cite{SDM_1}.
+
+Correlative SDM approaches require little to no prior knowledge of the physiological processes that link organism and environment.
+Hence, mechanistic methods aim to incorporate an organisms behavioural, physiological, and morphological constraints to the environment, 
+as reviewed by \cite{kearney2009mechanistic}. However, linking a species physiological response to the environment comes with significant
+computational challenges, as it typically relies on vast, multi-variable time-series datasets \cite{shabani2016comparison}.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.35]{chapter2/figures/SDM-fig.pdf}
+    \caption{A graphical species distribution model (SDM) illustration, adapted from \cite{SDM_1}. 
+             A variety of predictor variables and input data sources are used in conjugation with modelling algorithms to produce
+             a habitat suitability map.}
+    \label{fig:sdm}
+\end{figure}
+
+A review paper by \cite{guillera2015my}, revealed a diverse use of SDMs.
+Out of $100$ publications reviewed by \cite{guillera2015my}, SDMs were applied to: 
+(1) managing threatened species ($16\% $ of articles) 
+(2) predicting climate change impacts ($13\%$) 
+(3) understanding phylogeographic patterns ($9\%$) 
+(4) controlling threatening processes ($8\%$) 
+(5) landscape management ($8\%$) 
+(6) biological invasions ($7\%$). However, no epidemic applications were reported.
+
+Nevertheless, a thorough literature search revealed a variety of epidemiological SDM applications.
+The crossover between ecological SDM methods and epidemiology has been referred to as `Infectious Disease Cartography' \cite{KRAEMER201619}.
+With Infectious Disease Cartography, one seeks to map the likelihood, or risk, of infectious disease outbreaks and produce risk-maps.
+A number of publications have applied SDMs livestock diseases \cite{hollings2017species}, and human-based diseases including the global 
+distribution of Dengue Fervour \cite{bhatt2013global} and Zika virus \cite{messina2016mapping}, and Anthrax in Kenya \cite{otieno2021modeling}.
+However, SDM applications for tree disease epidemics appear absent from the literature.
+
+\subsubsection{Predicting species abundance}
+
+SDM-generated tree occurrence data have limited applications to ecologists and forest managers.
+This motivates statistically-generated abundance data that includes significantly 
+more information about the population occupation/density and ecosystem.
+Modellers have examined numerous approaches to predict tree species abundance;
+including, linking the abundance-occupancy relationship \cite{gaston2000abundance} and
+the scaling pattern of species occupancy over progressively smaller spatial scales \cite{hui2009extrapolating}.
+
+An interesting, and highly relevant, approach to predict the abundance of common tree species in Great Britain was put forward by \cite{hill.data}.
+At a high level, BSBI presence-only data were combined with a series of environmental covariates using a species distribution model to 
+produce a map of predicted occurrence data. Then, random forest regression was employed with a training sample ($70\%$) of less extensive abundance 
+data (consisting of CS, myForest and Bluesky's National Canopy Map). 
+Results were then cross-validated with the remaining ($30\%$) abundance data; Figure \ref{fig:hill-method} displays a
+flow-diagram of the method presented by \cite{hill.data}. 
+
+A more detailed explanation of the treatment proposed by \cite{hill.data} follows:
+\textbf{Stage (1)}
+\textit{
+\begin{itemize}
+    \item Presence-only BSBI data was downloaded for $25$ common species of trees in GB, 
+    and all records less than $\mathrm{2km \times 2km}$ resolution were discarded.
+    Next, the presence-only data was converted into presence-absence data by considering
+    `well-surveyed' records that Hill et.al defined as having a minimum of two survey
+    between $1950$ and consisting of $50$ species. Species missing from these 
+    well-surveyed areas were assumed truly absent. 
+    \item Using biomod2 \cite{thuiller2016package}, a SDM was then fitted against a cohort of 15 environmental variables, e.g.
+    soil type (European Soil Database), temperature (Worldclim), precipitation (Worldclim), altitude (Worldclim),
+    type of land cover (Countryside Survey), among others. The net result was a map of predicted occupancy at $\mathrm{1 km \times 1 km}$ 
+    resolution.
+    \item For each species, predictions from a suit of models\textemdash GLM, GAM, CTA, GBM, RF\textemdash were
+    repeated and combined into an ensemble distribution model. Each model was cross-validated against
+    $30\%$ of the well-survyed BSBI presence-absence data using the receiver operator curve (ROC) \cite{jimenez2012insights} and the true skill statistic (TSS).
+    \cite{hill.data} then selected the best performing predicted occurrence for each species.
+\end{itemize}
+}
+\textbf{Stage (2)}
+\textit{
+\begin{itemize}
+    \item Abundance data from CS and myForest were both expressed as hectares covered per kilometer 
+    squared ($\mathrm{ha/km^2}$). This entailed using woodland cover from the NFI dataset to multiply
+    the percentage cover of each species within a woodland patch, with a proportion of woodland cover per kilometer.
+    \item Random forest (RF) regression then modelled the relationships between (CS and myForest) abundance data with
+    the SDM-generated map of predicted occupancy. In addition, RF regression used four covariates, 
+    three of which consisted of Bluesky's National Canopy data (i.e. total tree cover, woodland tree cover, non-woodland tree cover)
+    and NFI edge broadleaved woodland (i.e. within $50\mathrm{m}$ of non woodland) data.
+\end{itemize}
+}
+
+The abundance datasets produced by \cite{hill.data} combine several mainstream tree datasets in GB; moreover, 
+constructing the ensemble model involved a variety of statistical models.
+The predicted occurrence data was examined against the ROC.
+Most species demonstrated functional ROC scores between $0.71$ and $0.96$ and performed exceptionally
+well for ash ($0.96$) and oak ($0.90$).  
+
+Although there were numerous assumptions that underpinned the methodology.
+Primarily, the BSBI dataset used by \cite{hill.data} exists through ad-hoc user and volunteer self-reports.
+Thus, some regions are more surveyed than others over time, which led Hill et al. to make the 
+`well surveyed' recorded assumption (i.e. only considering records surveyed twice since $1950$ containing a minimum of $50$ species).
+The assumption permitted the conversion of raw presence-only to presence-absence, 
+at the cost of overestimated absence in these regions. That is, even supposing $50$ species
+are reported within a subset of the ($\mathrm{2km \times 2km}$ tetrad) record, other large regions could remain unsampled\textemdash
+the authors did not appear to scrutinise this assumption sufficiently.
+
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.55]{chapter2/figures/hill-method-fig.pdf}
+    \caption{A flow diagram of the two-stage abundance method put forward by \cite{hill.data} to model tree species abundance  
+    (taken from the publications' materials and methods section).}
+    \label{fig:hill-method}
+\end{figure}
+
+The RF regression used by \cite{hill.data} marked a novel approach to modelling species abundance.
+The authors chose to argue in favour of RF regression because of its insensitivity toward the data distribution,
+which worked well with the less comprehensive abundance data sources (as the map of abundance had a high percentage of zeros from missing records).
+The abundance model quality was examined against $10$-fold validation (explained in \cite{refaeilzadeh2009cross}).
+The root-mean-square error (\acrshort{rmse}), between predicted and observed abundance, generally ranged between $5$ and $10$,
+where the RMSE scale reflects the response variable units ($\mathrm{ha/km^2}$), i.e. $5\%$ and $10\%$ respectively.
+The result was country-wide predicted abundance, with noticeable, yet sufficiently low inaccuracies.
+
+The low amount of available abundance data in GB significantly impoverished the abundance maps produced by \cite{hill.data}. 
+Consequently, of the $25$ species datasets considered, all will contain numerous (small-scale) errors and uncertainties. 
+Nonetheless, the modelled abundance maps captured more large-scale spatial structures than both the BSBI and CS distributions.
+
+More recently, \cite{ray2021multi} produced a similar SDM as Hill et al. for oak in GB using biomod2 \cite{thuiller2016package}.
+The authors focused on mapping high-density oak woodlands (with 60$\%$ canopy cover or above) 
+to predict which NFI map polygons (by forest type) were most likely to contain oak stands. 
+However, \cite{ray2021multi} did not make their oak maps publicly available, nor did they produce a general-purpose
+abundance map relevant for epidemiological studies. 
+To date, the data sets produced by \cite{hill.data} constitute the best publicly available
+country-wide maps of abundance in GB, despite their limitations.
+
+\newpage
+%\item remote sensing tools were used \cite{kelly2002monitoring} to track the study of sudden oak death in California
+%\item \cite{kelly2002landscape} demonstrated clustering at the landscape level, spatial structure is important
 
 \section{A toy landscape-level SLM}
 
