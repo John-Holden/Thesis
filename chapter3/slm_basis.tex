@@ -49,12 +49,7 @@ The critical value then satisfies: %
 \label{eq:critical_threshold_1d}
     \rho _{c}=sup \lbrace \rho : \theta (\rho ) = 0 \rbrace
 \end{equation}
-At this point, the spanning cluster has been described conceptually, although many nuances and technicalities complicate the definition. %
-For example, the probability of percolation has a non-trivial dependence on the size of the lattice.
-That is, if the mean cluster size, defined by a `characteristic' cluster length $C_r$, is larger or comparable to $L$, 
-percolation can occur despite the density residing in the sub-critical regime. %
-The size of the lattice is therefore required to be sufficiently large compared to individual lattice positions (or microscopic interactions) 
-in order to approximate the threshold ($\rho_c$) reliably and produce a spanning cluster ($C_{\infty}$). 
+At this point, we have described the spanning cluster conceptually, though nuances and technicalities still complicate the definition. For example, the percolation probability depends strongly on the lattice size. If the mean cluster size (defined by a `characteristic' cluster length $C_r$) is more significant or comparable to $L$, percolation can occur despite the density residing in the sub-critical regime. Thus, a sufficiently large lattice is required to approximate the threshold $\rho_c$ reliably and the spanning cluster $C_{\infty}$. 
 
 When the domain size is large, the threshold $\rho_c$ will remains approximately constant and insensitive to small changes in the domain. 
 All proceeding simulations in this Chapter are conducted on finite-sized domains between two and three orders of magnitude larger than individual lattice points.
@@ -68,23 +63,14 @@ In this paradigm, the spanning cluster describes a high-impact epidemic that spr
 Small to medium-sized clusters existing at (or slightly below) the threshold describe short-lived, 
 failed epidemics where the pathogen spreads for a time before becoming extinct.
 
-These analogies have clear limitations when describing mobile hosts, but fortunately, trees are sessile and immobile.
-Thus, percolation theory provides a valuable framework for modelling tree diseases (see Chapter \ref{section:lit-rev-perc} 
-for a review of percolation-based models). 
-Forming a percolation-based lattice model of tree disease requires us first to combine a compartmental SIR-like model within the lattice ($L$) mentioned above. %
-Next, an appropriate transmission dynamic is described to model the spread of disease between lattice points.
-
+Percolation models have clear limitations when describing mobile hosts, but fortunately, the spread of disease through sessile tree populations is more appropriate. Thus, percolation theory provides a valuable framework for modelling tree diseases, mainly when the effect of long-distance pathogen dispersal is limited or reduced. Examples include soil-borne pathogens, i.e. \textit{Rhizoctonia solani} and \textit{Pythium spp} \cite{otten2004empirical, poggi2013percolation}. In addition, we can envision that percolation becomes a relevant approximation to dispersal in unfavourable abiotic conditions. For example, areas of low wind/rainfall splash reducing the dispersal of citrus canker (caused by the bacterium \textit{Xanthomonas axonopodis}) \cite{bock2010wind}, or regions of lower wind speeds reducing the fungal spore dispersal of ash dieback \cite{solheim2017spread}. Moreover, as argued by \cite{OROZCOFUENTES201912}, a percolation setting becomes more suitable as the landscape becomes more densely populated with trees.
+The reader can find a more in-depth review on epidemic percolation models in section \ref{section:lit-rev-perc}. 
 
 \section{Percolation-based SIR}
 
-The percolation density parameter ($\rho$) defines a simple host distribution.
-Namely, $\rho$ represents the probability of a susceptible tree $S$ (given a numerical value $1$), 
-while empty lattice positions define an insusceptible state $\emptyset$ (with numerical value $0$).
-If a susceptible tree neighbours an infected tree, it will transition into the $I$ compartment (having a numerical value of $2$).
-Transitions between states occur with a probability of 1, and the Von-Neumann neighbourhood describes the connectivity between trees.
-After an arbitrary number of time-steps $T$, an infected tree will transition into the removed state $R$ and die; 
-see appendix \ref{a:propagation} for more information on the numerical implementation. %
-For simplicity, the infectious lifetime will not be considered as a parameter but will remain fixed at $T=1.0$\textemdash revisited below in section \ref{ch3:two-param-model}.
+Forming a percolation-based lattice model of tree disease requires us first to combine a compartmental SIR-like model within the lattice ($L$) mentioned above and an appropriate transmission dynamic to model the spread of disease between lattice points. Firstly, the percolation density parameter ($\rho$) defines a simple host distribution, whereby $\rho$ represents the probability of a susceptible tree $S$ (given a numerical value $1$). In contrast, empty lattice positions define an insusceptible state $\emptyset$ (with numerical value $0$). 
+
+In the model, a susceptible tree will transition into the $I$ compartment (having a numerical value of $2$) if it neighbours an infected tree. Transitions between states occur with a probability of 1, and the Von-Neumann neighbourhood describes the connectivity between trees. After an arbitrary number of time-steps $T$, an infected tree will transition into the removed state $R$ and die; see appendix \ref{a:propagation} for more information on the numerical implementation. For simplicity, the infectious lifetime will not be considered as a parameter but will remain fixed at $T=1.0$\textemdash revisited below in section \ref{ch3:two-param-model}.
 
 The initial conditions begin with a small patch of infected hosts (of size $5\times5$ for example) located at the origin ($L_O$) at $t=0$, and percolation events describe the boundary conditions. 
 Percolation occurs when the infection spreads from $L_O$ to any of the four lattice boundaries, thereby defining a connected cluster of infectious-removed that spans the domain from $L_O$.
@@ -108,10 +94,8 @@ Typical simulations on a domain of size $500 \times 500$ are shown in Figure \re
     \label{fig:ch3-perc-spread}
 \end{figure}
 
-Figure \ref{fig:ch3-perc-spread} illustrates dynamic simulations of disease spread through a series of $500 \times 500 $ domain. At density $\rho=0.70$, Figures \ref{fig:ch3-perc-spread} (a-c) reveal an unnatural diamond-like pattern of spread reflecting artefacts of the lattice geometry.
-The diamond-like spread begins to disappear in Figure \ref{fig:ch3-perc-spread}(d-f), when simulations have density $\rho=0.65$. At this density, a wave-like propagation of infected trees spreads radially from the epicentre outward toward the lattice boundary. Interestingly, these observations can be understood through the lens of stochasticity:
-a low tree density reduces the chance of spread between nearest neighbours, producing a more chaotic epidemic and disrupting the highly ordered wavefront (panels (a-c)) into a circular travelling wavefront (panels (d-f)).
-Although, it is worth remarking that an alternate triangular or honeycomb lattice geometry would change the diamond-like pattern altogether.
+Figure \ref{fig:ch3-perc-spread} illustrates dynamic simulations of disease spread through a series of $500 \times 500 $ domain. At density $\rho=0.70$, Figures \ref{fig:ch3-perc-spread} (a-c) reveal a diamond shaped pattern of spread; this unnatural spread pattern reflects artefacts of the lattice geometry and is unlikely to be realised in nature.
+However, the diamond-like spread begins to disappear in Figure \ref{fig:ch3-perc-spread}(d-f), when simulations have density $\rho=0.65$. At this density, a wave-like propagation of infected trees spreads radially from the epicentre outward toward the lattice boundary. Interestingly, we may understand these observations through the lens of stochasticity. A low tree density reduces the chance of spread between nearest neighbours, which produces a more noisy and disordered epidemic spread. In turn, the lower infection probability between neighbours disrupts the highly ordered wavefront (panels (a-c)) into a circular travelling wavefront (panels (d-f)). Nevertheless, it is also worth remarking that an alternate lattice geometry (e.g. triangular or honeycomb) would alter the diamond-like pattern altogether. 
 
 Figures \ref{fig:ch3-perc-spread}(g-i), show the spread of disease for a lower host density of $\rho = 0.60$.
 As the disease spreads outward, a more fractal-like pattern begins to emerge.

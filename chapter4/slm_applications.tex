@@ -275,12 +275,11 @@ As such, BSIBI data is helpful to reconstruct several baseline tree distribution
 
 \subsection{Species distribution models}
 
-In the absence of extensive host data, species distribution models (\acrshort{sdm}s) aim to generate synthetic data, typically from less-extensive surveys.
-SDMs were first developed in the $1990$s, and have subsequently become fundamental to ecological and biogeographical inference studies.
-Synthetic distributions have been used to examine biodiversity, conservation, resource management, 
-ecology and climate change \cite{franklin2013species, skov2016real, wittmann2016confronting, 10.3958/059.037.0110, zhang2019using}.
-The vast majority of SDMs fall into two categories: correlative \cite{srivastava2019species}, and mechanistic \cite{shabani2016comparison}.
+In the absence of extensive host data, species distribution models (\acrshort{sdm}s) aim to generate synthetic data, typically from less-extensive surveys. First developed in the $1990$s, SDMs have become fundamental to ecological and biogeographical inference studies. SDMs rest on statistical algorithms (discussed more below) that process and correlate environmental data to predict species habitat suitability in space and time, as depicted in Figure \ref{fig:sdm}. Thus, the overall SDM approach differs significantly from traditional mechanistic (e.g. compartmental, agent-based, and PDE) spread models, as discussed in section \ref{ch2:lit-rev-compartmentalised-models}.
 
+Synthetic distributions have numerous applications for examining biodiversity, conservation, resource management, ecology, and climate change \cite{franklin2013species, skov2016real, wittmann2016confronting, 10.3958/059.037.0110, zhang2019using}. Although SDMs have many applications, few studies focus specifically on constructing SDMs for tree-based pathogens. However, recently \cite{he2019integrating} coupled remote-sensed data with an SDM to produce disease-induced mortality maps of sudden oak death in California. Namely, by coupling remote-sensed mortality data to an SDM of the tree pathogen \textit{P. ramorum}, \cite{he2019integrating} was able to narrow down areas in the landscape where mortality was disease induced\textemdash in contrast to areas affected by other causes of stress and mortality.
+  
+The vast majority of SDMs fall into two categories: correlative \cite{srivastava2019species}, and mechanistic \cite{shabani2016comparison}.
 Correlative SDMs relate (widely available) presence-only, or presence-absence, data to several environmental predictor variable datasets.
 For tree species, predictor variables include temperature, precipitation, altitude, and soil type \cite{ray2021multi, hill.data}.
 Following this, a species distribution map can be predicted, albeit with  uncertainties and errors.
@@ -297,10 +296,8 @@ computational challenges, as it typically relies on vast, multi-variable time-se
 \begin{figure}
     \centering
     \includegraphics[scale=0.35]{chapter2/figures/SDM-fig.pdf}
-    \caption{A graphical species distribution model (SDM) illustration, adapted from \cite{SDM_1}. 
-             A variety of predictor variables and input data sources are used in conjugation with modelling algorithms to produce
-             a habitat suitability map.}
-    \label{fig:sdm}
+    \caption{A graphical species distribution model (SDM) illustration, adapted from \cite{SDM_1}. A variety of predictor variables and input data sources are used in conjugation with modelling algorithms to produce a habitat suitability map.}
+   \label{fig:sdm}
 \end{figure}
 
 A review paper by \cite{guillera2015my}, revealed a diverse use of SDMs.
