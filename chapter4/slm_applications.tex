@@ -8,10 +8,7 @@
 \chapter{Simple lattice model: applications}
 \label{chapter:SLM-applications}
 
-Previously, a percolation-based SIR model of tree disease spreading through a forest was outlined, named the `simple lattice model' (SLM).
-The SLM provides a flexible foundation to generalise as we look to model the spread of disease over realistic landscapes focused in Great Britain.
-This Chapter aims to examine some applications of the SLM.
-In particular, two applications divide the Chapter, beginning with the early warning systems (\acrshort{ews}) for forest management and ending with a toy model of landscape-level spread.
+Previously, a percolation-based SIR model of tree disease spreading through a forest was outlined, named the `simple lattice model' (SLM). The SLM provides a flexible foundation to generalise as we look to model the spread of disease over realistic landscapes focused in Great Britain. This Chapter aims to examine some applications of the SLM. In particular, two applications divide the Chapter, beginning with the early warning signals (\acrshort{ews}) for forest management and ending with a toy model of landscape-level spread.
 
 Firstly, the system for EWS detection put forward by \cite{OROZCOFUENTES201912} is extended. 
 The original publication considered a fixed infectivity parameter ($\beta = 0.50$), here we generalise the analysis to the entire $\beta$ parameter space. 
@@ -23,20 +20,15 @@ Several tree distribution datasets in Great Britain are presented and compared, 
 \section{Early warning signals}
 \label{sec:EWS}
 
-Applications of EWS have been investigated by \cite{OROZCOFUENTES201912} for forest management and ecosystems services.
-The results focused on a one-dimensional parameter space of tree density $\rho$ over a square lattice with fixed infectivity $\beta$.
-The study observed statistically significant changes (or signals) in the
-moment-generating functions (of variance, skew and auto-correlation) for the radial velocity.
-Changes in variance, skew or auto-correlation can preempt epidemic phase transitions, 
-thus providing helpful information that could aid forest and plantation managers to maintain tree health. 
-Here, we offer a small extension to work presented by \cite{OROZCOFUENTES201912}.
-In particular, a new domain and metric are used to detect EWS more precisely.  
-The analysis is generalised to two dimensions in the parameter-space of $\rho$ and $\beta$. 
-After introducing these alternative concepts, we discuss some of the problems and complexities encountered with ensemble-averaging. 
+\cite{OROZCOFUENTES201912} investigated applications of EWS  for forest management and ecosystem services. The manuscript considered a lattice with fixed infectivity $\beta$ and a one-dimensional parameter space of tree density $\rho$. Notably, the study observed significant changes in the statistical measures of variance, skew and auto-correlation in the spreading pattern just before a transition into the regime of epidemic spread. More specifically, the authors found compelling indications of 'early warning' signals within the model, achieved by calculating the moment-generating functions (i.e. variance, skew and auto-correlation) of a time series velocity. Consequently, knowing when to pre-empt epidemics in tree populations could help prevent the spread of emergent infectious diseases and conserve resources. 
+
+
+Here, we offer a small extension to the work presented by \cite{OROZCOFUENTES201912}. In particular, EWS are detected more precisely using an alternate domain and velocity metric that mitigate artefacts of domain geometry\textemdash discussed more in-depth below. Moreover, the analysis is generalised to two dimensions in the parameter-space of $\rho$ and $\beta$. After introducing these alternative concepts, we discuss problems and complexities encountered when ensemble-averaging simulations. Ultimately, these results may provide helpful information to aid forest and woodland managers in preserving tree health.  
 
 \subsection{Cylindrical geometry}
+\label{sec:cylindrical-geometry}
 
-The metric \cite{OROZCOFUENTES201912} employed to quantify EWS had a similar form as Equation \ref{eq:vel_eff_r}, 
+The metric \cite{OROZCOFUENTES201912} employed to quantify EWS had a similar form as Equation \ref{eq:vel_eff_r},
 though it included both the infected \textit{and} removed ($N_{I+R}$). In contrast, Equation \ref{eq:vel_eff_r} rests solely on $N_I$. 
 Unfortunately, a radial velocity based on $N_{I+R}$ can lead to unintuitive metric observations when geometrical effects seemingly cause the rate to in as the wave spreads outward, which
 becomes particularly visable for later times when the wavefront extent is considerable\footnote{
@@ -83,12 +75,15 @@ Moreover, the channel permits an improved (more intuitive) metric, based on the 
    \label{eq:COM}
 \end{equation}
 where $x_i(t)$ is the spatial location of the $i^{th}$ infected tree along the $x$ axis at time $t$ and $N_I(t)$ is the total number of infected trees. 
-The form of Equation \ref{eq:COM} displays intrinsic similarities to the Newtonian center of mass:
- \[x_{cm} = \frac{\sum^i x_i\times m_i}{\sum_i m_i}\]
-(where the analogous quantities in Equation \ref{eq:COM} are $m_i=1$ and $\sum^im_i= N_I$).
-As such, the metric outlined in Equation \ref{eq:COM} will constitute a `centre of infective mass' (\acrshort{com}) velocity.
-The COM time-series of Figure \ref{fig:ews-primer}(a) is shown in Figure \ref{fig:ews-primer}(b).
-As opposed to the time series shown previously in Figure \ref{fig:vel_eff_rad_metric}(a), the COM metric looks different and allows for negative values.
+
+The form of Equation \ref{eq:COM} displays intrinsic similarities to the Newtonian centre of mass, given by:
+\begin{equation}
+ x_{cm} = \frac{\sum^i x_i\times m_i}{\sum_i m_i}
+\label{eq:newton-COM}
+\end{equation}
+where the analogous quantities in Equation \ref{eq:COM} and \ref{eq:newton-COM} are $m_i=1$ and $\sum^im_i= N_I$.
+Thus, Equation \ref{eq:COM} averages the displacement of infected trees precisely as Equation \ref{eq:newton-COM} averages the displacement of Newtonian mass. Accordingly, Equation \ref{eq:COM} will be denoted as the `centre of infective mass' (\acrshort{com}) velocity $v(t)_{cm}$. 
+Figure \ref{fig:ews-primer}(d) displays the time series $v(t)_{cm}$ of Figure \ref{fig:ews-primer}(a). Notably, the time series in Figure \ref{fig:ews-primer}(d) allows for negative values and looks different to that shown previously in Figure \ref{fig:vel_eff_rad_metric}(a).
 
 Ensemble-averaged COM time-series $\langle v_{cm}\rangle$ are shown in Figure \ref{fig:ews-primer}(c) for the three values of tree density.
 The blue time-series has epidemic parameters well beyond the threshold and begins to decrease around $t \in [800, 900]$, coinciding with percolation to the domain edge.
@@ -99,6 +94,7 @@ The inset of Figure \ref{fig:ews-primer}(c) shows the ensemble-averages between 
 Notably, error bars are most significant for the lowest-valued density shown in green, reflecting a more chaotic spread.
 
 \subsection{Ensemble averaging method}
+\label{sec:ens-avg-method}
 
 The findings of \cite{OROZCOFUENTES201912} were gathered by first producing a distribution of mean time-series velocities $\overline{v}_t$.
 In this scheme, an EWS were detected from statistical moment-generation functions over the mean velocity, e.g. $\big\langle var(\overline{v_t}) \big\rangle $.
@@ -145,10 +141,7 @@ Additionally, the time horizon is fixed to $t_F$, thereby mitigating the cost of
 \subsection{EWS parameter-sweeps}
 \label{section:ews_slm}
 
-Figure \ref{fig:ews-results} displays the mean time-series variance, as per Equation \ref{eq:ews_eq1}.
-The colour bar shows variance over the entire parameter space of density and infectivity from white to back.
-In Figure \ref{fig:ews-results}, the lower and upper red lines indicate a percolation probability of $Pr(\rho, \beta)=0.05$ and $Pr(\rho, \beta)=0.95$, respectively.
-Inside these regions, the system transitions into an epidemic and we witness a considerable rise in the variance.
+Here, an EWS is defined as`\textit{statistically significant changes in the variance of $v(t)_{cm}$ prior to a critical shift into the epidemic regime}', calculated according to Equation \ref{eq:ews_eq1}. Specifically, EWS are calculated by assessing the ensemble-averaged variance of velocity $v(t)_{cm}$ over each simulation between time steps $t_O=100$ and $t_F=200$, justified by the reasons laid out above in section \ref{sec:ens-avg-method}. However, it is worthwhile to remark that, in general, EWS are defined in terms of \textit{any} statistical signals which indicate a system is approaching a critical tipping point \cite{scheffer2009early}. Notwithstanding, Figure \ref{fig:ews-results} displays the ensemble-averaged time-series variance, as per Equation \ref{eq:ews_eq1}. The colour bar shows variance over the entire parameter space of density and infectivity from white to back. In Figure \ref{fig:ews-results}, the lower and upper red lines indicate a percolation probability of $Pr(\rho, \beta)=0.05$ and $Pr(\rho, \beta)=0.95$, respectively. Inside these regions, the system transitions into an epidemic, and we witness a considerable rise in the variance.
 
 The observations of Figure \ref{fig:ews-results} agree with the results of \cite{OROZCOFUENTES201912}. 
 Although measuring EWS over a two-dimensional parameter space reveals some additional information not captured in the original analysis, i.e. when infectivity is low ($\beta<0.40$), EWS preempt the epidemic by a more significant margin\textemdash indicated by the red arrows.
@@ -445,10 +438,8 @@ The green and black pixels represent susceptible and insusceptible patches of la
     \centering
     \includegraphics[scale=0.32]{chapter4/figures/figure1-GB-BCs.pdf}
     \caption{(a) The SLM spreading on a map of GB. The domain geometry and epicenter %
-    location are non-trivial aspects likely to influence the spread of disease. The zoomed inset %
-    shows an example of the Humber estuary preceding an infectious wave-front. 
-    (b) Ensemble-averaged mortality-ratios are shown by colour for each spatial location with 
-        parameters $\rho=0.65$ and $\beta=0.25$.}
+    location are non-trivial aspects likely to influence the spread of disease.
+    The colour bar indicates susceptible $S$, infected $I_i$ (where $i$ is the $i^{\mathrm{th}}$ state), and removed $R$ states. Moreover, the zoomed inset shows an example of the Humber estuary preceding an infectious wave-front. (b) A map of ensemble-averaged mortality-ratios $\chi$, shown by colour for each spatial location with SLM model parameters $\rho=0.65$ and $\beta=0.25$.}
     \label{fig:uk-spread-primer}
 \end{figure}
 
@@ -470,10 +461,8 @@ Here, the mortality ratio captures the total epidemic impact, defined by:
     \chi=\frac{R_f}{S_0}
 \end{equation}
 where $R_f$ is the final number of patches in the removed state at $T_f$ and $S_0$ is the number of susceptible 
-patches at time $T=0$.
-Given the stochasticity, it is necessary to repeat simulations for each epicentre 
-and calculate $\overline{\chi}$. Iterating over the whole of the GB in this way permits visualisation
-of the spatial-susceptibility of the pathogen $\beta$, depicted by colour in Figure \ref{fig:uk-spread-primer}(b).
+patches at time $T=0$. Given the stochasticity, it is necessary to repeat simulations for each epicentre 
+and calculate the mortality ratio $\overline{\chi}$. Iterating over the whole of the GB in this way permits visualisation of the spatial-susceptibility of the pathogen $\beta$, depicted by colour in Figure \ref{fig:uk-spread-primer}(b).
 
 Figure \ref{fig:uk-spread-primer}(b) shows the result of the ensemble averaging $\chi$ for each
 patch of land\footnote{Ensemble averages for each patch ($\approx 2 \times 10^5$ in total) was computationally costly. 
@@ -487,17 +476,15 @@ Higher epidemic parameters increased the mean mortality ratio and reduced spatia
 Although Figure \ref{fig:uk-spread-primer}(b) paints an ideal epidemic scenario involving one infected patch at $t=0$,
 we can assume an emerging epidemic within the SLM model depends non-trivially on the interplay of epicentre location and domain boundary.
  
- \newpage
+\newpage
 
 \subsection{Realistic abundance data}
 
 Figure \ref{fig:uk-oak-l.hill}(a) shows the distribution of oak in GB given by \cite{hill.data}.
-The corresponding probability density function (\acrshort{pdf}) of canopy cover is shown in Figure \ref{fig:uk-oak-l.hill}(b).
-Each pixel in Figure \ref{fig:uk-oak-l.hill}(a) depicts the predicted hectares
+The corresponding probability density function (\acrshort{pdf}) of canopy cover is shown in Figure \ref{fig:uk-oak-l.hill}(b). Each pixel in Figure \ref{fig:uk-oak-l.hill}(a) depicts the predicted hectares
 of oak canopy cover per kilometre squared of land, $\mathrm{ha/km^{2}}$, represented by colour. 
-Therefore, each measure of abundance correlates to host density
-(justified by the fact that $100\mathrm{ha} = 1 \mathrm{km^2}$), denoted by $\rho$.
-The spatial map displays visual irregularities and population heterogeneity.
+Therefore, each measure of abundance correlates to host density (justified by the fact that $100\mathrm{ha} = 1 \mathrm{km^2}$), denoted by\footnote{Although the spatial scale is larger, $\rho$ still represents the same underlying tree density for any given $1\mathrm{km} \times 1\mathrm{km}$ patch. Thus, the same notation for density $\rho$ is kept the same as Chapter \ref{chapter:SLM}} $\rho$. 
+Therefore, the spatial map in Figure \ref{fig:uk-oak-l.hill}(a) displays irregularities and population heterogeneity across GB visually.
 
 The PDF displayed in Figure \ref{fig:uk-oak-l.hill}(b) 
 reveals that most land patches occupy lower canopy cover values.
@@ -550,6 +537,8 @@ Given an increase in the threshold $\rho$, the effective density $\rho^*$ decrea
 likewise, a decrease in $\rho$ increases $\rho^*$ as more patches become susceptible. 
 Thus, $\rho^{*}$ presents a convenient, although crude, agent
 to adjust the host distribution to higher or lower densities.
+
+Following the same arguments in Chapter \ref{chapter:SLM}, the landscape-level percolation model becomes an appropriate description of disease spread in tree populations if long-distance dispersal events (over $\geq 1 \mathrm{km}$) are omitted. Thus, the model becomes helpful when either the frequency of long-distance dispersal is low or the pathogen disperses through small scales. For example, smaller dispersal distances result for fungal spores in low wind speeds \cite{viljanen2007monitoring, solheim2017spread} or when the pathogen spreads through mycelial growth in soil, i.e. \textit{R. Solani} and \textit{Pythium spp} \cite{otten2004empirical, poggi2013percolation}. 
 
 \subsection{Epidemics through heterogeneous landscapes}
 

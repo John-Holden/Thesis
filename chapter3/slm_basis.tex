@@ -63,7 +63,7 @@ In this paradigm, the spanning cluster describes a high-impact epidemic that spr
 Small to medium-sized clusters existing at (or slightly below) the threshold describe short-lived, 
 failed epidemics where the pathogen spreads for a time before becoming extinct.
 
-Percolation models have clear limitations when describing mobile hosts, but fortunately, the spread of disease through sessile tree populations is more appropriate. Thus, percolation theory provides a valuable framework for modelling tree diseases, mainly when the effect of long-distance pathogen dispersal is limited or reduced. Examples include soil-borne pathogens, i.e. \textit{Rhizoctonia solani} and \textit{Pythium spp} \cite{otten2004empirical, poggi2013percolation}. In addition, we can envision that percolation becomes a relevant approximation to dispersal in unfavourable abiotic conditions. For example, areas of low wind/rainfall splash reducing the dispersal of citrus canker (caused by the bacterium \textit{Xanthomonas axonopodis}) \cite{bock2010wind}, or regions of lower wind speeds reducing the fungal spore dispersal of ash dieback \cite{solheim2017spread}. Moreover, as argued by \cite{OROZCOFUENTES201912}, a percolation setting becomes more suitable as the landscape becomes more densely populated with trees.
+Percolation models have clear limitations when describing mobile hosts, but fortunately, the spread of disease through sessile tree populations is more appropriate. Thus, percolation theory provides a valuable framework for modelling tree diseases, mainly when the effect of long-distance pathogen dispersal is limited or reduced. Examples include soil-borne pathogens, i.e. \textit{Rhizoctonia solani} and \textit{Pythium spp} \cite{otten2004empirical, poggi2013percolation}. In addition, we can envision that percolation becomes a relevant approximation to dispersal in unfavourable abiotic conditions. For example, areas of low wind/rainfall splash reducing the dispersal of citrus canker (caused by the bacterium \textit{Xanthomonas axonopodis}) \cite{bock2010wind}, or regions of lower wind speeds reducing the fungal spore dispersal of ash dieback \cite{solheim2017spread}. Moreover, a percolation setting becomes more suitable as the landscape becomes more densely populated with trees, as argued by \cite{OROZCOFUENTES201912}.
 The reader can find a more in-depth review on epidemic percolation models in section \ref{section:lit-rev-perc}. 
 
 \section{Percolation-based SIR}
@@ -94,8 +94,8 @@ Typical simulations on a domain of size $500 \times 500$ are shown in Figure \re
     \label{fig:ch3-perc-spread}
 \end{figure}
 
-Figure \ref{fig:ch3-perc-spread} illustrates dynamic simulations of disease spread through a series of $500 \times 500 $ domain. At density $\rho=0.70$, Figures \ref{fig:ch3-perc-spread} (a-c) reveal a diamond shaped pattern of spread; this unnatural spread pattern reflects artefacts of the lattice geometry and is unlikely to be realised in nature.
-However, the diamond-like spread begins to disappear in Figure \ref{fig:ch3-perc-spread}(d-f), when simulations have density $\rho=0.65$. At this density, a wave-like propagation of infected trees spreads radially from the epicentre outward toward the lattice boundary. Interestingly, we may understand these observations through the lens of stochasticity. A low tree density reduces the chance of spread between nearest neighbours, which produces a more noisy and disordered epidemic spread. In turn, the lower infection probability between neighbours disrupts the highly ordered wavefront (panels (a-c)) into a circular travelling wavefront (panels (d-f)). Nevertheless, it is also worth remarking that an alternate lattice geometry (e.g. triangular or honeycomb) would alter the diamond-like pattern altogether. 
+Figure \ref{fig:ch3-perc-spread} illustrates dynamic simulations of disease spread through a series of $500 \times 500 $ domain. At density $\rho=0.70$, Figures \ref{fig:ch3-perc-spread} (a-c) reveal a diamond shaped pattern of spread. The unnatural spread pattern in Figures \ref{fig:ch3-perc-spread} (a-c) reflect artefacts of the square lattice geometry, and therefore is unlikely to be realised in nature.
+However, the diamond-like spread begins to disappear in Figure \ref{fig:ch3-perc-spread}(d-f), when simulations have density $\rho=0.65$. At this density, a wave-like propagation of infected trees spreads radially from the epicentre outward toward the lattice boundary. Interestingly, we may understand these observations through the lens of stochasticity. A low tree density reduces the chance of spread between nearest neighbours, which produces a more noisy and disordered epidemic spread. In turn, the lower infection probability between neighbours disrupts the highly ordered wavefront (panels (a-c)) into a circular travelling wavefront (panels (d-f)). Nevertheless, it is also worth remarking that an alternate lattice geometry (e.g. triangular or honeycomb) would alter the diamond-like pattern altogether.  
 
 Figures \ref{fig:ch3-perc-spread}(g-i), show the spread of disease for a lower host density of $\rho = 0.60$.
 As the disease spreads outward, a more fractal-like pattern begins to emerge.
@@ -168,19 +168,14 @@ which leads to a description of universality below.
 
 \subsection{Universality}
 
-At $\rho \sim \rho_c$, percolation and scaling theory explain how the system follows a power law of the form $\propto (\rho - \rho_c)^{\alpha}$ 
-where $\alpha$ is a universal critical exponent.
-All systems that possess the same exponent are members of the same `universality class' \cite{PhysRev.180.594, RevModPhys.76.663}.
-Consider the probability that one open site (at the origin) is connected to another open site a distance $r$ away. 
-In this scenario, the probability is described by the `correlation function' $g(r)$. 
-The behaviour of this function defines a length scale, denoted as the `correlation length' $\xi$ that dictates how the probability of `connectedness' decays with distance $r$. 
-For densities close to percolation threshold: 
+At $\rho \sim \rho_c$, percolation and scaling theory explain how the system follows a power law of the form $\propto (\rho - \rho_c)^{\alpha}$ where $\alpha$ is a critical exponent that is universal across all lattice types\textemdash see \cite{stauffer2018introduction} page 31. More broadly, a universal critical exponent describes the behaviour of a continuous phase transition and only depends on the general properties of the system (e.g. the physical dimension or the range of interaction). All systems that possess the same exponent are members of the same `universality class' \cite{PhysRev.180.594, RevModPhys.76.663}.
+
+Another important notion within the model pertains to the `\textit{'correlation function}'. More specifically, a correlation function is defined as a function that describes the statistical correlation between random variables \cite{van1959new}. In the context of percolation, the correlation functions typically describe the probability that two open lattice sites, separated by distance $r$, are connected within the same cluster \cite{stauffer2018introduction}. For example, consider the probability that one open site (at the origin) is connected to another open site a distance $r$ away. In this scenario, the probability is described by the correlation function $g(r)$. The behaviour of this function defines a length scale, denoted $\xi$, that dictates how the probability of `connectedness' decays with distance $r$. For densities close to the percolation threshold: 
 \begin{equation}
     \xi \sim |\rho - \rho_c|^{-\nu}
     \label{eq:universal-scaling}
 \end{equation}
-where $\nu$ is a critical exponent that is universal for all lattice configurations and only depends on the dimension of the lattice used. In general, there are critical exponents for other quantities, e.g. cluster sizes\textemdash discussed more below. 
-However, all follow similar power laws, as shown by \cite{stauffer2018introduction, STAUFFER19791}.
+where $\nu$ is the critical exponent that is universal for all lattice configurations and only depends on the dimension of the lattice used. In general, there are critical exponents for other quantities, e.g. cluster sizes\textemdash discussed more below. However, all follow similar power laws, as shown by \cite{stauffer2018introduction, STAUFFER19791}.
 
 Equation \ref{eq:universal-scaling} can be understood by exploring how the connectivity of open sites depend on the density and the divergence that occurs at the threshold $\rho=\rho_c$. 
 For low densities, $\xi$ is small because all clusters exist in singlets/triplets.
@@ -272,9 +267,8 @@ In order to capture spreading rates, a metric comprising the `spreading velocity
     v_{radial(t)}=\sqrt{N_I(t+1)-N_I(t)}
 \end{equation} 
 where, $N_I$ is the number of infected trees in the domain at time-step $t$. 
-The difference in $N_I$ between time-steps gives an `effective' radial velocity. %
-The number of spatial units progressed by the pathogen is averaged over all angles per unit time. %
-Strictly speaking, Equation (\ref{eq:vel_eff_r}) is valid only for $\rho > \rho_c$. At the percolation threshold, the wave-front assumes a fractal dimension and averaging over two dimensions becomes unreasonable.
+
+Equation \ref{eq:vel_eff_r} is chosen because the difference between $N_I(t+1)$ and $N_I(t)$ gives an `effective' radial velocity, where the number of spatial units progressed by the pathogen averaged over all angles per unit time. Moreover, as an infectious wavefront travels outward over an area, the number of infected trees generally grows quadratically. Hence, we effectively normalise Equation \ref{eq:vel_eff_r} by taking the square root. Otherwise, we might expect misleading increases in the velocity metric. However, strictly speaking, Equation \ref{eq:vel_eff_r} is valid only for $\rho > \rho_c$. Understood because the wavefront assumes a fractal dimension (i.e. $<2$) at the percolation threshold, and averaging over two dimensions becomes unreasonable.
 
 The time-series, $v_{radial}(t)$ is shown in Figure \ref{fig:vel_eff_rad_metric}(a) for three combinations of $(\rho, \beta)$.
 Unsurprisingly, higher-valued combinations produce a higher velocity.
