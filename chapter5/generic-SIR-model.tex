@@ -3,7 +3,7 @@
 
 In the previous Chapter, we employed a simple lattice model (SLM) based on percolation. The percolation setting provided a tractable starting place. Nevertheless, several limitations underpinned the model. Chiefly, percolation models rest on local, nearest-neighbour (NN) contacts and cannot describe epidemics at lower, more realistic tree densities ($\rho \sim 0.10$). Subsequently, this Chapter will generalise the SLM and incorporate non-local NN interactions by introducing a generic Gaussian dispersal kernel, allowing epidemics at far lower tree densities.
 
-The thin-tailed Gaussian kernel introduced here represents an intermediate step between the NN interactions in the SLM and the fat-tailed inverse power-law dispersal present in Chapter \ref{ch:6-adb}. The ease of integrating a Gaussian kernel proved helpful when deriving an analytic expression of $R_0$, as discussed more below. Other choices of simple one parameter dispersal kernels are possible, including the slightly longer range negative exponential \cite{nathan2012dispersal}. Regardless, any developing epidemic that follows a similar ranged kernel will ultimately approximate similar spreading patterns \cite{bullock2017synthesis}.
+The thin-tailed Gaussian kernel introduced here represents an intermediate step between the NN interactions in the SLM and the fat-tailed inverse power-law dispersal present in Chapter \ref{ch:6-adb}. The ease of integrating a Gaussian kernel also proved helpful when deriving an analytic expression of $R_0$, as discussed more below. Other choices of simple one parameter dispersal kernels are possible, including the slightly longer range negative exponential\textemdash discussed at length in \cite{nathan2012dispersal}. Regardless, any developing epidemic that follows a similar ranged kernel will ultimately approximate similar spreading patterns \cite{bullock2017synthesis}.
 
 Firstly, we will combine dispersal-based interactions within a simplistic SIR framework to construct a non-local model (NLM) of tree disease. The model behaviour is then examined under various dispersal length scales and fitted against the standard SIR to contrast disparities between spatial and non-spatial models.
 After establishing the non-local dispersal model, a spatially explicit (analytic) expression for the basic reproduction number will be derived for the model, denoted by $R_0$. 
@@ -391,31 +391,22 @@ When $\ell$ is small, $R_0$ is low; the reason for this are two-fold:
 Then, as the kernel is increased, $R_0$ asymptotically increases to a maximum value beyond which increasing $\ell$ bares no impact on $R_0$\textemdash provided that the number of secondarily infected trees is small in comparison to the number of hosts in the neighbourhood\footnote{Insight into the underlying behaviour could be gleaned by looking at equation \ref{eq:Appendix_final_expression1}. That is, by accessing the growth of $2\pi \rho_0 \ell^2$ and the convergence of the function $\mathrm{Ein}$ (defined by equation \ref{eq:ein}) and noting that as $\ell \rightarrow \infty$, $\beta=\beta^*/2\pi\ell^2 \rightarrow 0$. Although an in-depth mathematical analysis was not undertaken, it is clear that for large values of $\ell$, $R_0$ asymptotically approaches a limiting value.}.
 Therefore, if $\ell$ is large enough, the normalised infectivity can be seen to effectively constrains the epidemic severity to a limiting value.
 
-From the reproduction number, a transmission threshold can be defined by $R_0=1$,  predicting the separation of states between confinement and epidemic.
+From the reproduction number, a transmission threshold can be defined by $R_0=1$, predicting the separation of states between confinement and epidemic.
 In Figure \ref{fig:R0-vs-NLM-sims}(d), the threshold predicted by equation \ref{eq:Appendix_final_expression1} is marked in red, overlaying a two-dimensional phase plot of $R_0$ over tree density and infectivity.
 According to Figure \ref{fig:R0-vs-NLM-sims}(d), when model parameters satisfy $R_0>1$, the pathogen may propagate for a time before dying off or culminate in an epidemic.
 Below the threshold, the pathogen has little chance of spreading to neighbouring trees and little chance of causing a large-scale epidemic.
 Equation \ref{eq:Appendix_final_expression1} provides a computationally efficient means to categorise model behaviour.
-The following section assesses how the total tree mortality, or final-sized epidemic, relates to threshold $R_0>1$  predicted by \ref{eq:Appendix_final_expression1}.
+The following section assesses how the total tree mortality, or final-sized epidemic, relates to threshold $R_0>1$ predicted by \ref{eq:Appendix_final_expression1}.
 
 \subsection{Tree mortality versus $R_0$}
 \label{sec:tree-mortality-analytic}
 
-Desirably, predictions about the final epidemic outcome should be possible given observations of the first few infections. 
-For a well-mixed homogeneous population, the reproduction number can be used to estimate the number of expected cases as a fraction of the population.
-In the standard SIR model, this is given by:
-\begin{equation}
-\label{eq:final-sized-epi}
-    R_{\infty} = S_0\Big[]1 - \exp\big( R_0 R_\infty\big) \Big]
-\end{equation}
-where $R_\infty$ is the number of cases as a fraction of the population size (the so-called `final-sized epidemic'). 
-When there is spatial structure, as in the NLM, the relation given by equation \ref{eq:final-sized-epi} would no doubt be more complex.
-This section investigates the relationship between $R_0$ and the number of host removals during a simulation\textemdash compelled by the fact that multiple methods can calculate $R_0$ and that methods should be evidenced by the existence of a threshold \cite{li2011failure}.
+A swift response during the early phases of an outbreak increases the chance of successful control \cite{WEBIDEMICS}. Nevertheless, knowing whether or not an early-stage outbreak will snowball into a large-scale epidemic is not always clear\textemdash as was the case for chestnut blight in Europe \cite{hillman2004viruses}. Thus, we desire accurate predictions of the final epidemic outcome from observations of the first few infections. For a well-mixed (non-spatial) population as in the standard SIR, we can conveniently employ the reproduction number to estimate the number of expected cases as a fraction of the population\footnote{In the standard SIR model, the number of expected cases as a fraction of the populations can be shown to follow: $R_{\infty} = S_0\Big[1 - \exp\big( R_0 R_\infty\big) \Big]$. Here, $R_\infty$ is the number of cases as a fraction of the population size, the so-called `final-sized epidemic', see \cite{chowell2009mathematical} for a more in-depth break down.}. 
 
-Varying both $\rho$ and $\beta^*$ results in a different $R_0$ prediction.
-In this way, $R_0$ predictions can be plotted against the total number of hosts transitioning into the $R$ compartment\textemdash labelled as `tree mortality' in Chapter\ref{fig:ch4_uk_spread}.
-In Figure \ref{fig:R0-vs-NLM-sims}(a), ensemble-averaged tree mortalities are plotted as a function of the predicted $R_0$ value for three variations of tree density $\rho$, indicated by the solid blue-green lines.
-Simulations were repeated in an ensemble of size $250$, and each simulation evolved until all infected trees became extinct or for $2500$ time-steps elapsed, whichever occurred first.
+However, the relationship between $R_0$ and the final epidemic outcome is undoubtedly more complex when there is spatial structure, as in the NLM. Hence, this section investigates the relationship between $R_0$ and the total number of host removals, denoted by $\chi$. Investigating $R_0$ and $\chi$ is crucial to establish the existence of the threshold at $R_0=1$. In addition, this analysis is compelled further by noting that some authors fail to demonstrate the threshold at $R_0=1$ and give improper definitions of $R_0$, as explained by \cite{li2011failure}.
+
+Primarily, the main epidemic parameters in the NLM consist of $\rho$ and $\beta^*$, therefore varying $\rho$ and $\beta^*$ in Equation x result in different $R_0$ predictions that we can plot against the observed tree mortality. Consequently, Figure \ref{fig:R0-vs-NLM-sims}(a) shows ensemble-averaged tree mortality plotted as a function of predicted $R_0$ values for three density parameters, indicated by solid lines blue-green.
+A total of 250 replicate simulations formed the ensemble average, and simulations evolved until all infected trees became extinct or for $2500$ time-steps elapsed, whichever occurred first.
 The ensemble-averaged mortality is overlaid by a scatter plot depicting a small sample of data points; the colour of each sample point reflects the infectivity parameter $\beta^*$.
 
 \begin{figure}
@@ -425,10 +416,11 @@ The ensemble-averaged mortality is overlaid by a scatter plot depicting a small 
     \label{fig:R0-vs-NLM-sims}
 \end{figure}
 
-According to Figure \ref{fig:R0-vs-NLM-sims}(a), when $\beta^*$ is low the reproduction ratio satisfies $R_0<1$ and tree mortality is kept low.
-Additionally, when the infectivity is increased such that $R_0>1$,  tree mortality rises considerably.
-Equation \ref{eq:Appendix_final_expression1} therefore demonstrates a threshold-like behaviour defined by $R_0=1$.
-Above the threshold $R_0=1$, increasing the tree density increases the epidemic scale because more susceptible hosts are available to infected\textemdash indicated by a more significant rise in tree mortality in green.
+Figure \ref{fig:R0-vs-NLM-sims}(a) shows the relationship between tree mortality, the predicted $R_0$ from equation \ref{eq:Appendix_final_expression1}, and the two epidemic parameters $\rho$ and $\beta$.
+A scatter plot of coloured data points (depicting a small sample of data) overlays a continuous line representing an ensemble average. 
+The corresponding colour bars on the scatter plot and ensemble-average characterise infectivity and density, respectively.
+The Figure illustrates that tree mortality remains low when $R_0 < 1$ and $\beta$ is small, as indicated by coloured scatter plots in blue. Conversely, the tree mortality increases with infectivity when $R_0>1$, shown by the yellow scatter points. Therefore, equation \ref{eq:Appendix_final_expression1} demonstrates a threshold-like behaviour defined by $R_0=1$.
+Above the threshold $R_0=1$, increasing the tree density increases the epidemic scale because more susceptible hosts are available to infect, as indicated by the significant rise in tree mortality in the continuous green line. 
 
 Despite being above the threshold, the numerical simulations can still fail to produce an epidemic,
 illustrated by the small number of data points beyond $R_0=1$ that map to a zero-sized epidemic. For example, at $R_0\approx 2$ a small number of points can far below each ensemble mean.
@@ -510,11 +502,11 @@ When epidemic parameters are around the threshold, as in Figure \ref{fig:contact
 whereas Figures \ref{fig:contact-trace}(d-e) show that if infectivity is increased, the network proliferates rapidly. 
 Indeed for $\beta^*=2$ and $\beta^*=2$ the network became large if plotted for all generations\textemdash consequently $R_0^{(5)}$ was truncated to permit visualisation.
 
-From Figures \ref{fig:contact-trace}(d-e), one can discern assumptions implicit within the NLM and visualise how targeted epidemic control might be optimised. In the NLM, tree-to-tree interactions are particle-like, meaning that infections spread unidirectionally between two trees at any time. In real life, interactions are more complex. For example, consider two infected trees $(A, B)$ in the vicinity of one healthy susceptible neighbour $C$. Here, infection pressure on $C$ is likely a continuous function of $A$ and $B$. We can collectively represent these more complex interactions by multiple edges between $A, B$ and $C$ in a network representation.
-However, the probability of $C$ becoming infected by $A$, $B$ or $A \bigcup B$  occurs with statistical independence. Therefore, we employ the standard method of combining statistically independent events from the inclusion-exclusion formula. 
+From Figures \ref{fig:contact-trace}(d-e), one can discern assumptions implicit within the NLM and visualise how targeted epidemic control might be optimised. In the NLM, tree-to-tree interactions are particle-like, meaning that infections spread unidirectionally between two trees at any time. In real life, interactions are more complex. For example, consider two infected trees $(A, B)$ in the vicinity of one healthy susceptible neighbour $C$. Here, infection pressure on $C$ is likely a continuous function of $A$ and $B$. We can collectively represent these more complex interactions by multiple edges between $A, B$ and $C$ in a network diagram.
+However, the probability of $C$ becoming infected by $A$, $B$ (or $A \cap B$) occurs with statistical independence. Therefore, we employ the standard method of combining statistically independent events from the inclusion-exclusion formula\textemdash given in appendix \ref{A:combiniing-probabilities}. 
 
-Although, modelling simultaneous infection pressure from multiple infected trees complicates the definition of $R_0$.
-Primarily, infections originate from multiple sources, and we cannot tell from which tree(s) the infection initially spread. See appendix \ref{A:combiniing-probabilities} for a more in-depth discussion on combining probabilities. Nonetheless, another assumption relates to self-loops in the network. In the framework proposed here, trees transition into the $R$ compartment and self-loops are negated. However, in reality, re-infection is possible (e.g. the yearly cycle of ash dieback \cite{gross2014h}) that could be supposed to cause a host's infectivity to increase with each re-infection.
+Despite the necessity of modelling the simultaneous infection pressure from multiple infected trees, it complicates the definition of $R_0$.
+Primarily, infections can originate from multiple sources, and we cannot tell from which tree(s) the infection initially spread. See appendix \ref{A:combiniing-probabilities} for a more in-depth discussion on combining probabilities. Nonetheless, another assumption relates to self-loops in the network. In the framework proposed here, trees transition into the $R$ compartment and self-loops are negated. However, in reality, re-infection is possible (e.g. the yearly cycle of ash dieback \cite{gross2014h}) that could be supposed to cause a host's infectivity to increase with each re-infection.
 
 The networks shown in Figures \ref{fig:contact-trace}(d-e) present a simple, yet insightful, representation to gauge what connections epidemic control would need to disrupt.
 Well-known results suggest that the scale of control should reflect the spatio-temporal scale of disease spread \cite{control-scale-matching}.
