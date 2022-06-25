@@ -73,7 +73,7 @@ indicative of densely populated ash stands \cite{ash-tree2, ash-tree1}.
 \subsubsection{Transitions: $S\rightarrow E_n$}
 
 Individual tree-to-tree interactions are modelled as a system of particles (introduced previously in Chapter \ref{ch5:dispersal-model}). Two component functions then control the infection probability, a time-varying infectivity $\beta\phi(t)\in [0, 1]$ and dispersal function $D(r; \ell)\in [0, 1]$. In particular, we will consider a thin-tailed Gaussian and a normalisable fat-tailed inverse power law to model dispersal.
-In year $n$, an infected tree located at $x^\prime$ can infect a susceptible tree located at $x$, represented mathematically as $S_x \rightarrow E_{x,n}; I_{x^\prime, m}$. The indices $n$ and $m$ are introduced for convenience to describe the year ash trees first become exposed, where $m\leq n$ denotes a previously infected tree. Thus, infected trees $I_n$ and $I_{m}$ occupy identical infectious states that do not affect the infection dynamics. If an infected tree that remains infectious during the step $t\rightarrow t + \delta t$, the probability of transition follows:
+In year $n$, an infected tree located at $x^\prime$ can infect a susceptible tree located at $x$, represented mathematically as $S_x \rightarrow E_{x,n}; I_{x^\prime, m}$. The indices $n$ and $m$ are introduced for convenience to describe the year ash trees first become exposed, where $m\leq n$ denotes a previously infected tree. Thus, infected trees $I_n$ and $I_{m}$ occupy identical infectious states that do not affect the infection dynamics. If an infected tree remains infectious during the step $t\rightarrow t + \delta t$, the probability of transition follows:
 \begin{equation}
     Pr(S_{x} \rightarrow E_{x,n} ;\ I_{x^{\prime}, n} ) = \beta  \phi(t) D(r;\ell)
 \end{equation}
@@ -87,7 +87,7 @@ transition probabilities are calculated at each time-step, taken to be days, whi
 \begin{tabular}{ m{2.3cm}  m{7cm}  m{4.cm} }
  \\
  \hline
- Model name &  \hspace{3em} $Pr(S_{x} \rightarrow E_{x,n}; I_{x^{\prime}}) \in [0, 1]$ & \hspace{2em} $\beta^*$ factor\\
+ Model name &  \hspace{3em} $Pr(S_{x} \rightarrow E_{x,n}; I_{x^{\prime}, m}) \in [0, 1]$ & \hspace{2em} $\beta^*$ factor\\
  \hline
  1: $\phi_1$-ga & 
  \[= \left\{
@@ -617,7 +617,7 @@ Negating below-threshold patches is a vital assumption\textemdash discussed more
 \begin{figure}
     \centering
     \includegraphics[scale=0.38]{chapter6/figures/fig6-R0-map-generation.pdf}
-    \caption{Generating $R_0$ maps for ADB over Great Britain. (a) Ensemble-averaged results of $R_0$ are plotted against the tree densities informed by \cite{hill.data}, revealing a linear relation between $R_0$ and $\rho$. (b-c) Projecting SEIR inverse power law $R_0$ values onto the re-scaled $5\mathrm{km} \times 5 \mathrm{km}$ ash host-distribution for two values of $\beta_{pl}$. Patches of land below $R_0 = 1$ are shown as white space. (d-e) The top $10$ largest connected, and susceptible, $R_0$-clusters that are present in maps (b-c).}
+    \caption{The process of generating $R_0$ maps over Great Britain. (a) The probability density function of ash abundance, as given by \cite{hill.data}. (b-c) Ensemble-averaged results of $R_0$ plotted against tree density for sporulation functions $\phi_1$ and $\phi_2$, respectively. (d-g) Projecting  $R_0$ values onto the re-scaled $5\mathrm{km} \times 5 \mathrm{km}$ abundance maps for the Gaussian dispersal model. (h-k) The same process of projecting $R_0$ values onto the distribution for inverse power law dispersal models. Two values of $\beta_{pl}$ are shown for both Gaussian and power-law. White space depicts patches below $R_0 = 1$. The bottom plots show the top $10$ largest connected clusters where  $R_0 \geq 1 $.}
     \label{fig:R0-map-generation}
 \end{figure}
 \end{landscape}
@@ -866,14 +866,13 @@ In turn, a larger patch-level domain size produced a coarse-grained host distrib
 However, future research could examine non-local interactions between $R_0$-valued patches, which could permit the construction of a higher resolution $R_0$-map composed of `within' and `between' patch interactions\textemdash echoing 
 the short and long ranged interactions inside a metapopulation \cite{beninca2020trade}.
 
-Despite the limitations of CCA, clusters grew up to four orders of magnitude over the initial interval of infectivity, $\beta^*\in [100, 400]$.
-Rapid cluster growth between $\beta^*\in [100, 400]$ occurred for all SEIR model-variants and domain resolutions.
-Landscape-level spread within our framework, therefore, demonstrates a threshold-like behaviour, below witch ($\beta^* \lessapprox 100$), no models would be able to invade Great Britain.
-The next valuable step would be to fit a value of $\beta$ to data on ADB spread\footnote{Given the high availability of ADB mortality data in different European countries, fitting the SEIR model to mortality curves would be most accessible.}, 
-and construct the resulting $R_0$-map. Although, a simplified comparison can be achieved by visual inspection alongside Forestry Commission (FC) survey data, as shown in Figure \ref{fig:adb-comparison}.
 
-Unfortunately, visually comparing the $R_0$-maps with FC ADB data proved challenging, owing to the limited presence-only survey that contained no estimates for the number of ADB cases within each grid.
-As such, raw $R_0$ values/pixels in the map could not be correlated to a number of observed cases.
-Therefore, an improved method to corroborate the model against observational data is required to progress the framework.
+Despite the limitations of CCA, clusters grew up to four orders of magnitude over the initial interval of infectivity, $\beta^*\in [100, 400]$. Rapid cluster growth occurred between $\beta^*\in [100, 400]$ for all SEIR model-variants and domain resolutions. Therefore, landscape-level spread within our framework demonstrates a threshold-like behaviour, below which ($\beta^* \lessapprox 100$), no models would be able to invade Great Britain. 
+
+Given a set of data containing the \textit{number} of confirmed ADB cases in each grid location, we could correlate $R_0$-values in the map to the observed number of cases. Nonetheless, correlating $R_0$ values with case numbers was unattainable because of the non-existent data sources. The only available option was visually comparing the $R_0$-maps to nationwide FC ADB survey data. However, visual comparisons still proved challenging due to the limited FC survey data that only reported the presence of confirmed ADB cases. Therefore, an improved method to corroborate the model against observational data is required to progress the framework.
+
+Fitting $\beta$ to ADB data remains a crucial next step for progressing the framework. Numerous studies have collated spatial-temporal ADB data in Europe \cite{https://doi.org/10.1111/1365-2745.13383, https://doi.org/10.1002/ppp3.11, stocks2017first, lohmus2014ash}, most of which tracks either tree mortality or the degree of symptom expression over time. Given sufficient spatial-temporal data on the spread of ADB, we could estimate epidemic speed and lifecycle parameters using Bayesian Markov-chain-Monte-Carlo methods. Similar statistical methods have proved noteworthy and effective for modelling the sudden oak death in California \cite{10.1371/journal.pcbi.1002328} and the spread of citrus canker in Florida \cite{neri2014bayesian}. However, collecting the necessary data often span years and requires considerable resources to monitor disease progression, as demonstrated by the underlying citrus canker data sets \cite{gottwald2002geo}. Unfortunately, comprehensive spatial-temporal data appears absent in the current literature, so fitting the model to spatial-temporal data sources remains questionable. However, more work is required to rule out the approach.
+
+A more straightforward (albeit less comprehensive) method to fit $\beta$ to ADB data could be achieved using mortality curves. Different authors have fit logistic growth models to data on the spread of ADB\textemdash see \cite{alonso2015designing, https://doi.org/10.1002/ppp3.11, lohmus2014ash}. Ultimately, mortality curves and logistic growth are non-spatial, in contrast to the work presented in this Chapter. Nevertheless, Figure \cite{fig:ash-mortalty} demonstrated an s-shaped logistic growth-like curve that forms the basis for an expanded study focused on model fitting. Fitting the spatial dispersal model to a logistic growth equation could be easily achieved. Section \ref{sec:SIR-fitting} provides a helpful example of fitting a spatial dispersal model to a non-spatial equation.
 
 The next Chapter builds on the $R_0$-map and outlines steps toward a novel landscape-level control strategy.

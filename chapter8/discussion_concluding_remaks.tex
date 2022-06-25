@@ -16,13 +16,13 @@ At the very least, these results bolster the growing body of research highlighti
 
 Additionally, Chapter \ref{ch5:dispersal-model} examined two methods of calculating $R_0$ for a non-local dispersal model (NLM) over a range of epidemic parameters. Results from Chapter \ref{ch5:dispersal-model} indicate that when the scale of dispersal is comparable to the domain, the model approximates a mass-action well-mixed system described by the standard SIR model. However, comparisons to the SIR model were simplified and limited to one parameter (i.e. the ratio $\beta/\gamma$). Subsequently, the analysis constitutes a preliminary result, and a more sophisticated comparison method is required to glean further insight.
 
-Most intriguingly, the spatially-explicit derivation of $R_0$ led to an `entire function' in Equation \ref{eq:ein}, a well-known function in complex analysis  \cite{abramowitz1948handbook}. 
-Equation \ref{eq:ein} contrasts with the majority of approaches to calculate $R_0$, which generally rest on infectivity/removal rates without including spatial structure or dispersal. Instead, Equation \ref{eq:ein} was a function of infectivity, removal, dispersal, and tree density parameters. Further theoretical studies could explore a more rigorous analysis of Equation \ref{eq:ein}, and perhaps examine an alternate derivation incorporating inverse power law dispersal with exponentially-distributed removal lifetime dynamics.
-However, it is clear to see that the mathematical derivation might ultimately become too challenging in the face of more complicated epidemic models. 
+Most intriguingly, the spatially-explicit derivation of $R_0$ led to an `entire function' in Equation \ref{eq:ein}, a well-known function in complex analysis \cite{abramowitz1948handbook}. Entire functions have been examined in several theoretical settings (e.g. \cite{littmann2005entire, hryniv2009zeros, sixsmith2011entire}), including a spatially-structured population model with dispersal \cite{zhang2017non}. However, despite a detailed search, no theoretical studies expand or develop upon Equation \ref{eq:ein} in the context of epidemics. 
+As such, Equation \ref{eq:ein} marks a different approach for determining $R_0$ that considers the spatial structure, host density, dispersal mechanism and infectivity. Further theoretical studies could explore a more rigorous analysis of Equation \ref{eq:ein} and perhaps examine an alternate derivation incorporating inverse power law dispersal with exponentially-distributed removal lifetime dynamics. However, the mathematical derivation might become too challenging in the face of more complicated epidemic models
 
-Then in Chapter \ref{ch5:dispersal-model}, the analytic expression of $R_0$ was compared against the `actual' contact-traced reproduction ratio. Both methods to determine the reproduction ratio demonstrated a clear epidemic threshold at $R_0=1$, thereby marking an important finding. Nevertheless, comparing both methods revealed that the analytic expression overestimates $R_0$ for progressively higher values ($R_0 \sim 10$), highlighting a significant limitation in the approach. 
+Then in Chapter \ref{ch5:dispersal-model}, the analytic expression of $R_0$ was compared against the `actual' contact-traced reproduction ratio. Both methods used to determine the reproduction ratio demonstrated a clear epidemic threshold at $R_0=1$, marking an important finding. Nevertheless, comparing both methods revealed that the analytic expression overestimates $R_0$ for progressively higher values ($R_0 \sim 10$), highlighting a significant limitation in the approach. 
 Had the analytic expression been applied to a dense forest or highly aggregated distribution (where $\rho >10\%$ and $R_0$ is likely higher), the overestimation would only increase.
-Therefore, the value of Equation \ref{eq:ein} rapidly diminishes when used to describe highly infectious regimes, but serves as an accurate approximation around the threshold $R_0 \approx 1$.
+The utility of Equation \ref{eq:ein} therefore diminishes when used to describe highly infectious regimes but serves as an accurate approximation around the threshold $R_0 \approx 1$. Notwithstanding,
+tree-based diseases are unlikely to reach such exceptionally high epidemic values (where $R_0>10$), as supported by estimates of $1 \lessapprox R_0 \lessapprox 6$ for the Dutch elm disease epidemic in GB \cite{swinton1996dutch} and $1 \lessapprox R_0 \lessapprox 4$ for oak processionary moth epidemics in London \cite{wadkin2022inference}.
 
 In contrast, the contact-tracing method computes the mean number of infections per infected tree over different infected generations.
 Computing the mean-generational reproductive ratio proved convenient and led to a sharper epidemic threshold for later generations. These observations relate nicely to \cite{R0-perc-ref}, who studied a similar method to calculate $R_0$ for foot and mouth disease.
@@ -35,10 +35,8 @@ Thus, unfortunately, attempting eradication at this stage of pathogen developmen
 Still, Chapter \ref{ch:6-adb} marks a step towards a general framework that can help policymakers reach informed decisions about \textit{where} to focus epidemic control.
 In particular, the framework could provide value as an approach to threat assessment and rapid response modelling during the early phase of an epidemic.
 
-In addition, Chapter \ref{ch:6-adb} developed a simplified spatially-explicit SEIR model that described the seasonal spread of ash dieback (ADB) over local spatial scales.
-Subsequently, the ADB model was coupled with the map of predicted ash abundance given by \cite{hill.data}, thus producing an $R_0$-map that covered GB.  
-Surprisingly, no compartmentalised model of ADB could be found in the literature. Therefore, to my knowledge, the ADB model presented in this thesis 
-is the first mechanistic (compartmentalised) attempt at modelling the epidemic spread of ADB.
+In addition, Chapter \ref{ch:6-adb} developed a simplified spatially-explicit SEIR model that described the seasonal spread of ash dieback (ADB) over local spatial scales. Subsequently, we coupled the ADB model to a map of predicted ash abundance given by \cite{hill.data} to produce an $R_0$-map that covered GB.
+Under the threat of ADB, the UK government commissioned some early 'rapid response` modelling work as part of the Chalara management plan\footnote{As set by the government, readers can find more information by reading the Chalara Management Plan: https://www.gov.uk/government/publications/chalara-management-plan} \cite{defra2013chalara}. Although, the modelling work undertaken by  Chalara Cambridge plant sciences remains unpublished. Regardless, no compartmentalised model of ADB could be found in the literature. Therefore, to my knowledge, the ADB model presented in this thesis is the first mechanistic (compartmentalised) attempt to model ADB's epidemic spread.
 
 Treating infectivity as a free parameter in Chapter \ref{ch:6-adb} led to several notable observations. When infectivity is low, the $R_0$-maps become sparsely populated with susceptible patches above the epidemic threshold. Consequently, the $R_0$-maps indicate that ADB would be unlikely to invade GB below a hypothetical minimum infectivity value.
 In a similar vein, clusters in the $R_0$-map grew rapidly over four orders of magnitude between a narrow range of infectivity parameters.
@@ -61,7 +59,7 @@ That is, identifying and targeting positions in the host distribution that may d
 Initial results reveal that epidemic connectivity can depend on a small number of `connecting' positions in the host distribution.
 Nevertheless, more research is required to assess the utility and efficiency of the control strategy. Chapter \ref{ch7:landscape-level-control}
 outlined a potential research direction to examine and test the control strategy by considering a set of coupled patches in section \ref{sec:future-questions}.
-From the coupled system,  the transmission probability and effect of control between host patches can be assessed.
+From the coupled system, the transmission probability and effect of control between host patches can be assessed.
 Until this work is undertaken, the strategy remains speculative.
 Following the research direction posed in section \ref{sec:future-questions}, future work should develop the definition of connectivity inside the $R_0$-map. Each pixel within an $R_0$-map reflects only isolated within-patch interactions and not between-patch LDD.
 As such, there is no non-local connectivity between pixels in the map, 
@@ -70,6 +68,8 @@ a limitation clearly revealed when analysing clusters at different landscape res
 Unsurprisingly, insufficient host data underpins a significant limitation in this thesis.
 Although the predicted ash abundance map captured the overarching large-scale distribution of ash in GB, Hill et al. reported a RMSE of $5\mathrm{ha}$. Therefore, in reality, regions below the threshold might be susceptible\textemdash and vice-versa for above threshold regions.
 Unfortunately, such errors mean that the host distribution is not accurate enough to inform the hypothetical (fine-scale) management scenarios presented in Chapter 7. Until species abundance data captures the host distribution more reliably, country-wide applications remain extraordinarily ambitious. In response to this limitation, future research could concentrate on smaller-scale areas where abundance data is known. For example, by examining well-surveyed areas inside the UKCEH Countryside Survey data.
+
+\blindtext
 
 In conclusion, the research narrative developed in this thesis aims to help inform policymakers about where to focus epidemic control.
 The approach constitutes an epidemic mapping framework for tree disease with parallels to the emerging field of Infectious Disease Cartography in human epidemiology. 

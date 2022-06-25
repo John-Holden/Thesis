@@ -244,8 +244,7 @@ Conversely, Figure \ref{fig:R0-approx}(d) depicts a scenario when the pathogen i
 However, even with a larger dispersal kernel, the approximation illustrated by Figure \ref{fig:R0-approx}(a) would become more inaccurate for highly invasive systems with a large $R_0$. 
 
 For example, incredibly high values $R_0\in [30, 70]$ have been estimated for wheat stripe rust (WSR) epidemics \cite{severns2019consequences, mikaberidze2016invasiveness}. Nevertheless, 
-a field of crops is significantly dense in comparison to an average tree population distributed over the landscape\textemdash discussed extensively in section \ref{sec:ch4-discussion} concerning oak. Consequently, we argue that, in general, the reproduction ratio of a tree pathogen is unlikely to reach super epidemic regimes that parallel WSR epidemics;
-supported further by estimates of $1 \lessapprox R_0 \lessapprox 6$ for the Dutch elm disease epidemic in GB \cite{swinton1996dutch} and $1 \lessapprox R_0 \lessapprox 4$ for oak processionary moth epidemics in London [private correspondence with Dr Laura Wadkin, Newcastle University\footnote{Pre-prints of the publication can be found at https://www.biorxiv.org/content/10.1101/2021.12.09.471950v2} ].
+a field of crops is significantly dense in comparison to an average tree population distributed over the landscape\textemdash discussed extensively in section \ref{sec:ch4-discussion} concerning oak. Consequently, we argue that, in general, the reproduction ratio of a tree pathogen is unlikely to reach super epidemic regimes that parallel WSR epidemics; supported further by estimates of $1 \lessapprox R_0 \lessapprox 6$ for the Dutch elm disease epidemic in GB \cite{swinton1996dutch} and $1 \lessapprox R_0 \lessapprox 4$ for oak processionary moth epidemics in London \cite{wadkin2022inference}.
 
 \subsection{Derivation}
 
@@ -272,10 +271,12 @@ Solving the above, with initial condition $\rho_0$ at $t=0$, leads to:
     \rho(t) = \rho_0 \exp\Big(-\frac{2\pi\beta\ell^2}{\mathcal{L}^2} t \Big)
 \end{equation}
 If density reductions from other secondary and tertiary infections are neglected, the final number of expected secondary infections after $T$ infectious time-steps is given by:
+
 \begin{equation}
 \label{eq:Appendix_final_r0_approx}
     R_0(T) =  \mathcal{L}^2\big(\rho_0 - \rho(T)\big) = \mathcal{L}^2\rho_0\Big[1 - \exp\big(-\frac{2\pi\beta\ell^2}{\mathcal{L}^2} T \big) \Big]
 \end{equation}
+
 Equation \ref{eq:Appendix_final_r0_approx} can be used as a first approximation toward an $R_0$ value\textemdash the reader can find an equivalent, discrete-time derivation in Appendix \ref{eq:alternate-R0}.
 Nonetheless, uniform density reductions (in equation \ref{eq:drho/dt}) assume that secondary infections are equally likely at all spatial locations about the primarily infected tree. 
 On average, neglecting spatial variations overestimates the number of secondary infections induced by the tail-ends of the dispersal kernel,
