@@ -1,28 +1,15 @@
 \chapter{Interdisciplinary tree disease epidemics}
 \label{chapter2:litreview} 
 
-Understanding modern-day tree disease epidemics requires an holistic, interdisciplinary
-approach, made possible only by the convergence of numerous scientific fields. 
-Consequently, this Chapter reviews several key modelling themes.
-Models of tree disease aim to help design effective control policies and inform policymakers.
-Well-informed policymakers can then help to maintain tree health in rural, urban and commercial environments. 
-Although a myriad of environmental, biological and anthropomorphic factors complicate the scientific understanding 
-and thus effective disease control. 
+Understanding modern-day tree disease epidemics requires a holistic, interdisciplinary approach, made possible only by the convergence of numerous scientific fields. Consequently, this Chapter reviews several key modelling themes. Models of tree disease aim to help design effective control policies and inform policymakers. Well-informed policymakers can help maintain tree health in rural, urban and commercial environments. However, myriad environmental, biological and anthropomorphic factors complicate the scientific understanding and thus effective disease control. 
 
-Here, the review begins by narrating some early historical developments in human and botanical epidemiology before presenting
-a variety of present-day modelling frameworks. After introducing the mainstream paradigm of plant-based epidemic models,
-an inspection of dispersal, thresholds, and epidemic control follow naturally. Finally, the Chapter ends with a case study of ash dieback, reflecting the multi-faceted 
-difficulties posed by a recent emergent epidemic.
+Here, the review begins by narrating some early historical developments in human and botanical epidemiology before presenting a variety of present-day modelling frameworks. After introducing the mainstream paradigm of plant-based epidemic models, an inspection of dispersal, thresholds, and epidemic control follow naturally. Finally, the Chapter ends with a case study of ash dieback, reflecting the multi-faceted difficulties posed by a recent emergent epidemic.
 
 \newpage
 
 \section{Historical perspectives}
 
-Historically, the fields of plant pathology and mathematical epidemiology existed in different spheres.
-Plant pathology researchers furthered biological understanding of pathogen growth (e.g. \cite{doi:10.1146/annurev.py.01.090163.000245}), not predictive mathematical theories.
-Pioneering discoveries in mathematical epidemiology permitted a more quantitative treatment of botanical diseases. 
-In particular, the seminal SIR model of \cite{kermack-model} 
-provided a foundation to examine plant-based epidemics mathematically.
+Historically, plant pathology and mathematical epidemiology fields existed in different spheres. Plant pathology research focused on understanding pathogen biology (e.g. \cite{doi:10.1146/annurev.py.01.090163.000245}), not developing predictive mathematical theories. However, pioneering discoveries in mathematical epidemiology permitted a more quantitative treatment of botanical diseases. In particular, the seminal SIR model of \cite{kermack-model} provided a foundation to examine plant-based epidemics mathematically.
 
 \subsection{Standard SIR}
 
@@ -42,10 +29,7 @@ to the rate $\beta$. Likewise, $\mu I$ controls the transition of infected hosts
 through a removal rate $\mu$. Figure \ref{fig:SIR-vs-plank}(a) illustrates the coupled SIR system for 
 fixed $\mu$ and four values of $\beta$.
 
-The coupled differential system of Equations (\ref{eq:SIR-model1}-\ref{eq:SIR-model3}) rely on several assumptions, including:
-(1) a closed population with no births or deaths(2) no exposed/incubation period (3) lifetime immunity following recovery
-(4) mass action population mixing, where contact mixing rates between individuals in $S$ and $I$ are proportional 
-to the number of individuals in either field.
+The coupled differential system of Equations (\ref{eq:SIR-model1}-\ref{eq:SIR-model3}) rely on several assumptions, including: (1) a closed population with no births or deaths (2) no exposed/incubation period (3) lifetime immunity following recovery (4) mass action population mixing, where contact mixing rates between individuals in $S$ and $I$ are proportional to the number of individuals in either field.
 
 Today, countless articles have relaxed these assumptions and extended the standard SIR framework\footnote{
 Indeed, following the COVID-19 pandemic, SIR-type models remain an active field of research 
@@ -76,8 +60,7 @@ infected hosts
 \subsection{Logistic growth}
 \label{sec:logistic-growth}
 
-Numerous growth models have been used to describe plant disease, primarily based on the Gompertz \cite{berger1981comparison}, monomolecular \cite{neher1992underestimation} and logistc \cite{kushalappa1982calculation} growth equations. However, \cite{van2013plant} was the first to firmly establish ties between plant pathology and mathematical epidemiology using logistic growth.
-Fundamentally, Van der Plank modelled the growth of plant pathogens (or `inoculum') by:
+Numerous growth models have been used to describe plant disease, primarily based on the Gompertz \cite{berger1981comparison}, monomolecular \cite{neher1992underestimation} and logistic \cite{kushalappa1982calculation} growth equations. However, \cite{van2013plant} was the first to firmly establish ties between plant pathology and mathematical epidemiology using logistic growth. Fundamentally, Van der Plank modelled the growth of plant pathogens (or `inoculum') by:
 \begin{equation}
     \label{van-plank}
     \frac{dI}{dt} = rI(1 - I)
@@ -86,13 +69,13 @@ where $r$ describes the rate of pathogen growth and $I$ reflects the proportion 
 In Equation \ref{van-plank}, the amount of infected tissue $I$ snowballs at first, 
 in proportion to the amount of inoculum. Then, as time passes and $I$ grows, $(1-I)$ approximates zero, 
 and the system plateaus as all susceptible tissue becomes infected.
-The essential model behaviour is shown in Figure \ref{fig:SIR-vs-plank}(b) over $10$ values growth rates $r$.
+The essential model behaviour is shown in Figure \ref{fig:SIR-vs-plank}(b) over $10$ growth rates parameters.
 From Equation \ref{van-plank}, a simple method to determine the rate $r$ follows:
 \begin{equation}
     \label{eq:van-plank-r}
-    r =\frac{1}{t_2 - t_1} \big[ \log_{e}(\frac{I_2}{1 - I_2}) - \log_e( - \frac{I_1}{1 - I_1}) \big]
+    r =\frac{1}{t_2 - t_1} \Big[ \log_{e}(\frac{I_2}{1 - I_2}) - \log_e( - \frac{I_1}{1 - I_1}) \Big]
 \end{equation}
-where $I_1$ and $I_2$ $\in [0, 1]$ are the proportions of infected tissue at times $t_1$ and $t_2$ respectively. Equation \ref{eq:van-plank-r} is valid for all values of $t$, expect when $t_1 = t_2$ (see \cite{van2013plant} Chapter 3 page). Importantly, both $I_1$ and $I_2$, and by extension the infection rate $r$,
+where $I_1$ and $I_2$ $\in [0, 1]$ are the proportions of infected tissue at times $t_1$ and $t_2$ respectively. Equation \ref{eq:van-plank-r} is valid for all values of $t$, expect when $t_1 = t_2$ (see \cite{van2013plant} Chapter 3). Importantly, both $I_1$ and $I_2$, and by extension the infection rate $r$,
 are measurable in laboratory conditions. 
 In Equation \ref{van-plank}, newly infected tissue becomes infectious immediately following infection.
 Realistically, infectious tissue (and symptom expression) takes time to develop, described by an `incubation period'.
@@ -119,18 +102,13 @@ growth at step $t-p$, as opposed to $r$ that describes the spread of disease at 
        } 
      \label{fig:SIR-vs-plank}
  \end{figure}
-where $x_t$ represents the amount of inoculum at time $t$, and $r$ and $R$ represent the `apparent' infection rate (measurable in laboratories from Equation \ref{eq:van-plank-r})
+where $x_t$ represents the proportion of inoculum at time $t$, along with both $r$ and $R$ that denote the `apparent' infection rate (measurable in laboratories from Equation \ref{eq:van-plank-r})
 and the `basic' infection rate, respectively. 
-As Van der Plank explained, one usually seeks
-to determine $R$ from the constant $r$. If $r$ indeed stays constant over the epidemic:
-the basic infection rate $R$ must decrease as $x_t/x_{t-p}$ gets progressively smaller as $x_{t-p}\rightarrow x_t $.
-At this point, the basic infection rate $R$ begins to resemble the effective reproduction ratio $R_e$
-from Equation \ref{eq:R0-effective}. 
+As Van der Plank explained, one usually seeks to determine $R$ from the constant $r$. If $r$ indeed stays constant over the epidemic, the basic infection rate $R$ must decrease as $x_t/x_{t-p}$ gets progressively smaller, i.e. as $x_{t-p}\rightarrow x_t $. At this point, the basic infection rate $R$ begins to resemble the effective reproduction ratio $R_e$ from Equation \ref{eq:R0-effective} because it takes into account a changing population. 
 
 Equation \ref{van-plank-incubation} describes a system where
 infections incubate for a period $p$ before inducing the growth of more infectious plant tissue.
-However, it does not describe the infectious period (where infected tissue remains before becoming epidemiologically inert),
-which lead Van der Plank to extend Equation \ref{van-plank-incubation} to:
+However, it does not describe the infectious period (where infected tissue remains before becoming epidemiologically inert), which lead Van der Plank to extend Equation \ref{van-plank-incubation} to:
 \begin{equation}
 \label{van-plank-infectious-p}
     \frac{dI_t}{dt} = R_c(I_{t-p} - I_{t-i-p})(1 - I_{t})
@@ -143,7 +121,7 @@ More formally, as $I_{t-i-p} \rightarrow I_{t-p}$, the rate of infectious tissue
 \label{sec:SIR-vs-plank}
 
 The SIR model does not include an incubation period, and therefore differs from the delayed differential formulation 
-of Equation \ref{van-plank-infectious-p}. Nonetheless, the compartmentalised approach is easy to extend, leading to an 
+of Equation \ref{van-plank-infectious-p}. Nonetheless, the compartmentalised SIR is easy to extend, leading to an 
 SEIR system:
 \begin{align}
 \label{eq:SEIR-model1}
@@ -155,16 +133,12 @@ SEIR system:
     &\frac{dR}{dt} = \mu I
 \end{align}
 where Equation \ref{eq:SEIR-model2} describes the population of latently (or exposed) infected hosts.
-Susceptible hosts transition into the exposed compartment at the same rate as before, namely $\beta SI$, but now have an
-exponentially distributed latency period of $\gamma^{-1}$ before transitioning into $I$.
+Susceptible hosts transition into the exposed compartment at the same rate as before, namely $\beta SI$, but now have an exponentially distributed latency period of $\gamma^{-1}$ before transitioning into $I$.
 
 Both equations \ref{eq:SEIR-model1}-\ref{eq:SEIR-model3} and \ref{van-plank-infectious-p} outline similar behaviour, namely an incubatory period following infection. However, infected tissue in Equation \ref{van-plank-infectious-p} remains infectious for precisely $i$ units, which contrasts with the exponentially distributed exposed lifetime implicit within Equation \ref{eq:SEIR-model2}.
-Nevertheless, \cite{segarra2001epidemic} illustrated how Van der Plank's DDE and the SEIR system are both special cases of
-the SIR model proposed by \cite{kermack-model}, when the SIR model incorporates a sporulation function, $\phi(\tau)$. 
-The sporulation function appropriately models spore production in plant pathogens. 
+Nevertheless, \cite{segarra2001epidemic} illustrated how Van der Plank's DDE and the SEIR system are both special cases of the SIR model proposed by \cite{kermack-model}, when the SIR model incorporates a sporulation function, $\phi(\tau)$. The sporulation function appropriately models spore production in plant pathogens. 
 In particular, if $\phi(\tau) = 0$ for small $t$, $\phi(\tau)$ can model incubation periods. 
-Similarly, if $\phi(\tau) = 0$  for large $t$, we recover an infectious period. 
-More recently, \cite{time-varying-infectivity} simplified the analysis of \cite{segarra2001epidemic}, showing that 
+Similarly, if $\phi(\tau) = 0$  for large $t$, we recover an infectious period. More recently, \cite{time-varying-infectivity} simplified the analysis of \cite{segarra2001epidemic}, showing that 
 both Van der Plank's DDE and the SEIR model can be recovered with an $SE_nI_mR$ model.
 In an $SE_nI_mR$ framework, both $n$ and $m$ represent an arbitrary number of distinct exposed and infectious compartments:
 \[
@@ -174,7 +148,6 @@ Here, the SEIR model is recovered when $n=1$ and $m=1$. However, when $n,m \righ
 \cite{time-varying-infectivity} demonstrated that we recover an expression equivalent to the DDE in Equation \ref{van-plank-infectious-p}.
 Despite the equivalence of both DDE and SEIR formulations, the overarching theme of modern epidemiology is overwhelmingly compartmentalised,
 owing to the increased flexibility and easier analysis of compartmental models.
-
 
 \subsection{Progressive botanical epidemiology}
 \label{sec:prog-epi}
@@ -208,16 +181,13 @@ For a review of early plant disease simulators, see \cite{doi:10.1146/annurev.py
 \subsection{Percolation: from forest fires to epidemics}
 \label{section:lit-rev-perc}
 
-Research on percolation occurred alongside the developing field of plant disease modelling. The development of percolation theory marked an early approach to modelling epidemic systems that are
-both spatially explicit and stochastic. The original formulation of percolation described the gelation of a fluid by modelling the bonds that form between molecules \cite{perco_origin}. Moreover, these early formulations of percolation relied on a graph\textemdash illustrated in terms of vertices and edges. However, physicists studying material sciences put forward re-interpretations, naturally on a lattice \cite{Essam_1980}. 
+Research on percolation occurred alongside the developing field of plant disease modelling. The development of percolation theory marked an early approach to modelling epidemic systems that are both spatially explicit and stochastic. The original formulation of percolation described the gelation of a fluid by modelling the bonds that form between molecules \cite{perco_origin}. Moreover, these early formulations of percolation relied on a graph\textemdash illustrated in terms of vertices and edges. However, physicists studying material sciences put forward re-interpretations, naturally on a lattice \cite{Essam_1980}. 
 
 An essential characteristic of percolation is its ability to describe a phase transition. More specifically, an abrupt change in the state of a system occurs when the system reaches a percolation threshold. Interestingly, percolation thresholds are treatable with scaling theory, used to study critical phenomena. In particular, when percolation is around the threshold, specific characteristics (e.g. cluster size and cluster numbers) were found to scale according to a 'critical exponent.' Amazingly, critical exponents remain fixed, regardless of the spatial dimension or the type of lattice geometry. Accordingly, early work continued study percolation around criticality in terms of critical exponents \cite{STAUFFER19791}. An expanded discussion of percolation theory continues in Chapter 3.
 
 Different flavours of percolation models, such as site or bond percolation, were described
-to model different processes. Nevertheless, percolation proved a convenient theory and various phenomena including gelation, 
-magnetism and telecommunications were described \cite{trove.nla.gov.au/work/26493727}. 
-With only a short conceptual jump from time-dependent percolation used to study the growth of crystals \cite{Family_1985},
-forest fire models were subsequently related to percolation \cite{MacKay_1984}.
+to model different processes. Nevertheless, percolation proved a convenient theory and various phenomena including gelation, magnetism and telecommunications were described \cite{trove.nla.gov.au/work/26493727}. 
+With only a short conceptual jump from time-dependent percolation used to study the growth of crystals \cite{Family_1985}, forest fire models were subsequently related to percolation \cite{MacKay_1984}.
 
 Beginning with the SIR framework, mathematical epidemiology was already well-established
 around the time percolation theory was conceived \cite{baily1975mathematical}. 
@@ -226,15 +196,8 @@ a population. Hence, a general percolation-based epidemic-formalisation framewor
 \cite{pub.1059067807} who proposed that epidemics might be in the same universality class
 as percolation.
 
-A fractal-like pattern of epidemics was observed by \cite{GRASSBERGER1986273}, shown in Figure \ref{fig:1d_perc_basis}. 
-In Figure \ref{fig:1d_perc_basis}, lighter grey sites represent removed individuals, 
-black sites indicate actively infected sites, and white sites indicate unaffected sites. 
-All lattice sites in the bottom row were initially infected, and the infection can be seen to propagate
-from the bottom up. The lattice was initialised at the critical-density $p\sim p_c$ culminating in a fractal-like pattern.
-\cite{GRASSBERGER1986273} did not attribute the hosts of this model to be trees, but instead a general host-population with low mobility. 
-The authors noted that local interactions between hosts and infected were vast simplifications and proposed 
-generalising the system with long-range interactions following a power law. 
-Although, it must be remarked that including long-range interactions would cease to describe a percolation based system.
+A fractal-like pattern of epidemics was observed by \cite{GRASSBERGER1986273}, shown in Figure \ref{fig:1d_perc_basis}.
+In Figure \ref{fig:1d_perc_basis}, lighter grey sites represent removed individuals, black sites indicate actively infected sites, and white sites indicate unaffected sites. All lattice sites in the bottom row were initially infected, and the infection can be seen to propagate from the bottom up. The lattice was initialised at the critical-density $p\sim p_c$ culminating in a fractal-like pattern. \cite{GRASSBERGER1986273} did not attribute the hosts of this model to be trees, but instead a general host-population with low mobility. The authors noted that local interactions between hosts and infected were vast simplifications and proposed generalising the system with long-range interactions following a power law. Although, it must be remarked that including long-range interactions would cease to describe a percolation based system.
 
 \begin{figure}
     \centering
@@ -331,14 +294,14 @@ The general model followed:
 \end{equation}
 where $w(t)$ is a time-dependent infectivity function, $\epsilon$ is the primary infection 
 (set to zero in the manuscript), $\beta$ is the rate of secondary infection, and $K(d_{ij}; \alpha)$
-is the dispersal function. However, this time, $\phi_i(t)$ in Equation \ref{eq: webidemics} presents a \textit{rate} of transition for a single susceptible tree (from $S_i \rightarrow E_i$) under the influence of all infected neighbours (represented by the $j^{th}$ index), as opposed to the probability of Equation \ref{eq:prob-trans}.
+is the dispersal function. However, this time, $\phi_i(t)$ in Equation \ref{eq: webidemics} presents a \textit{rate} of transition for a single susceptible tree (from $S_i \rightarrow E_i$) under the influence of all infected neighbours (represented by the $j^{th}$ index), as opposed to the probability of Equation \ref{eq:prob-trans} (hence its missing outside exponential term).
 
 Cunniffe et al. examined the effects of a cull radius similar to \cite{parnell2010effect}. 
 Yet this time, the results were aimed towards assessing control when `there is epidemic uncertainty'.
 Consequently, \cite{WEBIDEMICS} assessed different epidemic severity by varying $\beta$, alongside
 numerous control parameters, e.g. eradication response time, detection probabilities and revisit/survey intervals. 
 All in all, \cite{WEBIDEMICS} highlighted an intuitive result, namely, that the scale of control should
-reflect the "intrinsic epidemic scale". More succinctly, \textit{aggressive pathogens should be met with 
+reflect the ``intrinsic epidemic scale". More succinctly, \textit{aggressive pathogens should be met with 
 an aggressive control strategy}. Moreover, Cunniffe et al. suggested that thick-tailed dispersal kernels
 (in this case, a Cauchy distribution) prove more challenging to control.
 
@@ -375,7 +338,7 @@ infected pine trees at rate $K$ and transition into the infected beetle class at
 
 Equations \ref{eq:PWD-model1}-\ref{eq:PWD-model-H} assume mass action population mixing of beetles 
 without stochasticity. Presumably, this assumption led \cite{khan2020modelling} to model PWD as a non-spatial
-system on account of the migratory population of Beetle vectors. In reality, a dispersal kernel is likely to 
+system on account of the mobile population of Beetle vectors. In reality, a dispersal kernel is likely to 
 describe beetle movements more accurately than the well-mixed system presented in Equations 
 \ref{eq:PWD-model1}-\ref{eq:PWD-model-H}. Case in point, the spatio-temporal dynamics of Asian longhorned
 beetle were examined by \cite{smith2004dispersal} who inferred a median dispersal rate of $30\mathrm{m/day}$
@@ -439,10 +402,9 @@ a high-resolution map of was produced throughout the state of California detaili
 from 1-100.
 
 The large-scale SOD model developed by \cite{meentemeyer2011epidemiological} included several epidemiological 
-drivers of \textit{P. ramorum}: forest-type, local weather conditions, oak density, local pathogen growth and transmission
 and longer-range transmission. Local-scale dispersal were estimated
 using Markov chain Monte Carlo (MCMC) methods from aerial surveys \cite{valachovic2008wildland} 
-of \textit{P. ramorum}, and positive sites (2001–2007) confirmed by the California Department of
+of \textit{P. ramorum}, and positive sites (between 2001–2007) confirmed by the California Department of
 Food and Agriculture were used to estimate the long-range dispersal. \cite{meentemeyer2004mapping}
 found that a long-range Cauchy distribution fitted the data most appropriately over both spatial scales.
 Hence, a multi-scale kernel was given as:
@@ -453,7 +415,7 @@ Hence, a multi-scale kernel was given as:
 where $\alpha_1 = 20.57\mathrm{m}$ and $\alpha_2 = 9.5\mathrm{km}$ represent the short and long range dispersal
 kernels respectively, and the ratio $\gamma=0.99$ estimates the total contribution to short and
 long-range dispersal. Using the multi-scale dispersal kernel in Equation \ref{eq:multi-scale-kernel},
-the epidemiological model between $\mathrm{250 \times 250}$ grid cells assume the form:
+the epidemiological model between $\mathrm{250 m \times 250 m}$ grid cells assume the form:
 \begin{equation}
 \label{eq:large-scale-model}
     \Psi_{ijt} = \beta \sum_i \big(\chi_t (f_i) m_{it} c_{it} I_{it} \big) \big( \chi_t(f_j) m_{jt} c_{jt} S_{jt} /N_{max} \big) \times K(d_{ij}; \alpha_1, \alpha_2, \gamma)
@@ -534,11 +496,8 @@ the maximum number (or concentration) of individuals can occupy a region in spac
 If $K=u$, the whole growth term goes to zero and we only have outward diffusion (provided neighbouring
 regions are not fully occupied as well). 
 
-Hence, the two terms in Equation \ref{eq:fkpp} describe a populations logistic growth and spread, $ru(1 - u/K)$ and $\mathcal{D}\nabla u$ respectively.
-The essential travelling-wave behaviour of Equation \ref{eq:fkpp} is displayed in Figure \ref{fig:fkpp} 
-in both one and two spatial dimensions. In all panels, travelling waves are simulated 
-with parameters $r=0.10$, $\mathcal{D}=0.10$, and $K=0.00$, and at $t=0$, the field is set to $u(x)=0.10$ at the domains mid-point.
-All simulations shown in Figure \ref{fig:fkpp} evolve according to a forward-time centered-different (FTCD) finite scheme to second order and admit dirichlet boundary conditions.
+Hence, the two terms in Equation \ref{eq:fkpp} describe a populations logistic growth and spread, $ru(1 - u/K)$ and $\mathcal{D}\nabla u$ respectively. The essential travelling-wave behaviour of Equation \ref{eq:fkpp} is displayed in Figure \ref{fig:fkpp} in both one and two spatial dimensions. In all panels, travelling waves are simulated 
+with parameters $r=0.10$, $\mathcal{D}=0.10$, and $K=1.00$, and at $t=0$, the field is set to $u(x)=0.10$ at the domains mid-point. All simulations shown in Figure \ref{fig:fkpp} evolve according to a forward-time centered-different (FTCD) finite scheme to second order and admit dirichlet boundary conditions.
 
 Figures \ref{fig:fkpp}(a-c) show a one-dimensional wave propagating under different conditions:
 (a) symmetric growth and diffusion
@@ -552,7 +511,7 @@ Figures \ref{fig:fkpp}(d-f) show the equivalent two-dimensional behaviour.
     \centering
     \includegraphics[scale=0.325]{chapter2/figures/FKPP.pdf}
     \caption{
-    Simulating the FKPP model in one and two spatial dimensions with parameters $r=0.10$, $\mathcal{D}=0.10$, and $K=0.00$. 
+    Simulating the FKPP model in one and two spatial dimensions with parameters $r=0.10$, $\mathcal{D}=0.10$, and $K=1.00$. 
     In all panels, a non-zero field value is initialised at the domains mid-point (i.e. $u(x=0.50) = 0.10$) at time $t=0$.
     Then, simulations evolve according to a FTCD finite difference scheme to second order observing dirichlet boundary conditions. 
     (a) Symmetric growth and diffusion in 1D.
@@ -623,10 +582,7 @@ In particular, the authors constructed wheat plantations and artificially introd
 Consequently, the spatio-temporal WSR incidence rates strongly supported
 an accelerating, disperseive, wavefront. 
 
-In addition to dispersive waves, \cite{severns2019consequences} aggregated other WSR prevalence studies over different spatial 
-scales and fitted the combined data to one common inverse power law ($y=a(x+c)^{-b}$), shown in Figure \ref{fig:WSR-prevelance}.
-Generally, we see that WSR induces less lesions with distance, and that infections can arise up to $10\mathrm{km}$ away from the source,
-illustrated by triangles in the lower right hand corner.
+In addition to dispersive waves, \cite{severns2019consequences} aggregated and compared other WSR prevalence studies over different spatial scales and fitted the combined data to one common inverse power law ($y=a(x+c)^{-b}$), shown in Figure \ref{fig:WSR-prevelance}. Generally, we see that WSR induces less lesions with distance, and that infections can arise up to $10\mathrm{km}$ away from the source, illustrated by triangles in the lower right hand corner.
 An exponent of $b=2.39$ provided a good fit for all scales, suggesting that inverse \textit{square} power laws may 
 prove a useful rule of thumb to predict disease prevalence over different scales.
 

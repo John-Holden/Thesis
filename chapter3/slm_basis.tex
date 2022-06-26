@@ -14,11 +14,7 @@ Consequently, the compartmentalised SIR, percolation-based, model used by \cite{
 From first principles, the percolation model is analysed over a single tree density parameter ($\rho$), leading to a mathematical and conceptual definition of percolation in the context of tree-based epidemics. 
 Then, a discussion of critical phenomena, universal behaviour, and self-similarity in the system will follow. Crucially, this Chapter demonstrates the importance of thresholds in the spread of tree-based diseases.
 
-The one-parameter model will give way to a more involved two-parameter stochastic percolation, incorporating an additional infectivity parameter ($\beta$) representing pathogen virulence.
-In general, measuring infectivity is challenging and subject to much spatial and temporal variation, such as changing climatic/environment conditions or species-level genetic variations in susceptibilities.
-Accordingly, including infectivity is vital to construct representative models of tree-based epidemics.
-The two-parameter model will constitute a simple lattice model (SLM) of disease dynamics. 
-In addition, this Chapter will introduce ensemble-averaging parameter sweeps used throughout the thesis to categorize the SLM behaviour.
+The one-parameter model will give way to a more involved two-parameter stochastic percolation. The two-parameter model incorporates an additional infectivity parameter ($\beta$) representing pathogen virulence. In general, measuring infectivity is challenging and subject to much spatial and temporal variation due to changing climatic/environment conditions or species-level genetic variations in susceptibilities. Accordingly, including infectivity is vital to construct representative models of tree-based epidemics. Thus, the two-parameter model will constitute a simple lattice model (SLM) of disease dynamics. Additionally, this Chapter will introduce ensemble-averaging parameter sweeps used throughout the thesis to categorise the SLM behaviour.
 
 \section{Percolation formalism}
 \label{sec:perc-form}
@@ -63,7 +59,7 @@ In this paradigm, the spanning cluster describes a high-impact epidemic that spr
 Small to medium-sized clusters existing at (or slightly below) the threshold describe short-lived, 
 failed epidemics where the pathogen spreads for a time before becoming extinct.
 
-Percolation models have clear limitations when describing mobile hosts, but fortunately, the spread of disease through sessile tree populations is more appropriate. Thus, percolation theory provides a valuable framework for modelling tree diseases, mainly when the effect of long-distance pathogen dispersal is limited or reduced. Examples include soil-borne pathogens, i.e. \textit{Rhizoctonia solani} and \textit{Pythium spp} \cite{otten2004empirical, poggi2013percolation}. In addition, we can envision that percolation becomes a relevant approximation to dispersal in unfavourable abiotic conditions. For example, areas of low wind/rainfall splash reducing the dispersal of citrus canker (caused by the bacterium \textit{Xanthomonas axonopodis}) \cite{bock2010wind}, or regions of lower wind speeds reducing the fungal spore dispersal of ash dieback \cite{solheim2017spread}. Moreover, a percolation setting becomes more suitable as the landscape becomes more densely populated with trees, as argued by \cite{OROZCOFUENTES201912}.
+Percolation models have clear limitations when describing mobile hosts, but fortunately, the spread of disease through sessile tree populations is more appropriate. Thus, percolation theory provides a valuable, yet simplistic, framework for modelling tree diseases, mainly when the effect of long-distance pathogen dispersal is limited or reduced. Examples include soil-borne pathogens, i.e. \textit{Rhizoctonia solani} and \textit{Pythium spp} \cite{otten2004empirical, poggi2013percolation}. In addition, we can envision that percolation becomes a relevant approximation to dispersal in unfavourable abiotic conditions. For example, areas of low wind/rainfall splash reducing the dispersal of citrus canker (caused by the bacterium \textit{Xanthomonas axonopodis}) \cite{bock2010wind}, or regions of lower wind speeds reducing the fungal spore dispersal of ash dieback \cite{solheim2017spread}. Moreover, a percolation setting becomes more suitable as the landscape becomes more densely populated with trees, as argued by \cite{OROZCOFUENTES201912}.
 The reader can find a more in-depth review on epidemic percolation models in section \ref{section:lit-rev-perc}. 
 
 \section{Percolation-based SIR}
@@ -73,7 +69,7 @@ Forming a percolation-based lattice model of tree disease requires us first to c
 In the model, a susceptible tree will transition into the $I$ compartment (having a numerical value of $2$) if it neighbours an infected tree. Transitions between states occur with a probability of 1, and the Von-Neumann neighbourhood describes the connectivity between trees. After an arbitrary number of time-steps $T$, an infected tree will transition into the removed state $R$ and die; see appendix \ref{a:propagation} for more information on the numerical implementation. For simplicity, the infectious lifetime will not be considered as a parameter but will remain fixed at $T=1.0$\textemdash revisited below in section \ref{ch3:two-param-model}.
 
 The initial conditions begin with a small patch of infected hosts (of size $5\times5$ for example) located at the origin ($L_O$) at $t=0$, and percolation events describe the boundary conditions. 
-Percolation occurs when the infection spreads from $L_O$ to any of the four lattice boundaries, thereby defining a connected cluster of infectious-removed that spans the domain from $L_O$.
+Percolation occurs when the infection spreads from $L_O$ to any of the four lattice boundaries, thereby defining a connected cluster of infectious-removed trees that span the domain.
 Each time-step through the simulation represents an arbitrary unit of time, and simulation termination occurs on one of three boundary conditions: 
 (1) percolation is observed 
 (2) the pathogen becomes extinct
@@ -84,7 +80,7 @@ Typical simulations on a domain of size $500 \times 500$ are shown in Figure \re
     \centering
     \includegraphics[scale=0.50]{chapter3/figures/figure1-1param-perc.pdf}
     \caption{
-        Evolving outbreaks in the one-parameter, percolation-based SIR model are shown for different tree densities ($\rho$).
+        Evolving outbreaks in the one-parameter percolation-based SIR model are shown for different tree densities ($\rho$).
         From left to right, three successive time-steps are plotted on a domains of size $500 \times 500$.
         Green and black pixels represent susceptible and insusceptible (empty) host units, respectively, 
         while white and red lattice sites depict removed and infectious hosts. 
@@ -162,7 +158,7 @@ present an effective early warning system for the prediction of forest-based pat
 This Chapter rests on a simulations developed on a square lattice, though we could have considered different configurations, e.g. a triangular, honeycomb or Voronoi lattice.
 From the observation of Figures \ref{fig:ch3-perc-spread}(a-c), high host densities would produce highly ordered wavefronts reflecting the different lattice configurations.
 In addition, various quantities within the model would change, especially the critical density $\rho_c$ that changes in response to the nearest neighbour (NN) number.
-For completeness, table \ref{tab:perc} shows a selection of site and bond percolation thresholds.
+For completeness, Table \ref{tab:perc} shows a selection of site and bond percolation thresholds.
 Even though $\rho_c$ would change between lattice configurations, some universal properties of the model would remain fixed, 
 which leads to a description of universality below.
 
@@ -214,17 +210,13 @@ where $T$ is the number of an infectious lifetime. As $T$ increases, the likelih
 Equation (\ref{eq:pr_s_s}) sets the scene for a predictive mean-field theory.
 Subsequently, appendix \ref{a:slm-mean-field-theory} outlines steps toward a novel continuum model of tree disease.
 
-Previously in the one-parameter SIR variant, the infectious lifetime played a minor role in determining wavefront because pathogen transmission occurs with a probability of one.
-However, now a susceptible host will survive for $t=T$ time-steps before transitioning into $R$. Ultimately, the model is non-dimensionalised, and the value of $T$ is arbitrary. However, a single step can be envisioned to be on the order of years. At this stage, we have recovered the two-parameter model used by \cite{OROZCOFUENTES201912}, which henceforth is referred to as the `\textit{simple lattice model'} (SLM). 
+Previously in the one-parameter SIR variant, the infectious lifetime played a minor role in determining wavefront because pathogen transmission occurs with a probability of one. However, a susceptible host will now survive for $t=T$ time steps before transitioning into $R$. Although the model is ultimately non-dimensionalised with arbitrary units of time $T$, we envision a single time step on the order of years. Thus, at this stage, we have recovered the two-parameter model used by \cite{OROZCOFUENTES201912}, henceforth referred to as the `\textit{simple lattice model'} (SLM). 
 
-Figure \ref{fig:slm} show three SLM simulations, spreading for the shown infectivity parameters through different time-steps.
-All simulations in Figure \ref{fig:slm} are governed by a fixed value of $T=10$, and density $\rho=0.70$.
-The colour bar in Figure \ref{fig:slm} represents different steps through the infectious period, from yellow to red.
+Figure \ref{fig:slm} shows three SLM simulations, spreading for different infectivity parameters at different time steps. All simulations in Figure \ref{fig:slm} are governed by a fixed value of $T=10$, and density $\rho=0.70$. The colour bar in Figure \ref{fig:slm} represents different steps through the infectious period, from yellow to red.
 Higher values of $\beta$ yield a faster spreading velocity,
-as expected.
-Figures \ref{fig:slm}(g-i) allude to $\beta$ altering the percolation threshold, on the basis of $\beta=0.25$ reflecting a more fractal-like spreading pattern, even well beyond the standard percolation threshold of $\rho_c=0.592$.
+as expected. Figures \ref{fig:slm}(g-i) indicates that introducing $\beta$ has altered the percolation threshold. This can be seen by $\beta=0.25$ outlining a more noisy and fractal-like spreading pattern despite being well beyond the standard percolation threshold of $\rho_c=0.592$.
 
-Figure \ref{fig:slm-wave-front} shows how variations in the infection lifetime can change the wave-front properties. 
+Figure \ref{fig:slm-wave-front} shows how variations in the infection lifetime can change the wave-front properties.
 The value of $\beta$ predominantly controls the speed of the wave-front, whereas $T$ controls the lag-time on the removal front. 
 Therefore, increasing $T$ yields an increase in the wave-front thickness;
 this is valid for $\rho > \rho_c$.
@@ -299,14 +291,10 @@ Statistical measures over the ensemble have exciting applications and can detect
 Figure \ref{fig:slm_pspace} contrasts the epidemic threshold according to both percolation and velocity-based metrics.
 In Figure \ref{fig:slm_pspace}(a), a one-dimensional line through the parameter-space of $\rho$ reveals the percolation probability for the three different infectivity parameters shown.
 The vertical dashed line shows the accepted percolation threshold, $\rho_c$, for a two-dimensional square lattice. 
-For $\beta \in [0.50, 0.75]$, the probability of percolation is identical to that shown in Figure \ref{fig:ch3-perc};
-However, a lower value of $\beta = 0.25$ decreases the percolation threshold, as evidenced by the green line shifting to the right.
-Figure \ref{fig:ch3-perc}(a) intuitively demonstrates that a pathogen with a low value of infectivity requires a more significant tree density to spread.
+For $\beta \in [0.50, 0.75]$, the probability of percolation is identical to that shown in Figure \ref{fig:ch3-perc}. However, a lower value of $\beta = 0.25$ decreases the percolation threshold, as evidenced by the green line shifting to the right. Figure \ref{fig:ch3-perc}(a) intuitively demonstrates that a pathogen with a low value of infectivity requires a more significant tree density to spread.
 
-The ensemble-averaged radial velocity $\big\langle \overline{v} \big\rangle$ (as per Equation \ref{eq:vel_eff_r}) mirrors the percolation threshold,
-notwithstanding with some differences.
-In Figure \ref{fig:slm_pspace}(b), we witness a significant increase in the propagation speed when the density crosses the threshold density $\rho_c$, 
-notably for $\beta=0.75$ and $\beta=0.50$ shown in blue and orange. 
+The ensemble-averaged radial velocity $\big\langle \overline{v} \big\rangle$ (as per Equation \ref{eq:vel_eff_r}) mirrors the percolation threshold, notwithstanding with some differences.
+In Figure \ref{fig:slm_pspace}(b), we witness a significant increase in the propagation speed when the density crosses the threshold density $\rho_c$, notably for $\beta=0.75$ and $\beta=0.50$ shown in blue and orange. 
 In addition, a higher $\beta$-value predictably yields a higher radial velocity, both before and after the epidemic transition.
 
 The green curve ($\beta=0.25$) in Figure \ref{fig:slm_pspace}(b) alludes to an important regime in the model.
@@ -354,19 +342,15 @@ and some non-native oaks such as red oak (\textit{Quercus rubra}) \cite{grunwald
 Moreover, different genetic variants of \textit{P. ramorum} affect different hosts with varying severities.
 For example, North American oak species appear more susceptible to the NA1 lineage \cite{rizzo2002phytophthora},  while UK larch trees appear slightly more highly susceptible to the European lineage EU1 \cite{king2015planta}. Accordingly, although the integration of $\beta$ in the SLM is undoubtedly simplistic and general, it permits a description of varying degrees of pathogen virulence nonetheless.
 
-Two metrics categorised behaviour in the model: the pathogens average radial velocity and a probability of percolation.
-The percolation probability defined a sharper, more reliable transition between epidemic and pathogen extinction.
-Conclusively, the percolation probability proves more accurate to classify epidemic regimes.
-Nevertheless, the radial velocity captured a similar threshold-like behaviour besides additional dynamic information in the form of a time series.
-Subsequently, the time series velocity was ensemble-averaged and examined over a sweep of $\rho$ and $\beta$ values. 
+Two metrics categorised behaviour in the model, a pathogens average radial velocity and a probability of percolation. The percolation probability defined a sharper, more reliable transition between epidemic and pathogen extinction. Conclusively, the percolation probability proves more accurate to classify epidemic regimes.
+Nevertheless, the radial velocity captured a similar threshold-like behaviour besides additional dynamic information in the form of a time series. Subsequently, the time series velocity was ensemble-averaged and examined over a sweep of $\rho$ and $\beta$ values. 
 
 Interestingly, comparing percolation to the radial velocity revealed a parameter region (of persistence) above the threshold where the pathogen survives but slowly propagates to the domain boundary.
 However, as host population growth is neglected in the SLM, long-term host-pathogen coexistence between is prevented and persistence is merely approximate \cite{gilligan2008epidemiological}. 
 
 As we look to construct a more representative model, it is worth remarking on the most significant assumptions that underpin the SLM so far:
 \begin{enumerate}
-    \item \textbf{Local NN interactions}: in reality, many dispersal mechanisms exist to propagate the spread of disease\textemdash 
-    section \ref{ch2:dispersal} contains more information. 
+    \item \textbf{Local NN interactions}: in reality, many dispersal mechanisms exist to propagate the spread of disease\textemdash see section \ref{ch2:dispersal} for more information. 
     Undesirably, local interactions in the SLM revealed unnatural artefacts of lattice geometry, witnessed in Figures \ref{fig:ch3-perc-spread}(a-c).
     Moreover, as the pathogen could not jump over empty lattice sites, epidemics were only possible above the percolation threshold, 
     i.e. when connected clusters of hosts span the domain.  

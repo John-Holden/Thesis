@@ -32,9 +32,7 @@ albeit with minor epidemic parameter variations. Together, these observations su
 \section{A spatially-explicit seasonal SEIR model}
 \label{sec:seir-model}
 
-\textit{H. fraxineus} has two modes of reproduction, sexual and asexual (teleomorphic and anamorphic, respectively).
-As some research suggests, the asexual element has contributed to the European epidemic \cite{fones2016role}. 
-Although the sexual reproductive mode of ADB is widely acknowledged to be the dominant driver of disease-spread 
+\textit{H. fraxineus} has two modes of reproduction, sexual and asexual (teleomorphic and anamorphic, respectively). Some research suggests that the asexual element has contributed to the European epidemic \cite{fones2016role}, although the sexual reproductive mode of ADB is widely acknowledged to be the dominant driver of disease-spread 
 \cite{https://doi.org/10.1111/ppa.12844, havnavckova2017direct, gross2012reproductive, Timmermann2011elal}.
 Subsequently, only the sexual reproduction of \textit{H. fraxineus} is reflected in the SEIR model.
 
@@ -130,7 +128,7 @@ transition probabilities are calculated at each time-step, taken to be days, whi
  \hline
  \end{tabular}
   \caption{Four infection models are considered, composed of either: Gaussian (ga) or inverse power law (pl) dispersal, and step function ($\phi_1$) or peaked ($\phi_2$) sporulation. All component functions yield values in the interval $[0, 1]$ and are normalisable. The corresponding model parameters are shown below in Table \ref{tab:SEIR-model}. 
-  The right-hand column shows the normalisation factor used to construct $\beta^*$, used to fix the infectivity and epidemic-impact between models.}
+  The right-hand column shows the normalisation factor used to construct $\beta^*$, i.e. used to fix the infectivity and epidemic-impact between models.}
 \label{tab:model-variants}
 \end{table}
 
@@ -317,8 +315,7 @@ The peak of ADB infectivity occurs during summertime sporulation when fruiting b
 Two contrasting sporulation functions, $\phi_1(t)$ and $\phi_2(t)$, were used to model the time-dependent ADB ascospore production and demonstrate robustness in the approach.
 The choice of sporulation functions were inspired by the modelling work of \cite{time-varying-infectivity} and \cite{segarra2001epidemic}
 (reviewed in section \ref{ch2:lit-rev-compartmentalised-models}). 
-Sporulation functions are described by step function and a normal distribution located at the midpoint between June and September:
-
+Sporulation functions are described by a step function and normal distribution located at the midpoint between June and September:
 \begin{equation}
 \phi_1(t)  = \left\{
 \begin{array}{ll}
@@ -353,7 +350,7 @@ The infectivity rate for function $\phi_2$ can be seen to vary, in contrast $\ph
 Although infectivity rates differed, the normalised infectivity $\beta^*$ ensured the same approximate area under each curve and, therefore, epidemic impact.
 
 Both $\phi_1(t)$ and $\phi_2(t)$ aim to mirror the seasonal time-dependence of \textit{H. fraxineus} sexual reproduction.
-In the seasonal SEIR model, time-varying infectivity is achieved by multiplying the infectivity parameter with a sporulation function $\beta\phi(t)$.
+In the seasonal SEIR model, a time-varying infectivity is achieved by multiplying the infectivity parameter with a sporulation function $\beta\phi(t)$.
 In line with the parsimonious approach undertaken thus far, $\phi_1(t)$ and $\phi_2(t)$ are generic and aim to capture the essential dynamics of ADB spread.
 However, a more complex model could aim to fit $\phi(t)$ to spore-trapping data, which could resemble a Gaussian-k function (e.g. see Figure 2. in \cite{grosdidier2018tracking}).
 Although different sporulation models lead to the same effective behaviour (as discussed more below in section \ref{sec:tree-mortality}), 
@@ -394,7 +391,7 @@ $100\%$ mortality\textemdash as explained in more depth by \cite{time-varying-in
 Therefore, failing to reach a steady-state for long running simulations represents a limitation in the seasonal SEIR model of ADB.
 
 Figures \ref{fig:ash-mortalty}(c-d) show the mortality percentage on two different domain sizes for each model with a single infectivity parameter $\beta^*=2000$, well beyond the epidemic threshold.
-For all models, the larger domain size effectively reduced the proportion of removed ash over the $30$ period because more trees populate the domain, shown in Figure \ref{fig:ash-mortalty}(c).
+For all models, the larger domain size effectively reduced the proportion of removed ash over the $30$ year period because more trees populate the domain, shown in Figure \ref{fig:ash-mortalty}(c).
 Figure \ref{fig:ash-mortalty}(c) confirms that on a smaller $1\mathrm{km}\times 1\mathrm{km}$ domain, the more localised Gaussian dispersal models give rise to a more significant epidemic impact.
 This behaviour can be understood by noting that for inverse power law spread, secondary infections are on average likely to be under-counted
 by virtue the of fat-tailed dispersal kernel extending beyond the domain boundary.
@@ -434,19 +431,16 @@ of infected ash, i.e. five years. The first-generation contact-traced secondary 
 
 \label{section:initial-conditions}
 
-This section will investigate initial conditions for just $\phi_1$-ga and $\phi_2$-pl, 
-as differences between sporulation models were negligible.
-Initial conditions play a role in shaping the final value of $R_0$ and produce distinct model behaviours. 
-At $t=0$, the following initial conditions can seed the domain:  
+This section will investigate initial conditions for just $\phi_1$-ga and $\phi_1$-pl, 
+as differences between sporulation models were negligible. Initial conditions play a role in shaping the final value of $R_0$ and produce distinct model behaviours. At $t=0$, the following initial conditions can seed the domain:  
 IC1) infected hosts occupy the domain centre  
 IC2) infected hosts are scattered randomly throughout the domain.
 Figure \ref{fig:seir-ash-IC} contrasts the contact-traced $R_0$ for 
-first-generation infected ash over five years between the models $\phi_1$-ga and $\phi_2$-pl.
+first-generation infected ash over five years between the models $\phi_1$-ga and $\phi_1$-pl.
 Although the ensemble average $\overline{R}_0$ (i.e. the horizontal black line) compared similarly 
 for each initial condition, differences can be seen in the statistics.
 
-Figure \ref{fig:seir-ash-IC} shows an ensemble of $R_0$ values for IC1 (a) and IC2 (b) with 10 and 20 initially infected 
-ash with epidemic parameters well above the threshold\footnote{
+Figure \ref{fig:seir-ash-IC} shows an ensemble of $R_0$ values for IC1 (a) and IC2 (b) with 10 and 20 initially infected ash with epidemic parameters well above the threshold\footnote{
 Following the findings of Chapter \ref{ch5:dispersal-model}, a small number of initially infected trees seed 
 the domain at $t=0$; having more than one infected tree helps to reduce initial stochasticity, 
 which thereby lowers the number of early pathogen extinction events.}.
@@ -554,7 +548,7 @@ and allow the local-scale epidemic severity, based on tree-to-tree interactions,
 \end{figure}
 
 Ash densities were parameterised by ash the abundance data provided by \cite{hill.data}. 
-Previously, the oak canopy cover dataset given by \cite{hill.data} was used in Chapter \ref{fig:ch4_uk_spread} 
+Previously, the oak canopy cover dataset given by \cite{hill.data} was used in Figure \ref{fig:ch4_uk_spread} 
 alongside a toy model of landscape-level tree disease. The canopy cover datasets produced by \cite{hill.data} combine
 several data sources that partly cover Great Britain, regression methods then extrapolate canopy cover over the whole of Great Britain.
 Conveniently, ash happened to be among the most accurate data sets given by \cite{hill.data}. 
@@ -588,7 +582,7 @@ in line with the results of section \ref{ch3:two-param-model} and Chapter \ref{c
 
 % - \cite{severns2019consequences}: R0 70, highly dense white stripe rust, 
 
-Figures \ref{fig:R0-map-generation}(a-c) illustrated the relationship between $R_0$ and ash density.
+Figures \ref{fig:R0-map-generation}(a-c) illustrates the relationship between $R_0$ and ash density.
 Figure \ref{fig:R0-map-generation}(a) shows a PDF (probability density function) of ash densities $\rho$ over the map of Great Britain\textemdash overlaid with a KDE shown in red.
 As noted above, few locations support densities of $\rho=0.10$ and over\footnote{
 The original $\mathrm{1km \times 1km}$ map resolution contained $2.2\times 10^4$ $1\mathrm{km^2}$ data points, 
@@ -658,10 +652,8 @@ Although, given similar gradients in the graph of $R_0$ versus $\rho$ for lower 
 Gaussian and inverse power law models should produce the exact $R_0$-map.
 In contrast, for higher infectivity parameters, we might expect the inverse power law model to yield a more susceptible map, as per Figures \ref{fig:R0-map-generation}(b-c) when the Gaussian model deviate below linearity.
 
-For the infectivity parameter $\beta^*=600$, model $\phi_1$-ga shows that the largest `dominating' cluster (in blue) extends over a slightly larger area than for model $\phi_2$-pl.
-In Figure \ref{fig:R0-map-generation}(j), the third-largest cluster (in green, located in Wales) remains disconnected from the largest dominating cluster (shown in blue),
-whereas in Figure \ref{fig:R0-map-generation}(f) the corresponding clusters are connected. 
-In a similar vein, Figure \ref{fig:R0-map-generation}(k) shows a larger dominating cluster than Figure \ref{fig:R0-map-generation}(g).
+For the infectivity parameter $\beta^*=600$, the model $\phi_1$-ga shows that the largest `dominating' cluster (in blue) extends over a slightly larger area than for $\phi_1$-pl.
+In Figure \ref{fig:R0-map-generation}(j), the third-largest cluster (in green, located in Wales) remains disconnected from the largest dominating cluster (shown in blue), whereas in Figure \ref{fig:R0-map-generation}(f) the corresponding clusters are connected. In a similar vein, Figure \ref{fig:R0-map-generation}(k) shows a larger dominating cluster than Figure \ref{fig:R0-map-generation}(g).
 However, differences are seen most visibly over Scotland and Northern England (Humber-Northumbria), where the second and third largest-ranked clusters extend over more significant areas.
 Nevertheless, differences in how dispersal models scale over GB are primarily trivial, and stochasticity in ensemble-averaged $R_0$-values could likely explain any differences.
 
@@ -873,6 +865,6 @@ Given a set of data containing the \textit{number} of confirmed ADB cases in eac
 
 Fitting $\beta$ to ADB data remains a crucial next step for progressing the framework. Numerous studies have collated spatial-temporal ADB data in Europe \cite{https://doi.org/10.1111/1365-2745.13383, https://doi.org/10.1002/ppp3.11, stocks2017first, lohmus2014ash}, most of which tracks either tree mortality or the degree of symptom expression over time. Given sufficient spatial-temporal data on the spread of ADB, we could estimate epidemic speed and lifecycle parameters using Bayesian Markov-chain-Monte-Carlo methods. Similar statistical methods have proved noteworthy and effective for modelling the sudden oak death in California \cite{10.1371/journal.pcbi.1002328} and the spread of citrus canker in Florida \cite{neri2014bayesian}. However, collecting the necessary data often span years and requires considerable resources to monitor disease progression, as demonstrated by the underlying citrus canker data sets \cite{gottwald2002geo}. Unfortunately, comprehensive spatial-temporal data appears absent in the current literature, so fitting the model to spatial-temporal data sources remains questionable. However, more work is required to rule out the approach.
 
-A more straightforward (albeit less comprehensive) method to fit $\beta$ to ADB data could be achieved using mortality curves. Different authors have fit logistic growth models to data on the spread of ADB\textemdash see \cite{alonso2015designing, https://doi.org/10.1002/ppp3.11, lohmus2014ash}. Ultimately, mortality curves and logistic growth are non-spatial, in contrast to the work presented in this Chapter. Nevertheless, Figure \cite{fig:ash-mortalty} demonstrated an s-shaped logistic growth-like curve that forms the basis for an expanded study focused on model fitting. Fitting the spatial dispersal model to a logistic growth equation could be easily achieved. Section \ref{sec:SIR-fitting} provides a helpful example of fitting a spatial dispersal model to a non-spatial equation.
+A more straightforward (albeit less comprehensive) method to fit $\beta$ to ADB data could be achieved using mortality curves. Different authors have fit logistic growth models to data on the spread of ADB\textemdash see \cite{alonso2015designing, https://doi.org/10.1002/ppp3.11, lohmus2014ash}. Ultimately, mortality curves and logistic growth are non-spatial, in contrast to the work presented in this Chapter. Nevertheless, Figure \ref{fig:ash-mortalty} demonstrated an s-shaped logistic growth-like curve that forms the basis for an expanded study focused on model fitting. Fitting the spatial dispersal model to a logistic growth equation could be easily achieved. Section \ref{sec:SIR-fitting} provides a helpful example of fitting a spatial dispersal model to a non-spatial equation.
 
 The next Chapter builds on the $R_0$-map and outlines steps toward a novel landscape-level control strategy.
