@@ -1,7 +1,7 @@
 # Thesis: Modelling spatio-temporal tree disease epidemics in Great Britain
 
-Published [here](https://etheses.whiterose.ac.uk/31356/) 
-Manuscript [here](https://www.sciencedirect.com/science/article/pii/S030438002400019X)
+- Published [here](https://etheses.whiterose.ac.uk/31356/) 
+- Manuscript [here](https://www.sciencedirect.com/science/article/pii/S030438002400019X)
 
 Summary:
 - Chapter 1: Introduction & motivation, i.e. why bother?
