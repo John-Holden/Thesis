@@ -1,5 +1,7 @@
 # Thesis: Modelling spatio-temporal tree disease epidemics in Great Britain
 
+Published [here](https://etheses.whiterose.ac.uk/31356/) 
+
 Summary:
 - Chapter 1: Introduction & motivation, i.e. why bother?
 - Chapter 2: Literature review of widely known tree disease models, including compartmentalsed SIR, agent-based, PDE & statistical approches
